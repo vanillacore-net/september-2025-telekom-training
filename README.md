@@ -1,17 +1,25 @@
 # Software-Architektur Workshop: Design Patterns im Fokus
 
-## 4-Tage Training - Von einfachen Patterns zu komplexen Architekturen
+## Grundlagen-Einführung + 4-Tage Training - Von Architektur-Prinzipien zu Design Patterns
 
 ### Workshop-Übersicht
 
 **Zielgruppe**: Software-Entwickler und Architekten bei Telekom  
-**Dauer**: 4 Tage (September 2025)  
-**Schwerpunkt**: Design Patterns mit ausführlichen Diskussionen, Hands-on, Live-Demos  
+**Dauer**: Einführung (90-120 Min) + 4 Tage (September 2025)  
+**Schwerpunkt**: Fachlichkeit vor Technik, Clean Code, Design Patterns mit Diskussionen und Live-Demos  
 **Methodik**: Wissensvermittlung mit 70% Erklärung, 30% Code-Beispiele
 
 ### Verfügbare Materialien
 
 #### Schulungsunterlagen (Vollständig)
+
+**Einführung: Grundlagen Software-Architektur (90-120 Min)**
+- `script/intro/01-was-ist-software-architektur.md` - Interaktive Einführung
+- `script/intro/02-clean-code-grundlagen.md` - Qualitätsprinzipien
+- `script/intro/03-fachlichkeit-vor-technik.md` - **KERN-MESSAGE: Domain-First!**
+- `script/intro/04-design-patterns-motivation.md` - Warum Patterns?
+- `script/intro/05-refactoring-philosophie.md` - Kontinuierliche Verbesserung
+- `script/intro/workshop-erwartungen.md` - 4-Tage Roadmap
 
 **Tag 1: Creational Patterns und Grundlagen-Architektur**
 - `script/day1/01-code-analyse-factory-method.md`
@@ -60,11 +68,12 @@
 ├── CLAUDE.md                   # Projekt-Konfiguration
 │
 ├── script/                     # Schulungsunterlagen
+│   ├── intro/                  # Grundlagen-Einführung (6 Module, 90-120 Min)
 │   ├── day1/                   # Tag 1: Creational Patterns (4 Module)
 │   ├── day2/                   # Tag 2: Structural Patterns (4 Module)
 │   ├── day3/                   # Tag 3: Behavioral Patterns (4 Module)
 │   ├── day4/                   # Tag 4: Advanced Patterns (4 Module)
-│   └── references/             # Referenz-Dokumentation (6 Dokumente)
+│   └── references/             # Referenz-Dokumentation (13 Dokumente)
 │
 ├── stories/                    # Projekt-Management
 │   ├── EPIC-001-*.md           # Training-Inhalte EPIC
@@ -78,7 +87,15 @@
 
 ### Didaktisches Konzept
 
-**Struktur pro Modul**:
+**Grundlagen-Einführung** (90-120 Min):
+1. **"Was ist Software-Architektur?"** - Interaktive Teilnehmer-Diskussion
+2. **Clean Code Prinzipien** - Qualität als Basis
+3. **FACHLICHKEIT VOR TECHNIK** - Domain-First statt Technology-First  
+4. **Design Patterns Motivation** - Warum und wann Patterns?
+5. **Refactoring Philosophie** - Kontinuierliche Verbesserung
+6. **Workshop-Erwartungen** - 4-Tage Roadmap
+
+**Struktur pro Pattern-Modul**:
 1. Problem-Beschreibung und Motivation
 2. Code-Smell Identifikation
 3. Pattern-Struktur und Erklärung
@@ -98,16 +115,19 @@
 ### Status der Unterlagen
 
 **Fertiggestellt**:
-- Tag 1-4 Schulungsunterlagen (16 Module)
-- Refactoring-Referenz (3 Dokumente)
-- Clean Code & SOLID Referenz (3 Dokumente)
+- **Grundlagen-Einführung** (6 Module, 90-120 Min)
+- **Tag 1-4 Schulungsunterlagen** (16 Module)
+- **Referenz-Dokumentation** (13 Dokumente):
+  - Refactoring & Code-Qualität (3 Dokumente)
+  - Clean Code & SOLID (3 Dokumente)
+  - Architektur-Patterns (4 Dokumente)
+  - Anti-Patterns Katalog (3 Dokumente)
+- **Java-Projekt Setup** mit Docker-Support
+- **Code-Beispiele Tag 1+2** (8 Pattern-Beispiele)
 
 **Noch zu erstellen**:
-- Architektur-Patterns Referenz (STORY-007)
-- Anti-Patterns Katalog (STORY-008)
-- Code-Beispiele für alle Tage (STORY-009 bis STORY-012)
+- Code-Beispiele Tag 3+4 (STORY-011, STORY-012)
 - Hands-On Übungen (STORY-013)
-- Java-Projekt Setup (STORY-014)
 
 ## Lizenz
 

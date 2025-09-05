@@ -1,0 +1,58 @@
+services:
+  # Maven build service
+  maven-build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: architecture-training-maven
+    volumes:
+      # Mount source code for development
+      - .:/app
+      # Cache Maven dependencies to speed up builds
+      - maven-cache:/root/.m2
+      # Mount target directories to persist build outputs
+      - ./target:/app/target
+      - ./day1-examples/target:/app/day1-examples/target
+      - ./day2-examples/target:/app/day2-examples/target
+      - ./day3-examples/target:/app/day3-examples/target
+      - ./day4-examples/target:/app/day4-examples/target
+    working_dir: /app
+    environment:
+      - MAVEN_OPTS=-Xmx1024m
+      - JAVA_OPTS=-Xmx512m
+    # Keep container running for interactive use
+    stdin_open: true
+    tty: true
+    
+  # Development environment with live reload
+  maven-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: architecture-training-dev
+    volumes:
+      - .:/app
+      - maven-cache:/root/.m2
+    working_dir: /app
+    environment:
+      - MAVEN_OPTS=-Xmx1024m
+      - JAVA_OPTS=-Xmx512m
+    ports:
+      - "8080:8080"  # If needed for web applications
+    command: ["tail", "-f", "/dev/null"]  # Keep container running
+    
+  # CI/CD build service (no volumes, clean build)
+  maven-ci:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: architecture-training-ci
+    environment:
+      - MAVEN_OPTS=-Xmx1024m
+      - JAVA_OPTS=-Xmx512m
+    command: ["mvn", "clean", "verify", "-B"]
+
+# Named volumes for better performance and persistence
+volumes:
+  maven-cache:
+    driver: local
