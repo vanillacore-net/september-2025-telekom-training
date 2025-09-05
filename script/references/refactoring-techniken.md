@@ -1,9 +1,9 @@
 # Refactoring-Techniken - Telekom Workshop Guide
 
-## 🎯 Zweck
+## **Zweck**
 Schritt-für-Schritt Anleitungen für systematisches Refactoring in Telekom-Systemen. Praxisorientiert mit messbaren Verbesserungen.
 
-## 📋 Sicherheitsprinzipien
+## **Sicherheitsprinzipien**
 1. **Tests zuerst** - Keine Refactorings ohne Absicherung
 2. **Baby Steps** - Kleine, nachvollziehbare Schritte  
 3. **Continuous Integration** - Nach jedem Schritt ausführen
@@ -11,23 +11,23 @@ Schritt-für-Schritt Anleitungen für systematisches Refactoring in Telekom-Syst
 
 ---
 
-## 1. Extract Method - Methodenextraktion
+## 1. **Extract Method - Methodenextraktion**
 
-### 🎯 Anwendung
+### **Anwendung**
 - Long Methods aufteilen
 - Duplizierten Code eliminieren
 - Lesbarkeit verbessern
 
-### 📋 Voraussetzungen
-- ✅ Unit Tests vorhanden
-- ✅ Code-Coverage >70%
-- ✅ Keine kritischen Bugs
+### **Voraussetzungen**
+- **Unit Tests vorhanden**
+- **Code-Coverage >70%**
+- **Keine kritischen Bugs**
 
-### 🔧 Schritt-für-Schritt
+### **Schritt-für-Schritt**
 
-#### Schritt 1: Code-Segment identifizieren
+#### **Schritt 1: Code-Segment identifizieren**
 ```java
-// ❌ VORHER: 45-Zeilen Methode
+// VORHER: 45-Zeilen Methode
 public void processCustomerOrder(Order order) {
     // Validierung (Zeile 1-15)
     if (order == null) throw new IllegalArgumentException();
@@ -49,9 +49,9 @@ public void processCustomerOrder(Order order) {
 }
 ```
 
-#### Schritt 2: Extrahierte Methode definieren
+#### **Schritt 2: Extrahierte Methode definieren**
 ```java
-// ✅ SCHRITT 1: Validierung extrahieren
+// SCHRITT 1: Validierung extrahieren
 private void validateOrder(Order order) {
     if (order == null) {
         throw new IllegalArgumentException("Order cannot be null");
@@ -65,7 +65,7 @@ private void validateOrder(Order order) {
 }
 ```
 
-#### Schritt 3: Tests anpassen
+#### **Schritt 3: Tests anpassen**
 ```java
 @Test
 public void shouldValidateOrderCorrectly() {
@@ -75,18 +75,18 @@ public void shouldValidateOrderCorrectly() {
 }
 ```
 
-#### Schritt 4: Original-Methode anpassen
+#### **Schritt 4: Original-Methode anpassen**
 ```java
 public void processCustomerOrder(Order order) {
-    validateOrder(order); // ✅ Extrahierte Methode nutzen
+    validateOrder(order); // Extrahierte Methode nutzen
     
-    double finalPrice = calculateOrderPrice(order); // ✅ Weitere Extraktion
+    double finalPrice = calculateOrderPrice(order); // Weitere Extraktion
     
-    persistOrder(order, finalPrice); // ✅ Weitere Extraktion
+    persistOrder(order, finalPrice); // Weitere Extraktion
 }
 ```
 
-### 📊 Metriken Vorher/Nachher
+### **Metriken Vorher/Nachher**
 | Metrik | Vorher | Nachher | Verbesserung |
 |--------|--------|---------|--------------|
 | Methodenlänge | 45 LOC | 3 LOC | -93% |
@@ -95,18 +95,18 @@ public void processCustomerOrder(Order order) {
 
 ---
 
-## 2. Extract Class - Klassenextraktion
+## 2. **Extract Class - Klassenextraktion**
 
-### 🎯 Anwendung
+### **Anwendung**
 - God Objects aufteilen
 - Single Responsibility Principle
 - Cohesion verbessern
 
-### 🔧 Schritt-für-Schritt
+### **Schritt-für-Schritt**
 
-#### Schritt 1: Verantwortlichkeiten identifizieren
+#### **Schritt 1: Verantwortlichkeiten identifizieren**
 ```java
-// ❌ VORHER: God Object mit 847 Zeilen
+// VORHER: God Object mit 847 Zeilen
 public class CustomerManager {
     // Gruppe 1: Kundenverwaltung (200 Zeilen)
     public void createCustomer() { ... }
@@ -122,9 +122,9 @@ public class CustomerManager {
 }
 ```
 
-#### Schritt 2: Erste Klasse extrahieren
+#### **Schritt 2: Erste Klasse extrahieren**
 ```java
-// ✅ SCHRITT 1: Billing extrahieren
+// SCHRITT 1: Billing extrahieren
 public class CustomerBilling {
     private final CustomerRepository customerRepo;
     private final PricingService pricingService;
@@ -140,11 +140,11 @@ public class CustomerBilling {
 }
 ```
 
-#### Schritt 3: Dependencies refactoren
+#### **Schritt 3: Dependencies refactoren**
 ```java
-// ✅ SCHRITT 2: CustomerManager entschlacken
+// SCHRITT 2: CustomerManager entschlacken
 public class CustomerManager {
-    private final CustomerBilling billing; // ✅ Dependency Injection
+    private final CustomerBilling billing; // Dependency Injection
     
     public void processCustomerBilling(CustomerId id) {
         Bill bill = billing.calculateBill(id, currentPeriod());
@@ -154,7 +154,7 @@ public class CustomerManager {
 }
 ```
 
-### 📊 Metriken nach Extraktion
+### **Metriken nach Extraktion**
 | Klasse | LOC | Methoden | Responsibility |
 |--------|-----|----------|----------------|
 | CustomerManager | 247 | 8 | Kunde verwalten |
@@ -163,18 +163,18 @@ public class CustomerManager {
 
 ---
 
-## 3. Replace Conditional with Polymorphism
+## 3. **Replace Conditional with Polymorphism**
 
-### 🎯 Anwendung  
+### **Anwendung**  
 - Switch Statements eliminieren
 - Extensibilität verbessern
 - Open/Closed Principle
 
-### 🔧 Schritt-für-Schritt
+### **Schritt-für-Schritt**
 
-#### Schritt 1: Switch Statement identifizieren
+#### **Schritt 1: Switch Statement identifizieren**
 ```java
-// ❌ VORHER: Switch über Kundentyp
+// VORHER: Switch über Kundentyp
 public double calculateDiscount(Customer customer) {
     switch(customer.getType()) {
         case PRIVATE:
@@ -189,18 +189,18 @@ public double calculateDiscount(Customer customer) {
 }
 ```
 
-#### Schritt 2: Interface definieren
+#### **Schritt 2: Interface definieren**
 ```java
-// ✅ SCHRITT 1: Strategy Interface
+// SCHRITT 1: Strategy Interface
 public interface DiscountStrategy {
     double calculateDiscount(Customer customer);
     CustomerType getApplicableType();
 }
 ```
 
-#### Schritt 3: Konkrete Strategien implementieren
+#### **Schritt 3: Konkrete Strategien implementieren**
 ```java
-// ✅ SCHRITT 2: Private Customer Strategy
+// SCHRITT 2: Private Customer Strategy
 @Component
 public class PrivateCustomerDiscount implements DiscountStrategy {
     @Override
@@ -228,9 +228,9 @@ public class BusinessCustomerDiscount implements DiscountStrategy {
 }
 ```
 
-#### Schritt 4: Factory/Registry implementieren
+#### **Schritt 4: Factory/Registry implementieren**
 ```java
-// ✅ SCHRITT 3: Strategy Registry
+// SCHRITT 3: Strategy Registry
 @Service
 public class DiscountCalculator {
     private final Map<CustomerType, DiscountStrategy> strategies;
@@ -247,7 +247,7 @@ public class DiscountCalculator {
 }
 ```
 
-### 📊 Erweiterbarkeit Vorher/Nachher
+### **Erweiterbarkeit Vorher/Nachher**
 | Änderung | Vorher | Nachher |
 |----------|--------|---------|
 | Neuer Kundentyp | 5 Stellen ändern | 1 neue Klasse |
@@ -256,18 +256,18 @@ public class DiscountCalculator {
 
 ---
 
-## 4. Move Method - Methodenverschiebung
+## 4. **Move Method - Methodenverschiebung**
 
-### 🎯 Anwendung
+### **Anwendung**
 - Feature Envy beheben
 - Cohesion verbessern  
 - Coupling reduzieren
 
-### 🔧 Schritt-für-Schritt
+### **Schritt-für-Schritt**
 
-#### Schritt 1: Feature Envy erkennen
+#### **Schritt 1: Feature Envy erkennen**
 ```java
-// ❌ VORHER: CustomerService ist "neidisch" auf Address
+// VORHER: CustomerService ist "neidisch" auf Address
 public class CustomerService {
     public boolean isCustomerInServiceArea(Customer customer) {
         Address address = customer.getAddress();
@@ -282,9 +282,9 @@ public class CustomerService {
 }
 ```
 
-#### Schritt 2: Zielklasse vorbereiten
+#### **Schritt 2: Zielklasse vorbereiten**
 ```java
-// ✅ SCHRITT 1: Methode zu Address verschieben
+// SCHRITT 1: Methode zu Address verschieben
 public class Address {
     private String zipCode;
     private String state;
@@ -298,9 +298,9 @@ public class Address {
 }
 ```
 
-#### Schritt 3: Aufrufe anpassen
+#### **Schritt 3: Aufrufe anpassen**
 ```java
-// ✅ SCHRITT 2: CustomerService vereinfachen
+// SCHRITT 2: CustomerService vereinfachen
 public class CustomerService {
     public boolean isCustomerInServiceArea(Customer customer) {
         return customer.getAddress().isInServiceArea(serviceAreaConfig);
@@ -308,7 +308,7 @@ public class CustomerService {
 }
 ```
 
-### 📊 Coupling-Analyse
+### **Coupling-Analyse**
 | Metrik | Vorher | Nachher |
 |--------|--------|---------|
 | CustomerService → Address | 4 Aufrufe | 1 Aufruf |
@@ -317,18 +317,18 @@ public class CustomerService {
 
 ---
 
-## 5. Replace Magic Numbers with Constants
+## 5. **Replace Magic Numbers with Constants**
 
-### 🎯 Anwendung
+### **Anwendung**
 - Code-Verständlichkeit
 - Wartbarkeit
 - Konfigurierbarkeit
 
-### 🔧 Schritt-für-Schritt
+### **Schritt-für-Schritt**
 
-#### Schritt 1: Magic Numbers identifizieren
+#### **Schritt 1: Magic Numbers identifizieren**
 ```java
-// ❌ VORHER: Magic Numbers überall
+// VORHER: Magic Numbers überall
 public class TelekomBillingService {
     public double calculateMonthlyFee(Customer customer) {
         if (customer.getType() == 1) { // Was ist 1?
@@ -341,9 +341,9 @@ public class TelekomBillingService {
 }
 ```
 
-#### Schritt 2: Constants definieren
+#### **Schritt 2: Constants definieren**
 ```java
-// ✅ SCHRITT 1: Constants Class erstellen
+// SCHRITT 1: Constants Class erstellen
 public final class TelekomConstants {
     // Customer Types
     public static final int PRIVATE_CUSTOMER = 1;
@@ -363,9 +363,9 @@ public final class TelekomConstants {
 }
 ```
 
-#### Schritt 3: Code refactoren
+#### **Schritt 3: Code refactoren**
 ```java
-// ✅ SCHRITT 2: Readable Code
+// SCHRITT 2: Readable Code
 public class TelekomBillingService {
     public double calculateMonthlyFee(Customer customer) {
         double basePrice = getBasePriceForCustomerType(customer.getType());
@@ -385,9 +385,9 @@ public class TelekomBillingService {
 }
 ```
 
-#### Schritt 4: Configuration externalisieren
+#### **Schritt 4: Configuration externalisieren**
 ```java
-// ✅ SCHRITT 3: Configuration Properties
+// SCHRITT 3: Configuration Properties
 @ConfigurationProperties("telekom.billing")
 public class BillingConfig {
     private double privateBasePrice = 29.99;
@@ -400,18 +400,18 @@ public class BillingConfig {
 
 ---
 
-## 6. Introduce Parameter Object
+## 6. **Introduce Parameter Object**
 
-### 🎯 Anwendung
+### **Anwendung**
 - Long Parameter Lists reduzieren
 - Zusammengehörige Parameter gruppieren
 - Data Clumps eliminieren
 
-### 🔧 Schritt-für-Schritt
+### **Schritt-für-Schritt**
 
-#### Schritt 1: Parameter Groups identifizieren
+#### **Schritt 1: Parameter Groups identifizieren**
 ```java
-// ❌ VORHER: 8 Parameter - zu viel!
+// VORHER: 8 Parameter - zu viel!
 public void createCustomerAccount(
     String firstName, String lastName, String email,
     String street, String city, String zipCode, String country,
@@ -420,9 +420,9 @@ public void createCustomerAccount(
 }
 ```
 
-#### Schritt 2: Parameter Object erstellen
+#### **Schritt 2: Parameter Object erstellen**
 ```java
-// ✅ SCHRITT 1: Address Value Object
+// SCHRITT 1: Address Value Object
 public class Address {
     private final String street;
     private final String city;
@@ -440,7 +440,7 @@ public class Address {
     // Getters
 }
 
-// ✅ SCHRITT 2: Customer Info Object
+// SCHRITT 2: Customer Info Object
 public class CustomerInfo {
     private final String firstName;
     private final String lastName;
@@ -453,9 +453,9 @@ public class CustomerInfo {
 }
 ```
 
-#### Schritt 3: Methodensignatur vereinfachen
+#### **Schritt 3: Methodensignatur vereinfachen**
 ```java
-// ✅ SCHRITT 3: Cleaner Method Signature  
+// SCHRITT 3: Cleaner Method Signature  
 public void createCustomerAccount(CustomerInfo customerInfo) {
     validateCustomerInfo(customerInfo);
     
@@ -469,7 +469,7 @@ public void createCustomerAccount(CustomerInfo customerInfo) {
 }
 ```
 
-### 📊 Parameterkomplexität
+### **Parameterkomplexität**
 | Metrik | Vorher | Nachher |
 |--------|--------|---------|
 | Parameter Count | 8 | 1 |
@@ -479,18 +479,18 @@ public void createCustomerAccount(CustomerInfo customerInfo) {
 
 ---
 
-## 7. Replace Inheritance with Delegation
+## 7. **Replace Inheritance with Delegation**
 
-### 🎯 Anwendung
+### **Anwendung**
 - Refused Bequest beheben
 - Composition over Inheritance
 - Flexibilität erhöhen
 
-### 🔧 Schritt-für-Schritt
+### **Schritt-für-Schritt**
 
-#### Schritt 1: Problematische Vererbung identifizieren
+#### **Schritt 1: Problematische Vererbung identifizieren**
 ```java
-// ❌ VORHER: Problematische Vererbung
+// VORHER: Problematische Vererbung
 class Customer {
     public void payBill(Bill bill) {
         // Standard Zahlungslogik
@@ -517,9 +517,9 @@ class BusinessCustomer extends Customer {
 }
 ```
 
-#### Schritt 2: Strategy Interfaces definieren
+#### **Schritt 2: Strategy Interfaces definieren**
 ```java
-// ✅ SCHRITT 1: Payment Strategy
+// SCHRITT 1: Payment Strategy
 public interface PaymentStrategy {
     void pay(Bill bill, PaymentDetails details);
     boolean canProcess(PaymentMethod method);
@@ -531,9 +531,9 @@ public interface CommunicationStrategy {
 }
 ```
 
-#### Schritt 3: Konkrete Strategien implementieren
+#### **Schritt 3: Konkrete Strategien implementieren**
 ```java
-// ✅ SCHRITT 2: Concrete Strategies
+// SCHRITT 2: Concrete Strategies
 @Component
 public class CreditCardPayment implements PaymentStrategy {
     public void pay(Bill bill, PaymentDetails details) {
@@ -563,9 +563,9 @@ public class PhoneCommunication implements CommunicationStrategy {
 }
 ```
 
-#### Schritt 4: Composition-basierte Klasse
+#### **Schritt 4: Composition-basierte Klasse**
 ```java
-// ✅ SCHRITT 3: Composition statt Inheritance
+// SCHRITT 3: Composition statt Inheritance
 public class Customer {
     private final CustomerInfo info;
     private final PaymentStrategy paymentStrategy;
@@ -589,9 +589,9 @@ public class Customer {
 }
 ```
 
-#### Schritt 5: Factory für Kunden-Typen
+#### **Schritt 5: Factory für Kunden-Typen**
 ```java
-// ✅ SCHRITT 4: Customer Factory
+// SCHRITT 4: Customer Factory
 @Service
 public class CustomerFactory {
     
@@ -611,18 +611,18 @@ public class CustomerFactory {
 
 ---
 
-## 8. Introduce Null Object
+## 8. **Introduce Null Object**
 
-### 🎯 Anwendung
+### **Anwendung**
 - Null-Pointer-Exceptions vermeiden
 - Defensive Programming reduzieren
 - Cleaner Code ohne Null-Checks
 
-### 🔧 Schritt-für-Schritt
+### **Schritt-für-Schritt**
 
-#### Schritt 1: Null-Check Proliferation identifizieren
+#### **Schritt 1: Null-Check Proliferation identifizieren**
 ```java
-// ❌ VORHER: Null Checks überall
+// VORHER: Null Checks überall
 public class CustomerService {
     public void processCustomer(Customer customer) {
         if (customer != null) {
@@ -647,9 +647,9 @@ public class CustomerService {
 }
 ```
 
-#### Schritt 2: Null Object Pattern implementieren  
+#### **Schritt 2: Null Object Pattern implementieren**  
 ```java
-// ✅ SCHRITT 1: Address Interface
+// SCHRITT 1: Address Interface
 public interface Address {
     String getStreet();
     String getCity();
@@ -659,7 +659,7 @@ public interface Address {
     double getShippingCost();
 }
 
-// ✅ SCHRITT 2: Real Address Implementation
+// SCHRITT 2: Real Address Implementation
 public class RealAddress implements Address {
     private final String street;
     private final String city;
@@ -680,7 +680,7 @@ public class RealAddress implements Address {
     }
 }
 
-// ✅ SCHRITT 3: Null Object Implementation
+// SCHRITT 3: Null Object Implementation
 public class NullAddress implements Address {
     @Override
     public String getStreet() { return ""; }
@@ -704,7 +704,7 @@ public class NullAddress implements Address {
 }
 ```
 
-#### Schritt 3: Customer anpassen
+#### **Schritt 3: Customer anpassen**
 ```java  
 // ✅ SCHRITT 4: Customer ohne Null
 public class Customer {
@@ -722,7 +722,7 @@ public class Customer {
 }
 ```
 
-#### Schritt 4: Clean Service Code
+#### **Schritt 4: Clean Service Code**
 ```java
 // ✅ SCHRITT 5: Null-Check-freier Code
 public class CustomerService {
@@ -743,11 +743,11 @@ public class CustomerService {
 
 ---
 
-## 🧪 Test-Driven Refactoring Workflow
+## **Test-Driven Refactoring Workflow**
 
-### Golden Rule: Tests First!
+### **Golden Rule: Tests First!**
 ```java
-// ✅ SCHRITT 0: Immer zuerst Tests schreiben
+// SCHRITT 0: Immer zuerst Tests schreiben
 @Test
 public void shouldCalculateCorrectDiscountForBusinessCustomer() {
     // Given
@@ -761,18 +761,18 @@ public void shouldCalculateCorrectDiscountForBusinessCustomer() {
 }
 ```
 
-### Refactoring Cycle
-1. 🔴 **RED**: Existing tests pass
-2. 🟡 **REFACTOR**: Apply technique 
-3. 🟢 **GREEN**: All tests still pass
-4. 📊 **MEASURE**: Verify improvement
-5. 🔄 **REPEAT**: Next refactoring
+### **Refactoring Cycle**
+1. **RED**: Existing tests pass
+2. **REFACTOR**: Apply technique 
+3. **GREEN**: All tests still pass
+4. **MEASURE**: Verify improvement
+5. **REPEAT**: Next refactoring
 
 ---
 
-## 📊 Metriken für Refactoring-Erfolg
+## **Metriken für Refactoring-Erfolg**
 
-### Code-Qualität
+### **Code-Qualität**
 | Metrik | Tool | Zielwert |
 |--------|------|----------|
 | Cyclomatic Complexity | SonarQube | <10 |
@@ -781,7 +781,7 @@ public void shouldCalculateCorrectDiscountForBusinessCustomer() {
 | Duplication | SonarQube | <3% |
 | Coverage | JaCoCo | >80% |
 
-### Maintainability Index
+### **Maintainability Index**
 ```bash
 # Beispiel: SonarQube Metrics API
 curl -u token: \
@@ -790,17 +790,17 @@ curl -u token: \
    metricKeys=sqale_index,reliability_rating'
 ```
 
-### Team-Produktivität
-- 📉 **Bug Rate**: -40% nach Refactoring
-- ⚡ **Feature Velocity**: +25% nach 3 Monaten  
-- 🎯 **Code Reviews**: -50% Zeit pro Review
-- 🧪 **Test Execution**: +60% schneller
+### **Team-Produktivität**
+- **Bug Rate**: -40% nach Refactoring
+- **Feature Velocity**: +25% nach 3 Monaten  
+- **Code Reviews**: -50% Zeit pro Review
+- **Test Execution**: +60% schneller
 
 ---
 
-## 🎯 Workshop-Integration
+## **Workshop-Integration**
 
-### Hands-On Übung (45 Min)
+### **Hands-On Übung (45 Min)**
 1. **Teams à 3-4 Personen** (15 Min Setup)
 2. **Code-Smell identifizieren** aus Beispiel-Repository
 3. **Refactoring-Technik auswählen** gemeinsam
@@ -808,7 +808,7 @@ curl -u token: \
 5. **Metriken messen** Vorher/Nachher
 6. **Ergebnisse präsentieren** (5 Min pro Team)
 
-### Live-Demo Setup
+### **Live-Demo Setup**
 ```bash
 # Repository klonen
 git clone https://github.com/telekom/refactoring-workshop
@@ -825,7 +825,7 @@ mvn sonar:sonar
 mvn jacoco:report
 ```
 
-### Evaluation Criteria
+### **Evaluation Criteria**
 - **Readability**: Ist Code verständlicher?
 - **Testability**: Sind Tests einfacher zu schreiben?
 - **Maintainability**: Sind Änderungen einfacher?
