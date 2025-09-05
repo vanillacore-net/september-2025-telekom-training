@@ -1,4 +1,4 @@
-# Modul 4: Singleton & Adapter Pattern in Clean Architecture
+# Modul 6: Singleton & Adapter Pattern in Clean Architecture
 
 ## Lernziele
 - Singleton Pattern modern und thread-safe implementieren

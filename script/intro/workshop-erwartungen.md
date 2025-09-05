@@ -1,33 +1,36 @@
 # Workshop-Erwartungen
 *Dauer: 15-20 Minuten*
 
-## 🎯 Was werden wir in den nächsten 4 Tagen lernen?
+## Was werden wir in den nächsten 4 Tagen lernen?
 
-### 📅 Tag 1: Creational Patterns - Objekte intelligent erzeugen
-**Schwerpunkt:** Wie erstelle ich Objekte flexibel und wartbar?
+### Tag 1: Creational Patterns - Objekterzeugung
+**Schwerpunkt:** Flexible und wartbare Objekterzeugung in Enterprise-Systemen
 
 #### Design Patterns:
-- **Singleton**: Eine Instanz für das ganze System
 - **Factory Method**: Objekterzeugung ohne konkrete Klassen
 - **Abstract Factory**: Familien verwandter Objekte
 - **Builder**: Komplexe Objekte Schritt für Schritt aufbauen
+- **Prototype**: Objektklonierung für kostspielige Initialisierung
+- **Singleton**: Eine Instanz für das ganze System
 
 #### Praktische Anwendungsfälle:
-- Configuration Management (Singleton)
-- Service-Instantiierung (Factory)
+- Service-Instantiierung (Factory Method)
 - Multi-Provider APIs (Abstract Factory)
 - Komplexe Request-Objekte bauen (Builder)
+- Kostspielige Objektklonierung (Prototype)
+- Shared Resources (Singleton)
 
 #### Lernziele:
-✅ Dependency Injection verstehen  
-✅ Flexible Objekterzeugung implementieren  
-✅ Tight Coupling vermeiden  
-✅ Configuration Management beherrschen
+- Dependency Injection verstehen  
+- Flexible Objekterzeugung implementieren  
+- Tight Coupling vermeiden
+- Performance-optimierte Objektklonierung
+- Configuration Management beherrschen
 
 ---
 
-### 📅 Tag 2: Structural Patterns - Objekte intelligent kombinieren
-**Schwerpunkt:** Wie kombiniere ich Objekte zu größeren Strukturen?
+### Tag 2: Structural Patterns - Strukturelle Komposition
+**Schwerpunkt:** Objektkomposition und Systemintegration
 
 #### Design Patterns:
 - **Adapter**: Inkompatible Schnittstellen verbinden
@@ -42,15 +45,15 @@
 - Hierarchische Strukturen (Composite)
 
 #### Lernziele:
-✅ Legacy-Integration meistern  
-✅ Flexible Erweiterungen implementieren  
-✅ Komplexität kapseln  
-✅ Hierarchien elegant modellieren
+- Legacy-Integration meistern  
+- Flexible Erweiterungen implementieren  
+- Komplexität kapseln  
+- Hierarchien elegant modellieren
 
 ---
 
-### 📅 Tag 3: Behavioral Patterns - Objekte intelligent interagieren lassen
-**Schwerpunkt:** Wie kommunizieren Objekte elegant miteinander?
+### Tag 3: Behavioral Patterns - Verhalten und Kommunikation
+**Schwerpunkt:** Algorithmus-Variationen und Objekt-Kommunikation
 
 #### Design Patterns:
 - **Observer**: Ereignisse propagieren
@@ -65,15 +68,15 @@
 - Workflow-States (State)
 
 #### Lernziele:
-✅ Lose Kopplung durch Events  
-✅ Algorithmen flexibel gestalten  
-✅ Undo/Redo implementieren  
-✅ State Machines beherrschen
+- Lose Kopplung durch Events  
+- Algorithmen flexibel gestalten  
+- Undo/Redo implementieren  
+- State Machines beherrschen
 
 ---
 
-### 📅 Tag 4: Advanced Patterns - Enterprise-Lösungen
-**Schwerpunkt:** Komplexe Enterprise-Probleme mit bewährten Mustern lösen
+### Tag 4: Advanced Patterns - Komplexe Szenarien
+**Schwerpunkt:** Erweiterte Patterns und Pattern-Kombinationen
 
 #### Design Patterns:
 - **Template Method**: Algorithmus-Skelett mit variablen Teilen
@@ -87,12 +90,12 @@
 - **MVC/MVP/MVVM**: UI-Architektur-Patterns
 
 #### Lernziele:
-✅ Enterprise-Architektur implementieren  
-✅ Datenzugriff professionell abstrahieren  
-✅ UI-Logik sauber trennen  
-✅ Komplexe Workflows koordinieren
+- Enterprise-Architektur implementieren  
+- Datenzugriff professionell abstrahieren  
+- UI-Logik sauber trennen  
+- Komplexe Workflows koordinieren
 
-## 🚫 Was werden wir NICHT behandeln?
+## Was werden wir NICHT behandeln?
 
 ### Bewusst ausgeklammerte Themen:
 - **Framework-spezifische Patterns** (Spring, Hibernate, etc.)
@@ -108,75 +111,52 @@
 3. **Tiefe vor Breite**: Lieber wenige Patterns richtig verstehen
 4. **Praxisnähe**: Jeden Tag praktische Übungen
 
-## 🎲 Interaktive Übungen - Was erwartet Sie?
+## Übungsformat
 
-### Täglich wechselnde Formate:
+### Didaktische Struktur:
 
-#### 🧩 Code-Katas (Live-Coding)
-- **Gemeinsam** entwickeln wir Patterns von Grund auf
-- **Schritt-für-Schritt** vom Problem zur eleganten Lösung
-- **Fehler machen erlaubt** - wir lernen durch Refactoring
+#### Code-Analyse und Refactoring
+- Problematischen Code identifizieren und analysieren
+- Pattern-basierte Lösungsansätze entwickeln
+- Implementierung und Vergleich verschiedener Ansätze
 
-#### 🎭 Pattern-Rollenspiele
-- **Jeder Teilnehmer** spielt eine Klasse/Komponente
-- **Interaktion** zeigt Pattern-Verhalten
-- **"Aha-Momente"** durch physische Darstellung
+#### Praktische Implementierung
+- Pattern-Implementierung in konkreten Szenarien
+- Code-Qualität und Wartbarkeit bewerten
+- Testing-Strategien für Pattern-basierte Designs
 
-#### 🔍 Pattern-Detective
-- **Legacy-Code analysieren**: Welche Patterns sind versteckt?
-- **Anti-Pattern finden**: Was läuft schief?
-- **Refactoring-Lösungen**: Wie machen wir es besser?
+### Typisches Modul-Format:
 
-#### 🏗️ Architektur-Challenges
-- **Enterprise-Szenarien** mit echten Anforderungen
-- **Teamwork**: Welches Pattern löst das Problem?
-- **Diskussion**: Warum ist das die beste Lösung?
+#### Struktur
+**Problem-Motivation:** Konkrete Problemstellungen aus der Praxis
+**Pattern-Analyse:** Strukturelle und verhaltensorientierte Aspekte
+**Implementierung:** Code-Beispiele und Implementierungsdetails
+**Architektur-Integration:** Einbettung in größere Systemarchitekturen
 
-### Beispiel einer typischen Übung:
+## Lernziele
 
-#### "Das Chaos-System"
-**Situation:** Legacy-Code mit 500-Zeilen-Methode für Datenverarbeitung
-**Aufgabe:** Schritt für Schritt mit Patterns aufräumen
-**Patterns:** Strategy für Algorithmen, Factory für Objekt-Typen, Observer für Events
-**Ergebnis:** Saubere, testbare, erweiterbare Lösung
+### Zentrale Kompetenzen:
 
-## 🎯 Ihre Lernziele (Teilnehmer-spezifisch)
+### Behandelte Problemstellungen:
+- Legacy-System Integration und Adapter-Patterns
+- Flexible Objekterzeugung und Dependency Management
+- Algorithmus-Variationen und Strategy-Patterns
+- Event-basierte Kommunikation und Observer-Patterns
+- Komplexe Objektstrukturen und Composite-Patterns
 
-### Frage an die Teilnehmer:
-**"Was ist Ihr größtes Design-Problem in aktuellen Projekten?"**
+### Erworbene Kompetenzen:
 
-*Sammeln Sie Antworten - diese werden wir als roten Faden durch den Workshop nutzen!*
+#### Pattern-Anwendung
+- GoF-Patterns in konkreten Problemkontexten anwenden
+- Pattern-basierte Refactoring-Strategien entwickeln
+- Architektur-Entscheidungen mit Patterns begründen
 
-### Typische Enterprise-Herausforderungen:
-- **Legacy-Integration**: "Alte Systeme mit neuen verbinden"
-- **Code-Qualität**: "Wartbare Lösungen entwickeln"
-- **Team-Skalierung**: "Neue Entwickler schnell produktiv machen"
-- **Änderungsfreundlichkeit**: "Features schnell und sicher hinzufügen"
-- **Testbarkeit**: "Komplexe Systeme automatisiert testen"
+#### Code-Qualität
+- Clean Code Prinzipien mit Pattern-Design verbinden
+- Testbare und wartbare Systemarchitekturen entwickeln
+- Anti-Patterns erkennen und vermeiden
 
-### Was Sie nach dem Workshop können:
-
-#### ✅ Pattern Recognition
-- Probleme erkennen, die Patterns lösen
-- Anti-Patterns in Legacy-Code identifizieren
-- Refactoring-Opportunities entdecken
-
-#### ✅ Pattern Application  
-- Richtige Patterns für konkrete Probleme auswählen
-- Patterns korrekt implementieren
-- Patterns an Projekt-Kontext anpassen
-
-#### ✅ Pattern Communication
-- Patterns im Team kommunizieren
-- Code-Reviews mit Pattern-Vokabular
-- Design-Entscheidungen begründen
-
-#### ✅ Pattern Evolution
-- Patterns durch Refactoring einführen
-- Bestehenden Code evolutionär verbessern
-- Technical Debt systematisch abbauen
-
-## 🔧 Praktische Organisation
+## Praktische Organisation
 
 ### Was Sie mitbringen sollten:
 - **Laptop** mit Java 11+ und IDE (IntelliJ/Eclipse)
@@ -197,54 +177,53 @@
 4. **Code teilen** - Github Repository für alle
 5. **Feedback geben** - täglich kurze Retro
 
-## 🎪 Energizer und Pausen
+## Pausen und Diskussion
 
-### Interaktive Elemente:
-- **Pattern-Bingo**: Wer findet Pattern X im Legacy-Code?
-- **Design-Duell**: Team A vs Team B - beste Pattern-Lösung
-- **Code-Karaoke**: Gemeinsam Pattern implementieren
-- **Pattern-Pantomime**: Pattern ohne Worte erklären
+### Austausch:
+- Fragen zu Pattern-Implementierungen
+- Diskussion von Praxiserfahrungen
+- Vertiefung komplexer Architektur-Aspekte
 
-## 🔑 Erfolgs-Kennzahlen
+## Erfolgs-Kennzahlen
 
 ### Womit messen wir Workshop-Erfolg?
 
 #### Nach Tag 1:
-☐ Jeder kann Singleton und Factory erklären  
-☐ Dependency Injection ist klar  
-☐ Erste Refactorings erfolgreich
+- Jeder kann Singleton und Factory erklären  
+- Dependency Injection ist klar  
+- Erste Refactorings erfolgreich
 
 #### Nach Tag 2:
-☐ Adapter-Pattern für Legacy-Integration verstanden  
-☐ Decorator für Erweiterungen anwendbar  
-☐ Facade für API-Design klar
+- Adapter-Pattern für Legacy-Integration verstanden  
+- Decorator für Erweiterungen anwendbar  
+- Facade für API-Design klar
 
 #### Nach Tag 3:
-☐ Observer für Event-Systeme implementierbar  
-☐ Strategy für Algorithmus-Varianten einsetzbar  
-☐ State-Machines designbar
+- Observer für Event-Systeme implementierbar  
+- Strategy für Algorithmus-Varianten einsetzbar  
+- State-Machines designbar
 
 #### Nach Tag 4:
-☐ Enterprise-Patterns für Datenverarbeitung  
-☐ Template Method für Workflows  
-☐ Mediator für komplexe Koordination
+- Enterprise-Patterns für Datenverarbeitung  
+- Template Method für Workflows  
+- Mediator für komplexe Koordination
 
 #### Workshop-Ende:
-☐ **Pattern-Mindset** etabliert  
-☐ **Refactoring-Confidence** aufgebaut  
-☐ **Team-Kommunikation** mit Patterns verbessert  
-☐ **Nächste Schritte** im Projekt definiert
+- **Pattern-Mindset** etabliert  
+- **Refactoring-Confidence** aufgebaut  
+- **Team-Kommunikation** mit Patterns verbessert  
+- **Nächste Schritte** im Projekt definiert
 
-## 💪 Ihr Commitment
+## Ihr Commitment
 
 ### Frage an die Teilnehmer:
 **"Was ist Ihr persönliches Lernziel für diese 4 Tage?"**
 
 *Lassen Sie jeden Teilnehmer sein Ziel formulieren - wir kommen am Ende darauf zurück!*
 
-### Gemeinsames Ziel:
-**Am Ende dieses Workshops haben Sie das Handwerkszeug, um Software-Design bewusst und systematisch zu verbessern - mit bewährten, kommunizierbaren Lösungen.**
+### Zielsetzung:
+**Systematische Anwendung von Design Patterns zur Verbesserung von Code-Qualität, Wartbarkeit und Systemarchitektur in Enterprise-Umgebungen.**
 
 ---
 
-🚀 **Sind Sie bereit? Dann starten wir mit Tag 1: Creational Patterns!**
+**Sind Sie bereit? Dann starten wir mit Tag 1: Creational Patterns!**

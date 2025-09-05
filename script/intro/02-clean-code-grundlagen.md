@@ -93,7 +93,7 @@ return DEFAULT_SERVICE_LEVEL;
 
 ## Wartbarkeit als Ziel (5 Minuten)
 
-### Software-Lebenszykl in der Praxis:
+### Software-Lebenszyklus in der Praxis:
 - **Entwicklung**: 20% der Gesamtkosten
 - **Wartung**: 80% der Gesamtkosten
 

@@ -195,7 +195,7 @@ class DeviceWorkflowTest {
         DeviceWorkflowFixed.WorkflowResult result = workflow.provisionDevice("R001", "192.168.1.1");
         
         // Then - The workflow structure is consistently applied
-        assertThat(result.getSteps()).hasSize(greaterThan(5)); // Multiple workflow steps
+        assertThat(result.getSteps().size()).isGreaterThan(5); // Multiple workflow steps
         
         // The workflow always starts and ends with specific patterns
         assertThat(result.getSteps().get(0)).contains("Starting");

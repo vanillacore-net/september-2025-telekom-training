@@ -1,13 +1,13 @@
 # Refactoring Philosophie
 *Dauer: 15-20 Minuten*
 
-## 🎯 Lernziele
+## Lernziele
 - Refactoring als kontinuierlichen Prozess verstehen
 - Boy Scout Rule kennenlernen und anwenden
 - Wissen, wann und wie refactoriert wird
 - Refactoring als Weg zu Patterns verstehen
 
-## 🔄 Was ist Refactoring? (5 Minuten)
+## Was ist Refactoring? (5 Minuten)
 
 ### Definition nach Martin Fowler:
 > *"Refactoring is the process of changing a software system in such a way that it does not alter the external behavior of the code yet improves its internal structure."*
