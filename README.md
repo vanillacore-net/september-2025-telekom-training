@@ -123,11 +123,20 @@
   - Architektur-Patterns (4 Dokumente)
   - Anti-Patterns Katalog (3 Dokumente)
 - **Java-Projekt Setup** mit Docker-Support
-- **Code-Beispiele Tag 1+2** (8 Pattern-Beispiele)
+- **Code-Beispiele Tag 1-4** (Alle 23 GoF Patterns implementiert)
+- **Hands-On Übungen** (Tag 1-4 vollständig)
 
-**Noch zu erstellen**:
-- Code-Beispiele Tag 3+4 (STORY-011, STORY-012)
-- Hands-On Übungen (STORY-013)
+### Technische Dokumentation
+
+**Setup und Installation**:
+- [`examples/README-SETUP.md`](examples/README-SETUP.md) - Projekt-Setup und Maven-Konfiguration
+- [`examples/README-DOCKER.md`](examples/README-DOCKER.md) - Docker-Umgebung für Windows/Mac/Linux
+
+**Übungsaufgaben**:
+- [`examples/exercises/day1-exercises.md`](examples/exercises/day1-exercises.md) - Tag 1: Creational Patterns
+- [`examples/exercises/day2-exercises.md`](examples/exercises/day2-exercises.md) - Tag 2: Structural Patterns
+- [`examples/exercises/day3-exercises.md`](examples/exercises/day3-exercises.md) - Tag 3: Behavioral Patterns
+- [`examples/exercises/day4-exercises.md`](examples/exercises/day4-exercises.md) - Tag 4: Advanced Patterns
 
 ## Lizenz
 
