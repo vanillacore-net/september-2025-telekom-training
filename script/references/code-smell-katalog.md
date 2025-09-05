@@ -1,17 +1,17 @@
 # Code Smell Katalog - Telekom Architektur Workshop
 
-## 🎯 Zweck
+## **Zweck**
 Systematischer Katalog zur Erkennung und Bewertung von Code Smells in Telekom-Systemen. Als Quick-Reference während des Workshops und für tägliche Entwicklungsarbeit.
 
-## 📊 Prioritätsstufen
-- 🔴 **KRITISCH**: Sofort beheben - Betriebsrisiko
-- 🟠 **HOCH**: In aktueller Iteration beheben
-- 🟡 **MITTEL**: Nächste Iteration planen
-- 🟢 **NIEDRIG**: Bei Gelegenheit verbessern
+## **Prioritätsstufen**
+- **KRITISCH**: Sofort beheben - Betriebsrisiko
+- **HOCH**: In aktueller Iteration beheben
+- **MITTEL**: Nächste Iteration planen
+- **NIEDRIG**: Bei Gelegenheit verbessern
 
 ---
 
-## 1. Long Method 🔴
+## 1. **Long Method - KRITISCH**
 **Erkennungsmetriken:**
 - Methoden >30 Zeilen (Telekom Standard)
 - Cyclomatic Complexity >10
@@ -19,7 +19,7 @@ Systematischer Katalog zur Erkennung und Bewertung von Code Smells in Telekom-Sy
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: 85 Zeilen Monster-Methode
+// SCHLECHT: 85 Zeilen Monster-Methode
 public void processCustomerOrder(String customerId, String orderId, 
     String productType, boolean isBusinessCustomer, double discount) {
     // Validierung (15 Zeilen)
@@ -33,7 +33,7 @@ public void processCustomerOrder(String customerId, String orderId,
 
 ---
 
-## 2. God Object 🔴
+## 2. **God Object - KRITISCH**
 **Erkennungsmetriken:**
 - Klassen >500 Zeilen
 - >20 öffentliche Methoden
@@ -41,7 +41,7 @@ public void processCustomerOrder(String customerId, String orderId,
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: Alles-könner Klasse
+// SCHLECHT: Alles-könner Klasse
 public class CustomerManager {
     // 847 Zeilen Code
     // Kundenverwaltung + Billing + Provisioning + Reporting
@@ -57,7 +57,7 @@ public class CustomerManager {
 
 ---
 
-## 3. Duplicate Code 🟠
+## 3. **Duplicate Code - HOCH**
 **Erkennungsmetriken:**
 - Identische Codeblöcke >6 Zeilen
 - Copy-Paste Faktor >10%
@@ -65,7 +65,7 @@ public class CustomerManager {
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: 3x derselbe Validierungscode
+// SCHLECHT: 3x derselbe Validierungscode
 // In CustomerService, OrderService, BillingService
 if (customerId == null || customerId.length() != 10 || 
     !customerId.matches("\\d{10}")) {
@@ -77,7 +77,7 @@ if (customerId == null || customerId.length() != 10 ||
 
 ---
 
-## 4. Feature Envy 🟡
+## 4. **Feature Envy - MITTEL**
 **Erkennungsmetriken:**
 - Methode nutzt mehr fremde als eigene Felder
 - >5 Methodenaufrufe auf anderen Objekten
@@ -85,7 +85,7 @@ if (customerId == null || customerId.length() != 10 ||
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: CustomerService ist neidisch auf Customer
+// SCHLECHT: CustomerService ist neidisch auf Customer
 public class CustomerService {
     public void processCustomer(Customer customer) {
         customer.getAddress().getStreet();
@@ -99,7 +99,7 @@ public class CustomerService {
 
 ---
 
-## 5. Shotgun Surgery 🟠
+## 5. **Shotgun Surgery - HOCH**
 **Erkennungsmetriken:**
 - Eine Änderung betrifft >5 Klassen
 - Änderungen verstreut über Module
@@ -107,7 +107,7 @@ public class CustomerService {
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: Neues Feld "contractType" erfordert
+// SCHLECHT: Neues Feld "contractType" erfordert
 // Änderungen in: Customer.java, CustomerDAO.java, 
 // CustomerService.java, CustomerController.java,
 // CustomerValidator.java, CustomerMapper.java
@@ -117,7 +117,7 @@ public class CustomerService {
 
 ---
 
-## 6. Data Class 🟡
+## 6. **Data Class - MITTEL**
 **Erkennungsmetriken:**
 - Nur Getter/Setter ohne Logik
 - Keine Validierung oder Verhalten
@@ -125,7 +125,7 @@ public class CustomerService {
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: Passive Datenklasse
+// SCHLECHT: Passive Datenklasse
 public class Customer {
     private String id;
     private String name;
@@ -136,7 +136,7 @@ public class Customer {
 
 ---
 
-## 7. Large Class 🟠
+## 7. **Large Class - HOCH**
 **Erkennungsmetriken:**
 - >400 Zeilen Code
 - >20 Methoden
@@ -144,7 +144,7 @@ public class Customer {
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: TelekomAPIController mit 623 Zeilen
+// SCHLECHT: TelekomAPIController mit 623 Zeilen
 // Behandelt: Authentication, Billing, Provisioning, Support
 ```
 
@@ -152,7 +152,7 @@ public class Customer {
 
 ---
 
-## 8. Switch Statements 🟡
+## 8. **Switch Statements - MITTEL**
 **Erkennungsmetriken:**
 - Switch mit >5 Cases
 - Mehrere Switch auf gleichen Typ
@@ -160,7 +160,7 @@ public class Customer {
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: Überall switch(customerType)
+// SCHLECHT: Überall switch(customerType)
 switch(customer.getType()) {
     case PRIVATE: /* 20 Zeilen */ break;
     case BUSINESS: /* 25 Zeilen */ break;
@@ -173,7 +173,7 @@ switch(customer.getType()) {
 
 ---
 
-## 9. Speculative Generality 🟡
+## 9. **Speculative Generality - MITTEL**
 **Erkennungsmetriken:**
 - Abstrakte Klassen mit nur einem Erben
 - Framework-Code der nie genutzt wird
@@ -181,7 +181,7 @@ switch(customer.getType()) {
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: Über-engineerte Abstraktion
+// SCHLECHT: Über-engineerte Abstraktion
 abstract class BaseCustomerProcessor {
     // Komplex, aber nur eine Implementierung
 }
@@ -192,7 +192,7 @@ class TelekomCustomerProcessor extends BaseCustomerProcessor {
 
 ---
 
-## 10. Comments 🟡
+## 10. **Comments - MITTEL**
 **Erkennungsmetriken:**
 - Kommentare erklären WAS statt WARUM
 - Code und Kommentar widersprechen sich
@@ -200,7 +200,7 @@ class TelekomCustomerProcessor extends BaseCustomerProcessor {
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: Redundante/veraltete Kommentare
+// SCHLECHT: Redundante/veraltete Kommentare
 // Addiert 1 zum Counter (offensichtlich!)
 counter++; 
 
@@ -210,7 +210,7 @@ counter++;
 
 ---
 
-## 11. Dead Code 🟢
+## 11. **Dead Code - NIEDRIG**
 **Erkennungsmetriken:**
 - Nie aufgerufene Methoden
 - Leere catch-Blöcke
@@ -218,7 +218,7 @@ counter++;
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: Legacy-Methoden seit Jahren unbenutzt
+// SCHLECHT: Legacy-Methoden seit Jahren unbenutzt
 @Deprecated
 public void oldBillingCalculation() {
     // 50 Zeilen Code, der nie ausgeführt wird
@@ -229,7 +229,7 @@ public void oldBillingCalculation() {
 
 ---
 
-## 12. Primitive Obsession 🟠
+## 12. **Primitive Obsession - HOCH**
 **Erkennungsmetriken:**
 - String/int statt Wertobjekte
 - Validierungslogik verstreut
@@ -237,12 +237,12 @@ public void oldBillingCalculation() {
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: String für strukturierte Daten
+// SCHLECHT: String für strukturierte Daten
 public void createCustomer(String customerId, String phoneNumber) {
     // customerId Format? phoneNumber international?
 }
 
-// ✅ BESSER: Value Objects
+// BESSER: Value Objects
 public void createCustomer(CustomerId id, PhoneNumber phone) {
     // Typsicherheit und Validierung eingebaut
 }
@@ -250,7 +250,7 @@ public void createCustomer(CustomerId id, PhoneNumber phone) {
 
 ---
 
-## 13. Refused Bequest 🟡
+## 13. **Refused Bequest - MITTEL**
 **Erkennungsmetriken:**
 - Subklasse überschreibt Eltern-Methoden mit "do nothing"
 - Liskov Substitution Principle verletzt
@@ -258,7 +258,7 @@ public void createCustomer(CustomerId id, PhoneNumber phone) {
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: BusinessCustomer weigert sich zu "zahlen"
+// SCHLECHT: BusinessCustomer weigert sich zu "zahlen"
 class Customer {
     public void payBill() { /* Standard-Zahlung */ }
 }
@@ -274,7 +274,7 @@ class BusinessCustomer extends Customer {
 
 ---
 
-## 14. Message Chains 🟡
+## 14. **Message Chains - MITTEL**
 **Erkennungsmetriken:**
 - Mehrere verkettete Methodenaufrufe
 - customer.getAccount().getBilling().getInvoice().getAmount()
@@ -282,17 +282,17 @@ class BusinessCustomer extends Customer {
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: Tiefe Objektnavigation
+// SCHLECHT: Tiefe Objektnavigation
 String city = customer.getAddress().getLocation()
     .getGeoData().getCity().getName();
 
-// ✅ BESSER: Tell Don't Ask
+// BESSER: Tell Don't Ask
 String city = customer.getCityName();
 ```
 
 ---
 
-## 15. Middle Man 🟡
+## 15. **Middle Man - MITTEL**
 **Erkennungsmetriken:**
 - Klasse delegiert nur weiter
 - >80% der Methoden sind Wrapper
@@ -300,7 +300,7 @@ String city = customer.getCityName();
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: Unnötige Zwischenschicht
+// SCHLECHT: Unnötige Zwischenschicht
 public class CustomerServiceWrapper {
     private CustomerService service;
     
@@ -312,7 +312,7 @@ public class CustomerServiceWrapper {
 
 ---
 
-## 16. Inappropriate Intimacy 🟠
+## 16. **Inappropriate Intimacy - HOCH**
 **Erkennungsmetriken:**
 - Klassen greifen auf private Felder zu
 - Friend-Klassen oder Package-private Zugriffe
@@ -320,7 +320,7 @@ public class CustomerServiceWrapper {
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: CustomerService kennt interne Billing-Details
+// SCHLECHT: CustomerService kennt interne Billing-Details
 public class CustomerService {
     public void updateCustomer(Customer customer) {
         // Direkter Zugriff auf Billing-Internals
@@ -331,7 +331,7 @@ public class CustomerService {
 
 ---
 
-## 17. Lazy Class 🟢
+## 17. **Lazy Class - NIEDRIG**
 **Erkennungsmetriken:**
 - Klassen <50 Zeilen ohne Rechtfertigung
 - Nur eine oder zwei Methoden
@@ -339,7 +339,7 @@ public class CustomerService {
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: Klasse mit nur einer Hilfsmethode
+// SCHLECHT: Klasse mit nur einer Hilfsmethode
 public class PhoneNumberFormatter {
     public String format(String phone) {
         return phone.replaceAll("(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3");
@@ -350,7 +350,7 @@ public class PhoneNumberFormatter {
 
 ---
 
-## 18. Alternative Classes with Different Interfaces 🟡
+## 18. **Alternative Classes with Different Interfaces - MITTEL**
 **Erkennungsmetriken:**
 - Klassen tun dasselbe mit anderen Namen
 - Unterschiedliche APIs für gleiche Funktion
@@ -358,7 +358,7 @@ public class PhoneNumberFormatter {
 
 **Telekom-Beispiel:**
 ```java
-// ❌ SCHLECHT: Zwei APIs für Kundenverwaltung
+// SCHLECHT: Zwei APIs für Kundenverwaltung
 class CustomerManagerV1 {
     public Customer getCustomerById(String id) { ... }
 }
@@ -371,9 +371,9 @@ class CustomerManagerV2 {
 
 ---
 
-## 🛠 Tool-Integration
+## **Tool-Integration**
 
-### SonarQube Regeln für Telekom
+### **SonarQube Regeln für Telekom**
 ```properties
 # Telekom-spezifische Limits
 sonar.java.method.complexity.maximum=10
@@ -382,12 +382,12 @@ sonar.java.method.lines.maximum=30
 sonar.java.class.lines.maximum=400
 ```
 
-### IntelliJ IDEA Inspections
+### **IntelliJ IDEA Inspections**
 - Code → Inspect Code
 - Aktiviere "Code Smells" Kategorie
 - Custom Scope: "Telekom Production Code"
 
-### PMD Integration
+### **PMD Integration**
 ```xml
 <ruleset>
     <rule ref="category/java/design.xml/GodClass">
@@ -400,7 +400,7 @@ sonar.java.class.lines.maximum=400
 
 ---
 
-## 📈 Erfolgsmessung
+## **Erfolgsmessung**
 
 | Metrik | Zielwert | Kritischer Wert |
 |--------|----------|------------------|
@@ -412,15 +412,15 @@ sonar.java.class.lines.maximum=400
 
 ---
 
-## 🎯 Workshop-Einsatz
+## **Workshop-Einsatz**
 
-### Als Checkliste verwenden
+### **Als Checkliste verwenden**
 1. Code-Review mit diesem Katalog
 2. Team diskutiert erkannte Smells  
 3. Priorisierung nach Telekom-Kriterien
 4. Refactoring-Planung mit Techniken-Guide
 
-### Interaktive Übung
+### **Interaktive Übung**
 - Teilnehmer identifizieren Smells in Beispielcode
 - Gemeinsame Bewertung und Priorisierung
 - Refactoring-Strategien entwickeln
