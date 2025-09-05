@@ -25,7 +25,8 @@
 - `script/day1/01-code-analyse-factory-method.md`
 - `script/day1/02-abstract-factory-layered-architecture.md`
 - `script/day1/03-builder-repository-pattern.md`
-- `script/day1/04-singleton-adapter-clean-architecture.md`
+- `script/day1/05-prototype-pattern-configuration-cloning.md`
+- `script/day1/06-singleton-adapter-clean-architecture.md`
 
 **Tag 2: Structural Patterns und Hexagonal Architecture**
 - `script/day2/01-decorator-pattern.md`
@@ -65,24 +66,21 @@
 .
 ├── README.md                   # Diese Datei
 ├── agenda.md                   # Detaillierte Workshop-Agenda
-├── CLAUDE.md                   # Projekt-Konfiguration
 │
 ├── script/                     # Schulungsunterlagen
 │   ├── intro/                  # Grundlagen-Einführung (6 Module, 90-120 Min)
-│   ├── day1/                   # Tag 1: Creational Patterns (4 Module)
+│   ├── day1/                   # Tag 1: Creational Patterns (5 Module)
 │   ├── day2/                   # Tag 2: Structural Patterns (4 Module)
 │   ├── day3/                   # Tag 3: Behavioral Patterns (4 Module)
 │   ├── day4/                   # Tag 4: Advanced Patterns (4 Module)
 │   └── references/             # Referenz-Dokumentation (13 Dokumente)
 │
-├── stories/                    # Projekt-Management
-│   ├── EPIC-001-*.md           # Training-Inhalte EPIC
-│   ├── EPIC-002-*.md           # Code-Beispiele EPIC
-│   └── STORY-*.md              # Einzelne User Stories
-│
-└── prbs/                       # Projekt-Requirement-Beschreibungen
-    ├── ready/                  # Zu bearbeitende PRBs
-    └── completed/              # Abgeschlossene PRBs
+└── examples/                   # Code-Beispiele und Übungen
+    ├── day1-examples/          # Creational Patterns Implementierungen
+    ├── day2-examples/          # Structural Patterns Implementierungen
+    ├── day3-examples/          # Behavioral Patterns Implementierungen
+    ├── day4-examples/          # Advanced Patterns Implementierungen
+    └── exercises/              # Hands-On Übungsaufgaben
 ```
 
 ### Didaktisches Konzept
@@ -116,13 +114,13 @@
 
 **Fertiggestellt**:
 - **Grundlagen-Einführung** (6 Module, 90-120 Min)
-- **Tag 1-4 Schulungsunterlagen** (16 Module)
+- **Tag 1-4 Schulungsunterlagen** (17 Module - inkl. Prototype Pattern)
 - **Referenz-Dokumentation** (13 Dokumente):
   - Refactoring & Code-Qualität (3 Dokumente)
   - Clean Code & SOLID (3 Dokumente)
   - Architektur-Patterns (4 Dokumente)
   - Anti-Patterns Katalog (3 Dokumente)
-- **Java-Projekt Setup** mit Docker-Support
+- **Java-Projekt Setup** mit Docker-Support (Windows-kompatibel)
 - **Code-Beispiele Tag 1-4** (Alle 23 GoF Patterns implementiert)
 - **Hands-On Übungen** (Tag 1-4 vollständig)
 
