@@ -1,5 +1,17 @@
 # Changelog
 
+## [2025-09-05] - Java Multi-Module Maven Projekt Setup
+
+### Hinzugefügt
+- **Java Projekt Setup** (`examples/` Verzeichnis)
+  - Multi-Module Maven Struktur für alle 4 Trainingstage
+  - Parent POM mit Java 11+ Kompatibilität und gemeinsamen Dependencies
+  - JUnit 5 und Mockito Integration für professionelles Testing
+  - Checkstyle Konfiguration mit Telekom Code-Standards
+  - Comprehensive README-SETUP.md Dokumentation
+  - IDE-neutrales Setup (IntelliJ IDEA und Eclipse)
+  - Ein-Kommando Build mit `mvn clean install`
+
 ## [2025-09-05] - Clean Code und SOLID Referenz
 
 ### Hinzugefügt
