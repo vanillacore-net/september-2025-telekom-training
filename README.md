@@ -14,49 +14,49 @@
 #### Schulungsunterlagen (Vollständig)
 
 **Einführung: Grundlagen Software-Architektur (90-120 Min)**
-- `script/intro/01-was-ist-software-architektur.md` - Interaktive Einführung
-- `script/intro/02-clean-code-grundlagen.md` - Qualitätsprinzipien
-- `script/intro/03-fachlichkeit-vor-technik.md` - **KERN-MESSAGE: Domain-First!**
-- `script/intro/04-design-patterns-motivation.md` - Warum Patterns?
-- `script/intro/05-refactoring-philosophie.md` - Kontinuierliche Verbesserung
-- `script/intro/workshop-erwartungen.md` - 4-Tage Roadmap
+- [`script/intro/01-was-ist-software-architektur.md`](script/intro/01-was-ist-software-architektur.md) - Interaktive Einführung
+- [`script/intro/02-clean-code-grundlagen.md`](script/intro/02-clean-code-grundlagen.md) - Qualitätsprinzipien
+- [`script/intro/03-fachlichkeit-vor-technik.md`](script/intro/03-fachlichkeit-vor-technik.md) - **KERN-MESSAGE: Domain-First!**
+- [`script/intro/04-design-patterns-motivation.md`](script/intro/04-design-patterns-motivation.md) - Warum Patterns?
+- [`script/intro/05-refactoring-philosophie.md`](script/intro/05-refactoring-philosophie.md) - Kontinuierliche Verbesserung
+- [`script/intro/workshop-erwartungen.md`](script/intro/workshop-erwartungen.md) - 4-Tage Roadmap
 
 **Tag 1: Creational Patterns und Grundlagen-Architektur**
-- `script/day1/01-code-analyse-factory-method.md`
-- `script/day1/02-abstract-factory-layered-architecture.md`
-- `script/day1/03-builder-repository-pattern.md`
-- `script/day1/05-prototype-pattern-configuration-cloning.md`
-- `script/day1/06-singleton-adapter-clean-architecture.md`
+- [`script/day1/01-code-analyse-factory-method.md`](script/day1/01-code-analyse-factory-method.md)
+- [`script/day1/02-abstract-factory-layered-architecture.md`](script/day1/02-abstract-factory-layered-architecture.md)
+- [`script/day1/03-builder-repository-pattern.md`](script/day1/03-builder-repository-pattern.md)
+- [`script/day1/05-prototype-pattern-configuration-cloning.md`](script/day1/05-prototype-pattern-configuration-cloning.md)
+- [`script/day1/06-singleton-adapter-clean-architecture.md`](script/day1/06-singleton-adapter-clean-architecture.md)
 
 **Tag 2: Structural Patterns und Hexagonal Architecture**
-- `script/day2/01-decorator-pattern.md`
-- `script/day2/02-composite-facade.md`
-- `script/day2/03-proxy-flyweight.md`
-- `script/day2/04-bridge-microservices.md`
+- [`script/day2/01-decorator-pattern.md`](script/day2/01-decorator-pattern.md)
+- [`script/day2/02-composite-facade.md`](script/day2/02-composite-facade.md)
+- [`script/day2/03-proxy-flyweight.md`](script/day2/03-proxy-flyweight.md)
+- [`script/day2/04-bridge-microservices.md`](script/day2/04-bridge-microservices.md)
 
 **Tag 3: Behavioral Patterns und Event-Driven Grundlagen**
-- `script/day3/01-strategy-pattern.md`
-- `script/day3/02-template-method-observer.md`
-- `script/day3/03-command-pattern.md`
-- `script/day3/04-state-chain-of-responsibility.md`
+- [`script/day3/01-strategy-pattern.md`](script/day3/01-strategy-pattern.md)
+- [`script/day3/02-template-method-observer.md`](script/day3/02-template-method-observer.md)
+- [`script/day3/03-command-pattern.md`](script/day3/03-command-pattern.md)
+- [`script/day3/04-state-chain-of-responsibility.md`](script/day3/04-state-chain-of-responsibility.md)
 
 **Tag 4: Advanced Patterns und Architektur-Integration**
-- `script/day4/01-mediator-pattern.md`
-- `script/day4/02-iterator-visitor.md`
-- `script/day4/03-memento-interpreter.md`
-- `script/day4/04-pattern-integration.md`
+- [`script/day4/01-mediator-pattern.md`](script/day4/01-mediator-pattern.md)
+- [`script/day4/02-iterator-visitor.md`](script/day4/02-iterator-visitor.md)
+- [`script/day4/03-memento-interpreter.md`](script/day4/03-memento-interpreter.md)
+- [`script/day4/04-pattern-integration.md`](script/day4/04-pattern-integration.md)
 
 #### Referenz-Dokumentation (Teilweise vollständig)
 
 **Refactoring & Code-Qualität** (Vollständig)
-- `script/references/code-smell-katalog.md` - 18 Code-Smells mit Telekom-Beispielen
-- `script/references/refactoring-techniken.md` - Schritt-für-Schritt Anleitungen
-- `script/references/refactoring-checkliste.md` - Praktische Workshop-Checkliste
+- [`script/references/code-smell-katalog.md`](script/references/code-smell-katalog.md) - 18 Code-Smells mit Telekom-Beispielen
+- [`script/references/refactoring-techniken.md`](script/references/refactoring-techniken.md) - Schritt-für-Schritt Anleitungen
+- [`script/references/refactoring-checkliste.md`](script/references/refactoring-checkliste.md) - Praktische Workshop-Checkliste
 
 **Clean Code & SOLID** (Vollständig)
-- `script/references/clean-code-prinzipien.md` - DRY, KISS, YAGNI Prinzipien
-- `script/references/solid-principles.md` - Alle 5 SOLID Prinzipien erklärt
-- `script/references/code-quality-checkliste.md` - Review-Checkliste
+- [`script/references/clean-code-prinzipien.md`](script/references/clean-code-prinzipien.md) - DRY, KISS, YAGNI Prinzipien
+- [`script/references/solid-principles.md`](script/references/solid-principles.md) - Alle 5 SOLID Prinzipien erklärt
+- [`script/references/code-quality-checkliste.md`](script/references/code-quality-checkliste.md) - Review-Checkliste
 
 ### Projekt-Organisation
 
