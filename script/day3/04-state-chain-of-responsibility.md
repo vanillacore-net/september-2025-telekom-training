@@ -1697,49 +1697,68 @@ class EventSourcedDeviceContext extends DeviceContext {
 
 ---
 
-## 6. Praktische Übung (20 Minuten)
+## 6. Testing-Aspekte verstehen
 
-### Aufgabe: Device Monitoring Pipeline
+### State Pattern Testing-Herausforderungen
 
-Kombinieren Sie State Pattern und Chain of Responsibility:
+**Was testen bei State Machines?**
+1. **State Transitions**: Werden alle erlaubten Übergänge korrekt ausgeführt?
+2. **Invalid Transitions**: Werden unerlaubte Übergänge korrekt abgelehnt?
+3. **State Behavior**: Verhält sich jeder State korrekt?
+4. **State Persistence**: Bleiben States nach Operations konsistent?
 
-1. **MonitoringDeviceState:**
-   - Neuer State für intensive Monitoring
-   - Transitions von/zu Active State
-   - Spezielle Monitoring-Events
-
-2. **Monitoring Request Pipeline:**
-   - DataValidationHandler
-   - MetricsEnrichmentHandler
-   - AlertingHandler
-   - ArchivingHandler
-
-3. **Integration:**
-   - State-basierte Request-Verarbeitung
-   - Verschiedene Handler-Chains je State
-
-### Implementation Template:
-
+**Konzeptueller State Test-Ansatz:**
 ```typescript
-class MonitoringDeviceState implements DeviceState {
-  // TODO: Monitoring State implementieren
-}
+// State Pattern Tests konzeptionell
+test('Device transitions from Inactive to Active', () => {
+  // Arrange
+  const device = new NetworkDevice();
+  expect(device.getStatus()).toBe('Inactive');
+  
+  // Act
+  device.activate();
+  
+  // Assert
+  expect(device.getStatus()).toBe('Active');
+});
 
-class DataValidationHandler extends RequestHandler {
-  protected async process(request: NetworkRequest): Promise<NetworkResponse | null> {
-    // TODO: Monitoring-Daten validieren
-  }
-}
-
-class StateAwareRequestProcessor {
-  // TODO: State-basierte Request-Verarbeitung
-}
+test('Invalid state transitions are rejected', () => {
+  // Arrange
+  const device = new NetworkDevice(); // Starts Inactive
+  
+  // Act & Assert: Cannot enter maintenance from inactive
+  expect(() => device.enterMaintenance()).toThrow();
+});
 ```
 
-### Diskussionspunkte:
-- Wie beeinflussen Device States die Request-Verarbeitung?
-- Welche Handler sind für welche States relevant?
-- Wie kann man State Transitions durch Request Processing auslösen?
+### Chain of Responsibility Testing
+
+**Was testen bei Request-Chains?**
+1. **Handler Reihenfolge**: Werden Handler in korrekter Reihenfolge aufgerufen?
+2. **Request-Flow**: Wird Request korrekt durch die Kette geleitet?
+3. **Handler-Logik**: Verarbeitet jeder Handler seine Requests korrekt?
+4. **Chain-Completion**: Wird die Kette ordnungsgemäß durchlaufen?
+
+**Konzeptueller Chain Test-Ansatz:**
+```typescript
+// Chain Tests konzeptionell
+test('Request flows through handler chain', () => {
+  // Arrange
+  const authHandler = new MockAuthHandler();
+  const validationHandler = new MockValidationHandler();
+  authHandler.setNext(validationHandler);
+  
+  const request = new NetworkRequest();
+  
+  // Act
+  const result = authHandler.handle(request);
+  
+  // Assert
+  expect(authHandler.wasCalledWith(request)).toBe(true);
+  expect(validationHandler.wasCalledWith(request)).toBe(true);
+  expect(result.success).toBe(true);
+});
+```
 
 ---
 

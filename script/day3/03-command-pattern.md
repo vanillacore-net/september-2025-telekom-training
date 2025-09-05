@@ -139,15 +139,304 @@ abstract class BaseNetworkCommand implements NetworkCommand {
 type CommandExecutionState = 'pending' | 'executing' | 'executed' | 'failed' | 'undone';
 ```
 
-### Konkrete Command Implementierungen
+---
 
+## 3. Macro Commands - Komplexe Operationen verstehen
+
+### Problem: Atomare Operationssequenzen
+
+**Szenario**: Ein kompletter Netzwerk-Rollout erfordert:
+1. VLAN erstellen
+2. Router konfigurieren
+3. Firewall-Regeln setzen
+4. Interfaces aktivieren
+
+**Was wenn Schritt 3 fehlschlägt?** Alle vorherigen Schritte müssen rückgängig gemacht werden!
+
+### Composite Command Pattern
+
+**Macro Command Struktur:**
 ```typescript
-// Router Configuration Command
-class ConfigureRouterCommand extends BaseNetworkCommand {
-  private routerId: string;
-  private newConfiguration: RouterConfig;
-  private routerService: RouterService;
-  private previousConfiguration?: RouterConfig;
+class MacroCommand implements Command {
+  private commands: Command[] = [];
+  private executedCommands: Command[] = [];
+  
+  addCommand(command: Command): void {
+    this.commands.push(command);
+  }
+  
+  execute(): void {
+    for (const command of this.commands) {
+      try {
+        command.execute();
+        this.executedCommands.push(command);
+      } catch (error) {
+        // Fehler: Alle ausgeführten Commands rückgängig machen
+        this.rollbackExecutedCommands();
+        throw error;
+      }
+    }
+  }
+  
+  undo(): void {
+    // Rückgängig in umgekehrter Reihenfolge
+    for (let i = this.executedCommands.length - 1; i >= 0; i--) {
+      this.executedCommands[i].undo();
+    }
+    this.executedCommands = [];
+  }
+  
+  private rollbackExecutedCommands(): void {
+    // Rollback bei Fehler
+    for (let i = this.executedCommands.length - 1; i >= 0; i--) {
+      try {
+        this.executedCommands[i].undo();
+      } catch (rollbackError) {
+        // Rollback-Fehler loggen, aber weiter versuchen
+        console.error('Rollback failed:', rollbackError);
+      }
+    }
+    this.executedCommands = [];
+  }
+}
+
+// Usage
+const networkRollout = new MacroCommand();
+networkRollout.addCommand(new CreateVlanCommand(vlan1));
+networkRollout.addCommand(new ConfigureRouterCommand(router1));
+networkRollout.addCommand(new SetFirewallRulesCommand(firewall1));
+networkRollout.addCommand(new ActivateInterfacesCommand(interfaces));
+
+// Alles oder nichts - transactional execution
+networkRollout.execute();
+```
+
+**Verhaltens-Aspekte:**
+- **Transactional**: Entweder alle Commands oder keiner
+- **Rollback-Safety**: Bei Fehler werden erfolgreiche Steps rückgängig gemacht
+- **Atomic Operations**: Komplexe Operationen werden atomisch
+
+---
+
+## 4. CQRS mit Command Pattern verstehen
+
+### Command Query Responsibility Segregation
+
+**CQRS Grundprinzip**: **Trennung von Schreib- und Leseoperationen**
+
+**Warum in Netzwerk-Management wichtig?**
+- **Commands** (Schreiben): Konfiguration ändern, kritisch, langsam
+- **Queries** (Lesen): Status abfragen, häufig, schnell
+
+**CQRS mit Command Pattern:**
+```typescript
+// Command Side (Write Operations)
+interface NetworkCommand {
+  execute(): Promise<void>;
+  undo(): Promise<void>;
+}
+
+// Query Side (Read Operations) 
+interface NetworkQuery<T> {
+  execute(): Promise<T>;
+}
+
+// Commands ändern Zustand
+class ConfigureRouterCommand implements NetworkCommand {
+  async execute(): Promise<void> {
+    // Router konfigurieren
+    await this.router.applyConfig(this.config);
+    
+    // Event für Read-Side publishen
+    await this.eventBus.publish(new RouterConfiguredEvent({
+      routerId: this.routerId,
+      config: this.config
+    }));
+  }
+}
+
+// Queries lesen nur
+class GetRouterStatusQuery implements NetworkQuery<RouterStatus> {
+  async execute(): Promise<RouterStatus> {
+    // Nur lesen, nie ändern
+    return await this.statusRepository.getRouterStatus(this.routerId);
+  }
+}
+```
+
+**CQRS Event Flow:**
+```
+Command Execute → State Change → Event Published → Read Model Updated
+```
+
+**Vorteile von CQRS:**
+- **Skalierung**: Read/Write getrennt optimierbar
+- **Konsistenz**: Commands sind transaktional
+- **Auditability**: Alle Änderungen als Commands nachverfolgbar
+- **Performance**: Queries können caching nutzen
+
+---
+
+## 5. Undo/Redo-Mechanismen verstehen
+
+### Problem: Wie macht man Netzwerk-Änderungen rückgängig?
+
+**Verschiedene Undo-Strategien:**
+
+1. **Memento-basiert** (Zustand speichern):
+```typescript
+class VlanCreateCommand implements Command {
+  execute(): void {
+    // Vlan erstellen
+    this.switch.createVlan(this.vlanId, this.config);
+  }
+  
+  undo(): void {
+    // Vlan löschen (umgekehrte Operation)
+    this.switch.deleteVlan(this.vlanId);
+  }
+}
+```
+
+2. **Kompensation-basiert** (Gegenaktion):
+```typescript
+class RouteAddCommand implements Command {
+  execute(): void {
+    this.router.addRoute(this.route);
+  }
+  
+  undo(): void {
+    this.router.removeRoute(this.route); // Gegenaktion
+  }
+}
+```
+
+3. **Snapshot-basiert** (Gesamtzustand):
+```typescript
+class ComplexConfigCommand implements Command {
+  private beforeSnapshot: Config;
+  
+  execute(): void {
+    this.beforeSnapshot = this.device.getFullConfig();
+    this.device.applyComplexConfig(this.newConfig);
+  }
+  
+  undo(): void {
+    this.device.restoreConfig(this.beforeSnapshot);
+  }
+}
+```
+
+### Undo-History Management
+
+**Command History Pattern:**
+```typescript
+class CommandHistory {
+  private history: Command[] = [];
+  private currentPosition: number = -1;
+  private maxHistorySize: number = 100;
+  
+  execute(command: Command): void {
+    // Neue Commands löschen Redo-Möglichkeiten
+    this.history = this.history.slice(0, this.currentPosition + 1);
+    
+    // Command ausführen und speichern
+    command.execute();
+    this.history.push(command);
+    this.currentPosition++;
+    
+    // History-Größe begrenzen
+    if (this.history.length > this.maxHistorySize) {
+      this.history.shift();
+      this.currentPosition--;
+    }
+  }
+  
+  undo(): boolean {
+    if (this.canUndo()) {
+      const command = this.history[this.currentPosition];
+      command.undo();
+      this.currentPosition--;
+      return true;
+    }
+    return false;
+  }
+  
+  redo(): boolean {
+    if (this.canRedo()) {
+      this.currentPosition++;
+      const command = this.history[this.currentPosition];
+      command.execute();
+      return true;
+    }
+    return false;
+  }
+  
+  canUndo(): boolean {
+    return this.currentPosition >= 0;
+  }
+  
+  canRedo(): boolean {
+    return this.currentPosition < this.history.length - 1;
+  }
+}
+```
+
+---
+
+## 6. Testing-Aspekte für Commands verstehen
+
+### Command Testing-Herausforderungen
+
+**Was testen bei Commands?**
+1. **Execute Behavior**: Führt Command korrekte Aktion aus?
+2. **Undo Behavior**: Stellt Command Original-Zustand wieder her?
+3. **State Management**: Wird Zustand korrekt gespeichert?
+4. **Error Handling**: Verhalten bei Fehlern korrekt?
+
+**Konzeptueller Test-Ansatz:**
+```typescript
+// Command Tests konzeptionell
+test('Command executes and stores state for undo', () => {
+  // Arrange
+  const router = new MockRouter();
+  const originalConfig = router.getConfig();
+  const newConfig = { ...originalConfig, ip: '192.168.1.1' };
+  const command = new ConfigureRouterCommand(router, newConfig);
+  
+  // Act
+  command.execute();
+  
+  // Assert: Neue Konfiguration angewendet
+  expect(router.getConfig()).toEqual(newConfig);
+  
+  // Act: Undo
+  command.undo();
+  
+  // Assert: Original-Konfiguration wiederhergestellt
+  expect(router.getConfig()).toEqual(originalConfig);
+});
+```
+
+### Macro Command Testing
+
+**Test-Szenarien für Macro Commands:**
+```typescript
+test('Macro command rolls back on failure', () => {
+  const macroCommand = new MacroCommand();
+  const successCommand = new MockSuccessCommand();
+  const failureCommand = new MockFailureCommand(); // Wirft Fehler
+  
+  macroCommand.addCommand(successCommand);
+  macroCommand.addCommand(failureCommand);
+  
+  // Act & Assert: Fehler wird geworfen
+  expect(() => macroCommand.execute()).toThrow();
+  
+  // Assert: Erfolgreiche Commands wurden rückgängig gemacht
+  expect(successCommand.wasUndone()).toBe(true);
+});
+```
   
   constructor(
     routerId: string, 
@@ -1609,111 +1898,161 @@ describe('MacroNetworkCommand Integration', () => {
 
 ---
 
-## 7. Pattern vs. einfache Lösung
+## 7. Pattern-Entscheidungen verstehen
 
 ### Wann Command Pattern verwenden?
 
-**✅ Verwenden wenn:**
-- Undo/Redo-Funktionalität benötigt wird
-- Operationen gequeued oder delayed werden sollen
-- Audit Trail und Compliance wichtig sind
-- Transaktionale Operationen erforderlich sind
-- Makro-Operationen unterstützt werden sollen
-- CQRS Pattern implementiert wird
+**Indikatoren für Command Pattern:**
+- **Undo/Redo benötigt**: Kritische Operationen müssen rückgängig machbar sein
+- **Operationen queuen**: Commands sollen gespeichert und später ausgeführt werden
+- **Audit Trail**: Vollständige Nachverfolgung aller Änderungen erforderlich
+- **Transaktionale Operationen**: Mehrere Aktionen als atomische Einheit
+- **Makro-Operationen**: Komplexe Operationssequenzen
+- **CQRS Implementation**: Trennung von Commands und Queries
 
-**❌ Nicht verwenden wenn:**
-- Nur einfache, direkte Operationen
-- Kein Bedarf für Undo/Redo
-- Overhead nicht gerechtfertigt
-- Performance kritisch und Einfachheit bevorzugt
+**Command Pattern NICHT verwenden wenn:**
+- **Einfache Operationen**: Direkte Methodenaufrufe sind ausreichend
+- **Kein Undo benötigt**: Operationen sind final und sicher
+- **Performance kritisch**: Command-Overhead ist problematisch
+- **Stateless Operations**: Keine Zustandsveränderungen zu verwalten
 
-### Einfache Lösung für direkte Operationen
+### Komplexität vs. Nutzen verstehen
 
+**Einfache Lösung wählen wenn:**
 ```typescript
-// Für einfache, nicht rückgängig zu machende Operationen
-class SimpleNetworkOperations {
-  async updateDeviceStatus(deviceId: string, status: DeviceStatus): Promise<void> {
-    await this.deviceRepository.updateStatus(deviceId, status);
+// Einfach: Status-Updates ohne Rollback-Bedarf
+class SimpleOperations {
+  updateStatus(device: Device, status: Status): void {
+    device.status = status;
+    this.notifyStatusChange(device);
+  }
+}
+```
+
+**Command Pattern wählen wenn:**
+```typescript
+// Command Pattern: Kritische Konfigurationen mit Undo
+class ConfigurationCommand implements Command {
+  private originalConfig: Config;
+  
+  execute(): void {
+    this.originalConfig = this.device.getConfig();
+    this.device.applyConfig(this.newConfig);
   }
   
-  async getDeviceInfo(deviceId: string): Promise<DeviceInfo> {
-    return await this.deviceRepository.getDevice(deviceId);
+  undo(): void {
+    this.device.applyConfig(this.originalConfig);
   }
 }
 ```
 
 ---
 
-## 8. Praktische Übung (25 Minuten)
+## 8. Praktische Übung (20 Minuten)
 
-### Aufgabe: Network Interface Management Commands
+### Diskussions-Aufgabe: Critical Network Operations
 
-Implementieren Sie Command Pattern für Interface-Management:
+**Szenario**: Entwerfen Sie ein **Command-basiertes System** für **kritische Netzwerk-Operationen** bei der Telekom.
 
-1. **EnableInterfaceCommand:**
-   - Interface aktivieren
-   - IP-Konfiguration anwenden
-   - Undo durch Interface deaktivieren
+**Anforderungen:**
+1. **Sicherheitskritische Operationen**: Firewall-Updates, Router-Konfigurationen
+2. **Rollback-Fähigkeit**: Alle Änderungen müssen rückgängig machbar sein
+3. **Audit-Compliance**: Vollständige Nachverfolgung aller Änderungen
+4. **Batch-Operations**: Mehrere Änderungen als atomische Einheit
 
-2. **AssignVlanToInterfaceCommand:**
-   - Interface zu VLAN zuweisen
-   - Trunk/Access-Modus konfigurieren
-   - Undo durch VLAN-Entfernung
+**Diskussionsfragen:**
 
-3. **InterfaceMaintenanceMacro:**
-   - Interface deaktivieren
-   - Traffic umleiten
-   - Wartung durchführen
-   - Interface wieder aktivieren
+1. **Command Design:**
+   - Welche Operationen benötigen Command Pattern?
+   - Welche können mit einfachen Methodenaufrufen gelöst werden?
+   - Wie implementieren Sie sichere Undo-Operationen?
 
-### Implementation Template:
+2. **Safety & Rollback:**
+   - Wie stellen Sie sicher, dass Rollbacks immer funktionieren?
+   - Was tun bei Rollback-Fehlern?
+   - Wie validieren Sie Command-Ausführung?
+
+3. **Macro Commands:**
+   - Welche Operationssequenzen benötigen Macro Commands?
+   - Wie behandeln Sie partielle Fehler?
+   - Welche Rollback-Strategien verwenden Sie?
+
+4. **CQRS Integration:**
+   - Wie trennen Sie kritische Commands von Status-Queries?
+   - Welche Events sollten Commands auslösen?
+
+**Konzeptuelle Lösung diskutieren:**
 
 ```typescript
-class EnableInterfaceCommand extends BaseNetworkCommand {
-  // TODO: Interface-Enable Command implementieren
+// Kritische Network Operation
+class CriticalFirewallCommand implements Command {
+  private backupConfig: FirewallConfig;
   
-  async execute(): Promise<CommandResult> {
-    // TODO: Interface aktivieren und IP konfigurieren
+  execute(): void {
+    // 1. Backup erstellen
+    this.backupConfig = this.firewall.getConfig();
+    
+    // 2. Neue Regeln anwenden
+    this.firewall.applyRules(this.newRules);
+    
+    // 3. Validierung
+    if (!this.validateRules()) {
+      this.undo(); // Automatisches Rollback
+      throw new Error('Rule validation failed');
+    }
   }
   
-  async undo(): Promise<CommandResult> {
-    // TODO: Interface deaktivieren
+  undo(): void {
+    this.firewall.applyRules(this.backupConfig.rules);
   }
-}
-
-class InterfaceMaintenanceMacro extends MacroNetworkCommand {
-  // TODO: Maintenance-Makro für Interface
 }
 ```
 
-### Bonus-Aufgaben:
-1. CQRS Handler für Interface Commands
-2. Event Sourcing für Interface-Änderungen
-3. Batch Interface Operations
+**Gruppenarbeit (10 Minuten):**
+Diskutieren Sie:
+- Welche Netzwerk-Operationen sind zu kritisch für direkte Ausführung?
+- Wie würden Sie Command-Validierung implementieren?
+- Welche Rolle spielt Command Pattern bei Disaster Recovery?
 
-### Diskussionspunkte:
-- Wie würden Sie Command Patterns für kritische Infrastruktur absichern?
-- Welche Rolle spielt Event Sourcing bei Network Operations?
-- Wie kann man Command Pattern für Disaster Recovery nutzen?
+**Ergebnisse zusammentragen (10 Minuten):**
+Jede Gruppe präsentiert ihre Erkenntnisse zu Command Pattern in kritischen Systemen.
 
 ---
 
 ## Zusammenfassung
 
-**Command Pattern Vorteile:**
-- Undo/Redo-Funktionalität out-of-the-box
-- Lose Kopplung zwischen Aufrufer und Empfänger
-- Operationen können gequeued und verzögert werden
-- Makro-Operationen durch Komposition
-- Vollständiger Audit Trail für Compliance
+### Command Pattern - Die wichtigsten Erkenntnisse
 
-**Key Takeaways:**
-- Command Pattern ist essentiell für kritische Network Operations
-- Macro Commands ermöglichen komplexe Transaktionen
-- CQRS Integration trennt Commands und Queries sauber
-- Event Sourcing profitiert von Command-basierten Architekturen
+**Was ist das Command Pattern?**
+- **Request als Objekt**: Aktionen werden zu manipulierbaren Objekten
+- **Undo/Redo-Fähigkeit**: Operationen können rückgängig gemacht werden
+- **Entkopplung**: Invoker kennt nicht die Details der Ausführung
 
-**Nächste Schritte:**
-- State Pattern für Device Lifecycle Management
-- Chain of Responsibility für Request Processing Pipelines
-- Kombination aller Behavioral Patterns
+**Wann einsetzen?**
+- Bei **kritischen Operationen** mit Rollback-Bedarf
+- Für **Audit-Trails** und Compliance-Anforderungen
+- Wenn **Operationen gequeued** werden müssen
+- Für **transaktionale Operationssequenzen**
+
+### Macro Commands verstehen
+
+**Was sind Macro Commands?**
+- **Composite Pattern** für Commands
+- **Atomare Ausführung** mehrerer Operationen
+- **Automatisches Rollback** bei Fehlern
+
+### CQRS-Integration verstehen
+
+**Command Query Responsibility Segregation:**
+- **Commands**: Ändern Zustand, sind kritisch
+- **Queries**: Lesen Zustand, sind häufig
+- **Getrennte Optimierung** für Read/Write
+
+### Verhaltensorientierte Denkweise
+
+**Command Pattern fokussiert auf:**
+- **WIE** Operationen rückgängig gemacht werden
+- **WANN** Operationen ausgeführt werden
+- **WER** für Undo-Fähigkeit verantwortlich ist
+
+**Nächstes Modul:** State Pattern und Chain of Responsibility

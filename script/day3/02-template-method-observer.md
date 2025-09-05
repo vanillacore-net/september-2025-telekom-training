@@ -2,291 +2,134 @@
 ## Workflows und Event-Notification
 
 ### Lernziele
-- **Template Method Pattern** für Workflow-Strukturierung verstehen
-- **Observer Pattern** für Event-Notification implementieren
-- Event-Driven Architecture mit Behavioral Patterns kombinieren
-- Workflow-Engines und Event-Streaming in Telekom-Szenarien anwenden
+- **Template Method Pattern** Konzept und Verhaltensaspekte verstehen
+- **Observer Pattern** Event-Kommunikation und lose Kopplung verstehen
+- Event-Driven Architecture Prinzipien in Telekom-Kontexten verstehen
+- Pattern-Unterschiede und Anwendungsbereiche erkennen
 
 ---
 
-## 1. Template Method Pattern - Workflow Strukturierung
+## 1. Template Method Pattern - Das Verhalten verstehen
 
-### Problem: Wiederkehrende Workflow-Schritte
+### Problem und Motivation: Wiederkehrende aber variierende Abläufe
 
-```typescript
-// ❌ Problematisch: Duplizierte Workflow-Logik
-class DeviceProvisioningWorkflow {
-  async provisionRouter() {
-    // Validierung
-    this.validateRouterConfig();
-    
-    // Vorbereitung
-    this.prepareRouterEnvironment();
-    
-    // Spezifische Konfiguration
-    this.configureRouterSpecifics();
-    
-    // Deployment
-    this.deployRouter();
-    
-    // Nachbereitung
-    this.finalizeRouterDeployment();
-  }
-  
-  async provisionSwitch() {
-    // Validierung (fast identisch)
-    this.validateSwitchConfig();
-    
-    // Vorbereitung (fast identisch) 
-    this.prepareSwitchEnvironment();
-    
-    // Spezifische Konfiguration (unterschiedlich)
-    this.configureSwitchSpecifics();
-    
-    // Deployment (fast identisch)
-    this.deploySwitch();
-    
-    // Nachbereitung (fast identisch)
-    this.finalizeSwitchDeployment();
-  }
-}
+In komplexen Systemen begegnen wir häufig Situationen, wo **ähnliche Abläufe mit unterschiedlichen Details** existieren. Betrachten wir die Telekom-Netzwerk-Provisionierung:
+
+**Gemeinsame Struktur aller Provisionierungs-Workflows:**
+1. **Validierung** der Konfiguration
+2. **Vorbereitung** der Umgebung
+3. **Spezifische Konfiguration** (hier unterscheiden sich die Workflows)
+4. **Deployment** der Konfiguration
+5. **Verifikation** des Ergebnisses
+
+**Das Problem:** Ohne strukturierte Lösung entsteht Code-Duplizierung bei gemeinsamen Schritten, während die spezifischen Schritte verstreut implementiert werden.
+
+### Template Method Pattern - Die Verhaltens-Struktur
+
+Das **Template Method Pattern** definiert das **Skelett eines Algorithmus** in einer Basisklasse, während es Unterklassen erlaubt, **spezifische Schritte zu überschreiben** ohne die Gesamtstruktur zu ändern.
+
+**ASCII-UML: Template Method Struktur**
+```
+┌─────────────────────────┐
+│  AbstractWorkflow       │
+│  ««abstract»»           │
+├─────────────────────────┤
+│ + executeWorkflow()     │ ← Template Method (konkret)
+│ # validateConfig()      │ ← Gemeinsame Schritte
+│ # prepareEnvironment()  │ ← Gemeinsame Schritte  
+│ # deployConfig()        │ ← Gemeinsame Schritte
+│ # configureSpecifics()  │ ← Abstract (variiert)
+│ # customizeSteps()      │ ← Hook Method (optional)
+└─────────────────────────┘
+           △
+           │ erbt
+  ┌────────┴────────┐
+  │                 │
+┌─────────────────┐ ┌─────────────────┐
+│ RouterWorkflow  │ │ SwitchWorkflow  │
+├─────────────────┤ ├─────────────────┤
+│ # configSpecif. │ │ # configSpecif. │
+│ # customSteps() │ │ # customSteps() │
+└─────────────────┘ └─────────────────┘
 ```
 
-**Probleme:**
-- Code-Duplizierung in Workflow-Schritten
-- Inkonsistente Implementierung gleicher Schritte
-- Schwierige Wartung und Erweiterung
+**Verhaltens-Prinzipien:**
+- **Inversion of Control**: Die abstrakte Klasse steuert den Ablauf
+- **Hollywood Principle**: "Don't call us, we'll call you"
+- **Template definiert WAS und WANN**, Subklassen definieren **WIE**
 
----
+### Template Method in Aktion - Konzeptuelle Betrachtung
 
-## 2. Template Method Pattern Implementierung
-
-### Abstract Workflow Template
+**Einfaches Beispiel: Provisionierungs-Template**
 
 ```typescript
-// Event-Driven Workflow Base
-abstract class DeviceWorkflowTemplate {
-  protected eventPublisher: EventPublisher;
-  protected workflowId: string;
+// Template Method Pattern - Die Struktur
+abstract class ProvisioningTemplate {
   
-  constructor(eventPublisher: EventPublisher) {
-    this.eventPublisher = eventPublisher;
-    this.workflowId = this.generateWorkflowId();
+  // TEMPLATE METHOD - definiert den Ablauf
+  async executeProvisioning(device: Device): Promise<Result> {
+    // Festgelegter Algorithmus
+    await this.validate(device);        // ← Gemeinsam
+    await this.prepare(device);         // ← Gemeinsam  
+    await this.configureSpecific(device); // ← Variiert!
+    await this.deploy(device);          // ← Gemeinsam
+    return this.verify(device);         // ← Gemeinsam
   }
   
-  // Template Method - definiert Workflow-Struktur
-  async executeWorkflow(device: Device): Promise<WorkflowResult> {
-    try {
-      await this.publishWorkflowEvent('WorkflowStarted', { device: device.id });
-      
-      // Standard-Schritte (Template)
-      await this.validateConfiguration(device);
-      await this.prepareEnvironment(device);
-      
-      // Variable Schritte (Hook Methods)
-      await this.executeDeviceSpecificSteps(device);
-      
-      // Standard-Schritte (Template)
-      await this.deployConfiguration(device);
-      await this.verifyDeployment(device);
-      await this.finalizeWorkflow(device);
-      
-      await this.publishWorkflowEvent('WorkflowCompleted', { 
-        device: device.id, 
-        duration: this.getExecutionDuration() 
-      });
-      
-      return this.createSuccessResult(device);
-      
-    } catch (error) {
-      await this.handleWorkflowError(device, error);
-      throw error;
-    }
-  }
-  
-  // Standard-Schritte (implementiert in Base-Klasse)
-  protected async validateConfiguration(device: Device): Promise<void> {
-    await this.publishWorkflowEvent('ValidationStarted', { device: device.id });
-    
-    // Allgemeine Validierungsregeln
+  // Gemeinsame Schritte (in Template implementiert)
+  protected async validate(device: Device): Promise<void> {
+    // Grundvalidierung für alle Devices
     if (!device.id || !device.type) {
-      throw new WorkflowError('Invalid device configuration');
+      throw new Error('Invalid device');
     }
-    
-    // Device-spezifische Validierung (Hook)
-    await this.validateDeviceSpecificConfig(device);
-    
-    await this.publishWorkflowEvent('ValidationCompleted', { device: device.id });
+    // Spezifische Validierung delegieren
+    await this.validateSpecific(device);
   }
   
-  protected async prepareEnvironment(device: Device): Promise<void> {
-    await this.publishWorkflowEvent('PreparationStarted', { device: device.id });
-    
-    // Standard-Vorbereitungen
-    await this.checkNetworkConnectivity(device);
-    await this.verifyResourceAvailability(device);
-    
-    // Device-spezifische Vorbereitung (Hook)
-    await this.prepareDeviceSpecificEnvironment(device);
-    
-    await this.publishWorkflowEvent('PreparationCompleted', { device: device.id });
-  }
+  // Variable Schritte (Abstract Methods)
+  protected abstract configureSpecific(device: Device): Promise<void>;
+  protected abstract validateSpecific(device: Device): Promise<void>;
   
-  // Abstract Methods - müssen von Subklassen implementiert werden
-  protected abstract validateDeviceSpecificConfig(device: Device): Promise<void>;
-  protected abstract prepareDeviceSpecificEnvironment(device: Device): Promise<void>;
-  protected abstract executeDeviceSpecificSteps(device: Device): Promise<void>;
-  
-  // Hook Methods - können von Subklassen überschrieben werden
-  protected async deployConfiguration(device: Device): Promise<void> {
-    // Default-Implementierung
-    await this.publishWorkflowEvent('DeploymentStarted', { device: device.id });
-    
-    // Standard-Deployment-Logik
-    await this.applyBaseConfiguration(device);
-    
-    await this.publishWorkflowEvent('DeploymentCompleted', { device: device.id });
-  }
-  
-  protected async handleWorkflowError(device: Device, error: Error): Promise<void> {
-    await this.publishWorkflowEvent('WorkflowFailed', {
-      device: device.id,
-      error: error.message,
-      step: this.getCurrentStep()
-    });
-    
-    // Rollback-Logik wenn nötig
-    await this.executeRollback(device);
-  }
-  
-  // Utility Methods
-  private async publishWorkflowEvent(eventType: string, data: any): Promise<void> {
-    const event: WorkflowEvent = {
-      workflowId: this.workflowId,
-      deviceId: data.device || data.deviceId,
-      timestamp: new Date(),
-      type: eventType,
-      data
-    };
-    
-    await this.eventPublisher.publish(event);
+  // Hook Methods (optional überschreibbar)
+  protected async customizeDeployment(device: Device): Promise<void> {
+    // Standard-Verhalten, kann überschrieben werden
   }
 }
-```
 
-### Konkrete Workflow-Implementierungen
-
-```typescript
-// Router-Provisioning Workflow
-class RouterProvisioningWorkflow extends DeviceWorkflowTemplate {
-  protected async validateDeviceSpecificConfig(device: Device): Promise<void> {
+// Konkrete Implementierung
+class RouterProvisioning extends ProvisioningTemplate {
+  protected async configureSpecific(device: Device): Promise<void> {
+    // Router-spezifische Konfiguration
+    await this.configureRouting(device);
+  }
+  
+  protected async validateSpecific(device: Device): Promise<void> {
     // Router-spezifische Validierung
-    const routerConfig = device.config as RouterConfig;
-    
-    if (!routerConfig.routingProtocols || routerConfig.routingProtocols.length === 0) {
-      throw new WorkflowError('Router must have at least one routing protocol configured');
-    }
-    
-    if (!routerConfig.interfaces || routerConfig.interfaces.length < 2) {
-      throw new WorkflowError('Router must have at least 2 interfaces configured');
-    }
-  }
-  
-  protected async prepareDeviceSpecificEnvironment(device: Device): Promise<void> {
-    // Router-spezifische Umgebungsvorbereitung
-    await this.reserveIpAddressRanges(device);
-    await this.configureVlans(device);
-    await this.setupRoutingTables(device);
-  }
-  
-  protected async executeDeviceSpecificSteps(device: Device): Promise<void> {
-    const routerConfig = device.config as RouterConfig;
-    
-    // Router-spezifische Konfigurationsschritte
-    await this.configureRoutingProtocols(device, routerConfig.routingProtocols);
-    await this.setupFirewallRules(device, routerConfig.firewallRules);
-    await this.configureQosSettings(device, routerConfig.qosSettings);
-    
-    await this.publishWorkflowEvent('RouterConfigurationCompleted', {
-      device: device.id,
-      protocols: routerConfig.routingProtocols.length
-    });
-  }
-  
-  private async configureRoutingProtocols(device: Device, protocols: RoutingProtocol[]): Promise<void> {
-    for (const protocol of protocols) {
-      await this.publishWorkflowEvent('ProtocolConfigurationStarted', {
-        device: device.id,
-        protocol: protocol.type
-      });
-      
-      switch (protocol.type) {
-        case 'OSPF':
-          await this.configureOspf(device, protocol);
-          break;
-        case 'BGP':
-          await this.configureBgp(device, protocol);
-          break;
-        default:
-          throw new WorkflowError(`Unsupported routing protocol: ${protocol.type}`);
-      }
-      
-      await this.publishWorkflowEvent('ProtocolConfigurationCompleted', {
-        device: device.id,
-        protocol: protocol.type
-      });
-    }
+    await this.checkRoutingProtocols(device);
   }
 }
 ```
 
-```typescript
-// Switch-Provisioning Workflow
-class SwitchProvisioningWorkflow extends DeviceWorkflowTemplate {
-  protected async validateDeviceSpecificConfig(device: Device): Promise<void> {
-    const switchConfig = device.config as SwitchConfig;
-    
-    if (!switchConfig.portConfigurations || switchConfig.portConfigurations.length === 0) {
-      throw new WorkflowError('Switch must have port configurations defined');
-    }
-    
-    if (!switchConfig.vlans || switchConfig.vlans.length === 0) {
-      throw new WorkflowError('Switch must have at least one VLAN configured');
-    }
-  }
-  
-  protected async prepareDeviceSpecificEnvironment(device: Device): Promise<void> {
-    await this.initializeSwitchingTable(device);
-    await this.configureManagementInterface(device);
-    await this.setupSpanningTreeProtocol(device);
-  }
-  
-  protected async executeDeviceSpecificSteps(device: Device): Promise<void> {
-    const switchConfig = device.config as SwitchConfig;
-    
-    await this.configureVlans(device, switchConfig.vlans);
-    await this.configurePortSettings(device, switchConfig.portConfigurations);
-    await this.setupLinkAggregation(device, switchConfig.linkAggregationGroups);
-    
-    await this.publishWorkflowEvent('SwitchConfigurationCompleted', {
-      device: device.id,
-      vlans: switchConfig.vlans.length,
-      ports: switchConfig.portConfigurations.length
-    });
-  }
-  
-  // Überschreibung der Standard-Deployment-Logik für Switches
-  protected async deployConfiguration(device: Device): Promise<void> {
-    await this.publishWorkflowEvent('SwitchDeploymentStarted', { device: device.id });
-    
-    // Switch-spezifisches Deployment
-    await this.applyBaseConfiguration(device);
-    await this.activatePortConfigurations(device);
-    await this.enableSpanningTree(device);
-    
-    await this.publishWorkflowEvent('SwitchDeploymentCompleted', { device: device.id });
-  }
-}
+**Kernverhalten des Template Method Patterns:**
+- **Algorithmus-Skelett** ist unveränderlich
+- **Spezifische Schritte** werden von Subklassen definiert
+- **Hook Methods** bieten optionale Anpassungspunkte
+- **Inversion of Control**: Template ruft Subklassen-Methoden auf
+
+---
+
+## 2. Observer Pattern - Event-basierte Kommunikation verstehen
+
+### Problem und Motivation: Gekoppelte Abhängigkeiten
+
+Stellen Sie sich vor: Ein Device ändert seinen Status. **Wer muss benachrichtigt werden?**
+- Monitoring-System
+- Audit-Logger  
+- Notification-Service
+- Billing-System
+- Report-Generator
+
+**Das Problem ohne Observer Pattern:**
 ```
 
 ---
