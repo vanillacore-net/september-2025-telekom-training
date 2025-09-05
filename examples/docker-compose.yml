@@ -1,58 +1,118 @@
+version: '3.8'
+
 services:
-  # Maven build service
-  maven-build:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: architecture-training-maven
+  # Build Service - kompiliert den Code
+  build:
+    image: maven:3.8-openjdk-17
+    container_name: architecture-training-build
+    working_dir: /workspace
     volumes:
-      # Mount source code for development
-      - .:/app
-      # Cache Maven dependencies to speed up builds
+      - ./:/workspace
       - maven-cache:/root/.m2
-      # Mount target directories to persist build outputs
-      - ./target:/app/target
-      - ./day1-examples/target:/app/day1-examples/target
-      - ./day2-examples/target:/app/day2-examples/target
-      - ./day3-examples/target:/app/day3-examples/target
-      - ./day4-examples/target:/app/day4-examples/target
-    working_dir: /app
-    environment:
-      - MAVEN_OPTS=-Xmx1024m
-      - JAVA_OPTS=-Xmx512m
-    # Keep container running for interactive use
+    command: mvn clean compile
+    networks:
+      - training-network
+
+  # Test Service - führt alle Tests aus
+  test:
+    image: maven:3.8-openjdk-17
+    container_name: architecture-training-test
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+      - maven-cache:/root/.m2
+    command: mvn test
+    networks:
+      - training-network
+
+  # Package Service - erstellt JAR-Dateien
+  package:
+    image: maven:3.8-openjdk-17
+    container_name: architecture-training-package
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+      - maven-cache:/root/.m2
+    command: mvn clean package -DskipTests
+    networks:
+      - training-network
+
+  # Development Service - interaktive Entwicklungsumgebung
+  dev:
+    image: maven:3.8-openjdk-17
+    container_name: architecture-training-dev
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+      - maven-cache:/root/.m2
     stdin_open: true
     tty: true
-    
-  # Development environment with live reload
-  maven-dev:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: architecture-training-dev
-    volumes:
-      - .:/app
-      - maven-cache:/root/.m2
-    working_dir: /app
-    environment:
-      - MAVEN_OPTS=-Xmx1024m
-      - JAVA_OPTS=-Xmx512m
-    ports:
-      - "8080:8080"  # If needed for web applications
-    command: ["tail", "-f", "/dev/null"]  # Keep container running
-    
-  # CI/CD build service (no volumes, clean build)
-  maven-ci:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: architecture-training-ci
-    environment:
-      - MAVEN_OPTS=-Xmx1024m
-      - JAVA_OPTS=-Xmx512m
-    command: ["mvn", "clean", "verify", "-B"]
+    command: /bin/bash
+    networks:
+      - training-network
 
-# Named volumes for better performance and persistence
+  # CI Service - vollständiger Build mit allen Tests
+  ci:
+    image: maven:3.8-openjdk-17
+    container_name: architecture-training-ci
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+      - maven-cache:/root/.m2
+    command: mvn clean verify
+    networks:
+      - training-network
+
+  # Quick Test - schneller Test einzelner Module
+  test-day1:
+    image: maven:3.8-openjdk-17
+    container_name: architecture-training-test-day1
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+      - maven-cache:/root/.m2
+    command: mvn test -pl day1-examples
+    networks:
+      - training-network
+
+  test-day2:
+    image: maven:3.8-openjdk-17
+    container_name: architecture-training-test-day2
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+      - maven-cache:/root/.m2
+    command: mvn test -pl day2-examples
+    networks:
+      - training-network
+
+  test-day3:
+    image: maven:3.8-openjdk-17
+    container_name: architecture-training-test-day3
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+      - maven-cache:/root/.m2
+    command: mvn test -pl day3-examples
+    networks:
+      - training-network
+
+  test-day4:
+    image: maven:3.8-openjdk-17
+    container_name: architecture-training-test-day4
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+      - maven-cache:/root/.m2
+    command: mvn test -pl day4-examples
+    networks:
+      - training-network
+
 volumes:
   maven-cache:
-    driver: local
+    name: architecture-training-maven-cache
+
+networks:
+  training-network:
+    name: architecture-training-network
+    driver: bridge
