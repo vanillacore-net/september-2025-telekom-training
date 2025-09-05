@@ -110,20 +110,6 @@
 - Device Management
 - Network Operations
 
-### Status der Unterlagen
-
-**Fertiggestellt**:
-- **Grundlagen-Einführung** (6 Module, 90-120 Min)
-- **Tag 1-4 Schulungsunterlagen** (17 Module - inkl. Prototype Pattern)
-- **Referenz-Dokumentation** (13 Dokumente):
-  - Refactoring & Code-Qualität (3 Dokumente)
-  - Clean Code & SOLID (3 Dokumente)
-  - Architektur-Patterns (4 Dokumente)
-  - Anti-Patterns Katalog (3 Dokumente)
-- **Java-Projekt Setup** mit Docker-Support (Windows-kompatibel)
-- **Code-Beispiele Tag 1-4** (Alle 23 GoF Patterns implementiert)
-- **Hands-On Übungen** (Tag 1-4 vollständig)
-
 ### Technische Dokumentation
 
 **Setup und Installation**:
