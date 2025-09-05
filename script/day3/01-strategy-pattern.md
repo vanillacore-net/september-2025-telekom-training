@@ -82,7 +82,7 @@ Algorithmus zur Compile-Zeit festgelegt
                     ┌─────────────────────┼─────────────────────┐
                     │                     │                     │
           ┌─────────────────┐   ┌─────────────────┐   ┌─────────────────┐
-          │ ConcreteStrategyA│   │ ConcreteStrategyB│   │ ConcreteStrategyC│
+          │ConcreteStrategyA│   │ConcreteStrategyB│   │ConcreteStrategyC│
           ├─────────────────┤   ├─────────────────┤   ├─────────────────┤
           │ + algorithm()   │   │ + algorithm()   │   │ + algorithm()   │
           └─────────────────┘   └─────────────────┘   └─────────────────┘
