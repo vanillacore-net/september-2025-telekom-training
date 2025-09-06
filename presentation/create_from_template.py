@@ -2398,10 +2398,1319 @@ add_content_slide(prs, "Structural Patterns - Telekom Use Cases (2/2)", more_tel
 # END OF STRUCTURAL PATTERNS SECTION
 # ============================================================================
 
+# ============================================================================
+# BEHAVIORAL PATTERNS SECTION (SLIDES 71-105)
+# ============================================================================
+
+# Slide 71: Behavioral Patterns Section Divider
+slide = prs.slides.add_slide(prs.slide_layouts[0])
+title = slide.shapes.title
+subtitle = find_placeholder(slide, 1)
+
+title.text = "3. Behavioral Patterns"
+for paragraph in title.text_frame.paragraphs:
+    for run in paragraph.runs:
+        run.font.name = TITLE_FONT
+        run.font.size = TITLE_SIZE
+        run.font.bold = False
+        run.font.color.rgb = RGBColor(68, 68, 68)
+
+if subtitle:
+    subtitle.text = "Verhalten und Interaktion zwischen Objekten\nKommunikations-Patterns\nAlgorithmus-Flexibilität"
+    for paragraph in subtitle.text_frame.paragraphs:
+        for run in paragraph.runs:
+            run.font.name = CONTENT_FONT
+            run.font.size = Pt(22)
+            run.font.bold = False
+            run.font.color.rgb = RGBColor(68, 68, 68)
+
+# Slide 72: Behavioral Patterns Overview
+behavioral_overview = [
+    "• Chain of Responsibility - Verkettung von Verarbeitungsschritten",
+    "• Command - Kapselung von Operationen als Objekte",
+    "• Iterator - Sequenzielle Navigation durch Sammlungen",
+    "• Mediator - Zentrale Vermittlung zwischen Komponenten",
+    "• Memento - Zustandsspeicherung und -wiederherstellung",
+    "• Observer - Event-basierte Benachrichtigungen",
+    "• State - Zustandsabhängiges Verhalten",
+    "• Strategy - Austauschbare Algorithmen",
+    "• Template Method - Gemeinsame Algorithmus-Struktur",
+    "• Visitor - Operation auf verschiedenen Objekttypen"
+]
+notes_text = "Trainer-Notizen:\n- Behavioral Patterns fokussieren auf Kommunikation\n- Entkopplung von Sendern und Empfängern\n- Flexibilität in Algorithmen und Verhalten\n- Besonders wichtig für Event-Driven Architecture\n- Telekom: Workflow-Management, Benachrichtigungen\n- Zeitrahmen: 3 Minuten Überblick"
+add_content_slide(prs, "Behavioral Patterns - Übersicht", behavioral_overview, notes_text)
+
+# Slide 73: Chain of Responsibility - Problem
+chain_problem = [
+    "• Problem: Verschiedene Handler für eine Anfrage",
+    "• Beispiel: Support-Ticket-System",
+    "  - Level 1: Basic Support (einfache Fragen)",
+    "  - Level 2: Technical Support (technische Probleme)", 
+    "  - Level 3: Expert Support (komplexe Architektur)",
+    "• Herausforderungen:",
+    "  - Sender kennt nicht den richtigen Handler",
+    "  - Statische Zuweisung ist unflexibel",
+    "  - Code ist gekoppelt an Handler-Hierarchie"
+]
+notes_text = "Trainer-Notizen:\n- Reales Telekom-Beispiel: Support-Eskalation\n- Auch: Firewalls, Genehmigungsworkflows\n- Problem der starren Handler-Zuordnung\n- Zeitrahmen: 4 Minuten"
+add_content_slide(prs, "Chain of Responsibility - Problem", chain_problem, notes_text)
+
+# Slide 74: Chain of Responsibility - Structure
+chain_structure = [
+    "• Handler Interface:",
+    "  - handleRequest(request): boolean",
+    "  - setNext(handler): Handler",
+    "• Concrete Handlers:",
+    "  - Implementieren spezifische Logik",
+    "  - Entscheiden: bearbeiten oder weiterleiten",
+    "• Client:",
+    "  - Sendet Request an ersten Handler",
+    "  - Kennt nicht die Handler-Kette",
+    "• Chain Setup:",
+    "  - Handler werden verkettet",
+    "  - Dynamische Konfiguration möglich"
+]
+notes_text = "Trainer-Notizen:\n- UML-Diagramm zeigen\n- Handler-Interface ist zentral\n- setNext() für Verkettung\n- Jeder Handler entscheidet selbst\n- Zeitrahmen: 5 Minuten"
+add_content_slide(prs, "Chain of Responsibility - Struktur", chain_structure, notes_text)
+
+# Slide 75: Chain of Responsibility - Implementation
+chain_implementation = [
+    "```java",
+    "// Handler Interface",
+    "interface SupportHandler {",
+    "    void setNext(SupportHandler handler);",
+    "    void handleTicket(SupportTicket ticket);",
+    "}",
+    "",
+    "// Base Handler",
+    "abstract class AbstractSupportHandler implements SupportHandler {",
+    "    private SupportHandler nextHandler;",
+    "    ",
+    "    public void setNext(SupportHandler handler) {",
+    "        this.nextHandler = handler;",
+    "    }",
+    "    ",
+    "    protected void forwardToNext(SupportTicket ticket) {",
+    "        if (nextHandler != null) {",
+    "            nextHandler.handleTicket(ticket);",
+    "        }",
+    "    }",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- Abstract Base Handler Pattern\n- Gemeinsame Verkettungslogik\n- Template für Concrete Handler\n- forwardToNext() Utility-Methode\n- Zeitrahmen: 6 Minuten"
+add_content_slide(prs, "Chain of Responsibility - Implementation", chain_implementation, notes_text)
+
+# Slide 76: Chain of Responsibility - Concrete Handlers
+chain_concrete = [
+    "```java",
+    "class BasicSupportHandler extends AbstractSupportHandler {",
+    "    public void handleTicket(SupportTicket ticket) {",
+    "        if (ticket.getComplexity() == Complexity.BASIC) {",
+    "            System.out.println(\"Basic Support: \" + ticket.getIssue());",
+    "            ticket.resolve(\"Standard solution applied\");",
+    "        } else {",
+    "            forwardToNext(ticket);",
+    "        }",
+    "    }",
+    "}",
+    "",
+    "class TechnicalSupportHandler extends AbstractSupportHandler {",
+    "    public void handleTicket(SupportTicket ticket) {",
+    "        if (ticket.getComplexity() == Complexity.TECHNICAL) {",
+    "            System.out.println(\"Technical Support: \" + ticket.getIssue());",
+    "            ticket.resolve(\"Technical analysis completed\");",
+    "        } else {",
+    "            forwardToNext(ticket);",
+    "        }",
+    "    }",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- Konkrete Handler-Implementierung\n- Responsibility-Check am Anfang\n- Bei Nicht-Zuständigkeit: weiterleiten\n- Telekom: Network, Service, Expert Level\n- Zeitrahmen: 5 Minuten"
+add_content_slide(prs, "Chain of Responsibility - Concrete Handlers", chain_concrete, notes_text)
+
+# Slide 77: Command Pattern - Problem
+command_problem = [
+    "• Problem: Operationen als Objekte behandeln",
+    "• Use Cases:",
+    "  - Undo/Redo Funktionalität",
+    "  - Makro-Aufzeichnung",
+    "  - Queuing und Scheduling",
+    "  - Transaction-ähnliches Verhalten",
+    "• Herausforderungen:",
+    "  - Direkte Methodenaufrufe sind nicht umkehrbar",
+    "  - Operationen können nicht gespeichert werden",
+    "  - Keine parametrisierbare Ausführung"
+]
+notes_text = "Trainer-Notizen:\n- Editor-Beispiel mit Undo/Redo\n- Telekom: Network Configuration Commands\n- Job-Scheduling in Batch-Systemen\n- Wichtig für Event Sourcing\n- Zeitrahmen: 4 Minuten"
+add_content_slide(prs, "Command Pattern - Problem", command_problem, notes_text)
+
+# Slide 78: Command Pattern - Structure
+command_structure = [
+    "• Command Interface:",
+    "  - execute(): void",
+    "  - undo(): void (optional)",
+    "• Concrete Commands:",
+    "  - Implementieren spezifische Operationen",
+    "  - Speichern Receiver und Parameter",
+    "• Receiver:",
+    "  - Führt die eigentliche Arbeit aus",
+    "• Invoker:",
+    "  - Ruft execute() auf Commands auf",
+    "  - Kann Command-History verwalten",
+    "• Client:",
+    "  - Erstellt Commands und setzt Receiver"
+]
+notes_text = "Trainer-Notizen:\n- Klare Trennung von Aufruf und Ausführung\n- Command speichert alle benötigten Daten\n- Invoker kennt nur das Command Interface\n- Zeitrahmen: 5 Minuten"
+add_content_slide(prs, "Command Pattern - Struktur", command_structure, notes_text)
+
+# Slide 79: Command Pattern - Implementation
+command_implementation = [
+    "```java",
+    "// Command Interface",
+    "interface NetworkCommand {",
+    "    void execute();",
+    "    void undo();",
+    "}",
+    "",
+    "// Concrete Command",
+    "class ConfigurePortCommand implements NetworkCommand {",
+    "    private NetworkSwitch receiver;",
+    "    private int port;",
+    "    private PortConfig newConfig;",
+    "    private PortConfig oldConfig;",
+    "    ",
+    "    public ConfigurePortCommand(NetworkSwitch receiver, int port, PortConfig config) {",
+    "        this.receiver = receiver;",
+    "        this.port = port;",
+    "        this.newConfig = config;",
+    "    }",
+    "    ",
+    "    public void execute() {",
+    "        oldConfig = receiver.getPortConfig(port);",
+    "        receiver.configurePort(port, newConfig);",
+    "    }",
+    "    ",
+    "    public void undo() {",
+    "        receiver.configurePort(port, oldConfig);",
+    "    }",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- Network Configuration Beispiel\n- Command speichert alten Zustand für Undo\n- Receiver macht die eigentliche Arbeit\n- Parameter werden im Command gespeichert\n- Zeitrahmen: 6 Minuten"
+add_content_slide(prs, "Command Pattern - Implementation", command_implementation, notes_text)
+
+# Slide 80: Command Pattern - Invoker & Macro
+command_macro = [
+    "```java",
+    "class NetworkConfigurationManager {",
+    "    private Stack<NetworkCommand> history = new Stack<>();",
+    "    ",
+    "    public void execute(NetworkCommand command) {",
+    "        command.execute();",
+    "        history.push(command);",
+    "    }",
+    "    ",
+    "    public void undo() {",
+    "        if (!history.isEmpty()) {",
+    "            NetworkCommand command = history.pop();",
+    "            command.undo();",
+    "        }",
+    "    }",
+    "}",
+    "",
+    "// Macro Command",
+    "class NetworkSetupMacro implements NetworkCommand {",
+    "    private List<NetworkCommand> commands;",
+    "    ",
+    "    public void execute() {",
+    "        commands.forEach(NetworkCommand::execute);",
+    "    }",
+    "    ",
+    "    public void undo() {",
+    "        Collections.reverse(commands);",
+    "        commands.forEach(NetworkCommand::undo);",
+    "    }",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- Invoker mit Command History\n- Undo-Stack Implementation\n- Macro Command für Batch-Operationen\n- Reihenfolge beim Undo beachten\n- Zeitrahmen: 6 Minuten"
+add_content_slide(prs, "Command Pattern - Invoker & Macro", command_macro, notes_text)
+
+# Slide 81: Iterator Pattern - Problem
+iterator_problem = [
+    "• Problem: Navigation durch komplexe Datenstrukturen",
+    "• Verschiedene Traversal-Arten:",
+    "  - Sequential, Tree (Pre/In/Post-Order)",
+    "  - Filtered, Sorted Traversal",
+    "• Herausforderungen:",
+    "  - Collection-interne Struktur exposiert",
+    "  - Client-Code abhängig von Datenstruktur",
+    "  - Mehrere gleichzeitige Iterationen schwierig",
+    "• Beispiel: Telekom Service-Hierarchie",
+    "  - Services → SubServices → Components"
+]
+notes_text = "Trainer-Notizen:\n- Organisationsstruktur als Beispiel\n- Problem der Exposition interner Struktur\n- Java Collections Framework als Referenz\n- Zeitrahmen: 4 Minuten"
+add_content_slide(prs, "Iterator Pattern - Problem", iterator_problem, notes_text)
+
+# Slide 82: Iterator Pattern - Structure
+iterator_structure = [
+    "• Iterator Interface:",
+    "  - hasNext(): boolean",
+    "  - next(): T",
+    "  - remove(): void (optional)",
+    "• Concrete Iterator:",
+    "  - Implementiert Traversal-Logik",
+    "  - Hält aktuellen Zustand",
+    "• Iterable Interface:",
+    "  - iterator(): Iterator<T>",
+    "• Concrete Collection:",
+    "  - Implementiert Iterable",
+    "  - Erstellt passende Iterator-Instanzen"
+]
+notes_text = "Trainer-Notizen:\n- Standard Iterator Interface Pattern\n- Iterator hält eigenen Zustand\n- Collection bleibt unverändert\n- Mehrere Iterator gleichzeitig möglich\n- Zeitrahmen: 4 Minuten"
+add_content_slide(prs, "Iterator Pattern - Struktur", iterator_structure, notes_text)
+
+# Slide 83: Iterator Pattern - Implementation
+iterator_implementation = [
+    "```java",
+    "// Service Hierarchy",
+    "class ServiceComponent {",
+    "    private String name;",
+    "    private List<ServiceComponent> children = new ArrayList<>();",
+    "    ",
+    "    // getters, setters, add methods...",
+    "}",
+    "",
+    "// Iterator Interface",
+    "interface ServiceIterator {",
+    "    boolean hasNext();",
+    "    ServiceComponent next();",
+    "}",
+    "",
+    "// Depth-First Iterator",
+    "class DepthFirstServiceIterator implements ServiceIterator {",
+    "    private Stack<ServiceComponent> stack = new Stack<>();",
+    "    ",
+    "    public DepthFirstServiceIterator(ServiceComponent root) {",
+    "        if (root != null) stack.push(root);",
+    "    }",
+    "    ",
+    "    public boolean hasNext() {",
+    "        return !stack.isEmpty();",
+    "    }",
+    "    ",
+    "    public ServiceComponent next() {",
+    "        ServiceComponent current = stack.pop();",
+    "        // Add children in reverse order for correct traversal",
+    "        for (int i = current.getChildren().size() - 1; i >= 0; i--) {",
+    "            stack.push(current.getChildren().get(i));",
+    "        }",
+    "        return current;",
+    "    }",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- Tree-Traversal Beispiel\n- Stack-basierte Depth-First Implementation\n- Reihenfolge der Children wichtig\n- Iterator hält eigenen Zustand\n- Zeitrahmen: 7 Minuten"
+add_content_slide(prs, "Iterator Pattern - Implementation", iterator_implementation, notes_text)
+
+# Slide 84: Iterator Pattern - Usage & Benefits
+iterator_usage = [
+    "```java",
+    "// Usage Example",
+    "ServiceComponent telekomServices = buildServiceHierarchy();",
+    "",
+    "// Depth-First Traversal",
+    "ServiceIterator iterator = new DepthFirstServiceIterator(telekomServices);",
+    "while (iterator.hasNext()) {",
+    "    ServiceComponent service = iterator.next();",
+    "    System.out.println(\"Processing: \" + service.getName());",
+    "}",
+    "",
+    "// Level-Order Iterator (alternative implementation)",
+    "ServiceIterator levelIterator = new LevelOrderServiceIterator(telekomServices);",
+    "",
+    "// Benefits:",
+    "• Collection-interne Struktur bleibt verborgen",
+    "• Verschiedene Traversal-Algorithmen möglich",
+    "• Mehrere gleichzeitige Iterationen",
+    "• Einheitliche Navigation-Schnittstelle"
+]
+notes_text = "Trainer-Notizen:\n- Verschiedene Iterator-Implementierungen\n- Collection bleibt unverändert\n- Client-Code unabhängig von Struktur\n- Java für-each Loop nutzt Iterator\n- Zeitrahmen: 5 Minuten"
+add_content_slide(prs, "Iterator Pattern - Usage & Benefits", iterator_usage, notes_text)
+
+# Slide 85: Mediator Pattern - Problem
+mediator_problem = [
+    "• Problem: Komplexe Kommunikation zwischen Komponenten",
+    "• Beispiel: Telekom Network Management System",
+    "  - Router, Switches, Monitoring, Logging",
+    "  - Jede Komponente kommuniziert mit mehreren anderen",
+    "• Herausforderungen:",
+    "  - Tight Coupling zwischen Komponenten",
+    "  - Schwer testbar und wartbar",
+    "  - Änderungen propagieren durch das System",
+    "  - Komplexe Abhängigkeitsgraphen"
+]
+notes_text = "Trainer-Notizen:\n- Network Operations Center als Beispiel\n- Problem der Punkt-zu-Punkt Kommunikation\n- Spaghetti-Code durch direkte Kopplungen\n- Zeitrahmen: 4 Minuten"
+add_content_slide(prs, "Mediator Pattern - Problem", mediator_problem, notes_text)
+
+# Slide 86: Mediator Pattern - Structure
+mediator_structure = [
+    "• Mediator Interface:",
+    "  - notify(sender, event): void",
+    "• Concrete Mediator:",
+    "  - Orchestriert Kommunikation",
+    "  - Kennt alle beteiligten Komponenten",
+    "• Colleague Interface:",
+    "  - setMediator(mediator): void",
+    "• Concrete Colleagues:",
+    "  - Kommunizieren nur über Mediator",
+    "  - Senden Events an Mediator",
+    "• Vorteile:",
+    "  - Loose Coupling zwischen Colleagues",
+    "  - Zentrale Koordination"
+]
+notes_text = "Trainer-Notizen:\n- Hub and Spoke Architecture\n- Mediator ist der zentrale Koordinator\n- Colleagues kennen sich nicht direkt\n- Kommunikation nur über Events\n- Zeitrahmen: 5 Minuten"
+add_content_slide(prs, "Mediator Pattern - Struktur", mediator_structure, notes_text)
+
+# Slide 87: Mediator Pattern - Implementation
+mediator_implementation = [
+    "```java",
+    "// Mediator Interface",
+    "interface NetworkMediator {",
+    "    void notify(NetworkComponent sender, String event, Object data);",
+    "}",
+    "",
+    "// Network Component Base",
+    "abstract class NetworkComponent {",
+    "    protected NetworkMediator mediator;",
+    "    ",
+    "    public NetworkComponent(NetworkMediator mediator) {",
+    "        this.mediator = mediator;",
+    "    }",
+    "}",
+    "",
+    "// Concrete Component",
+    "class Router extends NetworkComponent {",
+    "    public Router(NetworkMediator mediator) {",
+    "        super(mediator);",
+    "    }",
+    "    ",
+    "    public void routePacket(Packet packet) {",
+    "        // Route the packet",
+    "        if (packet.isHighPriority()) {",
+    "            mediator.notify(this, \"HIGH_PRIORITY_TRAFFIC\", packet);",
+    "        }",
+    "    }",
+    "    ",
+    "    public void handleNetworkCongestion() {",
+    "        System.out.println(\"Router: Adjusting routing table\");",
+    "    }",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- Network Management Beispiel\n- Components kennen nur den Mediator\n- Events werden an Mediator weitergeleitet\n- Mediator orchestriert Reaktionen\n- Zeitrahmen: 6 Minuten"
+add_content_slide(prs, "Mediator Pattern - Implementation", mediator_implementation, notes_text)
+
+# Slide 88: Mediator Pattern - Concrete Mediator
+mediator_concrete = [
+    "```java",
+    "class NetworkOperationsCenter implements NetworkMediator {",
+    "    private Router router;",
+    "    private Switch networkSwitch;",
+    "    private MonitoringSystem monitor;",
+    "    private AlertSystem alerts;",
+    "    ",
+    "    public void notify(NetworkComponent sender, String event, Object data) {",
+    "        switch (event) {",
+    "            case \"HIGH_PRIORITY_TRAFFIC\":",
+    "                handleHighPriorityTraffic((Packet) data);",
+    "                break;",
+    "            case \"NETWORK_CONGESTION\":",
+    "                handleNetworkCongestion(sender);",
+    "                break;",
+    "            case \"DEVICE_FAILURE\":",
+    "                handleDeviceFailure(sender);",
+    "                break;",
+    "        }",
+    "    }",
+    "    ",
+    "    private void handleHighPriorityTraffic(Packet packet) {",
+    "        networkSwitch.prioritizeTraffic(packet);",
+    "        monitor.logPriorityTraffic(packet);",
+    "        if (packet.isCritical()) {",
+    "            alerts.sendAlert(\"Critical packet routed\");",
+    "        }",
+    "    }",
+    "}",
+    "// Registration methods for components..."
+]
+notes_text = "Trainer-Notizen:\n- Zentrale Orchestrierung aller Events\n- Event-basierte Kommunikation\n- NOC als reales Mediator-Beispiel\n- Koordination verschiedener Systeme\n- Zeitrahmen: 6 Minuten"
+add_content_slide(prs, "Mediator Pattern - Concrete Mediator", mediator_concrete, notes_text)
+
+# Slide 89: Memento Pattern - Problem
+memento_problem = [
+    "• Problem: Zustandsspeicherung ohne Kapselung zu verletzen",
+    "• Use Cases:",
+    "  - Undo/Redo Funktionalität",
+    "  - Checkpoints und Snapshots",
+    "  - Transaction Rollback",
+    "  - Configuration Backup",
+    "• Herausforderungen:",
+    "  - Private Daten müssen zugänglich sein",
+    "  - Performance bei großen Zuständen",
+    "  - Memory Management",
+    "• Beispiel: Network Device Configuration",
+    "  - Backup vor Änderungen",
+    "  - Rollback bei Fehlern"
+]
+notes_text = "Trainer-Notizen:\n- Configuration Management als Beispiel\n- Problem der Kapselungsverletzung\n- Snapshot-Funktionalität in Netzwerken\n- Zeitrahmen: 4 Minuten"
+add_content_slide(prs, "Memento Pattern - Problem", memento_problem, notes_text)
+
+# Slide 90: Memento Pattern - Structure
+memento_structure = [
+    "• Originator:",
+    "  - Erstellt Memento von aktuellem Zustand",
+    "  - Stellt Zustand aus Memento wieder her",
+    "• Memento:",
+    "  - Speichert Snapshot des Originator-Zustands",
+    "  - Immutable und opaque für anderen Code",
+    "• Caretaker:",
+    "  - Verwaltet Mementos",
+    "  - Löst Backup/Restore aus",
+    "  - Kennt Memento-Inhalt nicht",
+    "• Kapselierung:",
+    "  - Nur Originator kann Memento-Inhalt lesen",
+    "  - Caretaker behandelt Memento als Black Box"
+]
+notes_text = "Trainer-Notizen:\n- Drei-Rollen-Pattern\n- Kapselung bleibt erhalten\n- Originator hat exklusiven Zugriff\n- Caretaker macht Lifecycle-Management\n- Zeitrahmen: 5 Minuten"
+add_content_slide(prs, "Memento Pattern - Struktur", memento_structure, notes_text)
+
+# Slide 91: Memento Pattern - Implementation
+memento_implementation = [
+    "```java",
+    "// Network Configuration (Originator)",
+    "class NetworkConfiguration {",
+    "    private String routingTable;",
+    "    private Map<String, String> interfaceConfigs;",
+    "    private List<SecurityRule> securityRules;",
+    "    ",
+    "    // Inner Memento Class - nur Originator hat Zugriff",
+    "    public class ConfigurationMemento {",
+    "        private final String routingTable;",
+    "        private final Map<String, String> interfaceConfigs;",
+    "        private final List<SecurityRule> securityRules;",
+    "        private final long timestamp;",
+    "        ",
+    "        private ConfigurationMemento() {",
+    "            this.routingTable = NetworkConfiguration.this.routingTable;",
+    "            this.interfaceConfigs = new HashMap<>(NetworkConfiguration.this.interfaceConfigs);",
+    "            this.securityRules = new ArrayList<>(NetworkConfiguration.this.securityRules);",
+    "            this.timestamp = System.currentTimeMillis();",
+    "        }",
+    "    }",
+    "    ",
+    "    public ConfigurationMemento createSnapshot() {",
+    "        return new ConfigurationMemento();",
+    "    }",
+    "    ",
+    "    public void restore(ConfigurationMemento memento) {",
+    "        this.routingTable = memento.routingTable;",
+    "        this.interfaceConfigs = new HashMap<>(memento.interfaceConfigs);",
+    "        this.securityRules = new ArrayList<>(memento.securityRules);",
+    "    }",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- Inner Class Pattern für Kapselung\n- Deep Copy der Datenstrukturen\n- Timestamp für Versioning\n- Nur Originator kann Memento erstellen/lesen\n- Zeitrahmen: 7 Minuten"
+add_content_slide(prs, "Memento Pattern - Implementation", memento_implementation, notes_text)
+
+# Slide 92: Memento Pattern - Caretaker
+memento_caretaker = [
+    "```java",
+    "// Configuration Manager (Caretaker)",
+    "class NetworkConfigurationManager {",
+    "    private NetworkConfiguration config;",
+    "    private Stack<NetworkConfiguration.ConfigurationMemento> history;",
+    "    private final int maxHistorySize = 10;",
+    "    ",
+    "    public NetworkConfigurationManager(NetworkConfiguration config) {",
+    "        this.config = config;",
+    "        this.history = new Stack<>();",
+    "    }",
+    "    ",
+    "    public void backup() {",
+    "        if (history.size() >= maxHistorySize) {",
+    "            // Remove oldest snapshot",
+    "            history.remove(0);",
+    "        }",
+    "        history.push(config.createSnapshot());",
+    "        System.out.println(\"Configuration backed up\");",
+    "    }",
+    "    ",
+    "    public void rollback() {",
+    "        if (!history.isEmpty()) {",
+    "            NetworkConfiguration.ConfigurationMemento memento = history.pop();",
+    "            config.restore(memento);",
+    "            System.out.println(\"Configuration rolled back\");",
+    "        }",
+    "    }",
+    "    ",
+    "    public void performSafeConfigChange(Runnable configChange) {",
+    "        backup();  // Create backup before change",
+    "        try {",
+    "            configChange.run();",
+    "        } catch (Exception e) {",
+    "            rollback();  // Automatic rollback on error",
+    "            throw e;",
+    "        }",
+    "    }",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- Caretaker verwaltet Memento-Lifecycle\n- History-Größe begrenzen für Memory Management\n- Safe Configuration Change Pattern\n- Automatic Rollback bei Fehlern\n- Zeitrahmen: 6 Minuten"
+add_content_slide(prs, "Memento Pattern - Caretaker", memento_caretaker, notes_text)
+
+# Slide 93: Observer Pattern - Problem
+observer_problem = [
+    "• Problem: Benachrichtigung über Zustandsänderungen",
+    "• Beispiele:",
+    "  - Network Monitoring Dashboard",
+    "  - Service Status Updates",
+    "  - Configuration Change Notifications",
+    "• Herausforderungen:",
+    "  - Subject kennt alle Observer",
+    "  - Tight Coupling Subject ↔ Observer",
+    "  - Synchrone Notification kann langsam sein",
+    "  - Memory Leaks durch Observer-Referenzen",
+    "• Telekom Use Case:",
+    "  - Service Health Monitoring",
+    "  - Multiple Dashboards, Alerts, Logs"
+]
+notes_text = "Trainer-Notizen:\n- Publish-Subscribe Pattern\n- GUI Model-View-Controller verwandt\n- Event-Driven Architecture Foundation\n- Zeitrahmen: 4 Minuten"
+add_content_slide(prs, "Observer Pattern - Problem", observer_problem, notes_text)
+
+# Slide 94: Observer Pattern - Structure
+observer_structure = [
+    "• Subject (Observable):",
+    "  - attach(observer): void",
+    "  - detach(observer): void", 
+    "  - notify(): void",
+    "• Observer Interface:",
+    "  - update(subject): void",
+    "• Concrete Subject:",
+    "  - Speichert Zustand",
+    "  - Benachrichtigt Observer bei Änderungen",
+    "• Concrete Observer:",
+    "  - Implementiert Update-Logik",
+    "  - Kann Zustand vom Subject abfragen",
+    "• Notification Patterns:",
+    "  - Push Model: Subject sendet Daten",
+    "  - Pull Model: Observer fragt Daten ab"
+]
+notes_text = "Trainer-Notizen:\n- Classic GoF Observer Pattern\n- Push vs Pull Model erklären\n- Observer List Management\n- Notification Loop Prevention\n- Zeitrahmen: 5 Minuten"
+add_content_slide(prs, "Observer Pattern - Struktur", observer_structure, notes_text)
+
+# Slide 95: Observer Pattern - Implementation
+observer_implementation = [
+    "```java",
+    "// Observer Interface",
+    "interface ServiceObserver {",
+    "    void onServiceStatusChanged(ServiceStatus status, String serviceName);",
+    "}",
+    "",
+    "// Subject (Observable)",
+    "class TelekomService {",
+    "    private String serviceName;",
+    "    private ServiceStatus status;",
+    "    private List<ServiceObserver> observers = new ArrayList<>();",
+    "    ",
+    "    public void addObserver(ServiceObserver observer) {",
+    "        observers.add(observer);",
+    "    }",
+    "    ",
+    "    public void removeObserver(ServiceObserver observer) {",
+    "        observers.remove(observer);",
+    "    }",
+    "    ",
+    "    public void setStatus(ServiceStatus newStatus) {",
+    "        if (this.status != newStatus) {",
+    "            this.status = newStatus;",
+    "            notifyObservers();",
+    "        }",
+    "    }",
+    "    ",
+    "    private void notifyObservers() {",
+    "        // Copy list to prevent ConcurrentModificationException",
+    "        List<ServiceObserver> observersCopy = new ArrayList<>(observers);",
+    "        for (ServiceObserver observer : observersCopy) {",
+    "            observer.onServiceStatusChanged(status, serviceName);",
+    "        }",
+    "    }",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- Service Monitoring Beispiel\n- Observer List kopieren für Thread Safety\n- Status-Change Detection\n- Notification nur bei tatsächlicher Änderung\n- Zeitrahmen: 6 Minuten"
+add_content_slide(prs, "Observer Pattern - Implementation", observer_implementation, notes_text)
+
+# Slide 96: Observer Pattern - Concrete Observers
+observer_concrete = [
+    "```java",
+    "// Dashboard Observer",
+    "class MonitoringDashboard implements ServiceObserver {",
+    "    private String dashboardName;",
+    "    ",
+    "    public void onServiceStatusChanged(ServiceStatus status, String serviceName) {",
+    "        System.out.println(\"[\" + dashboardName + \"] Service \" + serviceName",
+    "                         + \" status changed to \" + status);",
+    "        updateDashboardDisplay(serviceName, status);",
+    "    }",
+    "}",
+    "",
+    "// Alert System Observer",
+    "class AlertSystem implements ServiceObserver {",
+    "    public void onServiceStatusChanged(ServiceStatus status, String serviceName) {",
+    "        if (status == ServiceStatus.DOWN || status == ServiceStatus.ERROR) {",
+    "            sendAlert(\"CRITICAL: Service \" + serviceName + \" is \" + status);",
+    "            escalateToSupport(serviceName, status);",
+    "        }",
+    "    }",
+    "}",
+    "",
+    "// Logging Observer",
+    "class ServiceLogger implements ServiceObserver {",
+    "    public void onServiceStatusChanged(ServiceStatus status, String serviceName) {",
+    "        String logEntry = LocalDateTime.now() + \": \" + serviceName",
+    "                        + \" status changed to \" + status;",
+    "        writeToLog(logEntry);",
+    "        if (status == ServiceStatus.DOWN) {",
+    "            archiveServiceData(serviceName);",
+    "        }",
+    "    }",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- Verschiedene Observer-Typen\n- Dashboard, Alerting, Logging\n- Unterschiedliche Reaktionen auf Events\n- Loose Coupling zwischen Observern\n- Zeitrahmen: 5 Minuten"
+add_content_slide(prs, "Observer Pattern - Concrete Observers", observer_concrete, notes_text)
+
+# Slide 97: State Pattern - Problem
+state_problem = [
+    "• Problem: Komplexe zustandsabhängige Logik",
+    "• Beispiel: Telekom Service Lifecycle",
+    "  - Pending → Active → Suspended → Terminated",
+    "  - Verschiedene Operationen je nach Zustand",
+    "• Herausforderungen:",
+    "  - Große if-else oder switch Statements",
+    "  - Schwer erweiterbar um neue Zustände",
+    "  - Verstreute State-Logic im Code",
+    "  - Komplexe Zustandsübergänge",
+    "• State Machine Komplexität",
+    "  - Viele Zustände × Viele Events = Komplexität²"
+]
+notes_text = "Trainer-Notizen:\n- Service Lifecycle Management\n- Problem von proceduraler State Logic\n- Finite State Machine Theorie\n- Zeitrahmen: 4 Minuten"
+add_content_slide(prs, "State Pattern - Problem", state_problem, notes_text)
+
+# Slide 98: State Pattern - Structure
+state_structure = [
+    "• Context:",
+    "  - Hält Referenz auf aktuellen State",
+    "  - Delegiert State-spezifische Operationen",
+    "• State Interface:",
+    "  - Definiert State-spezifische Methoden",
+    "• Concrete States:",
+    "  - Implementieren zustandsabhängiges Verhalten",
+    "  - Können State Transitions auslösen",
+    "• State Transitions:",
+    "  - Context.setState(newState)",
+    "  - States können sich selbst ändern",
+    "• Vorteile:",
+    "  - OCP: Neue States ohne Context-Änderung",
+    "  - State-spezifische Logik gekapselt"
+]
+notes_text = "Trainer-Notizen:\n- Context als State Machine\n- Delegation statt Conditionals\n- States kennen mögliche Transitions\n- Open-Closed Principle anwendbar\n- Zeitrahmen: 5 Minuten"
+add_content_slide(prs, "State Pattern - Struktur", state_structure, notes_text)
+
+# Slide 99: State Pattern - Implementation
+state_implementation = [
+    "```java",
+    "// State Interface",
+    "interface ServiceState {",
+    "    void activate(ServiceContext context);",
+    "    void suspend(ServiceContext context);",
+    "    void terminate(ServiceContext context);",
+    "    void restart(ServiceContext context);",
+    "    String getStatusName();",
+    "}",
+    "",
+    "// Context",
+    "class ServiceContext {",
+    "    private ServiceState currentState;",
+    "    private String serviceName;",
+    "    ",
+    "    public ServiceContext(String serviceName) {",
+    "        this.serviceName = serviceName;",
+    "        this.currentState = new PendingState();",
+    "    }",
+    "    ",
+    "    public void setState(ServiceState state) {",
+    "        System.out.println(\"Service \" + serviceName + \" transitioning to \" + state.getStatusName());",
+    "        this.currentState = state;",
+    "    }",
+    "    ",
+    "    public void activate() { currentState.activate(this); }",
+    "    public void suspend() { currentState.suspend(this); }",
+    "    public void terminate() { currentState.terminate(this); }",
+    "    public void restart() { currentState.restart(this); }",
+    "    ",
+    "    public String getCurrentStatus() {",
+    "        return currentState.getStatusName();",
+    "    }",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- Context als State Machine\n- Delegation an Current State\n- State Transition Logging\n- Einheitliche Interface für alle Operationen\n- Zeitrahmen: 6 Minuten"
+add_content_slide(prs, "State Pattern - Implementation", state_implementation, notes_text)
+
+# Slide 100: State Pattern - Concrete States
+state_concrete = [
+    "```java",
+    "class PendingState implements ServiceState {",
+    "    public void activate(ServiceContext context) {",
+    "        System.out.println(\"Activating service from pending state\");",
+    "        context.setState(new ActiveState());",
+    "    }",
+    "    public void suspend(ServiceContext context) {",
+    "        throw new IllegalStateException(\"Cannot suspend pending service\");",
+    "    }",
+    "    public void terminate(ServiceContext context) {",
+    "        System.out.println(\"Terminating pending service\");",
+    "        context.setState(new TerminatedState());",
+    "    }",
+    "    public void restart(ServiceContext context) {",
+    "        System.out.println(\"Service already in pending state\");",
+    "    }",
+    "    public String getStatusName() { return \"PENDING\"; }",
+    "}",
+    "",
+    "class ActiveState implements ServiceState {",
+    "    public void activate(ServiceContext context) {",
+    "        System.out.println(\"Service already active\");",
+    "    }",
+    "    public void suspend(ServiceContext context) {",
+    "        System.out.println(\"Suspending active service\");",
+    "        context.setState(new SuspendedState());",
+    "    }",
+    "    public void terminate(ServiceContext context) {",
+    "        System.out.println(\"Terminating active service\");",
+    "        context.setState(new TerminatedState());",
+    "    }",
+    "    public void restart(ServiceContext context) {",
+    "        System.out.println(\"Restarting service\");",
+    "        context.setState(new PendingState());",
+    "        context.activate(); // Chain to activation",
+    "    }",
+    "    public String getStatusName() { return \"ACTIVE\"; }",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- State-spezifisches Verhalten\n- Illegale Transitions als Exceptions\n- States können weitere Transitions auslösen\n- Klar definierte State Semantics\n- Zeitrahmen: 6 Minuten"
+add_content_slide(prs, "State Pattern - Concrete States", state_concrete, notes_text)
+
+# Slide 101: Strategy Pattern - Problem
+strategy_problem = [
+    "• Problem: Verschiedene Algorithmen für gleiche Aufgabe",
+    "• Beispiele:",
+    "  - Routing-Algorithmen (Shortest Path, Load Balancing)",
+    "  - Compression-Algorithmen (ZIP, GZIP, LZ4)",
+    "  - Payment Processing (Credit Card, PayPal, Invoice)",
+    "• Herausforderungen:",
+    "  - Algorithm-Selection in Client-Code",
+    "  - Schwer testbar und wartbar",
+    "  - Violation of Open-Closed Principle",
+    "• Telekom Example:",
+    "  - Network Traffic Routing",
+    "  - Different strategies based on conditions"
+]
+notes_text = "Trainer-Notizen:\n- Familie von Algorithmen\n- Runtime Algorithm Selection\n- Telekom: Dynamic Routing Strategies\n- Zeitrahmen: 4 Minuten"
+add_content_slide(prs, "Strategy Pattern - Problem", strategy_problem, notes_text)
+
+# Slide 102: Strategy Pattern - Structure
+strategy_structure = [
+    "• Strategy Interface:",
+    "  - execute(data): Result",
+    "• Concrete Strategies:",
+    "  - Implementieren verschiedene Algorithmen",
+    "  - Gleiche Schnittstelle, unterschiedliche Implementierung",
+    "• Context:",
+    "  - Hält Referenz auf Strategy",
+    "  - Delegiert Algorithmus-Ausführung",
+    "  - setStrategy(strategy): void",
+    "• Client:",
+    "  - Wählt passende Strategy",
+    "  - Konfiguriert Context",
+    "• Vorteile:",
+    "  - Runtime Strategy Switching",
+    "  - Algorithmus-Familie erweiterbar"
+]
+notes_text = "Trainer-Notizen:\n- Composition over Inheritance\n- Strategy als pluggable Algorithm\n- Context wird parametrisiert\n- Open-Closed Principle erfüllt\n- Zeitrahmen: 4 Minuten"
+add_content_slide(prs, "Strategy Pattern - Struktur", strategy_structure, notes_text)
+
+# Slide 103: Strategy Pattern - Implementation
+strategy_implementation = [
+    "```java",
+    "// Strategy Interface",
+    "interface RoutingStrategy {",
+    "    Route calculateRoute(NetworkTopology topology, Node source, Node destination);",
+    "    String getStrategyName();",
+    "}",
+    "",
+    "// Concrete Strategies",
+    "class ShortestPathStrategy implements RoutingStrategy {",
+    "    public Route calculateRoute(NetworkTopology topology, Node source, Node destination) {",
+    "        // Dijkstra's algorithm implementation",
+    "        System.out.println(\"Calculating shortest path route\");",
+    "        return dijkstra(topology, source, destination);",
+    "    }",
+    "    public String getStrategyName() { return \"SHORTEST_PATH\"; }",
+    "}",
+    "",
+    "class LoadBalancingStrategy implements RoutingStrategy {",
+    "    public Route calculateRoute(NetworkTopology topology, Node source, Node destination) {",
+    "        System.out.println(\"Calculating load-balanced route\");",
+    "        return findLeastCongestedPath(topology, source, destination);",
+    "    }",
+    "    public String getStrategyName() { return \"LOAD_BALANCING\"; }",
+    "}",
+    "",
+    "class HighAvailabilityStrategy implements RoutingStrategy {",
+    "    public Route calculateRoute(NetworkTopology topology, Node source, Node destination) {",
+    "        System.out.println(\"Calculating high-availability route with redundancy\");",
+    "        return findRedundantPath(topology, source, destination);",
+    "    }",
+    "    public String getStrategyName() { return \"HIGH_AVAILABILITY\"; }",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- Network Routing Beispiel\n- Verschiedene Routing-Algorithmen\n- Gleiche Schnittstelle, andere Implementierung\n- Telekom: Adaptives Routing je nach Netzlast\n- Zeitrahmen: 6 Minuten"
+add_content_slide(prs, "Strategy Pattern - Implementation", strategy_implementation, notes_text)
+
+# Slide 104: Strategy Pattern - Context & Usage
+strategy_usage = [
+    "```java",
+    "// Context",
+    "class NetworkRouter {",
+    "    private RoutingStrategy strategy;",
+    "    private NetworkTopology topology;",
+    "    ",
+    "    public NetworkRouter(NetworkTopology topology) {",
+    "        this.topology = topology;",
+    "        this.strategy = new ShortestPathStrategy(); // default",
+    "    }",
+    "    ",
+    "    public void setRoutingStrategy(RoutingStrategy strategy) {",
+    "        this.strategy = strategy;",
+    "        System.out.println(\"Routing strategy changed to: \" + strategy.getStrategyName());",
+    "    }",
+    "    ",
+    "    public Route routeTraffic(Node source, Node destination) {",
+    "        return strategy.calculateRoute(topology, source, destination);",
+    "    }",
+    "}",
+    "",
+    "// Usage Example",
+    "NetworkRouter router = new NetworkRouter(networkTopology);",
+    "",
+    "// Normal conditions - use shortest path",
+    "Route route1 = router.routeTraffic(nodeA, nodeB);",
+    "",
+    "// High traffic - switch to load balancing",
+    "if (networkLoad > 0.8) {",
+    "    router.setRoutingStrategy(new LoadBalancingStrategy());",
+    "}",
+    "",
+    "// Critical service - ensure high availability",
+    "if (service.isCritical()) {",
+    "    router.setRoutingStrategy(new HighAvailabilityStrategy());",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- Context mit Strategy-Delegation\n- Runtime Strategy Switching\n- Condition-based Strategy Selection\n- Dynamic Adaptation an Netzwerkbedingungen\n- Zeitrahmen: 5 Minuten"
+add_content_slide(prs, "Strategy Pattern - Context & Usage", strategy_usage, notes_text)
+
+# Slide 105: Template Method Pattern - Problem
+template_problem = [
+    "• Problem: Gemeinsamer Algorithmus mit variablen Schritten",
+    "• Beispiele:",
+    "  - Data Processing Pipeline",
+    "  - Service Deployment Workflow",
+    "  - Quality Assurance Process",
+    "• Herausforderungen:",
+    "  - Code Duplication in ähnlichen Algorithmen",
+    "  - Schwer konsistente Ausführungsreihenfolge",
+    "  - Varianten schwer zu erweitern",
+    "• Telekom Use Case:",
+    "  - Service Provisioning Process",
+    "  - Gemeinsame Schritte, unterschiedliche Services"
+]
+notes_text = "Trainer-Notizen:\n- Algorithm Skeleton Pattern\n- Template definiert Struktur\n- Subclasses implementieren Variable\n- Zeitrahmen: 4 Minuten"
+add_content_slide(prs, "Template Method Pattern - Problem", template_problem, notes_text)
+
+# Slide 106: Template Method Pattern - Structure
+template_structure = [
+    "• Abstract Class:",
+    "  - templateMethod(): final - Algorithmus-Skelett",
+    "  - primitiveOperations(): abstract - Variable Schritte",
+    "  - hook(): void - Optionale Erweiterungspunkte",
+    "• Concrete Class:",
+    "  - Implementiert primitive Operations",
+    "  - Überschreibt Hooks bei Bedarf",
+    "• Template Method:",
+    "  - Definiert Ablaufstruktur",
+    "  - Ruft primitive Operations in Reihenfolge auf",
+    "  - Meist final (nicht überschreibbar)",
+    "• Hollywood Principle:",
+    "  - \"Don't call us, we'll call you\"",
+    "  - Framework ruft Application Code auf"
+]
+notes_text = "Trainer-Notizen:\n- Inversion of Control Pattern\n- Template Method ist final\n- Hook Methods für optionale Extensions\n- Hollywood Principle erklären\n- Zeitrahmen: 5 Minuten"
+add_content_slide(prs, "Template Method Pattern - Struktur", template_structure, notes_text)
+
+# Slide 107: Template Method Pattern - Implementation
+template_implementation = [
+    "```java",
+    "// Abstract Template",
+    "abstract class ServiceProvisioningTemplate {",
+    "    ",
+    "    // Template Method - defines the algorithm skeleton",
+    "    public final ProvisioningResult provisionService(ServiceRequest request) {",
+    "        System.out.println(\"Starting service provisioning process...\");",
+    "        ",
+    "        // Step 1: Validate request",
+    "        if (!validateRequest(request)) {",
+    "            return ProvisioningResult.failed(\"Request validation failed\");",
+    "        }",
+    "        ",
+    "        // Step 2: Allocate resources (variable implementation)",
+    "        ResourceAllocation allocation = allocateResources(request);",
+    "        if (allocation == null) {",
+    "            return ProvisioningResult.failed(\"Resource allocation failed\");",
+    "        }",
+    "        ",
+    "        // Step 3: Configure service (variable implementation)",
+    "        ServiceConfiguration config = configureService(request, allocation);",
+    "        ",
+    "        // Step 4: Deploy service (variable implementation)",
+    "        DeploymentResult deployment = deployService(config);",
+    "        ",
+    "        // Step 5: Post-deployment hook (optional)",
+    "        postDeploymentHook(deployment);",
+    "        ",
+    "        // Step 6: Finalize provisioning",
+    "        return finalizeProvisioning(request, deployment);",
+    "    }",
+    "    ",
+    "    // Common implementation",
+    "    private boolean validateRequest(ServiceRequest request) {",
+    "        return request != null && request.isValid();",
+    "    }",
+    "    ",
+    "    // Abstract methods - must be implemented by subclasses",
+    "    protected abstract ResourceAllocation allocateResources(ServiceRequest request);",
+    "    protected abstract ServiceConfiguration configureService(ServiceRequest request, ResourceAllocation allocation);",
+    "    protected abstract DeploymentResult deployService(ServiceConfiguration config);",
+    "    ",
+    "    // Hook method - optional override",
+    "    protected void postDeploymentHook(DeploymentResult result) {",
+    "        // Default: do nothing, subclasses can override",
+    "    }",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- Service Provisioning Template\n- Template Method ist final\n- Abstract Methods für variable Schritte\n- Hook Methods für optionale Erweiterungen\n- Zeitrahmen: 7 Minuten"
+add_content_slide(prs, "Template Method Pattern - Implementation", template_implementation, notes_text)
+
+# Slide 108: Template Method Pattern - Concrete Implementations
+template_concrete = [
+    "```java",
+    "// Concrete Implementation for VoIP Service",
+    "class VoipServiceProvisioning extends ServiceProvisioningTemplate {",
+    "    ",
+    "    protected ResourceAllocation allocateResources(ServiceRequest request) {",
+    "        System.out.println(\"Allocating VoIP resources: SIP trunk, bandwidth\");",
+    "        return new ResourceAllocation()",
+    "                .addResource(\"sip_trunk\", request.getRequiredTrunks())",
+    "                .addResource(\"bandwidth\", request.getBandwidth());",
+    "    }",
+    "    ",
+    "    protected ServiceConfiguration configureService(ServiceRequest request, ResourceAllocation allocation) {",
+    "        System.out.println(\"Configuring VoIP service: PBX, routing rules\");",
+    "        return new VoipConfiguration()",
+    "                .setPbxSettings(request.getPbxConfig())",
+    "                .setRoutingRules(request.getRoutingRules())",
+    "                .setCodecSettings(request.getPreferredCodecs());",
+    "    }",
+    "    ",
+    "    protected DeploymentResult deployService(ServiceConfiguration config) {",
+    "        System.out.println(\"Deploying VoIP service to telecom infrastructure\");",
+    "        return pbxManager.deployVoipService((VoipConfiguration) config);",
+    "    }",
+    "    ",
+    "    protected void postDeploymentHook(DeploymentResult result) {",
+    "        // VoIP-specific post-deployment tasks",
+    "        System.out.println(\"Running VoIP-specific tests and quality checks\");",
+    "        qualityAssurance.runVoipTests(result.getServiceEndpoint());",
+    "        monitoringSystem.addVoipService(result.getServiceId());",
+    "    }",
+    "}",
+    "",
+    "// Concrete Implementation for Internet Service",
+    "class InternetServiceProvisioning extends ServiceProvisioningTemplate {",
+    "    ",
+    "    protected ResourceAllocation allocateResources(ServiceRequest request) {",
+    "        System.out.println(\"Allocating Internet resources: bandwidth, IP range\");",
+    "        return new ResourceAllocation()",
+    "                .addResource(\"bandwidth\", request.getBandwidth())",
+    "                .addResource(\"ip_range\", ipPoolManager.allocateRange(request.getRequiredIPs()));",
+    "    }",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- VoIP und Internet Service Beispiele\n- Unterschiedliche Implementierung gleicher Schritte\n- Hook Method für service-spezifische Tasks\n- Template garantiert konsistenten Ablauf\n- Zeitrahmen: 6 Minuten"
+add_content_slide(prs, "Template Method Pattern - Concrete Implementations", template_concrete, notes_text)
+
+# Slide 109: Visitor Pattern - Problem
+visitor_problem = [
+    "• Problem: Neue Operationen auf bestehende Objekthierarchie",
+    "• Beispiel: Telekom Network Analysis",
+    "  - Network Elements: Router, Switch, Firewall, LoadBalancer",
+    "  - Operations: ConfigValidation, SecurityAudit, PerformanceReport",
+    "• Herausforderungen:",
+    "  - Neue Operation = Änderung aller Klassen",
+    "  - Violation of Open-Closed Principle",
+    "  - Code-Scattering across Hierarchy",
+    "• Double Dispatch Problem:",
+    "  - Operation depends on 2 types: Visitor + Element",
+    "  - Single dispatch only considers receiver type"
+]
+notes_text = "Trainer-Notizen:\n- Expression Problem in OOP\n- Adding Operations vs Adding Types\n- Network Analysis als praktisches Beispiel\n- Zeitrahmen: 4 Minuten"
+add_content_slide(prs, "Visitor Pattern - Problem", visitor_problem, notes_text)
+
+# Slide 110: Visitor Pattern - Structure
+visitor_structure = [
+    "• Visitor Interface:",
+    "  - visit(ConcreteElementA): void",
+    "  - visit(ConcreteElementB): void",
+    "  - ...(für jeden Element-Typ)",
+    "• Concrete Visitors:",
+    "  - Implementieren Operations für alle Element-Typen",
+    "• Element Interface:",
+    "  - accept(visitor): void",
+    "• Concrete Elements:",
+    "  - accept(visitor) { visitor.visit(this); }",
+    "• Object Structure:",
+    "  - Container für Elements",
+    "  - Iteration über Elements",
+    "• Double Dispatch:",
+    "  - element.accept(visitor) → visitor.visit(element)"
+]
+notes_text = "Trainer-Notizen:\n- Double Dispatch Mechanismus\n- Visitor für jeden Element-Typ\n- Accept Method in Elements\n- Object Structure als Container\n- Zeitrahmen: 5 Minuten"
+add_content_slide(prs, "Visitor Pattern - Struktur", visitor_structure, notes_text)
+
+# Slide 111: Visitor Pattern - Implementation
+visitor_implementation = [
+    "```java",
+    "// Element Interface",
+    "interface NetworkElement {",
+    "    void accept(NetworkElementVisitor visitor);",
+    "    String getName();",
+    "}",
+    "",
+    "// Concrete Elements",
+    "class Router implements NetworkElement {",
+    "    private String name;",
+    "    private List<RoutingEntry> routingTable;",
+    "    private int portCount;",
+    "    ",
+    "    public void accept(NetworkElementVisitor visitor) {",
+    "        visitor.visit(this);",
+    "    }",
+    "    // getters...",
+    "}",
+    "",
+    "class Switch implements NetworkElement {",
+    "    private String name;",
+    "    private List<VlanConfiguration> vlans;",
+    "    private int portCount;",
+    "    ",
+    "    public void accept(NetworkElementVisitor visitor) {",
+    "        visitor.visit(this);",
+    "    }",
+    "    // getters...",
+    "}",
+    "",
+    "class Firewall implements NetworkElement {",
+    "    private String name;",
+    "    private List<SecurityRule> securityRules;",
+    "    private String firewallPolicy;",
+    "    ",
+    "    public void accept(NetworkElementVisitor visitor) {",
+    "        visitor.visit(this);",
+    "    }",
+    "    // getters...",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- Network Elements als Concrete Elements\n- Accept Method delegiert an Visitor\n- this-Parameter für Double Dispatch\n- Element-spezifische Properties\n- Zeitrahmen: 6 Minuten"
+add_content_slide(prs, "Visitor Pattern - Implementation", visitor_implementation, notes_text)
+
+# Slide 112: Visitor Pattern - Concrete Visitors
+visitor_concrete = [
+    "```java",
+    "// Visitor Interface",
+    "interface NetworkElementVisitor {",
+    "    void visit(Router router);",
+    "    void visit(Switch networkSwitch);",
+    "    void visit(Firewall firewall);",
+    "}",
+    "",
+    "// Security Audit Visitor",
+    "class SecurityAuditVisitor implements NetworkElementVisitor {",
+    "    private List<SecurityIssue> issues = new ArrayList<>();",
+    "    ",
+    "    public void visit(Router router) {",
+    "        System.out.println(\"Auditing router security: \" + router.getName());",
+    "        // Check router-specific security",
+    "        if (router.getRoutingTable().stream().anyMatch(entry -> entry.isDefaultRoute())) {",
+    "            issues.add(new SecurityIssue(\"Router has default route\", router.getName()));",
+    "        }",
+    "    }",
+    "    ",
+    "    public void visit(Switch networkSwitch) {",
+    "        System.out.println(\"Auditing switch security: \" + networkSwitch.getName());",
+    "        // Check switch-specific security",
+    "        if (networkSwitch.getVlans().stream().anyMatch(vlan -> vlan.isDefaultVlan())) {",
+    "            issues.add(new SecurityIssue(\"Switch uses default VLAN\", networkSwitch.getName()));",
+    "        }",
+    "    }",
+    "    ",
+    "    public void visit(Firewall firewall) {",
+    "        System.out.println(\"Auditing firewall security: \" + firewall.getName());",
+    "        // Check firewall-specific security",
+    "        if (firewall.getSecurityRules().stream().anyMatch(rule -> rule.isAllowAll())) {",
+    "            issues.add(new SecurityIssue(\"Firewall has permissive rules\", firewall.getName()));",
+    "        }",
+    "    }",
+    "    ",
+    "    public List<SecurityIssue> getSecurityIssues() { return issues; }",
+    "}"
+]
+notes_text = "Trainer-Notizen:\n- Security Audit als Beispiel-Visitor\n- Element-spezifische Audit-Logik\n- Accumulation von Audit-Ergebnissen\n- Typsichere Operation-Dispatch\n- Zeitrahmen: 6 Minuten"
+add_content_slide(prs, "Visitor Pattern - Concrete Visitors", visitor_concrete, notes_text)
+
+# Slide 113: Visitor Pattern - Usage & Benefits
+visitor_usage = [
+    "```java",
+    "// Performance Analysis Visitor",
+    "class PerformanceAnalysisVisitor implements NetworkElementVisitor {",
+    "    private PerformanceReport report = new PerformanceReport();",
+    "    ",
+    "    public void visit(Router router) {",
+    "        double cpuUsage = router.getCpuUsage();",
+    "        double memoryUsage = router.getMemoryUsage();",
+    "        report.addRouterMetrics(router.getName(), cpuUsage, memoryUsage);",
+    "    }",
+    "    ",
+    "    public void visit(Switch networkSwitch) {",
+    "        int activePortCount = networkSwitch.getActivePortCount();",
+    "        double throughput = networkSwitch.getThroughput();",
+    "        report.addSwitchMetrics(networkSwitch.getName(), activePortCount, throughput);",
+    "    }",
+    "    // ... firewall implementation",
+    "}",
+    "",
+    "// Usage Example",
+    "List<NetworkElement> network = Arrays.asList(",
+    "    new Router(\"Core-Router-01\"),",
+    "    new Switch(\"Access-Switch-01\"),",
+    "    new Firewall(\"Edge-Firewall-01\")",
+    ");",
+    "",
+    "// Run security audit",
+    "SecurityAuditVisitor securityAudit = new SecurityAuditVisitor();",
+    "network.forEach(element -> element.accept(securityAudit));",
+    "List<SecurityIssue> securityIssues = securityAudit.getSecurityIssues();",
+    "",
+    "// Run performance analysis",
+    "PerformanceAnalysisVisitor perfAnalysis = new PerformanceAnalysisVisitor();",
+    "network.forEach(element -> element.accept(perfAnalysis));",
+    "PerformanceReport perfReport = perfAnalysis.getReport();",
+    "",
+    "Benefits:",
+    "• Easy to add new operations (new Visitors)",
+    "• Operation logic centralized in Visitor",
+    "• Type-safe dispatch to correct method",
+    "• Separation of data structure and operations"
+]
+notes_text = "Trainer-Notizen:\n- Performance Analysis als zweiter Visitor\n- Einfaches Hinzufügen neuer Operations\n- Element Structure bleibt unverändert\n- Type Safety durch Double Dispatch\n- Zeitrahmen: 6 Minuten"
+add_content_slide(prs, "Visitor Pattern - Usage & Benefits", visitor_usage, notes_text)
+
+# Slide 114: Behavioral Patterns - Comparison Matrix
+behavioral_comparison = [
+    "```",
+    "Pattern          | Use When                    | Telekom Example",
+    "================|=============================|=========================",
+    "Chain of Resp.  | Handler chain needed        | Support escalation",
+    "Command         | Undo/Redo, Queuing needed  | Network config changes",
+    "Iterator        | Complex data traversal      | Service hierarchy nav.",
+    "Mediator        | Complex inter-communication | Network operations center",
+    "Memento         | State backup/restore needed | Config snapshots",
+    "Observer        | Event notifications needed  | Service status updates",
+    "State           | State-dependent behavior    | Service lifecycle",
+    "Strategy        | Runtime algorithm selection | Dynamic routing",
+    "Template Method | Common algorithm structure  | Service provisioning",
+    "Visitor         | Operations on object types  | Network analysis",
+    "```",
+    "",
+    "**Auswahlkriterien:**",
+    "• **Kommunikation**: Mediator, Observer, Chain of Responsibility",
+    "• **Algorithm Flexibility**: Strategy, Template Method",
+    "• **State Management**: State, Memento",
+    "• **Operation Extension**: Visitor, Command"
+]
+notes_text = "Trainer-Notizen:\n- Übersicht aller Behavioral Patterns\n- Telekom-spezifische Anwendungsfälle\n- Auswahlkriterien für Pattern-Entscheidung\n- Diskussion: Welche Patterns kennen Teilnehmer?\n- Zeitrahmen: 8 Minuten"
+add_content_slide(prs, "Behavioral Patterns - Comparison Matrix", behavioral_comparison, notes_text)
+
+# Slide 115: Behavioral Patterns - Telekom Use Cases (1/2)
+behavioral_telekom1 = [
+    "**Network Operations & Management:**",
+    "• **Chain of Responsibility**: Support-Ticket-Eskalation",
+    "  - L1 → L2 → L3 → Expert Support",
+    "• **Command**: Network-Konfiguration mit Rollback",
+    "  - Router/Switch Config Commands mit Undo",
+    "• **Mediator**: Network Operations Center (NOC)",
+    "  - Zentrale Koordination aller Network-Komponenten",
+    "• **Observer**: Service Health Monitoring",
+    "  - Dashboard, Alerting, Logging bei Status-Änderungen",
+    "• **State**: Service Lifecycle Management",
+    "  - Pending → Active → Suspended → Terminated"
+]
+notes_text = "Trainer-Notizen:\n- Konkrete Telekom Anwendungsfälle\n- Network Operations Focus\n- Reale Implementierungen in der Praxis\n- Diskussion: Ähnliche Erfahrungen?\n- Zeitrahmen: 5 Minuten"
+add_content_slide(prs, "Behavioral Patterns - Telekom Use Cases (1/2)", behavioral_telekom1, notes_text)
+
+# Slide 116: Behavioral Patterns - Telekom Use Cases (2/2)  
+behavioral_telekom2 = [
+    "**Service Delivery & Analysis:**",
+    "• **Strategy**: Dynamic Network Routing",
+    "  - Shortest Path, Load Balancing, High Availability",
+    "• **Template Method**: Service Provisioning",
+    "  - VoIP, Internet, MPLS - gemeinsamer Workflow",
+    "• **Iterator**: Organisationsstruktur-Navigation",
+    "  - Services → SubServices → Components",
+    "• **Visitor**: Network Infrastructure Analysis",
+    "  - Security Audit, Performance Analysis, Compliance Check",
+    "• **Memento**: Configuration Backup/Restore",
+    "  - Snapshots vor kritischen Änderungen",
+    "",
+    "**Pattern-Kombinationen:**",
+    "• Observer + Command: Event-driven Config Changes",
+    "• State + Strategy: Zustandsabhängige Routing-Strategien",
+    "• Template Method + Strategy: Algorithmus-Familie in Workflows"
+]
+notes_text = "Trainer-Notizen:\n- Service Delivery Focus\n- Pattern-Kombinationen in realen Systemen\n- Diskussion: Implementierungserfahrungen\n- Überleitung zu praktischen Übungen\n- Zeitrahmen: 6 Minuten"
+add_content_slide(prs, "Behavioral Patterns - Telekom Use Cases (2/2)", behavioral_telekom2, notes_text)
+
+# ============================================================================
+# END OF BEHAVIORAL PATTERNS SECTION
+# ============================================================================
+
 # Save the presentation
 prs.save('telekom-architecture-training-complete.pptx')
 print("Complete presentation created successfully!")
-print("- All 70 slides generated ✓")
+print("- All 116 slides generated ✓")
 print("- Used Cloud Fundamentals template ✓")
 print("- Open Sans (Regular) for titles (NO BOLD) ✓")
 print("- Open Sans Light for content ✓")
@@ -2494,4 +3803,67 @@ print("- Flyweight pattern for memory optimization")
 print("- Proxy pattern for lazy loading and access control")
 print("- Comprehensive code examples with Telekom use cases")
 print("- Pattern comparison matrix and real-world applications")
+print("- Professional trainer notes throughout")
+
+print("\n71-116: Behavioral Patterns Section")
+print("71. Behavioral Patterns Section Divider")
+print("72. Behavioral Patterns Overview")
+print("73. Chain of Responsibility - Problem")
+print("74. Chain of Responsibility - Structure") 
+print("75. Chain of Responsibility - Implementation")
+print("76. Chain of Responsibility - Concrete Handlers")
+print("77. Command Pattern - Problem")
+print("78. Command Pattern - Structure")
+print("79. Command Pattern - Implementation")
+print("80. Command Pattern - Invoker & Macro")
+print("81. Iterator Pattern - Problem")
+print("82. Iterator Pattern - Structure")
+print("83. Iterator Pattern - Implementation")
+print("84. Iterator Pattern - Usage & Benefits")
+print("85. Mediator Pattern - Problem")
+print("86. Mediator Pattern - Structure")
+print("87. Mediator Pattern - Implementation")
+print("88. Mediator Pattern - Concrete Mediator")
+print("89. Memento Pattern - Problem")
+print("90. Memento Pattern - Structure")
+print("91. Memento Pattern - Implementation")
+print("92. Memento Pattern - Caretaker")
+print("93. Observer Pattern - Problem")
+print("94. Observer Pattern - Structure")
+print("95. Observer Pattern - Implementation")
+print("96. Observer Pattern - Concrete Observers")
+print("97. State Pattern - Problem")
+print("98. State Pattern - Structure")
+print("99. State Pattern - Implementation")
+print("100. State Pattern - Concrete States")
+print("101. Strategy Pattern - Problem")
+print("102. Strategy Pattern - Structure")
+print("103. Strategy Pattern - Implementation")
+print("104. Strategy Pattern - Context & Usage")
+print("105. Template Method Pattern - Problem")
+print("106. Template Method Pattern - Structure")
+print("107. Template Method Pattern - Implementation")
+print("108. Template Method Pattern - Concrete Implementations")
+print("109. Visitor Pattern - Problem")
+print("110. Visitor Pattern - Structure")
+print("111. Visitor Pattern - Implementation")
+print("112. Visitor Pattern - Concrete Visitors")
+print("113. Visitor Pattern - Usage & Benefits")
+print("114. Behavioral Patterns - Comparison Matrix")
+print("115. Behavioral Patterns - Telekom Use Cases (1/2)")
+print("116. Behavioral Patterns - Telekom Use Cases (2/2)")
+print("\n🎯 BEHAVIORAL PATTERNS SECTION COMPLETE!")
+print("- All 10 behavioral patterns covered")
+print("- Chain of Responsibility for support escalation")
+print("- Command pattern with undo/redo functionality")
+print("- Iterator for service hierarchy traversal")
+print("- Mediator for network operations center coordination")
+print("- Memento for configuration backup/restore")
+print("- Observer for event-driven service monitoring")
+print("- State pattern for service lifecycle management")
+print("- Strategy for dynamic routing algorithms")
+print("- Template Method for service provisioning workflows")
+print("- Visitor for network infrastructure analysis")
+print("- Comprehensive Telekom-specific examples")
+print("- Pattern comparison matrix and selection guide")
 print("- Professional trainer notes throughout")

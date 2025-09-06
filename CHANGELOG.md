@@ -1,5 +1,34 @@
 # Changelog
 
+## [2025-09-06] - Complete Behavioral Patterns Presentation
+
+### Hinzugefügt
+- **Behavioral Patterns Presentation** (`presentation/telekom-architecture-training-complete.pptx`)
+  - Vollständige 116-Slide Präsentation mit kompletten Behavioral Patterns
+  - Alle 10 Behavioral Patterns: Chain of Responsibility, Command, Iterator, Mediator, Memento, Observer, State, Strategy, Template Method, Visitor
+  - Umfassende Telekom-spezifische Code-Beispiele und Use Cases
+  - Pattern-Vergleichsmatrix und Auswahlhilfen
+  - Professionelle Trainer-Notizen für optimale Durchführung
+
+### Technische Details
+- **Chain of Responsibility** für Support-Ticket-Eskalation (L1 → L2 → L3 → Expert)
+- **Command Pattern** für Network-Konfiguration mit Undo/Redo-Funktionalität
+- **Iterator Pattern** für Service-Hierarchie Navigation (Depth-First Traversal)
+- **Mediator Pattern** für Network Operations Center (NOC) Koordination
+- **Memento Pattern** für Configuration Backup/Restore mit Safe Change Pattern
+- **Observer Pattern** für Event-driven Service Monitoring (Dashboard, Alerting, Logging)
+- **State Pattern** für Service Lifecycle Management (Pending → Active → Suspended → Terminated)
+- **Strategy Pattern** für Dynamic Routing Algorithms (Shortest Path, Load Balancing, High Availability)
+- **Template Method** für Service Provisioning Workflows (VoIP, Internet, MPLS)
+- **Visitor Pattern** für Network Infrastructure Analysis (Security Audit, Performance Analysis)
+
+### Nutzen
+- 46 dedizierte Slides für Behavioral Patterns (Slides 71-116)
+- Pattern-Kombinationen in realen Telekom-Systemen
+- Comprehensive Network Management Examples
+- Event-Driven Architecture Patterns
+- Complete State Machine Implementations
+
 ## [2025-09-06] - Complete Structural Patterns Presentation
 
 ### Hinzugefügt
