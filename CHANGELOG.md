@@ -1,5 +1,32 @@
 # Changelog
 
+## [2025-09-06] - Creational Patterns Presentation
+
+### Hinzugefügt
+- **Creational Patterns Presentation** (`presentation/telekom-architecture-training-complete.pptx`)
+  - Komplette 34-Slide Präsentation mit Einführung und Creational Patterns
+  - Alle 5 Creational Patterns: Factory Method, Abstract Factory, Builder, Prototype, Singleton
+  - Source Code Pro Font für Code-Beispiele
+  - Telekom-spezifische Use Cases und Beispiele
+  - Trainer-Notizen für Schlüssel-Slides
+  - Pattern-Vergleich und Selection Guide
+
+### Technische Details
+- **Factory Method Pattern** mit Telekom CustomerManager Refactoring
+- **Abstract Factory Pattern** für Service-Bundle-Familien
+- **Builder Pattern** mit TelecomServiceConfig Fluent Interface
+- **Prototype Pattern** mit Deep/Shallow Copy Diskussion
+- **Singleton Pattern** mit Thread-Safety und modernen Alternativen
+- **Professional Layout** mit Cloud Fundamentals Template
+- **Konsistente Formatierung** ohne Bold-Schrift für bessere Lesbarkeit
+
+### Nutzen
+- 22 dedizierte Slides für Creational Patterns (Slides 13-34)
+- Strukturierte Pattern-Progression von Problem zu Lösung
+- Praktische Telekom-Beispiele für jeden Pattern
+- Critical Pattern Discussion (Singleton als Anti-Pattern)
+- Entscheidungshilfe für Pattern-Auswahl
+
 ## [2025-09-05] - Java Multi-Module Maven Projekt Setup
 
 ### Hinzugefügt
