@@ -8,8 +8,12 @@ memory/
 CLAUDE.md.backup
 CHANGELOG
 
-# Presentation materials (PowerPoint files)
-presentation/
+# Presentation materials (PowerPoint files) - allow final output
+presentation/*.pptx
+!presentation/telekom-architecture-training-complete.pptx
+presentation/venv/
+presentation/*.py
+!presentation/create_from_template.py
 
 # IDE and Editor files
 .vscode/
