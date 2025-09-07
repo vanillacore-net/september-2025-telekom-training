@@ -1,0 +1,13 @@
+{
+  "name": "presentation-validation",
+  "version": "1.0.0",
+  "description": "Validation script for reveal.js presentation",
+  "main": "validate.js",
+  "scripts": {
+    "test": "node validate.js",
+    "install-browsers": "npx playwright install chromium"
+  },
+  "dependencies": {
+    "playwright": "^1.47.0"
+  }
+}
