@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>{{TITLE}} - Telekom Architecture Training</title>
+  
+  <link rel="stylesheet" href="../node_modules/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="../css/telekom-theme.css" id="theme">
+  <link rel="stylesheet" href="../node_modules/reveal.js/plugin/highlight/monokai.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+  
+  <!-- Custom CSS overrides -->
+  <style>
+    .reveal .slides section[data-markdown] {
+      text-align: left;
+    }
+    
+    /* Print styles for PDF export */
+    @media print {
+      .reveal .slide-logo {
+        display: block !important;
+      }
+      
+      .reveal .slides section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <!-- Telekom Logo -->
+    <div class="slide-logo">
+      <img src="../assets/images/telekom-logo.png" alt="Telekom Logo">
+    </div>
+    
+    <div class="slides">
+      <!-- Title Slide -->
+      <section data-markdown class="title-slide">
+        <textarea data-template>
+# {{TITLE}}
+
+## {{SUBTITLE}}
+
+### Telekom Architecture Training
+#### {{DATE}}
+
+---
+        </textarea>
+      </section>
+
+      <!-- Main Content Sections -->
+      {{CONTENT_SECTIONS}}
+      
+      <!-- Thank You Slide -->
+      <section data-markdown class="title-slide">
+        <textarea data-template>
+# Vielen Dank!
+
+## Questions & Discussion
+
+### Telekom Architecture Training
+
+---
+
+**Contact:**  
+architecture-training@telekom.de
+        </textarea>
+      </section>
+    </div>
+  </div>
+
+  <script src="../node_modules/reveal.js/dist/reveal.js"></script>
+  <script src="../node_modules/reveal.js/plugin/markdown/markdown.js"></script>
+  <script src="../node_modules/reveal.js/plugin/highlight/highlight.js"></script>
+  <script src="../node_modules/reveal.js/plugin/notes/notes.js"></script>
+  <script src="../node_modules/reveal.js/plugin/math/math.js"></script>
+  <script src="../node_modules/reveal.js/plugin/search/search.js"></script>
+  <script src="../node_modules/reveal.js/plugin/zoom/zoom.js"></script>
+
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: true,
+      progress: true,
+      center: false,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      
+      // PDF export settings
+      width: 1920,
+      height: 1080,
+      margin: 0.04,
+      minScale: 0.2,
+      maxScale: 2.0,
+      
+      // Plugin configuration
+      plugins: [ 
+        RevealMarkdown, 
+        RevealHighlight, 
+        RevealNotes, 
+        RevealMath.KaTeX,
+        RevealSearch,
+        RevealZoom
+      ],
+      
+      // Markdown plugin settings
+      markdown: {
+        smartypants: true
+      },
+      
+      // Highlight.js settings
+      highlight: {
+        highlightOnLoad: false
+      },
+      
+      // Speaker notes configuration
+      notes: {
+        autoload: true
+      },
+      
+      // Math typesetting
+      math: {
+        mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+        config: 'TeX-AMS_HTML-full',
+        TeX: {
+          Macros: {
+            R: '\\mathbb{R}',
+            set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
+          }
+        }
+      }
+    });
+    
+    // Custom initialization
+    Reveal.on('ready', function() {
+      // Add custom styling based on content
+      document.querySelectorAll('section[data-markdown]').forEach(function(section) {
+        const content = section.textContent;
+        
+        // Add section-divider class for divider slides
+        if (content.includes('---') && content.split('\n').length < 5) {
+          section.classList.add('section-divider');
+        }
+        
+        // Add center class for centered content
+        if (content.includes('data-center')) {
+          section.classList.add('center');
+        }
+      });
+    });
+
+    // PDF export helper
+    window.addEventListener('beforeprint', function() {
+      // Ensure all content is visible for PDF export
+      document.querySelectorAll('.fragment').forEach(function(fragment) {
+        fragment.classList.add('visible');
+      });
+    });
+  </script>
+</body>
+</html>

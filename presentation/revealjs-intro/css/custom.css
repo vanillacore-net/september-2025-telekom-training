@@ -1,0 +1,98 @@
+/* Custom CSS for Telekom Architecture Training */
+
+/* 16:9 aspect ratio configuration */
+.reveal {
+  font-family: 'Arial', sans-serif;
+}
+
+.reveal .slides {
+  width: 1280px;
+  height: 720px;
+}
+
+/* Title slide styling */
+.title-slide {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-slide .logo {
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.title-slide h1 {
+  font-size: 3.5em;
+  color: #e20074;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.title-slide h2 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 40px;
+  font-weight: normal;
+}
+
+.title-slide .author {
+  font-size: 1.5em;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.title-slide .date {
+  font-size: 1.2em;
+  color: #999;
+}
+
+/* General slide styling */
+.reveal h1, .reveal h2, .reveal h3 {
+  color: #e20074;
+}
+
+.reveal h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+}
+
+.reveal p, .reveal li {
+  font-size: 1.2em;
+  line-height: 1.5;
+}
+
+/* Fragment styling */
+.reveal .fragment {
+  transition: all 0.3s ease;
+}
+
+/* List styling */
+.reveal ul {
+  display: block;
+  margin-left: 1em;
+}
+
+.reveal li {
+  margin-bottom: 15px;
+}
+
+/* Ensure first line is always visible */
+.reveal .slides section > *:first-child {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Progress bar styling */
+.reveal .progress {
+  color: #e20074;
+}
+
+/* Controls styling */
+.reveal .controls {
+  color: #e20074;
+}
