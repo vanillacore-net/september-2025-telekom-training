@@ -1,8 +1,9 @@
 /* Custom CSS for Telekom Architecture Training */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
 
 /* 16:9 aspect ratio configuration */
 .reveal {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .reveal .slides {
@@ -28,8 +29,8 @@
 
 .title-slide h1 {
   font-size: 4em;
-  color: #666;
-  font-weight: normal;
+  color: #D9931C;
+  font-weight: 400;
   margin: 0;
 }
 
@@ -51,8 +52,8 @@
 
 .section-slide h1 {
   font-size: 3.5em;
-  color: #666;
-  font-weight: normal;
+  color: #D9931C;
+  font-weight: 400;
   margin: 0;
 }
 
@@ -76,9 +77,9 @@
 
 .single-column h2 {
   font-size: 3em;
-  color: #333;
+  color: #D9931C;
   margin-bottom: 40px;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 .single-column ul {
@@ -121,9 +122,9 @@
 
 .two-columns h2 {
   font-size: 3em;
-  color: #333;
+  color: #D9931C;
   margin-bottom: 30px;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 .columns-container {
@@ -138,9 +139,9 @@
 
 .column h3 {
   font-size: 1.8em;
-  color: #666;
+  color: #333;
   margin-bottom: 20px;
-  font-weight: normal;
+  font-weight: 300;
 }
 
 .column ul {
@@ -188,15 +189,16 @@
 
 .text-content h2 {
   font-size: 3em;
-  color: #333;
+  color: #D9931C;
   margin-bottom: 20px;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 .text-content p {
   font-size: 1.5em;
   color: #666;
   margin-bottom: 20px;
+  font-weight: 300;
 }
 
 .text-content ul {
@@ -288,30 +290,34 @@
 
 .overlay-text h2 {
   font-size: 3em;
-  color: #333;
+  color: #D9931C;
   margin-bottom: 10px;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 .overlay-text p {
   font-size: 1.5em;
   color: #666;
   margin: 0;
+  font-weight: 300;
 }
 
 /* General slide styling */
 .reveal h1, .reveal h2, .reveal h3 {
-  color: #e20074;
+  color: #D9931C;
+  font-weight: 400;
 }
 
 .reveal h2 {
   font-size: 2.5em;
   margin-bottom: 30px;
+  font-weight: 400;
 }
 
 .reveal p, .reveal li {
   font-size: 1.2em;
   line-height: 1.5;
+  font-weight: 300;
 }
 
 /* Fragment styling */
@@ -337,10 +343,10 @@
 
 /* Progress bar styling */
 .reveal .progress {
-  color: #e20074;
+  color: #D9931C;
 }
 
 /* Controls styling */
 .reveal .controls {
-  color: #e20074;
+  color: #D9931C;
 }

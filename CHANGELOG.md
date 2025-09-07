@@ -1,5 +1,39 @@
 # Changelog
 
+## [2025-09-07] - Fix RevealJS Design Patterns Workshop Content
+
+### Fixed
+- **RevealJS Presentation Content** (`presentation/revealjs-intro/index.html`)
+  - Fixed completely wrong "Cloud Fundamentals" content to correct "Design Patterns Workshop" content
+  - Title slide: "Design Patterns Workshop" with subtitle "Telekom Architecture Training"
+  - Section slide: "Workshop Agenda" 
+  - Single column slide: "Workshop Ziele" with 5 bullet points about design patterns
+  - Two column slide: "Patterns Overview" with Creational and Structural patterns
+  - Half-picture slide: "Real-World Examples" with practical pattern applications
+  - Full-picture slide: "Building Better Software Through Proven Patterns"
+
+### Fixed
+- **RevealJS Styling** (`presentation/revealjs-intro/css/custom.css`)
+  - Fixed incorrect pink/magenta color (#e20074) to proper Telekom Orange (#D9931C) 
+  - Added Open Sans fonts (Regular 400 for headlines, Light 300 for content)
+  - Updated all headers and elements to use proper Telekom brand colors
+  - Maintained fragment animations for proper slide progression
+
+### Technical Details
+- All 6 slide types properly implemented with correct content structure
+- Fragment animations maintained (18 fragments total) for proper slide flow
+- First line always visible, subsequent content as fragments
+- Telekom branding colors consistently applied throughout
+- Professional typography with Open Sans font family
+- Complete content validation passed all checks
+
+### Validation
+- Automated validation confirmed all content corrections
+- Telekom Orange color properly applied to all headers
+- Open Sans fonts loaded and applied correctly
+- Fragment animations working as expected
+- No remnants of old "Cloud Fundamentals" content
+
 ## [2025-09-06] - Complete Behavioral Patterns Presentation
 
 ### Hinzugefügt
