@@ -1,5 +1,31 @@
 # Changelog
 
+## [2025-09-07] - CRITICAL: Fix slide positioning and margins
+
+### Fixed
+- **RevealJS Slide Positioning** (`presentation/revealjs-intro/css/custom.css`)
+  - **CRITICAL**: Fixed excessive top margins (~3em) pushing content to center/bottom of slides
+  - Content now positioned at TOP of slides with minimal padding (1rem max)
+  - Applied flex-start alignment to force all content to top position
+  - Fixed single-column, two-columns, and half-picture layouts to start at top
+  - Headlines now positioned at absolute top with zero top margin
+  - Corner logos positioned at very top-right with minimal spacing (1rem)
+  - Consistent left/right margins (2rem) across all slide types
+
+### Technical Details
+- Added `.reveal .slides section` CSS override with flex-start justification
+- Updated `.content-slide` padding to minimal 1rem top padding
+- Headlines (h2) in all layouts now have `margin-top: 0` and `padding-top: 0`
+- All layout classes use `justify-content: flex-start` and `align-items: flex-start`
+- Logo corners repositioned from `top: 2rem` to `top: 1rem`
+- Consistent padding structure: `padding: 1rem 2rem` for all content slides
+
+### Impact
+- Content no longer floats in middle of slides
+- Professional top-aligned presentation layout
+- Better content visibility and readability
+- Consistent spacing across all slide types
+
 ## [2025-09-07] - Fix RevealJS Design Patterns Workshop Content
 
 ### Fixed

@@ -84,19 +84,20 @@
   margin: 0;
 }
 
-/* 3. Single column styling */
+/* 3. Single column styling - FIXED TOP ALIGNMENT */
 .single-column {
   position: relative;
-  padding: 40px 60px;
+  padding: 1rem 2rem !important; /* Consistent padding */
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: flex-start !important; /* Content at TOP */
+  align-items: flex-start !important;
 }
 
 .single-column .logo-corner {
-  position: absolute;
-  top: 2rem !important;
+  position: absolute !important;
+  top: 1rem !important; /* At very top with minimal spacing */
   right: 2rem !important;
   max-width: 50px !important;
   height: auto;
@@ -105,8 +106,9 @@
 .single-column h2 {
   font-size: 0.9em !important;
   color: #333333;
-  margin-top: 0 !important;
+  margin-top: 0 !important; /* NO top margin */
   margin-bottom: 1rem !important;
+  padding-top: 0 !important; /* NO top padding */
   font-weight: 400 !important;
   text-align: left !important;
 }
@@ -134,19 +136,20 @@
   left: 0;
 }
 
-/* 4. Two column styling */
+/* 4. Two column styling - FIXED TOP ALIGNMENT */
 .two-columns {
   position: relative;
-  padding: 40px 60px;
+  padding: 1rem 2rem !important; /* Consistent padding */
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: flex-start !important; /* Content at TOP */
+  align-items: flex-start !important;
 }
 
 .two-columns .logo-corner {
-  position: absolute;
-  top: 2rem !important;
+  position: absolute !important;
+  top: 1rem !important; /* At very top with minimal spacing */
   right: 2rem !important;
   max-width: 50px !important;
   height: auto;
@@ -155,8 +158,9 @@
 .two-columns h2 {
   font-size: 0.9em !important;
   color: #333333;
-  margin-top: 0 !important;
+  margin-top: 0 !important; /* NO top margin */
   margin-bottom: 1rem !important;
+  padding-top: 0 !important; /* NO top padding */
   font-weight: 400 !important;
   text-align: left !important;
 }
@@ -227,17 +231,18 @@
 
 .text-content {
   flex: 1;
-  padding: 40px 60px;
+  padding: 1rem 2rem !important; /* Minimal padding */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: flex-start !important; /* Text at TOP */
 }
 
 .text-content h2 {
   font-size: 0.9em !important;
   color: #333333;
-  margin-top: 0 !important;
+  margin-top: 0 !important; /* NO top margin */
   margin-bottom: 1rem !important;
+  padding-top: 0 !important; /* NO top padding */
   font-weight: 400 !important;
   text-align: left !important;
 }
@@ -356,9 +361,19 @@
   font-weight: 300 !important;
 }
 
-/* GENERAL CONTENT POSITIONING */
+/* CRITICAL FIX: REMOVE EXCESSIVE MARGINS - ALL CONTENT TO TOP */
+.reveal .slides section {
+  padding: 1rem 2rem !important; /* Minimal top padding */
+  height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important; /* Force content to TOP */
+  align-items: flex-start !important;
+}
+
+/* CONTENT SLIDES - ZERO TOP MARGIN */
 .content-slide {
-  padding-top: 2rem !important;
+  padding-top: 1rem !important; /* Minimal top padding only */
 }
 
 /* General slide styling with color fixes */
