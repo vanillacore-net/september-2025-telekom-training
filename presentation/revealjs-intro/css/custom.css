@@ -41,17 +41,24 @@
 }
 
 .title-slide .logo {
-  max-width: 120px;
+  max-width: 100px;
   height: auto;
   margin-bottom: 50px;
 }
 
 .title-slide h1 {
-  font-size: 3em;
-  color: #D9931C;
+  font-size: 2.4em;
+  color: #333333;
   font-weight: 400 !important;
   margin: 0;
   margin-bottom: 20px;
+}
+
+.title-slide h2 {
+  font-size: 1.2em;
+  color: #666666;
+  font-weight: 300 !important;
+  margin: 0;
 }
 
 /* 2. Section slide styling */
@@ -65,14 +72,14 @@
 }
 
 .section-slide .logo {
-  max-width: 120px;
+  max-width: 100px;
   height: auto;
   margin-bottom: 50px;
 }
 
 .section-slide h1 {
-  font-size: 3em;
-  color: #D9931C;
+  font-size: 2.4em;
+  color: #333333;
   font-weight: 400 !important;
   margin: 0;
 }
@@ -91,13 +98,13 @@
   position: absolute;
   top: 40px;
   right: 40px;
-  max-width: 80px;
+  max-width: 70px;
   height: auto;
 }
 
 .single-column h2 {
-  font-size: 2.5em;
-  color: #D9931C;
+  font-size: 1.8em;
+  color: #333333;
   margin-bottom: 40px;
   font-weight: 400 !important;
 }
@@ -105,7 +112,7 @@
 .single-column ul {
   list-style: none;
   padding-left: 0;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .single-column li {
@@ -114,6 +121,7 @@
   position: relative;
   font-weight: 300 !important;
   line-height: 1.8;
+  color: #666666;
 }
 
 .single-column li:before {
@@ -138,13 +146,13 @@
   position: absolute;
   top: 40px;
   right: 40px;
-  max-width: 80px;
+  max-width: 70px;
   height: auto;
 }
 
 .two-columns h2 {
-  font-size: 2.5em;
-  color: #D9931C;
+  font-size: 1.8em;
+  color: #333333;
   margin-bottom: 30px;
   font-weight: 400 !important;
 }
@@ -169,7 +177,7 @@
 .column ul {
   list-style: none;
   padding-left: 0;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .column li {
@@ -178,6 +186,7 @@
   position: relative;
   font-weight: 300 !important;
   line-height: 1.8;
+  color: #666666;
 }
 
 .column li:before {
@@ -212,15 +221,15 @@
 }
 
 .text-content h2 {
-  font-size: 2.5em;
-  color: #D9931C;
+  font-size: 1.8em;
+  color: #333333;
   margin-bottom: 20px;
   font-weight: 400 !important;
 }
 
 .text-content p {
-  font-size: 1.8em;
-  color: #666;
+  font-size: 1em;
+  color: #666666;
   margin-bottom: 20px;
   font-weight: 300 !important;
 }
@@ -228,7 +237,7 @@
 .text-content ul {
   list-style: none;
   padding-left: 0;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .text-content li {
@@ -237,6 +246,7 @@
   position: relative;
   font-weight: 300 !important;
   line-height: 1.8;
+  color: #666666;
 }
 
 .text-content li:before {
@@ -315,15 +325,15 @@
 }
 
 .overlay-text h2 {
-  font-size: 2.5em;
-  color: #D9931C;
+  font-size: 1.8em;
+  color: #333333;
   margin-bottom: 10px;
   font-weight: 400 !important;
 }
 
 .overlay-text p {
-  font-size: 1.8em;
-  color: #666;
+  font-size: 1em;
+  color: #666666;
   margin: 0;
   font-weight: 300 !important;
 }
@@ -334,27 +344,27 @@
   font-weight: 400 !important;
 }
 
-/* Only main titles get orange color */
+/* NO ORANGE TEXT - All headings should be dark gray */
 .title-slide h1,
 .section-slide h1,
 .single-column h2,
 .two-columns h2,
 .text-content h2,
 .overlay-text h2 {
-  color: #D9931C !important;
+  color: #333333 !important;
 }
 
 .reveal h2 {
-  font-size: 2.5em;
+  font-size: 1.8em;
   margin-bottom: 30px;
   font-weight: 400 !important;
 }
 
 .reveal p, .reveal li {
-  font-size: 1.2em;
+  font-size: 1em;
   line-height: 1.8;
   font-weight: 300 !important;
-  color: #333333;
+  color: #666666;
 }
 
 /* Fragment styling */
