@@ -21,10 +21,11 @@
 				<section>
 					<div class="title-slide">
 						<img src="img/VanillaCore_Vertical.png" alt="CORE Logo" class="logo">
-						<h1>Cloud Fundamentals</h1>
+						<h1>Design Patterns Workshop</h1>
+						<h2 style="font-size: 2em; color: #666; font-weight: 300; margin-top: 20px;">Telekom Architecture Training</h2>
 					</div>
 					<aside class="notes">
-						Willkommen zur Cloud Fundamentals Präsentation. Diese Einführung gibt einen Überblick über grundlegende Cloud-Konzepte und Prinzipien.
+						Willkommen zum Design Patterns Workshop. Dieser Workshop ist Teil des Telekom Architecture Trainings und fokussiert sich auf bewährte Entwurfsmuster in der Softwareentwicklung.
 					</aside>
 				</section>
 
@@ -32,10 +33,10 @@
 				<section>
 					<div class="section-slide">
 						<img src="img/VanillaCore_Vertical.png" alt="CORE Logo" class="logo">
-						<h1>Cloud, the solution to all problems?</h1>
+						<h1>Workshop Agenda</h1>
 					</div>
 					<aside class="notes">
-						In diesem Abschnitt diskutieren wir, ob die Cloud wirklich die Lösung für alle IT-Herausforderungen ist und betrachten verschiedene Perspektiven.
+						In diesem Abschnitt werden wir die Agenda des Workshops durchgehen und einen Überblick über die zu behandelnden Themen geben.
 					</aside>
 				</section>
 
@@ -43,17 +44,17 @@
 				<section>
 					<div class="single-column">
 						<img src="img/VanillaCore_Square.png" alt="CORE Logo" class="logo-corner">
-						<h2>Access Control & Authentication</h2>
+						<h2>Workshop Ziele</h2>
 						<ul>
-							<li>Strict least privilege principle</li>
-							<li class="fragment">API keys and service accounts over human users</li>
-							<li class="fragment">MFA mandatory for management access</li>
-							<li class="fragment">RBAC with regular access reviews</li>
-							<li class="fragment">Centralized identity management</li>
+							<li>Design Patterns verstehen und anwenden</li>
+							<li class="fragment">Bewährte Lösungsmuster für häufige Probleme erkennen</li>
+							<li class="fragment">Code-Qualität und Wartbarkeit verbessern</li>
+							<li class="fragment">Kommunikation zwischen Entwicklern fördern</li>
+							<li class="fragment">Praktische Anwendung in realen Projekten</li>
 						</ul>
 					</div>
 					<aside class="notes">
-						Diese Folie zeigt die wichtigsten Prinzipien für Access Control und Authentication in Cloud-Umgebungen. Jeder Punkt baut auf dem vorherigen auf und wird einzeln erklärt.
+						Diese Folie zeigt die Hauptziele unseres Design Patterns Workshops. Wir fokussieren uns darauf, wie Patterns dabei helfen, besseren und wartbareren Code zu schreiben.
 					</aside>
 				</section>
 
@@ -61,36 +62,32 @@
 				<section>
 					<div class="two-columns">
 						<img src="img/VanillaCore_Square.png" alt="CORE Logo" class="logo-corner">
-						<h2>Standardization and shared responsibility</h2>
+						<h2>Patterns Overview</h2>
 						<div class="columns-container">
 							<div class="column">
-								<h3>Cloud Provider Perspective:</h3>
+								<h3>Creational Patterns:</h3>
 								<ul>
-									<li>Basic services</li>
-									<li class="fragment">Automatic provisioning / deprovisioning</li>
-									<li class="fragment">Operation of XaaS components</li>
-									<li class="fragment">Access protection</li>
-									<li class="fragment">Network and infrastructure security</li>
-									<li class="fragment">Hardware provisioning</li>
-									<li class="fragment">Maintenance of automated software stack</li>
+									<li>Singleton</li>
+									<li class="fragment">Factory Method</li>
+									<li class="fragment">Abstract Factory</li>
+									<li class="fragment">Builder</li>
+									<li class="fragment">Prototype</li>
 								</ul>
 							</div>
 							<div class="column">
-								<h3>User Perspective:</h3>
+								<h3>Structural Patterns:</h3>
 								<ul>
-									<li>Standard services</li>
-									<li class="fragment">No customization</li>
-									<li class="fragment">SLAs and (paid) service levels</li>
-									<li class="fragment">Backups</li>
-									<li class="fragment">Patching and security (IaaS)</li>
-									<li class="fragment">Pay bills 😊</li>
+									<li>Adapter</li>
+									<li class="fragment">Decorator</li>
+									<li class="fragment">Facade</li>
+									<li class="fragment">Composite</li>
+									<li class="fragment">Proxy</li>
 								</ul>
 							</div>
 						</div>
-						<div class="slide-number">8</div>
 					</div>
 					<aside class="notes">
-						Diese Folie zeigt die geteilte Verantwortung zwischen Cloud-Provider und Nutzer auf. Links sehen wir die Aufgaben des Providers, rechts die des Nutzers. Beachten Sie das Emoji beim letzten Punkt - ein wenig Humor schadet nie!
+						Hier sehen wir eine Übersicht der wichtigsten Design Patterns, die wir in diesem Workshop behandeln werden. Links die Creational Patterns für Objekterzeugung, rechts die Structural Patterns für Objektkomposition.
 					</aside>
 				</section>
 
@@ -98,39 +95,38 @@
 				<section>
 					<div class="half-picture">
 						<div class="text-content">
-							<h2>Challenges</h2>
-							<p>Customers and stakeholders want more:</p>
+							<h2>Real-World Examples</h2>
+							<p>Patterns in der Praxis:</p>
 							<ul>
-								<li>Faster rollouts/deployments</li>
-								<li class="fragment">Faster time-to-market</li>
-								<li class="fragment">Faster response times</li>
-								<li class="fragment">Better scalability</li>
-								<li class="fragment">24/7 availability</li>
-								<li class="fragment">More automation</li>
-								<li class="fragment">Better service quality</li>
-								<li class="fragment">Lower costs :-D</li>
+								<li>MVC Architecture Pattern</li>
+								<li class="fragment">Dependency Injection</li>
+								<li class="fragment">Repository Pattern</li>
+								<li class="fragment">Observer für Event Handling</li>
+								<li class="fragment">Strategy für Algorithmus-Auswahl</li>
+								<li class="fragment">Command für Undo-Funktionalität</li>
+								<li class="fragment">Template Method für Workflows</li>
 							</ul>
 						</div>
 						<div class="image-content">
-							<div class="placeholder-image drowning-hand" aria-label="Hand reaching out of water"></div>
+							<div class="placeholder-image drowning-hand" aria-label="Code architecture visualization"></div>
 						</div>
 					</div>
 					<aside class="notes">
-						Diese Folie illustriert die Herausforderungen, mit denen Unternehmen konfrontiert sind. Das Bild einer ertrinkenden Hand symbolisiert, wie überwältigend diese Anforderungen sein können. Jeder Punkt steigert den Druck auf IT-Teams.
+						Diese Folie zeigt konkrete Beispiele, wie Design Patterns in realen Softwareprojekten eingesetzt werden. Jedes Pattern löst spezifische Probleme in der Architektur und im Design.
 					</aside>
 				</section>
 
 				<!-- 6. Full-picture slide -->
 				<section>
 					<div class="full-picture">
-						<div class="placeholder-image warehouse" aria-label="Warehouse with forklifts"></div>
+						<div class="placeholder-image warehouse" aria-label="Software architecture blueprint"></div>
 						<div class="overlay-text">
-							<h2>Lift & Shift</h2>
-							<p>Easy and Simple</p>
+							<h2>Building Better Software</h2>
+							<p>Through Proven Patterns</p>
 						</div>
 					</div>
 					<aside class="notes">
-						Lift & Shift ist oft der erste Schritt in die Cloud - einfach und schnell, aber nicht immer die beste Lösung. Das Warehouse-Bild symbolisiert das "Verschieben" von Workloads ohne Optimierung für die Cloud.
+						Design Patterns helfen uns dabei, bessere Software zu entwickeln. Sie bieten bewährte Lösungen für wiederkehrende Probleme und verbessern die Kommunikation zwischen Entwicklern.
 					</aside>
 				</section>
 			</div>

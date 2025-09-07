@@ -1,6 +1,6 @@
 {
   "name": "telekom-presentation-system",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Professional presentation system based on reveal.js for Telekom Architecture Training",
   "main": "index.js",
   "scripts": {
