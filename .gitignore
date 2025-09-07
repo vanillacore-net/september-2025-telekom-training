@@ -8,6 +8,9 @@ memory/
 CLAUDE.md.backup
 CHANGELOG
 
+# Screenshots folder (contains reference designs)
+screenshots/
+
 # Presentation materials (PowerPoint files) - allow final output
 presentation/*.pptx
 !presentation/telekom-architecture-training-complete.pptx
