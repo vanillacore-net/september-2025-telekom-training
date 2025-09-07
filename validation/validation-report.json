@@ -24,15 +24,15 @@
     {
       "slideNumber": 4,
       "firstLineVisible": true,
-      "totalFragments": 11,
-      "fragmentTestsPassed": 11,
+      "totalFragments": 8,
+      "fragmentTestsPassed": 8,
       "screenshotPath": "/Users/karsten/Nextcloud/Work/Training/2025-09_Telekom_Architecture/validation/screenshots/slide-4.png"
     },
     {
       "slideNumber": 5,
       "firstLineVisible": true,
-      "totalFragments": 7,
-      "fragmentTestsPassed": 7,
+      "totalFragments": 6,
+      "fragmentTestsPassed": 6,
       "screenshotPath": "/Users/karsten/Nextcloud/Work/Training/2025-09_Telekom_Architecture/validation/screenshots/slide-5.png"
     },
     {
@@ -46,7 +46,7 @@
   "errors": [],
   "summary": {
     "totalSlides": 6,
-    "fragmentTests": 22,
+    "fragmentTests": 18,
     "speakerNotesTest": true,
     "pdfTest": true
   }
