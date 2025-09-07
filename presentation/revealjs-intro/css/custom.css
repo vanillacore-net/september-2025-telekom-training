@@ -41,13 +41,13 @@
 }
 
 .title-slide .logo {
-  max-width: 100px;
+  max-width: 60px !important;
   height: auto;
   margin-bottom: 50px;
 }
 
 .title-slide h1 {
-  font-size: 2.4em;
+  font-size: 1.8em !important;
   color: #333333;
   font-weight: 400 !important;
   margin: 0;
@@ -55,7 +55,7 @@
 }
 
 .title-slide h2 {
-  font-size: 1.2em;
+  font-size: 0.9em !important;
   color: #666666;
   font-weight: 300 !important;
   margin: 0;
@@ -72,13 +72,13 @@
 }
 
 .section-slide .logo {
-  max-width: 100px;
+  max-width: 60px !important;
   height: auto;
   margin-bottom: 50px;
 }
 
 .section-slide h1 {
-  font-size: 2.4em;
+  font-size: 1.8em !important;
   color: #333333;
   font-weight: 400 !important;
   margin: 0;
@@ -98,21 +98,22 @@
   position: absolute;
   top: 40px;
   right: 40px;
-  max-width: 70px;
+  max-width: 40px !important;
   height: auto;
 }
 
 .single-column h2 {
-  font-size: 1.8em;
+  font-size: 1.4em !important;
   color: #333333;
   margin-bottom: 40px;
   font-weight: 400 !important;
+  text-align: left !important;
 }
 
 .single-column ul {
   list-style: none;
   padding-left: 0;
-  font-size: 1em;
+  font-size: 0.75em !important;
 }
 
 .single-column li {
@@ -146,15 +147,16 @@
   position: absolute;
   top: 40px;
   right: 40px;
-  max-width: 70px;
+  max-width: 40px !important;
   height: auto;
 }
 
 .two-columns h2 {
-  font-size: 1.8em;
+  font-size: 1.4em !important;
   color: #333333;
   margin-bottom: 30px;
   font-weight: 400 !important;
+  text-align: left !important;
 }
 
 .columns-container {
@@ -177,7 +179,7 @@
 .column ul {
   list-style: none;
   padding-left: 0;
-  font-size: 1em;
+  font-size: 0.75em !important;
 }
 
 .column li {
@@ -221,14 +223,15 @@
 }
 
 .text-content h2 {
-  font-size: 1.8em;
+  font-size: 1.4em !important;
   color: #333333;
   margin-bottom: 20px;
   font-weight: 400 !important;
+  text-align: left !important;
 }
 
 .text-content p {
-  font-size: 1em;
+  font-size: 0.75em !important;
   color: #666666;
   margin-bottom: 20px;
   font-weight: 300 !important;
@@ -237,7 +240,7 @@
 .text-content ul {
   list-style: none;
   padding-left: 0;
-  font-size: 1em;
+  font-size: 0.75em !important;
 }
 
 .text-content li {
@@ -361,7 +364,7 @@
 }
 
 .reveal p, .reveal li {
-  font-size: 1em;
+  font-size: 0.75em !important;
   line-height: 1.8;
   font-weight: 300 !important;
   color: #666666;
