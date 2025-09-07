@@ -10,7 +10,7 @@
   height: 720px;
 }
 
-/* Title slide styling */
+/* 1. Title slide styling */
 .title-slide {
   text-align: center;
   height: 100vh;
@@ -27,28 +27,276 @@
 }
 
 .title-slide h1 {
-  font-size: 3.5em;
-  color: #e20074;
-  margin-bottom: 20px;
-  font-weight: bold;
+  font-size: 4em;
+  color: #666;
+  font-weight: normal;
+  margin: 0;
 }
 
-.title-slide h2 {
-  font-size: 2.5em;
+/* 2. Section slide styling */
+.section-slide {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-slide .logo {
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.section-slide h1 {
+  font-size: 3.5em;
+  color: #666;
+  font-weight: normal;
+  margin: 0;
+}
+
+/* 3. Single column styling */
+.single-column {
+  position: relative;
+  padding: 40px 60px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.single-column .logo-corner {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  max-width: 120px;
+  height: auto;
+}
+
+.single-column h2 {
+  font-size: 3em;
   color: #333;
   margin-bottom: 40px;
   font-weight: normal;
 }
 
-.title-slide .author {
+.single-column ul {
+  list-style: none;
+  padding-left: 0;
   font-size: 1.5em;
-  color: #666;
-  margin-bottom: 10px;
 }
 
-.title-slide .date {
+.single-column li {
+  margin-bottom: 20px;
+  padding-left: 30px;
+  position: relative;
+}
+
+.single-column li:before {
+  content: "•";
+  color: #333;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* 4. Two column styling */
+.two-columns {
+  position: relative;
+  padding: 40px 60px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.two-columns .logo-corner {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  max-width: 120px;
+  height: auto;
+}
+
+.two-columns h2 {
+  font-size: 3em;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: normal;
+}
+
+.columns-container {
+  display: flex;
+  gap: 60px;
+  flex-grow: 1;
+}
+
+.column {
+  flex: 1;
+}
+
+.column h3 {
+  font-size: 1.8em;
+  color: #666;
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+
+.column ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 1.2em;
+}
+
+.column li {
+  margin-bottom: 15px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.column li:before {
+  content: "•";
+  color: #333;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.slide-number {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
   font-size: 1.2em;
   color: #999;
+}
+
+/* 5. Half-picture styling */
+.half-picture {
+  display: flex;
+  height: 100vh;
+  align-items: stretch;
+}
+
+.text-content {
+  flex: 1;
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.text-content h2 {
+  font-size: 3em;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+
+.text-content p {
+  font-size: 1.5em;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.text-content ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 1.2em;
+}
+
+.text-content li {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.text-content li:before {
+  content: "•";
+  color: #333;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.image-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.half-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Placeholder images */
+.placeholder-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  color: white;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.placeholder-image.drowning-hand {
+  background: linear-gradient(135deg, #4a90e2 0%, #2c5aa0 50%, #1e3a5f 100%);
+}
+
+.placeholder-image.warehouse {
+  background: linear-gradient(135deg, #8e8e93 0%, #636366 50%, #48484a 100%);
+}
+
+/* 6. Full-picture styling */
+.full-picture {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.full-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.full-picture .placeholder-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  right: 80px;
+  transform: translateY(-50%);
+  text-align: right;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px 40px;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+.overlay-text h2 {
+  font-size: 3em;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+.overlay-text p {
+  font-size: 1.5em;
+  color: #666;
+  margin: 0;
 }
 
 /* General slide styling */
