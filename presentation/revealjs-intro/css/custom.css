@@ -104,13 +104,13 @@
 }
 
 .single-column h2 {
-  font-size: 0.9em !important;
   color: #333333;
   margin-top: 0 !important; /* NO top margin */
   margin-bottom: 1rem !important;
   padding-top: 0 !important; /* NO top padding */
   font-weight: 400 !important;
   text-align: left !important;
+  /* Font size handled by global .reveal h2 rule */
 }
 
 .single-column ul {
@@ -156,13 +156,13 @@
 }
 
 .two-columns h2 {
-  font-size: 0.9em !important;
   color: #333333;
   margin-top: 0 !important; /* NO top margin */
   margin-bottom: 1rem !important;
   padding-top: 0 !important; /* NO top padding */
   font-weight: 400 !important;
   text-align: left !important;
+  /* Font size handled by global .reveal h2 rule */
 }
 
 .columns-container {
@@ -176,10 +176,10 @@
 }
 
 .column h3 {
-  font-size: 0.8em !important;
   color: #666;
   margin-bottom: 0.5rem !important;
   font-weight: 400 !important;
+  /* Font size handled by global .reveal h3 rule */
 }
 
 .column ul {
@@ -238,13 +238,13 @@
 }
 
 .text-content h2 {
-  font-size: 0.9em !important;
   color: #333333;
   margin-top: 0 !important; /* NO top margin */
   margin-bottom: 1rem !important;
   padding-top: 0 !important; /* NO top padding */
   font-weight: 400 !important;
   text-align: left !important;
+  /* Font size handled by global .reveal h2 rule */
 }
 
 .text-content p {
@@ -361,19 +361,90 @@
   font-weight: 300 !important;
 }
 
-/* CRITICAL FIX: REMOVE EXCESSIVE MARGINS - ALL CONTENT TO TOP */
+/* NUCLEAR OPTION - FORCE CONTENT TO ABSOLUTE TOP */
+.reveal .slides {
+  top: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 .reveal .slides section {
-  padding: 1rem 2rem !important; /* Minimal top padding */
+  padding: 0 !important;
+  margin: 0 !important;
   height: 100vh !important;
+  width: 100% !important;
   display: flex !important;
   flex-direction: column !important;
-  justify-content: flex-start !important; /* Force content to TOP */
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  position: relative !important;
+}
+
+/* OVERRIDE REVEALJS SLIDE POSITIONING */
+.reveal .slides > section {
+  padding: 1rem 2rem !important; /* Minimal padding only */
+  margin: 0 !important;
+  top: 0 !important;
+}
+
+/* FORCE ALL CONTENT TO TOP */
+.content-slide,
+.single-column,
+.two-columns,
+.half-picture {
+  padding: 1rem 2rem !important; /* Minimal padding */
+  margin: 0 !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
   align-items: flex-start !important;
 }
 
-/* CONTENT SLIDES - ZERO TOP MARGIN */
-.content-slide {
-  padding-top: 1rem !important; /* Minimal top padding only */
+/* HEADLINES - ABSOLUTE TOP WITH ZERO MARGIN */
+.single-column h2,
+.two-columns h2,
+.text-content h2 {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 0.9em !important;
+  text-align: left !important;
+  line-height: 1.2 !important;
+}
+
+/* TITLE SLIDES - DIFFERENT TREATMENT */
+.title-slide,
+.section-slide {
+  padding: 4rem 2rem !important; /* More padding for centered content */
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* CORNER LOGOS - ABSOLUTE TOP POSITIONING */
+.logo-corner {
+  position: absolute !important;
+  top: 1rem !important;
+  right: 2rem !important;
+  max-width: 50px !important;
+}
+
+/* REVEALJS OVERRIDE - REMOVE DEFAULT TRANSFORMS */
+.reveal .slides section.present {
+  transform: none !important;
+}
+
+/* TWO COLUMNS SPECIFIC */
+.columns-container {
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-grow: 1;
+}
+
+/* HALF PICTURE - FORCE TOP ALIGNMENT */
+.half-picture .text-content {
+  padding: 1rem 2rem 1rem 2rem !important;
+  margin: 0 !important;
+  justify-content: flex-start !important;
 }
 
 /* General slide styling with color fixes */
@@ -392,9 +463,24 @@
   color: #333333 !important;
 }
 
+/* PROPER FONT HIERARCHY - TITLE vs CONTENT */
+/* H1 for slide titles - LARGE */
+.title-slide h1,
+.section-slide h1 {
+  font-size: 1.8em !important; /* Large for main slide titles */
+}
+
+/* H2 for content headlines - SMALLER */
 .reveal h2 {
-  font-size: 1.8em;
-  margin-bottom: 30px;
+  font-size: 0.9em !important; /* Much smaller than titles */
+  margin-bottom: 1rem !important;
+  font-weight: 400 !important;
+}
+
+/* H3 for subheadings - SMALLEST */
+.reveal h3 {
+  font-size: 0.8em !important;
+  margin-bottom: 0.5rem !important;
   font-weight: 400 !important;
 }
 
