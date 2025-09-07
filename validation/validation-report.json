@@ -1,0 +1,53 @@
+{
+  "slides": [
+    {
+      "slideNumber": 1,
+      "firstLineVisible": true,
+      "totalFragments": 0,
+      "fragmentTestsPassed": 0,
+      "screenshotPath": "/Users/karsten/Nextcloud/Work/Training/2025-09_Telekom_Architecture/validation/screenshots/slide-1.png"
+    },
+    {
+      "slideNumber": 2,
+      "firstLineVisible": true,
+      "totalFragments": 0,
+      "fragmentTestsPassed": 0,
+      "screenshotPath": "/Users/karsten/Nextcloud/Work/Training/2025-09_Telekom_Architecture/validation/screenshots/slide-2.png"
+    },
+    {
+      "slideNumber": 3,
+      "firstLineVisible": true,
+      "totalFragments": 4,
+      "fragmentTestsPassed": 4,
+      "screenshotPath": "/Users/karsten/Nextcloud/Work/Training/2025-09_Telekom_Architecture/validation/screenshots/slide-3.png"
+    },
+    {
+      "slideNumber": 4,
+      "firstLineVisible": true,
+      "totalFragments": 11,
+      "fragmentTestsPassed": 11,
+      "screenshotPath": "/Users/karsten/Nextcloud/Work/Training/2025-09_Telekom_Architecture/validation/screenshots/slide-4.png"
+    },
+    {
+      "slideNumber": 5,
+      "firstLineVisible": true,
+      "totalFragments": 7,
+      "fragmentTestsPassed": 7,
+      "screenshotPath": "/Users/karsten/Nextcloud/Work/Training/2025-09_Telekom_Architecture/validation/screenshots/slide-5.png"
+    },
+    {
+      "slideNumber": 6,
+      "firstLineVisible": true,
+      "totalFragments": 0,
+      "fragmentTestsPassed": 0,
+      "screenshotPath": "/Users/karsten/Nextcloud/Work/Training/2025-09_Telekom_Architecture/validation/screenshots/slide-6.png"
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "totalSlides": 6,
+    "fragmentTests": 22,
+    "speakerNotesTest": true,
+    "pdfTest": true
+  }
+}
