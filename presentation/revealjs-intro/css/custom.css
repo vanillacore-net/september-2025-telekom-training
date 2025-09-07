@@ -1,9 +1,28 @@
 /* Custom CSS for Telekom Architecture Training */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+/* Force Open Sans everywhere with stronger overrides */
+.reveal,
+.reveal h1, .reveal h2, .reveal h3,
+.reveal h4, .reveal h5, .reveal h6,
+.reveal p, .reveal li, .reveal span {
+  font-family: 'Open Sans', sans-serif !important;
+}
 
 /* 16:9 aspect ratio configuration */
 .reveal {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+/* Override reveal.js theme fonts with !important */
+.reveal h1,
+.reveal h2, 
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  font-family: 'Open Sans', sans-serif !important;
+  font-weight: 400 !important;
 }
 
 .reveal .slides {
@@ -22,16 +41,17 @@
 }
 
 .title-slide .logo {
-  max-width: 200px;
+  max-width: 120px;
   height: auto;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .title-slide h1 {
-  font-size: 4em;
+  font-size: 3em;
   color: #D9931C;
-  font-weight: 400;
+  font-weight: 400 !important;
   margin: 0;
+  margin-bottom: 20px;
 }
 
 /* 2. Section slide styling */
@@ -45,15 +65,15 @@
 }
 
 .section-slide .logo {
-  max-width: 200px;
+  max-width: 120px;
   height: auto;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .section-slide h1 {
-  font-size: 3.5em;
+  font-size: 3em;
   color: #D9931C;
-  font-weight: 400;
+  font-weight: 400 !important;
   margin: 0;
 }
 
@@ -71,27 +91,29 @@
   position: absolute;
   top: 40px;
   right: 40px;
-  max-width: 120px;
+  max-width: 80px;
   height: auto;
 }
 
 .single-column h2 {
-  font-size: 3em;
+  font-size: 2.5em;
   color: #D9931C;
   margin-bottom: 40px;
-  font-weight: 400;
+  font-weight: 400 !important;
 }
 
 .single-column ul {
   list-style: none;
   padding-left: 0;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 .single-column li {
   margin-bottom: 20px;
   padding-left: 30px;
   position: relative;
+  font-weight: 300 !important;
+  line-height: 1.8;
 }
 
 .single-column li:before {
@@ -116,15 +138,15 @@
   position: absolute;
   top: 40px;
   right: 40px;
-  max-width: 120px;
+  max-width: 80px;
   height: auto;
 }
 
 .two-columns h2 {
-  font-size: 3em;
+  font-size: 2.5em;
   color: #D9931C;
   margin-bottom: 30px;
-  font-weight: 400;
+  font-weight: 400 !important;
 }
 
 .columns-container {
@@ -139,9 +161,9 @@
 
 .column h3 {
   font-size: 1.8em;
-  color: #333;
+  color: #666;
   margin-bottom: 20px;
-  font-weight: 300;
+  font-weight: 400 !important;
 }
 
 .column ul {
@@ -154,6 +176,8 @@
   margin-bottom: 15px;
   padding-left: 20px;
   position: relative;
+  font-weight: 300 !important;
+  line-height: 1.8;
 }
 
 .column li:before {
@@ -188,17 +212,17 @@
 }
 
 .text-content h2 {
-  font-size: 3em;
+  font-size: 2.5em;
   color: #D9931C;
   margin-bottom: 20px;
-  font-weight: 400;
+  font-weight: 400 !important;
 }
 
 .text-content p {
-  font-size: 1.5em;
+  font-size: 1.8em;
   color: #666;
   margin-bottom: 20px;
-  font-weight: 300;
+  font-weight: 300 !important;
 }
 
 .text-content ul {
@@ -208,9 +232,11 @@
 }
 
 .text-content li {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   padding-left: 20px;
   position: relative;
+  font-weight: 300 !important;
+  line-height: 1.8;
 }
 
 .text-content li:before {
@@ -289,35 +315,46 @@
 }
 
 .overlay-text h2 {
-  font-size: 3em;
+  font-size: 2.5em;
   color: #D9931C;
   margin-bottom: 10px;
-  font-weight: 400;
+  font-weight: 400 !important;
 }
 
 .overlay-text p {
-  font-size: 1.5em;
+  font-size: 1.8em;
   color: #666;
   margin: 0;
-  font-weight: 300;
+  font-weight: 300 !important;
 }
 
-/* General slide styling */
+/* General slide styling with color fixes */
 .reveal h1, .reveal h2, .reveal h3 {
-  color: #D9931C;
-  font-weight: 400;
+  color: #333333;
+  font-weight: 400 !important;
+}
+
+/* Only main titles get orange color */
+.title-slide h1,
+.section-slide h1,
+.single-column h2,
+.two-columns h2,
+.text-content h2,
+.overlay-text h2 {
+  color: #D9931C !important;
 }
 
 .reveal h2 {
   font-size: 2.5em;
   margin-bottom: 30px;
-  font-weight: 400;
+  font-weight: 400 !important;
 }
 
 .reveal p, .reveal li {
   font-size: 1.2em;
-  line-height: 1.5;
-  font-weight: 300;
+  line-height: 1.8;
+  font-weight: 300 !important;
+  color: #333333;
 }
 
 /* Fragment styling */
