@@ -1,0 +1,17 @@
+{
+  "name": "telekom-architecture-training",
+  "version": "1.0.2",
+  "description": "Telekom Architecture training documentation and presentation materials",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "telekom",
+    "architecture",
+    "training",
+    "documentation"
+  ],
+  "author": "",
+  "license": "ISC"
+}
