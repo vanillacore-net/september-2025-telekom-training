@@ -15,9 +15,9 @@ slideOptions:
   overview: true
   touch: true
   fragments: true
-  width: 1024
-  height: 768
-  margin: 0.1
+  width: 1920
+  height: 1080
+  margin: 0.05
   minScale: 0.5
   maxScale: 2.0
 ---
@@ -31,7 +31,7 @@ slideOptions:
 
 /* Critical: Fix content overflow and enforce left alignment */
 .reveal .slides {
-  font-size: 18px !important; /* Further reduced for better fit */
+  font-size: 34px !important; /* Scaled for FHD (18px * 1.875) */
   line-height: 1.3 !important;
 }
 
@@ -45,15 +45,16 @@ slideOptions:
 .reveal .slides section {
   height: 100%;
   width: 100%;
+  max-width: 100vw;
   overflow-y: auto !important; /* Allow scrolling if needed */
   overflow-x: hidden;
-  padding: 20px !important; /* Add padding to prevent edge cutoff */
+  padding: 38px !important; /* Scaled padding for FHD (20px * 1.875) */
   box-sizing: border-box;
   text-align: left !important; /* Ensure all content is left-aligned */
 }
 
 .reveal h1 {
-  font-size: 1.8em !important; /* Smaller headers */
+  font-size: 1.8em !important; /* Proportional to base font size */
   color: #2c2c2c;
   font-weight: 600 !important;
   text-align: left !important;
@@ -107,7 +108,7 @@ slideOptions:
 
 /* Code blocks sizing */
 .reveal pre {
-  font-size: 0.6em !important; /* Smaller code blocks */
+  font-size: 0.6em !important; /* Proportional to base font size */
   max-height: 500px;
   overflow: auto !important;
 }
@@ -127,8 +128,8 @@ slideOptions:
   text-align: left;
   background: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 100%);
   color: white;
-  padding: 40px;
-  margin: -20px;
+  padding: 75px; /* Scaled for FHD (40px * 1.875) */
+  margin: -38px; /* Scaled for FHD (-20px * 1.875) */
   border-radius: 8px;
 }
 
@@ -140,18 +141,18 @@ slideOptions:
 
 .pattern-definition {
   background-color: #F5F5F5;
-  border-left: 4px solid #666666;
-  padding: 20px;
-  margin: 20px 0;
+  border-left: 8px solid #666666; /* Scaled for FHD (4px * 2) */
+  padding: 38px; /* Scaled for FHD (20px * 1.875) */
+  margin: 38px 0; /* Scaled for FHD (20px * 1.875) */
   border-radius: 4px;
 }
 
 .highlight-box {
   background-color: #F5F5F5;
-  border-left: 4px solid #666666;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 4px;
+  border-left: 8px solid #666666; /* Scaled for FHD (4px * 2) */
+  padding: 38px; /* Scaled for FHD (20px * 1.875) */
+  margin: 38px 0; /* Scaled for FHD (20px * 1.875) */
+  border-radius: 8px; /* Scaled for FHD (4px * 2) */
 }
 
 .highlight-box.warning {
@@ -167,9 +168,9 @@ slideOptions:
 .code-example {
   background: #2d3748;
   color: #e2e8f0;
-  padding: 20px;
-  border-radius: 8px;
-  margin: 20px 0;
+  padding: 38px; /* Scaled for FHD (20px * 1.875) */
+  border-radius: 15px; /* Scaled for FHD (8px * 1.875) */
+  margin: 38px 0; /* Scaled for FHD (20px * 1.875) */
 }
 
 .code-example h5 {
@@ -179,22 +180,22 @@ slideOptions:
 
 .interactive-question {
   background-color: #F5F5F5;
-  border: 2px solid #666666;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 8px;
+  border: 4px solid #666666; /* Scaled for FHD (2px * 2) */
+  padding: 38px; /* Scaled for FHD (20px * 1.875) */
+  margin: 38px 0; /* Scaled for FHD (20px * 1.875) */
+  border-radius: 15px; /* Scaled for FHD (8px * 1.875) */
   text-align: center;
 }
 
 .progress-indicator {
   display: flex;
   justify-content: space-around;
-  margin: 20px 0;
+  margin: 38px 0; /* Scaled for FHD (20px * 1.875) */
 }
 
 .progress-step {
-  padding: 10px 15px;
-  border-radius: 20px;
+  padding: 19px 28px; /* Scaled for FHD (10px * 1.875, 15px * 1.875) */
+  border-radius: 38px; /* Scaled for FHD (20px * 1.875) */
   font-weight: 400;
 }
 
