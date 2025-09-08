@@ -1,6 +1,6 @@
 ---
-title: Design Patterns Workshop - Day 1
-description: Design Patterns Fundamentals - Singleton and Factory Method Patterns
+title: Design Patterns Workshop - Tag 1
+description: Design Patterns Grundlagen - Singleton und Factory Method Patterns
 tags: design-patterns, workshop, telekom, architecture, training, day1, singleton, factory
 slideOptions:
   theme: white
@@ -22,74 +22,284 @@ slideOptions:
   maxScale: 2.0
 ---
 
-<link rel="stylesheet" type="text/css" href="presentation-styles.css">
+<style>
+/* HedgeDoc Presentation Styles */
+.reveal {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+
+/* Critical: Fix content overflow */
+.reveal .slides {
+  font-size: 18px !important; /* Further reduced for better fit */
+  line-height: 1.3 !important;
+}
+
+.reveal .slides section {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto !important; /* Allow scrolling if needed */
+  overflow-x: hidden;
+  padding: 20px !important; /* Add padding to prevent edge cutoff */
+  box-sizing: border-box;
+}
+
+.reveal h1 {
+  font-size: 1.8em !important; /* Smaller headers */
+  color: #D9931C;
+  font-weight: 400 !important;
+}
+
+.reveal h2 {
+  font-size: 1.4em !important;
+  color: #D9931C;
+  font-weight: 400 !important;
+}
+
+.reveal h3 {
+  font-size: 1.2em !important;
+  font-weight: 400 !important;
+}
+
+.reveal h4, .reveal h5, .reveal h6 {
+  font-weight: 400 !important;
+}
+
+.reveal p, .reveal li {
+  font-weight: 300 !important;
+}
+
+/* Prevent text from being too large */
+.reveal .slides {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Lists should not overflow */
+.reveal ul, .reveal ol {
+  max-width: 90%;
+  margin-left: 0 !important;
+  padding-left: 1.5em !important;
+  list-style-type: none;
+}
+
+.reveal ul li::before {
+  content: "▸";
+  color: #D9931C;
+  font-weight: 400;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+/* Code blocks sizing */
+.reveal pre {
+  font-size: 0.6em !important; /* Smaller code blocks */
+  max-height: 500px;
+  overflow: auto !important;
+}
+
+.reveal .two-column {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.reveal .two-column > div {
+  flex: 1;
+}
+
+.workshop-header {
+  text-align: center;
+  background: linear-gradient(135deg, #D9931C 0%, #FF8A33 100%);
+  color: white;
+  padding: 40px;
+  margin: -20px;
+  border-radius: 8px;
+}
+
+.workshop-header h1,
+.workshop-header h2 {
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.pattern-definition {
+  background-color: #F5F5F5;
+  border-left: 4px solid #D9931C;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.highlight-box {
+  background-color: #F5F5F5;
+  border-left: 4px solid #D9931C;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.highlight-box.warning {
+  border-left-color: #ff9800;
+  background-color: #fff3e0;
+}
+
+.highlight-box.accent {
+  border-left-color: #D9931C;
+  background-color: #F5F5F5;
+}
+
+.code-example {
+  background: #2d3748;
+  color: #e2e8f0;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.code-example h5 {
+  color: #D9931C;
+  margin-top: 0;
+}
+
+.interactive-question {
+  background-color: #F5F5F5;
+  border: 2px solid #D9931C;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.progress-indicator {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.progress-step {
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-weight: 400;
+}
+
+.progress-step.completed {
+  background-color: #D9931C;
+  color: white;
+}
+
+.progress-step.current {
+  background-color: #ff9800;
+  color: white;
+}
+
+.progress-step.pending {
+  background-color: #F5F5F5;
+  color: #666666;
+}
+
+.reveal .fragment.highlight-green {
+  color: #4caf50;
+}
+
+.reveal .fragment.highlight-red {
+  color: #f44336;
+}
+
+@media screen and (max-width: 768px) {
+  .reveal .two-column {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+/* Hide Speaker Notes in Presentation Mode */
+/* This targets paragraphs that contain speaker notes */
+.reveal .slides section p {
+  /* We cannot use :contains() as it's not standard CSS */
+  /* Instead, we'll hide all p elements that might be speaker notes */
+}
+
+/* Hide .speaker-notes divs (class-based approach) */
+.speaker-notes {
+  display: none !important;
+}
+
+/* Hide reveal.js notes */
+.reveal .notes {
+  display: none !important;
+}
+
+/* A more direct approach: we'll need to convert **Speaker Notes:** to a class */
+</style>
 
 <div class="workshop-header">
 
-# Day 1: Design Patterns Workshop
+# Tag 1: Design Patterns Workshop
 ## Design Patterns Workshop
 
 </div>
 
 ---
 
-# Welcome & Introduction
+# Willkommen & Einführung
 
-## About This Workshop
-- Practical design patterns training <!-- .element: class="fragment" -->
-- Focus on enterprise architecture <!-- .element: class="fragment" -->
-- Hands-on coding exercises <!-- .element: class="fragment" -->
-- Real-world examples <!-- .element: class="fragment" -->
-- Interactive discussions <!-- .element: class="fragment" -->
+## Über diesen Workshop
+- Praxisorientierte Design Pattern Schulung <!-- .element: class="fragment" -->
+- Fokus auf Enterprise-Architektur <!-- .element: class="fragment" -->
+- Praktische Programmierübungen <!-- .element: class="fragment" -->
+- Reale Beispiele aus der Praxis <!-- .element: class="fragment" -->
+- Interaktive Diskussionen <!-- .element: class="fragment" -->
 
-## Learning Objectives  
-- Understand design pattern fundamentals <!-- .element: class="fragment" -->
-- Implement Singleton and Factory patterns <!-- .element: class="fragment" -->
-- Apply patterns to enterprise scenarios <!-- .element: class="fragment" -->
-- Build pattern recognition skills <!-- .element: class="fragment" -->
+## Lernziele  
+- Design Pattern Grundlagen verstehen <!-- .element: class="fragment" -->
+- Singleton und Factory Pattern implementieren <!-- .element: class="fragment" -->
+- Pattern in Enterprise-Szenarien anwenden <!-- .element: class="fragment" -->
+- Pattern-Erkennungskompetenzen aufbauen <!-- .element: class="fragment" -->
 
-**Speaker Notes:** Welcome everyone to the Design Patterns Workshop. This workshop focuses on practical application of design patterns in enterprise environments. We'll start with foundations and move to hands-on implementation.
+<!-- Speaker Notes: Herzlich willkommen zum Design Patterns Workshop. Dieser Workshop konzentriert sich auf die praktische Anwendung von Design Patterns in Enterprise-Umgebungen. Wir beginnen mit den Grundlagen und gehen zu praktischen Implementierungen über. -->
 
 ---
 
-# Workshop Agenda - Day 1
+# Workshop Agenda - Tag 1
 
 <div class="two-column">
 <div>
 
-## Morning Session (9:00 - 12:00)
-- Design patterns fundamentals <!-- .element: class="fragment" -->
-- Pattern benefits and categories <!-- .element: class="fragment" -->
-- Singleton pattern deep dive <!-- .element: class="fragment" -->
-- Hands-on Singleton exercise <!-- .element: class="fragment" -->
+## Vormittagssession (9:00 - 12:00)
+- Design Pattern Grundlagen <!-- .element: class="fragment" -->
+- Pattern Vorteile und Kategorien <!-- .element: class="fragment" -->
+- Singleton Pattern Tiefgang <!-- .element: class="fragment" -->
+- Praktische Singleton Übung <!-- .element: class="fragment" -->
 
 </div>
 <div>
 
-## Afternoon Session (13:00 - 17:00)
-- Factory Method pattern <!-- .element: class="fragment" -->
-- Implementation strategies <!-- .element: class="fragment" -->
-- Enterprise use cases <!-- .element: class="fragment" -->
-- Practical exercises <!-- .element: class="fragment" -->
-- Q&A and discussion <!-- .element: class="fragment" -->
+## Nachmittagssession (13:00 - 17:00)
+- Factory Method Pattern <!-- .element: class="fragment" -->
+- Implementierungsstrategien <!-- .element: class="fragment" -->
+- Enterprise Anwendungsfälle <!-- .element: class="fragment" -->
+- Praktische Übungen <!-- .element: class="fragment" -->
+- Q&A und Diskussion <!-- .element: class="fragment" -->
 
 </div>
 </div>
 
-**Speaker Notes:** Day 1 covers fundamental patterns that form the basis for more complex patterns. We'll balance theory with practical implementation to ensure concepts stick.
+<!-- Speaker Notes: Tag 1 behandelt fundamentale Pattern, die die Basis für komplexere Pattern bilden. Wir werden Theorie mit praktischer Implementierung ausbalancieren, um sicherzustellen, dass die Konzepte hängen bleiben. -->
 
 ---
 
-# What Are Design Patterns?
+# Was sind Design Patterns?
 
 <div class="pattern-definition">
 
 #### Design Patterns Definition
-**Intent**: Reusable solutions to common problems in software design.
+**Zweck**: Wiederverwendbare Lösungen für häufige Probleme im Software-Design.
 
-**Problem**: Recurring design challenges that appear across different applications and contexts.
+**Problem**: Wiederkehrende Design-Herausforderungen, die in verschiedenen Anwendungen und Kontexten auftreten.
 
-**Solution**: Proven approaches that capture best practices and provide a common vocabulary for developers.
+**Lösung**: Bewährte Ansätze, die Best Practices erfassen und ein gemeinsames Vokabular für Entwickler bereitstellen.
 
 </div>
 
@@ -97,132 +307,132 @@ slideOptions:
 <div>
 
 ## Definition
-- Reusable solutions to common problems <!-- .element: class="fragment" -->
-- Proven approaches in software design <!-- .element: class="fragment" -->
-- Communication tool between developers <!-- .element: class="fragment" -->
-- Not code, but concepts and relationships <!-- .element: class="fragment" -->
-- Context-specific implementations <!-- .element: class="fragment" -->
+- Wiederverwendbare Lösungen für häufige Probleme <!-- .element: class="fragment" -->
+- Bewährte Ansätze im Software-Design <!-- .element: class="fragment" -->
+- Kommunikationswerkzeug zwischen Entwicklern <!-- .element: class="fragment" -->
+- Nicht Code, sondern Konzepte und Beziehungen <!-- .element: class="fragment" -->
+- Kontextspezifische Implementierungen <!-- .element: class="fragment" -->
 
 </div>
 <div>
 
-## Key Benefits
-- Reduce development time <!-- .element: class="fragment" -->
-- Improve code quality <!-- .element: class="fragment" -->
-- Enable better communication <!-- .element: class="fragment" -->
-- Facilitate maintenance <!-- .element: class="fragment" -->
-- Promote best practices <!-- .element: class="fragment" -->
+## Zentrale Vorteile
+- Reduzierte Entwicklungszeit <!-- .element: class="fragment" -->
+- Verbesserte Code-Qualität <!-- .element: class="fragment" -->
+- Bessere Kommunikation <!-- .element: class="fragment" -->
+- Erleichterte Wartung <!-- .element: class="fragment" -->
+- Förderung von Best Practices <!-- .element: class="fragment" -->
 
 </div>
 </div>
 
-**Speaker Notes:** Design patterns are like architectural blueprints - they provide a template for solving common problems but must be adapted to specific contexts. They're not magic solutions but proven approaches.
+<!-- Speaker Notes: Design Patterns sind wie architektonische Blaupausen - sie bieten eine Vorlage für die Lösung häufiger Probleme, müssen aber an spezifische Kontexte angepasst werden. Sie sind keine magischen Lösungen, sondern bewährte Ansätze. -->
 
 ---
 
-# Pattern Categories Overview
+# Pattern Kategorien Überblick
 
 <div class="two-column">
 <div>
 
 ## Creational Patterns
-- **Singleton** - Single instance control <!-- .element: class="fragment highlight-red" -->
-- **Factory Method** - Object creation delegation <!-- .element: class="fragment highlight-red" -->
-- Abstract Factory - Product families <!-- .element: class="fragment" -->
-- Builder - Complex object construction <!-- .element: class="fragment" -->
-- Prototype - Object cloning <!-- .element: class="fragment" -->
+- **Singleton** - Einzelinstanz-Kontrolle <!-- .element: class="fragment highlight-red" -->
+- **Factory Method** - Objekt-Erstellungs-Delegation <!-- .element: class="fragment highlight-red" -->
+- Abstract Factory - Produktfamilien <!-- .element: class="fragment" -->
+- Builder - Komplexe Objekt-Konstruktion <!-- .element: class="fragment" -->
+- Prototype - Objekt-Kloning <!-- .element: class="fragment" -->
 
 </div>
 <div>
 
 ## Structural Patterns
-- Adapter - Interface compatibility <!-- .element: class="fragment" -->
-- Decorator - Dynamic behavior extension <!-- .element: class="fragment" -->
-- Facade - Simplified interfaces <!-- .element: class="fragment" -->
-- Composite - Tree structures <!-- .element: class="fragment" -->
-- Proxy - Object representatives <!-- .element: class="fragment" -->
+- Adapter - Interface-Kompatibilität <!-- .element: class="fragment" -->
+- Decorator - Dynamische Verhaltenserweiterung <!-- .element: class="fragment" -->
+- Facade - Vereinfachte Interfaces <!-- .element: class="fragment" -->
+- Composite - Baumstrukturen <!-- .element: class="fragment" -->
+- Proxy - Objekt-Repräsentanten <!-- .element: class="fragment" -->
 
 </div>
 </div>
 
 <div class="highlight-box accent">
-**Today's Focus**: Creational patterns, specifically Singleton and Factory Method
+**Heutiger Fokus**: Creational Patterns, speziell Singleton und Factory Method
 </div>
 
-**Speaker Notes:** Today we focus on Creational patterns, specifically Singleton and Factory Method. These are fundamental patterns that appear in most enterprise applications.
+<!-- Speaker Notes: Heute fokussieren wir uns auf Creational Patterns, speziell Singleton und Factory Method. Das sind fundamentale Pattern, die in den meisten Enterprise-Anwendungen auftreten. -->
 
 ---
 
-# When to Use Patterns
+# Wann sollte man Patterns verwenden
 
 <div class="two-column">
 <div>
 
-## Good Reasons
-- Solving recurring design problems <!-- .element: class="fragment highlight-green" -->
-- Improving code communication <!-- .element: class="fragment highlight-green" -->
-- Building flexible architectures <!-- .element: class="fragment highlight-green" -->
-- Following team standards <!-- .element: class="fragment highlight-green" -->
-- Learning from proven solutions <!-- .element: class="fragment highlight-green" -->
+## Gute Gründe
+- Lösung wiederkehrender Design-Probleme <!-- .element: class="fragment highlight-green" -->
+- Verbesserung der Code-Kommunikation <!-- .element: class="fragment highlight-green" -->
+- Aufbau flexibler Architekturen <!-- .element: class="fragment highlight-green" -->
+- Befolgen von Team-Standards <!-- .element: class="fragment highlight-green" -->
+- Lernen von bewährten Lösungen <!-- .element: class="fragment highlight-green" -->
 
 </div>
 <div>
 
-## Warning Signs
-- Pattern for pattern's sake <!-- .element: class="fragment highlight-red" -->
-- Over-engineering simple solutions <!-- .element: class="fragment highlight-red" -->
-- Forcing patterns where unnecessary <!-- .element: class="fragment highlight-red" -->
-- Ignoring performance implications <!-- .element: class="fragment highlight-red" -->
-- Missing the problem context <!-- .element: class="fragment highlight-red" -->
+## Warnsignale
+- Pattern um des Patterns willen <!-- .element: class="fragment highlight-red" -->
+- Über-Engineering einfacher Lösungen <!-- .element: class="fragment highlight-red" -->
+- Erzwingen von Patterns wo unnötig <!-- .element: class="fragment highlight-red" -->
+- Ignorieren von Performance-Auswirkungen <!-- .element: class="fragment highlight-red" -->
+- Verpassung des Problem-Kontexts <!-- .element: class="fragment highlight-red" -->
 
 </div>
 </div>
 
 <div class="highlight-box warning">
-**Key Principle**: Patterns should solve real problems, not create complexity. Always ask "what problem am I solving?" before applying a pattern.
+**Grundprinzip**: Patterns sollten echte Probleme lösen, nicht Komplexität schaffen. Fragen Sie immer "Welches Problem löse ich?" bevor Sie ein Pattern anwenden.
 </div>
 
-**Speaker Notes:** Patterns should solve real problems, not create complexity. Always ask "what problem am I solving?" before applying a pattern.
+<!-- Speaker Notes: Patterns sollten echte Probleme lösen, nicht Komplexität schaffen. Fragen Sie immer "Welches Problem löse ich?" bevor Sie ein Pattern anwenden. -->
 
 ---
 
-# Singleton Pattern Introduction
+# Singleton Pattern Einführung
 
 <div class="pattern-definition">
 
 #### Singleton Pattern
-**Intent**: Ensure a class has only one instance and provide global access to it.
+**Zweck**: Sicherstellen, dass eine Klasse nur eine Instanz hat und globalen Zugriff darauf bieten.
 
-**Problem**: You need exactly one instance of a class, and clients need global access to it.
+**Problem**: Sie benötigen genau eine Instanz einer Klasse, und Clients benötigen globalen Zugriff darauf.
 
-**Solution**: Make the class responsible for keeping track of its sole instance.
+**Lösung**: Die Klasse übernimmt die Verantwortung für die Verwaltung ihrer einzigen Instanz.
 
 </div>
 
 <div class="two-column">
 <div>
 
-## Use Cases
-- Database connections <!-- .element: class="fragment" -->
-- Logging services <!-- .element: class="fragment" -->
-- Configuration managers <!-- .element: class="fragment" -->
-- Cache implementations <!-- .element: class="fragment" -->
-- Resource managers <!-- .element: class="fragment" -->
+## Anwendungsfälle
+- Datenbankverbindungen <!-- .element: class="fragment" -->
+- Logging Services <!-- .element: class="fragment" -->
+- Konfigurations-Manager <!-- .element: class="fragment" -->
+- Cache-Implementierungen <!-- .element: class="fragment" -->
+- Ressourcen-Manager <!-- .element: class="fragment" -->
 
 </div>
 <div>
 
-## Key Characteristics
-- Private constructor <!-- .element: class="fragment" -->
-- Static instance variable <!-- .element: class="fragment" -->
-- Static getInstance() method <!-- .element: class="fragment" -->
-- Thread-safe implementation <!-- .element: class="fragment" -->
-- Lazy or eager initialization <!-- .element: class="fragment" -->
+## Schlüssel-Merkmale
+- Private Konstruktor <!-- .element: class="fragment" -->
+- Statische Instanz-Variable <!-- .element: class="fragment" -->
+- Statische getInstance() Methode <!-- .element: class="fragment" -->
+- Thread-sichere Implementierung <!-- .element: class="fragment" -->
+- Lazy oder Eager Initialization <!-- .element: class="fragment" -->
 
 </div>
 </div>
 
-**Speaker Notes:** Singleton is one of the most recognized patterns but also controversial. We'll explore both proper usage and common pitfalls.
+<!-- Speaker Notes: Singleton ist eines der bekanntesten Patterns, aber auch umstritten. Wir werden sowohl die richtige Verwendung als auch häufige Fallstricke erforschen. -->
 
 ---
 
@@ -265,7 +475,7 @@ class Logger { // fragment
 
 </div>
 
-**Speaker Notes:** This basic implementation shows the core concept. Notice the static instance, getInstance method, and constructor logic that prevents multiple instances.
+<!-- Speaker Notes: Diese grundlegende Implementierung zeigt das Kernkonzept. Beachten Sie die statische Instanz, die getInstance Methode und die Konstruktor-Logik, die mehrere Instanzen verhindert. -->
 
 ---
 
@@ -315,7 +525,7 @@ class DatabaseConnection { // fragment
 
 </div>
 
-**Speaker Notes:** In enterprise applications, thread safety is crucial. This implementation prevents race conditions during instance creation.
+<!-- Speaker Notes: In Enterprise-Anwendungen ist Thread-Sicherheit entscheidend. Diese Implementierung verhindert Race Conditions bei der Instanz-Erstellung. -->
 
 ---
 
@@ -371,46 +581,46 @@ class ConfigurationManager { // fragment
 
 </div>
 
-**Speaker Notes:** This example shows a realistic enterprise use case. Configuration is loaded once and shared across the application.
+<!-- Speaker Notes: Dieses Beispiel zeigt einen realistischen Enterprise-Anwendungsfall. Die Konfiguration wird einmal geladen und über die gesamte Anwendung geteilt. -->
 
 ---
 
-# Factory Method Pattern Introduction
+# Factory Method Pattern Einführung
 
 <div class="pattern-definition">
 
 #### Factory Method Pattern
-**Intent**: Create objects without specifying exact classes, delegating creation to subclasses.
+**Zweck**: Objekte erstellen ohne exakte Klassen zu spezifizieren, Delegation der Erstellung an Subklassen.
 
-**Problem**: Need to create objects but want to defer instantiation to subclasses.
+**Problem**: Objekte müssen erstellt werden, aber die Instanziierung soll an Subklassen übergeben werden.
 
-**Solution**: Define an interface for creating objects, let subclasses decide which class to instantiate.
+**Lösung**: Ein Interface für die Objekt-Erstellung definieren, Subklassen entscheiden welche Klasse instanziiert wird.
 
 </div>
 
 <div class="two-column">
 <div>
 
-## Use Cases
-- Creating UI components <!-- .element: class="fragment" -->
-- Database driver selection <!-- .element: class="fragment" -->
-- Logger implementations <!-- .element: class="fragment" -->
-- Plugin architectures <!-- .element: class="fragment" -->
-- Service instantiation <!-- .element: class="fragment" -->
+## Anwendungsfälle
+- Erstellung von UI-Komponenten <!-- .element: class="fragment" -->
+- Datenbank-Treiber-Auswahl <!-- .element: class="fragment" -->
+- Logger-Implementierungen <!-- .element: class="fragment" -->
+- Plugin-Architekturen <!-- .element: class="fragment" -->
+- Service-Instanziierung <!-- .element: class="fragment" -->
 
 </div>
 <div>
 
-## Key Benefits
-- Loose coupling between creator and product <!-- .element: class="fragment" -->
-- Easy extension with new products <!-- .element: class="fragment" -->
-- Single responsibility principle <!-- .element: class="fragment" -->
-- Open/closed principle compliance <!-- .element: class="fragment" -->
+## Zentrale Vorteile
+- Lose Kopplung zwischen Creator und Product <!-- .element: class="fragment" -->
+- Einfache Erweiterung mit neuen Products <!-- .element: class="fragment" -->
+- Single Responsibility Principle <!-- .element: class="fragment" -->
+- Open/Closed Principle Konformität <!-- .element: class="fragment" -->
 
 </div>
 </div>
 
-**Speaker Notes:** Factory Method promotes flexibility by removing direct class dependencies. Clients work with abstractions rather than concrete classes.
+<!-- Speaker Notes: Factory Method fördert Flexibilität durch Entfernung direkter Klassenabhängigkeiten. Clients arbeiten mit Abstraktionen anstatt mit konkreten Klassen. -->
 
 ---
 
@@ -449,7 +659,7 @@ class BankTransferProcessor extends PaymentProcessor { // fragment
 
 </div>
 
-**Speaker Notes:** Notice the abstract base class defining the interface. Concrete implementations provide specific behavior while maintaining the same interface.
+<!-- Speaker Notes: Beachten Sie die abstrakte Basisklasse, die das Interface definiert. Konkrete Implementierungen bieten spezifisches Verhalten bei Beibehaltung desselben Interfaces. -->
 
 ---
 
@@ -492,7 +702,7 @@ console.log(result); // "Processing $100 via Credit Card" // fragment
 
 </div>
 
-**Speaker Notes:** The factory encapsulates creation logic and can easily be extended. Notice how clients don't need to know about specific processor classes.
+<!-- Speaker Notes: Die Factory kapselt Erstellungslogik und kann leicht erweitert werden. Beachten Sie, wie Clients keine spezifischen Processor-Klassen kennen müssen. -->
 
 ---
 
@@ -543,195 +753,195 @@ ServiceFactory.registerService('cache', RedisCache); // fragment
 
 </div>
 
-**Speaker Notes:** This enterprise example shows how factories enable plugin architectures and configuration-driven service creation.
+<!-- Speaker Notes: Dieses Enterprise-Beispiel zeigt, wie Factories Plugin-Architekturen und konfigurationsgesteuerte Service-Erstellung ermöglichen. -->
 
 ---
 
-# Day 1 Exercise 1: Singleton Implementation
+# Tag 1 Übung 1: Singleton Implementierung
 
 <div class="interactive-question">
 
-## Your Task
-#### Implement a thread-safe Configuration Manager
+## Ihre Aufgabe
+#### Implementieren Sie einen thread-sicheren Configuration Manager
 
 </div>
 
 <div class="two-column">
 <div>
 
-### Requirements
-- Single instance guarantee <!-- .element: class="fragment" -->
-- Thread-safe creation <!-- .element: class="fragment" -->
-- Configuration loading from file/URL <!-- .element: class="fragment" -->
-- Property access with defaults <!-- .element: class="fragment" -->
-- Environment-specific configurations <!-- .element: class="fragment" -->
-- Reset functionality for testing <!-- .element: class="fragment" -->
+### Anforderungen
+- Einzelinstanz-Garantie <!-- .element: class="fragment" -->
+- Thread-sichere Erstellung <!-- .element: class="fragment" -->
+- Konfiguration laden von Datei/URL <!-- .element: class="fragment" -->
+- Property-Zugriff mit Defaults <!-- .element: class="fragment" -->
+- Umgebungsspezifische Konfigurationen <!-- .element: class="fragment" -->
+- Reset-Funktionalität für Tests <!-- .element: class="fragment" -->
 
 </div>
 <div>
 
-### Bonus Challenges
-- Async configuration loading <!-- .element: class="fragment" -->
-- Configuration validation <!-- .element: class="fragment" -->
-- Change notification system <!-- .element: class="fragment" -->
-- Hot configuration reload <!-- .element: class="fragment" -->
-- Configuration encryption <!-- .element: class="fragment" -->
+### Bonus Herausforderungen
+- Asynchrones Konfigurationsladen <!-- .element: class="fragment" -->
+- Konfigurations-Validierung <!-- .element: class="fragment" -->
+- Änderungs-Benachrichtigungssystem <!-- .element: class="fragment" -->
+- Hot Configuration Reload <!-- .element: class="fragment" -->
+- Konfigurations-Verschlüsselung <!-- .element: class="fragment" -->
 
 </div>
 </div>
 
 <div class="progress-indicator">
-<div class="progress-step current">🛠️ Exercise Time: 30 minutes</div>
-<div class="progress-step pending">👥 Work in pairs</div>
-<div class="progress-step pending">🎯 Focus on core requirements first</div>
+<div class="progress-step current">🛠️ Übungszeit: 30 Minuten</div>
+<div class="progress-step pending">👥 Arbeiten Sie zu zweit</div>
+<div class="progress-step pending">🎯 Fokus zuerst auf Kernanforderungen</div>
 </div>
 
-**Speaker Notes:** Work in pairs for 30 minutes. Focus on the core requirements first, then tackle bonus challenges if time permits.
+<!-- Speaker Notes: Arbeiten Sie 30 Minuten lang zu zweit. Konzentrieren Sie sich zuerst auf die Kernanforderungen, dann gehen Sie zu Bonus-Herausforderungen über, falls Zeit bleibt. -->
 
 ---
 
-# Day 1 Exercise 2: Factory Method Extension
+# Tag 1 Übung 2: Factory Method Erweiterung
 
 <div class="interactive-question">
 
-## Your Task
-#### Create a Notification Service Factory
+## Ihre Aufgabe
+#### Erstellen Sie eine Notification Service Factory
 
 </div>
 
 <div class="two-column">
 <div>
 
-### Required Notification Types
-- Email notifications <!-- .element: class="fragment" -->
-- SMS notifications  <!-- .element: class="fragment" -->
-- Push notifications <!-- .element: class="fragment" -->
-- Slack notifications <!-- .element: class="fragment" -->
-- Teams notifications <!-- .element: class="fragment" -->
+### Benötigte Notification-Typen
+- E-Mail Benachrichtigungen <!-- .element: class="fragment" -->
+- SMS Benachrichtigungen  <!-- .element: class="fragment" -->
+- Push Benachrichtigungen <!-- .element: class="fragment" -->
+- Slack Benachrichtigungen <!-- .element: class="fragment" -->
+- Teams Benachrichtigungen <!-- .element: class="fragment" -->
 
 ### Factory Features
-- Provider registration system <!-- .element: class="fragment" -->
-- Configuration-based creation <!-- .element: class="fragment" -->
-- Fallback mechanism for failed providers <!-- .element: class="fragment" -->
-- Batch notification support <!-- .element: class="fragment" -->
+- Provider-Registrierungssystem <!-- .element: class="fragment" -->
+- Konfigurationsbasierte Erstellung <!-- .element: class="fragment" -->
+- Fallback-Mechanismus für fehlgeschlagene Provider <!-- .element: class="fragment" -->
+- Batch-Notification-Unterstützung <!-- .element: class="fragment" -->
 
 </div>
 <div>
 
-### Bonus Challenges
-- Provider health checking <!-- .element: class="fragment" -->
-- Load balancing between providers <!-- .element: class="fragment" -->
-- Notification templates <!-- .element: class="fragment" -->
-- Delivery confirmation <!-- .element: class="fragment" -->
+### Bonus Herausforderungen
+- Provider Health Checking <!-- .element: class="fragment" -->
+- Load Balancing zwischen Providern <!-- .element: class="fragment" -->
+- Notification Templates <!-- .element: class="fragment" -->
+- Zustellbestätigung <!-- .element: class="fragment" -->
 
 </div>
 </div>
 
-**Speaker Notes:** This exercise reinforces the Factory pattern while introducing real-world complexity. Encourage students to think about error handling and scalability.
+<!-- Speaker Notes: Diese Übung verstärkt das Factory Pattern während sie reale Komplexität einführt. Ermutigen Sie Studenten, über Fehlerbehandlung und Skalierbarkeit nachzudenken. -->
 
 ---
 
-# Exercise Solutions Review
+# Übungslösungen Review
 
 <div class="two-column">
 <div>
 
-## Key Learning Points
-- Pattern implementation varies by context <!-- .element: class="fragment highlight-green" -->
-- Thread safety considerations in enterprise apps <!-- .element: class="fragment highlight-green" -->
-- Configuration management best practices <!-- .element: class="fragment highlight-green" -->
-- Factory flexibility vs. complexity trade-offs <!-- .element: class="fragment highlight-green" -->
-- Testing strategies for singleton patterns <!-- .element: class="fragment highlight-green" -->
+## Zentrale Lernpunkte
+- Pattern-Implementierung variiert je nach Kontext <!-- .element: class="fragment highlight-green" -->
+- Thread-Safety-Überlegungen in Enterprise-Apps <!-- .element: class="fragment highlight-green" -->
+- Best Practices für Konfigurations-Management <!-- .element: class="fragment highlight-green" -->
+- Factory Flexibilität vs. Komplexitäts-Trade-offs <!-- .element: class="fragment highlight-green" -->
+- Test-Strategien für Singleton Patterns <!-- .element: class="fragment highlight-green" -->
 
 </div>
 <div>
 
-## Common Implementation Issues
-- Missing thread safety measures <!-- .element: class="fragment highlight-red" -->
-- Over-complicated factory hierarchies <!-- .element: class="fragment highlight-red" -->
-- Tight coupling between factory and products <!-- .element: class="fragment highlight-red" -->
-- Inadequate error handling <!-- .element: class="fragment highlight-red" -->
-- Missing configuration validation <!-- .element: class="fragment highlight-red" -->
+## Häufige Implementierungsprobleme
+- Fehlende Thread-Safety Maßnahmen <!-- .element: class="fragment highlight-red" -->
+- Über-komplizierte Factory-Hierarchien <!-- .element: class="fragment highlight-red" -->
+- Enge Kopplung zwischen Factory und Products <!-- .element: class="fragment highlight-red" -->
+- Unzureichende Fehlerbehandlung <!-- .element: class="fragment highlight-red" -->
+- Fehlende Konfigurations-Validierung <!-- .element: class="fragment highlight-red" -->
 
 </div>
 </div>
 
-**Speaker Notes:** Review 2-3 student solutions, highlighting both good practices and areas for improvement. Focus on practical enterprise considerations.
+<!-- Speaker Notes: Reviewen Sie 2-3 Student-Lösungen und heben sowohl gute Praktiken als auch Verbesserungsbereiche hervor. Fokussieren Sie sich auf praktische Enterprise-Überlegungen. -->
 
 ---
 
-# Day 1 Summary
+# Tag 1 Zusammenfassung
 
 <div class="progress-indicator">
-<div class="progress-step completed">✅ Design pattern fundamentals</div>
-<div class="progress-step completed">✅ Singleton pattern implementation</div>
-<div class="progress-step completed">✅ Factory Method pattern usage</div>
-<div class="progress-step completed">✅ Practical exercises</div>
+<div class="progress-step completed">✅ Design Pattern Grundlagen</div>
+<div class="progress-step completed">✅ Singleton Pattern Implementierung</div>
+<div class="progress-step completed">✅ Factory Method Pattern Anwendung</div>
+<div class="progress-step completed">✅ Praktische Übungen</div>
 </div>
 
 <div class="two-column">
 <div>
 
-## What We Covered
-- Design pattern fundamentals <!-- .element: class="fragment" -->
-- Singleton pattern implementation <!-- .element: class="fragment" -->
-- Factory Method pattern usage <!-- .element: class="fragment" -->
-- Enterprise architecture considerations <!-- .element: class="fragment" -->
-- Practical coding exercises <!-- .element: class="fragment" -->
+## Was wir behandelt haben
+- Design Pattern Grundlagen <!-- .element: class="fragment" -->
+- Singleton Pattern Implementierung <!-- .element: class="fragment" -->
+- Factory Method Pattern Anwendung <!-- .element: class="fragment" -->
+- Enterprise-Architektur-Überlegungen <!-- .element: class="fragment" -->
+- Praktische Programmierübungen <!-- .element: class="fragment" -->
 
 </div>
 <div>
 
-## Key Takeaways
-- Patterns solve recurring problems <!-- .element: class="fragment" -->
-- Implementation depends on context <!-- .element: class="fragment" -->
-- Thread safety matters in enterprise apps <!-- .element: class="fragment" -->
-- Factories promote loose coupling <!-- .element: class="fragment" -->
-- Testing requires special consideration <!-- .element: class="fragment" -->
+## Zentrale Erkenntnisse
+- Patterns lösen wiederkehrende Probleme <!-- .element: class="fragment" -->
+- Implementierung hängt vom Kontext ab <!-- .element: class="fragment" -->
+- Thread-Safety ist wichtig in Enterprise-Apps <!-- .element: class="fragment" -->
+- Factories fördern lose Kopplung <!-- .element: class="fragment" -->
+- Testen erfordert besondere Überlegungen <!-- .element: class="fragment" -->
 
 </div>
 </div>
 
 <div class="highlight-box accent">
 
-## Tomorrow: Day 2 Preview
-- Observer pattern for event handling
-- Decorator pattern for feature extension  
-- Real-world architectural patterns
-- Advanced enterprise scenarios
+## Morgen: Tag 2 Vorschau
+- Observer Pattern für Event-Handling
+- Decorator Pattern für Feature-Erweiterung  
+- Reale architektonische Patterns
+- Erweiterte Enterprise-Szenarien
 
 </div>
 
-**Speaker Notes:** Wrap up by reinforcing the key concepts and creating excitement for Day 2. Encourage students to think about how they might apply these patterns in their current projects.
+<!-- Speaker Notes: Schließen Sie ab, indem Sie die Schlüsselkonzepte verstärken und Begeisterung für Tag 2 schaffen. Ermutigen Sie Studenten darüber nachzudenken, wie sie diese Patterns in ihren aktuellen Projekten anwenden könnten. -->
 
 ---
 
-# Questions & Discussion
+# Fragen & Diskussion
 
 <div class="two-column">
 <div>
 
-## Contact Information
-**Email:** architecture-training@telekom.com  <!-- .element: class="fragment" -->
-**Resources:** [Design Patterns Catalog](https://patterns.telekom.com)  <!-- .element: class="fragment" -->
-**Code Examples:** Available in workshop repository <!-- .element: class="fragment" -->
+## Kontaktinformationen
+**E-Mail:** architecture-training@telekom.com  <!-- .element: class="fragment" -->
+**Ressourcen:** [Design Patterns Catalog](https://patterns.telekom.com)  <!-- .element: class="fragment" -->
+**Code-Beispiele:** Verfügbar im Workshop-Repository <!-- .element: class="fragment" -->
 
 </div>
 <div>
 
-## Next Steps
-- Practice with your own examples <!-- .element: class="fragment" -->
-- Identify pattern opportunities in current projects <!-- .element: class="fragment" -->
-- Review additional resources <!-- .element: class="fragment" -->
-- Prepare for Day 2 advanced patterns <!-- .element: class="fragment" -->
+## Nächste Schritte
+- Üben mit eigenen Beispielen <!-- .element: class="fragment" -->
+- Pattern-Gelegenheiten in aktuellen Projekten identifizieren <!-- .element: class="fragment" -->
+- Zusätzliche Ressourcen reviewen <!-- .element: class="fragment" -->
+- Vorbereitung auf Tag 2 erweiterte Patterns <!-- .element: class="fragment" -->
 
 </div>
 </div>
 
 <div class="workshop-header">
 
-**Thank you for your participation!**
+**Vielen Dank für Ihre Teilnahme!**
 
 </div>
 
-**Speaker Notes:** Open the floor for questions. Common questions include: When NOT to use Singleton, Factory vs Abstract Factory differences, testing strategies, and performance considerations. Be prepared with practical enterprise examples.
+<!-- Speaker Notes: Öffnen Sie die Diskussion für Fragen. Häufige Fragen beinhalten: Wann Singleton NICHT verwenden, Unterschiede zwischen Factory vs Abstract Factory, Test-Strategien und Performance-Überlegungen. Seien Sie mit praktischen Enterprise-Beispielen vorbereitet. -->

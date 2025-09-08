@@ -1,6 +1,6 @@
 ---
-title: Design Patterns Workshop - Day 4
-description: Advanced Architecture Patterns - MVC/MVP/MVVM, Microservices, Performance, Testing, and Pattern Synthesis
+title: Design Patterns Workshop - Tag 4
+description: Erweiterte Architektur-Patterns - MVC/MVP/MVVM, Microservices, Performance, Testing und Pattern-Synthese
 tags: design-patterns, workshop,  architecture, training, day4, advanced, mvc, mvvm, microservices, performance, testing, synthesis
 slideOptions:
   theme: white
@@ -22,80 +22,281 @@ slideOptions:
   maxScale: 2.0
 ---
 
-<link rel="stylesheet" type="text/css" href="presentation-styles.css">
+<style>
+/* HedgeDoc Presentation Styles */
+.reveal {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+
+/* Critical: Fix content overflow */
+.reveal .slides {
+  font-size: 18px !important; /* Further reduced for better fit */
+  line-height: 1.3 !important;
+}
+
+.reveal .slides section {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto !important; /* Allow scrolling if needed */
+  overflow-x: hidden;
+  padding: 20px !important; /* Add padding to prevent edge cutoff */
+  box-sizing: border-box;
+}
+
+.reveal h1 {
+  font-size: 1.8em !important; /* Smaller headers */
+  color: #D9931C;
+  font-weight: 400 !important;
+}
+
+.reveal h2 {
+  font-size: 1.4em !important;
+  color: #D9931C;
+  font-weight: 400 !important;
+}
+
+.reveal h3 {
+  font-size: 1.2em !important;
+  font-weight: 400 !important;
+}
+
+.reveal h4, .reveal h5, .reveal h6 {
+  font-weight: 400 !important;
+}
+
+.reveal p, .reveal li {
+  font-weight: 300 !important;
+}
+
+/* Prevent text from being too large */
+.reveal .slides {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Lists should not overflow */
+.reveal ul, .reveal ol {
+  max-width: 90%;
+  margin-left: 0 !important;
+  padding-left: 1.5em !important;
+  list-style-type: none;
+}
+
+.reveal ul li::before {
+  content: "▸";
+  color: #D9931C;
+  font-weight: 400;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+/* Code blocks sizing */
+.reveal pre {
+  font-size: 0.6em !important; /* Smaller code blocks */
+  max-height: 500px;
+  overflow: auto !important;
+}
+
+.reveal .two-column {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.reveal .two-column > div {
+  flex: 1;
+}
+
+.workshop-header {
+  text-align: center;
+  background: linear-gradient(135deg, #D9931C 0%, #FF8A33 100%);
+  color: white;
+  padding: 40px;
+  margin: -20px;
+  border-radius: 8px;
+}
+
+.workshop-header h1,
+.workshop-header h2 {
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.pattern-definition {
+  background-color: #F5F5F5;
+  border-left: 4px solid #D9931C;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.highlight-box {
+  background-color: #F5F5F5;
+  border-left: 4px solid #D9931C;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.highlight-box.warning {
+  border-left-color: #ff9800;
+  background-color: #fff3e0;
+}
+
+.highlight-box.accent {
+  border-left-color: #D9931C;
+  background-color: #F5F5F5;
+}
+
+.code-example {
+  background: #2d3748;
+  color: #e2e8f0;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.code-example h5 {
+  color: #D9931C;
+  margin-top: 0;
+}
+
+.interactive-question {
+  background-color: #F5F5F5;
+  border: 2px solid #D9931C;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.progress-indicator {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.progress-step {
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-weight: 400;
+}
+
+.progress-step.completed {
+  background-color: #D9931C;
+  color: white;
+}
+
+.progress-step.current {
+  background-color: #ff9800;
+  color: white;
+}
+
+.progress-step.pending {
+  background-color: #F5F5F5;
+  color: #666666;
+}
+
+.reveal .fragment.highlight-green {
+  color: #4caf50;
+}
+
+.reveal .fragment.highlight-red {
+  color: #f44336;
+}
+
+@media screen and (max-width: 768px) {
+  .reveal .two-column {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+/* Hide Speaker Notes in Presentation Mode */
+.speaker-notes {
+  display: none !important;
+}
+
+/* Hide reveal.js notes */
+.reveal .notes {
+  display: none !important;
+}
+</style>
 
 <div class="workshop-header">
 
-# Design Patterns Workshop - Day 4
-## Advanced Architecture Patterns
+# Design Patterns Workshop - Tag 4
+## Erweiterte Architektur-Patterns
 ### Enterprise Architecture Training
 
 </div>
 
-**Speaker Notes:** Welcome to Day 4 of our Design Patterns Workshop. Today we'll explore advanced architectural patterns, microservice patterns, and performance optimizations. This is our synthesis day where we bring together everything learned over the past four days into practical, enterprise-ready solutions.
+<!-- Speaker Notes: Willkommen zu Tag 4 unseres Design Patterns Workshops. Heute erforschen wir erweiterte architektonische Patterns, Microservice-Patterns und Performance-Optimierungen. Das ist unser Synthese-Tag, an dem wir alles zusammenbringen, was wir über die vergangenen vier Tage gelernt haben, zu praktischen, enterprise-reifen Lösungen. -->
 
 ---
 
-# Day 4 Agenda
+# Tag 4 Agenda
 
 <div class="progress-indicator">
-<div class="progress-step current">📍 Architectural Patterns - MVC, MVP, MVVM</div>
+<div class="progress-step current">📍 Architektur-Patterns - MVC, MVP, MVVM</div>
 <div class="progress-step pending">⏳ Microservice Patterns - Service Discovery, Circuit Breaker</div>
 <div class="progress-step pending">⏳ Performance Patterns - Caching, Pooling, Lazy Loading</div>
 <div class="progress-step pending">⏳ Testing Patterns - Mock, Stub, Test Doubles</div>
-<div class="progress-step pending">⏳ Pattern Synthesis & Anti-Patterns</div>
+<div class="progress-step pending">⏳ Pattern Synthese & Anti-Patterns</div>
 </div>
 
-## Advanced Topics Overview
+## Erweiterte Themen Überblick
 
-- **Architectural Patterns** - MVC, MVP, MVVM deep dive <!-- .element: class="fragment" -->
+- **Architektur-Patterns** - MVC, MVP, MVVM Tiefgang <!-- .element: class="fragment" -->
 - **Microservice Patterns** - Service Discovery, Circuit Breaker, Saga <!-- .element: class="fragment" -->
-- **Performance Patterns** - Caching strategies, Object Pooling, Lazy Loading <!-- .element: class="fragment" -->
-- **Testing Patterns** - Mock, Stub, Test Double implementations <!-- .element: class="fragment" -->
-- **Pattern Combinations** - Real-world architectural solutions <!-- .element: class="fragment" -->
-- **Anti-Patterns** - Common mistakes and how to avoid them <!-- .element: class="fragment" -->
-- **Workshop Summary** - Four days of learning synthesis <!-- .element: class="fragment" -->
+- **Performance Patterns** - Caching-Strategien, Object Pooling, Lazy Loading <!-- .element: class="fragment" -->
+- **Testing Patterns** - Mock, Stub, Test Double Implementierungen <!-- .element: class="fragment" -->
+- **Pattern-Kombinationen** - Reale architektonische Lösungen <!-- .element: class="fragment" -->
+- **Anti-Patterns** - Häufige Fehler und wie man sie vermeidet <!-- .element: class="fragment" -->
+- **Workshop Zusammenfassung** - Vier Tage Lernsynthese <!-- .element: class="fragment" -->
 
-**Speaker Notes:** Today's agenda builds on fundamental patterns from Days 1-3. We'll see how basic creational, structural, and behavioral patterns combine to create robust enterprise architectures. Each section includes hands-on examples and real Enterprise use cases.
+<!-- Speaker Notes: Die heutige Agenda baut auf den fundamentalen Patterns aus Tag 1-3 auf. Wir werden sehen, wie grundlegende Creational-, Structural- und Behavioral-Patterns sich kombinieren, um robuste Enterprise-Architekturen zu schaffen. Jeder Abschnitt enthält praktische Beispiele und reale Enterprise-Anwendungsfälle. -->
 
 ---
 
-# Architectural Patterns Deep Dive
+# Architektur-Patterns Tiefgang
 
 <div class="pattern-definition">
 
 #### Model-View-Controller (MVC)
-**Intent**: Separiert Anwendungslogik in drei miteinander verbundene Komponenten zur besseren Organisation und Testbarkeit.
+**Zweck**: Trennt Anwendungslogik in drei miteinander verbundene Komponenten für bessere Organisation und Testbarkeit.
 
 **Problem**: Monolithische Anwendungen sind schwer zu testen und zu warten.
 
-**Solution**: Klare Trennung zwischen Datenlogik (Model), Präsentation (View) und Eingabesteuerung (Controller).
+**Lösung**: Klare Trennung zwischen Datenlogik (Model), Präsentation (View) und Eingabesteuerung (Controller).
 
 </div>
 
 <div class="two-column">
 <div>
 
-## MVC Components
-- **Model** - Business logic and data management <!-- .element: class="fragment" -->
-- **View** - User interface and presentation layer <!-- .element: class="fragment" -->
-- **Controller** - Input handling and flow control <!-- .element: class="fragment" -->
-- **Benefits** - Clear separation of concerns, testability <!-- .element: class="fragment" -->
-- **Use Cases** - Web applications, desktop software <!-- .element: class="fragment" -->
+## MVC Komponenten
+- **Model** - Geschäftslogik und Datenverwaltung <!-- .element: class="fragment" -->
+- **View** - Benutzeroberfläche und Präsentationsschicht <!-- .element: class="fragment" -->
+- **Controller** - Eingabebehandlung und Ablaufsteuerung <!-- .element: class="fragment" -->
+- **Vorteile** - Klare Trennung der Belange, Testbarkeit <!-- .element: class="fragment" -->
+- **Anwendungsfälle** - Webanwendungen, Desktop-Software <!-- .element: class="fragment" -->
 
 </div>
 <div>
 
-## Enterprise Applications
-- **Customer Portal** - User account management <!-- .element: class="fragment" -->
-- **Billing System** - Invoice processing <!-- .element: class="fragment" -->
-- **Service Management** - Service configuration <!-- .element: class="fragment" -->
-- **Admin Dashboards** - System monitoring <!-- .element: class="fragment" -->
+## Enterprise-Anwendungen
+- **Kundenportal** - Benutzerkonto-Verwaltung <!-- .element: class="fragment" -->
+- **Abrechnungssystem** - Rechnungsbearbeitung <!-- .element: class="fragment" -->
+- **Service-Management** - Service-Konfiguration <!-- .element: class="fragment" -->
+- **Admin-Dashboards** - System-Monitoring <!-- .element: class="fragment" -->
 
 </div>
 </div>
 
-**Speaker Notes:** MVC is foundational to modern web frameworks. Notice how the Observer pattern from Day 3 enables the Model-View communication. This separation allows teams to work independently on different layers.
+<!-- Speaker Notes: MVC ist grundlegend für moderne Web-Frameworks. Beachten Sie, wie das Observer Pattern von Tag 3 die Model-View-Kommunikation ermöglicht. Diese Trennung erlaubt es Teams, unabhängig an verschiedenen Schichten zu arbeiten. -->
 
 ---
 
@@ -170,7 +371,7 @@ controller.addUser({ name: 'Max Mueller', email: 'max@telekom.de' }); // fragmen
 
 </div>
 
-**Speaker Notes:** Notice how the Observer pattern enables automatic View updates when the Model changes. This loose coupling is essential for maintaining large applications.
+<!-- Speaker Notes: Notice how the Observer pattern enables automatic View updates when the Model changes. This loose coupling is essential for maintaining large applications. -->
 
 ---
 
@@ -208,7 +409,7 @@ controller.addUser({ name: 'Max Mueller', email: 'max@telekom.de' }); // fragmen
 </div>
 </div>
 
-**Speaker Notes:** MVP makes testing easier because the Presenter can be unit tested without a real View. This pattern is excellent for complex UI logic where you need granular control over user interactions.
+<!-- Speaker Notes: MVP makes testing easier because the Presenter can be unit tested without a real View. This pattern is excellent for complex UI logic where you need granular control over user interactions. -->
 
 ---
 
@@ -319,7 +520,7 @@ class MVVMView { // fragment
 
 </div>
 
-**Speaker Notes:** MVVM shines in scenarios with complex UI state management. Modern frameworks like Angular, Vue, and React implement variations of MVVM. The key insight is automatic synchronization between data and UI.
+<!-- Speaker Notes: MVVM shines in scenarios with complex UI state management. Modern frameworks like Angular, Vue, and React implement variations of MVVM. The key insight is automatic synchronization between data and UI. -->
 
 ---
 
@@ -357,7 +558,7 @@ class MVVMView { // fragment
 </div>
 </div>
 
-**Speaker Notes:** Service Discovery is fundamental to scalable microservice architectures. In enterprise environments, we use this pattern for our API gateway and internal service communication.
+<!-- Speaker Notes: Service Discovery is fundamental to scalable microservice architectures. In enterprise environments, we use this pattern for our API gateway and internal service communication. -->
 
 ---
 
@@ -466,7 +667,7 @@ try { // fragment
 
 </div>
 
-**Speaker Notes:** Circuit Breaker prevents cascading failures in distributed systems. It's essential for resilient microservice architectures and is implemented in many service mesh solutions.
+<!-- Speaker Notes: Circuit Breaker prevents cascading failures in distributed systems. It's essential for resilient microservice architectures and is implemented in many service mesh solutions. -->
 
 ---
 
@@ -551,7 +752,7 @@ class ConnectionPool { // fragment
 </div>
 </div>
 
-**Speaker Notes:** Performance patterns are crucial for enterprise applications. Caching strategies can dramatically improve response times, while object pools manage expensive resources like database connections.
+<!-- Speaker Notes: Performance patterns are crucial for enterprise applications. Caching strategies can dramatically improve response times, while object pools manage expensive resources like database connections. -->
 
 ---
 
@@ -668,7 +869,7 @@ testUserCreation(); // fragment
 
 </div>
 
-**Speaker Notes:** Test doubles are essential for proper unit testing. Mocks verify behavior, stubs provide data, and both enable fast, isolated tests that don't depend on external systems.
+<!-- Speaker Notes: Test doubles are essential for proper unit testing. Mocks verify behavior, stubs provide data, and both enable fast, isolated tests that don't depend on external systems. -->
 
 ---
 
@@ -708,7 +909,7 @@ testUserCreation(); // fragment
 **Key Insight**: Enterprise applications rarely use single patterns. The art is in combining patterns effectively to create maintainable, scalable systems.
 </div>
 
-**Speaker Notes:** Real applications combine multiple patterns. The key is understanding when and how to combine them effectively. Each pattern solves specific problems, and their combination creates robust architectures.
+<!-- Speaker Notes: Real applications combine multiple patterns. The key is understanding when and how to combine them effectively. Each pattern solves specific problems, and their combination creates robust architectures. -->
 
 ---
 
@@ -742,7 +943,7 @@ testUserCreation(); // fragment
 **Golden Rule**: Patterns should solve problems, not create them. Always ask "What problem am I solving?" before applying a pattern.
 </div>
 
-**Speaker Notes:** Anti-patterns are as important to learn as patterns themselves. They represent common mistakes that lead to maintenance nightmares. Recognizing these early can save significant refactoring effort.
+<!-- Speaker Notes: Anti-patterns are as important to learn as patterns themselves. They represent common mistakes that lead to maintenance nightmares. Recognizing these early can save significant refactoring effort. -->
 
 ---
 
@@ -789,7 +990,7 @@ testUserCreation(); // fragment
 </div>
 </div>
 
-**Speaker Notes:** This synthesis shows how patterns build upon each other. Creational patterns solve object creation problems, structural patterns organize objects, behavioral patterns enable communication, and advanced patterns create entire architectural solutions.
+<!-- Speaker Notes: This synthesis shows how patterns build upon each other. Creational patterns solve object creation problems, structural patterns organize objects, behavioral patterns enable communication, and advanced patterns create entire architectural solutions. -->
 
 ---
 
@@ -829,7 +1030,7 @@ testUserCreation(); // fragment
 **Remember**: Patterns are tools, not rules. Use them to solve real problems and create maintainable, scalable software architectures.
 </div>
 
-**Speaker Notes:** Mastery comes through practice and thoughtful application. Start identifying patterns in existing code, then gradually apply them in new projects. The goal is writing better software, not using every pattern.
+<!-- Speaker Notes: Mastery comes through practice and thoughtful application. Start identifying patterns in existing code, then gradually apply them in new projects. The goal is writing better software, not using every pattern. -->
 
 ---
 
@@ -862,7 +1063,7 @@ testUserCreation(); // fragment
 - **GitHub**: Workshop materials and examples
 - **Wiki**: Internal pattern documentation and case studies
 
-**Speaker Notes:** Learning doesn't end with this workshop. The provided resources and community connections will support your continued growth as a software architect.
+<!-- Speaker Notes: Learning doesn't end with this workshop. The provided resources and community connections will support your continued growth as a software architect. -->
 
 ---
 
@@ -906,4 +1107,4 @@ testUserCreation(); // fragment
 
 </div>
 
-**Speaker Notes:** End with celebration and forward momentum. Participants have gained significant knowledge over four intense days. Encourage them to start small, apply patterns gradually, and share their experiences with the community.
+<!-- Speaker Notes: End with celebration and forward momentum. Participants have gained significant knowledge over four intense days. Encourage them to start small, apply patterns gradually, and share their experiences with the community. -->

@@ -1,6 +1,6 @@
 ---
-title: Design Patterns Workshop - Day 3
-description: Behavioral Patterns - Observer, Strategy, Command, Template Method, Iterator, Chain of Responsibility
+title: Design Patterns Workshop - Tag 3
+description: Verhaltensmuster - Observer, Strategy, Command, Template Method, Iterator, Chain of Responsibility
 tags: design-patterns, workshop,  architecture, training, day3, behavioral, observer, strategy, command, template-method, iterator, chain-of-responsibility
 slideOptions:
   theme: white
@@ -22,7 +22,208 @@ slideOptions:
   maxScale: 2.0
 ---
 
-<link rel="stylesheet" type="text/css" href="presentation-styles.css">
+<style>
+/* HedgeDoc Presentation Styles */
+.reveal {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+
+/* Critical: Fix content overflow */
+.reveal .slides {
+  font-size: 18px !important; /* Further reduced for better fit */
+  line-height: 1.3 !important;
+}
+
+.reveal .slides section {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto !important; /* Allow scrolling if needed */
+  overflow-x: hidden;
+  padding: 20px !important; /* Add padding to prevent edge cutoff */
+  box-sizing: border-box;
+}
+
+.reveal h1 {
+  font-size: 1.8em !important; /* Smaller headers */
+  color: #D9931C;
+  font-weight: 400 !important;
+}
+
+.reveal h2 {
+  font-size: 1.4em !important;
+  color: #D9931C;
+  font-weight: 400 !important;
+}
+
+.reveal h3 {
+  font-size: 1.2em !important;
+  font-weight: 400 !important;
+}
+
+.reveal h4, .reveal h5, .reveal h6 {
+  font-weight: 400 !important;
+}
+
+.reveal p, .reveal li {
+  font-weight: 300 !important;
+}
+
+/* Prevent text from being too large */
+.reveal .slides {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Lists should not overflow */
+.reveal ul, .reveal ol {
+  max-width: 90%;
+  margin-left: 0 !important;
+  padding-left: 1.5em !important;
+  list-style-type: none;
+}
+
+.reveal ul li::before {
+  content: "▸";
+  color: #D9931C;
+  font-weight: 400;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+/* Code blocks sizing */
+.reveal pre {
+  font-size: 0.6em !important; /* Smaller code blocks */
+  max-height: 500px;
+  overflow: auto !important;
+}
+
+.reveal .two-column {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.reveal .two-column > div {
+  flex: 1;
+}
+
+.workshop-header {
+  text-align: center;
+  background: linear-gradient(135deg, #D9931C 0%, #FF8A33 100%);
+  color: white;
+  padding: 40px;
+  margin: -20px;
+  border-radius: 8px;
+}
+
+.workshop-header h1,
+.workshop-header h2 {
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.pattern-definition {
+  background-color: #F5F5F5;
+  border-left: 4px solid #D9931C;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.highlight-box {
+  background-color: #F5F5F5;
+  border-left: 4px solid #D9931C;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.highlight-box.warning {
+  border-left-color: #ff9800;
+  background-color: #fff3e0;
+}
+
+.highlight-box.accent {
+  border-left-color: #D9931C;
+  background-color: #F5F5F5;
+}
+
+.code-example {
+  background: #2d3748;
+  color: #e2e8f0;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.code-example h5 {
+  color: #D9931C;
+  margin-top: 0;
+}
+
+.interactive-question {
+  background-color: #F5F5F5;
+  border: 2px solid #D9931C;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.progress-indicator {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.progress-step {
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-weight: 400;
+}
+
+.progress-step.completed {
+  background-color: #D9931C;
+  color: white;
+}
+
+.progress-step.current {
+  background-color: #ff9800;
+  color: white;
+}
+
+.progress-step.pending {
+  background-color: #F5F5F5;
+  color: #666666;
+}
+
+.reveal .fragment.highlight-green {
+  color: #4caf50;
+}
+
+.reveal .fragment.highlight-red {
+  color: #f44336;
+}
+
+@media screen and (max-width: 768px) {
+  .reveal .two-column {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+/* Hide Speaker Notes in Presentation Mode */
+.speaker-notes {
+  display: none !important;
+}
+
+/* Hide reveal.js notes */
+.reveal .notes {
+  display: none !important;
+}
+</style>
 
 <div class="workshop-header">
 
@@ -31,7 +232,7 @@ slideOptions:
 
 </div>
 
-**Speaker Notes:** Willkommen zum dritten Tag unserer Design Patterns Workshop-Reihe. Heute fokussieren wir uns auf Verhaltensmuster - die komplexesten und mächtigsten Design Patterns. Diese Muster definieren, wie Objekte miteinander interagieren und kommunizieren.
+<!-- Speaker Notes: Willkommen zum dritten Tag unserer Design Patterns Workshop-Reihe. Heute fokussieren wir uns auf Verhaltensmuster - die komplexesten und mächtigsten Design Patterns. Diese Muster definieren, wie Objekte miteinander interagieren und kommunizieren. -->
 
 ---
 
@@ -53,7 +254,7 @@ slideOptions:
 - **Chain of Responsibility** - Anfragen-Weiterleitung <!-- .element: class="fragment" -->
 - **Praktische Übungen** - Hands-on Implementation <!-- .element: class="fragment" -->
 
-**Speaker Notes:** Verhaltensmuster sind besonders wichtig für Event-getriebene Systeme, Microservices und moderne Architekturen. Sie ermöglichen lose Kopplung und flexible Kommunikation zwischen Komponenten.
+<!-- Speaker Notes: Verhaltensmuster sind besonders wichtig für Event-getriebene Systeme, Microservices und moderne Architekturen. Sie ermöglichen lose Kopplung und flexible Kommunikation zwischen Komponenten. -->
 
 ---
 
@@ -76,7 +277,7 @@ slideOptions:
 - **Lose Kopplung** - Minimale Abhängigkeiten <!-- .element: class="fragment" -->
 - **Flexibilität zur Laufzeit** - Dynamische Verhaltensänderung <!-- .element: class="fragment" -->
 
-**Speaker Notes:** Im Gegensatz zu Erzeugungsmustern (Objekterstellung) und Strukturmustern (Objektkomposition) befassen sich Verhaltensmuster mit der Art und Weise, wie Objekte miteinander interagieren und Verantwortlichkeiten verteilen.
+<!-- Speaker Notes: Im Gegensatz zu Erzeugungsmustern (Objekterstellung) und Strukturmustern (Objektkomposition) befassen sich Verhaltensmuster mit der Art und Weise, wie Objekte miteinander interagieren und Verantwortlichkeiten verteilen. -->
 
 ---
 
@@ -116,7 +317,7 @@ slideOptions:
 </div>
 </div>
 
-**Speaker Notes:** Observer Pattern ist das Fundament moderner Event-Systeme. In JavaScript ist es die Basis für DOM Events, Node.js EventEmitter und reaktive Programmierung mit RxJS.
+<!-- Speaker Notes: Observer Pattern ist das Fundament moderner Event-Systeme. In JavaScript ist es die Basis für DOM Events, Node.js EventEmitter und reaktive Programmierung mit RxJS. -->
 
 ---
 
@@ -189,7 +390,7 @@ agency.setNews("Breaking: Design Patterns Workshop starts!"); // fragment
 
 </div>
 
-**Speaker Notes:** Dieses Beispiel zeigt die Macht des Observer Patterns: Eine Nachrichtenagentur kann beliebig viele Kanäle benachrichtigen, ohne jeden Kanal explizit zu kennen. Neue Kanäle können zur Laufzeit hinzugefügt werden.
+<!-- Speaker Notes: Dieses Beispiel zeigt die Macht des Observer Patterns: Eine Nachrichtenagentur kann beliebig viele Kanäle benachrichtigen, ohne jeden Kanal explizit zu kennen. Neue Kanäle können zur Laufzeit hinzugefügt werden. -->
 
 ---
 
@@ -229,7 +430,7 @@ agency.setNews("Breaking: Design Patterns Workshop starts!"); // fragment
 </div>
 </div>
 
-**Speaker Notes:** Strategy Pattern eliminiert komplexe if-else Strukturen und macht Code erweiterbar. In E-Commerce Systemen können neue Zahlungsmethoden hinzugefügt werden, ohne bestehenden Code zu ändern.
+<!-- Speaker Notes: Strategy Pattern eliminiert komplexe if-else Strukturen und macht Code erweiterbar. In E-Commerce Systemen können neue Zahlungsmethoden hinzugefügt werden, ohne bestehenden Code zu ändern. -->
 
 ---
 
@@ -313,7 +514,7 @@ cart.checkout(); // fragment
 
 </div>
 
-**Speaker Notes:** Der Context (ShoppingCart) delegiert die Zahlungsabwicklung an die gewählte Strategy. Benutzer können zur Laufzeit die Zahlungsmethode wechseln, ohne dass sich am Context etwas ändert.
+<!-- Speaker Notes: Der Context (ShoppingCart) delegiert die Zahlungsabwicklung an die gewählte Strategy. Benutzer können zur Laufzeit die Zahlungsmethode wechseln, ohne dass sich am Context etwas ändert. -->
 
 ---
 
@@ -354,7 +555,7 @@ cart.checkout(); // fragment
 </div>
 </div>
 
-**Speaker Notes:** Command Pattern ist essentiell für Undo/Redo-Funktionalität in Editoren, GUI-Anwendungen und Transaktionssystemen. Jede Aktion wird als Objekt gekapselt und kann rückgängig gemacht werden.
+<!-- Speaker Notes: Command Pattern ist essentiell für Undo/Redo-Funktionalität in Editoren, GUI-Anwendungen und Transaktionssystemen. Jede Aktion wird als Objekt gekapselt und kann rückgängig gemacht werden. -->
 
 ---
 
@@ -468,7 +669,7 @@ remote.pressUndo();    // Alle Lichter aus // fragment
 
 </div>
 
-**Speaker Notes:** Macro Commands zeigen die Flexibilität des Patterns - komplexe Operationen werden durch Kombination einfacher Commands erstellt. Smart Home Systemen nutzen dies für Szenarien wie "Gute Nacht" oder "Verlassen".
+<!-- Speaker Notes: Macro Commands zeigen die Flexibilität des Patterns - komplexe Operationen werden durch Kombination einfacher Commands erstellt. Smart Home Systemen nutzen dies für Szenarien wie "Gute Nacht" oder "Verlassen". -->
 
 ---
 
@@ -578,7 +779,7 @@ csvImporter.process(); // fragment
 
 </div>
 
-**Speaker Notes:** Template Method Pattern ist perfekt für ETL-Pipelines, Build-Prozesse und Datenverarbeitungs-Workflows. Die Struktur bleibt gleich, aber jeder Schritt kann unterschiedlich implementiert werden.
+<!-- Speaker Notes: Template Method Pattern ist perfekt für ETL-Pipelines, Build-Prozesse und Datenverarbeitungs-Workflows. Die Struktur bleibt gleich, aber jeder Schritt kann unterschiedlich implementiert werden. -->
 
 ---
 
@@ -681,7 +882,7 @@ while (shuffle.hasNext()) { // fragment
 
 </div>
 
-**Speaker Notes:** Verschiedene Iterator-Implementierungen ermöglichen unterschiedliche Durchlauf-Strategien für die gleiche Collection. Streaming-Dienste nutzen ähnliche Patterns für Playlisten und Empfehlungs-Algorithmen.
+<!-- Speaker Notes: Verschiedene Iterator-Implementierungen ermöglichen unterschiedliche Durchlauf-Strategien für die gleiche Collection. Streaming-Dienste nutzen ähnliche Patterns für Playlisten und Empfehlungs-Algorithmen. -->
 
 ---
 
@@ -827,7 +1028,7 @@ try { // fragment
 
 </div>
 
-**Speaker Notes:** Diese Pipeline zeigt typische Web-Request-Verarbeitung: Authentication → Authorization → Business Logic. Jeder Handler ist unabhängig testbar und die Reihenfolge kann dynamisch angepasst werden.
+<!-- Speaker Notes: Diese Pipeline zeigt typische Web-Request-Verarbeitung: Authentication → Authorization → Business Logic. Jeder Handler ist unabhängig testbar und die Reihenfolge kann dynamisch angepasst werden. -->
 
 ---
 
@@ -852,7 +1053,7 @@ try { // fragment
 **Entscheidungshilfe**: Jedes Pattern löst spezifische Kommunikations- und Interaktions-Probleme. Die Wahl hängt davon ab, ob Sie Events handhaben, Algorithmen austauschen oder Anfragen verarbeiten müssen.
 </div>
 
-**Speaker Notes:** Jedes Pattern löst spezifische Kommunikations- und Interaktions-Probleme. Die Wahl hängt davon ab, ob Sie Events handhaben, Algorithmen austauschen oder Anfragen verarbeiten müssen.
+<!-- Speaker Notes: Jedes Pattern löst spezifische Kommunikations- und Interaktions-Probleme. Die Wahl hängt davon ab, ob Sie Events handhaben, Algorithmen austauschen oder Anfragen verarbeiten müssen. -->
 
 ---
 
@@ -938,7 +1139,7 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 
 </div>
 
-**Speaker Notes:** Moderne JavaScript-Features wie Proxies, Generators und Async Iterators ermöglichen elegante Pattern-Implementierungen. Reactive Frameworks wie Vue.js nutzen Proxies für automatische Observer-Pattern-Implementierung.
+<!-- Speaker Notes: Moderne JavaScript-Features wie Proxies, Generators und Async Iterators ermöglichen elegante Pattern-Implementierungen. Reactive Frameworks wie Vue.js nutzen Proxies für automatische Observer-Pattern-Implementierung. -->
 
 ---
 
@@ -977,7 +1178,7 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 - Error recovery handlers <!-- .element: class="fragment" -->
 - Parallel processing und batch operations <!-- .element: class="fragment" -->
 
-**Speaker Notes:** Diese Übungen kombinieren alle heute gelernten Patterns in realistischen Szenarien. Die Teilnehmer sollen die Synergien zwischen verschiedenen Patterns erleben.
+<!-- Speaker Notes: Diese Übungen kombinieren alle heute gelernten Patterns in realistischen Szenarien. Die Teilnehmer sollen die Synergien zwischen verschiedenen Patterns erleben. -->
 
 ---
 
@@ -1013,7 +1214,7 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 **Goldene Regel**: Behavioral Patterns können schnell zu Over-Engineering führen. Verwenden Sie sie nur, wenn die Flexibilität wirklich benötigt wird. Observer-Pattern kann zu Memory Leaks führen, wenn Subscriptions nicht ordnungsgemäß aufgeräumt werden.
 </div>
 
-**Speaker Notes:** Behavioral Patterns können schnell zu Over-Engineering führen. Verwenden Sie sie nur, wenn die Flexibilität wirklich benötigt wird. Observer-Pattern kann zu Memory Leaks führen, wenn Subscriptions nicht ordnungsgemäß aufgeräumt werden.
+<!-- Speaker Notes: Behavioral Patterns können schnell zu Over-Engineering führen. Verwenden Sie sie nur, wenn die Flexibilität wirklich benötigt wird. Observer-Pattern kann zu Memory Leaks führen, wenn Subscriptions nicht ordnungsgemäß aufgeräumt werden. -->
 
 ---
 
@@ -1053,7 +1254,7 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 </div>
 </div>
 
-**Speaker Notes:** Behavioral Patterns sind das Fundament moderner Softwarearchitekturen. Sie ermöglichen Event-getriebene Systeme, Microservices-Kommunikation und Reactive Programming. Die heute gelernten Patterns werden in praktisch jeder modernen Anwendung verwendet.
+<!-- Speaker Notes: Behavioral Patterns sind das Fundament moderner Softwarearchitekturen. Sie ermöglichen Event-getriebene Systeme, Microservices-Kommunikation und Reactive Programming. Die heute gelernten Patterns werden in praktisch jeder modernen Anwendung verwendet. -->
 
 ---
 
@@ -1093,4 +1294,4 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 
 </div>
 
-**Speaker Notes:** Ermutigen Sie Diskussion über real-world Erfahrungen. Oft haben Teilnehmer bereits diese Patterns verwendet, ohne sie als solche zu erkennen. Sammeln Sie Feedback für zukünftige Workshop-Verbesserungen.
+<!-- Speaker Notes: Ermutigen Sie Diskussion über real-world Erfahrungen. Oft haben Teilnehmer bereits diese Patterns verwendet, ohne sie als solche zu erkennen. Sammeln Sie Feedback für zukünftige Workshop-Verbesserungen. -->

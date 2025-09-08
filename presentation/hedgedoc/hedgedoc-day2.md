@@ -1,6 +1,6 @@
 ---
-title: Design Patterns Workshop - Day 2
-description: Structural Patterns in Practice - Adapter, Decorator, Facade, Composite, Proxy
+title: Design Patterns Workshop - Tag 2
+description: Strukturmuster in der Praxis - Adapter, Decorator, Facade, Composite, Proxy
 tags: design-patterns, workshop,  architecture, training, day2, structural, adapter, decorator, facade, composite, proxy
 slideOptions:
   theme: white
@@ -22,11 +22,212 @@ slideOptions:
   maxScale: 2.0
 ---
 
-<link rel="stylesheet" type="text/css" href="presentation-styles.css">
+<style>
+/* HedgeDoc Presentation Styles */
+.reveal {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+
+/* Critical: Fix content overflow */
+.reveal .slides {
+  font-size: 18px !important; /* Further reduced for better fit */
+  line-height: 1.3 !important;
+}
+
+.reveal .slides section {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto !important; /* Allow scrolling if needed */
+  overflow-x: hidden;
+  padding: 20px !important; /* Add padding to prevent edge cutoff */
+  box-sizing: border-box;
+}
+
+.reveal h1 {
+  font-size: 1.8em !important; /* Smaller headers */
+  color: #D9931C;
+  font-weight: 400 !important;
+}
+
+.reveal h2 {
+  font-size: 1.4em !important;
+  color: #D9931C;
+  font-weight: 400 !important;
+}
+
+.reveal h3 {
+  font-size: 1.2em !important;
+  font-weight: 400 !important;
+}
+
+.reveal h4, .reveal h5, .reveal h6 {
+  font-weight: 400 !important;
+}
+
+.reveal p, .reveal li {
+  font-weight: 300 !important;
+}
+
+/* Prevent text from being too large */
+.reveal .slides {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Lists should not overflow */
+.reveal ul, .reveal ol {
+  max-width: 90%;
+  margin-left: 0 !important;
+  padding-left: 1.5em !important;
+  list-style-type: none;
+}
+
+.reveal ul li::before {
+  content: "▸";
+  color: #D9931C;
+  font-weight: 400;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+/* Code blocks sizing */
+.reveal pre {
+  font-size: 0.6em !important; /* Smaller code blocks */
+  max-height: 500px;
+  overflow: auto !important;
+}
+
+.reveal .two-column {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.reveal .two-column > div {
+  flex: 1;
+}
+
+.workshop-header {
+  text-align: center;
+  background: linear-gradient(135deg, #D9931C 0%, #FF8A33 100%);
+  color: white;
+  padding: 40px;
+  margin: -20px;
+  border-radius: 8px;
+}
+
+.workshop-header h1,
+.workshop-header h2 {
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.pattern-definition {
+  background-color: #F5F5F5;
+  border-left: 4px solid #D9931C;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.highlight-box {
+  background-color: #F5F5F5;
+  border-left: 4px solid #D9931C;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.highlight-box.warning {
+  border-left-color: #ff9800;
+  background-color: #fff3e0;
+}
+
+.highlight-box.accent {
+  border-left-color: #D9931C;
+  background-color: #F5F5F5;
+}
+
+.code-example {
+  background: #2d3748;
+  color: #e2e8f0;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.code-example h5 {
+  color: #D9931C;
+  margin-top: 0;
+}
+
+.interactive-question {
+  background-color: #F5F5F5;
+  border: 2px solid #D9931C;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.progress-indicator {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.progress-step {
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-weight: 400;
+}
+
+.progress-step.completed {
+  background-color: #D9931C;
+  color: white;
+}
+
+.progress-step.current {
+  background-color: #ff9800;
+  color: white;
+}
+
+.progress-step.pending {
+  background-color: #F5F5F5;
+  color: #666666;
+}
+
+.reveal .fragment.highlight-green {
+  color: #4caf50;
+}
+
+.reveal .fragment.highlight-red {
+  color: #f44336;
+}
+
+@media screen and (max-width: 768px) {
+  .reveal .two-column {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+/* Hide Speaker Notes in Presentation Mode */
+.speaker-notes {
+  display: none !important;
+}
+
+/* Hide reveal.js notes */
+.reveal .notes {
+  display: none !important;
+}
+</style>
 
 <div class="workshop-header">
 
-# Design Patterns Workshop - Day 2
+# Design Patterns Workshop - Tag 2
 ## Strukturmuster in der Praxis
 ### Design Patterns Workshop
 
@@ -49,7 +250,7 @@ slideOptions:
 - **Hands-on Übungen** - Praktische Implementierung <!-- .element: class="fragment" -->
 - **Best Practices** - Enterprise spezifische Anwendungen <!-- .element: class="fragment" -->
 
-**Speaker Notes:** Willkommen zu Tag 2. Heute fokussieren wir uns auf Strukturmuster, die essentiell für Enterprise-Architekturen sind. Wir bauen auf dem Wissen von gestern auf und gehen tiefer in praktische Implementierungen.
+<!-- Speaker Notes: Willkommen zu Tag 2. Heute fokussieren wir uns auf Strukturmuster, die essentiell für Enterprise-Architekturen sind. Wir bauen auf dem Wissen von gestern auf und gehen tiefer in praktische Implementierungen. -->
 
 ---
 
@@ -72,7 +273,7 @@ slideOptions:
 - **Flexibilität erhöhen** - Laufzeit-Komposition statt Vererbung <!-- .element: class="fragment" -->
 - **Performance optimieren** - Lazy Loading und Proxy-Mechanismen <!-- .element: class="fragment" -->
 
-**Speaker Notes:** Strukturmuster sind das Herzstück moderner Enterprise-Architekturen. Sie ermöglichen es uns, komplexe Systeme modular und wartbar zu gestalten. Bei Enterprise nutzen wir diese Patterns täglich für API-Integration und Microservices.
+<!-- Speaker Notes: Strukturmuster sind das Herzstück moderner Enterprise-Architekturen. Sie ermöglichen es uns, komplexe Systeme modular und wartbar zu gestalten. Bei Enterprise nutzen wir diese Patterns täglich für API-Integration und Microservices. -->
 
 ---
 
@@ -111,7 +312,7 @@ slideOptions:
 </div>
 </div>
 
-**Speaker Notes:** Das Adapter Pattern ist bei Enterprise besonders wichtig für die Integration von Legacy-Systemen. Wir haben viele bewährte Systeme, die weiterhin funktionieren, aber moderne APIs benötigen.
+<!-- Speaker Notes: Das Adapter Pattern ist bei Enterprise besonders wichtig für die Integration von Legacy-Systemen. Wir haben viele bewährte Systeme, die weiterhin funktionieren, aber moderne APIs benötigen. -->
 
 ---
 
@@ -177,7 +378,7 @@ const status = modernBilling.getInvoiceStatus(invoice.id); // fragment
 
 </div>
 
-**Speaker Notes:** Der Adapter fungiert als Übersetzer zwischen alter und neuer Welt. Notice how the adapter translates between different parameter types and return formats while maintaining the modern interface.
+<!-- Speaker Notes: Der Adapter fungiert als Übersetzer zwischen alter und neuer Welt. Notice how the adapter translates between different parameter types and return formats while maintaining the modern interface. -->
 
 ---
 
@@ -216,7 +417,7 @@ const status = modernBilling.getInvoiceStatus(invoice.id); // fragment
 </div>
 </div>
 
-**Speaker Notes:** Das Decorator Pattern ist essentiell für Enterprise-Services. Bei Enterprise verwenden wir es für Logging, Security, Performance Monitoring und Caching. Es ermöglicht uns, Cross-Cutting Concerns sauber zu trennen und flexibel zu kombinieren.
+<!-- Speaker Notes: Das Decorator Pattern ist essentiell für Enterprise-Services. Bei Enterprise verwenden wir es für Logging, Security, Performance Monitoring und Caching. Es ermöglicht uns, Cross-Cutting Concerns sauber zu trennen und flexibel zu kombinieren. -->
 
 ---
 
@@ -286,7 +487,7 @@ class SecurityDecorator extends ServiceDecorator { // fragment
 
 </div>
 
-**Speaker Notes:** Notice how each decorator adds a single responsibility. We can combine them in any order and create different service configurations for different environments.
+<!-- Speaker Notes: Notice how each decorator adds a single responsibility. We can combine them in any order and create different service configurations for different environments. -->
 
 ---
 
@@ -338,7 +539,7 @@ const response = customerService.processRequest({ // fragment
 **Execution Flow**: Basic Service → Performance → Security → Logging → Core Business Logic
 </div>
 
-**Speaker Notes:** This demonstrates the power of the decorator pattern. We can create different service configurations by mixing and matching decorators. Each decorator wraps the previous one, creating a chain of responsibility.
+<!-- Speaker Notes: This demonstrates the power of the decorator pattern. We can create different service configurations by mixing and matching decorators. Each decorator wraps the previous one, creating a chain of responsibility. -->
 
 ---
 
@@ -377,7 +578,7 @@ const response = customerService.processRequest({ // fragment
 </div>
 </div>
 
-**Speaker Notes:** Das Facade Pattern ist bei Enterprise unverzichtbar für die Vereinfachung komplexer Geschäftsprozesse. Customer Onboarding involviert normalerweise 5-6 verschiedene Services. Die Facade versteckt diese Komplexität und bietet eine einfache, fehlerresistente API.
+<!-- Speaker Notes: Das Facade Pattern ist bei Enterprise unverzichtbar für die Vereinfachung komplexer Geschäftsprozesse. Customer Onboarding involviert normalerweise 5-6 verschiedene Services. Die Facade versteckt diese Komplexität und bietet eine einfache, fehlerresistente API. -->
 
 ---
 
@@ -479,7 +680,7 @@ const result = await customerFacade.onboardNewCustomer({ // fragment
 
 </div>
 
-**Speaker Notes:** Notice how the facade coordinates multiple services and handles all error scenarios. What would be 20+ lines of client code is now a single method call.
+<!-- Speaker Notes: Notice how the facade coordinates multiple services and handles all error scenarios. What would be 20+ lines of client code is now a single method call. -->
 
 ---
 
@@ -518,7 +719,7 @@ const result = await customerFacade.onboardNewCustomer({ // fragment
 </div>
 </div>
 
-**Speaker Notes:** Das Composite Pattern ist perfekt für enterprise organizational structures. Wir können einheitlich auf Mitarbeiter, Teams und ganze Divisionen zugreifen. Egal ob wir das Budget eines einzelnen Mitarbeiters oder der gesamten Technologie-Sparte berechnen - das Interface bleibt gleich.
+<!-- Speaker Notes: Das Composite Pattern ist perfekt für enterprise organizational structures. Wir können einheitlich auf Mitarbeiter, Teams und ganze Divisionen zugreifen. Egal ob wir das Budget eines einzelnen Mitarbeiters oder der gesamten Technologie-Sparte berechnen - das Interface bleibt gleich. -->
 
 ---
 
@@ -630,7 +831,7 @@ class Department implements OrganizationalUnit { // fragment
 
 </div>
 
-**Speaker Notes:** Notice how both Employee and Department implement the same interface. This allows us to treat individual employees and entire departments uniformly.
+<!-- Speaker Notes: Notice how both Employee and Department implement the same interface. This allows us to treat individual employees and entire departments uniformly. -->
 
 ---
 
@@ -682,7 +883,7 @@ technologyDiv.addUnit(newInnovationLab); // fragment
 **Key Benefit**: Same operations work on individuals, teams, divisions, or the entire company structure!
 </div>
 
-**Speaker Notes:** This demonstrates the power of uniform interfaces. We can calculate budgets, employee counts, and generate reports at any level of the organization using the same methods.
+<!-- Speaker Notes: This demonstrates the power of uniform interfaces. We can calculate budgets, employee counts, and generate reports at any level of the organization using the same methods. -->
 
 ---
 
@@ -721,7 +922,7 @@ technologyDiv.addUnit(newInnovationLab); // fragment
 </div>
 </div>
 
-**Speaker Notes:** Das Proxy Pattern ist bei Enterprise kritisch für Performance und Security. Wir nutzen es für Datenschutz (Customer Data Protection), Caching teurer Analytics-Queries und für Remote Service Access. Der Proxy fungiert als intelligenter Gateway zwischen Client und Service.
+<!-- Speaker Notes: Das Proxy Pattern ist bei Enterprise kritisch für Performance und Security. Wir nutzen es für Datenschutz (Customer Data Protection), Caching teurer Analytics-Queries und für Remote Service Access. Der Proxy fungiert als intelligenter Gateway zwischen Client und Service. -->
 
 ---
 
@@ -781,7 +982,7 @@ class RealEnterpriseDataService implements EnterpriseDataService { // fragment
 
 </div>
 
-**Speaker Notes:** This is the real service that does the actual work. Notice the simulated delays that represent real-world database and network latency.
+<!-- Speaker Notes: This is the real service that does the actual work. Notice the simulated delays that represent real-world database and network latency. -->
 
 ---
 
@@ -903,7 +1104,7 @@ try { // fragment
 
 </div>
 
-**Speaker Notes:** Notice how the proxy adds security and caching without the client knowing. The client uses the same interface but gets enhanced functionality.
+<!-- Speaker Notes: Notice how the proxy adds security and caching without the client knowing. The client uses the same interface but gets enhanced functionality. -->
 
 ---
 
@@ -967,7 +1168,7 @@ class CustomerServiceFacade {
 
 </div>
 
-**Speaker Notes:** Diese Übung kombiniert alle heute gelernten Patterns in einem realistischen Enterprise Szenario. Die Teilnehmer sollen eine echte Integration Platform bauen, wie wir sie täglich verwenden. Betonen Sie die praktische Anwendbarkeit und helfen Sie bei Design-Entscheidungen.
+<!-- Speaker Notes: Diese Übung kombiniert alle heute gelernten Patterns in einem realistischen Enterprise Szenario. Die Teilnehmer sollen eine echte Integration Platform bauen, wie wir sie täglich verwenden. Betonen Sie die praktische Anwendbarkeit und helfen Sie bei Design-Entscheidungen. -->
 
 ---
 
@@ -1001,7 +1202,7 @@ class CustomerServiceFacade {
 **Golden Rule**: Patterns sollen Komplexität reduzieren, nicht erhöhen. Wenn ein Pattern mehr Probleme schafft als löst, überdenken Sie den Ansatz.
 </div>
 
-**Speaker Notes:** Diese Best Practices basieren auf realen Enterprise Projekten. Teilen Sie konkrete Beispiele wo möglich und warnen Sie vor den typischen Fehlern, die wir selbst gemacht haben.
+<!-- Speaker Notes: Diese Best Practices basieren auf realen Enterprise Projekten. Teilen Sie konkrete Beispiele wo möglich und warnen Sie vor den typischen Fehlern, die wir selbst gemacht haben. -->
 
 ---
 
@@ -1039,7 +1240,7 @@ class CustomerServiceFacade {
 </div>
 </div>
 
-**Speaker Notes:** Fassen Sie die wichtigsten Erkenntnisse des Tages zusammen. Betonen Sie, wie diese Patterns bei Enterprise täglich verwendet werden. Machen Sie die Teilnehmer neugierig auf Tag 3 - Behavioral Patterns sind noch spannender und näher an der Geschäftslogik.
+<!-- Speaker Notes: Fassen Sie die wichtigsten Erkenntnisse des Tages zusammen. Betonen Sie, wie diese Patterns bei Enterprise täglich verwendet werden. Machen Sie die Teilnehmer neugierig auf Tag 3 - Behavioral Patterns sind noch spannender und näher an der Geschäftslogik. -->
 
 ---
 
@@ -1079,4 +1280,4 @@ class CustomerServiceFacade {
 
 </div>
 
-**Speaker Notes:** Ermutigen Sie zur offenen Diskussion. Viele Teilnehmer haben bereits unbewusst diese Patterns verwendet. Helfen Sie dabei, die Verbindung zwischen Theorie und ihrer täglichen Arbeit herzustellen. Sammeln Sie Feedback für Verbesserungen des Trainings.
+<!-- Speaker Notes: Ermutigen Sie zur offenen Diskussion. Viele Teilnehmer haben bereits unbewusst diese Patterns verwendet. Helfen Sie dabei, die Verbindung zwischen Theorie und ihrer täglichen Arbeit herzustellen. Sammeln Sie Feedback für Verbesserungen des Trainings. -->
