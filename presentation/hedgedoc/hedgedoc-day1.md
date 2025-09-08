@@ -58,6 +58,13 @@ slideOptions:
   color: #2c2c2c;
   font-weight: 600 !important;
   text-align: left !important;
+  margin-top: 2em !important;
+  margin-bottom: 1em !important;
+}
+
+/* First heading on slide should not have top margin */
+.reveal .slides section > h1:first-child {
+  margin-top: 0 !important;
 }
 
 .reveal h2 {
@@ -65,22 +72,50 @@ slideOptions:
   color: #2c2c2c;
   font-weight: 500 !important;
   text-align: left !important;
+  margin-top: 1.5em !important;
+  margin-bottom: 0.75em !important;
+}
+
+/* First heading on slide should not have top margin */
+.reveal .slides section > h2:first-child {
+  margin-top: 0 !important;
 }
 
 .reveal h3 {
   font-size: 1.2em !important;
   font-weight: 400 !important;
   text-align: left !important;
+  margin-top: 1.2em !important;
+  margin-bottom: 0.6em !important;
+}
+
+/* First heading on slide should not have top margin */
+.reveal .slides section > h3:first-child {
+  margin-top: 0 !important;
 }
 
 .reveal h4, .reveal h5, .reveal h6 {
   font-weight: 400 !important;
   text-align: left !important;
+  margin-top: 1em !important;
+  margin-bottom: 0.5em !important;
+}
+
+/* First heading on slide should not have top margin */
+.reveal .slides section > h4:first-child,
+.reveal .slides section > h5:first-child,
+.reveal .slides section > h6:first-child {
+  margin-top: 0 !important;
 }
 
 .reveal p, .reveal li {
   font-weight: 300 !important;
   text-align: left !important;
+}
+
+/* Add proper paragraph spacing */
+.reveal p {
+  margin-bottom: 1em !important;
 }
 
 /* Prevent text from being too large */
@@ -95,6 +130,16 @@ slideOptions:
   margin-left: 0 !important;
   padding-left: 1.5em !important;
   list-style-type: none;
+  margin-bottom: 1em !important;
+}
+
+/* Add spacing between list items for better readability */
+.reveal ul li, .reveal ol li {
+  margin-bottom: 0.5em !important;
+}
+
+.reveal ul li:last-child, .reveal ol li:last-child {
+  margin-bottom: 0 !important;
 }
 
 .reveal ul li::before {
