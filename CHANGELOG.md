@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.2.0] [2025-09-08] - HedgeDoc Containerization Setup
+
+### Added
+- **HedgeDoc Containerization** - Basic local development setup for presentation testing
+  - `docker-compose.yml` with HedgeDoc and PostgreSQL services
+  - `.env.example` environment configuration template
+  - `start-hedgedoc.sh` and `stop-hedgedoc.sh` convenience scripts
+  - `hedgedoc-README.md` comprehensive setup documentation
+  - Volume mount for presentation directory editing
+  - Anonymous access and editing enabled for development
+  - Port 3000 exposed for local access
+
+### Technical Features
+- **PostgreSQL Database**: Reliable database backend for HedgeDoc
+- **Volume Mounting**: Direct access to presentation files for real-time editing
+- **Container Health Checks**: Built-in health monitoring for service reliability
+- **Persistent Storage**: Data retention across container restarts
+- **Development Configuration**: Optimized for local development with simplified setup
+
+### Infrastructure
+- **Docker Compose**: Multi-container orchestration for HedgeDoc and database
+- **Environment Variables**: Flexible configuration through environment files  
+- **Script Automation**: Quick start/stop scripts for developer convenience
+- **Security**: Development-only configuration with clear production warnings
+
 ## [1.1.0] [2025-09-08] - Day 4 Advanced Architecture Patterns Presentation
 
 ### Added
