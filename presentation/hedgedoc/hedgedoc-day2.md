@@ -1,7 +1,7 @@
 ---
 title: Design Patterns Workshop - Day 2
 description: Structural Patterns in Practice - Adapter, Decorator, Facade, Composite, Proxy
-tags: design-patterns, workshop, telekom, architecture, training, day2, structural, adapter, decorator, facade, composite, proxy
+tags: design-patterns, workshop,  architecture, training, day2, structural, adapter, decorator, facade, composite, proxy
 slideOptions:
   theme: white
   transition: slide
@@ -28,7 +28,7 @@ slideOptions:
 
 # Design Patterns Workshop - Day 2
 ## Strukturmuster in der Praxis
-### Telekom Architecture Training
+### Design Patterns Workshop
 
 </div>
 
@@ -47,7 +47,7 @@ slideOptions:
 - **Erweiterte Strukturmuster** - Composite, Proxy <!-- .element: class="fragment" -->
 - **Enterprise Patterns** - Reale Anwendungsbeispiele <!-- .element: class="fragment" -->
 - **Hands-on Übungen** - Praktische Implementierung <!-- .element: class="fragment" -->
-- **Best Practices** - Telekom spezifische Anwendungen <!-- .element: class="fragment" -->
+- **Best Practices** - Enterprise spezifische Anwendungen <!-- .element: class="fragment" -->
 
 **Speaker Notes:** Willkommen zu Tag 2. Heute fokussieren wir uns auf Strukturmuster, die essentiell für Enterprise-Architekturen sind. Wir bauen auf dem Wissen von gestern auf und gehen tiefer in praktische Implementierungen.
 
@@ -72,7 +72,7 @@ slideOptions:
 - **Flexibilität erhöhen** - Laufzeit-Komposition statt Vererbung <!-- .element: class="fragment" -->
 - **Performance optimieren** - Lazy Loading und Proxy-Mechanismen <!-- .element: class="fragment" -->
 
-**Speaker Notes:** Strukturmuster sind das Herzstück moderner Enterprise-Architekturen. Sie ermöglichen es uns, komplexe Systeme modular und wartbar zu gestalten. Bei Telekom nutzen wir diese Patterns täglich für API-Integration und Microservices.
+**Speaker Notes:** Strukturmuster sind das Herzstück moderner Enterprise-Architekturen. Sie ermöglichen es uns, komplexe Systeme modular und wartbar zu gestalten. Bei Enterprise nutzen wir diese Patterns täglich für API-Integration und Microservices.
 
 ---
 
@@ -111,14 +111,14 @@ slideOptions:
 </div>
 </div>
 
-**Speaker Notes:** Das Adapter Pattern ist bei Telekom besonders wichtig für die Integration von Legacy-Systemen. Wir haben viele bewährte Systeme, die weiterhin funktionieren, aber moderne APIs benötigen.
+**Speaker Notes:** Das Adapter Pattern ist bei Enterprise besonders wichtig für die Integration von Legacy-Systemen. Wir haben viele bewährte Systeme, die weiterhin funktionieren, aber moderne APIs benötigen.
 
 ---
 
-# Adapter Pattern - Telekom Billing Example
+# Adapter Pattern - Enterprise Billing Example
 
 <div class="code-example">
-<h5>Telekom Billing System Adapter</h5>
+<h5>Enterprise Billing System Adapter</h5>
 
 ```typescript
 // Modern Interface
@@ -216,21 +216,21 @@ const status = modernBilling.getInvoiceStatus(invoice.id); // fragment
 </div>
 </div>
 
-**Speaker Notes:** Das Decorator Pattern ist essentiell für Enterprise-Services. Bei Telekom verwenden wir es für Logging, Security, Performance Monitoring und Caching. Es ermöglicht uns, Cross-Cutting Concerns sauber zu trennen und flexibel zu kombinieren.
+**Speaker Notes:** Das Decorator Pattern ist essentiell für Enterprise-Services. Bei Enterprise verwenden wir es für Logging, Security, Performance Monitoring und Caching. Es ermöglicht uns, Cross-Cutting Concerns sauber zu trennen und flexibel zu kombinieren.
 
 ---
 
 # Decorator Pattern - Service Enhancement
 
 <div class="code-example">
-<h5>Telekom Service Decoration für Cross-Cutting Concerns</h5>
+<h5>Enterprise Service Decoration für Cross-Cutting Concerns</h5>
 
 ```typescript
-interface TelekomService { // fragment
+interface EnterpriseService { // fragment
   processRequest(request: ServiceRequest): ServiceResponse; // fragment
 } // fragment
 
-class BasicCustomerService implements TelekomService { // fragment
+class BasicCustomerService implements EnterpriseService { // fragment
   processRequest(request: ServiceRequest): ServiceResponse { // fragment
     // Core business logic // fragment
     return new ServiceResponse({ // fragment
@@ -242,8 +242,8 @@ class BasicCustomerService implements TelekomService { // fragment
 } // fragment
 
 // Decorator Base Class
-abstract class ServiceDecorator implements TelekomService { // fragment
-  constructor(protected service: TelekomService) {} // fragment
+abstract class ServiceDecorator implements EnterpriseService { // fragment
+  constructor(protected service: EnterpriseService) {} // fragment
   
   processRequest(request: ServiceRequest): ServiceResponse { // fragment
     return this.service.processRequest(request); // fragment
@@ -278,8 +278,8 @@ class SecurityDecorator extends ServiceDecorator { // fragment
   } // fragment
   
   private validateToken(token: string): boolean { // fragment
-    // Telekom token validation logic // fragment
-    return token.startsWith('telekom_') && token.length > 10; // fragment
+    // Enterprise token validation logic // fragment
+    return token.startsWith('enterprise_') && token.length > 10; // fragment
   } // fragment
 } // fragment
 ```
@@ -313,7 +313,7 @@ class PerformanceDecorator extends ServiceDecorator { // fragment
 } // fragment
 
 // Usage - Flexible composition
-let customerService: TelekomService = new BasicCustomerService(); // fragment
+let customerService: EnterpriseService = new BasicCustomerService(); // fragment
 
 // Add logging
 customerService = new LoggingDecorator(customerService); // fragment
@@ -327,7 +327,7 @@ customerService = new PerformanceDecorator(customerService); // fragment
 // Process request with all decorators
 const response = customerService.processRequest({ // fragment
   type: 'UPDATE_CUSTOMER_DATA', // fragment
-  token: 'telekom_abc123456789', // fragment
+  token: 'enterprise_abc123456789', // fragment
   customerId: '12345' // fragment
 }); // fragment
 ```
@@ -377,17 +377,17 @@ const response = customerService.processRequest({ // fragment
 </div>
 </div>
 
-**Speaker Notes:** Das Facade Pattern ist bei Telekom unverzichtbar für die Vereinfachung komplexer Geschäftsprozesse. Customer Onboarding involviert normalerweise 5-6 verschiedene Services. Die Facade versteckt diese Komplexität und bietet eine einfache, fehlerresistente API.
+**Speaker Notes:** Das Facade Pattern ist bei Enterprise unverzichtbar für die Vereinfachung komplexer Geschäftsprozesse. Customer Onboarding involviert normalerweise 5-6 verschiedene Services. Die Facade versteckt diese Komplexität und bietet eine einfache, fehlerresistente API.
 
 ---
 
 # Facade Pattern - Customer Management
 
 <div class="code-example">
-<h5>Telekom Customer Management Facade</h5>
+<h5>Enterprise Customer Management Facade</h5>
 
 ```typescript
-class TelekomCustomerFacade { // fragment
+class EnterpriseCustomerFacade { // fragment
   constructor( // fragment
     private customerService: CustomerService, // fragment
     private billingService: BillingService, // fragment
@@ -462,7 +462,7 @@ class TelekomCustomerFacade { // fragment
 } // fragment
 
 // Simple usage for complex operations
-const customerFacade = new TelekomCustomerFacade( // fragment
+const customerFacade = new EnterpriseCustomerFacade( // fragment
   customerService, billingService, contractService,  // fragment
   notificationService, auditService // fragment
 ); // fragment
@@ -518,14 +518,14 @@ const result = await customerFacade.onboardNewCustomer({ // fragment
 </div>
 </div>
 
-**Speaker Notes:** Das Composite Pattern ist perfekt für Telekom's komplexe Organisationsstruktur. Wir können einheitlich auf Mitarbeiter, Teams und ganze Divisionen zugreifen. Egal ob wir das Budget eines einzelnen Mitarbeiters oder der gesamten Technologie-Sparte berechnen - das Interface bleibt gleich.
+**Speaker Notes:** Das Composite Pattern ist perfekt für enterprise organizational structures. Wir können einheitlich auf Mitarbeiter, Teams und ganze Divisionen zugreifen. Egal ob wir das Budget eines einzelnen Mitarbeiters oder der gesamten Technologie-Sparte berechnen - das Interface bleibt gleich.
 
 ---
 
 # Composite Pattern - Organization Structure
 
 <div class="code-example">
-<h5>Telekom Organizational Structure mit Composite Pattern</h5>
+<h5>Enterprise Organizational Structure mit Composite Pattern</h5>
 
 ```typescript
 interface OrganizationalUnit { // fragment
@@ -637,11 +637,11 @@ class Department implements OrganizationalUnit { // fragment
 # Composite Pattern - Usage Example
 
 <div class="code-example">
-<h5>Building Telekom Organization Hierarchy</h5>
+<h5>Building Enterprise Organization Hierarchy</h5>
 
 ```typescript
-// Telekom organizational structure example
-const telekom = new Department('Deutsche Telekom AG', 1000000); // fragment
+// Enterprise organizational structure example
+const = new Department('Deutsche Enterprise AG', 1000000); // fragment
 
 // Technology Division
 const technologyDiv = new Department('Technology', 500000); // fragment
@@ -721,23 +721,23 @@ technologyDiv.addUnit(newInnovationLab); // fragment
 </div>
 </div>
 
-**Speaker Notes:** Das Proxy Pattern ist bei Telekom kritisch für Performance und Security. Wir nutzen es für Datenschutz (Customer Data Protection), Caching teurer Analytics-Queries und für Remote Service Access. Der Proxy fungiert als intelligenter Gateway zwischen Client und Service.
+**Speaker Notes:** Das Proxy Pattern ist bei Enterprise kritisch für Performance und Security. Wir nutzen es für Datenschutz (Customer Data Protection), Caching teurer Analytics-Queries und für Remote Service Access. Der Proxy fungiert als intelligenter Gateway zwischen Client und Service.
 
 ---
 
 # Proxy Pattern - Data Access with Security
 
 <div class="code-example">
-<h5>Telekom Data Access Proxy mit Caching und Security</h5>
+<h5>Enterprise Data Access Proxy mit Caching und Security</h5>
 
 ```typescript
-interface TelekomDataService { // fragment
+interface EnterpriseDataService { // fragment
   getCustomerData(customerId: string): Promise<CustomerData>; // fragment
   updateCustomerData(customerId: string, data: Partial<CustomerData>): Promise<boolean>; // fragment
   getUsageStatistics(customerId: string, period: DateRange): Promise<UsageStats>; // fragment
 } // fragment
 
-class RealTelekomDataService implements TelekomDataService { // fragment
+class RealEnterpriseDataService implements EnterpriseDataService { // fragment
   async getCustomerData(customerId: string): Promise<CustomerData> { // fragment
     // Simulate expensive database call // fragment
     console.log(`[DB] Fetching customer data for ${customerId}`); // fragment
@@ -791,13 +791,13 @@ class RealTelekomDataService implements TelekomDataService { // fragment
 <h5>Security and Caching Proxy Implementation</h5>
 
 ```typescript
-class TelekomDataServiceProxy implements TelekomDataService { // fragment
-  private realService: RealTelekomDataService; // fragment
+class EnterpriseDataServiceProxy implements EnterpriseDataService { // fragment
+  private realService: RealEnterpriseDataService; // fragment
   private cache = new Map<string, { data: any; timestamp: number }>(); // fragment
   private readonly CACHE_TTL = 5 * 60 * 1000; // 5 minutes // fragment
   
   constructor(private authService: AuthenticationService) { // fragment
-    this.realService = new RealTelekomDataService(); // fragment
+    this.realService = new RealEnterpriseDataService(); // fragment
   } // fragment
   
   async getCustomerData(customerId: string): Promise<CustomerData> { // fragment
@@ -885,7 +885,7 @@ class TelekomDataServiceProxy implements TelekomDataService { // fragment
 
 // Usage
 const authService = new AuthenticationService(); // fragment
-const dataService: TelekomDataService = new TelekomDataServiceProxy(authService); // fragment
+const dataService: EnterpriseDataService = new EnterpriseDataServiceProxy(authService); // fragment
 
 // First call - hits database
 const customer1 = await dataService.getCustomerData('123456'); // fragment
@@ -911,7 +911,7 @@ try { // fragment
 
 <div class="interactive-question">
 
-## Aufgabe: Telekom Service Integration Platform
+## Aufgabe: Enterprise Service Integration Platform
 #### Implementieren Sie eine Service Integration Platform mit allen gelernten Structural Patterns
 
 </div>
@@ -967,7 +967,7 @@ class CustomerServiceFacade {
 
 </div>
 
-**Speaker Notes:** Diese Übung kombiniert alle heute gelernten Patterns in einem realistischen Telekom-Szenario. Die Teilnehmer sollen eine echte Integration Platform bauen, wie wir sie täglich verwenden. Betonen Sie die praktische Anwendbarkeit und helfen Sie bei Design-Entscheidungen.
+**Speaker Notes:** Diese Übung kombiniert alle heute gelernten Patterns in einem realistischen Enterprise Szenario. Die Teilnehmer sollen eine echte Integration Platform bauen, wie wir sie täglich verwenden. Betonen Sie die praktische Anwendbarkeit und helfen Sie bei Design-Entscheidungen.
 
 ---
 
@@ -976,7 +976,7 @@ class CustomerServiceFacade {
 <div class="two-column">
 <div>
 
-## Telekom Specific Guidelines:
+## Enterprise Specific Guidelines:
 
 - **Security First** - Alle Patterns mit Security Decorators erweitern <!-- .element: class="fragment highlight-red" -->
 - **Performance Aware** - Proxy Pattern für teure Operations <!-- .element: class="fragment highlight-blue" -->
@@ -1001,7 +1001,7 @@ class CustomerServiceFacade {
 **Golden Rule**: Patterns sollen Komplexität reduzieren, nicht erhöhen. Wenn ein Pattern mehr Probleme schafft als löst, überdenken Sie den Ansatz.
 </div>
 
-**Speaker Notes:** Diese Best Practices basieren auf realen Telekom-Projekten. Teilen Sie konkrete Beispiele wo möglich und warnen Sie vor den typischen Fehlern, die wir selbst gemacht haben.
+**Speaker Notes:** Diese Best Practices basieren auf realen Enterprise Projekten. Teilen Sie konkrete Beispiele wo möglich und warnen Sie vor den typischen Fehlern, die wir selbst gemacht haben.
 
 ---
 
@@ -1039,7 +1039,7 @@ class CustomerServiceFacade {
 </div>
 </div>
 
-**Speaker Notes:** Fassen Sie die wichtigsten Erkenntnisse des Tages zusammen. Betonen Sie, wie diese Patterns bei Telekom täglich verwendet werden. Machen Sie die Teilnehmer neugierig auf Tag 3 - Behavioral Patterns sind noch spannender und näher an der Geschäftslogik.
+**Speaker Notes:** Fassen Sie die wichtigsten Erkenntnisse des Tages zusammen. Betonen Sie, wie diese Patterns bei Enterprise täglich verwendet werden. Machen Sie die Teilnehmer neugierig auf Tag 3 - Behavioral Patterns sind noch spannender und näher an der Geschäftslogik.
 
 ---
 
@@ -1064,8 +1064,8 @@ class CustomerServiceFacade {
 <div>
 
 ### Kontakt für weitere Fragen:
-- **Email:** architecture-training@telekom.de <!-- .element: class="fragment" -->
-- **Teams:** Telekom Architecture Community <!-- .element: class="fragment" -->
+- **Email:** architecture-training@company.com <!-- .element: class="fragment" -->
+- **Teams:** Enterprise Architecture Community <!-- .element: class="fragment" -->
 - **Wiki:** Internal Pattern Documentation <!-- .element: class="fragment" -->
 - **GitHub:** Code Examples Repository <!-- .element: class="fragment" -->
 

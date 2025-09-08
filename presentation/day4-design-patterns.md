@@ -1,6 +1,6 @@
 # Design Patterns Workshop - Day 4
 ## Advanced Architecture Patterns
-### Telekom Architecture Training
+### Enterprise Architecture Training
 
 **Speaker Notes:** Welcome to Day 4 of our Design Patterns Workshop. Today we'll explore advanced architectural patterns, microservice patterns, and performance optimizations. This is our synthesis day where we bring together everything learned over the past four days into practical, enterprise-ready solutions.
 
@@ -18,7 +18,7 @@
 - **Anti-Patterns** - Common mistakes and how to avoid them
 - **Workshop Summary** - Four days of learning synthesis
 
-**Speaker Notes:** Today's agenda builds on fundamental patterns from Days 1-3. We'll see how basic creational, structural, and behavioral patterns combine to create robust enterprise architectures. Each section includes hands-on examples and real Telekom use cases.
+**Speaker Notes:** Today's agenda builds on fundamental patterns from Days 1-3. We'll see how basic creational, structural, and behavioral patterns combine to create robust enterprise architectures. Each section includes hands-on examples and real Enterprise use cases.
 
 ---
 
@@ -33,7 +33,7 @@ MVC separates application logic into three interconnected components:
 - **Controller** - Input handling and flow control
 - **Benefits** - Clear separation of concerns, testability
 - **Use Cases** - Web applications, desktop software
-- **Telekom Example** - Customer portal architecture
+- **Enterprise Example** - Customer portal architecture
 
 ```javascript
 // MVC Implementation Example
@@ -3454,7 +3454,7 @@ try {
 
 # Enterprise Integration Strategies
 
-## Telekom-Specific Applications
+## Enterprise-Specific Applications
 
 **Customer Portal Architecture:**
 - **MVC Pattern** - Separates customer interface from business logic
@@ -3526,7 +3526,7 @@ try {
 - Microservice patterns: microservices.io
 - Enterprise patterns: martinfowler.com/eaaCatalog
 - Cloud patterns: docs.microsoft.com/en-us/azure/architecture/patterns
-- Telekom Architecture Guidelines: [Internal Architecture Portal]
+- Enterprise Architecture Guidelines: [Internal Architecture Portal]
 
 **Speaker Notes:** The learning journey doesn't end here. These advanced patterns build on the foundation we've established. The key is to continue practicing pattern recognition in your daily work and gradually applying more sophisticated patterns as your systems grow in complexity.
 
@@ -3574,7 +3574,7 @@ try {
 
 ## Exercise 3: Architecture Decision Records
 
-**Challenge:** Document pattern decisions for a real Telekom system.
+**Challenge:** Document pattern decisions for a real Enterprise system.
 
 **System:** Customer Self-Service Portal
 
@@ -3648,8 +3648,8 @@ try {
 
 **Workshop Team:**
 - **Lead Instructor:** [Instructor Name]  
-- **Email:** architecture-training@telekom.de
-- **Internal Wiki:** [Telekom Architecture Portal]
+- **Email:** architecture-training@company.com
+- **Internal Wiki:** [Enterprise Architecture Portal]
 - **Slack Channel:** #design-patterns-workshop
 
 ## Additional Resources
@@ -3680,7 +3680,7 @@ try {
 - **New Pattern Exploration** - Last Tuesday of each month
 
 **Certification Path:**
-- **Telekom Certified Solution Architect** - Includes pattern mastery requirements
+- **Enterprise Certified Solution Architect** - Includes pattern mastery requirements
 - **Enterprise Architecture Certification** - Advanced pattern application
 
 **Speaker Notes:** Learning doesn't end with this workshop. We've built a foundation for continuous improvement. The resources provided ensure ongoing learning and community support. Remember: great architects are made through consistent practice and continuous learning, not single training events.
@@ -3693,7 +3693,7 @@ try {
 
 **Discussion Topics:**
 - **Real-world challenges** with pattern implementation
-- **Telekom-specific use cases** and architectural decisions  
+- **Enterprise-specific use cases** and architectural decisions  
 - **Tool recommendations** for pattern-based development
 - **Team adoption strategies** for pattern-driven development
 - **Integration with existing codebases** and legacy systems
@@ -3714,4 +3714,4 @@ Connect with fellow architects and share experiences implementing patterns in yo
 **🚀 Continue Your Architecture Journey**  
 *Apply, practice, and master the art of software design patterns*
 
-**📧 Stay Connected: architecture-training@telekom.de**
+**📧 Stay Connected: architecture-training@company.com**

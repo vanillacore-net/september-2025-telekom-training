@@ -1,5 +1,5 @@
 /* HedgeDoc Presentation Custom Styles */
-/* Design Patterns Workshop - Telekom Architecture Training */
+/* Design Patterns Workshop */
 
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
@@ -11,8 +11,8 @@
     --code-font: 'Source Code Pro', monospace;
     --text-color: #333333;
     --background-color: #ffffff;
-    --accent-color: #e20074; /* Telekom Magenta */
-    --secondary-color: #00a8e6; /* Telekom Blue */
+    --accent-color: #333333; /* Text Color */
+    --secondary-color: #333333; /* Text Color */
     --success-color: #00c853;
     --warning-color: #ff9800;
     --error-color: #f44336;
@@ -36,13 +36,13 @@
 
 .reveal h1 {
     font-size: 2.5em;
-    color: var(--accent-color);
+    color: var(--text-color);
     margin-bottom: 0.3em;
 }
 
 .reveal h2 {
     font-size: 2em;
-    color: var(--secondary-color);
+    color: var(--text-color);
     margin-bottom: 0.4em;
 }
 
@@ -75,7 +75,7 @@
 }
 
 .reveal ul li::marker {
-    color: var(--accent-color);
+    color: var(--text-color);
 }
 
 /* Code Styling */
@@ -137,7 +137,7 @@
 /* Speaker Notes Styling */
 .speaker-notes {
     background-color: #f8f9fa;
-    border-left: 4px solid var(--accent-color);
+    border-left: 4px solid var(--text-color);
     padding: 1em;
     margin: 1em 0;
     border-radius: 0 5px 5px 0;
@@ -148,7 +148,7 @@
 .speaker-notes::before {
     content: "🗣️ Speaker Notes: ";
     font-weight: bold;
-    color: var(--accent-color);
+    color: var(--text-color);
     font-style: normal;
 }
 
@@ -165,13 +165,13 @@
 
 .reveal .fragment.highlight-current-blue,
 .reveal .fragment.highlight-blue {
-    color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 /* Custom Highlight Boxes */
 .highlight-box {
-    background-color: rgba(0, 168, 230, 0.1);
-    border-left: 5px solid var(--secondary-color);
+    background-color: rgba(51, 51, 51, 0.1);
+    border-left: 5px solid var(--text-color);
     padding: 1.5em;
     margin: 1em 0;
     border-radius: 5px;
@@ -179,8 +179,8 @@
 }
 
 .highlight-box.accent {
-    background-color: rgba(226, 0, 116, 0.1);
-    border-left-color: var(--accent-color);
+    background-color: rgba(51, 51, 51, 0.1);
+    border-left-color: var(--text-color);
 }
 
 .highlight-box.success {
@@ -195,8 +195,8 @@
 
 /* Pattern Definition Boxes */
 .pattern-definition {
-    background: linear-gradient(135deg, rgba(226, 0, 116, 0.1) 0%, rgba(0, 168, 230, 0.1) 100%);
-    border: 1px solid rgba(226, 0, 116, 0.3);
+    background: rgba(51, 51, 51, 0.05);
+    border: 1px solid rgba(51, 51, 51, 0.3);
     border-radius: 8px;
     padding: 1.5em;
     margin: 1em 0;
@@ -204,7 +204,7 @@
 }
 
 .pattern-definition h4 {
-    color: var(--accent-color);
+    color: var(--text-color);
     margin-bottom: 0.5em;
 }
 
@@ -218,15 +218,15 @@
 }
 
 .code-example h5 {
-    color: var(--secondary-color);
+    color: var(--text-color);
     margin-bottom: 0.5em;
     font-size: 1.1em;
 }
 
 /* Interactive Elements */
 .interactive-question {
-    background-color: rgba(0, 168, 230, 0.05);
-    border: 2px solid var(--secondary-color);
+    background-color: rgba(51, 51, 51, 0.05);
+    border: 2px solid var(--text-color);
     border-radius: 10px;
     padding: 1.5em;
     margin: 1em 0;
@@ -234,7 +234,7 @@
 }
 
 .interactive-question h4 {
-    color: var(--secondary-color);
+    color: var(--text-color);
     text-align: center;
 }
 
@@ -256,8 +256,8 @@
 }
 
 .interactive-options div:hover {
-    background-color: rgba(0, 168, 230, 0.1);
-    border-color: var(--secondary-color);
+    background-color: rgba(51, 51, 51, 0.1);
+    border-color: var(--text-color);
 }
 
 /* Progress Indicators */
@@ -283,7 +283,7 @@
 }
 
 .progress-step.current {
-    color: var(--accent-color);
+    color: var(--text-color);
     font-weight: bold;
 }
 
@@ -360,16 +360,13 @@
 
 /* Custom Classes for Pattern Workshop */
 .pattern-title {
-    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-color);
     font-weight: 700;
 }
 
 .code-focus {
-    background-color: rgba(226, 0, 116, 0.1);
-    border: 2px solid var(--accent-color);
+    background-color: rgba(51, 51, 51, 0.1);
+    border: 2px solid var(--text-color);
     border-radius: 5px;
     padding: 0.2em 0.5em;
     display: inline-block;
@@ -378,7 +375,7 @@
 /* Workshop-specific styling */
 .workshop-header {
     text-align: center;
-    background: linear-gradient(135deg, rgba(226, 0, 116, 0.1) 0%, rgba(0, 168, 230, 0.1) 100%);
+    background: rgba(51, 51, 51, 0.05);
     padding: 2em;
     margin: 1em 0;
     border-radius: 10px;

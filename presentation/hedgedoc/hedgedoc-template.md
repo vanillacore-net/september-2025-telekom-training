@@ -1,7 +1,7 @@
 ---
 title: Design Patterns Workshop - Template
 description: HedgeDoc Presentation Template for Design Patterns Workshop
-tags: design-patterns, workshop, telekom, architecture, training
+tags: design-patterns, workshop, architecture, training
 slideOptions:
   theme: white
   transition: slide
@@ -28,7 +28,7 @@ slideOptions:
 
 # Design Patterns Workshop
 ## [Workshop Day/Topic]
-### Telekom Architecture Training
+### Design Patterns Workshop
 
 </div>
 
@@ -46,7 +46,7 @@ slideOptions:
 
 ## Key Features:
 - **Typography**: Open Sans for text, Source Code Pro for code
-- **Colors**: #333333 text, Telekom Magenta (#e20074) and Blue (#00a8e6) accents
+- **Colors**: #333333 text color throughout
 - **Layout**: Left-aligned content, responsive design
 - **Animations**: Fragment reveals for interactive presentations
 

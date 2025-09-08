@@ -1,7 +1,7 @@
 ---
 title: Design Patterns Workshop - Day 4
 description: Advanced Architecture Patterns - MVC/MVP/MVVM, Microservices, Performance, Testing, and Pattern Synthesis
-tags: design-patterns, workshop, telekom, architecture, training, day4, advanced, mvc, mvvm, microservices, performance, testing, synthesis
+tags: design-patterns, workshop,  architecture, training, day4, advanced, mvc, mvvm, microservices, performance, testing, synthesis
 slideOptions:
   theme: white
   transition: slide
@@ -28,7 +28,7 @@ slideOptions:
 
 # Design Patterns Workshop - Day 4
 ## Advanced Architecture Patterns
-### Telekom Architecture Training
+### Enterprise Architecture Training
 
 </div>
 
@@ -56,7 +56,7 @@ slideOptions:
 - **Anti-Patterns** - Common mistakes and how to avoid them <!-- .element: class="fragment" -->
 - **Workshop Summary** - Four days of learning synthesis <!-- .element: class="fragment" -->
 
-**Speaker Notes:** Today's agenda builds on fundamental patterns from Days 1-3. We'll see how basic creational, structural, and behavioral patterns combine to create robust enterprise architectures. Each section includes hands-on examples and real Telekom use cases.
+**Speaker Notes:** Today's agenda builds on fundamental patterns from Days 1-3. We'll see how basic creational, structural, and behavioral patterns combine to create robust enterprise architectures. Each section includes hands-on examples and real Enterprise use cases.
 
 ---
 
@@ -86,7 +86,7 @@ slideOptions:
 </div>
 <div>
 
-## Telekom Applications
+## Enterprise Applications
 - **Customer Portal** - User account management <!-- .element: class="fragment" -->
 - **Billing System** - Invoice processing <!-- .element: class="fragment" -->
 - **Service Management** - Service configuration <!-- .element: class="fragment" -->
@@ -357,7 +357,7 @@ class MVVMView { // fragment
 </div>
 </div>
 
-**Speaker Notes:** Service Discovery is fundamental to scalable microservice architectures. At Telekom, we use this pattern for our API gateway and internal service communication.
+**Speaker Notes:** Service Discovery is fundamental to scalable microservice architectures. In enterprise environments, we use this pattern for our API gateway and internal service communication.
 
 ---
 
@@ -694,7 +694,7 @@ testUserCreation(); // fragment
 </div>
 <div>
 
-### Telekom Customer Platform
+### Enterprise Customer Platform
 - **Service Discovery** - Microservice communication <!-- .element: class="fragment" -->
 - **Facade** - API Gateway pattern <!-- .element: class="fragment" -->
 - **Decorator** - Cross-cutting concerns (logging, security) <!-- .element: class="fragment" -->
@@ -807,7 +807,7 @@ testUserCreation(); // fragment
 
 ### **Key Learning Outcomes**
 - **23 Core Patterns** - Comprehensive pattern library <!-- .element: class="fragment" -->
-- **Real-World Examples** - Telekom use cases and implementations <!-- .element: class="fragment" -->
+- **Real-World Examples** - Enterprise use cases and implementations <!-- .element: class="fragment" -->
 - **Pattern Combinations** - How patterns work together <!-- .element: class="fragment" -->
 - **Best Practices** - When to use (and not use) patterns <!-- .element: class="fragment" -->
 - **Anti-Pattern Awareness** - Common mistakes to avoid <!-- .element: class="fragment" -->
@@ -848,7 +848,7 @@ testUserCreation(); // fragment
 <div>
 
 ## **Continuing Education**
-- **Telekom Architecture Community** - Internal forums and discussions <!-- .element: class="fragment" -->
+- **Enterprise Architecture Community** - Internal forums and discussions <!-- .element: class="fragment" -->
 - **Advanced Workshops** - Domain-specific deep dives <!-- .element: class="fragment" -->
 - **Monthly Pattern Reviews** - Real project pattern analysis <!-- .element: class="fragment" -->
 - **Conference Talks** - Share your pattern implementations <!-- .element: class="fragment" -->
@@ -857,8 +857,8 @@ testUserCreation(); // fragment
 </div>
 
 ### **Contact Information**
-- **Email**: architecture-training@telekom.de
-- **Teams**: Telekom Architecture Community
+- **Email**: architecture-training@company.com
+- **Teams**: Enterprise Architecture Community
 - **GitHub**: Workshop materials and examples
 - **Wiki**: Internal pattern documentation and case studies
 
