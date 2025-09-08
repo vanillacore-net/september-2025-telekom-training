@@ -13,9 +13,9 @@
     --background-color: #ffffff;
     --accent-color: #333333; /* Text Color */
     --secondary-color: #333333; /* Text Color */
-    --success-color: #00c853;
-    --warning-color: #ff9800;
-    --error-color: #f44336;
+    --success-color: #2c2c2c;
+    --warning-color: #666666;
+    --error-color: #666666;
 }
 
 /* Base Reveal.js Styling Override */
@@ -279,7 +279,8 @@
 }
 
 .progress-step.completed {
-    color: var(--success-color);
+    color: var(--text-color);
+    font-weight: 600;
 }
 
 .progress-step.current {

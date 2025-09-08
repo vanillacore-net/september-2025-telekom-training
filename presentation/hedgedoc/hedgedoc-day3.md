@@ -46,14 +46,14 @@ slideOptions:
 
 .reveal h1 {
   font-size: 1.8em !important; /* Smaller headers */
-  color: #D9931C;
-  font-weight: 400 !important;
+  color: #2c2c2c;
+  font-weight: 600 !important;
 }
 
 .reveal h2 {
   font-size: 1.4em !important;
-  color: #D9931C;
-  font-weight: 400 !important;
+  color: #2c2c2c;
+  font-weight: 500 !important;
 }
 
 .reveal h3 {
@@ -85,7 +85,7 @@ slideOptions:
 
 .reveal ul li::before {
   content: "▸";
-  color: #D9931C;
+  color: #666666;
   font-weight: 400;
   display: inline-block;
   width: 1em;
@@ -112,7 +112,7 @@ slideOptions:
 
 .workshop-header {
   text-align: center;
-  background: linear-gradient(135deg, #D9931C 0%, #FF8A33 100%);
+  background: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 100%);
   color: white;
   padding: 40px;
   margin: -20px;
@@ -127,7 +127,7 @@ slideOptions:
 
 .pattern-definition {
   background-color: #F5F5F5;
-  border-left: 4px solid #D9931C;
+  border-left: 4px solid #666666;
   padding: 20px;
   margin: 20px 0;
   border-radius: 4px;
@@ -135,7 +135,7 @@ slideOptions:
 
 .highlight-box {
   background-color: #F5F5F5;
-  border-left: 4px solid #D9931C;
+  border-left: 4px solid #666666;
   padding: 20px;
   margin: 20px 0;
   border-radius: 4px;
@@ -147,7 +147,7 @@ slideOptions:
 }
 
 .highlight-box.accent {
-  border-left-color: #D9931C;
+  border-left-color: #4a4a4a;
   background-color: #F5F5F5;
 }
 
@@ -160,13 +160,13 @@ slideOptions:
 }
 
 .code-example h5 {
-  color: #D9931C;
+  color: #666666;
   margin-top: 0;
 }
 
 .interactive-question {
   background-color: #F5F5F5;
-  border: 2px solid #D9931C;
+  border: 2px solid #666666;
   padding: 20px;
   margin: 20px 0;
   border-radius: 8px;
@@ -186,7 +186,7 @@ slideOptions:
 }
 
 .progress-step.completed {
-  background-color: #D9931C;
+  background-color: #2c2c2c;
   color: white;
 }
 
@@ -201,11 +201,13 @@ slideOptions:
 }
 
 .reveal .fragment.highlight-green {
-  color: #4caf50;
+  color: #2c2c2c;
+  font-weight: 600;
 }
 
 .reveal .fragment.highlight-red {
-  color: #f44336;
+  color: #666666;
+  font-style: italic;
 }
 
 @media screen and (max-width: 768px) {
