@@ -293,12 +293,54 @@ slideOptions:
 }
 
 /* A more direct approach: we'll need to convert **Speaker Notes:** to a class */
+
+/* VanillaCore Logo Styling */
+.vanilla-logo {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  max-width: 150px;
+  max-height: 150px;
+  z-index: 1000;
+}
+
+.vanilla-logo img {
+  width: 100%;
+  height: auto;
+}
+
+/* Logo for title slides - slightly larger */
+.title-slide .vanilla-logo {
+  max-width: 180px;
+  max-height: 180px;
+}
+
+/* Subtle watermark for content slides */
+.content-slide::after {
+  content: "";
+  background-image: url('/images/VanillaCore_Vertical.png');
+  background-size: 80px;
+  background-repeat: no-repeat;
+  background-position: bottom 10px right 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: -1;
+}
 </style>
 
-<div class="workshop-header">
+<div class="workshop-header title-slide">
 
 # Tag 1: Design Patterns Workshop
 ## Design Patterns Workshop
+
+<div class="vanilla-logo">
+  <img src="/images/VanillaCore_Vertical.png" alt="VanillaCore Logo">
+</div>
 
 </div>
 
