@@ -5,13 +5,18 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./presentation:/home/hedgedoc/app/public/presentations:ro
-      - hedgedoc-data:/home/hedgedoc/app/public/uploads
+      - ./presentation/hedgedoc:/hedgedoc/public/docs
+      - hedgedoc-data:/hedgedoc/public/uploads
+      - ./presentation/hedgedoc/hedgedoc-day1.md:/hedgedoc/public/day1.md:ro
+      - ./presentation/hedgedoc/hedgedoc-day2.md:/hedgedoc/public/day2.md:ro
+      - ./presentation/hedgedoc/hedgedoc-day3.md:/hedgedoc/public/day3.md:ro
+      - ./presentation/hedgedoc/hedgedoc-day4.md:/hedgedoc/public/day4.md:ro
     environment:
       - CMD_DB_URL=postgres://hedgedoc:password@database:5432/hedgedoc
       - CMD_ALLOW_ANONYMOUS=true
       - CMD_ALLOW_ANONYMOUS_EDITS=true
-      - CMD_ALLOW_FREE_URL=true
+      - CMD_ALLOW_FREEURL=true
+      - CMD_DEFAULT_PERMISSION=freely
       - CMD_PROTOCOL_USESSL=false
       - CMD_URL_ADDPORT=true
       - CMD_DOMAIN=localhost
@@ -22,10 +27,22 @@ services:
       - database
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/status"]
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/status"]
       interval: 30s
       timeout: 10s
       retries: 3
+
+  presentation-importer:
+    image: curlimages/curl:latest
+    container_name: presentation-importer
+    volumes:
+      - ./import-presentations.sh:/import-presentations.sh:ro
+    command: sh /import-presentations.sh
+    depends_on:
+      hedgedoc:
+        condition: service_healthy
+    network_mode: "service:hedgedoc"
+    restart: "no"
 
   database:
     image: postgres:13-alpine
