@@ -322,6 +322,15 @@ slideOptions:
   pointer-events: none;
   z-index: -1;
 }
+
+/* Hide reveal.js progress bar and controls to remove orange box artifact */
+.reveal .progress {
+  display: none !important;
+}
+
+.reveal .controls {
+  display: none !important;
+}
 </style>
 
 <div class="workshop-header title-slide">
