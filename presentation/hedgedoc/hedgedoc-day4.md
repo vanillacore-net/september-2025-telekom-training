@@ -29,10 +29,17 @@ slideOptions:
   font-weight: 300;
 }
 
-/* Critical: Fix content overflow */
+/* Critical: Fix content overflow and enforce left alignment */
 .reveal .slides {
   font-size: 18px !important; /* Further reduced for better fit */
   line-height: 1.3 !important;
+}
+
+/* Override reveal.js center alignment - force left alignment for all content */
+.reveal .slides section,
+.reveal .slides section > *,
+.reveal .center {
+  text-align: left !important;
 }
 
 .reveal .slides section {
@@ -42,31 +49,37 @@ slideOptions:
   overflow-x: hidden;
   padding: 20px !important; /* Add padding to prevent edge cutoff */
   box-sizing: border-box;
+  text-align: left !important; /* Ensure all content is left-aligned */
 }
 
 .reveal h1 {
   font-size: 1.8em !important; /* Smaller headers */
   color: #2c2c2c;
   font-weight: 600 !important;
+  text-align: left !important;
 }
 
 .reveal h2 {
   font-size: 1.4em !important;
   color: #2c2c2c;
   font-weight: 500 !important;
+  text-align: left !important;
 }
 
 .reveal h3 {
   font-size: 1.2em !important;
   font-weight: 400 !important;
+  text-align: left !important;
 }
 
 .reveal h4, .reveal h5, .reveal h6 {
   font-weight: 400 !important;
+  text-align: left !important;
 }
 
 .reveal p, .reveal li {
   font-weight: 300 !important;
+  text-align: left !important;
 }
 
 /* Prevent text from being too large */
@@ -111,7 +124,7 @@ slideOptions:
 }
 
 .workshop-header {
-  text-align: center;
+  text-align: left;
   background: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 100%);
   color: white;
   padding: 40px;
