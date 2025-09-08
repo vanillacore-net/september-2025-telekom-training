@@ -1,0 +1,93 @@
+export { default as theme } from './theme'
+
+# Design Patterns Workshop
+
+## Telekom Architecture Training
+
+---
+
+# Workshop Agenda
+
+---
+
+# Design Patterns in der Softwareentwicklung
+
+Design Patterns sind bewährte Lösungsschablonen für wiederkehrende Entwurfsprobleme in der Softwareentwicklung.
+
+Sie beschreiben die Kommunikation zwischen Objekten und Klassen, die angepasst werden, um ein allgemeines Entwurfsproblem in einem bestimmten Kontext zu lösen.
+
+---
+
+import { Split } from '@mdx-deck/layouts'
+
+export default Split
+
+## Patterns Übersicht
+
+### Erstellungsmuster:
+- Singleton
+- Factory Method  
+- Abstract Factory
+- Builder
+- Prototype
+
+### Strukturmuster:
+- Adapter
+- Decorator
+- Facade
+- Composite
+- Proxy
+
+---
+
+import { SplitRight } from '@mdx-deck/layouts'
+
+export default SplitRight
+
+## Praxisbeispiele
+
+Patterns in der Praxis:
+
+- MVC Architecture Pattern
+- Dependency Injection
+- Repository Pattern
+- Observer für Event Handling
+- Strategy für Algorithmus-Auswahl
+
+![Code visualization](https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400)
+
+---
+
+export default Split
+
+## Singleton Pattern
+
+Das Singleton Pattern stellt sicher, dass eine Klasse nur eine Instanz hat und bietet einen globalen Zugriffspunkt darauf.
+
+- Zentrale Ressourcenverwaltung
+- Thread-sichere Implementierung
+- Lazy Loading Unterstützung
+
+```javascript
+// Singleton Pattern in JavaScript
+class DatabaseConnection {
+  static instance = null;
+  
+  constructor() {
+    if (DatabaseConnection.instance) {
+      return DatabaseConnection.instance;
+    }
+    
+    this.connection = null;
+    this.isConnected = false;
+    DatabaseConnection.instance = this;
+  }
+  
+  static getInstance() {
+    if (!this.instance) {
+      this.instance = new DatabaseConnection();
+    }
+    return this.instance;
+  }
+}
+```

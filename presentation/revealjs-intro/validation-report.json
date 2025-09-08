@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-09-07T12:59:57.102Z",
+  "totalSlides": 10,
+  "issues": [],
+  "screenshots": [
+    "slide-01-title.png",
+    "slide-02-section.png",
+    "slide-03-single-column.png",
+    "slide-04-single-column.png",
+    "slide-05-two-columns.png",
+    "slide-06-half-picture.png",
+    "slide-07-code-embedded.png",
+    "slide-08-code-standalone.png",
+    "slide-09-code-embedded.png",
+    "slide-10-full-picture.png"
+  ]
+}
