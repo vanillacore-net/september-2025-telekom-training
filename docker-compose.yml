@@ -1,0 +1,45 @@
+services:
+  hedgedoc:
+    image: quay.io/hedgedoc/hedgedoc:1.9.9
+    container_name: hedgedoc-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./presentation:/home/hedgedoc/app/public/presentations:ro
+      - hedgedoc-data:/home/hedgedoc/app/public/uploads
+    environment:
+      - CMD_DB_URL=postgres://hedgedoc:password@database:5432/hedgedoc
+      - CMD_ALLOW_ANONYMOUS=true
+      - CMD_ALLOW_ANONYMOUS_EDITS=true
+      - CMD_ALLOW_FREE_URL=true
+      - CMD_PROTOCOL_USESSL=false
+      - CMD_URL_ADDPORT=true
+      - CMD_DOMAIN=localhost
+      - CMD_PORT=3000
+      - CMD_ALLOW_ORIGIN=localhost,127.0.0.1
+      - CMD_SESSION_SECRET=dev-secret-key-change-in-production
+    depends_on:
+      - database
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  database:
+    image: postgres:13-alpine
+    container_name: hedgedoc-db
+    environment:
+      - POSTGRES_USER=hedgedoc
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=hedgedoc
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  hedgedoc-data:
+    driver: local
+  postgres-data:
+    driver: local
