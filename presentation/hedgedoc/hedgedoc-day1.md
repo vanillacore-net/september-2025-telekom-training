@@ -27,7 +27,7 @@ slideOptions:
 <div class="workshop-header">
 
 # Day 1: Design Patterns Workshop
-## Telekom Architecture Training
+## Design Patterns Workshop
 
 </div>
 
@@ -48,7 +48,7 @@ slideOptions:
 - Apply patterns to enterprise scenarios <!-- .element: class="fragment" -->
 - Build pattern recognition skills <!-- .element: class="fragment" -->
 
-**Speaker Notes:** Welcome everyone to the Telekom Architecture Training. This workshop focuses on practical application of design patterns in enterprise environments. We'll start with foundations and move to hands-on implementation.
+**Speaker Notes:** Welcome everyone to the Design Patterns Workshop. This workshop focuses on practical application of design patterns in enterprise environments. We'll start with foundations and move to hands-on implementation.
 
 ---
 
@@ -734,4 +734,4 @@ ServiceFactory.registerService('cache', RedisCache); // fragment
 
 </div>
 
-**Speaker Notes:** Open the floor for questions. Common questions include: When NOT to use Singleton, Factory vs Abstract Factory differences, testing strategies, and performance considerations. Be prepared with practical examples from Telekom projects.
+**Speaker Notes:** Open the floor for questions. Common questions include: When NOT to use Singleton, Factory vs Abstract Factory differences, testing strategies, and performance considerations. Be prepared with practical enterprise examples.

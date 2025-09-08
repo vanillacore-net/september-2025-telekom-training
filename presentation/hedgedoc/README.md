@@ -12,7 +12,7 @@ This directory contains HedgeDoc-compatible presentation files converted from th
 
 ### Supporting Files
 - **`hedgedoc-template.md`** - Reusable template for creating new HedgeDoc presentations
-- **`presentation-styles.css`** - Custom CSS with Open Sans fonts and Telekom branding
+- **`presentation-styles.css`** - Custom CSS with Open Sans fonts and neutral styling
 - **`README.md`** - This documentation file
 
 ## Key Features
@@ -21,7 +21,7 @@ This directory contains HedgeDoc-compatible presentation files converted from th
 - **Open Sans font** for all text content
 - **Source Code Pro font** for all code blocks
 - **Left-aligned text** throughout presentations (#333333 foreground color)
-- **Telekom branding colors** (Magenta #e20074, Blue #00a8e6)
+- **Neutral colors** (#333333 text color)
 - **Responsive design** optimized for different screen sizes
 
 ### ✅ Interactive Elements
@@ -144,8 +144,8 @@ Edit the CSS variables in `presentation-styles.css`:
     --primary-font: 'Open Sans', sans-serif;
     --code-font: 'Source Code Pro', monospace;
     --text-color: #333333;
-    --accent-color: #e20074; /* Telekom Magenta */
-    --secondary-color: #00a8e6; /* Telekom Blue */
+    --accent-color: #333333; /* Text Color */
+    --secondary-color: #333333; /* Text Color */
 }
 ```
 
@@ -188,5 +188,5 @@ For questions or issues with the HedgeDoc presentations:
 
 ---
 
-**Generated with Claude Code for Telekom Architecture Training**
+**Generated with Claude Code for Design Patterns Workshop**
 **Last Updated: January 2025**

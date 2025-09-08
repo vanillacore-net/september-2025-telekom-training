@@ -1,7 +1,7 @@
 ---
 title: Design Patterns Workshop - Day 3
 description: Behavioral Patterns - Observer, Strategy, Command, Template Method, Iterator, Chain of Responsibility
-tags: design-patterns, workshop, telekom, architecture, training, day3, behavioral, observer, strategy, command, template-method, iterator, chain-of-responsibility
+tags: design-patterns, workshop,  architecture, training, day3, behavioral, observer, strategy, command, template-method, iterator, chain-of-responsibility
 slideOptions:
   theme: white
   transition: slide
