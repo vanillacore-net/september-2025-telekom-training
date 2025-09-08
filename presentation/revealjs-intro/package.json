@@ -1,0 +1,18 @@
+{
+  "name": "revealjs-intro",
+  "version": "1.0.0",
+  "description": "This directory contains the reveal.js setup for the Telekom Architecture Training presentation.",
+  "main": "validate-slides.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@playwright/test": "^1.55.0",
+    "playwright": "^1.55.0",
+    "puppeteer": "^24.19.0"
+  }
+}

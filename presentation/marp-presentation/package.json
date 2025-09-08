@@ -1,0 +1,25 @@
+{
+  "name": "telekom-design-patterns-marp",
+  "version": "1.0.0",
+  "description": "Telekom Design Patterns Training - Marp Presentation",
+  "main": "index.js",
+  "scripts": {
+    "build:html": "marp slides.md --html --theme themes/telekom-theme.css --output dist/index.html --allow-local-files --no-stdin",
+    "build:pdf": "marp slides.md --pdf --theme themes/telekom-theme.css --output dist/presentation.pdf --allow-local-files --no-stdin",
+    "watch": "marp --watch slides.md --html --theme themes/telekom-theme.css --output dist/index.html --allow-local-files --no-stdin",
+    "serve": "marp --server slides.md --theme themes/telekom-theme.css --allow-local-files --no-stdin",
+    "build": "npm run build:html && npm run build:pdf"
+  },
+  "keywords": [
+    "marp",
+    "presentation",
+    "telekom",
+    "design-patterns",
+    "training"
+  ],
+  "author": "Telekom Architecture Training",
+  "license": "MIT",
+  "devDependencies": {
+    "@marp-team/marp-cli": "^3.4.0"
+  }
+}

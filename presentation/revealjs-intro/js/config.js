@@ -49,7 +49,18 @@ Reveal.initialize({
 	overview: true,
 
 	// Vertical centering of slides
-	center: true,
+	center: false,
+	
+	// Responsive design support
+	width: '100%',
+	height: '100%',
+	
+	// Margins around the content
+	margin: 0,
+	
+	// Bounds for smallest/largest possible scale to apply to content
+	minScale: 0.2,
+	maxScale: 2.0,
 
 	// Enables touch navigation on devices with touch input
 	touch: true,
