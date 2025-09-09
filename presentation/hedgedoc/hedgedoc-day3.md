@@ -398,50 +398,6 @@ slideOptions:
 }
 </style>
 
-<script>
-// Hide speaker notes that start with "Note:"
-document.addEventListener('DOMContentLoaded', function() {
-  // Function to hide speaker notes
-  function hideSpeakerNotes() {
-    const slides = document.querySelectorAll('.reveal .slides section');
-    
-    slides.forEach(slide => {
-      const paragraphs = slide.querySelectorAll('p');
-      
-      paragraphs.forEach((p, index) => {
-        // Check if paragraph starts with "Note:"
-        if (p.textContent.trim().startsWith('Note:')) {
-          // Hide this paragraph
-          p.style.display = 'none';
-          
-          // Also hide the following list if it exists
-          const nextElement = p.nextElementSibling;
-          if (nextElement && (nextElement.tagName === 'UL' || nextElement.tagName === 'OL')) {
-            nextElement.style.display = 'none';
-          }
-        }
-      });
-      
-      // Also hide any elements with "notes" class
-      const notesElements = slide.querySelectorAll('[class*="notes"], .element.notes');
-      notesElements.forEach(el => {
-        el.style.display = 'none';
-      });
-    });
-  }
-  
-  // Hide notes immediately
-  hideSpeakerNotes();
-  
-  // Also hide notes after reveal.js initializes
-  setTimeout(hideSpeakerNotes, 1000);
-  
-  // Re-hide notes when slide changes
-  if (typeof Reveal !== 'undefined') {
-    Reveal.on('slidechanged', hideSpeakerNotes);
-  }
-});
-</script>
 
 <div class="workshop-header title-slide">
 

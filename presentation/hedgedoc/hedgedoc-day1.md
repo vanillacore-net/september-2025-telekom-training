@@ -398,50 +398,6 @@ slideOptions:
 }
 </style>
 
-<script>
-// Hide speaker notes that start with "Note:"
-document.addEventListener('DOMContentLoaded', function() {
-  // Function to hide speaker notes
-  function hideSpeakerNotes() {
-    const slides = document.querySelectorAll('.reveal .slides section');
-    
-    slides.forEach(slide => {
-      const paragraphs = slide.querySelectorAll('p');
-      
-      paragraphs.forEach((p, index) => {
-        // Check if paragraph starts with "Note:"
-        if (p.textContent.trim().startsWith('Note:')) {
-          // Hide this paragraph
-          p.style.display = 'none';
-          
-          // Also hide the following list if it exists
-          const nextElement = p.nextElementSibling;
-          if (nextElement && (nextElement.tagName === 'UL' || nextElement.tagName === 'OL')) {
-            nextElement.style.display = 'none';
-          }
-        }
-      });
-      
-      // Also hide any elements with "notes" class
-      const notesElements = slide.querySelectorAll('[class*="notes"], .element.notes');
-      notesElements.forEach(el => {
-        el.style.display = 'none';
-      });
-    });
-  }
-  
-  // Hide notes immediately
-  hideSpeakerNotes();
-  
-  // Also hide notes after reveal.js initializes
-  setTimeout(hideSpeakerNotes, 1000);
-  
-  // Re-hide notes when slide changes
-  if (typeof Reveal !== 'undefined') {
-    Reveal.on('slidechanged', hideSpeakerNotes);
-  }
-});
-</script>
 
 <div class="workshop-header title-slide">
 
@@ -467,20 +423,20 @@ Note:
 
 ### Über diesen Workshop
 <!-- .slide: data-auto-animate -->
-<div class="fragment" data-fragment-index="1">- Code-Analyse & Factory Method Pattern</div>
-<div class="fragment" data-fragment-index="2">- Abstract Factory & Layered Architecture</div>
-<div class="fragment" data-fragment-index="3">- Builder Pattern & Repository Integration</div>
-<div class="fragment" data-fragment-index="4">- Prototype Pattern & Configuration Cloning</div>
-<div class="fragment" data-fragment-index="5">- Clean Architecture: Fundamentale Prinzipien</div>
-<div class="fragment" data-fragment-index="6">- Singleton & Adapter mit Clean Architecture</div>
+- Code-Analyse & Factory Method Pattern <!-- .element: class="fragment" data-fragment-index="1" -->
+- Abstract Factory & Layered Architecture <!-- .element: class="fragment" data-fragment-index="2" -->
+- Builder Pattern & Repository Integration <!-- .element: class="fragment" data-fragment-index="3" -->
+- Prototype Pattern & Configuration Cloning <!-- .element: class="fragment" data-fragment-index="4" -->
+- Clean Architecture: Fundamentale Prinzipien <!-- .element: class="fragment" data-fragment-index="5" -->
+- Singleton & Adapter mit Clean Architecture <!-- .element: class="fragment" data-fragment-index="6" -->
 
 ## Lernziele
 <ul>
-<li class="fragment" data-fragment-index="1">Code-Smells in Legacy-Code identifizieren</li>
-<li class="fragment" data-fragment-index="2">Factory Method Pattern verstehen und anwenden</li>
-<li class="fragment" data-fragment-index="3">Abstract Factory in geschichteten Architekturen</li>
-<li class="fragment" data-fragment-index="4">Builder Pattern für komplexe Objekterstellung</li>
-<li class="fragment" data-fragment-index="5">SOLID-Prinzipien praktisch umsetzen</li>
+- Code-Smells in Legacy-Code identifizieren <!-- .element: class="fragment" data-fragment-index="1" -->
+- Factory Method Pattern verstehen und anwenden <!-- .element: class="fragment" data-fragment-index="2" -->
+- Abstract Factory in geschichteten Architekturen <!-- .element: class="fragment" data-fragment-index="3" -->
+- Builder Pattern für komplexe Objekterstellung <!-- .element: class="fragment" data-fragment-index="4" -->
+- SOLID-Prinzipien praktisch umsetzen <!-- .element: class="fragment" data-fragment-index="5" -->
 </ul>
 
 Note:
@@ -498,14 +454,14 @@ Note:
 
 ## Workshop Module
 <ul>
-<li class="fragment" data-fragment-index="1"><strong>Modul 1:</strong> Code-Analyse & Factory Method</li>
-<li class="fragment" data-fragment-index="2"><strong>Modul 2:</strong> Abstract Factory & Layered Architecture</li>
-<li class="fragment" data-fragment-index="3"><strong>Modul 3:</strong> Builder Pattern & Repository Integration</li>
-<li class="fragment" data-fragment-index="4"><strong>Modul 4:</strong> Prototype Pattern & Configuration Cloning</li>
-<li class="fragment" data-fragment-index="5"><strong>Clean Architecture:</strong> Fundamentale Prinzipien</li>
-<li class="fragment" data-fragment-index="6"><strong>Modul 5:</strong> Singleton & Adapter mit Clean Architecture</li>
-<li class="fragment" data-fragment-index="7">Code-Refactoring & Best Practices</li>
-<li class="fragment" data-fragment-index="8">Q&A und Diskussion</li>
+- **Modul 1:** Code-Analyse & Factory Method <!-- .element: class="fragment" data-fragment-index="1" -->
+- **Modul 2:** Abstract Factory & Layered Architecture <!-- .element: class="fragment" data-fragment-index="2" -->
+- **Modul 3:** Builder Pattern & Repository Integration <!-- .element: class="fragment" data-fragment-index="3" -->
+- **Modul 4:** Prototype Pattern & Configuration Cloning <!-- .element: class="fragment" data-fragment-index="4" -->
+- **Clean Architecture:** Fundamentale Prinzipien <!-- .element: class="fragment" data-fragment-index="5" -->
+- **Modul 5:** Singleton & Adapter mit Clean Architecture <!-- .element: class="fragment" data-fragment-index="6" -->
+- Code-Refactoring & Best Practices <!-- .element: class="fragment" data-fragment-index="7" -->
+- Q&A und Diskussion <!-- .element: class="fragment" data-fragment-index="8" -->
 </ul>
 
 Note:
@@ -520,10 +476,14 @@ Note:
 # Modul 1: Code-Analyse & Factory Method Pattern
 
 ## Lernziele
-<div class="fragment">- Code-Smells in Legacy-Code identifizieren</div>
-<div class="fragment">- Factory Method Pattern verstehen und anwenden</div>
-<div class="fragment">- Refactoring-Strategien entwickeln</div>
-<div class="fragment">- Single Responsibility Principle praktisch umsetzen</div> 
+- Code-Smells in Legacy-Code identifizieren
+<!-- .element: class="fragment" -->
+- Factory Method Pattern verstehen und anwenden
+<!-- .element: class="fragment" -->
+- Refactoring-Strategien entwickeln
+<!-- .element: class="fragment" -->
+- Single Responsibility Principle praktisch umsetzen
+<!-- .element: class="fragment" --> 
 
 Note:
 - Betonen Sie die praktische Relevanz für gewachsene Systemlandschaften
@@ -2176,11 +2136,7 @@ public class CowConfiguration {
 
 **Clean Architecture** ist ein Architekturmuster von Robert C. Martin (Uncle Bob), das die **Dependency Rule** als zentrales Prinzip etabliert:
 
-<div class="fragment" data-fragment-index="2">
-
-**📍 Dependency Rule: Dependencies zeigen nur nach innen!**
-
-</div>
+**📍 Dependency Rule: Dependencies zeigen nur nach innen!** <!-- .element: class="fragment" data-fragment-index="2" -->
 
 ---
 
@@ -2190,17 +2146,18 @@ public class CowConfiguration {
 <div class="left">
 
 ## Schichten von außen nach innen:
-<div class="fragment" data-fragment-index="1"><strong>4. Frameworks & Drivers</strong><br/>UI, Database, Web, External APIs</div>
-<div class="fragment" data-fragment-index="2"><strong>3. Interface Adapters</strong><br/>Controllers, Gateways, Presenters</div>
-<div class="fragment" data-fragment-index="3"><strong>2. Application Business Rules</strong><br/>Use Cases, Interactors</div>
-<div class="fragment" data-fragment-index="4"><strong>1. Enterprise Business Rules</strong><br/>Entities, Domain Objects</div>
+**4. Frameworks & Drivers**<br/>UI, Database, Web, External APIs <!-- .element: class="fragment" data-fragment-index="1" -->
+
+**3. Interface Adapters**<br/>Controllers, Gateways, Presenters <!-- .element: class="fragment" data-fragment-index="2" -->
+
+**2. Application Business Rules**<br/>Use Cases, Interactors <!-- .element: class="fragment" data-fragment-index="3" -->
+
+**1. Enterprise Business Rules**<br/>Entities, Domain Objects <!-- .element: class="fragment" data-fragment-index="4" -->
 
 </div>
 <div class="right">
 
 ## Visualisierung
-<div class="fragment" data-fragment-index="5">
-
 ```
     ┌─────────────────────────────┐
     │  Frameworks & Drivers (4)   │  ← External
@@ -2215,9 +2172,8 @@ public class CowConfiguration {
     │  │  └─────────────────────┘│ │
     │  └─────────────────────────┘ │
     └─────────────────────────────┘
-```
-
-</div>
+``` 
+<!-- .element: class="fragment" data-fragment-index="5" -->
 </div>
 </div>
 
@@ -2228,19 +2184,15 @@ public class CowConfiguration {
 ## 🎯 Kernprinzip: Dependencies zeigen nach innen
 
 
-<div class="fragment" data-fragment-index="2">
-<strong>✅ Erlaubt:</strong>
+**✅ Erlaubt:** <!-- .element: class="fragment" data-fragment-index="2" -->
 - Use Cases nutzen Entities
 - Controllers nutzen Use Cases
 - Gateways implementieren Repository-Interfaces
-</div>
 
-<div class="fragment" data-fragment-index="3">
-<strong>❌ Verboten:</strong>
+**❌ Verboten:** <!-- .element: class="fragment" data-fragment-index="3" -->
 - Entities kennen Use Cases
 - Use Cases kennen Controllers
 - Domain kennt Database-Details
-</div>
 
 ---
 
@@ -2249,20 +2201,14 @@ public class CowConfiguration {
 ## Wie Clean Architecture SOLID umsetzt:
 
 
-<div class="fragment" data-fragment-index="2">
-<strong>🔹 Dependency Inversion Principle:</strong><br/>
-Use Cases definieren Interfaces, Adapter implementieren sie
-</div>
+**🔹 Dependency Inversion Principle:**<br/>
+Use Cases definieren Interfaces, Adapter implementieren sie <!-- .element: class="fragment" data-fragment-index="2" -->
 
-<div class="fragment" data-fragment-index="3">
-<strong>🔹 Single Responsibility:</strong><br/>
-Jede Schicht hat eine klare Verantwortlichkeit
-</div>
+**🔹 Single Responsibility:**<br/>
+Jede Schicht hat eine klare Verantwortlichkeit <!-- .element: class="fragment" data-fragment-index="3" -->
 
-<div class="fragment" data-fragment-index="4">
-<strong>🔹 Open/Closed:</strong><br/>
-Neue Features durch neue Use Cases, ohne Core zu ändern
-</div>
+**🔹 Open/Closed:**<br/>
+Neue Features durch neue Use Cases, ohne Core zu ändern <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
@@ -2272,19 +2218,19 @@ Neue Features durch neue Use Cases, ohne Core zu ändern
 <div class="left">
 
 ## 💪 Vorteile:
-<div class="fragment" data-fragment-index="1">- **Testbarkeit**: Core-Logik isoliert testbar</div>
-<div class="fragment" data-fragment-index="2">- **Framework-Unabhängigkeit**: Core überlebt Framework-Wechsel</div>
-<div class="fragment" data-fragment-index="3">- **Database-Agnostik**: Core kennt keine DB-Details</div>
-<div class="fragment" data-fragment-index="4">- **UI-Flexibilität**: Verschiedene Interfaces möglich</div>
+- **Testbarkeit**: Core-Logik isoliert testbar <!-- .element: class="fragment" data-fragment-index="1" -->
+- **Framework-Unabhängigkeit**: Core überlebt Framework-Wechsel <!-- .element: class="fragment" data-fragment-index="2" -->
+- **Database-Agnostik**: Core kennt keine DB-Details <!-- .element: class="fragment" data-fragment-index="3" -->
+- **UI-Flexibilität**: Verschiedene Interfaces möglich <!-- .element: class="fragment" data-fragment-index="4" -->
 
 </div>
 <div class="right">
 
 ## 🎯 Enterprise-Realität:
-<div class="fragment" data-fragment-index="5">- **Legacy-Integration**: Adapter für alte Systeme</div>
-<div class="fragment" data-fragment-index="6">- **Compliance**: Business-Rules zentral verwaltbar</div>
-<div class="fragment" data-fragment-index="7">- **Skalierung**: Schichten unabhängig skalierbar</div>
-<div class="fragment" data-fragment-index="8">- **Wartbarkeit**: Änderungen in abgegrenzten Bereichen</div>
+- **Legacy-Integration**: Adapter für alte Systeme <!-- .element: class="fragment" data-fragment-index="5" -->
+- **Compliance**: Business-Rules zentral verwaltbar <!-- .element: class="fragment" data-fragment-index="6" -->
+- **Skalierung**: Schichten unabhängig skalierbar <!-- .element: class="fragment" data-fragment-index="7" -->
+- **Wartbarkeit**: Änderungen in abgegrenzten Bereichen <!-- .element: class="fragment" data-fragment-index="8" -->
 
 </div>
 </div>
@@ -2296,21 +2242,13 @@ Neue Features durch neue Use Cases, ohne Core zu ändern
 ## Wie Patterns die Architektur unterstützen:
 
 
-<div class="fragment" data-fragment-index="2">
-<strong>🏗️ Adapter Pattern:</strong> Interface zwischen Schichten schaffen
-</div>
+**🏗️ Adapter Pattern:** Interface zwischen Schichten schaffen <!-- .element: class="fragment" data-fragment-index="2" -->
 
-<div class="fragment" data-fragment-index="3">
-<strong>📊 Repository Pattern:</strong> Data Access abstrahieren
-</div>
+**📊 Repository Pattern:** Data Access abstrahieren <!-- .element: class="fragment" data-fragment-index="3" -->
 
-<div class="fragment" data-fragment-index="4">
-<strong>🏭 Factory Pattern:</strong> Abhängigkeiten auflösen
-</div>
+**🏭 Factory Pattern:** Abhängigkeiten auflösen <!-- .element: class="fragment" data-fragment-index="4" -->
 
-<div class="fragment" data-fragment-index="5">
-<strong>🎯 Strategy Pattern:</strong> Business-Rules austauschbar machen
-</div>
+**🎯 Strategy Pattern:** Business-Rules austauschbar machen <!-- .element: class="fragment" data-fragment-index="5" -->
 
 ---
 

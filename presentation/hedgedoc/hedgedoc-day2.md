@@ -398,50 +398,6 @@ slideOptions:
 }
 </style>
 
-<script>
-// Hide speaker notes that start with "Note:"
-document.addEventListener('DOMContentLoaded', function() {
-  // Function to hide speaker notes
-  function hideSpeakerNotes() {
-    const slides = document.querySelectorAll('.reveal .slides section');
-    
-    slides.forEach(slide => {
-      const paragraphs = slide.querySelectorAll('p');
-      
-      paragraphs.forEach((p, index) => {
-        // Check if paragraph starts with "Note:"
-        if (p.textContent.trim().startsWith('Note:')) {
-          // Hide this paragraph
-          p.style.display = 'none';
-          
-          // Also hide the following list if it exists
-          const nextElement = p.nextElementSibling;
-          if (nextElement && (nextElement.tagName === 'UL' || nextElement.tagName === 'OL')) {
-            nextElement.style.display = 'none';
-          }
-        }
-      });
-      
-      // Also hide any elements with "notes" class
-      const notesElements = slide.querySelectorAll('[class*="notes"], .element.notes');
-      notesElements.forEach(el => {
-        el.style.display = 'none';
-      });
-    });
-  }
-  
-  // Hide notes immediately
-  hideSpeakerNotes();
-  
-  // Also hide notes after reveal.js initializes
-  setTimeout(hideSpeakerNotes, 1000);
-  
-  // Re-hide notes when slide changes
-  if (typeof Reveal !== 'undefined') {
-    Reveal.on('slidechanged', hideSpeakerNotes);
-  }
-});
-</script>
 
 <div class="workshop-header title-slide">
 
@@ -472,11 +428,21 @@ Note:
 <div class="progress-step pending">⏳ Praktische Anwendung</div>
 </div>
 
-<div class="fragment">- **Strukturmuster Übersicht** - Adapter, Decorator, Facade</div>
-<div class="fragment">- **Erweiterte Strukturmuster** - Composite, Proxy</div>
-<div class="fragment">- **Enterprise Patterns** - Reale Anwendungsbeispiele</div>
-<div class="fragment">- **Praktische Anwendung** - Code-Analyse und Refactoring</div>
-<div class="fragment">- **Best Practices** - Enterprise spezifische Anwendungen</div> 
+- **Strukturmuster Übersicht** - Adapter, Decorator, Facade
+
+<!-- .element: class="fragment" -->
+- **Erweiterte Strukturmuster** - Composite, Proxy
+
+<!-- .element: class="fragment" -->
+- **Enterprise Patterns** - Reale Anwendungsbeispiele
+
+<!-- .element: class="fragment" -->
+- **Praktische Anwendung** - Code-Analyse und Refactoring
+
+<!-- .element: class="fragment" -->
+- **Best Practices** - Enterprise spezifische Anwendungen
+
+<!-- .element: class="fragment" --> 
 
 Note:
 - Verwenden Sie Service Enhancement Pipeline als Motivation für Decorator Pattern
@@ -501,11 +467,21 @@ Note:
 
 </div>
 
-<div class="fragment">- **Objekte kombinieren** - Funktionalität durch Zusammensetzung</div>
-<div class="fragment">- **Interface Harmonisierung** - Inkompatible Schnittstellen verbinden</div>
-<div class="fragment">- **Komplexität reduzieren** - Einfache Schnittstellen für komplexe Subsysteme</div>
-<div class="fragment">- **Flexibilität erhöhen** - Laufzeit-Komposition statt Vererbung</div>
-<div class="fragment">- **Performance optimieren** - Lazy Loading und Proxy-Mechanismen</div> 
+- **Objekte kombinieren** - Funktionalität durch Zusammensetzung
+
+<!-- .element: class="fragment" -->
+- **Interface Harmonisierung** - Inkompatible Schnittstellen verbinden
+
+<!-- .element: class="fragment" -->
+- **Komplexität reduzieren** - Einfache Schnittstellen für komplexe Subsysteme
+
+<!-- .element: class="fragment" -->
+- **Flexibilität erhöhen** - Laufzeit-Komposition statt Vererbung
+
+<!-- .element: class="fragment" -->
+- **Performance optimieren** - Lazy Loading und Proxy-Mechanismen
+
+<!-- .element: class="fragment" --> 
 
 <!-- Speaker Notes: Strukturmuster sind das Herzstück moderner Enterprise-Architekturen. Sie ermöglichen es uns, komplexe Systeme modular und wartbar zu gestalten. Bei Enterprise nutzen wir diese Patterns täglich für API-Integration und Microservices. -->
 
@@ -567,12 +543,18 @@ public class BillingManager {
 
 ## Identifizierte Code-Smells
 
-- **Interface Mismatch**: Verschiedene APIs für gleiche Funktionalität 
-- **Duplicate Conversion**: Manuelle Datenkonvertierung überall 
-- **Tight Coupling**: Direkte Abhängigkeit zu Legacy-Systemen 
-- **No Abstraction**: Keine einheitliche Schnittstelle 
-- **Duplicate Code**: Ähnliche Konvertierungs-Logik in jeder Methode 
-- **Type Conversion Hell**: int/float/String-Konvertierungen überall 
+- **Interface Mismatch**: Verschiedene APIs für gleiche Funktionalität
+<!-- .element: class="fragment" -->
+- **Duplicate Conversion**: Manuelle Datenkonvertierung überall
+<!-- .element: class="fragment" -->
+- **Tight Coupling**: Direkte Abhängigkeit zu Legacy-Systemen
+<!-- .element: class="fragment" -->
+- **No Abstraction**: Keine einheitliche Schnittstelle
+<!-- .element: class="fragment" -->
+- **Duplicate Code**: Ähnliche Konvertierungs-Logik in jeder Methode
+<!-- .element: class="fragment" -->
+- **Type Conversion Hell**: int/float/String-Konvertierungen überall
+<!-- .element: class="fragment" --> 
 
 ---
 
@@ -593,20 +575,29 @@ public class BillingManager {
 <div>
 
 ## Use Cases
-<div class="fragment">- **Legacy System Integration** - Alte APIs in moderne Architekturen</div>
-<div class="fragment">- **Third-Party Integration** - Externe Services standardisiert nutzen</div>
-<div class="fragment">- **Interface Vereinheitlichung** - Verschiedene APIs unter einem Interface</div>
-<div class="fragment">- **Backward Compatibility** - Alte Schnittstellen weiter unterstützen</div>
-<div class="fragment">- **Protocol Translation** - Verschiedene Protokolle harmonisieren</div> 
+- **Legacy System Integration** - Alte APIs in moderne Architekturen
+<!-- .element: class="fragment" -->
+- **Third-Party Integration** - Externe Services standardisiert nutzen
+<!-- .element: class="fragment" -->
+- **Interface Vereinheitlichung** - Verschiedene APIs unter einem Interface
+<!-- .element: class="fragment" -->
+- **Backward Compatibility** - Alte Schnittstellen weiter unterstützen
+<!-- .element: class="fragment" -->
+- **Protocol Translation** - Verschiedene Protokolle harmonisieren
+<!-- .element: class="fragment" --> 
 
 </div>
 <div>
 
 ## Benefits
-<div class="fragment">- **Separation of Concerns** - Business logic von Integration getrennt</div>
-<div class="fragment">- **Reusability** - Legacy-Code weiter nutzen</div>
-<div class="fragment">- **Maintainability** - Änderungen isoliert im Adapter</div>
-<div class="fragment">- **Testability** - Adapter separat testbar</div> 
+- **Separation of Concerns** - Business logic von Integration getrennt
+<!-- .element: class="fragment" -->
+- **Reusability** - Legacy-Code weiter nutzen
+<!-- .element: class="fragment" -->
+- **Maintainability** - Änderungen isoliert im Adapter
+<!-- .element: class="fragment" -->
+- **Testability** - Adapter separat testbar
+<!-- .element: class="fragment" --> 
 
 </div>
 </div>
@@ -622,58 +613,60 @@ public class BillingManager {
 
 ```typescript
 // Modern Interface
-interface ModernBillingInterface { // fragment
-  createInvoice(customer: Customer, amount: number): Invoice; // fragment
-  getInvoiceStatus(invoiceId: string): BillingStatus; // fragment
-} // fragment
+interface ModernBillingInterface {
+  createInvoice(customer: Customer, amount: number): Invoice;
+  getInvoiceStatus(invoiceId: string): BillingStatus;
+}
 
-class LegacyBillingSystem { // fragment
-  // Legacy API mit anderem Interface // fragment
-  generateBill(custId: number, sum: number): LegacyBill { // fragment
-    return new LegacyBill(custId, sum, new Date()); // fragment
-  } // fragment
+class LegacyBillingSystem {
+  // Legacy API mit anderem Interface
+  generateBill(custId: number, sum: number): LegacyBill {
+    return new LegacyBill(custId, sum, new Date());
+  }
   
-  checkBillStatus(billNumber: string): number { // fragment
-    // Returns numeric status codes // fragment
-    return 1; // 1=pending, 2=paid, 3=overdue // fragment
-  } // fragment
-} // fragment
+  checkBillStatus(billNumber: string): number {
+    // Returns numeric status codes
+    return 1; // 1=pending, 2=paid, 3=overdue
+  }
+}
 
-class BillingAdapter implements ModernBillingInterface { // fragment
-  constructor(private legacySystem: LegacyBillingSystem) {} // fragment
+class BillingAdapter implements ModernBillingInterface {
+  constructor(private legacySystem: LegacyBillingSystem) {}
   
-  createInvoice(customer: Customer, amount: number): Invoice { // fragment
-    const legacyBill = this.legacySystem.generateBill(customer.id, amount); // fragment
+  createInvoice(customer: Customer, amount: number): Invoice {
+    const legacyBill = this.legacySystem.generateBill(customer.id, amount);
     
-    return new Invoice({ // fragment
-      id: legacyBill.billNumber, // fragment
-      customerId: customer.id, // fragment
-      amount: amount, // fragment
-      date: legacyBill.createdAt, // fragment
-      status: 'pending' // fragment
-    }); // fragment
-  } // fragment
+    return new Invoice({
+      id: legacyBill.billNumber,
+      customerId: customer.id,
+      amount: amount,
+      date: legacyBill.createdAt,
+      status: 'pending'
+    });
+  }
   
-  getInvoiceStatus(invoiceId: string): BillingStatus { // fragment
-    const statusCode = this.legacySystem.checkBillStatus(invoiceId); // fragment
+  getInvoiceStatus(invoiceId: string): BillingStatus {
+    const statusCode = this.legacySystem.checkBillStatus(invoiceId);
     
-    // Convert numeric codes to modern enum // fragment
-    switch(statusCode) { // fragment
-      case 1: return BillingStatus.PENDING; // fragment
-      case 2: return BillingStatus.PAID; // fragment
-      case 3: return BillingStatus.OVERDUE; // fragment
-      default: return BillingStatus.UNKNOWN; // fragment
-    } // fragment
-  } // fragment
-} // fragment
+    // Convert numeric codes to modern enum
+    switch(statusCode) {
+      case 1: return BillingStatus.PENDING;
+      case 2: return BillingStatus.PAID;
+      case 3: return BillingStatus.OVERDUE;
+      default: return BillingStatus.UNKNOWN;
+    }
+  }
+}
 
 // Verwendung
-const legacySystem = new LegacyBillingSystem(); // fragment
-const modernBilling: ModernBillingInterface = new BillingAdapter(legacySystem); // fragment
+const legacySystem = new LegacyBillingSystem();
+const modernBilling: ModernBillingInterface = new BillingAdapter(legacySystem);
 
-const invoice = modernBilling.createInvoice(customer, 99.99); // fragment
-const status = modernBilling.getInvoiceStatus(invoice.id); // fragment
+const invoice = modernBilling.createInvoice(customer, 99.99);
+const status = modernBilling.getInvoiceStatus(invoice.id);
 ```
+
+<!-- .element: class="fragment" -->
 
 </div>
 
@@ -772,12 +765,18 @@ public class CustomerService {
 
 ## Identifizierte Code-Smells
 
-- **Mixed Concerns**: Business-Logik vermischt mit Cross-Cutting Concerns 
-- **Duplicate Code**: Logging/Security/Performance Code in jeder Methode 
-- **Hard to Maintain**: Änderungen am Logging betreffen alle Methoden 
-- **Inflexible**: Concerns können nicht optional oder kombiniert werden 
-- **Single Responsibility Violation**: Service macht viel mehr als Business-Logik 
-- **Testing Nightmare**: Cross-Cutting Concerns erschweren Unit-Tests 
+- **Mixed Concerns**: Business-Logik vermischt mit Cross-Cutting Concerns
+<!-- .element: class="fragment" -->
+- **Duplicate Code**: Logging/Security/Performance Code in jeder Methode
+<!-- .element: class="fragment" -->
+- **Hard to Maintain**: Änderungen am Logging betreffen alle Methoden
+<!-- .element: class="fragment" -->
+- **Inflexible**: Concerns können nicht optional oder kombiniert werden
+<!-- .element: class="fragment" -->
+- **Single Responsibility Violation**: Service macht viel mehr als Business-Logik
+<!-- .element: class="fragment" -->
+- **Testing Nightmare**: Cross-Cutting Concerns erschweren Unit-Tests
+<!-- .element: class="fragment" --> 
 
 ---
 
@@ -798,20 +797,29 @@ public class CustomerService {
 <div>
 
 ## Use Cases
-<div class="fragment">- **Behavior Extension** - Funktionalität ohne Vererbung hinzufügen</div>
-<div class="fragment">- **Responsibility Chaining** - Multiple Decorator verschachteln</div>
-<div class="fragment">- **Runtime Composition** - Flexibel zur Laufzeit konfigurieren</div>
-<div class="fragment">- **Open-Closed Principle** - Erweiterung ohne Modifikation</div>
-<div class="fragment">- **Cross-Cutting Concerns** - Logging, Security, Caching</div> 
+- **Behavior Extension** - Funktionalität ohne Vererbung hinzufügen
+<!-- .element: class="fragment" -->
+- **Responsibility Chaining** - Multiple Decorator verschachteln
+<!-- .element: class="fragment" -->
+- **Runtime Composition** - Flexibel zur Laufzeit konfigurieren
+<!-- .element: class="fragment" -->
+- **Open-Closed Principle** - Erweiterung ohne Modifikation
+<!-- .element: class="fragment" -->
+- **Cross-Cutting Concerns** - Logging, Security, Caching
+<!-- .element: class="fragment" --> 
 
 </div>
 <div>
 
 ## Benefits
-<div class="fragment">- **Flexibility** - Laufzeit-Konfiguration</div>
-<div class="fragment">- **Single Responsibility** - Jeder Decorator eine Aufgabe</div>
-<div class="fragment">- **Composability** - Verschiedene Kombinationen möglich</div>
-<div class="fragment">- **Maintainability** - Concerns getrennt</div> 
+- **Flexibility** - Laufzeit-Konfiguration
+<!-- .element: class="fragment" -->
+- **Single Responsibility** - Jeder Decorator eine Aufgabe
+<!-- .element: class="fragment" -->
+- **Composability** - Verschiedene Kombinationen möglich
+<!-- .element: class="fragment" -->
+- **Maintainability** - Concerns getrennt
+<!-- .element: class="fragment" --> 
 
 </div>
 </div>
@@ -826,63 +834,19 @@ public class CustomerService {
 <h5>Enterprise Service Decoration für Cross-Cutting Concerns</h5>
 
 ```typescript
-interface EnterpriseService { // fragment
-  processRequest(request: ServiceRequest): ServiceResponse; // fragment
-} // fragment
-
-class BasicCustomerService implements EnterpriseService { // fragment
-  processRequest(request: ServiceRequest): ServiceResponse { // fragment
-    // Core business logic // fragment
-    return new ServiceResponse({ // fragment
-      success: true, // fragment
-      data: `Processed customer request: ${request.type}`, // fragment
-      timestamp: new Date() // fragment
-    }); // fragment
-  } // fragment
-} // fragment
-
+interface EnterpriseService {  processRequest(request: ServiceRequest): ServiceResponse;}
+class BasicCustomerService implements EnterpriseService {  processRequest(request: ServiceRequest): ServiceResponse {    // Core business logic    return new ServiceResponse({      success: true,      data: `Processed customer request: ${request.type}`,      timestamp: new Date()    });  }}
 // Decorator Base Class
-abstract class ServiceDecorator implements EnterpriseService { // fragment
-  constructor(protected service: EnterpriseService) {} // fragment
-  
-  processRequest(request: ServiceRequest): ServiceResponse { // fragment
-    return this.service.processRequest(request); // fragment
-  } // fragment
-} // fragment
-
+abstract class ServiceDecorator implements EnterpriseService {  constructor(protected service: EnterpriseService) {}  
+  processRequest(request: ServiceRequest): ServiceResponse {    return this.service.processRequest(request);  }}
 // Logging Decorator
-class LoggingDecorator extends ServiceDecorator { // fragment
-  processRequest(request: ServiceRequest): ServiceResponse { // fragment
-    console.log(`[LOG] Processing request: ${request.type} at ${new Date()}`); // fragment
-    
-    const response = super.processRequest(request); // fragment
-    
-    console.log(`[LOG] Request completed: ${response.success ? 'SUCCESS' : 'FAILED'}`); // fragment
-    return response; // fragment
-  } // fragment
-} // fragment
-
+class LoggingDecorator extends ServiceDecorator {  processRequest(request: ServiceRequest): ServiceResponse {    console.log(`[LOG] Processing request: ${request.type} at ${new Date()}`);    
+    const response = super.processRequest(request);    
+    console.log(`[LOG] Request completed: ${response.success ? 'SUCCESS' : 'FAILED'}`);    return response;  }}
 // Security Decorator
-class SecurityDecorator extends ServiceDecorator { // fragment
-  processRequest(request: ServiceRequest): ServiceResponse { // fragment
-    // Validate authentication and authorization // fragment
-    if (!request.token || !this.validateToken(request.token)) { // fragment
-      return new ServiceResponse({ // fragment
-        success: false, // fragment
-        error: 'Unauthorized access', // fragment
-        timestamp: new Date() // fragment
-      }); // fragment
-    } // fragment
-    
-    return super.processRequest(request); // fragment
-  } // fragment
-  
-  private validateToken(token: string): boolean { // fragment
-    // Enterprise token validation logic // fragment
-    return token.startsWith('enterprise_') && token.length > 10; // fragment
-  } // fragment
-} // fragment
-```
+class SecurityDecorator extends ServiceDecorator {  processRequest(request: ServiceRequest): ServiceResponse {    // Validate authentication and authorization    if (!request.token || !this.validateToken(request.token)) {      return new ServiceResponse({        success: false,        error: 'Unauthorized access',        timestamp: new Date()      });    }    
+    return super.processRequest(request);  }  
+  private validateToken(token: string): boolean {    // Enterprise token validation logic    return token.startsWith('enterprise_') && token.length > 10;  }}```
 
 </div>
 
@@ -897,40 +861,20 @@ class SecurityDecorator extends ServiceDecorator { // fragment
 
 ```typescript
 // Performance Monitoring Decorator
-class PerformanceDecorator extends ServiceDecorator { // fragment
-  processRequest(request: ServiceRequest): ServiceResponse { // fragment
-    const startTime = performance.now(); // fragment
-    
-    const response = super.processRequest(request); // fragment
-    
-    const executionTime = performance.now() - startTime; // fragment
-    console.log(`[PERF] Request executed in ${executionTime.toFixed(2)}ms`); // fragment
-    
-    // Add performance metrics to response // fragment
-    response.metadata = { executionTime }; // fragment
-    return response; // fragment
-  } // fragment
-} // fragment
-
+class PerformanceDecorator extends ServiceDecorator {  processRequest(request: ServiceRequest): ServiceResponse {    const startTime = performance.now();    
+    const response = super.processRequest(request);    
+    const executionTime = performance.now() - startTime;    console.log(`[PERF] Request executed in ${executionTime.toFixed(2)}ms`);    
+    // Add performance metrics to response    response.metadata = { executionTime };    return response;  }}
 // Usage - Flexible composition
-let customerService: EnterpriseService = new BasicCustomerService(); // fragment
-
+let customerService: EnterpriseService = new BasicCustomerService();
 // Add logging
-customerService = new LoggingDecorator(customerService); // fragment
-
+customerService = new LoggingDecorator(customerService);
 // Add security
-customerService = new SecurityDecorator(customerService); // fragment
-
+customerService = new SecurityDecorator(customerService);
 // Add performance monitoring
-customerService = new PerformanceDecorator(customerService); // fragment
-
+customerService = new PerformanceDecorator(customerService);
 // Process request with all decorators
-const response = customerService.processRequest({ // fragment
-  type: 'UPDATE_CUSTOMER_DATA', // fragment
-  token: 'enterprise_abc123456789', // fragment
-  customerId: '12345' // fragment
-}); // fragment
-```
+const response = customerService.processRequest({  type: 'UPDATE_CUSTOMER_DATA',  token: 'enterprise_abc123456789',  customerId: '12345'});```
 
 </div>
 
@@ -1046,12 +990,18 @@ public class CustomerController {
 
 ## Identifizierte Code-Smells
 
-- **Complex Orchestration**: Client muss alle Services koordinieren 
-- **Tight Coupling**: Client kennt alle Subsystem-Details 
-- **Error Handling Chaos**: Rollback und Partial Failures komplex 
-- **Duplicate Logic**: Orchestration Code in jedem Client wiederholt 
-- **Transaction Management**: Kein koordiniertes Transaction-Handling 
-- **Single Point of Failure**: Wenn ein Service failiert, bricht alles zusammen 
+- **Complex Orchestration**: Client muss alle Services koordinieren
+<!-- .element: class="fragment" -->
+- **Tight Coupling**: Client kennt alle Subsystem-Details
+<!-- .element: class="fragment" -->
+- **Error Handling Chaos**: Rollback und Partial Failures komplex
+<!-- .element: class="fragment" -->
+- **Duplicate Logic**: Orchestration Code in jedem Client wiederholt
+<!-- .element: class="fragment" -->
+- **Transaction Management**: Kein koordiniertes Transaction-Handling
+<!-- .element: class="fragment" -->
+- **Single Point of Failure**: Wenn ein Service failiert, bricht alles zusammen
+<!-- .element: class="fragment" --> 
 
 ---
 
@@ -1072,20 +1022,29 @@ public class CustomerController {
 <div>
 
 ## Use Cases
-- **Complexity Hiding** - Einfache API für komplexe Operationen 
-- **Subsystem Coordination** - Multiple Services orchestrieren 
-- **Client Decoupling** - Clients vom Subsystem entkoppeln 
-- **API Standardization** - Einheitliche Schnittstellen schaffen 
-- **Integration Layer** - Microservices zusammenfassen 
+- **Complexity Hiding** - Einfache API für komplexe Operationen
+<!-- .element: class="fragment" -->
+- **Subsystem Coordination** - Multiple Services orchestrieren
+<!-- .element: class="fragment" -->
+- **Client Decoupling** - Clients vom Subsystem entkoppeln
+<!-- .element: class="fragment" -->
+- **API Standardization** - Einheitliche Schnittstellen schaffen
+<!-- .element: class="fragment" -->
+- **Integration Layer** - Microservices zusammenfassen
+<!-- .element: class="fragment" --> 
 
 </div>
 <div>
 
 ## Benefits
-- **Simplicity** - Einfache Client-Schnittstelle 
-- **Decoupling** - Clients unabhängig von Implementierung 
-- **Flexibility** - Subsystem-Änderungen transparent 
-- **Reusability** - Hochlevelige Operationen wiederverwendbar 
+- **Simplicity** - Einfache Client-Schnittstelle
+<!-- .element: class="fragment" -->
+- **Decoupling** - Clients unabhängig von Implementierung
+<!-- .element: class="fragment" -->
+- **Flexibility** - Subsystem-Änderungen transparent
+<!-- .element: class="fragment" -->
+- **Reusability** - Hochlevelige Operationen wiederverwendbar
+<!-- .element: class="fragment" --> 
 
 </div>
 </div>
@@ -1100,95 +1059,20 @@ public class CustomerController {
 <h5>Enterprise Customer Management Facade</h5>
 
 ```typescript
-class EnterpriseCustomerFacade { // fragment
-  constructor( // fragment
-    private customerService: CustomerService, // fragment
-    private billingService: BillingService, // fragment
-    private contractService: ContractService, // fragment
-    private notificationService: NotificationService, // fragment
-    private auditService: AuditService // fragment
-  ) {} // fragment
-  
+class EnterpriseCustomerFacade {  constructor(    private customerService: CustomerService,    private billingService: BillingService,    private contractService: ContractService,    private notificationService: NotificationService,    private auditService: AuditService  ) {}  
   // Vereinfachte API für komplexes Customer Onboarding
-  async onboardNewCustomer(customerData: CustomerData): Promise<OnboardingResult> { // fragment
-    try { // fragment
-      // 1. Create customer record // fragment
-      const customer = await this.customerService.create({ // fragment
-        name: customerData.name, // fragment
-        email: customerData.email, // fragment
-        phone: customerData.phone, // fragment
-        address: customerData.address // fragment
-      }); // fragment
-      
-      // 2. Set up billing account // fragment
-      const billingAccount = await this.billingService.createAccount({ // fragment
-        customerId: customer.id, // fragment
-        paymentMethod: customerData.paymentMethod, // fragment
-        billingAddress: customerData.billingAddress // fragment
-      }); // fragment
-      
-      // 3. Create initial contract // fragment
-      const contract = await this.contractService.create({ // fragment
-        customerId: customer.id, // fragment
-        planType: customerData.selectedPlan, // fragment
-        startDate: new Date(), // fragment
-        billingAccountId: billingAccount.id // fragment
-      }); // fragment
-      
-      // 4. Send welcome notification // fragment
-      await this.notificationService.sendWelcomeEmail({ // fragment
-        customerEmail: customer.email, // fragment
-        customerName: customer.name, // fragment
-        contractDetails: contract // fragment
-      }); // fragment
-      
-      // 5. Log audit trail // fragment
-      await this.auditService.logCustomerAction({ // fragment
-        action: 'CUSTOMER_ONBOARDED', // fragment
-        customerId: customer.id, // fragment
-        timestamp: new Date(), // fragment
-        details: { contractId: contract.id, plan: customerData.selectedPlan } // fragment
-      }); // fragment
-      
-      return new OnboardingResult({ // fragment
-        success: true, // fragment
-        customerId: customer.id, // fragment
-        contractId: contract.id, // fragment
-        message: 'Customer successfully onboarded' // fragment
-      }); // fragment
-      
-    } catch (error) { // fragment
-      // Comprehensive error handling // fragment
-      await this.auditService.logError({ // fragment
-        action: 'CUSTOMER_ONBOARDING_FAILED', // fragment
-        error: error.message, // fragment
-        customerData: customerData.email // Safe logging // fragment
-      }); // fragment
-      
-      return new OnboardingResult({ // fragment
-        success: false, // fragment
-        error: 'Onboarding process failed', // fragment
-        details: error.message // fragment
-      }); // fragment
-    } // fragment
-  } // fragment
-} // fragment
-
+  async onboardNewCustomer(customerData: CustomerData): Promise<OnboardingResult> {    try {      // 1. Create customer record      const customer = await this.customerService.create({        name: customerData.name,        email: customerData.email,        phone: customerData.phone,        address: customerData.address      });      
+      // 2. Set up billing account      const billingAccount = await this.billingService.createAccount({        customerId: customer.id,        paymentMethod: customerData.paymentMethod,        billingAddress: customerData.billingAddress      });      
+      // 3. Create initial contract      const contract = await this.contractService.create({        customerId: customer.id,        planType: customerData.selectedPlan,        startDate: new Date(),        billingAccountId: billingAccount.id      });      
+      // 4. Send welcome notification      await this.notificationService.sendWelcomeEmail({        customerEmail: customer.email,        customerName: customer.name,        contractDetails: contract      });      
+      // 5. Log audit trail      await this.auditService.logCustomerAction({        action: 'CUSTOMER_ONBOARDED',        customerId: customer.id,        timestamp: new Date(),        details: { contractId: contract.id, plan: customerData.selectedPlan }      });      
+      return new OnboardingResult({        success: true,        customerId: customer.id,        contractId: contract.id,        message: 'Customer successfully onboarded'      });      
+    } catch (error) {      // Comprehensive error handling      await this.auditService.logError({        action: 'CUSTOMER_ONBOARDING_FAILED',        error: error.message,        customerData: customerData.email // Safe logging      });      
+      return new OnboardingResult({        success: false,        error: 'Onboarding process failed',        details: error.message      });    }  }}
 // Simple usage for complex operations
-const customerFacade = new EnterpriseCustomerFacade( // fragment
-  customerService, billingService, contractService,  // fragment
-  notificationService, auditService // fragment
-); // fragment
-
+const customerFacade = new EnterpriseCustomerFacade(  customerService, billingService, contractService,   notificationService, auditService);
 // Complex onboarding with single method call
-const result = await customerFacade.onboardNewCustomer({ // fragment
-  name: 'Max Mustermann', // fragment
-  email: 'max@example.com', // fragment
-  phone: '+49 123 456789', // fragment
-  selectedPlan: 'BUSINESS_PRO', // fragment
-  paymentMethod: 'SEPA' // fragment
-}); // fragment
-```
+const result = await customerFacade.onboardNewCustomer({  name: 'Max Mustermann',  email: 'max@example.com',  phone: '+49 123 456789',  selectedPlan: 'BUSINESS_PRO',  paymentMethod: 'SEPA'});```
 
 </div>
 
@@ -1213,20 +1097,29 @@ const result = await customerFacade.onboardNewCustomer({ // fragment
 <div>
 
 ## Use Cases
-- **Hierarchical Structures** - Baumstrukturen elegant handhaben 
-- **Uniform Interface** - Gleiche Operationen für Blätter und Äste 
-- **Recursive Operations** - Operationen propagieren automatisch 
-- **Dynamic Composition** - Strukturen zur Laufzeit ändern 
-- **Organizational Modeling** - Unternehmen, Teams, Projekte 
+- **Hierarchical Structures** - Baumstrukturen elegant handhaben
+<!-- .element: class="fragment" -->
+- **Uniform Interface** - Gleiche Operationen für Blätter und Äste
+<!-- .element: class="fragment" -->
+- **Recursive Operations** - Operationen propagieren automatisch
+<!-- .element: class="fragment" -->
+- **Dynamic Composition** - Strukturen zur Laufzeit ändern
+<!-- .element: class="fragment" -->
+- **Organizational Modeling** - Unternehmen, Teams, Projekte
+<!-- .element: class="fragment" --> 
 
 </div>
 <div>
 
 ## Benefits
-- **Simplicity** - Einheitliche Behandlung 
-- **Flexibility** - Dynamische Strukturänderungen 
-- **Scalability** - Beliebig tiefe Hierarchien 
-- **Reusability** - Wiederverwendbare Tree-Operationen 
+- **Simplicity** - Einheitliche Behandlung
+<!-- .element: class="fragment" -->
+- **Flexibility** - Dynamische Strukturänderungen
+<!-- .element: class="fragment" -->
+- **Scalability** - Beliebig tiefe Hierarchien
+<!-- .element: class="fragment" -->
+- **Reusability** - Wiederverwendbare Tree-Operationen
+<!-- .element: class="fragment" --> 
 
 </div>
 </div>
@@ -1241,105 +1134,24 @@ const result = await customerFacade.onboardNewCustomer({ // fragment
 <h5>Enterprise Organizational Structure mit Composite Pattern</h5>
 
 ```typescript
-interface OrganizationalUnit { // fragment
-  getName(): string; // fragment
-  getEmployeeCount(): number; // fragment
-  getBudget(): number; // fragment
-  addUnit(unit: OrganizationalUnit): void; // fragment
-  removeUnit(unit: OrganizationalUnit): void; // fragment
-  generateReport(): OrganizationalReport; // fragment
-} // fragment
-
-class Employee implements OrganizationalUnit { // fragment
-  constructor( // fragment
-    private name: string, // fragment
-    private salary: number, // fragment
-    private position: string // fragment
-  ) {} // fragment
-  
-  getName(): string { // fragment
-    return this.name; // fragment
-  } // fragment
-  
-  getEmployeeCount(): number { // fragment
-    return 1; // An employee counts as 1 // fragment
-  } // fragment
-  
-  getBudget(): number { // fragment
-    return this.salary; // fragment
-  } // fragment
-  
-  addUnit(unit: OrganizationalUnit): void { // fragment
-    throw new Error('Cannot add units to an employee'); // fragment
-  } // fragment
-  
-  removeUnit(unit: OrganizationalUnit): void { // fragment
-    throw new Error('Cannot remove units from an employee'); // fragment
-  } // fragment
-  
-  generateReport(): OrganizationalReport { // fragment
-    return { // fragment
-      name: this.name, // fragment
-      type: 'EMPLOYEE', // fragment
-      employeeCount: 1, // fragment
-      budget: this.salary, // fragment
-      position: this.position, // fragment
-      children: [] // fragment
-    }; // fragment
-  } // fragment
-} // fragment
-
-class Department implements OrganizationalUnit { // fragment
-  private units: OrganizationalUnit[] = []; // fragment
-  
-  constructor( // fragment
-    private name: string, // fragment
-    private operationalBudget: number = 0 // fragment
-  ) {} // fragment
-  
-  getName(): string { // fragment
-    return this.name; // fragment
-  } // fragment
-  
-  getEmployeeCount(): number { // fragment
-    return this.units.reduce((total, unit) => { // fragment
-      return total + unit.getEmployeeCount(); // fragment
-    }, 0); // fragment
-  } // fragment
-  
-  getBudget(): number { // fragment
-    const personnelBudget = this.units.reduce((total, unit) => { // fragment
-      return total + unit.getBudget(); // fragment
-    }, 0); // fragment
-    
-    return personnelBudget + this.operationalBudget; // fragment
-  } // fragment
-  
-  addUnit(unit: OrganizationalUnit): void { // fragment
-    this.units.push(unit); // fragment
-  } // fragment
-  
-  removeUnit(unit: OrganizationalUnit): void { // fragment
-    const index = this.units.indexOf(unit); // fragment
-    if (index > -1) { // fragment
-      this.units.splice(index, 1); // fragment
-    } // fragment
-  } // fragment
-  
-  generateReport(): OrganizationalReport { // fragment
-    const childReports = this.units.map(unit => unit.generateReport()); // fragment
-    
-    return { // fragment
-      name: this.name, // fragment
-      type: 'DEPARTMENT', // fragment
-      employeeCount: this.getEmployeeCount(), // fragment
-      budget: this.getBudget(), // fragment
-      operationalBudget: this.operationalBudget, // fragment
-      children: childReports // fragment
-    }; // fragment
-  } // fragment
-} // fragment
-```
+interface OrganizationalUnit {  getName(): string;  getEmployeeCount(): number;  getBudget(): number;  addUnit(unit: OrganizationalUnit): void;  removeUnit(unit: OrganizationalUnit): void;  generateReport(): OrganizationalReport;}
+class Employee implements OrganizationalUnit {  constructor(    private name: string,    private salary: number,    private position: string  ) {}  
+  getName(): string {    return this.name;  }  
+  getEmployeeCount(): number {    return 1; // An employee counts as 1  }  
+  getBudget(): number {    return this.salary;  }  
+  addUnit(unit: OrganizationalUnit): void {    throw new Error('Cannot add units to an employee');  }  
+  removeUnit(unit: OrganizationalUnit): void {    throw new Error('Cannot remove units from an employee');  }  
+  generateReport(): OrganizationalReport {    return {      name: this.name,      type: 'EMPLOYEE',      employeeCount: 1,      budget: this.salary,      position: this.position,      children: []    };  }}
+class Department implements OrganizationalUnit {  private units: OrganizationalUnit[] = [];  
+  constructor(    private name: string,    private operationalBudget: number = 0  ) {}  
+  getName(): string {    return this.name;  }  
+  getEmployeeCount(): number {    return this.units.reduce((total, unit) => {      return total + unit.getEmployeeCount();    }, 0);  }  
+  getBudget(): number {    const personnelBudget = this.units.reduce((total, unit) => {      return total + unit.getBudget();    }, 0);    
+    return personnelBudget + this.operationalBudget;  }  
+  addUnit(unit: OrganizationalUnit): void {    this.units.push(unit);  }  
+  removeUnit(unit: OrganizationalUnit): void {    const index = this.units.indexOf(unit);    if (index > -1) {      this.units.splice(index, 1);    }  }  
+  generateReport(): OrganizationalReport {    const childReports = this.units.map(unit => unit.generateReport());    
+    return {      name: this.name,      type: 'DEPARTMENT',      employeeCount: this.getEmployeeCount(),      budget: this.getBudget(),      operationalBudget: this.operationalBudget,      children: childReports    };  }}```
 
 </div>
 
@@ -1354,40 +1166,21 @@ class Department implements OrganizationalUnit { // fragment
 
 ```typescript
 // Enterprise organizational structure example
-const = new Department('Deutsche Enterprise AG', 1000000); // fragment
-
+const = new Department('Deutsche Enterprise AG', 1000000);
 // Technology Division
-const technologyDiv = new Department('Technology', 500000); // fragment
-const cloudTeam = new Department('Cloud Services', 50000); // fragment
-const securityTeam = new Department('IT Security', 75000); // fragment
-
+const technologyDiv = new Department('Technology', 500000);const cloudTeam = new Department('Cloud Services', 50000);const securityTeam = new Department('IT Security', 75000);
 // Add employees to teams
-cloudTeam.addUnit(new Employee('Anna Schmidt', 85000, 'Cloud Architect')); // fragment
-cloudTeam.addUnit(new Employee('Peter Wagner', 75000, 'DevOps Engineer')); // fragment
-cloudTeam.addUnit(new Employee('Lisa Chen', 80000, 'Cloud Developer')); // fragment
-
-securityTeam.addUnit(new Employee('Michael Bauer', 90000, 'Security Architect')); // fragment
-securityTeam.addUnit(new Employee('Sarah Müller', 82000, 'Security Engineer')); // fragment
-
+cloudTeam.addUnit(new Employee('Anna Schmidt', 85000, 'Cloud Architect'));cloudTeam.addUnit(new Employee('Peter Wagner', 75000, 'DevOps Engineer'));cloudTeam.addUnit(new Employee('Lisa Chen', 80000, 'Cloud Developer'));
+securityTeam.addUnit(new Employee('Michael Bauer', 90000, 'Security Architect'));securityTeam.addUnit(new Employee('Sarah Müller', 82000, 'Security Engineer'));
 // Build hierarchy
-technologyDiv.addUnit(cloudTeam); // fragment
-technologyDiv.addUnit(securityTeam); // fragment
-company.addUnit(technologyDiv); // fragment
-
+technologyDiv.addUnit(cloudTeam);technologyDiv.addUnit(securityTeam);company.addUnit(technologyDiv);
 // Uniform operations on the entire structure
-console.log(`Total employees: ${company.getEmployeeCount()}`); // fragment
-console.log(`Total budget: €${company.getBudget().toLocaleString()}`); // fragment
-
+console.log(`Total employees: ${company.getEmployeeCount()}`);console.log(`Total budget: €${company.getBudget().toLocaleString()}`);
 // Generate comprehensive report
-const report = company.generateReport(); // fragment
-console.log(JSON.stringify(report, null, 2)); // fragment
-
+const report = company.generateReport();console.log(JSON.stringify(report, null, 2));
 // Dynamic restructuring
-const newInnovationLab = new Department('Innovation Lab', 25000); // fragment
-newInnovationLab.addUnit(new Employee('Dr. Frank Weber', 95000, 'Innovation Lead')); // fragment
-
-technologyDiv.addUnit(newInnovationLab); // fragment
-```
+const newInnovationLab = new Department('Innovation Lab', 25000);newInnovationLab.addUnit(new Employee('Dr. Frank Weber', 95000, 'Innovation Lead'));
+technologyDiv.addUnit(newInnovationLab);```
 
 </div>
 
@@ -1416,20 +1209,29 @@ technologyDiv.addUnit(newInnovationLab); // fragment
 <div>
 
 ## Use Cases
-- **Access Control** - Sicherheitsproxy für geschützte Ressourcen 
-- **Lazy Loading** - Objekte erst bei Bedarf laden 
-- **Caching** - Wiederholte Anfragen zwischenspeichern 
-- **Remote Access** - Entfernte Objekte lokal repräsentieren 
-- **Resource Management** - Teure Operationen optimieren 
+- **Access Control** - Sicherheitsproxy für geschützte Ressourcen
+<!-- .element: class="fragment" -->
+- **Lazy Loading** - Objekte erst bei Bedarf laden
+<!-- .element: class="fragment" -->
+- **Caching** - Wiederholte Anfragen zwischenspeichern
+<!-- .element: class="fragment" -->
+- **Remote Access** - Entfernte Objekte lokal repräsentieren
+<!-- .element: class="fragment" -->
+- **Resource Management** - Teure Operationen optimieren
+<!-- .element: class="fragment" --> 
 
 </div>
 <div>
 
 ## Benefits
-- **Performance** - Caching und Lazy Loading 
-- **Security** - Zugriffskontrolle 
-- **Transparency** - Client merkt Proxy nicht 
-- **Flexibility** - Verschiedene Proxy-Typen 
+- **Performance** - Caching und Lazy Loading
+<!-- .element: class="fragment" -->
+- **Security** - Zugriffskontrolle
+<!-- .element: class="fragment" -->
+- **Transparency** - Client merkt Proxy nicht
+<!-- .element: class="fragment" -->
+- **Flexibility** - Verschiedene Proxy-Typen
+<!-- .element: class="fragment" --> 
 
 </div>
 </div>
@@ -1444,53 +1246,13 @@ technologyDiv.addUnit(newInnovationLab); // fragment
 <h5>Enterprise Data Access Proxy mit Caching und Security</h5>
 
 ```typescript
-interface EnterpriseDataService { // fragment
-  getCustomerData(customerId: string): Promise<CustomerData>; // fragment
-  updateCustomerData(customerId: string, data: Partial<CustomerData>): Promise<boolean>; // fragment
-  getUsageStatistics(customerId: string, period: DateRange): Promise<UsageStats>; // fragment
-} // fragment
-
-class RealEnterpriseDataService implements EnterpriseDataService { // fragment
-  async getCustomerData(customerId: string): Promise<CustomerData> { // fragment
-    // Simulate expensive database call // fragment
-    console.log(`[DB] Fetching customer data for ${customerId}`); // fragment
-    await this.delay(500); // Simulate network delay // fragment
-    
-    return { // fragment
-      id: customerId, // fragment
-      name: 'Max Mustermann', // fragment
-      email: 'max@company.com', // fragment
-      contract: 'BUSINESS_PRO', // fragment
-      lastLogin: new Date(), // fragment
-      dataUsage: 15.5 // fragment
-    }; // fragment
-  } // fragment
-  
-  async updateCustomerData(customerId: string, data: Partial<CustomerData>): Promise<boolean> { // fragment
-    console.log(`[DB] Updating customer data for ${customerId}`); // fragment
-    await this.delay(300); // fragment
-    return true; // fragment
-  } // fragment
-  
-  async getUsageStatistics(customerId: string, period: DateRange): Promise<UsageStats> { // fragment
-    console.log(`[DB] Fetching usage statistics for ${customerId}`); // fragment
-    await this.delay(800); // Heavy analytics query // fragment
-    
-    return { // fragment
-      customerId, // fragment
-      period, // fragment
-      dataUsed: 45.2, // fragment
-      callMinutes: 890, // fragment
-      smsCount: 156, // fragment
-      costs: 89.95 // fragment
-    }; // fragment
-  } // fragment
-  
-  private delay(ms: number): Promise<void> { // fragment
-    return new Promise(resolve => setTimeout(resolve, ms)); // fragment
-  } // fragment
-} // fragment
-```
+interface EnterpriseDataService {  getCustomerData(customerId: string): Promise<CustomerData>;  updateCustomerData(customerId: string, data: Partial<CustomerData>): Promise<boolean>;  getUsageStatistics(customerId: string, period: DateRange): Promise<UsageStats>;}
+class RealEnterpriseDataService implements EnterpriseDataService {  async getCustomerData(customerId: string): Promise<CustomerData> {    // Simulate expensive database call    console.log(`[DB] Fetching customer data for ${customerId}`);    await this.delay(500); // Simulate network delay    
+    return {      id: customerId,      name: 'Max Mustermann',      email: 'max@company.com',      contract: 'BUSINESS_PRO',      lastLogin: new Date(),      dataUsage: 15.5    };  }  
+  async updateCustomerData(customerId: string, data: Partial<CustomerData>): Promise<boolean> {    console.log(`[DB] Updating customer data for ${customerId}`);    await this.delay(300);    return true;  }  
+  async getUsageStatistics(customerId: string, period: DateRange): Promise<UsageStats> {    console.log(`[DB] Fetching usage statistics for ${customerId}`);    await this.delay(800); // Heavy analytics query    
+    return {      customerId,      period,      dataUsed: 45.2,      callMinutes: 890,      smsCount: 156,      costs: 89.95    };  }  
+  private delay(ms: number): Promise<void> {    return new Promise(resolve => setTimeout(resolve, ms));  }}```
 
 </div>
 
@@ -1504,115 +1266,32 @@ class RealEnterpriseDataService implements EnterpriseDataService { // fragment
 <h5>Security and Caching Proxy Implementation</h5>
 
 ```typescript
-class EnterpriseDataServiceProxy implements EnterpriseDataService { // fragment
-  private realService: RealEnterpriseDataService; // fragment
-  private cache = new Map<string, { data: any; timestamp: number }>(); // fragment
-  private readonly CACHE_TTL = 5 * 60 * 1000; // 5 minutes // fragment
-  
-  constructor(private authService: AuthenticationService) { // fragment
-    this.realService = new RealEnterpriseDataService(); // fragment
-  } // fragment
-  
-  async getCustomerData(customerId: string): Promise<CustomerData> { // fragment
-    // Security check // fragment
-    if (!await this.checkAccess(customerId)) { // fragment
-      throw new Error('Unauthorized access to customer data'); // fragment
-    } // fragment
-    
-    // Check cache first // fragment
-    const cacheKey = `customer_${customerId}`; // fragment
-    const cached = this.getCachedData(cacheKey); // fragment
-    if (cached) { // fragment
-      console.log(`[CACHE] Returning cached customer data for ${customerId}`); // fragment
-      return cached; // fragment
-    } // fragment
-    
-    // Fetch from real service // fragment
-    const data = await this.realService.getCustomerData(customerId); // fragment
-    this.setCachedData(cacheKey, data); // fragment
-    
-    return data; // fragment
-  } // fragment
-  
-  async updateCustomerData(customerId: string, data: Partial<CustomerData>): Promise<boolean> { // fragment
-    // Security check // fragment
-    if (!await this.checkAccess(customerId)) { // fragment
-      throw new Error('Unauthorized access to customer data'); // fragment
-    } // fragment
-    
-    // Update via real service // fragment
-    const result = await this.realService.updateCustomerData(customerId, data); // fragment
-    
-    // Invalidate cache // fragment
-    this.invalidateCustomerCache(customerId); // fragment
-    
-    return result; // fragment
-  } // fragment
-  
-  private async checkAccess(customerId: string): Promise<boolean> { // fragment
-    // Simulate authentication and authorization check // fragment
-    const currentUser = await this.authService.getCurrentUser(); // fragment
-    
-    // Check if user has access to this customer data // fragment
-    if (currentUser.role === 'ADMIN') { // fragment
-      return true; // fragment
-    } // fragment
-    
-    if (currentUser.role === 'SUPPORT' && currentUser.customerId === customerId) { // fragment
-      return true; // fragment
-    } // fragment
-    
-    if (currentUser.customerId === customerId) { // fragment
-      return true; // fragment
-    } // fragment
-    
-    console.log(`[SECURITY] Access denied for user ${currentUser.id} to customer ${customerId}`); // fragment
-    return false; // fragment
-  } // fragment
-  
-  private getCachedData(key: string): any { // fragment
-    const cached = this.cache.get(key); // fragment
-    if (cached && (Date.now() - cached.timestamp < this.CACHE_TTL)) { // fragment
-      return cached.data; // fragment
-    } // fragment
-    return null; // fragment
-  } // fragment
-  
-  private setCachedData(key: string, data: any): void { // fragment
-    this.cache.set(key, { // fragment
-      data: data, // fragment
-      timestamp: Date.now() // fragment
-    }); // fragment
-  } // fragment
-  
-  private invalidateCustomerCache(customerId: string): void { // fragment
-    const keysToDelete: string[] = []; // fragment
-    for (const key of this.cache.keys()) { // fragment
-      if (key.includes(customerId)) { // fragment
-        keysToDelete.push(key); // fragment
-      } // fragment
-    } // fragment
-    keysToDelete.forEach(key => this.cache.delete(key)); // fragment
-  } // fragment
-} // fragment
-
+class EnterpriseDataServiceProxy implements EnterpriseDataService {  private realService: RealEnterpriseDataService;  private cache = new Map<string, { data: any; timestamp: number }>();  private readonly CACHE_TTL = 5 * 60 * 1000; // 5 minutes  
+  constructor(private authService: AuthenticationService) {    this.realService = new RealEnterpriseDataService();  }  
+  async getCustomerData(customerId: string): Promise<CustomerData> {    // Security check    if (!await this.checkAccess(customerId)) {      throw new Error('Unauthorized access to customer data');    }    
+    // Check cache first    const cacheKey = `customer_${customerId}`;    const cached = this.getCachedData(cacheKey);    if (cached) {      console.log(`[CACHE] Returning cached customer data for ${customerId}`);      return cached;    }    
+    // Fetch from real service    const data = await this.realService.getCustomerData(customerId);    this.setCachedData(cacheKey, data);    
+    return data;  }  
+  async updateCustomerData(customerId: string, data: Partial<CustomerData>): Promise<boolean> {    // Security check    if (!await this.checkAccess(customerId)) {      throw new Error('Unauthorized access to customer data');    }    
+    // Update via real service    const result = await this.realService.updateCustomerData(customerId, data);    
+    // Invalidate cache    this.invalidateCustomerCache(customerId);    
+    return result;  }  
+  private async checkAccess(customerId: string): Promise<boolean> {    // Simulate authentication and authorization check    const currentUser = await this.authService.getCurrentUser();    
+    // Check if user has access to this customer data    if (currentUser.role === 'ADMIN') {      return true;    }    
+    if (currentUser.role === 'SUPPORT' && currentUser.customerId === customerId) {      return true;    }    
+    if (currentUser.customerId === customerId) {      return true;    }    
+    console.log(`[SECURITY] Access denied for user ${currentUser.id} to customer ${customerId}`);    return false;  }  
+  private getCachedData(key: string): any {    const cached = this.cache.get(key);    if (cached && (Date.now() - cached.timestamp < this.CACHE_TTL)) {      return cached.data;    }    return null;  }  
+  private setCachedData(key: string, data: any): void {    this.cache.set(key, {      data: data,      timestamp: Date.now()    });  }  
+  private invalidateCustomerCache(customerId: string): void {    const keysToDelete: string[] = [];    for (const key of this.cache.keys()) {      if (key.includes(customerId)) {        keysToDelete.push(key);      }    }    keysToDelete.forEach(key => this.cache.delete(key));  }}
 // Usage
-const authService = new AuthenticationService(); // fragment
-const dataService: EnterpriseDataService = new EnterpriseDataServiceProxy(authService); // fragment
-
+const authService = new AuthenticationService();const dataService: EnterpriseDataService = new EnterpriseDataServiceProxy(authService);
 // First call - hits database
-const customer1 = await dataService.getCustomerData('123456'); // fragment
-
+const customer1 = await dataService.getCustomerData('123456');
 // Second call - returns from cache
-const customer2 = await dataService.getCustomerData('123456'); // fragment
-
+const customer2 = await dataService.getCustomerData('123456');
 // Unauthorized call - throws security exception
-try { // fragment
-  await dataService.getCustomerData('unauthorized_customer'); // fragment
-} catch (error) { // fragment
-  console.log('Security proxy blocked unauthorized access'); // fragment
-} // fragment
-```
+try {  await dataService.getCustomerData('unauthorized_customer');} catch (error) {  console.log('Security proxy blocked unauthorized access');}```
 
 </div>
 
@@ -1633,21 +1312,31 @@ try { // fragment
 <div>
 
 ### Anforderungen:
-- **Adapter** - Legacy billing system integration 
-- **Decorator** - Add logging, security, monitoring 
-- **Facade** - Unified customer service API 
-- **Composite** - Service hierarchy management 
-- **Proxy** - Caching and access control 
+- **Adapter** - Legacy billing system integration
+<!-- .element: class="fragment" -->
+- **Decorator** - Add logging, security, monitoring
+<!-- .element: class="fragment" -->
+- **Facade** - Unified customer service API
+<!-- .element: class="fragment" -->
+- **Composite** - Service hierarchy management
+<!-- .element: class="fragment" -->
+- **Proxy** - Caching and access control
+<!-- .element: class="fragment" --> 
 
 </div>
 <div>
 
 ### Bonus Challenges:
-- Configuration-driven decorator selection 
-- Dynamic service discovery 
-- Health monitoring integration 
-- Performance metrics collection 
-- Error recovery mechanisms 
+- Configuration-driven decorator selection
+<!-- .element: class="fragment" -->
+- Dynamic service discovery
+<!-- .element: class="fragment" -->
+- Health monitoring integration
+<!-- .element: class="fragment" -->
+- Performance metrics collection
+<!-- .element: class="fragment" -->
+- Error recovery mechanisms
+<!-- .element: class="fragment" --> 
 
 </div>
 </div>
@@ -1707,21 +1396,30 @@ Note:
 
 ## Enterprise Specific Guidelines:
 
-- **Security First** - Alle Patterns mit Security Decorators erweitern 
-- **Performance Aware** - Proxy Pattern für teure Operations 
-- **Legacy Integration** - Adapter Pattern für Bestandssysteme 
-- **API Standardization** - Facade Pattern für einheitliche APIs 
-- **Monitoring Integration** - Decorator für comprehensive logging 
+- **Security First** - Alle Patterns mit Security Decorators erweitern
+<!-- .element: class="fragment" -->
+- **Performance Aware** - Proxy Pattern für teure Operations
+<!-- .element: class="fragment" -->
+- **Legacy Integration** - Adapter Pattern für Bestandssysteme
+<!-- .element: class="fragment" -->
+- **API Standardization** - Facade Pattern für einheitliche APIs
+<!-- .element: class="fragment" -->
+- **Monitoring Integration** - Decorator für comprehensive logging
+<!-- .element: class="fragment" --> 
 
 </div>
 <div>
 
 ## Häufige Fallstricke:
 
-- **Over-Engineering** - Nicht jede Klasse braucht einen Proxy 
-- **Cache Invalidation** - Proxy Caches müssen intelligent invalidiert werden 
-- **Deep Nesting** - Decorator chains nicht zu tief verschachteln 
-- **Interface Bloat** - Facades nicht mit zu vielen Methoden überladen 
+- **Over-Engineering** - Nicht jede Klasse braucht einen Proxy
+<!-- .element: class="fragment" -->
+- **Cache Invalidation** - Proxy Caches müssen intelligent invalidiert werden
+<!-- .element: class="fragment" -->
+- **Deep Nesting** - Decorator chains nicht zu tief verschachteln
+<!-- .element: class="fragment" -->
+- **Interface Bloat** - Facades nicht mit zu vielen Methoden überladen
+<!-- .element: class="fragment" --> 
 
 </div>
 </div>
@@ -1749,21 +1447,30 @@ Note:
 
 ## Was haben wir gelernt:
 
-- **Adapter Pattern** - Legacy Integration mit modernen APIs 
-- **Decorator Pattern** - Flexible Cross-Cutting Concerns 
-- **Facade Pattern** - Vereinfachung komplexer Subsysteme 
-- **Composite Pattern** - Hierarchische Strukturen elegant handhaben 
-- **Proxy Pattern** - Intelligente Zugriffskontrolle und Caching 
+- **Adapter Pattern** - Legacy Integration mit modernen APIs
+<!-- .element: class="fragment" -->
+- **Decorator Pattern** - Flexible Cross-Cutting Concerns
+<!-- .element: class="fragment" -->
+- **Facade Pattern** - Vereinfachung komplexer Subsysteme
+<!-- .element: class="fragment" -->
+- **Composite Pattern** - Hierarchische Strukturen elegant handhaben
+<!-- .element: class="fragment" -->
+- **Proxy Pattern** - Intelligente Zugriffskontrolle und Caching
+<!-- .element: class="fragment" --> 
 
 </div>
 <div>
 
 ## Morgen - Tag 3:
 
-- **Behavioral Patterns** - Observer, Strategy, Command 
-- **Enterprise Integration** - Message Queues und Event-Driven Architecture 
-- **Microservices Patterns** - Service Mesh und API Gateway 
-- **Advanced Topics** - CQRS, Event Sourcing 
+- **Behavioral Patterns** - Observer, Strategy, Command
+<!-- .element: class="fragment" -->
+- **Enterprise Integration** - Message Queues und Event-Driven Architecture
+<!-- .element: class="fragment" -->
+- **Microservices Patterns** - Service Mesh und API Gateway
+<!-- .element: class="fragment" -->
+- **Advanced Topics** - CQRS, Event Sourcing
+<!-- .element: class="fragment" --> 
 
 </div>
 </div>
@@ -1784,19 +1491,27 @@ Note:
 <div>
 
 ### Diskussionspunkte:
-- Welche Patterns verwenden Sie bereits? 
-- Wo sehen Sie Anwendungsmöglichkeiten in Ihren Projekten? 
-- Welche Herausforderungen haben Sie bei der Implementation? 
-- Wie kombinieren Sie verschiedene Patterns? 
+- Welche Patterns verwenden Sie bereits?
+<!-- .element: class="fragment" -->
+- Wo sehen Sie Anwendungsmöglichkeiten in Ihren Projekten?
+<!-- .element: class="fragment" -->
+- Welche Herausforderungen haben Sie bei der Implementation?
+<!-- .element: class="fragment" -->
+- Wie kombinieren Sie verschiedene Patterns?
+<!-- .element: class="fragment" --> 
 
 </div>
 <div>
 
 ### Kontakt für weitere Fragen:
-- **Email:** architecture-training@company.com 
-- **Teams:** Enterprise Architecture Community 
-- **Wiki:** Internal Pattern Documentation 
-- **GitHub:** Code Examples Repository 
+- **Email:** architecture-training@company.com
+<!-- .element: class="fragment" -->
+- **Teams:** Enterprise Architecture Community
+<!-- .element: class="fragment" -->
+- **Wiki:** Internal Pattern Documentation
+<!-- .element: class="fragment" -->
+- **GitHub:** Code Examples Repository
+<!-- .element: class="fragment" --> 
 
 </div>
 </div>

@@ -398,50 +398,6 @@ slideOptions:
 }
 </style>
 
-<script>
-// Hide speaker notes that start with "Note:"
-document.addEventListener('DOMContentLoaded', function() {
-  // Function to hide speaker notes
-  function hideSpeakerNotes() {
-    const slides = document.querySelectorAll('.reveal .slides section');
-    
-    slides.forEach(slide => {
-      const paragraphs = slide.querySelectorAll('p');
-      
-      paragraphs.forEach((p, index) => {
-        // Check if paragraph starts with "Note:"
-        if (p.textContent.trim().startsWith('Note:')) {
-          // Hide this paragraph
-          p.style.display = 'none';
-          
-          // Also hide the following list if it exists
-          const nextElement = p.nextElementSibling;
-          if (nextElement && (nextElement.tagName === 'UL' || nextElement.tagName === 'OL')) {
-            nextElement.style.display = 'none';
-          }
-        }
-      });
-      
-      // Also hide any elements with "notes" class
-      const notesElements = slide.querySelectorAll('[class*="notes"], .element.notes');
-      notesElements.forEach(el => {
-        el.style.display = 'none';
-      });
-    });
-  }
-  
-  // Hide notes immediately
-  hideSpeakerNotes();
-  
-  // Also hide notes after reveal.js initializes
-  setTimeout(hideSpeakerNotes, 1000);
-  
-  // Re-hide notes when slide changes
-  if (typeof Reveal !== 'undefined') {
-    Reveal.on('slidechanged', hideSpeakerNotes);
-  }
-});
-</script>
 
 <div class="workshop-header title-slide">
 
@@ -459,27 +415,40 @@ document.addEventListener('DOMContentLoaded', function() {
 ## Agenda Einführung
 
 ### Themenblöcke:
-<div class="fragment">- **Was ist Software-Architektur?**</div>
-<div class="fragment">- **Clean Code Grundlagen**</div>
-<div class="fragment">- **Fachlichkeit vor Technik**</div>
-<div class="fragment">- **Design Patterns Motivation**</div>
-<div class="fragment">- **Refactoring Philosophie**</div>
+- **Was ist Software-Architektur?**
+<!-- .element: class="fragment" -->
+- **Clean Code Grundlagen**
+<!-- .element: class="fragment" -->
+- **Fachlichkeit vor Technik**
+<!-- .element: class="fragment" -->
+- **Design Patterns Motivation**
+<!-- .element: class="fragment" -->
+- **Refactoring Philosophie**
+<!-- .element: class="fragment" -->
 
 ### Lernziele:
-<div class="fragment">- Gemeinsames Verständnis von Software-Architektur entwickeln</div>
-<div class="fragment">- Clean Code Prinzipien verstehen und anwenden</div>
-<div class="fragment">- Domain-First statt Technology-First Denken etablieren</div>
-<div class="fragment">- Motivation für Design Patterns verstehen</div>
-<div class="fragment">- Refactoring als kontinuierlichen Prozess begreifen</div>
+- Gemeinsames Verständnis von Software-Architektur entwickeln
+<!-- .element: class="fragment" -->
+- Clean Code Prinzipien verstehen und anwenden
+<!-- .element: class="fragment" -->
+- Domain-First statt Technology-First Denken etablieren
+<!-- .element: class="fragment" -->
+- Motivation für Design Patterns verstehen
+<!-- .element: class="fragment" -->
+- Refactoring als kontinuierlichen Prozess begreifen
+<!-- .element: class="fragment" -->
 
 ---
 
 # Teil 1: Was ist Software-Architektur?
 
 ## Lernziele
-<div class="fragment">- Gemeinsames Verständnis von Software-Architektur</div>
-<div class="fragment">- Verschiedene Definitionen kennenlernen</div>
-<div class="fragment">- Enterprise-Kontext verstehen</div>
+- Gemeinsames Verständnis von Software-Architektur
+<!-- .element: class="fragment" -->
+- Verschiedene Definitionen kennenlernen
+<!-- .element: class="fragment" -->
+- Enterprise-Kontext verstehen
+<!-- .element: class="fragment" -->
 
 ---
 
@@ -490,18 +459,23 @@ document.addEventListener('DOMContentLoaded', function() {
 3 Begriffe oder Sätze!</strong>
 </div>
 
-<div class="fragment">
-
 ### Typische Antworten:
-<div class="fragment">- "Das große Ganze"</div>
-<div class="fragment">- "Struktur der Software"</div>
-<div class="fragment">- "Komponenten und deren Beziehungen"</div>
-<div class="fragment">- "Wie alles zusammenhängt"</div>
-<div class="fragment">- "Framework-Auswahl"</div>
-<div class="fragment">- "Datenbanken und Services"</div>
-<div class="fragment">- "Microservices vs. Monolith"</div>
+<!-- .element: class="fragment" -->
 
-</div>
+- "Das große Ganze"
+<!-- .element: class="fragment" -->
+- "Struktur der Software"
+<!-- .element: class="fragment" -->
+- "Komponenten und deren Beziehungen"
+<!-- .element: class="fragment" -->
+- "Wie alles zusammenhängt"
+<!-- .element: class="fragment" -->
+- "Framework-Auswahl"
+<!-- .element: class="fragment" -->
+- "Datenbanken und Services"
+<!-- .element: class="fragment" -->
+- "Microservices vs. Monolith"
+<!-- .element: class="fragment" -->
 
 Note: Sammeln auf Flipchart oder Chat, nicht bewerten. Diese Antworten sind alle richtig und zeigen die verschiedenen Perspektiven auf Software-Architektur. Lassen Sie jeden Teilnehmer zu Wort kommen. Dauer: 5 Minuten.
 
@@ -550,11 +524,16 @@ Note: Sammeln auf Flipchart oder Chat, nicht bewerten. Diese Antworten sind alle
 ## Gemeinsame Erkenntnisse
 
 ### Architektur umfasst:
-<div class="fragment">1. **Struktur** - Wie ist die Software organisiert?</div>
-<div class="fragment">2. **Entscheidungen** - Welche wichtigen Designentscheidungen wurden getroffen?</div>
-<div class="fragment">3. **Beziehungen** - Wie hängen die Teile zusammen?</div>
-<div class="fragment">4. **Kosten** - Was ist später schwer zu ändern?</div>
-<div class="fragment">5. **Kommunikation** - Wie vermitteln wir unser Design anderen?</div>
+1. **Struktur** - Wie ist die Software organisiert?
+<!-- .element: class="fragment" -->
+2. **Entscheidungen** - Welche wichtigen Designentscheidungen wurden getroffen?
+<!-- .element: class="fragment" -->
+3. **Beziehungen** - Wie hängen die Teile zusammen?
+<!-- .element: class="fragment" -->
+4. **Kosten** - Was ist später schwer zu ändern?
+<!-- .element: class="fragment" -->
+5. **Kommunikation** - Wie vermitteln wir unser Design anderen?
+<!-- .element: class="fragment" -->
 
 Note: Diese fünf Punkte ergeben sich aus den verschiedenen Definitionen. Betonen Sie, dass alle Definitionen diese Aspekte teilen. Die Kosten-Perspektive von Booch ist besonders wichtig - wichtig sind die Entscheidungen, die schwer zu ändern sind.
 
@@ -571,22 +550,32 @@ Note: Diese fünf Punkte ergeben sich aus den verschiedenen Definitionen. Betone
 ## Enterprise-Kontext
 
 ### Besonderheiten in großen Unternehmen:
-<div class="fragment">- **Legacy-Systeme** - Jahrzehntealte Systeme, die noch laufen müssen</div>
-<div class="fragment">- **Regulatorische Anforderungen** - DSGVO, Compliance-Standards</div>
-<div class="fragment">- **Hochverfügbarkeit** - 99.9%+ Uptime-Anforderungen</div>
-<div class="fragment">- **Skalierung** - Millionen von Benutzern, große Datenmengen</div>
-<div class="fragment">- **Sicherheit** - Kritische Geschäftsdaten, Cyber-Security</div>
-<div class="fragment">- **Integration** - Dutzende von Systemen müssen zusammenarbeiten</div>
+- **Legacy-Systeme** - Jahrzehntealte Systeme, die noch laufen müssen
+<!-- .element: class="fragment" -->
+- **Regulatorische Anforderungen** - DSGVO, Compliance-Standards
+<!-- .element: class="fragment" -->
+- **Hochverfügbarkeit** - 99.9%+ Uptime-Anforderungen
+<!-- .element: class="fragment" -->
+- **Skalierung** - Millionen von Benutzern, große Datenmengen
+<!-- .element: class="fragment" -->
+- **Sicherheit** - Kritische Geschäftsdaten, Cyber-Security
+<!-- .element: class="fragment" -->
+- **Integration** - Dutzende von Systemen müssen zusammenarbeiten
+<!-- .element: class="fragment" -->
 
 ---
 
 ## Architektur-Herausforderungen
 
 ### In Enterprises:
-<div class="fragment">1. **Modernisierung bei laufendem Betrieb**</div>
-<div class="fragment">2. **Compliance und Governance**</div>
-<div class="fragment">3. **Performance bei hoher Last**</div>
-<div class="fragment">4. **Kostenoptimierung bei gleichzeitig hoher Qualität**</div>
+1. **Modernisierung bei laufendem Betrieb**
+<!-- .element: class="fragment" -->
+2. **Compliance und Governance**
+<!-- .element: class="fragment" -->
+3. **Performance bei hoher Last**
+<!-- .element: class="fragment" -->
+4. **Kostenoptimierung bei gleichzeitig hoher Qualität**
+<!-- .element: class="fragment" -->
 
 <div class="highlight-box accent">
 <strong>Kernbotschaft:</strong> Architektur ist nicht nur Technik. Sie muss Geschäftsziele verstehen und unterstützen.
@@ -610,10 +599,14 @@ Note: Lassen Sie 2-3 Teilnehmer antworten. Diese Fragen leiten über zu Clean Co
 # Teil 2: Clean Code Grundlagen
 
 ## Lernziele
-<div class="fragment">- Verständnis für sauberen Code</div>
-<div class="fragment">- Unterschied zwischen clever und lesbar</div>
-<div class="fragment">- Wartbarkeit als Ziel</div>
-<div class="fragment">- Technische Schulden vermeiden</div>
+- Verständnis für sauberen Code
+<!-- .element: class="fragment" -->
+- Unterschied zwischen clever und lesbar
+<!-- .element: class="fragment" -->
+- Wartbarkeit als Ziel
+<!-- .element: class="fragment" -->
+- Technische Schulden vermeiden
+<!-- .element: class="fragment" -->
 
 ---
 
@@ -624,16 +617,19 @@ Note: Lassen Sie 2-3 Teilnehmer antworten. Diese Fragen leiten über zu Clean Co
 Was macht es sauber?</strong>
 </div>
 
-<div class="fragment">
-
 ### Typische Antworten:
-<div class="fragment">- **Aufgeräumt und organisiert**</div>
-<div class="fragment">- **Alles hat seinen Platz**</div>
-<div class="fragment">- **Man findet schnell, was man sucht**</div>
-<div class="fragment">- **Nichts Überflüssiges liegt herum**</div>
-<div class="fragment">- **Funktional und effizient**</div>
+<!-- .element: class="fragment" -->
 
-</div>
+- **Aufgeräumt und organisiert**
+<!-- .element: class="fragment" -->
+- **Alles hat seinen Platz**
+<!-- .element: class="fragment" -->
+- **Man findet schnell, was man sucht**
+<!-- .element: class="fragment" -->
+- **Nichts Überflüssiges liegt herum**
+<!-- .element: class="fragment" -->
+- **Funktional und effizient**
+<!-- .element: class="fragment" -->
 
 Note: Diese Analogie hilft beim Verstehen von Clean Code. Sammeln Sie die Antworten und übertragen Sie sie dann auf Code: Organisiert = gut strukturiert, alles hat seinen Platz = richtige Abstraktionen, man findet schnell = lesbare Namen, nichts Überflüssiges = kein Dead Code. Dauer: 5 Minuten.
 
@@ -666,18 +662,25 @@ Note: Betonen Sie "taken care of" - jemand hat sich Mühe gegeben. Clean Code is
 
 ## 2. Eindeutige Namen
 
-<div class="fragment">- **Funktionen** - Verben (calculateTax, sendEmail)</div>
-<div class="fragment">- **Variablen** - Substantive (customerName, orderTotal)</div>
-<div class="fragment">- **Boolean** - Fragen (isValid, hasPermission)</div>
-<div class="fragment">- **Konstanten** - Großbuchstaben (MAX_RETRY_COUNT)</div>
+- **Funktionen** - Verben (calculateTax, sendEmail)
+<!-- .element: class="fragment" -->
+- **Variablen** - Substantive (customerName, orderTotal)
+<!-- .element: class="fragment" -->
+- **Boolean** - Fragen (isValid, hasPermission)
+<!-- .element: class="fragment" -->
+- **Konstanten** - Großbuchstaben (MAX_RETRY_COUNT)
+<!-- .element: class="fragment" -->
 
 ---
 
 ## 3. Kurze Funktionen
 
-<div class="fragment">- Eine Funktion = Ein Gedanke</div>
-<div class="fragment">- Faustregeln: Max. 20 Zeilen, max. 3 Parameter</div>
-<div class="fragment">- "Extract Till You Drop" - so lange extrahieren, bis es nicht mehr geht</div>
+- Eine Funktion = Ein Gedanke
+<!-- .element: class="fragment" -->
+- Faustregeln: Max. 20 Zeilen, max. 3 Parameter
+<!-- .element: class="fragment" -->
+- "Extract Till You Drop" - so lange extrahieren, bis es nicht mehr geht
+<!-- .element: class="fragment" -->
 
 ---
 
@@ -697,9 +700,12 @@ if (employee.isEligibleForBonus())</code></pre>
 
 ## 5. Konsistenz
 
-<div class="fragment">- Gleiche Namenskonventionen</div>
-<div class="fragment">- Gleiche Formatierung</div>
-<div class="fragment">- Gleiche Patterns</div>
+- Gleiche Namenskonventionen
+<!-- .element: class="fragment" -->
+- Gleiche Formatierung
+<!-- .element: class="fragment" -->
+- Gleiche Patterns
+<!-- .element: class="fragment" -->
 
 ---
 
@@ -729,10 +735,14 @@ return DEFAULT_SERVICE_LEVEL;</code></pre>
 
 ## Warum Lesbarkeit gewinnt
 
-<div class="fragment">- **Code wird öfter gelesen als geschrieben**</div>
-<div class="fragment">- Code wird häufiger debuggt als geschrieben</div>
-<div class="fragment">- Neue Teammitglieder müssen Code verstehen</div>
-<div class="fragment">- Wartung und Erweiterung brauchen Verständnis</div>
+- **Code wird öfter gelesen als geschrieben**
+<!-- .element: class="fragment" -->
+- Code wird häufiger debuggt als geschrieben
+<!-- .element: class="fragment" -->
+- Neue Teammitglieder müssen Code verstehen
+<!-- .element: class="fragment" -->
+- Wartung und Erweiterung brauchen Verständnis
+<!-- .element: class="fragment" -->
 
 ---
 
@@ -816,39 +826,26 @@ Clean Code ist nicht Perfektionismus. Es ist eine Investition in die Zukunft.
 
 ### Typische Aussagen in Projekten:
 
-<div class="fragment">
-
 - "Wir nutzen jetzt Microservices!" - Aber warum?
-
-</div>
-
-<div class="fragment">
+<!-- .element: class="fragment" -->
 
 - "Lass uns auf Kubernetes umsteigen!" - Aber welches Problem löst das?
-
-</div>
-
-<div class="fragment">
+<!-- .element: class="fragment" -->
 
 - "Wir brauchen eine Event-Driven Architecture!" - Aber passt das zu unserer Fachlichkeit?
-
-</div>
-
-<div class="fragment">
+<!-- .element: class="fragment" -->
 
 - "NoSQL ist modern, weg mit der relationalen DB!" - Aber was sind unsere Datenanforderungen?
-
-</div>
-
-<div class="fragment">
+<!-- .element: class="fragment" -->
 
 **Frage an Sie:**
+<!-- .element: class="fragment" -->
 
 Welche Technologie-Entscheidungen haben Sie erlebt, die ohne klare fachliche Anforderungen getroffen wurden?
+<!-- .element: class="fragment" -->
 
 Wie hätten Sie diese Entscheidungen anders angegangen?
-
-</div>
+<!-- .element: class="fragment" -->
 <div class="interactive-question">
 <strong>Kennen Sie solche Aussagen?<br>
 Was war das Ergebnis?</strong>
@@ -859,21 +856,30 @@ Note: Lassen Sie 2-3 Teilnehmer ihre Erfahrungen teilen. Oft kommen hier Geschic
 ---
 
 ### Technology-First Symptome:
-<div class="fragment">- **Hype-Driven Development**: "Das ist modern, das machen wir auch"</div>
-<div class="fragment">- **Solution looking for a problem**: "Wir haben Kafka, jetzt brauchen wir Events"</div>
-<div class="fragment">- **Architecture Astronauts**: Komplexe Lösungen für einfache Probleme</div>
-<div class="fragment">- **Over-Engineering**: 20 Services für 5 Use Cases</div>
+- **Hype-Driven Development**: "Das ist modern, das machen wir auch"
+<!-- .element: class="fragment" -->
+- **Solution looking for a problem**: "Wir haben Kafka, jetzt brauchen wir Events"
+<!-- .element: class="fragment" -->
+- **Architecture Astronauts**: Komplexe Lösungen für einfache Probleme
+<!-- .element: class="fragment" -->
+- **Over-Engineering**: 20 Services für 5 Use Cases
+<!-- .element: class="fragment" -->
 
 Note: Diese Symptome sind sehr häufig. "Architecture Astronauts" ist ein Begriff von Joel Spolsky für Entwickler, die nur in abstrakten Konzepten denken. Fragen Sie nach konkreten Beispielen aus den Projekten der Teilnehmer.
 
 ---
 
 ### Warum passiert Technology-First?
-<div class="fragment">1. **Techniker denken technisch** - das ist normal</div>
-<div class="fragment">2. **Marketing macht Technologie sexy** - Buzzwords verkaufen sich</div>
-<div class="fragment">3. **CV-Driven Development** - "Ich will Kubernetes lernen"</div>
-<div class="fragment">4. **Komplexität wirkt professionell** - Einfachheit wird unterschätzt</div>
-<div class="fragment">5. **Copy-Paste Architecture** - "Netflix macht das so"</div>
+1. **Techniker denken technisch** - das ist normal
+<!-- .element: class="fragment" -->
+2. **Marketing macht Technologie sexy** - Buzzwords verkaufen sich
+<!-- .element: class="fragment" -->
+3. **CV-Driven Development** - "Ich will Kubernetes lernen"
+<!-- .element: class="fragment" -->
+4. **Komplexität wirkt professionell** - Einfachheit wird unterschätzt
+<!-- .element: class="fragment" -->
+5. **Copy-Paste Architecture** - "Netflix macht das so"
+<!-- .element: class="fragment" -->
 
 Note: Diese Gründe sind menschlich verständlich, aber gefährlich für Projekte. CV-Driven Development ist besonders in IT-Teams verbreitet. Betonen Sie: Was für Netflix funktioniert, funktioniert nicht automatisch für andere Unternehmen mit anderen Problemen.
 
