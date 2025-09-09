@@ -424,24 +424,39 @@ Note:
 
 ### Über diesen Workshop
 <!-- .slide: data-auto-animate -->
-* Code-Analyse & Factory Method Pattern<!-- .element: class="fragment" data-fragment-index="1" -->
-* Abstract Factory & Layered Architecture<!-- .element: class="fragment" data-fragment-index="2" -->
-* Builder Pattern & Repository Integration<!-- .element: class="fragment" data-fragment-index="3" -->
-* Prototype Pattern & Configuration Cloning<!-- .element: class="fragment" data-fragment-index="4" -->
-* Clean Architecture: Fundamentale Prinzipien<!-- .element: class="fragment" data-fragment-index="5" -->
-* Singleton & Adapter mit Clean Architecture<!-- .element: class="fragment" data-fragment-index="6" -->
+* Code-Analyse & Factory Method Pattern
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+* Abstract Factory & Layered Architecture
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+* Builder Pattern & Repository Integration
+<!-- .element: class="fragment" data-fragment-index="3" -->
+
+* Prototype Pattern & Configuration Cloning
+<!-- .element: class="fragment" data-fragment-index="4" -->
+
+* Clean Architecture: Fundamentale Prinzipien
+<!-- .element: class="fragment" data-fragment-index="5" -->
+
+* Singleton & Adapter mit Clean Architecture
+<!-- .element: class="fragment" data-fragment-index="6" -->
 
 ## Lernziele
 
-- Code-Smells in Legacy-Code identifizieren
+* Code-Smells in Legacy-Code identifizieren
 <!-- .element: class="fragment" data-fragment-index="1" -->
-- Factory Method Pattern verstehen und anwenden
+
+* Factory Method Pattern verstehen und anwenden  
 <!-- .element: class="fragment" data-fragment-index="2" -->
-- Abstract Factory in geschichteten Architekturen
+
+* Abstract Factory in geschichteten Architekturen
 <!-- .element: class="fragment" data-fragment-index="3" -->
-- Builder Pattern für komplexe Objekterstellung
+
+* Builder Pattern für komplexe Objekterstellung
 <!-- .element: class="fragment" data-fragment-index="4" -->
-- SOLID-Prinzipien praktisch umsetzen
+
+* SOLID-Prinzipien praktisch umsetzen
 <!-- .element: class="fragment" data-fragment-index="5" -->
 
 Note:

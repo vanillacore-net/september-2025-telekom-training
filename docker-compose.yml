@@ -24,6 +24,8 @@ services:
       - CMD_PORT=3000
       - CMD_ALLOW_ORIGIN=localhost,127.0.0.1
       - CMD_SESSION_SECRET=dev-secret-key-change-in-production
+      - CMD_ALLOW_HTML=true
+      - CMD_CSP_ENABLE=false
     depends_on:
       - database
     restart: unless-stopped

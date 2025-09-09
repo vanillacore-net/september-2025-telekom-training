@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.4.2] [2025-09-09] - URGENT: Fix HedgeDoc Fragment Reveal Functionality
+
+### Fixed
+- **CRITICAL**: Fragment reveals now work properly in HedgeDoc presentations
+- Resolved HTML escaping issue preventing progressive content display
+- Enabled HTML processing in HedgeDoc Docker configuration (CMD_ALLOW_HTML=true)
+- Applied proper fragment syntax with asterisk lists and newline separation
+- Validated all presentations work correctly in Docker instance
+
+### Technical Implementation
+- **Configuration Fix**: Added CMD_ALLOW_HTML=true and CMD_CSP_ENABLE=false to docker-compose.yml
+- **Syntax Optimization**: Used asterisk (*) lists with HTML comments on separate lines
+- **Fragment Structure**: Applied `<!-- .element: class="fragment" data-fragment-index="N" -->` with proper spacing
+- **Validation**: Tested all 5 presentations (intro, day1-4) in HedgeDoc Docker instance
+- **Progressive Display**: Content now appears step-by-step instead of all at once
+
 ## [1.4.1] [2024-12-30] - Fix: Critical Slide Issues - Fragment Reveals, Content and Structure
 
 ### Fixed
