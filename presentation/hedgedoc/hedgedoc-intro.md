@@ -22,7 +22,7 @@ slideOptions:
   maxScale: 2.0
 ---
 
-<!-- <style>
+<style>
 /* HedgeDoc Presentation Styles */
 .reveal {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -48,183 +48,482 @@ slideOptions:
   max-width: 100vw;
   overflow-y: auto !important; /* Allow scrolling if needed */
   overflow-x: hidden;
-  padding: 20px !important;
+  padding: 20px 25px 25px 25px !important; /* Reduce top padding to move content up */
   box-sizing: border-box;
+  text-align: left !important; /* Ensure all content is left-aligned */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important; /* Move content to top */
 }
 
-.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
-  font-weight: 600;
+.reveal h1 {
+  font-size: 3.0em !important; /* Significantly increased for better visibility */
+  color: #2c2c2c;
+  font-weight: 700 !important; /* Bolder weight for more prominence */
   text-align: left !important;
-  margin: 0 0 15px 0 !important;
-  color: #333 !important;
+  margin-top: 0.8em !important;
+  margin-bottom: 0.5em !important; /* More spacing below headline */
+  border-bottom: 3px solid #666666 !important; /* Visual separator */
+  padding-bottom: 0.2em !important; /* Padding above border */
 }
 
-.reveal h1 { font-size: 2.2em !important; }
-.reveal h2 { font-size: 1.8em !important; }
-.reveal h3 { font-size: 1.4em !important; }
-.reveal h4 { font-size: 1.2em !important; }
+/* First heading on slide should not have top margin */
+.reveal .slides section > h1:first-child {
+  margin-top: 0 !important;
+}
+
+.reveal h2 {
+  font-size: 1.68em !important; /* Increased by 20% (1.4em * 1.20) */
+  color: #2c2c2c;
+  font-weight: 500 !important;
+  text-align: left !important;
+  margin-top: 0.7em !important;
+  margin-bottom: 0.4em !important;
+}
+
+/* First heading on slide should not have top margin */
+.reveal .slides section > h2:first-child {
+  margin-top: 0 !important;
+}
+
+.reveal h3 {
+  font-size: 1.44em !important; /* Increased by 20% (1.2em * 1.20) */
+  font-weight: 400 !important;
+  text-align: left !important;
+  margin-top: 0.6em !important;
+  margin-bottom: 0.3em !important;
+}
+
+/* First heading on slide should not have top margin */
+.reveal .slides section > h3:first-child {
+  margin-top: 0 !important;
+}
+
+.reveal h4, .reveal h5, .reveal h6 {
+  font-weight: 400 !important;
+  text-align: left !important;
+  margin-top: 0.5em !important;
+  margin-bottom: 0.3em !important;
+}
+
+/* First heading on slide should not have top margin */
+.reveal .slides section > h4:first-child,
+.reveal .slides section > h5:first-child,
+.reveal .slides section > h6:first-child {
+  margin-top: 0 !important;
+}
 
 .reveal p, .reveal li {
+  font-weight: 300 !important;
   text-align: left !important;
-  margin: 0 0 8px 0 !important;
 }
 
+/* Add proper paragraph spacing */
+.reveal p {
+  margin-bottom: 0.3em !important;
+}
+
+/* Prevent text from being too large */
+.reveal .slides {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Lists should not overflow */
 .reveal ul, .reveal ol {
-  margin: 10px 0 15px 0 !important;
-  display: block;
-  text-align: left !important;
+  max-width: 90%;
+  margin-left: 0 !important;
+  padding-left: 1.5em !important;
+  list-style-type: none;
+  margin-bottom: 0.3em !important;
 }
 
-.reveal li {
-  margin: 5px 0 !important;
+/* Add spacing between list items for better readability */
+.reveal ul li, .reveal ol li {
+  margin-bottom: 0.3em !important;
 }
 
-.reveal blockquote {
-  font-style: italic;
-  background: #f8f9fa;
-  border-left: 4px solid #007acc;
-  margin: 15px 0;
-  padding: 15px 20px;
-  font-size: 1.0em;
-  text-align: left !important;
-}
-
-.reveal pre {
-  width: 100% !important;
-  font-size: 0.7em !important;
-  text-align: left !important;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
-  margin: 15px 0 !important;
-}
-
-.reveal code {
-  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
-  font-size: 0.85em;
-  background-color: #f1f1f1;
-  padding: 2px 4px;
-  border-radius: 3px;
-}
-
-/* Professional color scheme */
-.reveal .progress {
-  color: #007acc;
-}
-
-.reveal .controls {
-  color: #007acc;
-}
-
-/* Ensure proper text wrapping */
-.reveal p, .reveal li, .reveal blockquote, .reveal td, .reveal th {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-/* Consistent spacing */
-.reveal .slides section > * {
-  margin-bottom: 15px !important;
-}
-
-.reveal .slides section > *:last-child {
+.reveal ul li:last-child, .reveal ol li:last-child {
   margin-bottom: 0 !important;
 }
 
-/* Table styling */
-.reveal table {
-  margin: 20px auto;
-  border-collapse: collapse;
-  width: 100%;
+.reveal ul li::before {
+  content: "▸";
+  color: #666666;
+  font-weight: 400;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
 }
 
-.reveal table th,
-.reveal table td {
-  text-align: left !important;
-  padding: 8px 12px;
-  border-bottom: 1px solid #ddd;
+/* Code blocks sizing - Full Width Optimized */
+.reveal pre {
+  font-size: 1.1em !important; /* Significantly increased for better readability */
+  max-height: calc(100vh - 200px); /* Use full available screen height */
+  overflow-y: auto !important;
+  background: #2d3748 !important; /* Dark background for better contrast */
+  color: #e2e8f0 !important; /* Light text for contrast */
+  border: 1px solid #4a5568; /* Subtle darker border */
+  width: 88% !important; /* Use most of screen width */
+  max-width: 88% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
 }
 
-.reveal table th {
-  font-weight: bold;
-  background-color: #f5f5f5;
+.reveal .two-column {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
 }
 
-/* Emphasis styling */
-.reveal .highlight {
-  background-color: #ffeb3b;
-  padding: 2px 4px;
-  border-radius: 3px;
+.reveal .two-column > div {
+  flex: 1;
 }
 
-.reveal .success {
-  color: #4caf50;
-  font-weight: bold;
+.workshop-header {
+  text-align: center;
+  background: #ffffff;
+  color: #333;
+  padding: 75px; /* Scaled for FHD (40px * 1.875) */
+  margin: -38px; /* Scaled for FHD (-20px * 1.875) */
+  border-radius: 15px; /* Scaled for FHD (8px * 1.875) */
 }
 
-.reveal .warning {
-  color: #ff9800;
-  font-weight: bold;
+.workshop-header h1,
+.workshop-header h2 {
+  color: #333;
+  text-shadow: none;
 }
 
-.reveal .error {
-  color: #f44336;
-  font-weight: bold;
+.pattern-definition {
+  background-color: #F5F5F5;
+  border-left: 8px solid #666666; /* Scaled for FHD (4px * 2) */
+  padding: 25px; /* Scaled for FHD (20px * 1.875) */
+  margin: 38px 0; /* Scaled for FHD (20px * 1.875) */
+  border-radius: 8px; /* Scaled for FHD (4px * 2) */
 }
 
-.reveal .tech {
-  font-family: 'Fira Code', 'Consolas', monospace;
-  font-size: 0.9em;
-  background-color: #e8f4fd;
-  padding: 2px 6px;
+.highlight-box {
+  background-color: #F5F5F5;
+  border-left: 4px solid #666666;
+  padding: 20px;
+  margin: 20px 0;
   border-radius: 4px;
-  color: #0066cc;
 }
 
-/* Navigation and content optimization */
-.reveal .navigate-left,
-.reveal .navigate-right,
-.reveal .navigate-up,
-.reveal .navigate-down {
-  opacity: 0.6;
+.highlight-box.warning {
+  border-left-color: #8B0000;
+  background-color: #F5F5DC;
 }
 
-.reveal .navigate-left.enabled,
-.reveal .navigate-right.enabled,
-.reveal .navigate-up.enabled,
-.reveal .navigate-down.enabled {
+.highlight-box.accent {
+  border-left-color: #4a4a4a;
+  background-color: #F5F5F5;
+}
+
+.code-example {
+  background: #f8f9fa;
+  color: #333;
+  padding: 24px 30px;
+  border-radius: 10px;
+  margin: 20px auto;
+  font-size: 1.2em; /* Significantly increased font size for better readability */
+  width: 86% !important; /* Use most of screen width */
+  max-width: 86% !important;
+  box-sizing: border-box;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.code-example h5 {
+  color: #333;
+  margin-top: 0;
+  font-weight: 600;
+  font-size: 1.3em;
+  margin-bottom: 0.8em;
+}
+
+.code-example pre {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+.code-example pre code {
+  font-size: 1.05em !important;
+}
+
+.interactive-question {
+  background-color: #F5F5F5;
+  border: 2px solid #666666;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.progress-indicator {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.progress-step {
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-weight: 400;
+}
+
+.progress-step.completed {
+  background-color: #2c2c2c;
+  color: white;
+}
+
+.progress-step.current {
+  background-color: #006400;
+  color: white;
+}
+
+.progress-step.pending {
+  background-color: #F5F5F5;
+  color: #666666;
+}
+
+/* Fragment Visibility Control - Critical Fix */
+.reveal .fragment {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.reveal .fragment.visible {
+  visibility: visible;
   opacity: 1;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
 }
 
-/* Footer for consistent branding */
-.reveal .slides section::after {
-  content: "";
+/* Ensure fragments are invisible until explicitly revealed */
+.reveal .fragment:not(.visible) {
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+.reveal .fragment.highlight-green {
+  color: #2c2c2c;
+  font-weight: 600;
+}
+
+.reveal .fragment.highlight-red {
+  color: #8B0000;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .reveal .two-column {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+/* Hide Speaker Notes in Presentation Mode - Enhanced */
+/* Hide paragraphs that start with "Note:" */
+.reveal .slides section p:has-text("Note:"),
+.reveal .slides section p[data-fragment-index]:has-text("Note:") {
+  display: none !important;
+}
+
+/* Hide HTML comments that contain speaker notes */
+.reveal .slides section .notes,
+.reveal .slides section [class*="note"],
+.reveal .slides section [class*="speaker"] {
+  display: none !important;
+}
+
+/* Hide reveal.js built-in notes */
+.reveal .notes,
+.reveal aside.notes,
+.reveal .speaker-notes {
+  display: none !important;
+}
+
+/* Hide any element with "notes" class */
+.notes, 
+.speaker-notes,
+.presentation-notes {
+  display: none !important;
+}
+
+/* More aggressive hiding of Note: content */
+.reveal .slides section p:first-child {
+  /* Check if this paragraph starts with Note: and hide it */
+}
+
+/* Hide elements marked with class="notes" */
+.element.notes {
+  display: none !important;
+}
+
+/* CRITICAL: Hide speaker notes patterns - enhanced selector */
+/* Hide any paragraph starting with "Note:" and following content until next section */
+.reveal .slides section p:first-line:contains("Note:") {
+  display: none !important;
+}
+
+/* Hide content that comes after "Note:" on slides */
+.reveal .slides section p + ul,
+.reveal .slides section p + ol {
+  /* Only hide lists that follow paragraphs starting with Note: */
+}
+
+/* More aggressive approach: hide all speaker note blocks */
+.reveal .slides section *:has(+ *[class*="notes"]),
+.reveal .slides section *[class*="notes"] + *,
+.reveal .slides section *[class*="notes"] {
+  display: none !important;
+}
+
+/* Target specific speaker notes pattern: Note: followed by list */
+.reveal .slides section {
+  /* JS will need to handle the Note: + list pattern */
+}
+
+/* VanillaCore Logo Styling - Option 1: Small logo in top-right corner */
+.vanilla-logo {
   position: absolute;
-  bottom: 10px;
-  right: 20px;
-  width: 100%;
-  text-align: right;
-  font-size: 14px;
-  color: #666;
+  top: 25px;
+  right: 25px;
+  max-width: 80px;
+  max-height: calc(100vh - 200px);
+  z-index: 1000;
   pointer-events: none;
 }
-</style> -->
+
+/* SELECTED: Option 1 - Small logo in top-right corner for content slides */
+.reveal .slides section:not(.title-slide)::after {
+  content: '';
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 80px;
+  height: 80px;
+  background-image: url('/images/VanillaCore_Vertical.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.vanilla-logo img {
+  width: 100%;
+  height: auto;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Logo for title slides - centered in middle of slide */
+.title-slide .vanilla-logo {
+  max-width: 300px;
+  max-height: calc(100vh - 250px);
+  position: static;
+  display: block;
+  margin: 0 auto 60px auto;
+  text-align: center;
+}
+
+/* Remove corner logo from title slides */
+.title-slide::after {
+  display: none !important;
+}
+
+/* Center title slide content with logo above title */
+.title-slide {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 60px 40px !important;
+  min-height: 100vh;
+}
+
+/* Style title slide headings to be centered below logo */
+.title-slide h1,
+.title-slide h2 {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+}
+
+.title-slide h1 {
+  margin-top: 0 !important;
+  margin-bottom: 20px !important;
+  font-size: 2.88em !important; /* Increased by 20% (2.4em * 1.20) */
+  font-weight: 600 !important;
+}
+
+.title-slide h2 {
+  margin-top: 0 !important;
+  margin-bottom: 40px !important;
+  font-size: 2.16em !important; /* Increased by 20% (1.8em * 1.20) */
+  color: #555555 !important;
+  font-weight: 400 !important;
+}
+
+/* Subtle watermark for content slides */
+.content-slide::after {
+  content: "";
+  background-image: url('/images/VanillaCore_Vertical.png');
+  background-size: 80px;
+  background-repeat: no-repeat;
+  background-position: bottom 10px right 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Hide reveal.js progress bar and controls to remove orange box artifact */
+.reveal .progress {
+  display: none !important;
+}
+
+.reveal .controls {
+  display: none !important;
+}
+</style>
+
+<div class="workshop-header title-slide">
+
+<div class="vanilla-logo">
+  <img src="/images/VanillaCore_Vertical.png" alt="VanillaCore Logo">
+</div>
 
 # Software-Architektur
 ## Einführung und Grundlagen
 
-**Trainer:** [Name]  
-**Ziel:** Fundament für professionelle Design Pattern Anwendung
+</div>
 
 ---
 
 ## Agenda Einführung
 
 ### Themenblöcke:
-- **Was ist Software-Architektur?** (20-25 Min)
-- **Clean Code Grundlagen** (15-20 Min)
-- **Fachlichkeit vor Technik** (25-30 Min)
-- **Design Patterns Motivation** (15-20 Min)
-- **Refactoring Philosophie** (15-20 Min)
-- **Workshop-Erwartungen** (15-20 Min)
+- **Was ist Software-Architektur?**
+- **Clean Code Grundlagen**
+- **Fachlichkeit vor Technik**
+- **Design Patterns Motivation**
+- **Refactoring Philosophie**
+- **Workshop-Erwartungen**
 
 ### Lernziele:
 - Gemeinsames Verständnis von Software-Architektur entwickeln
@@ -244,14 +543,14 @@ slideOptions:
 
 ---
 
-## Einstieg
+## Einstiegsfrage
 
-### Frage an Sie:
-**"Was ist für Sie Software-Architektur? 3 Begriffe oder Sätze!"**
+<div class="interactive-question">
+<strong>Was ist für Sie Software-Architektur?<br>
+3 Begriffe oder Sätze!</strong>
+</div>
 
-*Sammeln auf Flipchart, nicht bewerten.*
-
-### Ihre typischen Antworten:
+### Typische Antworten:
 - "Das große Ganze"
 - "Struktur der Software" 
 - "Komponenten und deren Beziehungen"
@@ -262,79 +561,99 @@ slideOptions:
 
 ---
 
-## Definitionen sammeln
+## Definition 1: IEEE 1471
 
-### Definition 1: IEEE 1471
-> *"Architecture is the fundamental organization of a system, embodied in its components, their relationships to each other and to the environment, and the principles governing its design and evolution."*
+<div class="pattern-definition">
+<strong>Architecture is the fundamental organization of a system, embodied in its components, their relationships to each other and to the environment, and the principles governing its design and evolution.</strong>
+</div>
 
 **Auf Deutsch:** Software-Architektur ist die grundlegende Organisation eines Systems, verkörpert durch seine Komponenten, deren Beziehungen zueinander und zur Umgebung, sowie die Prinzipien für Design und Evolution.
 
 ---
 
-### Definition 2: Martin Fowler
-> *"Architecture is about the important stuff. Whatever that is."*
+## Definition 2: Martin Fowler
+
+<div class="pattern-definition">
+<strong>Architecture is about the important stuff. Whatever that is.</strong>
+</div>
 
 **Bedeutung:** Architektur befasst sich mit den wichtigen Entscheidungen - aber was wichtig ist, hängt vom Kontext ab.
 
 ---
 
-### Definition 3: Grady Booch
-> *"Architecture represents the significant design decisions that shape a system, where significant is measured by cost of change."*
+## Definition 3: Grady Booch
+
+<div class="pattern-definition">
+<strong>Architecture represents the significant design decisions that shape a system, where significant is measured by cost of change.</strong>
+</div>
 
 **Bedeutung:** Architektur umfasst die wichtigen Design-Entscheidungen - wichtig sind die, die später schwer zu ändern sind.
 
 ---
 
-### Definition 4: Simon Brown (Software Architecture for Developers)
-> *"Software architecture is about structure and vision, creating a shared understanding of the software being built."*
+## Definition 4: Simon Brown
+
+<div class="pattern-definition">
+<strong>Software architecture is about structure and vision, creating a shared understanding of the software being built.</strong>
+</div>
 
 **Bedeutung:** Software-Architektur schafft Struktur und Vision für ein gemeinsames Verständnis.
 
 ---
 
-## Konsens erarbeiten
+## Gemeinsame Erkenntnisse
 
-### Gemeinsame Erkenntnisse:
-1. **Struktur**: Wie ist die Software organisiert?
-2. **Entscheidungen**: Welche wichtigen Designentscheidungen wurden getroffen?
-3. **Beziehungen**: Wie hängen die Teile zusammen?
-4. **Kosten**: Was ist später schwer zu ändern?
-5. **Kommunikation**: Wie vermitteln wir unser Design anderen?
+### Architektur umfasst:
+1. **Struktur** - Wie ist die Software organisiert?
+2. **Entscheidungen** - Welche wichtigen Designentscheidungen wurden getroffen?
+3. **Beziehungen** - Wie hängen die Teile zusammen?
+4. **Kosten** - Was ist später schwer zu ändern?
+5. **Kommunikation** - Wie vermitteln wir unser Design anderen?
 
-### Arbeitsdefinition für diesen Workshop:
-> **Software-Architektur ist die Kunst, wichtige Designentscheidungen zu treffen, die die Struktur, das Verhalten und die Evolution eines Systems bestimmen - mit dem Ziel, fachliche Anforderungen optimal zu erfüllen.**
+---
+
+## Arbeitsdefinition für diesen Workshop
+
+<div class="highlight-box accent">
+<strong>Software-Architektur ist die Kunst, wichtige Designentscheidungen zu treffen, die die Struktur, das Verhalten und die Evolution eines Systems bestimmen - mit dem Ziel, fachliche Anforderungen optimal zu erfüllen.</strong>
+</div>
 
 ---
 
 ## Enterprise-Kontext
 
 ### Besonderheiten in großen Unternehmen:
-- **Legacy-Systeme**: Jahrzehntealte Systeme, die noch laufen müssen
-- **Regulatorische Anforderungen**: DSGVO, Compliance-Standards
-- **Hochverfügbarkeit**: 99.9%+ Uptime-Anforderungen
-- **Skalierung**: Millionen von Benutzern, große Datenmengen
-- **Sicherheit**: Kritische Geschäftsdaten, Cyber-Security
-- **Integration**: Dutzende von Systemen müssen zusammenarbeiten
+- **Legacy-Systeme** - Jahrzehntealte Systeme, die noch laufen müssen
+- **Regulatorische Anforderungen** - DSGVO, Compliance-Standards
+- **Hochverfügbarkeit** - 99.9%+ Uptime-Anforderungen
+- **Skalierung** - Millionen von Benutzern, große Datenmengen
+- **Sicherheit** - Kritische Geschäftsdaten, Cyber-Security
+- **Integration** - Dutzende von Systemen müssen zusammenarbeiten
 
 ---
 
-### Architektur-Herausforderungen in Enterprises:
+## Architektur-Herausforderungen
+
+### In Enterprises:
 1. **Modernisierung bei laufendem Betrieb**
 2. **Compliance und Governance**
 3. **Performance bei hoher Last**
 4. **Kostenoptimierung bei gleichzeitig hoher Qualität**
 
-## Kernbotschaft
-Architektur ist nicht nur Technik. Sie muss Geschäftsziele verstehen und unterstützen.
+<div class="highlight-box accent">
+<strong>Kernbotschaft:</strong> Architektur ist nicht nur Technik. Sie muss Geschäftsziele verstehen und unterstützen.
+</div>
 
 ---
 
-## Diskussionsfragen
-1. "Was war Ihre wichtigste Architektur-Entscheidung im letzten Projekt?"
-2. "Wann haben Sie gemerkt, dass eine Architektur-Entscheidung falsch war?"
-3. "Was unterscheidet gute von schlechter Software-Architektur?"
+## Diskussion
 
-*Diese Fragen leiten über zu Clean Code Grundlagen, wo wir die Qualitätsaspekte vertiefen.*
+<div class="interactive-question">
+<strong>Reflexionsfragen:</strong><br>
+• Was war Ihre wichtigste Architektur-Entscheidung?<br>
+• Wann haben Sie gemerkt, dass eine Entscheidung falsch war?<br>
+• Was unterscheidet gute von schlechter Software-Architektur?
+</div>
 
 ---
 
@@ -350,10 +669,10 @@ Architektur ist nicht nur Technik. Sie muss Geschäftsziele verstehen und unters
 
 ## Was bedeutet "sauber"?
 
-### Frage an Sie:
-**"Beschreiben Sie ein sauberes Büro. Was macht es sauber?"**
-
-*Antworten sammeln und auf Code übertragen.*
+<div class="interactive-question">
+<strong>Analogie: Beschreiben Sie ein sauberes Büro.<br>
+Was macht es sauber?</strong>
+</div>
 
 ### Typische Antworten:
 - Aufgeräumt und organisiert
@@ -364,54 +683,62 @@ Architektur ist nicht nur Technik. Sie muss Geschäftsziele verstehen und unters
 
 ---
 
-## 📖 Clean Code nach Robert C. Martin (Uncle Bob)
+## Clean Code nach Robert C. Martin
 
-### Definition:
-> *"Clean code is code that has been taken care of. Someone has taken the time to keep it simple and orderly."*
+<div class="pattern-definition">
+<strong>Clean code is code that has been taken care of. Someone has taken the time to keep it simple and orderly.</strong>
+</div>
 
 ---
 
-### Die 5 Grundregeln des Clean Code:
+## Die 5 Grundregeln des Clean Code
 
-#### 1. **Lesbarkeit vor Cleverness**
-```text
-❌ SCHLECHT: int d; // elapsed time in days
+### 1. Lesbarkeit vor Cleverness
+
+<div class="code-example">
+<h5>Beispiel: Variable Namen</h5>
+<pre><code>❌ SCHLECHT: int d; // elapsed time in days
 ✅ GUT:     int elapsedTimeInDays;
 
 ❌ SCHLECHT: if(u.getAge()>18 && u.getAge()<65 && u.isActive())
-✅ GUT:     if(user.isEligibleForService())
-```
+✅ GUT:     if(user.isEligibleForService())</code></pre>
+</div>
 
 ---
 
-#### 2. **Eindeutige Namen**
-- **Funktionen**: Verben (calculateTax, sendEmail)
-- **Variablen**: Substantive (customerName, orderTotal)
-- **Boolean**: Fragen (isValid, hasPermission)
-- **Konstanten**: Großbuchstaben (MAX_RETRY_COUNT)
+## 2. Eindeutige Namen
+
+- **Funktionen** - Verben (calculateTax, sendEmail)
+- **Variablen** - Substantive (customerName, orderTotal)
+- **Boolean** - Fragen (isValid, hasPermission)
+- **Konstanten** - Großbuchstaben (MAX_RETRY_COUNT)
 
 ---
 
-#### 3. **Kurze Funktionen**
+## 3. Kurze Funktionen
+
 - Eine Funktion = Ein Gedanke
 - Faustregeln: Max. 20 Zeilen, max. 3 Parameter
 - "Extract Till You Drop" - so lange extrahieren, bis es nicht mehr geht
 
 ---
 
-#### 4. **Keine Kommentare, die Code erklären**
-```text
-❌ SCHLECHT: 
+## 4. Selbstdokumentierender Code
+
+<div class="code-example">
+<h5>Kommentare vermeiden</h5>
+<pre><code>❌ SCHLECHT: 
 // Check if employee is eligible for bonus
 if (employee.getYearsOfService() > 5 && employee.getPerformanceRating() > 7)
 
 ✅ GUT:
-if (employee.isEligibleForBonus())
-```
+if (employee.isEligibleForBonus())</code></pre>
+</div>
 
 ---
 
-#### 5. **Konsistenz**
+## 5. Konsistenz
+
 - Gleiche Namenskonventionen
 - Gleiche Formatierung
 - Gleiche Patterns
@@ -422,9 +749,9 @@ if (employee.isEligibleForBonus())
 
 ### Das "Clever Code" Anti-Pattern
 
-#### Beispiel einer "cleveren" Lösung:
-```text
-// Clever, aber unleserlich:
+<div class="code-example">
+<h5>Clever vs. Lesbar</h5>
+<pre><code>// Clever, aber unleserlich:
 return condition ? value1 : condition2 ? value2 : condition3 ? value3 : defaultValue;
 
 // Lesbar und verständlich:
@@ -437,12 +764,13 @@ if (isRegularCustomer()) {
 if (isTrialCustomer()) {
     return BASIC_SERVICE_LEVEL;
 }
-return DEFAULT_SERVICE_LEVEL;
-```
+return DEFAULT_SERVICE_LEVEL;</code></pre>
+</div>
 
 ---
 
-### Warum Lesbarkeit gewinnt:
+## Warum Lesbarkeit gewinnt
+
 - **Code wird öfter gelesen als geschrieben**
 - Code wird häufiger debuggt als geschrieben
 - Neue Teammitglieder müssen Code verstehen
