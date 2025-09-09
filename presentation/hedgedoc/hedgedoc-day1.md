@@ -437,7 +437,7 @@ Note:
 <!-- .element: class="fragment" data-fragment-index="6" -->
 
 ## Lernziele
-<ul>
+
 - Code-Smells in Legacy-Code identifizieren
 <!-- .element: class="fragment" data-fragment-index="1" -->
 - Factory Method Pattern verstehen und anwenden
@@ -448,7 +448,6 @@ Note:
 <!-- .element: class="fragment" data-fragment-index="4" -->
 - SOLID-Prinzipien praktisch umsetzen
 <!-- .element: class="fragment" data-fragment-index="5" -->
-</ul>
 
 Note:
 - Betonen Sie die praktische Relevanz der Lernziele
@@ -464,7 +463,7 @@ Note:
 # Workshop Agenda
 
 ## Workshop Module
-<ul>
+
 - **Modul 1:** Code-Analyse & Factory Method
 <!-- .element: class="fragment" data-fragment-index="1" -->
 - **Modul 2:** Abstract Factory & Layered Architecture
@@ -481,7 +480,6 @@ Note:
 <!-- .element: class="fragment" data-fragment-index="7" -->
 - Q&A und Diskussion
 <!-- .element: class="fragment" data-fragment-index="8" -->
-</ul>
 
 Note:
 - Halten Sie sich an die Module - jedes Modul ist sorgfältig strukturiert
