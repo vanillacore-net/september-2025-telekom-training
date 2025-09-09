@@ -1,7 +1,7 @@
 ---
 title: Software-Architektur - Einführung
 description: Grundlagen zu Software-Architektur, Clean Code, Fachlichkeit vor Technik und Design Patterns Motivation
-tags: design-patterns, workshop, telekom, architecture, training, introduction, clean-code, domain-first
+tags: design-patterns, workshop, architecture, training, introduction, clean-code, domain-first
 slideOptions:
   theme: white
   transition: slide
@@ -464,7 +464,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="fragment">- **Fachlichkeit vor Technik**</div>
 <div class="fragment">- **Design Patterns Motivation**</div>
 <div class="fragment">- **Refactoring Philosophie**</div>
-<div class="fragment">- **Workshop-Erwartungen**</div>
 
 ### Lernziele:
 <div class="fragment">- Gemeinsames Verständnis von Software-Architektur entwickeln</div>

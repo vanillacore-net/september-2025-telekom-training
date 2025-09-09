@@ -1,7 +1,7 @@
 ---
 title: Software-Architektur - Grundlagen
 description: Code-Analyse, Factory Method, Abstract Factory, Builder & Prototype Patterns
-tags: design-patterns, workshop, telekom, architecture, training, day1, factory, builder, prototype
+tags: design-patterns, workshop, architecture, training, day1, factory, builder, prototype
 slideOptions:
   theme: white
   transition: slide
@@ -486,7 +486,7 @@ Note:
 Note:
 - Betonen Sie die praktische Relevanz der Lernziele
 - Fragen Sie nach Vorerfahrungen mit Design Patterns
-- Erwähnen Sie, dass alle Beispiele auf Telekom-Szenarien basieren
+- Erwähnen Sie, dass alle Beispiele auf realistischen Enterprise-Szenarien basieren
 - Heben Sie hervor: "Wir analysieren echten Legacy-Code"
 <!-- .element: class="notes" -->
 
@@ -526,7 +526,7 @@ Note:
 <div class="fragment">- Single Responsibility Principle praktisch umsetzen</div> 
 
 Note:
-- Betonen Sie die praktische Relevanz für Telekom Legacy-Systeme
+- Betonen Sie die praktische Relevanz für gewachsene Systemlandschaften
 - Erklären Sie, dass wir mit Code-Smell Analyse beginnen, bevor wir Patterns einführen
 - Interaktive Frage: "Welche Code-Probleme kennen Sie aus Ihren Projekten?"
 <!-- .element: class="notes" -->
@@ -539,7 +539,7 @@ Note:
 ## Was passt hier nicht?
 
 
-Ein typisches Problem in gewachsenen Telekom-Systemen: Die Kundenbetreuung muss verschiedene Kunden-Typen verwalten - Privatkunden, Geschäftskunden, Premium-Kunden.
+Ein typisches Problem in gewachsenen Enterprise-Systemen: Die Kundenbetreuung muss verschiedene Kunden-Typen verwalten - Privatkunden, Geschäftskunden, Premium-Kunden.
 
 ---
 
@@ -903,7 +903,7 @@ Note:
 ## Was passt hier nicht?
 
 
-Telekom betreibt verschiedene Service-Kanäle (Web, Mobile App, Call Center, Partner-Portal). Die aktuelle Implementierung hat gravierende Probleme:
+Das Unternehmen betreibt verschiedene Service-Kanäle (Web, Mobile App, Call Center, Partner-Portal). Die aktuelle Implementierung hat komplexe Herausforderungen:
 
 ---
 
@@ -976,7 +976,7 @@ public class ServiceManager {
 <div class="problem-highlight">
 
 #### Abstract Factory Pattern Problem
-**Situation**: Telekom betreibt verschiedene Service-Kanäle (Web, Mobile App, Call Center, Partner-Portal). Die aktuelle Implementierung hat gravierende Probleme.
+**Situation**: Das Unternehmen betreibt verschiedene Service-Kanäle (Web, Mobile App, Call Center, Partner-Portal). Die aktuelle Implementierung weist strukturelle Herausforderungen auf.
 
 **Was sehen Sie hier Problematisches?**
 
@@ -1299,7 +1299,7 @@ Note:
 ## Was passt hier nicht?
 
 
-Telekom-Systeme arbeiten mit komplexen Datenbankabfragen - Kunden können nach vielen Kriterien gefiltert werden. Die aktuelle Implementierung ist ein Wartungsalptraum:
+Enterprise-Systeme arbeiten mit komplexen Datenbankabfragen - Kunden können nach vielen Kriterien gefiltert werden. Die aktuelle Implementierung weist Wartungsherausforderungen auf:
 
 ---
 
@@ -1370,7 +1370,7 @@ public class CustomerRepository {
 <div class="problem-highlight">
 
 #### Builder Pattern Problem
-**Situation**: Telekom-Systeme arbeiten mit komplexen Datenbankabfragen - Kunden können nach vielen Kriterien gefiltert werden. Die aktuelle Implementierung ist ein Wartungsalptraum.
+**Situation**: Enterprise-Systeme arbeiten mit komplexen Datenbankabfragen - Kunden können nach vielen Kriterien gefiltert werden. Die aktuelle Implementierung weist strukturelle Herausforderungen auf.
 
 **Was sehen Sie hier Problematisches?**
 
@@ -2396,7 +2396,7 @@ public class CustomerController {
 ## Was passt hier nicht?
 
 
-Telekom hat viele Legacy-Systeme mit unterschiedlichen APIs. Die aktuelle Integration ist ein chaotisches Durcheinander:
+Viele Unternehmen haben gewachsene Systemlandschaften mit unterschiedlichen APIs. Die aktuelle Integration weist komplexe Integrationsherausforderungen auf:
 
 ---
 
@@ -2815,7 +2815,7 @@ public class CompositeCustomerService implements CustomerService {
 
 <div class="interactive-question">
 
-## Ihre Aufgabe: Telekom Service Integration
+## Ihre Aufgabe: Enterprise Service Integration
 #### Implementieren Sie eine vollständige Service-Integration mit allen Patterns
 
 </div>

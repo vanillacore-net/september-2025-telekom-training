@@ -481,7 +481,7 @@ Note:
 Note:
 - Verwenden Sie Service Enhancement Pipeline als Motivation für Decorator Pattern
 - Erklären Sie den Zusammenhang: Strukturmuster = System-Integration
-- Betonen Sie die praktische Relevanz für Telekom-Umgebungen
+- Betonen Sie die praktische Relevanz für Enterprise-Umgebungen
 - Heben Sie hervor: "Heute lösen wir echte Integrationsprobleme"
 - Verbinden Sie zu Tag 1: Creational → Structural → Behavioral (Tag 3/4)
 <!-- .element: class="notes" -->
@@ -1372,14 +1372,14 @@ securityTeam.addUnit(new Employee('Sarah Müller', 82000, 'Security Engineer'));
 // Build hierarchy
 technologyDiv.addUnit(cloudTeam); // fragment
 technologyDiv.addUnit(securityTeam); // fragment
-telekom.addUnit(technologyDiv); // fragment
+company.addUnit(technologyDiv); // fragment
 
 // Uniform operations on the entire structure
-console.log(`Total employees: ${telekom.getEmployeeCount()}`); // fragment
-console.log(`Total budget: €${telekom.getBudget().toLocaleString()}`); // fragment
+console.log(`Total employees: ${company.getEmployeeCount()}`); // fragment
+console.log(`Total budget: €${company.getBudget().toLocaleString()}`); // fragment
 
 // Generate comprehensive report
-const report = telekom.generateReport(); // fragment
+const report = company.generateReport(); // fragment
 console.log(JSON.stringify(report, null, 2)); // fragment
 
 // Dynamic restructuring
@@ -1459,7 +1459,7 @@ class RealEnterpriseDataService implements EnterpriseDataService { // fragment
     return { // fragment
       id: customerId, // fragment
       name: 'Max Mustermann', // fragment
-      email: 'max@telekom.de', // fragment
+      email: 'max@company.com', // fragment
       contract: 'BUSINESS_PRO', // fragment
       lastLogin: new Date(), // fragment
       dataUsage: 15.5 // fragment

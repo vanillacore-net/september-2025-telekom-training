@@ -595,7 +595,7 @@ const model = new UserModel(); // fragment
 const view = new UserView(); // fragment
 const controller = new UserController(model, view); // fragment
 
-controller.addUser({ name: 'Max Mueller', email: 'max@telekom.de' }); // fragment
+controller.addUser({ name: 'Max Mueller', email: 'max@company.com' }); // fragment
 ```
 
 </div>
@@ -1082,13 +1082,13 @@ async function testUserCreation() { // fragment
   const newUser = await userService.createUser({ // fragment
     id: '123', // fragment
     name: 'Test User', // fragment
-    email: 'test@telekom.de' // fragment
+    email: 'test@company.com' // fragment
   }); // fragment
   
   // Verify mock interactions // fragment
   const emailCalls = mocks.emailService.getCalls(); // fragment
   console.assert(emailCalls.length === 1, 'Should send one email'); // fragment
-  console.assert(emailCalls[0].to === 'test@telekom.de', 'Should send to correct address'); // fragment
+  console.assert(emailCalls[0].to === 'test@company.com', 'Should send to correct address'); // fragment
   
   console.log('Test passed: User creation with email notification'); // fragment
 } // fragment
