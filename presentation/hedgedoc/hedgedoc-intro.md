@@ -121,6 +121,7 @@ slideOptions:
 /* Add proper paragraph spacing */
 .reveal p {
   margin-bottom: 0.3em !important;
+  margin-top: 0.6em !important; /* Add spacing between headlines and content */
 }
 
 /* Prevent text from being too large */
@@ -136,6 +137,7 @@ slideOptions:
   padding-left: 1.5em !important;
   list-style-type: none;
   margin-bottom: 0.3em !important;
+  margin-top: 0.6em !important; /* Add spacing between headlines and content */
 }
 
 /* Add spacing between list items for better readability */
@@ -158,7 +160,7 @@ slideOptions:
 
 /* Code blocks sizing - Full Width Optimized */
 .reveal pre {
-  font-size: 1.1em !important; /* Significantly increased for better readability */
+  font-size: 0.85em !important; /* Reduced font size to fit visual canvas */
   max-height: calc(100vh - 200px); /* Use full available screen height */
   overflow-y: auto !important;
   background: #2d3748 !important; /* Dark background for better contrast */
@@ -518,28 +520,28 @@ slideOptions:
 ## Agenda Einführung
 
 ### Themenblöcke:
-- **Was ist Software-Architektur?**
-- **Clean Code Grundlagen**
-- **Fachlichkeit vor Technik**
-- **Design Patterns Motivation**
-- **Refactoring Philosophie**
-- **Workshop-Erwartungen**
+<div class="fragment">- **Was ist Software-Architektur?**</div>
+<div class="fragment">- **Clean Code Grundlagen**</div>
+<div class="fragment">- **Fachlichkeit vor Technik**</div>
+<div class="fragment">- **Design Patterns Motivation**</div>
+<div class="fragment">- **Refactoring Philosophie**</div>
+<div class="fragment">- **Workshop-Erwartungen**</div>
 
 ### Lernziele:
-- Gemeinsames Verständnis von Software-Architektur entwickeln
-- Clean Code Prinzipien verstehen und anwenden
-- Domain-First statt Technology-First Denken etablieren
-- Motivation für Design Patterns verstehen
-- Refactoring als kontinuierlichen Prozess begreifen
+<div class="fragment">- Gemeinsames Verständnis von Software-Architektur entwickeln</div>
+<div class="fragment">- Clean Code Prinzipien verstehen und anwenden</div>
+<div class="fragment">- Domain-First statt Technology-First Denken etablieren</div>
+<div class="fragment">- Motivation für Design Patterns verstehen</div>
+<div class="fragment">- Refactoring als kontinuierlichen Prozess begreifen</div>
 
 ---
 
 # Teil 1: Was ist Software-Architektur?
 
 ## Lernziele
-- Gemeinsames Verständnis von Software-Architektur
-- Verschiedene Definitionen kennenlernen
-- Enterprise-Kontext verstehen
+<div class="fragment">- Gemeinsames Verständnis von Software-Architektur</div>
+<div class="fragment">- Verschiedene Definitionen kennenlernen</div>
+<div class="fragment">- Enterprise-Kontext verstehen</div>
 
 ---
 
@@ -553,13 +555,13 @@ slideOptions:
 <div class="fragment">
 
 ### Typische Antworten:
-- "Das große Ganze"
-- "Struktur der Software" 
-- "Komponenten und deren Beziehungen"
-- "Wie alles zusammenhängt"
-- "Framework-Auswahl"
-- "Datenbanken und Services"
-- "Microservices vs. Monolith"
+<div class="fragment">- "Das große Ganze"</div>
+<div class="fragment">- "Struktur der Software"</div>
+<div class="fragment">- "Komponenten und deren Beziehungen"</div>
+<div class="fragment">- "Wie alles zusammenhängt"</div>
+<div class="fragment">- "Framework-Auswahl"</div>
+<div class="fragment">- "Datenbanken und Services"</div>
+<div class="fragment">- "Microservices vs. Monolith"</div>
 
 </div>
 
@@ -631,22 +633,22 @@ Note: Diese fünf Punkte ergeben sich aus den verschiedenen Definitionen. Betone
 ## Enterprise-Kontext
 
 ### Besonderheiten in großen Unternehmen:
-- **Legacy-Systeme** - Jahrzehntealte Systeme, die noch laufen müssen
-- **Regulatorische Anforderungen** - DSGVO, Compliance-Standards
-- **Hochverfügbarkeit** - 99.9%+ Uptime-Anforderungen
-- **Skalierung** - Millionen von Benutzern, große Datenmengen
-- **Sicherheit** - Kritische Geschäftsdaten, Cyber-Security
-- **Integration** - Dutzende von Systemen müssen zusammenarbeiten
+<div class="fragment">- **Legacy-Systeme** - Jahrzehntealte Systeme, die noch laufen müssen</div>
+<div class="fragment">- **Regulatorische Anforderungen** - DSGVO, Compliance-Standards</div>
+<div class="fragment">- **Hochverfügbarkeit** - 99.9%+ Uptime-Anforderungen</div>
+<div class="fragment">- **Skalierung** - Millionen von Benutzern, große Datenmengen</div>
+<div class="fragment">- **Sicherheit** - Kritische Geschäftsdaten, Cyber-Security</div>
+<div class="fragment">- **Integration** - Dutzende von Systemen müssen zusammenarbeiten</div>
 
 ---
 
 ## Architektur-Herausforderungen
 
 ### In Enterprises:
-1. **Modernisierung bei laufendem Betrieb**
-2. **Compliance und Governance**
-3. **Performance bei hoher Last**
-4. **Kostenoptimierung bei gleichzeitig hoher Qualität**
+<div class="fragment">1. **Modernisierung bei laufendem Betrieb**</div>
+<div class="fragment">2. **Compliance und Governance**</div>
+<div class="fragment">3. **Performance bei hoher Last**</div>
+<div class="fragment">4. **Kostenoptimierung bei gleichzeitig hoher Qualität**</div>
 
 <div class="highlight-box accent">
 <strong>Kernbotschaft:</strong> Architektur ist nicht nur Technik. Sie muss Geschäftsziele verstehen und unterstützen.
@@ -670,10 +672,10 @@ Note: Lassen Sie 2-3 Teilnehmer antworten. Diese Fragen leiten über zu Clean Co
 # Teil 2: Clean Code Grundlagen
 
 ## Lernziele
-- Verständnis für sauberen Code
-- Unterschied zwischen clever und lesbar
-- Wartbarkeit als Ziel
-- Technische Schulden vermeiden
+<div class="fragment">- Verständnis für sauberen Code</div>
+<div class="fragment">- Unterschied zwischen clever und lesbar</div>
+<div class="fragment">- Wartbarkeit als Ziel</div>
+<div class="fragment">- Technische Schulden vermeiden</div>
 
 ---
 
@@ -687,11 +689,11 @@ Was macht es sauber?</strong>
 <div class="fragment">
 
 ### Typische Antworten:
-- **Aufgeräumt und organisiert**
-- **Alles hat seinen Platz**
-- **Man findet schnell, was man sucht**
-- **Nichts Überflüssiges liegt herum**
-- **Funktional und effizient**
+<div class="fragment">- **Aufgeräumt und organisiert**</div>
+<div class="fragment">- **Alles hat seinen Platz**</div>
+<div class="fragment">- **Man findet schnell, was man sucht**</div>
+<div class="fragment">- **Nichts Überflüssiges liegt herum**</div>
+<div class="fragment">- **Funktional und effizient**</div>
 
 </div>
 
@@ -726,18 +728,18 @@ Note: Betonen Sie "taken care of" - jemand hat sich Mühe gegeben. Clean Code is
 
 ## 2. Eindeutige Namen
 
-- **Funktionen** - Verben (calculateTax, sendEmail)
-- **Variablen** - Substantive (customerName, orderTotal)
-- **Boolean** - Fragen (isValid, hasPermission)
-- **Konstanten** - Großbuchstaben (MAX_RETRY_COUNT)
+<div class="fragment">- **Funktionen** - Verben (calculateTax, sendEmail)</div>
+<div class="fragment">- **Variablen** - Substantive (customerName, orderTotal)</div>
+<div class="fragment">- **Boolean** - Fragen (isValid, hasPermission)</div>
+<div class="fragment">- **Konstanten** - Großbuchstaben (MAX_RETRY_COUNT)</div>
 
 ---
 
 ## 3. Kurze Funktionen
 
-- Eine Funktion = Ein Gedanke
-- Faustregeln: Max. 20 Zeilen, max. 3 Parameter
-- "Extract Till You Drop" - so lange extrahieren, bis es nicht mehr geht
+<div class="fragment">- Eine Funktion = Ein Gedanke</div>
+<div class="fragment">- Faustregeln: Max. 20 Zeilen, max. 3 Parameter</div>
+<div class="fragment">- "Extract Till You Drop" - so lange extrahieren, bis es nicht mehr geht</div>
 
 ---
 
@@ -757,9 +759,9 @@ if (employee.isEligibleForBonus())</code></pre>
 
 ## 5. Konsistenz
 
-- Gleiche Namenskonventionen
-- Gleiche Formatierung
-- Gleiche Patterns
+<div class="fragment">- Gleiche Namenskonventionen</div>
+<div class="fragment">- Gleiche Formatierung</div>
+<div class="fragment">- Gleiche Patterns</div>
 
 ---
 
@@ -789,10 +791,10 @@ return DEFAULT_SERVICE_LEVEL;</code></pre>
 
 ## Warum Lesbarkeit gewinnt
 
-- **Code wird öfter gelesen als geschrieben**
-- Code wird häufiger debuggt als geschrieben
-- Neue Teammitglieder müssen Code verstehen
-- Wartung und Erweiterung brauchen Verständnis
+<div class="fragment">- **Code wird öfter gelesen als geschrieben**</div>
+<div class="fragment">- Code wird häufiger debuggt als geschrieben</div>
+<div class="fragment">- Neue Teammitglieder müssen Code verstehen</div>
+<div class="fragment">- Wartung und Erweiterung brauchen Verständnis</div>
 
 ---
 
