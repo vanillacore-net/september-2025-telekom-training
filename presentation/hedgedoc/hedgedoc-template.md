@@ -59,7 +59,8 @@ slideOptions:
 
 Content goes here with left alignment
 - Bullet points work well
-- Use fragments for reveals <!-- .element: class="fragment" -->
+- Use fragments for reveals
+<!-- .element: class="fragment" -->
 
 **Speaker Notes:** Add speaker notes using this pattern.
 ```
@@ -94,7 +95,8 @@ Content goes here with left alignment
 
 ## Basic Fragments
 - This appears immediately
-- This appears on next click <!-- .element: class="fragment" -->
+- This appears on next click
+<!-- .element: class="fragment" -->
 - This appears on third click <!-- .element: class="fragment fade-up" -->
 - This slides in from left <!-- .element: class="fragment fade-left" -->
 

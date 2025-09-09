@@ -130,7 +130,8 @@ slideOptions:
 ### Fragment Animation Examples
 ```markdown
 - This appears immediately
-- This appears on click <!-- .element: class="fragment" -->
+- This appears on click
+<!-- .element: class="fragment" -->
 - This fades up <!-- .element: class="fragment fade-up" -->
 - This highlights in red <!-- .element: class="fragment highlight-red" -->
 ```
