@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.4.1] [2024-12-30] - Fix: Critical Slide Issues - Fragment Reveals, Content and Structure
+
+### Fixed
+- **Fragment Reveals Fixed**: Converted all old comment-style fragment reveals to proper `<div class="fragment">` format
+  - Fixed fragments in day4 presentation (MVC patterns, microservice patterns, anti-patterns, takeaways)
+  - Updated day1, day2, day3, and intro presentations to use proper reveal.js fragment syntax
+  - Ensured proper spacing and structure for fragment animations
+- **Content Validation**: Verified all slides have proper titles and structure
+  - Confirmed "Alexanders Erkenntnis" content exists and is properly formatted
+  - Validated slide title consistency across all presentations
+  - Fixed problem grouping and slide organization
+- **Import Script Success**: All 5 presentations successfully imported and validated through HedgeDoc system
+
+### Technical Implementation
+- **Fragment Conversion**: Systematically replaced `<!-- .element: class="fragment" data-fragment-index="N" -->` patterns with `<div class="fragment">` wrappers
+- **Validation Process**: Used import script to verify all changes work correctly in HedgeDoc presentation mode
+- **Quality Assurance**: Ensured all slides maintain proper reveal.js structure and functionality
+
 ## [1.4.0] [2024-12-30] - UI: Enhanced Font Sizes for Better Readability
 
 ### Enhanced

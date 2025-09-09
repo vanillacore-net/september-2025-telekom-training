@@ -470,13 +470,13 @@ Note:
 
 ## Erweiterte Themen Überblick
 
-- **Architektur-Patterns** - MVC, MVP, MVVM Tiefgang <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Microservice Patterns** - Service Discovery, Circuit Breaker, Saga <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Performance Patterns** - Caching-Strategien, Object Pooling, Lazy Loading <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Testing Patterns** - Mock, Stub, Test Double Implementierungen <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Pattern-Kombinationen** - Reale architektonische Lösungen <!-- .element: class="fragment" data-fragment-index="5" -->
-- **Anti-Patterns** - Häufige Fehler und wie man sie vermeidet <!-- .element: class="fragment" data-fragment-index="6" -->
-- **Workshop Zusammenfassung** - Vier Tage Lernsynthese <!-- .element: class="fragment" data-fragment-index="7" -->
+<div class="fragment">- **Architektur-Patterns** - MVC, MVP, MVVM Tiefgang</div>
+<div class="fragment">- **Microservice Patterns** - Service Discovery, Circuit Breaker, Saga</div>
+<div class="fragment">- **Performance Patterns** - Caching-Strategien, Object Pooling, Lazy Loading</div>
+<div class="fragment">- **Testing Patterns** - Mock, Stub, Test Double Implementierungen</div>
+<div class="fragment">- **Pattern-Kombinationen** - Reale architektonische Lösungen</div>
+<div class="fragment">- **Anti-Patterns** - Häufige Fehler und wie man sie vermeidet</div>
+<div class="fragment">- **Workshop Zusammenfassung** - Vier Tage Lernsynthese</div>
 
 <!-- Speaker Notes: Die heutige Agenda baut auf den fundamentalen Patterns aus Tag 1-3 auf. Wir werden sehen, wie grundlegende Creational-, Structural- und Behavioral-Patterns sich kombinieren, um robuste Enterprise-Architekturen zu schaffen. Jeder Abschnitt enthält praktische Beispiele und reale Enterprise-Anwendungsfälle. -->
 
@@ -499,20 +499,20 @@ Note:
 <div>
 
 ## MVC Komponenten
-- **Model** - Geschäftslogik und Datenverwaltung <!-- .element: class="fragment" data-fragment-index="1" -->
-- **View** - Benutzeroberfläche und Präsentationsschicht <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Controller** - Eingabebehandlung und Ablaufsteuerung <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Vorteile** - Klare Trennung der Belange, Testbarkeit <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Anwendungsfälle** - Webanwendungen, Desktop-Software <!-- .element: class="fragment" data-fragment-index="5" -->
+<div class="fragment">- **Model** - Geschäftslogik und Datenverwaltung</div>
+<div class="fragment">- **View** - Benutzeroberfläche und Präsentationsschicht</div>
+<div class="fragment">- **Controller** - Eingabebehandlung und Ablaufsteuerung</div>
+<div class="fragment">- **Vorteile** - Klare Trennung der Belange, Testbarkeit</div>
+<div class="fragment">- **Anwendungsfälle** - Webanwendungen, Desktop-Software</div>
 
 </div>
 <div>
 
 ## Enterprise-Anwendungen
-- **Kundenportal** - Benutzerkonto-Verwaltung <!-- .element: class="fragment" data-fragment-index="6" -->
-- **Abrechnungssystem** - Rechnungsbearbeitung <!-- .element: class="fragment" data-fragment-index="7" -->
-- **Service-Management** - Service-Konfiguration <!-- .element: class="fragment" data-fragment-index="8" -->
-- **Admin-Dashboards** - System-Monitoring <!-- .element: class="fragment" data-fragment-index="9" -->
+<div class="fragment">- **Kundenportal** - Benutzerkonto-Verwaltung</div>
+<div class="fragment">- **Abrechnungssystem** - Rechnungsbearbeitung</div>
+<div class="fragment">- **Service-Management** - Service-Konfiguration</div>
+<div class="fragment">- **Admin-Dashboards** - System-Monitoring</div>
 
 </div>
 </div>
@@ -528,7 +528,7 @@ Note:
 
 ```javascript
 // MVC Implementation Example
-class UserModel { // fragment
+class UserModel {
   constructor() { // fragment
     this.users = []; // fragment
     this.observers = []; // fragment
@@ -613,19 +613,19 @@ controller.addUser({ name: 'Max Mueller', email: 'max@telekom.de' }); // fragmen
 <div>
 
 ## MVP Components
-- **Model** - Pure business logic, no UI knowledge <!-- .element: class="fragment" data-fragment-index="1" -->
-- **View** - Passive interface, delegates to Presenter <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Presenter** - All UI logic and user interaction handling <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Benefits** - Highly testable, clear responsibilities <!-- .element: class="fragment" data-fragment-index="4" -->
+<div class="fragment">- **Model** - Pure business logic, no UI knowledge</div>
+<div class="fragment">- **View** - Passive interface, delegates to Presenter</div>
+<div class="fragment">- **Presenter** - All UI logic and user interaction handling</div>
+<div class="fragment">- **Benefits** - Highly testable, clear responsibilities</div>
 
 </div>
 <div>
 
 ## Key Differences from MVC
-- View doesn't directly observe Model <!-- .element: class="fragment" data-fragment-index="5" -->
-- Presenter mediates all Model-View communication <!-- .element: class="fragment" data-fragment-index="6" -->
-- Better testability (Presenter can be unit tested) <!-- .element: class="fragment" data-fragment-index="7" -->
-- More explicit control flow <!-- .element: class="fragment" data-fragment-index="8" -->
+<div class="fragment">- View doesn't directly observe Model</div>
+<div class="fragment">- Presenter mediates all Model-View communication</div>
+<div class="fragment">- Better testability (Presenter can be unit tested)</div>
+<div class="fragment">- More explicit control flow</div>
 
 </div>
 </div>
@@ -762,19 +762,19 @@ class MVVMView { // fragment
 <div>
 
 ## Key Components
-- **Service Registry** - Central directory of available services <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Health Checks** - Monitor service availability <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Load Balancing** - Distribute requests across instances <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Failure Handling** - Graceful degradation when services fail <!-- .element: class="fragment" data-fragment-index="4" -->
+<div class="fragment">- **Service Registry** - Central directory of available services</div>
+<div class="fragment">- **Health Checks** - Monitor service availability</div>
+<div class="fragment">- **Load Balancing** - Distribute requests across instances</div>
+<div class="fragment">- **Failure Handling** - Graceful degradation when services fail</div>
 
 </div>
 <div>
 
 ## Benefits
-- **Dynamic Scaling** - Services can be added/removed at runtime <!-- .element: class="fragment" data-fragment-index="5" -->
-- **High Availability** - Automatic failover to healthy instances <!-- .element: class="fragment" data-fragment-index="6" -->
-- **Location Transparency** - Services don't need to know physical locations <!-- .element: class="fragment" data-fragment-index="7" -->
-- **Configuration Management** - Centralized service configuration <!-- .element: class="fragment" data-fragment-index="8" -->
+<div class="fragment">- **Dynamic Scaling** - Services can be added/removed at runtime</div>
+<div class="fragment">- **High Availability** - Automatic failover to healthy instances</div>
+<div class="fragment">- **Location Transparency** - Services don't need to know physical locations</div>
+<div class="fragment">- **Configuration Management** - Centralized service configuration</div>
 
 </div>
 </div>
@@ -1107,21 +1107,21 @@ testUserCreation(); // fragment
 <div>
 
 ### E-Commerce Platform Stack
-- **MVC/MVVM** - Frontend architecture <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Factory + Strategy** - Payment processing <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Observer + Command** - Order management <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Circuit Breaker** - External service calls <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Cache-Aside** - Product catalog <!-- .element: class="fragment" data-fragment-index="5" -->
+<div class="fragment">- **MVC/MVVM** - Frontend architecture</div>
+<div class="fragment">- **Factory + Strategy** - Payment processing</div>
+<div class="fragment">- **Observer + Command** - Order management</div>
+<div class="fragment">- **Circuit Breaker** - External service calls</div>
+<div class="fragment">- **Cache-Aside** - Product catalog</div>
 
 </div>
 <div>
 
 ### Enterprise Customer Platform
-- **Service Discovery** - Microservice communication <!-- .element: class="fragment" data-fragment-index="6" -->
-- **Facade** - API Gateway pattern <!-- .element: class="fragment" data-fragment-index="7" -->
-- **Decorator** - Cross-cutting concerns (logging, security) <!-- .element: class="fragment" data-fragment-index="8" -->
-- **Template Method** - Data processing pipelines <!-- .element: class="fragment" data-fragment-index="9" -->
-- **Proxy** - Caching and access control <!-- .element: class="fragment" data-fragment-index="10" -->
+<div class="fragment">- **Service Discovery** - Microservice communication</div>
+<div class="fragment">- **Facade** - API Gateway pattern</div>
+<div class="fragment">- **Decorator** - Cross-cutting concerns (logging, security)</div>
+<div class="fragment">- **Template Method** - Data processing pipelines</div>
+<div class="fragment">- **Proxy** - Caching and access control</div>
 
 </div>
 </div>
@@ -1141,21 +1141,21 @@ testUserCreation(); // fragment
 
 ## Common Design Anti-Patterns
 
-- **God Object** - One class does everything <!-- .element: class="fragment highlight-red" -->
-- **Singleton Overuse** - Everything becomes a singleton <!-- .element: class="fragment highlight-red" -->
-- **Pattern for Pattern's Sake** - Using patterns unnecessarily <!-- .element: class="fragment highlight-red" -->
-- **Over-Engineering** - Complex solutions for simple problems <!-- .element: class="fragment highlight-red" -->
-- **Tight Coupling** - Classes too dependent on each other <!-- .element: class="fragment highlight-red" -->
+<div class="fragment">- **God Object** - One class does everything</div>
+<div class="fragment">- **Singleton Overuse** - Everything becomes a singleton</div>
+<div class="fragment">- **Pattern for Pattern's Sake** - Using patterns unnecessarily</div>
+<div class="fragment">- **Over-Engineering** - Complex solutions for simple problems</div>
+<div class="fragment">- **Tight Coupling** - Classes too dependent on each other</div>
 
 </div>
 <div>
 
 ## Microservice Anti-Patterns
 
-- **Distributed Monolith** - Microservices too tightly coupled <!-- .element: class="fragment highlight-red" -->
-- **Chatty Interfaces** - Too many fine-grained service calls <!-- .element: class="fragment highlight-red" -->
-- **Shared Database** - Multiple services sharing one database <!-- .element: class="fragment highlight-red" -->
-- **No Circuit Breaker** - Cascading failures not prevented <!-- .element: class="fragment highlight-red" -->
+<div class="fragment">- **Distributed Monolith** - Microservices too tightly coupled</div>
+<div class="fragment">- **Chatty Interfaces** - Too many fine-grained service calls</div>
+<div class="fragment">- **Shared Database** - Multiple services sharing one database</div>
+<div class="fragment">- **No Circuit Breaker** - Cascading failures not prevented</div> 
 
 </div>
 </div>
@@ -1183,30 +1183,30 @@ testUserCreation(); // fragment
 ## Pattern Categories Mastered
 
 ### **Creational Patterns**
-- Object creation abstraction <!-- .element: class="fragment" data-fragment-index="1" -->
-- Singleton for unique instances <!-- .element: class="fragment" data-fragment-index="2" -->
-- Factory for flexible object creation <!-- .element: class="fragment" data-fragment-index="3" -->
+<div class="fragment">- Object creation abstraction</div>
+<div class="fragment">- Singleton for unique instances</div>
+<div class="fragment">- Factory for flexible object creation</div> 
 
 ### **Structural Patterns** 
-- Object composition and relationships <!-- .element: class="fragment" data-fragment-index="4" -->
-- Adapter for interface compatibility <!-- .element: class="fragment" data-fragment-index="5" -->
-- Decorator for flexible enhancement <!-- .element: class="fragment" data-fragment-index="6" -->
-- Facade for complexity hiding <!-- .element: class="fragment" data-fragment-index="7" -->
+<div class="fragment">- Object composition and relationships</div>
+<div class="fragment">- Adapter for interface compatibility</div>
+<div class="fragment">- Decorator for flexible enhancement</div>
+<div class="fragment">- Facade for complexity hiding</div> 
 
 </div>
 <div>
 
 ### **Behavioral Patterns**
-- Object interaction and communication <!-- .element: class="fragment" data-fragment-index="8" -->
-- Observer for event-driven architectures <!-- .element: class="fragment" data-fragment-index="9" -->
-- Strategy for algorithm flexibility <!-- .element: class="fragment" data-fragment-index="10" -->
-- Command for action encapsulation <!-- .element: class="fragment" data-fragment-index="11" -->
+<div class="fragment">- Object interaction and communication</div>
+<div class="fragment">- Observer for event-driven architectures</div>
+<div class="fragment">- Strategy for algorithm flexibility</div>
+<div class="fragment">- Command for action encapsulation</div> 
 
 ### **Advanced Patterns**
-- Architectural pattern foundations <!-- .element: class="fragment" data-fragment-index="12" -->
-- Microservice communication patterns <!-- .element: class="fragment" data-fragment-index="13" -->
-- Performance optimization strategies <!-- .element: class="fragment" data-fragment-index="14" -->
-- Testing and quality assurance patterns <!-- .element: class="fragment" data-fragment-index="15" -->
+<div class="fragment">- Architectural pattern foundations</div>
+<div class="fragment">- Microservice communication patterns</div>
+<div class="fragment">- Performance optimization strategies</div>
+<div class="fragment">- Testing and quality assurance patterns</div> 
 
 </div>
 </div>
@@ -1228,21 +1228,21 @@ testUserCreation(); // fragment
 <div>
 
 ### **Key Learning Outcomes**
-- **23 Core Patterns** - Comprehensive pattern library <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Real-World Examples** - Enterprise use cases and implementations <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Pattern Combinations** - How patterns work together <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Best Practices** - When to use (and not use) patterns <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Anti-Pattern Awareness** - Common mistakes to avoid <!-- .element: class="fragment" data-fragment-index="5" -->
+<div class="fragment">- **23 Core Patterns** - Comprehensive pattern library</div>
+<div class="fragment">- **Real-World Examples** - Enterprise use cases and implementations</div>
+<div class="fragment">- **Pattern Combinations** - How patterns work together</div>
+<div class="fragment">- **Best Practices** - When to use (and not use) patterns</div>
+<div class="fragment">- **Anti-Pattern Awareness** - Common mistakes to avoid</div> 
 
 </div>
 <div>
 
 ### **Next Steps for Mastery**
-- **Practice Integration** - Apply patterns in current projects <!-- .element: class="fragment" data-fragment-index="6" -->
-- **Study Frameworks** - See patterns in action (React, Angular, Spring) <!-- .element: class="fragment" data-fragment-index="7" -->
-- **Architect Solutions** - Design systems using pattern combinations <!-- .element: class="fragment" data-fragment-index="8" -->
-- **Mentorship** - Teach patterns to spread knowledge <!-- .element: class="fragment" data-fragment-index="9" -->
-- **Stay Updated** - Modern pattern adaptations and new patterns <!-- .element: class="fragment" data-fragment-index="10" -->
+<div class="fragment">- **Practice Integration** - Apply patterns in current projects</div>
+<div class="fragment">- **Study Frameworks** - See patterns in action (React, Angular, Spring)</div>
+<div class="fragment">- **Architect Solutions** - Design systems using pattern combinations</div>
+<div class="fragment">- **Mentorship** - Teach patterns to spread knowledge</div>
+<div class="fragment">- **Stay Updated** - Modern pattern adaptations and new patterns</div> 
 
 </div>
 </div>
@@ -1261,19 +1261,19 @@ testUserCreation(); // fragment
 <div>
 
 ## **Workshop Materials**
-- **Complete Code Repository** - All examples and exercises <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Pattern Reference Guide** - Quick lookup for each pattern <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Best Practice Checklists** - When to use each pattern <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Architecture Templates** - Starter templates for common scenarios <!-- .element: class="fragment" data-fragment-index="4" -->
+<div class="fragment">- **Complete Code Repository** - All examples and exercises</div>
+<div class="fragment">- **Pattern Reference Guide** - Quick lookup for each pattern</div>
+<div class="fragment">- **Best Practice Checklists** - When to use each pattern</div>
+<div class="fragment">- **Architecture Templates** - Starter templates for common scenarios</div> 
 
 </div>
 <div>
 
 ## **Continuing Education**
-- **Enterprise Architecture Community** - Internal forums and discussions <!-- .element: class="fragment" data-fragment-index="5" -->
-- **Advanced Workshops** - Domain-specific deep dives <!-- .element: class="fragment" data-fragment-index="6" -->
-- **Monthly Pattern Reviews** - Real project pattern analysis <!-- .element: class="fragment" data-fragment-index="7" -->
-- **Conference Talks** - Share your pattern implementations <!-- .element: class="fragment" data-fragment-index="8" -->
+<div class="fragment">- **Enterprise Architecture Community** - Internal forums and discussions</div>
+<div class="fragment">- **Advanced Workshops** - Domain-specific deep dives</div>
+<div class="fragment">- **Monthly Pattern Reviews** - Real project pattern analysis</div>
+<div class="fragment">- **Conference Talks** - Share your pattern implementations</div> 
 
 </div>
 </div>
@@ -1301,19 +1301,19 @@ testUserCreation(); // fragment
 <div>
 
 ### **Discussion Topics**
-- Which patterns will you apply first? <!-- .element: class="fragment" data-fragment-index="1" -->
-- What surprised you most about pattern combinations? <!-- .element: class="fragment" data-fragment-index="2" -->
-- How will you introduce patterns to your team? <!-- .element: class="fragment" data-fragment-index="3" -->
-- What challenges do you anticipate? <!-- .element: class="fragment" data-fragment-index="4" -->
+<div class="fragment">- Which patterns will you apply first?</div>
+<div class="fragment">- What surprised you most about pattern combinations?</div>
+<div class="fragment">- How will you introduce patterns to your team?</div>
+<div class="fragment">- What challenges do you anticipate?</div> 
 
 </div>
 <div>
 
 ### **Action Planning**
-- **Identify one pattern** to implement this month <!-- .element: class="fragment" data-fragment-index="5" -->
-- **Review existing code** for pattern opportunities <!-- .element: class="fragment" data-fragment-index="6" -->
-- **Share knowledge** with your development team <!-- .element: class="fragment" data-fragment-index="7" -->
-- **Plan architectural improvements** using pattern combinations <!-- .element: class="fragment" data-fragment-index="8" -->
+<div class="fragment">- **Identify one pattern** to implement this month</div>
+<div class="fragment">- **Review existing code** for pattern opportunities</div>
+<div class="fragment">- **Share knowledge** with your development team</div>
+<div class="fragment">- **Plan architectural improvements** using pattern combinations</div> 
 
 </div>
 </div>

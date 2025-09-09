@@ -466,13 +466,13 @@ Note:
 <div class="progress-step pending">⏳ Praktische Übungen</div>
 </div>
 
-- **Observer Pattern** - Event-getriebene Architektur <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Strategy Pattern** - Algorithmus-Austauschbarkeit <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Command Pattern** - Aktion-Kapselung und Undo <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Template Method Pattern** - Algorithmus-Skelett <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Iterator Pattern** - Sequenzielle Zugriffe <!-- .element: class="fragment" data-fragment-index="5" -->
-- **Chain of Responsibility** - Anfragen-Weiterleitung <!-- .element: class="fragment" data-fragment-index="6" -->
-- **Praktische Übungen** - Hands-on Implementation <!-- .element: class="fragment" data-fragment-index="7" -->
+- **Observer Pattern** - Event-getriebene Architektur 
+- **Strategy Pattern** - Algorithmus-Austauschbarkeit 
+- **Command Pattern** - Aktion-Kapselung und Undo 
+- **Template Method Pattern** - Algorithmus-Skelett 
+- **Iterator Pattern** - Sequenzielle Zugriffe 
+- **Chain of Responsibility** - Anfragen-Weiterleitung 
+- **Praktische Übungen** - Hands-on Implementation 
 
 <!-- Speaker Notes: Verhaltensmuster sind besonders wichtig für Event-getriebene Systeme, Microservices und moderne Architekturen. Sie ermöglichen lose Kopplung und flexible Kommunikation zwischen Komponenten. -->
 
@@ -491,11 +491,11 @@ Note:
 
 </div>
 
-- **Fokus auf Kommunikation** - Objektinteraktion optimieren <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Verantwortlichkeits-Verteilung** - Wer macht was, wann? <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Algorithmus-Kapselung** - Verhalten abstrahieren <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Lose Kopplung** - Minimale Abhängigkeiten <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Flexibilität zur Laufzeit** - Dynamische Verhaltensänderung <!-- .element: class="fragment" data-fragment-index="5" -->
+- **Fokus auf Kommunikation** - Objektinteraktion optimieren 
+- **Verantwortlichkeits-Verteilung** - Wer macht was, wann? 
+- **Algorithmus-Kapselung** - Verhalten abstrahieren 
+- **Lose Kopplung** - Minimale Abhängigkeiten 
+- **Flexibilität zur Laufzeit** - Dynamische Verhaltensänderung 
 
 <!-- Speaker Notes: Im Gegensatz zu Erzeugungsmustern (Objekterstellung) und Strukturmustern (Objektkomposition) befassen sich Verhaltensmuster mit der Art und Weise, wie Objekte miteinander interagieren und Verantwortlichkeiten verteilen. -->
 
@@ -559,7 +559,7 @@ public class OrderManager {
 </div>
 
 ### Identifizierte Code-Smells
-<!-- .element: class="fragment" data-fragment-index="1" -->
+
 - **Tight Coupling**: OrderManager kennt alle Benachrichtigungs-Services direkt
 - **Open/Closed Principle Violation**: Neue Services erfordern Code-Änderungen
 - **Duplicate Code**: Service-Benachrichtigung Code in jeder Methode wiederholt
@@ -586,21 +586,21 @@ public class OrderManager {
 <div>
 
 ## Key Concepts
-- **One-to-Many Abhängigkeit** - Ein Subject, viele Observer <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Automatische Benachrichtigung** - Push-basierte Updates <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Lose Kopplung** - Subject kennt Observer nicht konkret <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Event-getriebene Architektur** - Basis für reactive Systems <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Pub/Sub Implementierung** - Publisher-Subscriber Pattern <!-- .element: class="fragment" data-fragment-index="5" -->
+- **One-to-Many Abhängigkeit** - Ein Subject, viele Observer 
+- **Automatische Benachrichtigung** - Push-basierte Updates 
+- **Lose Kopplung** - Subject kennt Observer nicht konkret 
+- **Event-getriebene Architektur** - Basis für reactive Systems 
+- **Pub/Sub Implementierung** - Publisher-Subscriber Pattern 
 
 </div>
 <div>
 
 ## Use Cases
-- Event-Handling-Systeme <!-- .element: class="fragment" data-fragment-index="6" -->
-- Model-View Architekturen (MVC, MVVM) <!-- .element: class="fragment" data-fragment-index="7" -->
-- Notification Services <!-- .element: class="fragment" data-fragment-index="8" -->
-- Real-time Data Updates <!-- .element: class="fragment" data-fragment-index="9" -->
-- Reactive Programming <!-- .element: class="fragment" data-fragment-index="10" -->
+- Event-Handling-Systeme 
+- Model-View Architekturen (MVC, MVVM) 
+- Notification Services 
+- Real-time Data Updates 
+- Reactive Programming 
 
 </div>
 </div>
@@ -756,7 +756,7 @@ public class PriceCalculator {
 </div>
 
 ### Identifizierte Code-Smells
-<!-- .element: class="fragment" data-fragment-index="1" -->
+
 - **Complex Conditional Logic**: Verschachtelte if-else Statements schwer lesbar
 - **Open/Closed Principle Violation**: Neue Kunden-Typen erfordern Code-Änderungen
 - **Duplicate Logic**: Ähnliche if-else Strukturen in verschiedenen Methoden
@@ -783,21 +783,21 @@ public class PriceCalculator {
 <div>
 
 ## Key Concepts
-- **Familie von Algorithmen** - Verschiedene Implementierungen <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Kapselung von Verhalten** - Strategy-Objekte isoliert <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Laufzeit-Austausch** - Dynamische Strategie-Wahl <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Open/Closed Prinzip** - Neue Strategien ohne Änderungen <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Context-Delegation** - Context nutzt Strategy <!-- .element: class="fragment" data-fragment-index="5" -->
+- **Familie von Algorithmen** - Verschiedene Implementierungen 
+- **Kapselung von Verhalten** - Strategy-Objekte isoliert 
+- **Laufzeit-Austausch** - Dynamische Strategie-Wahl 
+- **Open/Closed Prinzip** - Neue Strategien ohne Änderungen 
+- **Context-Delegation** - Context nutzt Strategy 
 
 </div>
 <div>
 
 ## Use Cases
-- Payment Processing Systems <!-- .element: class="fragment" data-fragment-index="6" -->
-- Sorting Algorithms <!-- .element: class="fragment" data-fragment-index="7" -->
-- Data Compression Methods <!-- .element: class="fragment" data-fragment-index="8" -->
-- Authentication Strategies <!-- .element: class="fragment" data-fragment-index="9" -->
-- Tax Calculation Systems <!-- .element: class="fragment" data-fragment-index="10" -->
+- Payment Processing Systems 
+- Sorting Algorithms 
+- Data Compression Methods 
+- Authentication Strategies 
+- Tax Calculation Systems 
 
 </div>
 </div>
@@ -907,9 +907,9 @@ cart.checkout(); // fragment
 <div>
 
 ## Key Concepts
-- **Aktion-Objekte** - Requests als First-Class Citizens <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Undo/Redo Funktionalität** - Kommando-Rückgängigmachung <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Macro-Commands** - Kombinierte Operationen <!-- .element: class="fragment" data-fragment-index="3" -->
+- **Aktion-Objekte** - Requests als First-Class Citizens 
+- **Undo/Redo Funktionalität** - Kommando-Rückgängigmachung 
+- **Macro-Commands** - Kombinierte Operationen 
 
 Note:
 - Command Pattern ist fundamental für Undo/Redo-Funktionalität
@@ -918,19 +918,19 @@ Note:
 - Zeigen Sie die Trennung von Invoker, Command und Receiver
 - Frage: "Wo in Ihren Anwendungen wünschen Sie sich Undo-Funktionalität?"
 <!-- .element: class="notes" -->
-- **Queuing und Logging** - Kommandos verzögern/protokollieren <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Invoker-Receiver Entkopplung** - Lose gekoppelte Ausführung <!-- .element: class="fragment" data-fragment-index="5" -->
+- **Queuing und Logging** - Kommandos verzögern/protokollieren 
+- **Invoker-Receiver Entkopplung** - Lose gekoppelte Ausführung 
 
 </div>
 <div>
 
 ## Use Cases
-- GUI Button Actions <!-- .element: class="fragment" data-fragment-index="6" -->
-- Undo/Redo Systems <!-- .element: class="fragment" data-fragment-index="7" -->
-- Macro Recording <!-- .element: class="fragment" data-fragment-index="8" -->
-- Transactional Operations <!-- .element: class="fragment" data-fragment-index="9" -->
-- Remote Procedure Calls <!-- .element: class="fragment" data-fragment-index="10" -->
-- Job Queues and Schedulers <!-- .element: class="fragment" data-fragment-index="11" -->
+- GUI Button Actions 
+- Undo/Redo Systems 
+- Macro Recording 
+- Transactional Operations 
+- Remote Procedure Calls 
+- Job Queues and Schedulers 
 
 </div>
 </div>
@@ -1145,7 +1145,7 @@ public class DataProcessor {
 </div>
 
 ### Identifizierte Code-Smells
-<!-- .element: class="fragment" data-fragment-index="1" -->
+
 - **Massive Code Duplication**: Gleiche Algorithmus-Struktur in jeder Methode
 - **Template Method Missing**: Keine Abstraktion für gemeinsame Schritte
 - **Violation of DRY**: Don't Repeat Yourself - aber hier wird alles wiederholt
@@ -1524,12 +1524,12 @@ try { // fragment
 
 | Pattern | Verwendung | Vorteil |
 |---------|------------|---------|
-| **Observer** | Event-Systeme, MVC | Lose Kopplung bei 1:n <!-- .element: class="fragment" data-fragment-index="1" --> |
-| **Strategy** | Algorithmus-Varianten | Runtime-Algorithmus-Wechsel <!-- .element: class="fragment" data-fragment-index="2" --> |
-| **Command** | Undo/Redo, Queuing | Aktionen als Objekte <!-- .element: class="fragment" data-fragment-index="3" --> |
-| **Template Method** | Algorithmus-Skelett | Code-Wiederverwendung <!-- .element: class="fragment" data-fragment-index="4" --> |
-| **Iterator** | Collection-Durchlauf | Einheitlicher Zugriff <!-- .element: class="fragment" data-fragment-index="5" --> |
-| **Chain of Responsibility** | Middleware, Pipelines | Flexible Handler-Ketten <!-- .element: class="fragment" data-fragment-index="6" --> |
+| **Observer** | Event-Systeme, MVC | Lose Kopplung bei 1:n  |
+| **Strategy** | Algorithmus-Varianten | Runtime-Algorithmus-Wechsel  |
+| **Command** | Undo/Redo, Queuing | Aktionen als Objekte  |
+| **Template Method** | Algorithmus-Skelett | Code-Wiederverwendung  |
+| **Iterator** | Collection-Durchlauf | Einheitlicher Zugriff  |
+| **Chain of Responsibility** | Middleware, Pipelines | Flexible Handler-Ketten  |
 
 <div class="highlight-box success">
 **Entscheidungshilfe**: Jedes Pattern löst spezifische Kommunikations- und Interaktions-Probleme. Die Wahl hängt davon ab, ob Sie Events handhaben, Algorithmen austauschen oder Anfragen verarbeiten müssen.
@@ -1641,24 +1641,24 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 
 ### Übung 1: Chat Event-System
 **Observer Pattern implementieren**
-- User können sich für Messages subscriben <!-- .element: class="fragment" data-fragment-index="1" -->
-- Beim Senden einer Message werden alle User benachrichtigt <!-- .element: class="fragment" data-fragment-index="2" -->
-- Channel-specific Subscriptions <!-- .element: class="fragment" data-fragment-index="3" -->
-- Typing indicators implementieren <!-- .element: class="fragment" data-fragment-index="4" -->
+- User können sich für Messages subscriben 
+- Beim Senden einer Message werden alle User benachrichtigt 
+- Channel-specific Subscriptions 
+- Typing indicators implementieren 
 
 ### Übung 2: Payment Gateway mit Undo
 **Strategy + Command Pattern**
-- Verschiedene Payment Methods (PayPal, Credit Card, Bank Transfer) <!-- .element: class="fragment" data-fragment-index="5" -->
-- Transaction history mit Undo capability <!-- .element: class="fragment" data-fragment-index="6" -->
-- Failed payment retry logic <!-- .element: class="fragment" data-fragment-index="7" -->
-- Compound transactions (multiple payments) <!-- .element: class="fragment" data-fragment-index="8" -->
+- Verschiedene Payment Methods (PayPal, Credit Card, Bank Transfer) 
+- Transaction history mit Undo capability 
+- Failed payment retry logic 
+- Compound transactions (multiple payments) 
 
 ### Übung 3: Data Processing Pipeline
 **Template Method + Chain of Responsibility**
-- ETL-Pipeline mit flexiblen Processing-Steps <!-- .element: class="fragment" data-fragment-index="9" -->
-- Data cleaning, validation, format conversion handlers <!-- .element: class="fragment" data-fragment-index="10" -->
-- Error recovery handlers <!-- .element: class="fragment" data-fragment-index="11" -->
-- Parallel processing und batch operations <!-- .element: class="fragment" data-fragment-index="12" -->
+- ETL-Pipeline mit flexiblen Processing-Steps 
+- Data cleaning, validation, format conversion handlers 
+- Error recovery handlers 
+- Parallel processing und batch operations 
 
 <!-- Speaker Notes: Diese Übungen kombinieren alle heute gelernten Patterns in realistischen Szenarien. Die Teilnehmer sollen die Synergien zwischen verschiedenen Patterns erleben. -->
 
@@ -1671,23 +1671,23 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 
 ## Behavioral Patterns richtig einsetzen
 
-- **Event-First Design** - Observer für lose Kopplung nutzen <!-- .element: class="fragment highlight-green" -->
-- **Strategy über If-Else** - Algorithmen austauschbar machen <!-- .element: class="fragment highlight-green" -->
-- **Commands für Undo** - Aktionen reversibel gestalten <!-- .element: class="fragment highlight-green" -->
-- **Templates für Workflows** - Gemeinsame Struktur teilen <!-- .element: class="fragment highlight-green" -->
-- **Iterators für Collections** - Einheitliche Zugriffe schaffen <!-- .element: class="fragment highlight-green" -->
-- **Chains für Pipelines** - Flexible Verarbeitung ermöglichen <!-- .element: class="fragment highlight-green" -->
+- **Event-First Design** - Observer für lose Kopplung nutzen 
+- **Strategy über If-Else** - Algorithmen austauschbar machen 
+- **Commands für Undo** - Aktionen reversibel gestalten 
+- **Templates für Workflows** - Gemeinsame Struktur teilen 
+- **Iterators für Collections** - Einheitliche Zugriffe schaffen 
+- **Chains für Pipelines** - Flexible Verarbeitung ermöglichen 
 
 </div>
 <div>
 
 ## Anti-Patterns vermeiden
 
-- **Over-Engineering** - Pattern nur bei echtem Nutzen <!-- .element: class="fragment highlight-red" -->
-- **Observer-Leaks** - Subscription cleanup nicht vergessen <!-- .element: class="fragment highlight-red" -->
-- **Command-Explosion** - Nicht jeden Setter als Command <!-- .element: class="fragment highlight-red" -->
-- **Strategy-Overkill** - Einfache if-else manchmal besser <!-- .element: class="fragment highlight-red" -->
-- **Chain-Overuse** - Nicht jede Sequenz braucht eine Kette <!-- .element: class="fragment highlight-red" -->
+- **Over-Engineering** - Pattern nur bei echtem Nutzen 
+- **Observer-Leaks** - Subscription cleanup nicht vergessen 
+- **Command-Explosion** - Nicht jeden Setter als Command 
+- **Strategy-Overkill** - Einfache if-else manchmal besser 
+- **Chain-Overuse** - Nicht jede Sequenz braucht eine Kette 
 
 </div>
 </div>
@@ -1716,22 +1716,22 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 
 ## Behavioral Patterns Mastery
 
-- **Observer Pattern** - Event-getriebene Architekturen <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Strategy Pattern** - Algorithmus-Flexibilität zur Laufzeit <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Command Pattern** - Undo/Redo und Action-Queuing <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Template Method** - Workflow-Strukturen definieren <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Iterator Pattern** - Einheitliche Collection-Zugriffe <!-- .element: class="fragment" data-fragment-index="5" -->
-- **Chain of Responsibility** - Flexible Request-Verarbeitung <!-- .element: class="fragment" data-fragment-index="6" -->
+- **Observer Pattern** - Event-getriebene Architekturen 
+- **Strategy Pattern** - Algorithmus-Flexibilität zur Laufzeit 
+- **Command Pattern** - Undo/Redo und Action-Queuing 
+- **Template Method** - Workflow-Strukturen definieren 
+- **Iterator Pattern** - Einheitliche Collection-Zugriffe 
+- **Chain of Responsibility** - Flexible Request-Verarbeitung 
 
 </div>
 <div>
 
 ## Nächste Schritte
 
-- **Microservices** - Patterns in verteilten Systemen <!-- .element: class="fragment" data-fragment-index="7" -->
-- **Reactive Programming** - Observer Pattern erweitert <!-- .element: class="fragment" data-fragment-index="8" -->
-- **Event Sourcing** - Command Pattern in der Praxis <!-- .element: class="fragment" data-fragment-index="9" -->
-- **Advanced Patterns** - CQRS, Saga, Event-driven Architecture <!-- .element: class="fragment" data-fragment-index="10" -->
+- **Microservices** - Patterns in verteilten Systemen 
+- **Reactive Programming** - Observer Pattern erweitert 
+- **Event Sourcing** - Command Pattern in der Praxis 
+- **Advanced Patterns** - CQRS, Saga, Event-driven Architecture 
 
 </div>
 </div>
@@ -1752,19 +1752,19 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 <div>
 
 ### Diskussionspunkte:
-- Wo haben Sie bereits diese Patterns gesehen? <!-- .element: class="fragment" data-fragment-index="1" -->
-- Welche Herausforderungen bei der Implementierung? <!-- .element: class="fragment" data-fragment-index="2" -->
-- Fragen zu spezifischen Use Cases? <!-- .element: class="fragment" data-fragment-index="3" -->
-- Pattern-Kombinationen in Ihren Projekten? <!-- .element: class="fragment" data-fragment-index="4" -->
+- Wo haben Sie bereits diese Patterns gesehen? 
+- Welche Herausforderungen bei der Implementierung? 
+- Fragen zu spezifischen Use Cases? 
+- Pattern-Kombinationen in Ihren Projekten? 
 
 </div>
 <div>
 
 ### Kontakt für Follow-up:
-- **Workshop-Repository** mit allen Code-Beispielen <!-- .element: class="fragment" data-fragment-index="5" -->
-- **Best-Practice Checklisten** für jedes Pattern <!-- .element: class="fragment" data-fragment-index="6" -->
-- **Weiterführende Resources** und advanced topics <!-- .element: class="fragment" data-fragment-index="7" -->
-- **Community** für weitere Diskussionen <!-- .element: class="fragment" data-fragment-index="8" -->
+- **Workshop-Repository** mit allen Code-Beispielen 
+- **Best-Practice Checklisten** für jedes Pattern 
+- **Weiterführende Resources** und advanced topics 
+- **Community** für weitere Diskussionen 
 
 </div>
 </div>

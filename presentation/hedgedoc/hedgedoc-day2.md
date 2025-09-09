@@ -464,11 +464,11 @@ Note:
 <div class="progress-step pending">⏳ Hands-on Übungen</div>
 </div>
 
-- **Strukturmuster Übersicht** - Adapter, Decorator, Facade <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Erweiterte Strukturmuster** - Composite, Proxy <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Enterprise Patterns** - Reale Anwendungsbeispiele <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Hands-on Übungen** - Praktische Implementierung <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Best Practices** - Enterprise spezifische Anwendungen <!-- .element: class="fragment" data-fragment-index="5" -->
+<div class="fragment">- **Strukturmuster Übersicht** - Adapter, Decorator, Facade</div>
+<div class="fragment">- **Erweiterte Strukturmuster** - Composite, Proxy</div>
+<div class="fragment">- **Enterprise Patterns** - Reale Anwendungsbeispiele</div>
+<div class="fragment">- **Hands-on Übungen** - Praktische Implementierung</div>
+<div class="fragment">- **Best Practices** - Enterprise spezifische Anwendungen</div> 
 
 Note:
 - Verwenden Sie Exercise 1 "Service Enhancement Pipeline" aus day2-exercises.md als Motivation
@@ -493,11 +493,11 @@ Note:
 
 </div>
 
-- **Objekte kombinieren** - Funktionalität durch Zusammensetzung <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Interface Harmonisierung** - Inkompatible Schnittstellen verbinden <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Komplexität reduzieren** - Einfache Schnittstellen für komplexe Subsysteme <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Flexibilität erhöhen** - Laufzeit-Komposition statt Vererbung <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Performance optimieren** - Lazy Loading und Proxy-Mechanismen <!-- .element: class="fragment" data-fragment-index="5" -->
+<div class="fragment">- **Objekte kombinieren** - Funktionalität durch Zusammensetzung</div>
+<div class="fragment">- **Interface Harmonisierung** - Inkompatible Schnittstellen verbinden</div>
+<div class="fragment">- **Komplexität reduzieren** - Einfache Schnittstellen für komplexe Subsysteme</div>
+<div class="fragment">- **Flexibilität erhöhen** - Laufzeit-Komposition statt Vererbung</div>
+<div class="fragment">- **Performance optimieren** - Lazy Loading und Proxy-Mechanismen</div> 
 
 <!-- Speaker Notes: Strukturmuster sind das Herzstück moderner Enterprise-Architekturen. Sie ermöglichen es uns, komplexe Systeme modular und wartbar zu gestalten. Bei Enterprise nutzen wir diese Patterns täglich für API-Integration und Microservices. -->
 
@@ -559,12 +559,12 @@ public class BillingManager {
 
 ## Identifizierte Code-Smells
 
-- **Interface Mismatch**: Verschiedene APIs für gleiche Funktionalität <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Duplicate Conversion**: Manuelle Datenkonvertierung überall <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Tight Coupling**: Direkte Abhängigkeit zu Legacy-Systemen <!-- .element: class="fragment" data-fragment-index="3" -->
-- **No Abstraction**: Keine einheitliche Schnittstelle <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Duplicate Code**: Ähnliche Konvertierungs-Logik in jeder Methode <!-- .element: class="fragment" data-fragment-index="5" -->
-- **Type Conversion Hell**: int/float/String-Konvertierungen überall <!-- .element: class="fragment" data-fragment-index="6" -->
+- **Interface Mismatch**: Verschiedene APIs für gleiche Funktionalität 
+- **Duplicate Conversion**: Manuelle Datenkonvertierung überall 
+- **Tight Coupling**: Direkte Abhängigkeit zu Legacy-Systemen 
+- **No Abstraction**: Keine einheitliche Schnittstelle 
+- **Duplicate Code**: Ähnliche Konvertierungs-Logik in jeder Methode 
+- **Type Conversion Hell**: int/float/String-Konvertierungen überall 
 
 ---
 
@@ -585,20 +585,20 @@ public class BillingManager {
 <div>
 
 ## Use Cases
-- **Legacy System Integration** - Alte APIs in moderne Architekturen <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Third-Party Integration** - Externe Services standardisiert nutzen <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Interface Vereinheitlichung** - Verschiedene APIs unter einem Interface <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Backward Compatibility** - Alte Schnittstellen weiter unterstützen <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Protocol Translation** - Verschiedene Protokolle harmonisieren <!-- .element: class="fragment" data-fragment-index="2" -->
+<div class="fragment">- **Legacy System Integration** - Alte APIs in moderne Architekturen</div>
+<div class="fragment">- **Third-Party Integration** - Externe Services standardisiert nutzen</div>
+<div class="fragment">- **Interface Vereinheitlichung** - Verschiedene APIs unter einem Interface</div>
+<div class="fragment">- **Backward Compatibility** - Alte Schnittstellen weiter unterstützen</div>
+<div class="fragment">- **Protocol Translation** - Verschiedene Protokolle harmonisieren</div> 
 
 </div>
 <div>
 
 ## Benefits
-- **Separation of Concerns** - Business logic von Integration getrennt <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Reusability** - Legacy-Code weiter nutzen <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Maintainability** - Änderungen isoliert im Adapter <!-- .element: class="fragment" data-fragment-index="5" -->
-- **Testability** - Adapter separat testbar <!-- .element: class="fragment" data-fragment-index="6" -->
+<div class="fragment">- **Separation of Concerns** - Business logic von Integration getrennt</div>
+<div class="fragment">- **Reusability** - Legacy-Code weiter nutzen</div>
+<div class="fragment">- **Maintainability** - Änderungen isoliert im Adapter</div>
+<div class="fragment">- **Testability** - Adapter separat testbar</div> 
 
 </div>
 </div>
@@ -764,12 +764,12 @@ public class CustomerService {
 
 ## Identifizierte Code-Smells
 
-- **Mixed Concerns**: Business-Logik vermischt mit Cross-Cutting Concerns <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Duplicate Code**: Logging/Security/Performance Code in jeder Methode <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Hard to Maintain**: Änderungen am Logging betreffen alle Methoden <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Inflexible**: Concerns können nicht optional oder kombiniert werden <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Single Responsibility Violation**: Service macht viel mehr als Business-Logik <!-- .element: class="fragment" data-fragment-index="5" -->
-- **Testing Nightmare**: Cross-Cutting Concerns erschweren Unit-Tests <!-- .element: class="fragment" data-fragment-index="6" -->
+- **Mixed Concerns**: Business-Logik vermischt mit Cross-Cutting Concerns 
+- **Duplicate Code**: Logging/Security/Performance Code in jeder Methode 
+- **Hard to Maintain**: Änderungen am Logging betreffen alle Methoden 
+- **Inflexible**: Concerns können nicht optional oder kombiniert werden 
+- **Single Responsibility Violation**: Service macht viel mehr als Business-Logik 
+- **Testing Nightmare**: Cross-Cutting Concerns erschweren Unit-Tests 
 
 ---
 
@@ -790,20 +790,20 @@ public class CustomerService {
 <div>
 
 ## Use Cases
-- **Behavior Extension** - Funktionalität ohne Vererbung hinzufügen <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Responsibility Chaining** - Multiple Decorator verschachteln <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Runtime Composition** - Flexibel zur Laufzeit konfigurieren <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Open-Closed Principle** - Erweiterung ohne Modifikation <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Cross-Cutting Concerns** - Logging, Security, Caching <!-- .element: class="fragment" data-fragment-index="5" -->
+<div class="fragment">- **Behavior Extension** - Funktionalität ohne Vererbung hinzufügen</div>
+<div class="fragment">- **Responsibility Chaining** - Multiple Decorator verschachteln</div>
+<div class="fragment">- **Runtime Composition** - Flexibel zur Laufzeit konfigurieren</div>
+<div class="fragment">- **Open-Closed Principle** - Erweiterung ohne Modifikation</div>
+<div class="fragment">- **Cross-Cutting Concerns** - Logging, Security, Caching</div> 
 
 </div>
 <div>
 
 ## Benefits
-- **Flexibility** - Laufzeit-Konfiguration <!-- .element: class="fragment" data-fragment-index="6" -->
-- **Single Responsibility** - Jeder Decorator eine Aufgabe <!-- .element: class="fragment" data-fragment-index="7" -->
-- **Composability** - Verschiedene Kombinationen möglich <!-- .element: class="fragment" data-fragment-index="8" -->
-- **Maintainability** - Concerns getrennt <!-- .element: class="fragment" data-fragment-index="9" -->
+<div class="fragment">- **Flexibility** - Laufzeit-Konfiguration</div>
+<div class="fragment">- **Single Responsibility** - Jeder Decorator eine Aufgabe</div>
+<div class="fragment">- **Composability** - Verschiedene Kombinationen möglich</div>
+<div class="fragment">- **Maintainability** - Concerns getrennt</div> 
 
 </div>
 </div>
@@ -1038,12 +1038,12 @@ public class CustomerController {
 
 ## Identifizierte Code-Smells
 
-- **Complex Orchestration**: Client muss alle Services koordinieren <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Tight Coupling**: Client kennt alle Subsystem-Details <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Error Handling Chaos**: Rollback und Partial Failures komplex <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Duplicate Logic**: Orchestration Code in jedem Client wiederholt <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Transaction Management**: Kein koordiniertes Transaction-Handling <!-- .element: class="fragment" data-fragment-index="5" -->
-- **Single Point of Failure**: Wenn ein Service failiert, bricht alles zusammen <!-- .element: class="fragment" data-fragment-index="6" -->
+- **Complex Orchestration**: Client muss alle Services koordinieren 
+- **Tight Coupling**: Client kennt alle Subsystem-Details 
+- **Error Handling Chaos**: Rollback und Partial Failures komplex 
+- **Duplicate Logic**: Orchestration Code in jedem Client wiederholt 
+- **Transaction Management**: Kein koordiniertes Transaction-Handling 
+- **Single Point of Failure**: Wenn ein Service failiert, bricht alles zusammen 
 
 ---
 
@@ -1064,20 +1064,20 @@ public class CustomerController {
 <div>
 
 ## Use Cases
-- **Complexity Hiding** - Einfache API für komplexe Operationen <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Subsystem Coordination** - Multiple Services orchestrieren <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Client Decoupling** - Clients vom Subsystem entkoppeln <!-- .element: class="fragment" data-fragment-index="3" -->
-- **API Standardization** - Einheitliche Schnittstellen schaffen <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Integration Layer** - Microservices zusammenfassen <!-- .element: class="fragment" data-fragment-index="5" -->
+- **Complexity Hiding** - Einfache API für komplexe Operationen 
+- **Subsystem Coordination** - Multiple Services orchestrieren 
+- **Client Decoupling** - Clients vom Subsystem entkoppeln 
+- **API Standardization** - Einheitliche Schnittstellen schaffen 
+- **Integration Layer** - Microservices zusammenfassen 
 
 </div>
 <div>
 
 ## Benefits
-- **Simplicity** - Einfache Client-Schnittstelle <!-- .element: class="fragment" data-fragment-index="6" -->
-- **Decoupling** - Clients unabhängig von Implementierung <!-- .element: class="fragment" data-fragment-index="7" -->
-- **Flexibility** - Subsystem-Änderungen transparent <!-- .element: class="fragment" data-fragment-index="8" -->
-- **Reusability** - Hochlevelige Operationen wiederverwendbar <!-- .element: class="fragment" data-fragment-index="9" -->
+- **Simplicity** - Einfache Client-Schnittstelle 
+- **Decoupling** - Clients unabhängig von Implementierung 
+- **Flexibility** - Subsystem-Änderungen transparent 
+- **Reusability** - Hochlevelige Operationen wiederverwendbar 
 
 </div>
 </div>
@@ -1205,20 +1205,20 @@ const result = await customerFacade.onboardNewCustomer({ // fragment
 <div>
 
 ## Use Cases
-- **Hierarchical Structures** - Baumstrukturen elegant handhaben <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Uniform Interface** - Gleiche Operationen für Blätter und Äste <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Recursive Operations** - Operationen propagieren automatisch <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Dynamic Composition** - Strukturen zur Laufzeit ändern <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Organizational Modeling** - Unternehmen, Teams, Projekte <!-- .element: class="fragment" data-fragment-index="5" -->
+- **Hierarchical Structures** - Baumstrukturen elegant handhaben 
+- **Uniform Interface** - Gleiche Operationen für Blätter und Äste 
+- **Recursive Operations** - Operationen propagieren automatisch 
+- **Dynamic Composition** - Strukturen zur Laufzeit ändern 
+- **Organizational Modeling** - Unternehmen, Teams, Projekte 
 
 </div>
 <div>
 
 ## Benefits
-- **Simplicity** - Einheitliche Behandlung <!-- .element: class="fragment" data-fragment-index="6" -->
-- **Flexibility** - Dynamische Strukturänderungen <!-- .element: class="fragment" data-fragment-index="7" -->
-- **Scalability** - Beliebig tiefe Hierarchien <!-- .element: class="fragment" data-fragment-index="8" -->
-- **Reusability** - Wiederverwendbare Tree-Operationen <!-- .element: class="fragment" data-fragment-index="9" -->
+- **Simplicity** - Einheitliche Behandlung 
+- **Flexibility** - Dynamische Strukturänderungen 
+- **Scalability** - Beliebig tiefe Hierarchien 
+- **Reusability** - Wiederverwendbare Tree-Operationen 
 
 </div>
 </div>
@@ -1408,20 +1408,20 @@ technologyDiv.addUnit(newInnovationLab); // fragment
 <div>
 
 ## Use Cases
-- **Access Control** - Sicherheitsproxy für geschützte Ressourcen <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Lazy Loading** - Objekte erst bei Bedarf laden <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Caching** - Wiederholte Anfragen zwischenspeichern <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Remote Access** - Entfernte Objekte lokal repräsentieren <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Resource Management** - Teure Operationen optimieren <!-- .element: class="fragment" data-fragment-index="5" -->
+- **Access Control** - Sicherheitsproxy für geschützte Ressourcen 
+- **Lazy Loading** - Objekte erst bei Bedarf laden 
+- **Caching** - Wiederholte Anfragen zwischenspeichern 
+- **Remote Access** - Entfernte Objekte lokal repräsentieren 
+- **Resource Management** - Teure Operationen optimieren 
 
 </div>
 <div>
 
 ## Benefits
-- **Performance** - Caching und Lazy Loading <!-- .element: class="fragment" data-fragment-index="6" -->
-- **Security** - Zugriffskontrolle <!-- .element: class="fragment" data-fragment-index="7" -->
-- **Transparency** - Client merkt Proxy nicht <!-- .element: class="fragment" data-fragment-index="8" -->
-- **Flexibility** - Verschiedene Proxy-Typen <!-- .element: class="fragment" data-fragment-index="9" -->
+- **Performance** - Caching und Lazy Loading 
+- **Security** - Zugriffskontrolle 
+- **Transparency** - Client merkt Proxy nicht 
+- **Flexibility** - Verschiedene Proxy-Typen 
 
 </div>
 </div>
@@ -1625,21 +1625,21 @@ try { // fragment
 <div>
 
 ### Anforderungen:
-- **Adapter** - Legacy billing system integration <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Decorator** - Add logging, security, monitoring <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Facade** - Unified customer service API <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Composite** - Service hierarchy management <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Proxy** - Caching and access control <!-- .element: class="fragment" data-fragment-index="5" -->
+- **Adapter** - Legacy billing system integration 
+- **Decorator** - Add logging, security, monitoring 
+- **Facade** - Unified customer service API 
+- **Composite** - Service hierarchy management 
+- **Proxy** - Caching and access control 
 
 </div>
 <div>
 
 ### Bonus Challenges:
-- Configuration-driven decorator selection <!-- .element: class="fragment" data-fragment-index="6" -->
-- Dynamic service discovery <!-- .element: class="fragment" data-fragment-index="7" -->
-- Health monitoring integration <!-- .element: class="fragment" data-fragment-index="8" -->
-- Performance metrics collection <!-- .element: class="fragment" data-fragment-index="9" -->
-- Error recovery mechanisms <!-- .element: class="fragment" data-fragment-index="10" -->
+- Configuration-driven decorator selection 
+- Dynamic service discovery 
+- Health monitoring integration 
+- Performance metrics collection 
+- Error recovery mechanisms 
 
 </div>
 </div>
@@ -1699,21 +1699,21 @@ Note:
 
 ## Enterprise Specific Guidelines:
 
-- **Security First** - Alle Patterns mit Security Decorators erweitern <!-- .element: class="fragment highlight-red" -->
-- **Performance Aware** - Proxy Pattern für teure Operations <!-- .element: class="fragment highlight-blue" -->
-- **Legacy Integration** - Adapter Pattern für Bestandssysteme <!-- .element: class="fragment highlight-green" -->
-- **API Standardization** - Facade Pattern für einheitliche APIs <!-- .element: class="fragment highlight-blue" -->
-- **Monitoring Integration** - Decorator für comprehensive logging <!-- .element: class="fragment highlight-red" -->
+- **Security First** - Alle Patterns mit Security Decorators erweitern 
+- **Performance Aware** - Proxy Pattern für teure Operations 
+- **Legacy Integration** - Adapter Pattern für Bestandssysteme 
+- **API Standardization** - Facade Pattern für einheitliche APIs 
+- **Monitoring Integration** - Decorator für comprehensive logging 
 
 </div>
 <div>
 
 ## Häufige Fallstricke:
 
-- **Over-Engineering** - Nicht jede Klasse braucht einen Proxy <!-- .element: class="fragment highlight-red" -->
-- **Cache Invalidation** - Proxy Caches müssen intelligent invalidiert werden <!-- .element: class="fragment highlight-red" -->
-- **Deep Nesting** - Decorator chains nicht zu tief verschachteln <!-- .element: class="fragment highlight-red" -->
-- **Interface Bloat** - Facades nicht mit zu vielen Methoden überladen <!-- .element: class="fragment highlight-red" -->
+- **Over-Engineering** - Nicht jede Klasse braucht einen Proxy 
+- **Cache Invalidation** - Proxy Caches müssen intelligent invalidiert werden 
+- **Deep Nesting** - Decorator chains nicht zu tief verschachteln 
+- **Interface Bloat** - Facades nicht mit zu vielen Methoden überladen 
 
 </div>
 </div>
@@ -1741,21 +1741,21 @@ Note:
 
 ## Was haben wir gelernt:
 
-- **Adapter Pattern** - Legacy Integration mit modernen APIs <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Decorator Pattern** - Flexible Cross-Cutting Concerns <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Facade Pattern** - Vereinfachung komplexer Subsysteme <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Composite Pattern** - Hierarchische Strukturen elegant handhaben <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Proxy Pattern** - Intelligente Zugriffskontrolle und Caching <!-- .element: class="fragment" data-fragment-index="5" -->
+- **Adapter Pattern** - Legacy Integration mit modernen APIs 
+- **Decorator Pattern** - Flexible Cross-Cutting Concerns 
+- **Facade Pattern** - Vereinfachung komplexer Subsysteme 
+- **Composite Pattern** - Hierarchische Strukturen elegant handhaben 
+- **Proxy Pattern** - Intelligente Zugriffskontrolle und Caching 
 
 </div>
 <div>
 
 ## Morgen - Tag 3:
 
-- **Behavioral Patterns** - Observer, Strategy, Command <!-- .element: class="fragment" data-fragment-index="6" -->
-- **Enterprise Integration** - Message Queues und Event-Driven Architecture <!-- .element: class="fragment" data-fragment-index="7" -->
-- **Microservices Patterns** - Service Mesh und API Gateway <!-- .element: class="fragment" data-fragment-index="8" -->
-- **Advanced Topics** - CQRS, Event Sourcing <!-- .element: class="fragment" data-fragment-index="9" -->
+- **Behavioral Patterns** - Observer, Strategy, Command 
+- **Enterprise Integration** - Message Queues und Event-Driven Architecture 
+- **Microservices Patterns** - Service Mesh und API Gateway 
+- **Advanced Topics** - CQRS, Event Sourcing 
 
 </div>
 </div>
@@ -1776,19 +1776,19 @@ Note:
 <div>
 
 ### Diskussionspunkte:
-- Welche Patterns verwenden Sie bereits? <!-- .element: class="fragment" data-fragment-index="1" -->
-- Wo sehen Sie Anwendungsmöglichkeiten in Ihren Projekten? <!-- .element: class="fragment" data-fragment-index="2" -->
-- Welche Herausforderungen haben Sie bei der Implementation? <!-- .element: class="fragment" data-fragment-index="3" -->
-- Wie kombinieren Sie verschiedene Patterns? <!-- .element: class="fragment" data-fragment-index="4" -->
+- Welche Patterns verwenden Sie bereits? 
+- Wo sehen Sie Anwendungsmöglichkeiten in Ihren Projekten? 
+- Welche Herausforderungen haben Sie bei der Implementation? 
+- Wie kombinieren Sie verschiedene Patterns? 
 
 </div>
 <div>
 
 ### Kontakt für weitere Fragen:
-- **Email:** architecture-training@company.com <!-- .element: class="fragment" data-fragment-index="5" -->
-- **Teams:** Enterprise Architecture Community <!-- .element: class="fragment" data-fragment-index="6" -->
-- **Wiki:** Internal Pattern Documentation <!-- .element: class="fragment" data-fragment-index="7" -->
-- **GitHub:** Code Examples Repository <!-- .element: class="fragment" data-fragment-index="8" -->
+- **Email:** architecture-training@company.com 
+- **Teams:** Enterprise Architecture Community 
+- **Wiki:** Internal Pattern Documentation 
+- **GitHub:** Code Examples Repository 
 
 </div>
 </div>
