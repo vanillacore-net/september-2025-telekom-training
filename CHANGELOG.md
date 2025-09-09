@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.3.7] [2024-12-30] - CRITICAL: Properly Fixed Reveal Functionality
+
+### Fixed
+- **Fragment Structure**: Properly fixed reveal functionality in intro presentation
+  - Technology-First slide: Each quote now properly reveals step-by-step
+  - Added proper markdown formatting with blank lines around fragment divs
+  - Changed quotes to bullet points for correct markdown parsing
+  - Made "Frage an Sie:" bold with proper markdown formatting
+  - Fixed fragments not working - all quotes appearing at once resolved
+
+### Technical
+- **Markdown Parsing**: Enhanced fragment div structure for proper markdown rendering
+  - Each fragment div now has required blank lines for markdown parsing
+  - Bullet point formatting ensures proper list rendering within fragments
+  - Bold formatting applied correctly with markdown syntax
+  - Fragment CSS styles verified and working correctly
+
 ## [1.3.6] [2024-12-30] - UX: Fixed Intro Presentation Reveal Timing Issues
 
 ### Fixed
