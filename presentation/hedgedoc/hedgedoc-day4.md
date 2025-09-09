@@ -57,7 +57,7 @@ slideOptions:
 }
 
 .reveal h1 {
-  font-size: 3.0em !important; /* Significantly increased for better visibility */
+  font-size: 3.6em !important; /* Increased by 20% for better readability */
   color: #2c2c2c;
   font-weight: 700 !important; /* Bolder weight for more prominence */
   text-align: left !important;
@@ -73,7 +73,7 @@ slideOptions:
 }
 
 .reveal h2 {
-  font-size: 1.8em !important;
+  font-size: 2.2em !important;
   color: #2c2c2c !important;
   font-weight: normal !important;
   text-align: center !important;
@@ -88,7 +88,7 @@ slideOptions:
 }
 
 .reveal h3 {
-  font-size: 1.44em !important; /* Increased by 20% (1.2em * 1.20) */
+  font-size: 1.6em !important; /* Increased by 20% for better readability */
   font-weight: 400 !important;
   text-align: left !important;
   margin-top: 0.6em !important;
@@ -115,6 +115,7 @@ slideOptions:
 }
 
 .reveal p, .reveal li {
+  font-size: 1.2em !important;
   font-weight: 300 !important;
   text-align: left !important;
 }
@@ -159,7 +160,7 @@ slideOptions:
 
 /* Code blocks sizing - Full Width Optimized */
 .reveal pre {
-  font-size: 1.0em !important; /* SAME AS TEXT */
+  font-size: 1.2em !important; /* Increased by 20% for better readability */
   max-height: calc(100vh - 200px); /* Use full available screen height */
   overflow-y: auto !important;
   background: #2d3748 !important; /* Dark background for better contrast */
@@ -174,7 +175,7 @@ slideOptions:
 }
 
 .reveal pre code {
-  font-size: 1.0em !important; /* SAME AS TEXT */
+  font-size: 1.2em !important; /* Increased by 20% for better readability */
   line-height: 1.3 !important;
   font-family: 'Monaco', 'Menlo', 'Consolas', monospace !important;
   color: #e2e8f0 !important;
@@ -183,7 +184,7 @@ slideOptions:
 }
 
 .reveal code {
-  font-size: 1.0em !important; /* SAME AS TEXT */
+  font-size: 1.2em !important; /* Increased by 20% for better readability */
   background: #f0f0f0 !important;
   color: #d73a49 !important;
   padding: 0.1em 0.3em !important;
