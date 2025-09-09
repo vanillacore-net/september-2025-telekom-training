@@ -423,24 +423,31 @@ Note:
 
 ### Über diesen Workshop
 <!-- .slide: data-auto-animate -->
-
-<ul>
-<li class="fragment" data-fragment-index="1">Code-Analyse & Factory Method Pattern</li>
-<li class="fragment" data-fragment-index="2">Abstract Factory & Layered Architecture</li>
-<li class="fragment" data-fragment-index="3">Builder Pattern & Repository Integration</li>
-<li class="fragment" data-fragment-index="4">Prototype Pattern & Configuration Cloning</li>
-<li class="fragment" data-fragment-index="5">Clean Architecture: Fundamentale Prinzipien</li>
-<li class="fragment" data-fragment-index="6">Singleton & Adapter mit Clean Architecture</li>
-</ul>
+- Code-Analyse & Factory Method Pattern
+<!-- .element: class="fragment" data-fragment-index="1" -->
+- Abstract Factory & Layered Architecture
+<!-- .element: class="fragment" data-fragment-index="2" -->
+- Builder Pattern & Repository Integration
+<!-- .element: class="fragment" data-fragment-index="3" -->
+- Prototype Pattern & Configuration Cloning
+<!-- .element: class="fragment" data-fragment-index="4" -->
+- Clean Architecture: Fundamentale Prinzipien
+<!-- .element: class="fragment" data-fragment-index="5" -->
+- Singleton & Adapter mit Clean Architecture
+<!-- .element: class="fragment" data-fragment-index="6" -->
 
 ## Lernziele
-
 <ul>
-<li class="fragment" data-fragment-index="1">Code-Smells in Legacy-Code identifizieren</li>
-<li class="fragment" data-fragment-index="2">Factory Method Pattern verstehen und anwenden</li>
-<li class="fragment" data-fragment-index="3">Abstract Factory in geschichteten Architekturen</li>
-<li class="fragment" data-fragment-index="4">Builder Pattern für komplexe Objekterstellung</li>
-<li class="fragment" data-fragment-index="5">SOLID-Prinzipien praktisch umsetzen</li>
+- Code-Smells in Legacy-Code identifizieren
+<!-- .element: class="fragment" data-fragment-index="1" -->
+- Factory Method Pattern verstehen und anwenden
+<!-- .element: class="fragment" data-fragment-index="2" -->
+- Abstract Factory in geschichteten Architekturen
+<!-- .element: class="fragment" data-fragment-index="3" -->
+- Builder Pattern für komplexe Objekterstellung
+<!-- .element: class="fragment" data-fragment-index="4" -->
+- SOLID-Prinzipien praktisch umsetzen
+<!-- .element: class="fragment" data-fragment-index="5" -->
 </ul>
 
 Note:
@@ -457,16 +464,23 @@ Note:
 # Workshop Agenda
 
 ## Workshop Module
-
 <ul>
-<li class="fragment" data-fragment-index="1"><strong>Modul 1:</strong> Code-Analyse & Factory Method</li>
-<li class="fragment" data-fragment-index="2"><strong>Modul 2:</strong> Abstract Factory & Layered Architecture</li>
-<li class="fragment" data-fragment-index="3"><strong>Modul 3:</strong> Builder Pattern & Repository Integration</li>
-<li class="fragment" data-fragment-index="4"><strong>Modul 4:</strong> Prototype Pattern & Configuration Cloning</li>
-<li class="fragment" data-fragment-index="5"><strong>Clean Architecture:</strong> Fundamentale Prinzipien</li>
-<li class="fragment" data-fragment-index="6"><strong>Modul 5:</strong> Singleton & Adapter mit Clean Architecture</li>
-<li class="fragment" data-fragment-index="7">Code-Refactoring & Best Practices</li>
-<li class="fragment" data-fragment-index="8">Q&A und Diskussion</li>
+- **Modul 1:** Code-Analyse & Factory Method
+<!-- .element: class="fragment" data-fragment-index="1" -->
+- **Modul 2:** Abstract Factory & Layered Architecture
+<!-- .element: class="fragment" data-fragment-index="2" -->
+- **Modul 3:** Builder Pattern & Repository Integration
+<!-- .element: class="fragment" data-fragment-index="3" -->
+- **Modul 4:** Prototype Pattern & Configuration Cloning
+<!-- .element: class="fragment" data-fragment-index="4" -->
+- **Clean Architecture:** Fundamentale Prinzipien
+<!-- .element: class="fragment" data-fragment-index="5" -->
+- **Modul 5:** Singleton & Adapter mit Clean Architecture
+<!-- .element: class="fragment" data-fragment-index="6" -->
+- Code-Refactoring & Best Practices
+<!-- .element: class="fragment" data-fragment-index="7" -->
+- Q&A und Diskussion
+<!-- .element: class="fragment" data-fragment-index="8" -->
 </ul>
 
 Note:
@@ -481,13 +495,14 @@ Note:
 # Modul 1: Code-Analyse & Factory Method Pattern
 
 ## Lernziele
-
-<ul>
-<li class="fragment">Code-Smells in Legacy-Code identifizieren</li>
-<li class="fragment">Factory Method Pattern verstehen und anwenden</li>
-<li class="fragment">Refactoring-Strategien entwickeln</li>
-<li class="fragment">Single Responsibility Principle praktisch umsetzen</li>
-</ul> 
+- Code-Smells in Legacy-Code identifizieren
+<!-- .element: class="fragment" -->
+- Factory Method Pattern verstehen und anwenden
+<!-- .element: class="fragment" -->
+- Refactoring-Strategien entwickeln
+<!-- .element: class="fragment" -->
+- Single Responsibility Principle praktisch umsetzen
+<!-- .element: class="fragment" --> 
 
 Note:
 - Betonen Sie die praktische Relevanz für gewachsene Systemlandschaften
