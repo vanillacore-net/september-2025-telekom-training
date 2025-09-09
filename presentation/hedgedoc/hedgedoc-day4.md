@@ -31,7 +31,7 @@ slideOptions:
 
 /* Critical: Fix content overflow and enforce left alignment */
 .reveal .slides {
-  font-size: 22px !important; /* Scaled for FHD (18px * 1.875) */
+  font-size: 26px !important; /* Increased by 20% for better readability (22px * 1.20) */
   line-height: 1.3 !important;
 }
 
@@ -57,7 +57,7 @@ slideOptions:
 }
 
 .reveal h1 {
-  font-size: 1.8em !important; /* Smaller headers */
+  font-size: 2.16em !important; /* Increased by 20% (1.8em * 1.20) */
   color: #2c2c2c;
   font-weight: 600 !important;
   text-align: left !important;
@@ -71,7 +71,7 @@ slideOptions:
 }
 
 .reveal h2 {
-  font-size: 1.4em !important;
+  font-size: 1.68em !important; /* Increased by 20% (1.4em * 1.20) */
   color: #2c2c2c;
   font-weight: 500 !important;
   text-align: left !important;
@@ -85,7 +85,7 @@ slideOptions:
 }
 
 .reveal h3 {
-  font-size: 1.2em !important;
+  font-size: 1.44em !important; /* Increased by 20% (1.2em * 1.20) */
   font-weight: 400 !important;
   text-align: left !important;
   margin-top: 0.6em !important;
@@ -156,7 +156,7 @@ slideOptions:
 
 /* Code blocks sizing */
 .reveal pre {
-  font-size: 0.6em !important; /* Smaller code blocks */
+  font-size: 0.72em !important; /* Increased by 20% (0.6em * 1.20) */
   max-height: 500px;
   overflow: auto !important;
 }
@@ -305,8 +305,8 @@ slideOptions:
   position: absolute;
   top: 25px;
   right: 25px;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   background-image: url('/images/VanillaCore_Vertical.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -362,14 +362,14 @@ slideOptions:
 .title-slide h1 {
   margin-top: 0 !important;
   margin-bottom: 20px !important;
-  font-size: 2.4em !important;
+  font-size: 2.88em !important; /* Increased by 20% (2.4em * 1.20) */
   font-weight: 600 !important;
 }
 
 .title-slide h2 {
   margin-top: 0 !important;
   margin-bottom: 40px !important;
-  font-size: 1.8em !important;
+  font-size: 2.16em !important; /* Increased by 20% (1.8em * 1.20) */
   color: #555555 !important;
   font-weight: 400 !important;
 }
