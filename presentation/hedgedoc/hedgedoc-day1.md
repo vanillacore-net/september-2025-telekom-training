@@ -424,12 +424,12 @@ Note:
 
 ### Über diesen Workshop
 <!-- .slide: data-auto-animate -->
-- <span>Code-Analyse & Factory Method Pattern</span><!-- .element: class="fragment" data-fragment-index="1" -->
-- <span>Abstract Factory & Layered Architecture</span><!-- .element: class="fragment" data-fragment-index="2" -->
-- <span>Builder Pattern & Repository Integration</span><!-- .element: class="fragment" data-fragment-index="3" -->
-- <span>Prototype Pattern & Configuration Cloning</span><!-- .element: class="fragment" data-fragment-index="4" -->
-- <span>Clean Architecture: Fundamentale Prinzipien</span><!-- .element: class="fragment" data-fragment-index="5" -->
-- <span>Singleton & Adapter mit Clean Architecture</span><!-- .element: class="fragment" data-fragment-index="6" -->
+* Code-Analyse & Factory Method Pattern<!-- .element: class="fragment" data-fragment-index="1" -->
+* Abstract Factory & Layered Architecture<!-- .element: class="fragment" data-fragment-index="2" -->
+* Builder Pattern & Repository Integration<!-- .element: class="fragment" data-fragment-index="3" -->
+* Prototype Pattern & Configuration Cloning<!-- .element: class="fragment" data-fragment-index="4" -->
+* Clean Architecture: Fundamentale Prinzipien<!-- .element: class="fragment" data-fragment-index="5" -->
+* Singleton & Adapter mit Clean Architecture<!-- .element: class="fragment" data-fragment-index="6" -->
 
 ## Lernziele
 
