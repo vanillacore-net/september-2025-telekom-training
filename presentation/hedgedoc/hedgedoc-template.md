@@ -191,7 +191,6 @@ public class SingletonExample {
 ## Current Focus: [Topic Name]
 - Learning objective 1
 - Learning objective 2
-- Hands-on exercise
 
 ---
 

@@ -1,4 +1,5 @@
 ---
+<!-- Version: 1.2.0-font-fix -->
 type: slide
 title: Software-Architektur - Einführung
 description: Grundlagen zu Software-Architektur, Clean Code, Fachlichkeit vor Technik und Design Patterns Motivation
@@ -116,7 +117,7 @@ slideOptions:
 }
 
 .reveal p, .reveal li {
-  font-size: 1.2em !important;
+  font-size: 1.4em !important;
   font-weight: 300 !important;
   text-align: left !important;
 }
@@ -161,7 +162,8 @@ slideOptions:
 
 /* Code blocks sizing - Full Width Optimized with Overflow Prevention */
 .reveal pre {
-  font-size: 1.2em !important; /* Increased by 20% for better readability */
+  font-size: 1.0em !important;
+  width: 95% !important;
   max-height: calc(100vh - 200px); /* Use full available screen height */
   max-width: 100% !important; /* Prevent horizontal overflow */
   overflow-x: auto !important; /* Allow horizontal scrolling if needed */
@@ -180,7 +182,7 @@ slideOptions:
 }
 
 .reveal pre code {
-  font-size: 1.2em !important; /* Increased by 20% for better readability */
+  font-size: 1.0em !important;
   line-height: 1.3 !important;
   font-family: 'Monaco', 'Menlo', 'Consolas', monospace !important;
   color: #e2e8f0 !important;
@@ -193,7 +195,7 @@ slideOptions:
 }
 
 .reveal code {
-  font-size: 1.2em !important; /* Increased by 20% for better readability */
+  font-size: 1.0em !important; /* Consistent with code blocks */
   background: #f0f0f0 !important;
   color: #d73a49 !important;
   padding: 0.1em 0.3em !important;
@@ -416,40 +418,27 @@ slideOptions:
 ## Agenda Einführung
 
 ### Themenblöcke:
-* **Was ist Software-Architektur?**
-<!-- .element: class="fragment" -->
-* **Clean Code Grundlagen**
-<!-- .element: class="fragment" -->
-* **Fachlichkeit vor Technik**
-<!-- .element: class="fragment" -->
-* **Design Patterns Motivation**
-<!-- .element: class="fragment" -->
-* **Refactoring Philosophie**
-<!-- .element: class="fragment" -->
+* **Was ist Software-Architektur?** <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Clean Code Grundlagen** <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Fachlichkeit vor Technik** <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Design Patterns Motivation** <!-- .element: class="fragment" data-fragment-index="4" -->
+* **Refactoring Philosophie** <!-- .element: class="fragment" data-fragment-index="5" -->
 
 ### Lernziele:
-* Gemeinsames Verständnis von Software-Architektur entwickeln
-<!-- .element: class="fragment" -->
-* Clean Code Prinzipien verstehen und anwenden
-<!-- .element: class="fragment" -->
-* Domain-First statt Technology-First Denken etablieren
-<!-- .element: class="fragment" -->
-* Motivation für Design Patterns verstehen
-<!-- .element: class="fragment" -->
-* Refactoring als kontinuierlichen Prozess begreifen
-<!-- .element: class="fragment" -->
+* Gemeinsames Verständnis von Software-Architektur entwickeln <!-- .element: class="fragment" data-fragment-index="6" -->
+* Clean Code Prinzipien verstehen und anwenden <!-- .element: class="fragment" data-fragment-index="7" -->
+* Domain-First statt Technology-First Denken etablieren <!-- .element: class="fragment" data-fragment-index="8" -->
+* Motivation für Design Patterns verstehen <!-- .element: class="fragment" data-fragment-index="9" -->
+* Refactoring als kontinuierlichen Prozess begreifen <!-- .element: class="fragment" data-fragment-index="10" -->
 
 ---
 
 # Teil 1: Was ist Software-Architektur?
 
 ## Lernziele
-* Gemeinsames Verständnis von Software-Architektur
-<!-- .element: class="fragment" -->
-* Verschiedene Definitionen kennenlernen
-<!-- .element: class="fragment" -->
-* Enterprise-Kontext verstehen
-<!-- .element: class="fragment" -->
+* Gemeinsames Verständnis von Software-Architektur <!-- .element: class="fragment" data-fragment-index="1" -->
+* Verschiedene Definitionen kennenlernen <!-- .element: class="fragment" data-fragment-index="2" -->
+* Enterprise-Kontext verstehen <!-- .element: class="fragment" data-fragment-index="3" -->
 
 ---
 
@@ -461,22 +450,15 @@ slideOptions:
 </div>
 
 ### Typische Antworten:
-<!-- .element: class="fragment" -->
+<!-- .element: class="fragment" data-fragment-index="1" -->
 
-* "Das große Ganze"
-<!-- .element: class="fragment" -->
-* "Struktur der Software"
-<!-- .element: class="fragment" -->
-* "Komponenten und deren Beziehungen"
-<!-- .element: class="fragment" -->
-* "Wie alles zusammenhängt"
-<!-- .element: class="fragment" -->
-* "Framework-Auswahl"
-<!-- .element: class="fragment" -->
-* "Datenbanken und Services"
-<!-- .element: class="fragment" -->
-* "Microservices vs. Monolith"
-<!-- .element: class="fragment" -->
+* "Das große Ganze" <!-- .element: class="fragment" data-fragment-index="2" -->
+* "Struktur der Software" <!-- .element: class="fragment" data-fragment-index="3" -->
+* "Komponenten und deren Beziehungen" <!-- .element: class="fragment" data-fragment-index="4" -->
+* "Wie alles zusammenhängt" <!-- .element: class="fragment" data-fragment-index="5" -->
+* "Framework-Auswahl" <!-- .element: class="fragment" data-fragment-index="6" -->
+* "Datenbanken und Services" <!-- .element: class="fragment" data-fragment-index="7" -->
+* "Microservices vs. Monolith" <!-- .element: class="fragment" data-fragment-index="8" -->
 
 Note: Sammeln auf Flipchart oder Chat, nicht bewerten. Diese Antworten sind alle richtig und zeigen die verschiedenen Perspektiven auf Software-Architektur. Lassen Sie jeden Teilnehmer zu Wort kommen. Dauer: 5 Minuten.
 
@@ -525,16 +507,11 @@ Note: Sammeln auf Flipchart oder Chat, nicht bewerten. Diese Antworten sind alle
 ## Gemeinsame Erkenntnisse
 
 ### Architektur umfasst:
-1. **Struktur** - Wie ist die Software organisiert?
-<!-- .element: class="fragment" -->
-2. **Entscheidungen** - Welche wichtigen Designentscheidungen wurden getroffen?
-<!-- .element: class="fragment" -->
-3. **Beziehungen** - Wie hängen die Teile zusammen?
-<!-- .element: class="fragment" -->
-4. **Kosten** - Was ist später schwer zu ändern?
-<!-- .element: class="fragment" -->
-5. **Kommunikation** - Wie vermitteln wir unser Design anderen?
-<!-- .element: class="fragment" -->
+1. **Struktur** - Wie ist die Software organisiert? <!-- .element: class="fragment" data-fragment-index="1" -->
+2. **Entscheidungen** - Welche wichtigen Designentscheidungen wurden getroffen? <!-- .element: class="fragment" data-fragment-index="2" -->
+3. **Beziehungen** - Wie hängen die Teile zusammen? <!-- .element: class="fragment" data-fragment-index="3" -->
+4. **Kosten** - Was ist später schwer zu ändern? <!-- .element: class="fragment" data-fragment-index="4" -->
+5. **Kommunikation** - Wie vermitteln wir unser Design anderen? <!-- .element: class="fragment" data-fragment-index="5" -->
 
 Note: Diese fünf Punkte ergeben sich aus den verschiedenen Definitionen. Betonen Sie, dass alle Definitionen diese Aspekte teilen. Die Kosten-Perspektive von Booch ist besonders wichtig - wichtig sind die Entscheidungen, die schwer zu ändern sind.
 
@@ -551,32 +528,22 @@ Note: Diese fünf Punkte ergeben sich aus den verschiedenen Definitionen. Betone
 ## Enterprise-Kontext
 
 ### Besonderheiten in großen Unternehmen:
-* **Legacy-Systeme** - Jahrzehntealte Systeme, die noch laufen müssen
-<!-- .element: class="fragment" -->
-* **Regulatorische Anforderungen** - DSGVO, Compliance-Standards
-<!-- .element: class="fragment" -->
-* **Hochverfügbarkeit** - 99.9%+ Uptime-Anforderungen
-<!-- .element: class="fragment" -->
-* **Skalierung** - Millionen von Benutzern, große Datenmengen
-<!-- .element: class="fragment" -->
-* **Sicherheit** - Kritische Geschäftsdaten, Cyber-Security
-<!-- .element: class="fragment" -->
-* **Integration** - Dutzende von Systemen müssen zusammenarbeiten
-<!-- .element: class="fragment" -->
+* **Legacy-Systeme** - Jahrzehntealte Systeme, die noch laufen müssen <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Regulatorische Anforderungen** - DSGVO, Compliance-Standards <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Hochverfügbarkeit** - 99.9%+ Uptime-Anforderungen <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Skalierung** - Millionen von Benutzern, große Datenmengen <!-- .element: class="fragment" data-fragment-index="4" -->
+* **Sicherheit** - Kritische Geschäftsdaten, Cyber-Security <!-- .element: class="fragment" data-fragment-index="5" -->
+* **Integration** - Dutzende von Systemen müssen zusammenarbeiten <!-- .element: class="fragment" data-fragment-index="6" -->
 
 ---
 
 ## Architektur-Herausforderungen
 
 ### In Enterprises:
-1. **Modernisierung bei laufendem Betrieb**
-<!-- .element: class="fragment" -->
-2. **Compliance und Governance**
-<!-- .element: class="fragment" -->
-3. **Performance bei hoher Last**
-<!-- .element: class="fragment" -->
-4. **Kostenoptimierung bei gleichzeitig hoher Qualität**
-<!-- .element: class="fragment" -->
+1. **Modernisierung bei laufendem Betrieb** <!-- .element: class="fragment" data-fragment-index="1" -->
+2. **Compliance und Governance** <!-- .element: class="fragment" data-fragment-index="2" -->
+3. **Performance bei hoher Last** <!-- .element: class="fragment" data-fragment-index="3" -->
+4. **Kostenoptimierung bei gleichzeitig hoher Qualität** <!-- .element: class="fragment" data-fragment-index="4" -->
 
 <div class="highlight-box accent">
 <strong>Kernbotschaft:</strong> Architektur ist nicht nur Technik. Sie muss Geschäftsziele verstehen und unterstützen.
@@ -600,14 +567,10 @@ Note: Lassen Sie 2-3 Teilnehmer antworten. Diese Fragen leiten über zu Clean Co
 # Teil 2: Clean Code Grundlagen
 
 ## Lernziele
-* Verständnis für sauberen Code
-<!-- .element: class="fragment" -->
-* Unterschied zwischen clever und lesbar
-<!-- .element: class="fragment" -->
-* Wartbarkeit als Ziel
-<!-- .element: class="fragment" -->
-* Technische Schulden vermeiden
-<!-- .element: class="fragment" -->
+* Verständnis für sauberen Code <!-- .element: class="fragment" data-fragment-index="1" -->
+* Unterschied zwischen clever und lesbar <!-- .element: class="fragment" data-fragment-index="2" -->
+* Wartbarkeit als Ziel <!-- .element: class="fragment" data-fragment-index="3" -->
+* Technische Schulden vermeiden <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
@@ -619,18 +582,13 @@ Was macht es sauber?</strong>
 </div>
 
 ### Typische Antworten:
-<!-- .element: class="fragment" -->
+<!-- .element: class="fragment" data-fragment-index="1" -->
 
-* **Aufgeräumt und organisiert**
-<!-- .element: class="fragment" -->
-* **Alles hat seinen Platz**
-<!-- .element: class="fragment" -->
-* **Man findet schnell, was man sucht**
-<!-- .element: class="fragment" -->
-* **Nichts Überflüssiges liegt herum**
-<!-- .element: class="fragment" -->
-* **Funktional und effizient**
-<!-- .element: class="fragment" -->
+* **Aufgeräumt und organisiert** <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Alles hat seinen Platz** <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Man findet schnell, was man sucht** <!-- .element: class="fragment" data-fragment-index="4" -->
+* **Nichts Überflüssiges liegt herum** <!-- .element: class="fragment" data-fragment-index="5" -->
+* **Funktional und effizient** <!-- .element: class="fragment" data-fragment-index="6" -->
 
 Note: Diese Analogie hilft beim Verstehen von Clean Code. Sammeln Sie die Antworten und übertragen Sie sie dann auf Code: Organisiert = gut strukturiert, alles hat seinen Platz = richtige Abstraktionen, man findet schnell = lesbare Namen, nichts Überflüssiges = kein Dead Code. Dauer: 5 Minuten.
 
@@ -663,25 +621,18 @@ Note: Betonen Sie "taken care of" - jemand hat sich Mühe gegeben. Clean Code is
 
 ## 2. Eindeutige Namen
 
-* **Funktionen** - Verben (calculateTax, sendEmail)
-<!-- .element: class="fragment" -->
-* **Variablen** - Substantive (customerName, orderTotal)
-<!-- .element: class="fragment" -->
-* **Boolean** - Fragen (isValid, hasPermission)
-<!-- .element: class="fragment" -->
-* **Konstanten** - Großbuchstaben (MAX_RETRY_COUNT)
-<!-- .element: class="fragment" -->
+* **Funktionen** - Verben (calculateTax, sendEmail) <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Variablen** - Substantive (customerName, orderTotal) <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Boolean** - Fragen (isValid, hasPermission) <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Konstanten** - Großbuchstaben (MAX_RETRY_COUNT) <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
 ## 3. Kurze Funktionen
 
-* Eine Funktion = Ein Gedanke
-<!-- .element: class="fragment" -->
-* Faustregeln: Max. 20 Zeilen, max. 3 Parameter
-<!-- .element: class="fragment" -->
-* "Extract Till You Drop" - so lange extrahieren, bis es nicht mehr geht
-<!-- .element: class="fragment" -->
+* Eine Funktion = Ein Gedanke <!-- .element: class="fragment" data-fragment-index="1" -->
+* Faustregeln: Max. 20 Zeilen, max. 3 Parameter <!-- .element: class="fragment" data-fragment-index="2" -->
+* "Extract Till You Drop" - so lange extrahieren, bis es nicht mehr geht <!-- .element: class="fragment" data-fragment-index="3" -->
 
 ---
 
@@ -701,12 +652,9 @@ if (employee.isEligibleForBonus())</code></pre>
 
 ## 5. Konsistenz
 
-* Gleiche Namenskonventionen
-<!-- .element: class="fragment" -->
-* Gleiche Formatierung
-<!-- .element: class="fragment" -->
-* Gleiche Patterns
-<!-- .element: class="fragment" -->
+* Gleiche Namenskonventionen <!-- .element: class="fragment" data-fragment-index="1" -->
+* Gleiche Formatierung <!-- .element: class="fragment" data-fragment-index="2" -->
+* Gleiche Patterns <!-- .element: class="fragment" data-fragment-index="3" -->
 
 ---
 
@@ -736,22 +684,17 @@ return DEFAULT_SERVICE_LEVEL;</code></pre>
 
 ## Warum Lesbarkeit gewinnt
 
-* **Code wird öfter gelesen als geschrieben**
-<!-- .element: class="fragment" -->
-* Code wird häufiger debuggt als geschrieben
-<!-- .element: class="fragment" -->
-* Neue Teammitglieder müssen Code verstehen
-<!-- .element: class="fragment" -->
-* Wartung und Erweiterung brauchen Verständnis
-<!-- .element: class="fragment" -->
+* **Code wird öfter gelesen als geschrieben** <!-- .element: class="fragment" data-fragment-index="1" -->
+* Code wird häufiger debuggt als geschrieben <!-- .element: class="fragment" data-fragment-index="2" -->
+* Neue Teammitglieder müssen Code verstehen <!-- .element: class="fragment" data-fragment-index="3" -->
+* Wartung und Erweiterung brauchen Verständnis <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
 ## Wartbarkeit als Ziel
 
 ### Software-Lebenszyklus in der Praxis:
-* **Entwicklung**: 20% der Gesamtkosten
-<!-- .element: class="fragment" -->
+* **Entwicklung**: 20% der Gesamtkosten <!-- .element: class="fragment" data-fragment-index="1" -->
 * **Wartung**: 80% der Gesamtkosten
 
 ### Wartbarkeits-Faktoren:
@@ -775,27 +718,22 @@ Legacy-Systeme mit Millionen Zeilen undokumentiertem Code verursachen hohe Wartu
 ### Arten technischer Schulden:
 
 #### 1. **Bewusste Schulden**
-* "Wir machen es schnell und dirty, räumen aber nächste Woche auf"
-<!-- .element: class="fragment" -->
+* "Wir machen es schnell und dirty, räumen aber nächste Woche auf" <!-- .element: class="fragment" data-fragment-index="1" -->
 * Kann strategisch sinnvoll sein (Time-to-Market)
 
 #### 2. **Unbewusste Schulden** 
-* Entstehen durch Unwissen oder mangelnde Skills
-<!-- .element: class="fragment" -->
+* Entstehen durch Unwissen oder mangelnde Skills <!-- .element: class="fragment" data-fragment-index="2" -->
 * Die gefährlichste Art von Schulden
 
 #### 3. **Umwelt-Schulden**
-* Änderung der Anforderungen macht bisherigen Code obsolet
-<!-- .element: class="fragment" -->
+* Änderung der Anforderungen macht bisherigen Code obsolet <!-- .element: class="fragment" data-fragment-index="3" -->
 * Nicht vermeidbar, aber managbar
 
 ---
 
 ### Praktische Auswirkungen:
-* **Zinsen**: Jede Änderung dauert länger
-<!-- .element: class="fragment" -->
-* **Hauptsumme**: Aufwand für Refactoring
-<!-- .element: class="fragment" -->
+* **Zinsen**: Jede Änderung dauert länger <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Hauptsumme**: Aufwand für Refactoring <!-- .element: class="fragment" data-fragment-index="2" -->
 * **Insolvenz**: System nicht mehr wartbar
 
 ### Schulden-Management:
@@ -822,12 +760,9 @@ Clean Code ist nicht Perfektionismus. Es ist eine Investition in die Zukunft.
 **Kern-Message des Workshops**
 
 ## Lernziele
-* Technology-First Anti-Pattern erkennen
-<!-- .element: class="fragment" -->
-* Domain-Driven Design Grundgedanke verstehen
-<!-- .element: class="fragment" -->
-* Richtige Reihenfolge: Fachlichkeit, Architektur, Technologie
-<!-- .element: class="fragment" -->
+* Technology-First Anti-Pattern erkennen <!-- .element: class="fragment" data-fragment-index="1" -->
+* Domain-Driven Design Grundgedanke verstehen <!-- .element: class="fragment" data-fragment-index="2" -->
+* Richtige Reihenfolge: Fachlichkeit, Architektur, Technologie <!-- .element: class="fragment" data-fragment-index="3" -->
 * Typische Fehlentscheidungen als Warnung verstehen
 
 ---
@@ -836,26 +771,22 @@ Clean Code ist nicht Perfektionismus. Es ist eine Investition in die Zukunft.
 
 ### Typische Aussagen in Projekten:
 
-* "Wir nutzen jetzt Microservices!" - Aber warum?
-<!-- .element: class="fragment" -->
+* "Wir nutzen jetzt Microservices!" - Aber warum? <!-- .element: class="fragment" data-fragment-index="1" -->
 
-* "Lass uns auf Kubernetes umsteigen!" - Aber welches Problem löst das?
-<!-- .element: class="fragment" -->
+* "Lass uns auf Kubernetes umsteigen!" - Aber welches Problem löst das? <!-- .element: class="fragment" data-fragment-index="2" -->
 
-* "Wir brauchen eine Event-Driven Architecture!" - Aber passt das zu unserer Fachlichkeit?
-<!-- .element: class="fragment" -->
+* "Wir brauchen eine Event-Driven Architecture!" - Aber passt das zu unserer Fachlichkeit? <!-- .element: class="fragment" data-fragment-index="3" -->
 
-* "NoSQL ist modern, weg mit der relationalen DB!" - Aber was sind unsere Datenanforderungen?
-<!-- .element: class="fragment" -->
+* "NoSQL ist modern, weg mit der relationalen DB!" - Aber was sind unsere Datenanforderungen? <!-- .element: class="fragment" data-fragment-index="4" -->
 
 **Frage an Sie:**
-<!-- .element: class="fragment" -->
+<!-- .element: class="fragment" data-fragment-index="5" -->
 
 Welche Technologie-Entscheidungen haben Sie erlebt, die ohne klare fachliche Anforderungen getroffen wurden?
-<!-- .element: class="fragment" -->
+<!-- .element: class="fragment" data-fragment-index="6" -->
 
 Wie hätten Sie diese Entscheidungen anders angegangen?
-<!-- .element: class="fragment" -->
+<!-- .element: class="fragment" data-fragment-index="7" -->
 <div class="interactive-question">
 <strong>Kennen Sie solche Aussagen?<br>
 Was war das Ergebnis?</strong>
@@ -866,30 +797,21 @@ Note: Lassen Sie 2-3 Teilnehmer ihre Erfahrungen teilen. Oft kommen hier Geschic
 ---
 
 ### Technology-First Symptome:
-* **Hype-Driven Development**: "Das ist modern, das machen wir auch"
-<!-- .element: class="fragment" -->
-* **Solution looking for a problem**: "Wir haben Kafka, jetzt brauchen wir Events"
-<!-- .element: class="fragment" -->
-* **Architecture Astronauts**: Komplexe Lösungen für einfache Probleme
-<!-- .element: class="fragment" -->
-* **Over-Engineering**: 20 Services für 5 Use Cases
-<!-- .element: class="fragment" -->
+* **Hype-Driven Development**: "Das ist modern, das machen wir auch" <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Solution looking for a problem**: "Wir haben Kafka, jetzt brauchen wir Events" <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Architecture Astronauts**: Komplexe Lösungen für einfache Probleme <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Over-Engineering**: 20 Services für 5 Use Cases <!-- .element: class="fragment" data-fragment-index="4" -->
 
 Note: Diese Symptome sind sehr häufig. "Architecture Astronauts" ist ein Begriff von Joel Spolsky für Entwickler, die nur in abstrakten Konzepten denken. Fragen Sie nach konkreten Beispielen aus den Projekten der Teilnehmer.
 
 ---
 
 ### Warum passiert Technology-First?
-1. **Techniker denken technisch** - das ist normal
-<!-- .element: class="fragment" -->
-2. **Marketing macht Technologie sexy** - Buzzwords verkaufen sich
-<!-- .element: class="fragment" -->
-3. **CV-Driven Development** - "Ich will Kubernetes lernen"
-<!-- .element: class="fragment" -->
-4. **Komplexität wirkt professionell** - Einfachheit wird unterschätzt
-<!-- .element: class="fragment" -->
-5. **Copy-Paste Architecture** - "Netflix macht das so"
-<!-- .element: class="fragment" -->
+1. **Techniker denken technisch** - das ist normal <!-- .element: class="fragment" data-fragment-index="1" -->
+2. **Marketing macht Technologie sexy** - Buzzwords verkaufen sich <!-- .element: class="fragment" data-fragment-index="2" -->
+3. **CV-Driven Development** - "Ich will Kubernetes lernen" <!-- .element: class="fragment" data-fragment-index="3" -->
+4. **Komplexität wirkt professionell** - Einfachheit wird unterschätzt <!-- .element: class="fragment" data-fragment-index="4" -->
+5. **Copy-Paste Architecture** - "Netflix macht das so" <!-- .element: class="fragment" data-fragment-index="5" -->
 
 Note: Diese Gründe sind menschlich verständlich, aber gefährlich für Projekte. CV-Driven Development ist besonders in IT-Teams verbreitet. Betonen Sie: Was für Netflix funktioniert, funktioniert nicht automatisch für andere Unternehmen mit anderen Problemen.
 
@@ -901,19 +823,14 @@ Note: Diese Gründe sind menschlich verständlich, aber gefährlich für Projekt
 **Situation:** Monolithische Anwendung funktioniert gut, aber "Microservices sind modern"
 
 **Technology-First Entscheidung:** 
-* Monolith in 20+ Services aufteilen
-<!-- .element: class="fragment" -->
-* Kubernetes-Cluster für alles
-<!-- .element: class="fragment" -->
+* Monolith in 20+ Services aufteilen <!-- .element: class="fragment" data-fragment-index="1" -->
+* Kubernetes-Cluster für alles <!-- .element: class="fragment" data-fragment-index="2" -->
 * Event-Sourcing mit Message Queues
 
 **Ergebnis:**
-* 3x höhere Komplexität
-<!-- .element: class="fragment" -->
-* Latenz-Probleme durch Netzwerk-Calls
-<!-- .element: class="fragment" -->
-* Entwicklungszeit verdoppelt
-<!-- .element: class="fragment" -->
+* 3x höhere Komplexität <!-- .element: class="fragment" data-fragment-index="3" -->
+* Latenz-Probleme durch Netzwerk-Calls <!-- .element: class="fragment" data-fragment-index="4" -->
+* Entwicklungszeit verdoppelt <!-- .element: class="fragment" data-fragment-index="5" -->
 * Debugging wird zum Albtraum
 
 **Was war das Problem?** Es gab KEIN fachliches Problem, das Microservices gelöst hätten!
@@ -924,19 +841,14 @@ Note: Diese Gründe sind menschlich verständlich, aber gefährlich für Projekt
 **Situation:** Bewährte relationale Datenbank für Finanzdaten
 
 **Technology-First Entscheidung:**
-* "NoSQL ist skalierbar und modern"
-<!-- .element: class="fragment" -->
-* Migration auf Document-Database
-<!-- .element: class="fragment" -->
+* "NoSQL ist skalierbar und modern" <!-- .element: class="fragment" data-fragment-index="1" -->
+* Migration auf Document-Database <!-- .element: class="fragment" data-fragment-index="2" -->
 * "Schema-less ist flexibler"
 
 **Ergebnis:**
-* Datenkonsistenz-Probleme
-<!-- .element: class="fragment" -->
-* Komplexe Joins unmöglich
-<!-- .element: class="fragment" -->
-* Performance schlechter als vorher
-<!-- .element: class="fragment" -->
+* Datenkonsistenz-Probleme <!-- .element: class="fragment" data-fragment-index="3" -->
+* Komplexe Joins unmöglich <!-- .element: class="fragment" data-fragment-index="4" -->
+* Performance schlechter als vorher <!-- .element: class="fragment" data-fragment-index="5" -->
 * Migration zurück nach 18 Monaten
 
 **Was war das Problem?** Finanzdaten sind RELATIONAL - NoSQL passte nicht zur Fachlichkeit!
@@ -947,19 +859,14 @@ Note: Diese Gründe sind menschlich verständlich, aber gefährlich für Projekt
 **Situation:** Interne Systeme mit synchronen APIs
 
 **Technology-First Entscheidung:**
-* "Events sind die Zukunft"
-<!-- .element: class="fragment" -->
-* Alles asynchron machen
-<!-- .element: class="fragment" -->
+* "Events sind die Zukunft" <!-- .element: class="fragment" data-fragment-index="1" -->
+* Alles asynchron machen <!-- .element: class="fragment" data-fragment-index="2" -->
 * Event-Sourcing für alles
 
 **Ergebnis:**
-* Eventual Consistency verwirrt Benutzer
-<!-- .element: class="fragment" -->
-* Debugging unmöglich
-<!-- .element: class="fragment" -->
-* Race Conditions überall
-<!-- .element: class="fragment" -->
+* Eventual Consistency verwirrt Benutzer <!-- .element: class="fragment" data-fragment-index="3" -->
+* Debugging unmöglich <!-- .element: class="fragment" data-fragment-index="4" -->
+* Race Conditions überall <!-- .element: class="fragment" data-fragment-index="5" -->
 * Rollback zu synchronen APIs nach 2 Jahren
 
 **Was war das Problem?** Die Fachlichkeit brauchte SYNCHRONE Konsistenz!
@@ -976,28 +883,20 @@ Note: Diese Gründe sind menschlich verständlich, aber gefährlich für Projekt
 ### Die richtige Reihenfolge:
 
 #### 1. Fachlichkeit verstehen
-* Was ist das Geschäftsproblem?
-<!-- .element: class="fragment" -->
-* Wie arbeiten die Fachexperten heute?
-<!-- .element: class="fragment" -->
-* Welche Regeln und Prozesse gibt es?
-<!-- .element: class="fragment" -->
+* Was ist das Geschäftsproblem? <!-- .element: class="fragment" data-fragment-index="1" -->
+* Wie arbeiten die Fachexperten heute? <!-- .element: class="fragment" data-fragment-index="2" -->
+* Welche Regeln und Prozesse gibt es? <!-- .element: class="fragment" data-fragment-index="3" -->
 * Was sind die echten Anforderungen?
 
 #### 2. Fachliche Architektur entwerfen
-* Welche fachlichen Bereiche (Domains) gibt es?
-<!-- .element: class="fragment" -->
-* Wie schneiden wir die Bereiche (Bounded Contexts)?
-<!-- .element: class="fragment" -->
-* Welche fachlichen Services brauchen wir?
-<!-- .element: class="fragment" -->
+* Welche fachlichen Bereiche (Domains) gibt es? <!-- .element: class="fragment" data-fragment-index="4" -->
+* Wie schneiden wir die Bereiche (Bounded Contexts)? <!-- .element: class="fragment" data-fragment-index="5" -->
+* Welche fachlichen Services brauchen wir? <!-- .element: class="fragment" data-fragment-index="6" -->
 * Wie modellieren wir die Geschäftslogik?
 
 #### 3. Technologie auswählen
-* Welche Technologie unterstützt unser fachliches Modell am besten?
-<!-- .element: class="fragment" -->
-* Was löst unsere spezifischen Probleme?
-<!-- .element: class="fragment" -->
+* Welche Technologie unterstützt unser fachliches Modell am besten? <!-- .element: class="fragment" data-fragment-index="7" -->
+* Was löst unsere spezifischen Probleme? <!-- .element: class="fragment" data-fragment-index="8" -->
 * Was passt zu unserem Team und unserer Infrastruktur?
 
 ---
@@ -1038,29 +937,20 @@ Note: Diese Gründe sind menschlich verständlich, aber gefährlich für Projekt
 ## Warnsignale für Technology-First
 
 ### Aussagen, die Sie alarmieren sollten:
-* "Das ist modern/trendy/hip"
-<!-- .element: class="fragment" -->
-* "Das macht Netflix/Google/Amazon auch"
-<!-- .element: class="fragment" -->
-* "Das steht in meinem Lebenslauf gut"
-<!-- .element: class="fragment" -->
-* "Das ist die Zukunft"
-<!-- .element: class="fragment" -->
-* "Das ist skalierbar" (ohne Nachweis des Skalierungsbedarfs)
-<!-- .element: class="fragment" -->
+* "Das ist modern/trendy/hip" <!-- .element: class="fragment" data-fragment-index="1" -->
+* "Das macht Netflix/Google/Amazon auch" <!-- .element: class="fragment" data-fragment-index="2" -->
+* "Das steht in meinem Lebenslauf gut" <!-- .element: class="fragment" data-fragment-index="3" -->
+* "Das ist die Zukunft" <!-- .element: class="fragment" data-fragment-index="4" -->
+* "Das ist skalierbar" (ohne Nachweis des Skalierungsbedarfs) <!-- .element: class="fragment" data-fragment-index="5" -->
 * "Das ist performant" (ohne Performance-Anforderungen)
 
 ---
 
 ### Die richtigen Fragen stattdessen:
-* "Welches fachliche Problem löst das?"
-<!-- .element: class="fragment" -->
-* "Was sind unsere spezifischen Anforderungen?"
-<!-- .element: class="fragment" -->
-* "Warum ist die aktuelle Lösung nicht gut genug?"
-<!-- .element: class="fragment" -->
-* "Was sind die Risiken und Kosten?"
-<!-- .element: class="fragment" -->
+* "Welches fachliche Problem löst das?" <!-- .element: class="fragment" data-fragment-index="1" -->
+* "Was sind unsere spezifischen Anforderungen?" <!-- .element: class="fragment" data-fragment-index="2" -->
+* "Warum ist die aktuelle Lösung nicht gut genug?" <!-- .element: class="fragment" data-fragment-index="3" -->
+* "Was sind die Risiken und Kosten?" <!-- .element: class="fragment" data-fragment-index="4" -->
 * "Passt das zu unserem Team und unserer Infrastruktur?"
 
 ---
@@ -1084,12 +974,9 @@ Note: Diese Gründe sind menschlich verständlich, aber gefährlich für Projekt
 # Teil 4: Design Patterns Motivation
 
 ## Lernziele
-* Geschichte der Design Patterns verstehen
-<!-- .element: class="fragment" -->
-* Gang of Four Kontext kennenlernen
-<!-- .element: class="fragment" -->
-* Wert einer gemeinsamen Sprache erkennen
-<!-- .element: class="fragment" -->
+* Geschichte der Design Patterns verstehen <!-- .element: class="fragment" data-fragment-index="1" -->
+* Gang of Four Kontext kennenlernen <!-- .element: class="fragment" data-fragment-index="2" -->
+* Wert einer gemeinsamen Sprache erkennen <!-- .element: class="fragment" data-fragment-index="3" -->
 * Patterns als bewährte Lösungen verstehen
 
 ---
@@ -1131,10 +1018,8 @@ Entwickler B: "Ah, du meinst Strategy Pattern!"
 ---
 
 ##### Problem 3: Fehlende Best Practices
-* Jeder Entwickler lernt aus eigenen Fehlern
-<!-- .element: class="fragment" -->
-* Bewährte Lösungen werden nicht geteilt
-<!-- .element: class="fragment" -->
+* Jeder Entwickler lernt aus eigenen Fehlern <!-- .element: class="fragment" data-fragment-index="1" -->
+* Bewährte Lösungen werden nicht geteilt <!-- .element: class="fragment" data-fragment-index="2" -->
 * Qualität schwankt stark zwischen Entwicklern
 
 ### Gang of Four Erkenntnisse:
@@ -1172,12 +1057,9 @@ aber die Entscheidung welche Klasse zur Laufzeit trifft..."
 ```
 
 #### Team-Kommunikation:
-* **Architektur-Reviews** werden effizienter
-<!-- .element: class="fragment" -->
-* **Code-Reviews** fokussieren auf Pattern-Anwendung
-<!-- .element: class="fragment" -->
-* **Neue Teammitglieder** verstehen Design schneller
-<!-- .element: class="fragment" -->
+* **Architektur-Reviews** werden effizienter <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Code-Reviews** fokussieren auf Pattern-Anwendung <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Neue Teammitglieder** verstehen Design schneller <!-- .element: class="fragment" data-fragment-index="3" -->
 * **Dokumentation** wird kompakter und präziser
 
 ---
@@ -1186,14 +1068,10 @@ aber die Entscheidung welche Klasse zur Laufzeit trifft..."
 Patterns kodifizieren gutes objektorientierten Design.
 
 #### Die SOLID-Prinzipien in Patterns:
-* **Single Responsibility**: Command Pattern
-<!-- .element: class="fragment" -->
-* **Open/Closed**: Strategy Pattern  
-<!-- .element: class="fragment" -->
-* **Liskov Substitution**: Template Method
-<!-- .element: class="fragment" -->
-* **Interface Segregation**: Adapter Pattern
-<!-- .element: class="fragment" -->
+* **Single Responsibility**: Command Pattern <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Open/Closed**: Strategy Pattern   <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Liskov Substitution**: Template Method <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Interface Segregation**: Adapter Pattern <!-- .element: class="fragment" data-fragment-index="4" -->
 * **Dependency Inversion**: Abstract Factory
 
 ---
@@ -1202,10 +1080,8 @@ Patterns kodifizieren gutes objektorientierten Design.
 Bekannte Patterns sind einfacher zu verstehen und zu ändern.
 
 #### Vorteile für die Wartung:
-* **Vorhersagbare Struktur**: Entwickler wissen, wo sie suchen müssen
-<!-- .element: class="fragment" -->
-* **Dokumentierte Intentionen**: Pattern-Name erklärt die Absicht
-<!-- .element: class="fragment" -->
+* **Vorhersagbare Struktur**: Entwickler wissen, wo sie suchen müssen <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Dokumentierte Intentionen**: Pattern-Name erklärt die Absicht <!-- .element: class="fragment" data-fragment-index="2" -->
 * **Erprobte Erweiterungspunkte**: Patterns zeigen, wo Änderungen sicher sind
 
 ---
@@ -1219,10 +1095,8 @@ Bekannte Patterns sind einfacher zu verstehen und zu ändern.
 4. **Copy-Paste Code**: Patterns sind konzeptuelle Lösungen, nicht Code-Snippets
 
 ### Pattern-Missbrauch vermeiden:
-* **Golden Hammer**: "Ich habe einen Hammer, alles sieht aus wie ein Nagel"
-<!-- .element: class="fragment" -->
-* **Pattern Overload**: 20 Patterns für 5 Klassen
-<!-- .element: class="fragment" -->
+* **Golden Hammer**: "Ich habe einen Hammer, alles sieht aus wie ein Nagel" <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Pattern Overload**: 20 Patterns für 5 Klassen <!-- .element: class="fragment" data-fragment-index="2" -->
 * **Premature Patterning**: Patterns einsetzen bevor das Problem klar ist
 
 ---
@@ -1265,12 +1139,9 @@ GUT: Mit Patterns: "Das ist MVC mit Observer für Events und Factory für Servic
 ```
 
 ### Enterprise-Vorteile:
-* **Internationale Teams**: Patterns sind sprachunabhängig
-<!-- .element: class="fragment" -->
-* **Verschiedene Abteilungen**: Einheitliches Verständnis
-<!-- .element: class="fragment" -->
-* **Externe Dienstleister**: Schnelle Einarbeitung
-<!-- .element: class="fragment" -->
+* **Internationale Teams**: Patterns sind sprachunabhängig <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Verschiedene Abteilungen**: Einheitliches Verständnis <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Externe Dienstleister**: Schnelle Einarbeitung <!-- .element: class="fragment" data-fragment-index="3" -->
 * **Dokumentation**: Kompakte, präzise Beschreibungen
 
 ---
@@ -1301,12 +1172,9 @@ GUT: Mit Patterns: "Das ist MVC mit Observer für Events und Factory für Servic
 # Teil 5: Refactoring Philosophie
 
 ## Lernziele
-* Refactoring als kontinuierlichen Prozess verstehen
-<!-- .element: class="fragment" -->
-* Boy Scout Rule kennenlernen und anwenden
-<!-- .element: class="fragment" -->
-* Wissen, wann und wie refactoriert wird
-<!-- .element: class="fragment" -->
+* Refactoring als kontinuierlichen Prozess verstehen <!-- .element: class="fragment" data-fragment-index="1" -->
+* Boy Scout Rule kennenlernen und anwenden <!-- .element: class="fragment" data-fragment-index="2" -->
+* Wissen, wann und wie refactoriert wird <!-- .element: class="fragment" data-fragment-index="3" -->
 * Refactoring als Weg zu Patterns verstehen
 
 ---
@@ -1325,12 +1193,9 @@ GUT: Mit Patterns: "Das ist MVC mit Observer für Events und Factory für Servic
 ---
 
 ### Was Refactoring NICHT ist:
-* Bugfixes (das ändert Verhalten)
-<!-- .element: class="fragment" -->
-* Neue Features (das erweitert Verhalten)  
-<!-- .element: class="fragment" -->
-* Performance-Optimierung (das kann Verhalten beeinflussen)
-<!-- .element: class="fragment" -->
+* Bugfixes (das ändert Verhalten) <!-- .element: class="fragment" data-fragment-index="1" -->
+* Neue Features (das erweitert Verhalten)   <!-- .element: class="fragment" data-fragment-index="2" -->
+* Performance-Optimierung (das kann Verhalten beeinflussen) <!-- .element: class="fragment" data-fragment-index="3" -->
 * Rewrite (zu riskant und zu groß)
 
 ---
@@ -1376,21 +1241,15 @@ Kommentare durch self-documenting code ersetzen
 <h5>Situation: Bug-Fix in alter Service-Klasse</h5>
 
 **Vor Boy Scout Rule:**
-* Fix den Bug
-<!-- .element: class="fragment" -->
-* Code bleibt messy
-<!-- .element: class="fragment" -->
+* Fix den Bug <!-- .element: class="fragment" data-fragment-index="1" -->
+* Code bleibt messy <!-- .element: class="fragment" data-fragment-index="2" -->
 * Nächster Entwickler hat gleichen Kampf
 
 **Mit Boy Scout Rule:**
-* Fix den Bug  
-<!-- .element: class="fragment" -->
-* Benenne 2-3 kryptische Variablen um
-<!-- .element: class="fragment" -->
-* Extrahiere eine lange Methode
-<!-- .element: class="fragment" -->
-* Nächster Entwickler findet sich besser zurecht
-<!-- .element: class="fragment" -->
+* Fix den Bug   <!-- .element: class="fragment" data-fragment-index="3" -->
+* Benenne 2-3 kryptische Variablen um <!-- .element: class="fragment" data-fragment-index="4" -->
+* Extrahiere eine lange Methode <!-- .element: class="fragment" data-fragment-index="5" -->
+* Nächster Entwickler findet sich besser zurecht <!-- .element: class="fragment" data-fragment-index="6" -->
 </div>
 
 Note: Das ist ein sehr realistisches Beispiel. Betonen Sie, dass es nur 5-10 Minuten extra kostet, aber für das Team enormen Mehrwert schafft. Der nächste Entwickler (der Sie selbst sein könnten!) hat es leichter.
@@ -1409,46 +1268,33 @@ Note: Das ist ein sehr realistisches Beispiel. Betonen Sie, dass es nur 5-10 Min
 ### Refactoring-Trigger:
 
 #### 1. **Wenn du Code verstehen musst**
-* Bevor du einen Bug fixst
-<!-- .element: class="fragment" -->
-* Bevor du ein Feature hinzufügst
-<!-- .element: class="fragment" -->
+* Bevor du einen Bug fixst <!-- .element: class="fragment" data-fragment-index="1" -->
+* Bevor du ein Feature hinzufügst <!-- .element: class="fragment" data-fragment-index="2" -->
 * Beim Code Review
 
 #### 2. **Wenn du Duplikation siehst**
-* Copy-Paste Code
-<!-- .element: class="fragment" -->
-* Ähnliche Methoden in verschiedenen Klassen
-<!-- .element: class="fragment" -->
+* Copy-Paste Code <!-- .element: class="fragment" data-fragment-index="3" -->
+* Ähnliche Methoden in verschiedenen Klassen <!-- .element: class="fragment" data-fragment-index="4" -->
 * Wiederkehrende Patterns
 
 #### 3. **Wenn Code "riecht" (Code Smells)**
-* Long Method (>20 Zeilen)
-<!-- .element: class="fragment" -->
-* Large Class (>200 Zeilen)
-<!-- .element: class="fragment" -->
-* Long Parameter List (>3 Parameter)
-<!-- .element: class="fragment" -->
-* Duplicate Code
-<!-- .element: class="fragment" -->
+* Long Method (>20 Zeilen) <!-- .element: class="fragment" data-fragment-index="5" -->
+* Large Class (>200 Zeilen) <!-- .element: class="fragment" data-fragment-index="6" -->
+* Long Parameter List (>3 Parameter) <!-- .element: class="fragment" data-fragment-index="7" -->
+* Duplicate Code <!-- .element: class="fragment" data-fragment-index="8" -->
 * Comments explaining complex code
 
 ---
 
 #### 4. **Beim Hinzufügen von Features**
-* Mache den Code erst änderungsfreundlich
-<!-- .element: class="fragment" -->
-* Füge dann das Feature hinzu
-<!-- .element: class="fragment" -->
+* Mache den Code erst änderungsfreundlich <!-- .element: class="fragment" data-fragment-index="1" -->
+* Füge dann das Feature hinzu <!-- .element: class="fragment" data-fragment-index="2" -->
 * "Make the change easy, then make the easy change"
 
 ### Gute Refactoring-Gelegenheiten:
-* **Sprint Planning**: "Diese Story braucht Refactoring"
-<!-- .element: class="fragment" -->
-* **Bug-Fixing**: Immer mit Boy Scout Rule kombinieren
-<!-- .element: class="fragment" -->
-* **Code Reviews**: Verbesserungen vorschlagen und umsetzen
-<!-- .element: class="fragment" -->
+* **Sprint Planning**: "Diese Story braucht Refactoring" <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Bug-Fixing**: Immer mit Boy Scout Rule kombinieren <!-- .element: class="fragment" data-fragment-index="4" -->
+* **Code Reviews**: Verbesserungen vorschlagen und umsetzen <!-- .element: class="fragment" data-fragment-index="5" -->
 * **Technische Stories**: Dedicated Refactoring
 
 ---
@@ -1489,12 +1335,9 @@ Beispiel - Long Method Refactoring:
 
 #### 3. **IDE-Unterstützung nutzen**
 Moderne IDEs können viel automatisch und sicher machen:
-* Extract Method
-<!-- .element: class="fragment" -->
-* Rename Variable/Method/Class
-<!-- .element: class="fragment" -->
-* Move Method/Field
-<!-- .element: class="fragment" -->
+* Extract Method <!-- .element: class="fragment" data-fragment-index="1" -->
+* Rename Variable/Method/Class <!-- .element: class="fragment" data-fragment-index="2" -->
+* Move Method/Field <!-- .element: class="fragment" data-fragment-index="3" -->
 * Inline Variable/Method
 
 ---
@@ -1577,12 +1420,9 @@ Note: Das ist eine der wichtigsten Botschaften des gesamten Workshops! Viele Ent
 5. **Changing Behavior**: Versehentlich Verhalten ändern
 
 ### Enterprise-Kontext:
-* **Legacy Systems**: Extra vorsichtig, mehr Tests
-<!-- .element: class="fragment" -->
-* **Live Systems**: Graduelle Änderungen
-<!-- .element: class="fragment" -->
-* **Compliance**: Dokumentation der Änderungen
-<!-- .element: class="fragment" -->
+* **Legacy Systems**: Extra vorsichtig, mehr Tests <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Live Systems**: Graduelle Änderungen <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Compliance**: Dokumentation der Änderungen <!-- .element: class="fragment" data-fragment-index="3" -->
 * **Team Size**: Koordination bei großen Teams
 
 ---

@@ -31,7 +31,7 @@ slideOptions:
 
 /* Critical: Fix content overflow and enforce left alignment */
 .reveal .slides {
-  font-size: 26px !important; /* Increased by 20% for better readability (22px * 1.20) */
+  font-size: 1.4em !important; /* Main text readable size */
   line-height: 1.3 !important;
 }
 
@@ -156,7 +156,8 @@ slideOptions:
 
 /* Code blocks sizing */
 .reveal pre {
-  font-size: 0.85em !important; /* Further increased for better readability */
+  font-size: 1.0em !important; /* Moderate code reduction */
+  width: 98% !important; /* Full slide width for code */
   max-height: calc(100vh - 200px); /* Use full available screen height */
   overflow-y: auto !important;
   background: #f8f8f8 !important; /* Light gray background */
@@ -545,6 +546,7 @@ Note:
 <div class="code-example">
 
 ```java
+<!-- .element: class="fragment" data-fragment-index="1" -->
 public class CustomerManager {
     
     public Customer createCustomer(String type, String name, String contractId) {
@@ -631,6 +633,7 @@ Note:
 <div class="code-example">
 
 ```java
+<!-- .element: class="fragment" data-fragment-index="1" -->
 // Basis-Interface definieren
 public interface Customer {
     String getName();
@@ -655,6 +658,7 @@ Note:
 <div class="code-example">
 
 ```java
+<!-- .element: class="fragment" data-fragment-index="1" -->
 public class PrivateCustomer implements Customer {
     private String name;
     private String contractId;
@@ -700,6 +704,7 @@ Note:
 <div class="code-example">
 
 ```java
+<!-- .element: class="fragment" data-fragment-index="1" -->
 public abstract class CustomerFactory {
     
     // Factory Method - zu implementieren von Subklassen
@@ -748,6 +753,7 @@ Note:
 <div class="code-example">
 
 ```java
+<!-- .element: class="fragment" data-fragment-index="2" -->
 public class PrivateCustomerFactory extends CustomerFactory {
     @Override
     protected Customer createCustomer(String name, String contractId) {
@@ -803,6 +809,7 @@ Note:
 
 ## Moderne Alternative - Java 8+
 ```java
+<!-- .element: class="fragment" data-fragment-index="1" -->
 public enum CustomerType {
     PRIVATE(PrivateCustomer::new),
     BUSINESS(BusinessCustomer::new),
@@ -921,6 +928,7 @@ ConcreteFactory2 extends AbstractFactory
 <div class="code-example">
 
 ```java
+<!-- .element: class="fragment" data-fragment-index="1" -->
 // Authentication Service Familie
 public interface AuthenticationService {
     boolean authenticate(AuthenticationContext context);
@@ -956,6 +964,7 @@ public interface NotificationService {
 <div class="code-example">
 
 ```java
+<!-- .element: class="fragment" data-fragment-index="2" -->
 public abstract class ChannelServiceFactory {
     
     // Factory Methods für Service-Familie
@@ -985,6 +994,7 @@ public abstract class ChannelServiceFactory {
 <div class="code-example">
 
 ```java
+<!-- .element: class="fragment" data-fragment-index="3" -->
 public class WebChannelFactory extends ChannelServiceFactory {
     
     @Override
@@ -1033,6 +1043,7 @@ public class MobileChannelFactory extends ChannelServiceFactory {
 <div class="code-example">
 
 ```java
+<!-- .element: class="fragment" data-fragment-index="1" -->
 public class ChannelServiceSuite {
     private final AuthenticationService authService;
     private final CustomerService customerService;

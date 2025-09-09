@@ -182,9 +182,9 @@ FAILED=0
 
 import_presentation "$PRESENTATION_DIR/hedgedoc-intro.md" "intro-design-patterns" "Software-Architektur - Einführung" "0" || FAILED=$((FAILED + 1))
 import_presentation "$PRESENTATION_DIR/hedgedoc-day1.md" "day1-design-patterns" "Software-Architektur - Grundlagen" "1" || FAILED=$((FAILED + 1))
-import_presentation "$PRESENTATION_DIR/hedgedoc-day2.md" "day2-design-patterns" "Software-Architektur - Tag 2" "2" || FAILED=$((FAILED + 1))
-import_presentation "$PRESENTATION_DIR/hedgedoc-day3.md" "day3-design-patterns" "Software-Architektur - Tag 3" "3" || FAILED=$((FAILED + 1))
-import_presentation "$PRESENTATION_DIR/hedgedoc-day4.md" "day4-design-patterns" "Software-Architektur - Tag 4" "4" || FAILED=$((FAILED + 1))
+import_presentation "$PRESENTATION_DIR/hedgedoc-day2.md" "day2-design-patterns" "Software-Architektur - Strukturmuster" "2" || FAILED=$((FAILED + 1))
+import_presentation "$PRESENTATION_DIR/hedgedoc-day3.md" "day3-design-patterns" "Software-Architektur - Verhaltensmuster" "3" || FAILED=$((FAILED + 1))
+import_presentation "$PRESENTATION_DIR/hedgedoc-day4.md" "day4-design-patterns" "Software-Architektur - Erweiterte Patterns" "4" || FAILED=$((FAILED + 1))
 
 echo ""
 echo "=================================================="

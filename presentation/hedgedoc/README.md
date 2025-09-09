@@ -76,7 +76,6 @@ Copy the CSS content directly into a `<style>` tag in each presentation file.
 - Design pattern introduction and theory
 - Singleton pattern with thread-safe implementations
 - Factory Method pattern with enterprise examples
-- Hands-on exercises with payment systems
 
 ### Day 2: Structural Patterns
 - Adapter pattern for legacy system integration

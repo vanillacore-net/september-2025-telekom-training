@@ -31,7 +31,7 @@ slideOptions:
 
 /* Critical: Fix content overflow and enforce left alignment */
 .reveal .slides {
-  font-size: 26px !important; /* Increased by 20% for better readability (22px * 1.20) */
+  font-size: 1.4em !important; /* Main text readable size */
   line-height: 1.3 !important;
 }
 
@@ -90,8 +90,8 @@ slideOptions:
 }
 
 .reveal pre {
-  width: 100% !important;
-  font-size: 0.7em !important;
+  width: 98% !important; /* Full slide width for code */
+  font-size: 1.0em !important; /* Moderate code reduction */
   text-align: left !important;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
   margin: 15px 0 !important;

@@ -1,4 +1,5 @@
 ---
+<!-- Version: 1.2.0-font-fix -->
 type: slide
 title: Software-Architektur - Grundlagen
 description: Code-Analyse, Factory Method, Abstract Factory, Builder & Prototype Patterns
@@ -116,7 +117,7 @@ slideOptions:
 }
 
 .reveal p, .reveal li {
-  font-size: 1.2em !important;
+  font-size: 1.4em !important;
   font-weight: 300 !important;
   text-align: left !important;
 }
@@ -161,7 +162,8 @@ slideOptions:
 
 /* Code blocks sizing - Full Width Optimized with Overflow Prevention */
 .reveal pre {
-  font-size: 1.2em !important; /* Increased by 20% for better readability */
+  font-size: 1.0em !important; /* Moderate reduction from original 1.2em */
+  width: 95% !important;
   max-height: calc(100vh - 200px); /* Use full available screen height */
   max-width: 100% !important; /* Prevent horizontal overflow */
   overflow-x: auto !important; /* Allow horizontal scrolling if needed */
@@ -180,7 +182,7 @@ slideOptions:
 }
 
 .reveal pre code {
-  font-size: 1.2em !important; /* Increased by 20% for better readability */
+  font-size: 1.0em !important; /* Moderate reduction from original 1.2em */
   line-height: 1.3 !important;
   font-family: 'Monaco', 'Menlo', 'Consolas', monospace !important;
   color: #e2e8f0 !important;
@@ -193,7 +195,7 @@ slideOptions:
 }
 
 .reveal code {
-  font-size: 1.2em !important; /* Increased by 20% for better readability */
+  font-size: 1.0em !important; /* Consistent with code blocks */
   background: #f0f0f0 !important;
   color: #d73a49 !important;
   padding: 0.1em 0.3em !important;
@@ -410,12 +412,9 @@ slideOptions:
 ## Bring your own brain and use it!
 
 Note:
-* Begrüßen Sie die Teilnehmer herzlich
-<!-- .element: class="fragment" -->
-* Stellen Sie sich kurz vor (Name, Hintergrund)
-<!-- .element: class="fragment" -->
-* Überprüfen Sie die technische Ausstattung
-<!-- .element: class="fragment" -->
+* Begrüßen Sie die Teilnehmer herzlich <!-- .element: class="fragment" data-fragment-index="1" -->
+* Stellen Sie sich kurz vor (Name, Hintergrund) <!-- .element: class="fragment" data-fragment-index="2" -->
+* Überprüfen Sie die technische Ausstattung <!-- .element: class="fragment" data-fragment-index="3" -->
 <!-- .element: class="notes" -->
 
 </div>
@@ -427,50 +426,35 @@ Note:
 
 ### Über diesen Workshop
 <!-- .slide: data-auto-animate -->
-* Code-Analyse & Factory Method Pattern
-<!-- .element: class="fragment" data-fragment-index="1" -->
+* Code-Analyse & Factory Method Pattern <!-- .element: class="fragment" data-fragment-index="1" -->
 
-* Abstract Factory & Layered Architecture
-<!-- .element: class="fragment" data-fragment-index="2" -->
+* Abstract Factory & Layered Architecture <!-- .element: class="fragment" data-fragment-index="2" -->
 
-* Builder Pattern & Repository Integration
-<!-- .element: class="fragment" data-fragment-index="3" -->
+* Builder Pattern & Repository Integration <!-- .element: class="fragment" data-fragment-index="3" -->
 
-* Prototype Pattern & Configuration Cloning
-<!-- .element: class="fragment" data-fragment-index="4" -->
+* Prototype Pattern & Configuration Cloning <!-- .element: class="fragment" data-fragment-index="4" -->
 
-* Clean Architecture: Fundamentale Prinzipien
-<!-- .element: class="fragment" data-fragment-index="5" -->
+* Clean Architecture: Fundamentale Prinzipien <!-- .element: class="fragment" data-fragment-index="5" -->
 
-* Singleton & Adapter mit Clean Architecture
-<!-- .element: class="fragment" data-fragment-index="6" -->
+* Singleton & Adapter mit Clean Architecture <!-- .element: class="fragment" data-fragment-index="6" -->
 
 ## Lernziele
 
-* Code-Smells in Legacy-Code identifizieren
-<!-- .element: class="fragment" data-fragment-index="1" -->
+* Code-Smells in Legacy-Code identifizieren <!-- .element: class="fragment" data-fragment-index="7" -->
 
-* Factory Method Pattern verstehen und anwenden  
-<!-- .element: class="fragment" data-fragment-index="2" -->
+* Factory Method Pattern verstehen und anwenden   <!-- .element: class="fragment" data-fragment-index="8" -->
 
-* Abstract Factory in geschichteten Architekturen
-<!-- .element: class="fragment" data-fragment-index="3" -->
+* Abstract Factory in geschichteten Architekturen <!-- .element: class="fragment" data-fragment-index="9" -->
 
-* Builder Pattern für komplexe Objekterstellung
-<!-- .element: class="fragment" data-fragment-index="4" -->
+* Builder Pattern für komplexe Objekterstellung <!-- .element: class="fragment" data-fragment-index="10" -->
 
-* SOLID-Prinzipien praktisch umsetzen
-<!-- .element: class="fragment" data-fragment-index="5" -->
+* SOLID-Prinzipien praktisch umsetzen <!-- .element: class="fragment" data-fragment-index="11" -->
 
 Note:
-* Betonen Sie die praktische Relevanz der Lernziele
-<!-- .element: class="fragment" -->
-* Fragen Sie nach Vorerfahrungen mit Design Patterns
-<!-- .element: class="fragment" -->
-* Erwähnen Sie, dass alle Beispiele auf realistischen Enterprise-Szenarien basieren
-<!-- .element: class="fragment" -->
-* Heben Sie hervor: "Wir analysieren echten Legacy-Code"
-<!-- .element: class="fragment" -->
+* Betonen Sie die praktische Relevanz der Lernziele <!-- .element: class="fragment" data-fragment-index="12" -->
+* Fragen Sie nach Vorerfahrungen mit Design Patterns <!-- .element: class="fragment" data-fragment-index="13" -->
+* Erwähnen Sie, dass alle Beispiele auf realistischen Enterprise-Szenarien basieren <!-- .element: class="fragment" data-fragment-index="14" -->
+* Heben Sie hervor: "Wir analysieren echten Legacy-Code" <!-- .element: class="fragment" data-fragment-index="15" -->
 <!-- .element: class="notes" -->
 
 <!-- Speaker Notes: Herzlich willkommen zur Software-Architektur Schulung. Wir konzentrieren uns auf Creational Patterns in Enterprise-Umgebungen. Wir werden Legacy-Code analysieren und Refactoring mit Pattern-basierten Lösungen durchführen. -->
@@ -481,32 +465,20 @@ Note:
 
 ## Workshop Module
 
-* **Modul 1:** Code-Analyse & Factory Method
-<!-- .element: class="fragment" data-fragment-index="1" -->
-* **Modul 2:** Abstract Factory & Layered Architecture
-<!-- .element: class="fragment" data-fragment-index="2" -->
-* **Modul 3:** Builder Pattern & Repository Integration
-<!-- .element: class="fragment" data-fragment-index="3" -->
-* **Modul 4:** Prototype Pattern & Configuration Cloning
-<!-- .element: class="fragment" data-fragment-index="4" -->
-* **Clean Architecture:** Fundamentale Prinzipien
-<!-- .element: class="fragment" data-fragment-index="5" -->
-* **Modul 5:** Singleton & Adapter mit Clean Architecture
-<!-- .element: class="fragment" data-fragment-index="6" -->
-* Code-Refactoring & Best Practices
-<!-- .element: class="fragment" data-fragment-index="7" -->
-* Q&A und Diskussion
-<!-- .element: class="fragment" data-fragment-index="8" -->
+* **Modul 1:** Code-Analyse & Factory Method <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Modul 2:** Abstract Factory & Layered Architecture <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Modul 3:** Builder Pattern & Repository Integration <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Modul 4:** Prototype Pattern & Configuration Cloning <!-- .element: class="fragment" data-fragment-index="4" -->
+* **Clean Architecture:** Fundamentale Prinzipien <!-- .element: class="fragment" data-fragment-index="5" -->
+* **Modul 5:** Singleton & Adapter mit Clean Architecture <!-- .element: class="fragment" data-fragment-index="6" -->
+* Code-Refactoring & Best Practices <!-- .element: class="fragment" data-fragment-index="7" -->
+* Q&A und Diskussion <!-- .element: class="fragment" data-fragment-index="8" -->
 
 Note:
-* Halten Sie sich an die Module - jedes Modul ist sorgfältig strukturiert
-<!-- .element: class="fragment" -->
-* Ermutigen Sie zur aktiven Teilnahme in den Hands-on-Phasen
-<!-- .element: class="fragment" -->
-* Builder Pattern ist oft das komplexeste - planen Sie mehr Diskussion dafür
-<!-- .element: class="fragment" -->
-* Praxisnahe Refactoring-Beispiele sind essentiell - lassen Sie ausreichend Raum für Diskussion
-<!-- .element: class="fragment" -->
+* Halten Sie sich an die Module - jedes Modul ist sorgfältig strukturiert <!-- .element: class="fragment" data-fragment-index="9" -->
+* Ermutigen Sie zur aktiven Teilnahme in den Hands-on-Phasen <!-- .element: class="fragment" data-fragment-index="10" -->
+* Builder Pattern ist oft das komplexeste - planen Sie mehr Diskussion dafür <!-- .element: class="fragment" data-fragment-index="11" -->
+* Praxisnahe Refactoring-Beispiele sind essentiell - lassen Sie ausreichend Raum für Diskussion <!-- .element: class="fragment" data-fragment-index="12" -->
 <!-- .element: class="notes" -->
 
 ---
@@ -514,22 +486,15 @@ Note:
 # Modul 1: Code-Analyse & Factory Method Pattern
 
 ## Lernziele
-* Code-Smells in Legacy-Code identifizieren
-<!-- .element: class="fragment" -->
-* Factory Method Pattern verstehen und anwenden
-<!-- .element: class="fragment" -->
-* Refactoring-Strategien entwickeln
-<!-- .element: class="fragment" -->
-* Single Responsibility Principle praktisch umsetzen
-<!-- .element: class="fragment" --> 
+* Code-Smells in Legacy-Code identifizieren <!-- .element: class="fragment" data-fragment-index="1" -->
+* Factory Method Pattern verstehen und anwenden <!-- .element: class="fragment" data-fragment-index="2" -->
+* Refactoring-Strategien entwickeln <!-- .element: class="fragment" data-fragment-index="3" -->
+* Single Responsibility Principle praktisch umsetzen <!-- .element: class="fragment" data-fragment-index="4" --> 
 
 Note:
-* Betonen Sie die praktische Relevanz für gewachsene Systemlandschaften
-<!-- .element: class="fragment" -->
-* Erklären Sie, dass wir mit Code-Smell Analyse beginnen, bevor wir Patterns einführen
-<!-- .element: class="fragment" -->
-* Interaktive Frage: "Welche Code-Probleme kennen Sie aus Ihren Projekten?"
-<!-- .element: class="fragment" -->
+* Betonen Sie die praktische Relevanz für gewachsene Systemlandschaften <!-- .element: class="fragment" data-fragment-index="5" -->
+* Erklären Sie, dass wir mit Code-Smell Analyse beginnen, bevor wir Patterns einführen <!-- .element: class="fragment" data-fragment-index="6" -->
+* Interaktive Frage: "Welche Code-Probleme kennen Sie aus Ihren Projekten?" <!-- .element: class="fragment" data-fragment-index="7" -->
 <!-- .element: class="notes" -->
 
 ---
@@ -597,15 +562,11 @@ public class CustomerManager {
 
 ### Identifizierte Code-Smells
 
-* **Long Method**: Jeder switch-case Block ist zu komplex
-<!-- .element: class="fragment" -->
-* **Switch Statement**: Typ-basierte Verzweigung verletzt Open/Closed Principle  
-<!-- .element: class="fragment" -->
-* **Duplicate Code**: Ähnliche Initialisierungsmuster in jedem Branch
-<!-- .element: class="fragment" -->
-* **Feature Envy**: Manipuliert mehr Customer-Daten als sie besitzt
-<!-- .element: class="fragment" -->
-* **Long Parameter List**: Viele Parameter machen Methode schwer verwendbar
+* **Long Method**: Jeder switch-case Block ist zu komplex <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Switch Statement**: Typ-basierte Verzweigung verletzt Open/Closed Principle <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Duplicate Code**: Ähnliche Initialisierungsmuster in jedem Branch <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Feature Envy**: Manipuliert mehr Customer-Daten als sie besitzt <!-- .element: class="fragment" data-fragment-index="4" -->
+* **Long Parameter List**: Viele Parameter machen Methode schwer verwendbar <!-- .element: class="fragment" data-fragment-index="5" -->
 
 ---
 
@@ -640,16 +601,11 @@ ConcreteProduct implements Product
 
 
 Note:
-* Erklären Sie das Pattern-Konzept anhand des UML-Diagramms
-<!-- .element: class="fragment" -->
-* Betonen Sie den Unterschied zwischen Creator und Product-Hierarchie
-<!-- .element: class="fragment" -->
-* Wichtig: Factory Method ist NICHT Simple Factory - erklären Sie den Unterschied
-<!-- .element: class="fragment" -->
-* Verbindung zu unserem Customer-Problem herstellen
-<!-- .element: class="fragment" -->
-* Frage: "Wo könnten Sie dieses Pattern in Ihren Projekten einsetzen?"
-<!-- .element: class="fragment" -->
+* Erklären Sie das Pattern-Konzept anhand des UML-Diagramms <!-- .element: class="fragment" data-fragment-index="1" -->
+* Betonen Sie den Unterschied zwischen Creator und Product-Hierarchie <!-- .element: class="fragment" data-fragment-index="2" -->
+* Wichtig: Factory Method ist NICHT Simple Factory - erklären Sie den Unterschied <!-- .element: class="fragment" data-fragment-index="3" -->
+* Verbindung zu unserem Customer-Problem herstellen <!-- .element: class="fragment" data-fragment-index="4" -->
+* Frage: "Wo könnten Sie dieses Pattern in Ihren Projekten einsetzen?" <!-- .element: class="fragment" data-fragment-index="5" -->
 <!-- .element: class="notes" -->
 
 ---
@@ -674,12 +630,9 @@ public interface Customer {
 </div>
 
 Note:
-* Erklären Sie die Einführung des Customer-Interfaces als ersten Refactoring-Schritt
-<!-- .element: class="fragment" -->
-* Betonen Sie die gemeinsamen Methoden für alle Kunden-Typen
-<!-- .element: class="fragment" -->
-* Wichtig: processContract() ermöglicht kunden-spezifische Geschäftslogik
-<!-- .element: class="fragment" -->
+* Erklären Sie die Einführung des Customer-Interfaces als ersten Refactoring-Schritt <!-- .element: class="fragment" data-fragment-index="1" -->
+* Betonen Sie die gemeinsamen Methoden für alle Kunden-Typen <!-- .element: class="fragment" data-fragment-index="2" -->
+* Wichtig: processContract() ermöglicht kunden-spezifische Geschäftslogik <!-- .element: class="fragment" data-fragment-index="3" -->
 <!-- .element: class="notes" -->
 
 ### Konkrete Implementierung - PrivateCustomer
@@ -721,14 +674,10 @@ public class PrivateCustomer implements Customer {
 </div>
 
 Note:
-* Zeigen Sie, wie die kunden-spezifische Logik in der Implementierung gekapselt wird
-<!-- .element: class="fragment" -->
-* Erklären Sie die private Methoden validatePersonalData() und setupBasicServices()
-<!-- .element: class="fragment" -->
-* Betonen Sie die Kapselung der Geschäftsregeln pro Kunden-Typ
-<!-- .element: class="fragment" -->
-* Frage: "Welche Geschäftsregeln würden Sie für BusinessCustomer erwarten?"
-<!-- .element: class="fragment" -->
+* Zeigen Sie, wie die kunden-spezifische Logik in der Implementierung gekapselt wird <!-- .element: class="fragment" data-fragment-index="4" -->
+* Erklären Sie die private Methoden validatePersonalData() und setupBasicServices() <!-- .element: class="fragment" data-fragment-index="5" -->
+* Betonen Sie die Kapselung der Geschäftsregeln pro Kunden-Typ <!-- .element: class="fragment" data-fragment-index="6" -->
+* Frage: "Welche Geschäftsregeln würden Sie für BusinessCustomer erwarten?" <!-- .element: class="fragment" data-fragment-index="7" -->
 <!-- .element: class="notes" -->
 
 ---
@@ -773,16 +722,11 @@ public abstract class CustomerFactory {
 </div>
 
 Note:
-* Erklären Sie die Kombination von Factory Method und Template Method Pattern
-<!-- .element: class="fragment" -->
-* Betonen Sie die gemeinsame Geschäftslogik im Template Method
-<!-- .element: class="fragment" -->
-* Wichtig: Factory Method ist protected, nicht public
-<!-- .element: class="fragment" -->
-* Zeigen Sie den Aufruf-Flow: processNewCustomer() -> createCustomer() -> validate -> persist
-<!-- .element: class="fragment" -->
-* Frage: "Welche Geschäftslogik würden Sie als gemeinsam identifizieren?"
-<!-- .element: class="fragment" -->
+* Erklären Sie die Kombination von Factory Method und Template Method Pattern <!-- .element: class="fragment" data-fragment-index="1" -->
+* Betonen Sie die gemeinsame Geschäftslogik im Template Method <!-- .element: class="fragment" data-fragment-index="2" -->
+* Wichtig: Factory Method ist protected, nicht public <!-- .element: class="fragment" data-fragment-index="3" -->
+* Zeigen Sie den Aufruf-Flow: processNewCustomer() -> createCustomer() -> validate -> persist <!-- .element: class="fragment" data-fragment-index="4" -->
+* Frage: "Welche Geschäftslogik würden Sie als gemeinsam identifizieren?" <!-- .element: class="fragment" data-fragment-index="5" -->
 <!-- .element: class="notes" -->
 
 ---
@@ -818,43 +762,13 @@ public class PremiumCustomerFactory extends CustomerFactory {
 </div>
 
 Note:
-* Betonen Sie die Einfachheit der konkreten Factory-Implementierungen
-<!-- .element: class="fragment" -->
-* Erklären Sie: Nur die Factory Method muss implementiert werden
-<!-- .element: class="fragment" -->
-* Neue Kunden-Typen = neue Factory-Klasse, kein bestehender Code geändert
-<!-- .element: class="fragment" -->
-* Verbindung zu Open/Closed Principle
-<!-- .element: class="fragment" -->
-* Praktische Übung vorbereiten: "Implementieren Sie StudentCustomerFactory"
-<!-- .element: class="fragment" -->
+* Betonen Sie die Einfachheit der konkreten Factory-Implementierungen <!-- .element: class="fragment" data-fragment-index="1" -->
+* Erklären Sie: Nur die Factory Method muss implementiert werden <!-- .element: class="fragment" data-fragment-index="2" -->
+* Neue Kunden-Typen = neue Factory-Klasse, kein bestehender Code geändert <!-- .element: class="fragment" data-fragment-index="3" -->
+* Verbindung zu Open/Closed Principle <!-- .element: class="fragment" data-fragment-index="4" -->
 <!-- .element: class="notes" -->
 
 ---
-
-## Übung
-
-<div class="interactive-question">
-
-### Praktische Übung: Factory Method
-
-
-#### Implementieren Sie einen StudentCustomerFactory
-
-
-</div>
-
-**Aufgabe**: Erweitern Sie das Customer-System um einen StudentCustomer mit:
-* Spezielle Tarif-Optionen ("Student Basic", "Student Plus")
-<!-- .element: class="fragment" -->
-* Studentenausweis-Validierung
-<!-- .element: class="fragment" -->
-* Ermäßigte Konditionen
-
-**Implementierungsschritte**:
-1. StudentCustomer-Klasse erstellen
-2. StudentCustomerFactory implementieren
-3. Integration in bestehende Architektur
 
 ---
 
@@ -864,20 +778,18 @@ Note:
 <div>
 
 ## Single Responsibility Principle (SRP)
-* Jede Factory-Klasse ist nur für einen Kunden-Typ zuständig 
-<!-- .element: class="fragment" -->
-* Customer-Klassen kapseln ihre spezifische Geschäftslogik 
+* Jede Factory-Klasse ist nur für einen Kunden-Typ zuständig <!-- .element: class="fragment" data-fragment-index="1" -->
+* Customer-Klassen kapseln ihre spezifische Geschäftslogik <!-- .element: class="fragment" data-fragment-index="2" --> 
 
 ## Open/Closed Principle (OCP)
-* Neue Kunden-Typen durch neue Factory-Klassen hinzufügbar 
-<!-- .element: class="fragment" -->
-* Bestehender Code muss nicht geändert werden 
+* Neue Kunden-Typen durch neue Factory-Klassen hinzufügbar <!-- .element: class="fragment" data-fragment-index="3" -->
+* Bestehender Code muss nicht geändert werden <!-- .element: class="fragment" data-fragment-index="4" --> 
 
 </div>
 <div>
 
 ## Dependency Inversion Principle (DIP)
-* Abhängigkeit zu Customer-Interface, nicht zu konkreten Implementierungen 
+* Abhängigkeit zu Customer-Interface, nicht zu konkreten Implementierungen <!-- .element: class="fragment" data-fragment-index="5" --> 
 
 ## Moderne Alternative - Java 8+
 
@@ -901,18 +813,12 @@ public enum CustomerType {
 </div>
 
 Note:
-* Verbinden Sie Factory Method Pattern explizit zu SOLID-Prinzipien
-<!-- .element: class="fragment" -->
-* SRP: Jede Klasse hat genau eine Verantwortung
-<!-- .element: class="fragment" -->
-* OCP: Erweiterung ohne Modifikation durch neue Factory-Klassen
-<!-- .element: class="fragment" -->
-* DIP: Abhängigkeit zu Abstraktion, nicht zu konkreten Klassen
-<!-- .element: class="fragment" -->
-* Moderne Alternative mit Java 8+: Zeigen Sie funktionale Ansätze
-<!-- .element: class="fragment" -->
-* Diskussion: "Welche SOLID-Prinzipien verletzt unser ursprünglicher Code?"
-<!-- .element: class="fragment" -->
+* Verbinden Sie Factory Method Pattern explizit zu SOLID-Prinzipien <!-- .element: class="fragment" data-fragment-index="6" -->
+* SRP: Jede Klasse hat genau eine Verantwortung <!-- .element: class="fragment" data-fragment-index="7" -->
+* OCP: Erweiterung ohne Modifikation durch neue Factory-Klassen <!-- .element: class="fragment" data-fragment-index="8" -->
+* DIP: Abhängigkeit zu Abstraktion, nicht zu konkreten Klassen <!-- .element: class="fragment" data-fragment-index="9" -->
+* Moderne Alternative mit Java 8+: Zeigen Sie funktionale Ansätze <!-- .element: class="fragment" data-fragment-index="10" -->
+* Diskussion: "Welche SOLID-Prinzipien verletzt unser ursprünglicher Code?" <!-- .element: class="fragment" data-fragment-index="11" -->
 <!-- .element: class="notes" -->
 
 ---
@@ -920,23 +826,16 @@ Note:
 # Modul 2: Abstract Factory & Layered Architecture
 
 ## Lernziele
-* Abstract Factory Pattern in geschichteten Architekturen anwenden 
-<!-- .element: class="fragment" -->
-* Service-Familien sauber strukturieren 
-<!-- .element: class="fragment" -->
-* Dependency Injection Prinzipien verstehen 
-<!-- .element: class="fragment" -->
-* Interface Segregation in der Praxis umsetzen 
+* Abstract Factory Pattern in geschichteten Architekturen anwenden  <!-- .element: class="fragment" data-fragment-index="1" -->
+* Service-Familien sauber strukturieren  <!-- .element: class="fragment" data-fragment-index="2" -->
+* Dependency Injection Prinzipien verstehen  <!-- .element: class="fragment" data-fragment-index="3" -->
+* Interface Segregation in der Praxis umsetzen <!-- .element: class="fragment" data-fragment-index="4" --> 
 
 Note:
-* Übergang von Factory Method zu Abstract Factory erklären
-<!-- .element: class="fragment" -->
-* Betonen Sie den Unterschied: Familien verwandter Objekte
-<!-- .element: class="fragment" -->
-* Verbindung zu Enterprise-Architekturen: Service-Layers
-<!-- .element: class="fragment" -->
-* Motivation schaffen: "Warum reicht Factory Method nicht für komplexe Systeme?"
-<!-- .element: class="fragment" -->
+* Übergang von Factory Method zu Abstract Factory erklären <!-- .element: class="fragment" data-fragment-index="5" -->
+* Betonen Sie den Unterschied: Familien verwandter Objekte <!-- .element: class="fragment" data-fragment-index="6" -->
+* Verbindung zu Enterprise-Architekturen: Service-Layers <!-- .element: class="fragment" data-fragment-index="7" -->
+* Motivation schaffen: "Warum reicht Factory Method nicht für komplexe Systeme?" <!-- .element: class="fragment" data-fragment-index="8" -->
 <!-- .element: class="notes" -->
 
 ---
@@ -987,14 +886,10 @@ public class ServiceManager {
 
 ## Identifizierte Code-Smells
 
-* **Service-Familie Inkonsistenz**: Gemischte Service-Implementierungen 
-<!-- .element: class="fragment" -->
-* **Duplicate Code**: Ähnliche Setup-Logik für jeden Kanal 
-<!-- .element: class="fragment" -->
-* **Tight Coupling**: Direkte Abhängigkeiten zu konkreten Klassen 
-<!-- .element: class="fragment" -->
-* **Fehlende Konsistenz-Garantie**: Keine Gewähr für kompatible Services 
-<!-- .element: class="fragment" -->
+* **Service-Familie Inkonsistenz**: Gemischte Service-Implementierungen  <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Duplicate Code**: Ähnliche Setup-Logik für jeden Kanal  <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Tight Coupling**: Direkte Abhängigkeiten zu konkreten Klassen  <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Fehlende Konsistenz-Garantie**: Keine Gewähr für kompatible Services  <!-- .element: class="fragment" data-fragment-index="4" -->
 * **Mixed Concerns**: Service-Erstellung vermischt mit Business-Logik 
 
 ---
@@ -1062,14 +957,10 @@ public class ServiceManager {
 
 ### Identifizierte Code-Smells
 
-* **Service-Familie Inkonsistenz**: Gemischte Service-Implementierungen
-<!-- .element: class="fragment" -->
-* **Duplicate Code**: Ähnliche Setup-Logik für jeden Kanal
-<!-- .element: class="fragment" -->
-* **Tight Coupling**: Direkte Abhängigkeiten zu konkreten Klassen
-<!-- .element: class="fragment" -->
-* **Fehlende Konsistenz-Garantie**: Keine Gewähr für kompatible Services
-<!-- .element: class="fragment" -->
+* **Service-Familie Inkonsistenz**: Gemischte Service-Implementierungen <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Duplicate Code**: Ähnliche Setup-Logik für jeden Kanal <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Tight Coupling**: Direkte Abhängigkeiten zu konkreten Klassen <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Fehlende Konsistenz-Garantie**: Keine Gewähr für kompatible Services <!-- .element: class="fragment" data-fragment-index="4" -->
 * **Mixed Concerns**: Service-Erstellung vermischt mit Business-Logik
 
 ---
@@ -1268,30 +1159,6 @@ public class ChannelServiceSuite {
 
 ---
 
-## Übung
-
-<div class="interactive-question">
-
-### Praktische Übung: Abstract Factory
-#### Implementieren Sie eine CallCenterChannelFactory
-
-</div>
-
-**Aufgabe**: Erweitern Sie das Multi-Channel-System um Call Center Support:
-* CallCenterAuthenticationService (PIN-basiert)
-<!-- .element: class="fragment" -->
-* CallCenterCustomerService (vereinfachte Daten)
-<!-- .element: class="fragment" -->
-* CallCenterBillingService (nur Grundinformationen)
-<!-- .element: class="fragment" -->
-* CallCenterNotificationService (Telefon + SMS)
-
-**Implementierungsschritte**:
-1. Konkrete Service-Implementierungen erstellen
-2. CallCenterChannelFactory implementieren
-3. Integration in ChannelFactoryProvider
-4. Konsistenz-Tests durchführen
-
 ---
 
 # Dependency Injection Integration
@@ -1333,25 +1200,17 @@ public class ChannelFactoryProvider {
 # Modul 3: Builder Pattern & Repository Integration
 
 ## Lernziele
-* Builder Pattern für komplexe Objekterstellung meistern 
-<!-- .element: class="fragment" -->
-* Repository Pattern mit Builder kombinieren 
-<!-- .element: class="fragment" -->
-* Fluent Interfaces designen und umsetzen 
-<!-- .element: class="fragment" -->
+* Builder Pattern für komplexe Objekterstellung meistern  <!-- .element: class="fragment" data-fragment-index="1" -->
+* Repository Pattern mit Builder kombinieren  <!-- .element: class="fragment" data-fragment-index="2" -->
+* Fluent Interfaces designen und umsetzen  <!-- .element: class="fragment" data-fragment-index="3" -->
 * Liskov Substitution Principle praktisch anwenden 
 
 Note:
-* Builder Pattern löst das "Telescoping Constructor" Problem
-<!-- .element: class="fragment" -->
-* Besonders wertvoll für Query-Builder und komplexe Konfigurationsobjekte
-<!-- .element: class="fragment" -->
-* Zeigen Sie den Unterschied zu Factory Method: Builder für EINEN komplexen Typ
-<!-- .element: class="fragment" -->
-* Frage: "Kennen Sie Konstruktoren mit vielen Parametern in Ihren Projekten?"
-<!-- .element: class="fragment" -->
-* Verbindung zu Repository Pattern: Saubere Query-Erstellung
-<!-- .element: class="fragment" -->
+* Builder Pattern löst das "Telescoping Constructor" Problem <!-- .element: class="fragment" data-fragment-index="4" -->
+* Besonders wertvoll für Query-Builder und komplexe Konfigurationsobjekte <!-- .element: class="fragment" data-fragment-index="5" -->
+* Zeigen Sie den Unterschied zu Factory Method: Builder für EINEN komplexen Typ <!-- .element: class="fragment" data-fragment-index="6" -->
+* Frage: "Kennen Sie Konstruktoren mit vielen Parametern in Ihren Projekten?" <!-- .element: class="fragment" data-fragment-index="7" -->
+* Verbindung zu Repository Pattern: Saubere Query-Erstellung <!-- .element: class="fragment" data-fragment-index="8" -->
 <!-- .element: class="notes" -->
 
 ---
@@ -1414,22 +1273,16 @@ public class CustomerRepository {
 
 ## Identifizierte Code-Smells
 
-* **Telescoping Constructor**: 14 Parameter machen die Methode unverwendbar 
-<!-- .element: class="fragment" -->
-* **Long Method**: 30+ Zeilen nur für SQL-String-Erstellung 
-<!-- .element: class="fragment" -->
-* **Duplicate Code**: hasWhere-Logik wird überall wiederholt 
-<!-- .element: class="fragment" -->
-* **Complex Conditional**: Verschachtelte if-Statements schwer lesbar 
-<!-- .element: class="fragment" -->
+* **Telescoping Constructor**: 14 Parameter machen die Methode unverwendbar  <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Long Method**: 30+ Zeilen nur für SQL-String-Erstellung  <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Duplicate Code**: hasWhere-Logik wird überall wiederholt  <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Complex Conditional**: Verschachtelte if-Statements schwer lesbar  <!-- .element: class="fragment" data-fragment-index="4" -->
 * **String Concatenation**: SQL-Injection Risiko und schwer zu testen 
 
 ### Was passiert bei neuen Suchkriterien?
 
-* **Signature-Breaking**: Alle Aufrufe müssen angepasst werden
-<!-- .element: class="fragment" -->
-* **Maintenance**: Mehr if-Blöcke, noch komplexere Logik
-<!-- .element: class="fragment" -->
+* **Signature-Breaking**: Alle Aufrufe müssen angepasst werden <!-- .element: class="fragment" data-fragment-index="5" -->
+* **Maintenance**: Mehr if-Blöcke, noch komplexere Logik <!-- .element: class="fragment" data-fragment-index="6" -->
 * **Testing**: Exponentiell wachsende Kombinationen
 
 ---
@@ -1489,14 +1342,10 @@ public class CustomerRepository {
 
 ### Identifizierte Code-Smells
 
-* **Telescoping Constructor**: 14 Parameter machen die Methode unverwendbar
-<!-- .element: class="fragment" -->
-* **Long Method**: 30+ Zeilen nur für SQL-String-Erstellung
-<!-- .element: class="fragment" -->
-* **Duplicate Code**: hasWhere-Logik wird überall wiederholt
-<!-- .element: class="fragment" -->
-* **Complex Conditional**: Verschachtelte if-Statements schwer lesbar
-<!-- .element: class="fragment" -->
+* **Telescoping Constructor**: 14 Parameter machen die Methode unverwendbar <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Long Method**: 30+ Zeilen nur für SQL-String-Erstellung <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Duplicate Code**: hasWhere-Logik wird überall wiederholt <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Complex Conditional**: Verschachtelte if-Statements schwer lesbar <!-- .element: class="fragment" data-fragment-index="4" -->
 * **String Concatenation**: SQL-Injection Risiko und schwer zu testen
 
 ---
@@ -1730,54 +1579,22 @@ Query query = new TypeSafeCustomerQueryBuilder()
 
 ---
 
-## Übung
-
-<div class="interactive-question">
-
-### Praktische Übung: Builder Pattern
-#### Implementieren Sie einen TariffQueryBuilder
-
-</div>
-
-**Aufgabe**: Erweitern Sie das Query-System um Tariff-spezifische Abfragen:
-* TariffQueryBuilder mit Fluent Interface
-<!-- .element: class="fragment" -->
-* Unterstützung für: Tariff-Name, Preis-Range, Features, Verfügbarkeit
-<!-- .element: class="fragment" -->
-* Integration in TariffRepository
-<!-- .element: class="fragment" -->
-* Type-Safe Builder Implementation
-
-**Implementierungsschritte**:
-1. TariffQueryBuilder-Klasse erstellen
-2. Fluent Methods implementieren (withName, withPriceRange, withFeatures)
-3. TariffRepository-Integration
-4. Type-Safe Builder-Interfaces definieren
-
 ---
 
 # Modul 4: Prototype Pattern & Configuration Cloning
 
 ## Lernziele
-* Prototype Pattern für kostspielige Objekterzeugung verstehen 
-<!-- .element: class="fragment" -->
-* Deep vs. Shallow Copy Problematik meistern 
-<!-- .element: class="fragment" -->
-* Configuration-Cloning für komplexe Enterprise-Settings 
-<!-- .element: class="fragment" -->
+* Prototype Pattern für kostspielige Objekterzeugung verstehen  <!-- .element: class="fragment" data-fragment-index="1" -->
+* Deep vs. Shallow Copy Problematik meistern  <!-- .element: class="fragment" data-fragment-index="2" -->
+* Configuration-Cloning für komplexe Enterprise-Settings  <!-- .element: class="fragment" data-fragment-index="3" -->
 * Performance-Optimierung durch intelligente Objektkopierung 
 
 Note:
-* Prototype Pattern ist performance-kritisch bei teuren Objekten
-<!-- .element: class="fragment" -->
-* Typische Anwendung: Konfigurationsobjekte, DatabaseConnections, Parser-Zustände
-<!-- .element: class="fragment" -->
-* WICHTIG: Deep vs Shallow Copy - zeigen Sie die Fallstricke auf
-<!-- .element: class="fragment" -->
-* Frage: "Wo in Ihren Systemen ist Objekterstellung besonders teuer?"
-<!-- .element: class="fragment" -->
-* Performance-Aspekt betonen: Wann ist clonen() schneller als new?
-<!-- .element: class="fragment" -->
+* Prototype Pattern ist performance-kritisch bei teuren Objekten <!-- .element: class="fragment" data-fragment-index="4" -->
+* Typische Anwendung: Konfigurationsobjekte, DatabaseConnections, Parser-Zustände <!-- .element: class="fragment" data-fragment-index="5" -->
+* WICHTIG: Deep vs Shallow Copy - zeigen Sie die Fallstricke auf <!-- .element: class="fragment" data-fragment-index="6" -->
+* Frage: "Wo in Ihren Systemen ist Objekterstellung besonders teuer?" <!-- .element: class="fragment" data-fragment-index="7" -->
+* Performance-Aspekt betonen: Wann ist clonen() schneller als new? <!-- .element: class="fragment" data-fragment-index="8" -->
 <!-- .element: class="notes" -->
 
 ---
@@ -1851,24 +1668,17 @@ public class ServiceConfigurationManager {
 
 ## Identifizierte Code-Smells
 
-* **Expensive Recreation**: Identische teure Operationen werden wiederholt 
-<!-- .element: class="fragment" -->
-* **Duplicate Code**: 90% der Konfigurationserstellung ist identisch 
-<!-- .element: class="fragment" -->
-* **Resource Waste**: 1.4s für jede neue Konfiguration (nur für 3 Unterschiede!) 
-<!-- .element: class="fragment" -->
-* **Method Duplication**: createDevConfiguration und createTestConfiguration nahezu identisch 
-<!-- .element: class="fragment" -->
+* **Expensive Recreation**: Identische teure Operationen werden wiederholt  <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Duplicate Code**: 90% der Konfigurationserstellung ist identisch  <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Resource Waste**: 1.4s für jede neue Konfiguration (nur für 3 Unterschiede!)  <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Method Duplication**: createDevConfiguration und createTestConfiguration nahezu identisch  <!-- .element: class="fragment" data-fragment-index="4" -->
 * **Missing Abstraction**: Keine Wiederverwendung der teuren Initialisierungslogik 
 
 ### Performance-Impact Analysis
 
-* **Database Lookups**: 3x 200ms = 600ms
-<!-- .element: class="fragment" -->
-* **SSL Validation**: 500ms
-<!-- .element: class="fragment" -->
-* **Service Discovery**: 300ms
-<!-- .element: class="fragment" -->
+* **Database Lookups**: 3x 200ms = 600ms <!-- .element: class="fragment" data-fragment-index="5" -->
+* **SSL Validation**: 500ms <!-- .element: class="fragment" data-fragment-index="6" -->
+* **Service Discovery**: 300ms <!-- .element: class="fragment" data-fragment-index="7" -->
 * **Total per Config**: 1400ms für 99% identische Arbeit
 
 ---
@@ -1937,14 +1747,10 @@ public class ServiceConfigurationManager {
 
 ### Identifizierte Code-Smells
 
-* **Expensive Recreation**: Identische teure Operationen werden wiederholt
-<!-- .element: class="fragment" -->
-* **Duplicate Code**: 90% der Konfigurationserstellung ist identisch
-<!-- .element: class="fragment" -->
-* **Resource Waste**: 1.4s für jede neue Konfiguration (nur für 3 Unterschiede!)
-<!-- .element: class="fragment" -->
-* **Method Duplication**: createDevConfiguration und createTestConfiguration nahezu identisch
-<!-- .element: class="fragment" -->
+* **Expensive Recreation**: Identische teure Operationen werden wiederholt <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Duplicate Code**: 90% der Konfigurationserstellung ist identisch <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Resource Waste**: 1.4s für jede neue Konfiguration (nur für 3 Unterschiede!) <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Method Duplication**: createDevConfiguration und createTestConfiguration nahezu identisch <!-- .element: class="fragment" data-fragment-index="4" -->
 * **Missing Abstraction**: Keine Wiederverwendung der teuren Initialisierungslogik
 
 **Performance-Problem**: Jede Konfigurationserstellung dauert 1.4+ Sekunden für identische Operationen!
@@ -2177,30 +1983,6 @@ public class PrototypeBasedConfigurationManager {
 
 ---
 
-## Übung
-
-<div class="interactive-question">
-
-### Praktische Übung: Prototype Pattern
-#### Implementieren Sie einen DatabaseConnectionPrototype
-
-</div>
-
-**Aufgabe**: Erweitern Sie das Konfigurationssystem um Database Connection Prototypes:
-* DatabaseConnectionPrototype mit Clone-Implementation
-<!-- .element: class="fragment" -->
-* Verschiedene DB-Typen (Oracle, PostgreSQL, MongoDB)
-<!-- .element: class="fragment" -->
-* Connection Pool Settings
-<!-- .element: class="fragment" -->
-* Performance-optimierte Klonierung
-
-**Implementierungsschritte**:
-1. DatabaseConnectionPrototype-Klasse erstellen
-2. Deep/Shallow Copy Strategie implementieren
-3. PrototypeRegistry für DB-Connections
-4. Performance-Vergleich durchführen
-
 ---
 
 # Deep vs Shallow Copy Strategy
@@ -2275,7 +2057,7 @@ public class CowConfiguration {
 **Clean Architecture** ist ein Architekturmuster von Robert C. Martin (Uncle Bob), das die **Dependency Rule** als zentrales Prinzip etabliert:
 
 **📍 Dependency Rule: Dependencies zeigen nur nach innen!**
-<!-- .element: class="fragment" data-fragment-index="2" -->
+<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ---
 
@@ -2328,19 +2110,15 @@ public class CowConfiguration {
 
 
 **✅ Erlaubt:**
-<!-- .element: class="fragment" data-fragment-index="2" -->
-* Use Cases nutzen Entities
-<!-- .element: class="fragment" -->
-* Controllers nutzen Use Cases
-<!-- .element: class="fragment" -->
+<!-- .element: class="fragment" data-fragment-index="1" -->
+* Use Cases nutzen Entities <!-- .element: class="fragment" data-fragment-index="2" -->
+* Controllers nutzen Use Cases <!-- .element: class="fragment" data-fragment-index="3" -->
 * Gateways implementieren Repository-Interfaces
 
 **❌ Verboten:**
-<!-- .element: class="fragment" data-fragment-index="3" -->
-* Entities kennen Use Cases
-<!-- .element: class="fragment" -->
-* Use Cases kennen Controllers
-<!-- .element: class="fragment" -->
+<!-- .element: class="fragment" data-fragment-index="4" -->
+* Entities kennen Use Cases <!-- .element: class="fragment" data-fragment-index="5" -->
+* Use Cases kennen Controllers <!-- .element: class="fragment" data-fragment-index="6" -->
 * Domain kennt Database-Details
 
 ---
@@ -2352,15 +2130,15 @@ public class CowConfiguration {
 
 **🔹 Dependency Inversion Principle:**<br/>
 Use Cases definieren Interfaces, Adapter implementieren sie
-<!-- .element: class="fragment" data-fragment-index="2" -->
+<!-- .element: class="fragment" data-fragment-index="1" -->
 
 **🔹 Single Responsibility:**<br/>
 Jede Schicht hat eine klare Verantwortlichkeit
-<!-- .element: class="fragment" data-fragment-index="3" -->
+<!-- .element: class="fragment" data-fragment-index="2" -->
 
 **🔹 Open/Closed:**<br/>
 Neue Features durch neue Use Cases, ohne Core zu ändern
-<!-- .element: class="fragment" data-fragment-index="4" -->
+<!-- .element: class="fragment" data-fragment-index="3" -->
 
 ---
 
@@ -2370,27 +2148,19 @@ Neue Features durch neue Use Cases, ohne Core zu ändern
 <div class="left">
 
 ## 💪 Vorteile:
-* **Testbarkeit**: Core-Logik isoliert testbar
-<!-- .element: class="fragment" data-fragment-index="1" -->
-* **Framework-Unabhängigkeit**: Core überlebt Framework-Wechsel
-<!-- .element: class="fragment" data-fragment-index="2" -->
-* **Database-Agnostik**: Core kennt keine DB-Details
-<!-- .element: class="fragment" data-fragment-index="3" -->
-* **UI-Flexibilität**: Verschiedene Interfaces möglich
-<!-- .element: class="fragment" data-fragment-index="4" -->
+* **Testbarkeit**: Core-Logik isoliert testbar <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Framework-Unabhängigkeit**: Core überlebt Framework-Wechsel <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Database-Agnostik**: Core kennt keine DB-Details <!-- .element: class="fragment" data-fragment-index="3" -->
+* **UI-Flexibilität**: Verschiedene Interfaces möglich <!-- .element: class="fragment" data-fragment-index="4" -->
 
 </div>
 <div class="right">
 
 ## 🎯 Enterprise-Realität:
-* **Legacy-Integration**: Adapter für alte Systeme
-<!-- .element: class="fragment" data-fragment-index="5" -->
-* **Compliance**: Business-Rules zentral verwaltbar
-<!-- .element: class="fragment" data-fragment-index="6" -->
-* **Skalierung**: Schichten unabhängig skalierbar
-<!-- .element: class="fragment" data-fragment-index="7" -->
-* **Wartbarkeit**: Änderungen in abgegrenzten Bereichen
-<!-- .element: class="fragment" data-fragment-index="8" -->
+* **Legacy-Integration**: Adapter für alte Systeme <!-- .element: class="fragment" data-fragment-index="5" -->
+* **Compliance**: Business-Rules zentral verwaltbar <!-- .element: class="fragment" data-fragment-index="6" -->
+* **Skalierung**: Schichten unabhängig skalierbar <!-- .element: class="fragment" data-fragment-index="7" -->
+* **Wartbarkeit**: Änderungen in abgegrenzten Bereichen <!-- .element: class="fragment" data-fragment-index="8" -->
 
 </div>
 </div>
@@ -2402,17 +2172,13 @@ Neue Features durch neue Use Cases, ohne Core zu ändern
 ## Wie Patterns die Architektur unterstützen:
 
 
-**🏗️ Adapter Pattern:** Interface zwischen Schichten schaffen
-<!-- .element: class="fragment" data-fragment-index="2" -->
+**🏗️ Adapter Pattern:** Interface zwischen Schichten schaffen <!-- .element: class="fragment" data-fragment-index="1" -->
 
-**📊 Repository Pattern:** Data Access abstrahieren
-<!-- .element: class="fragment" data-fragment-index="3" -->
+**📊 Repository Pattern:** Data Access abstrahieren <!-- .element: class="fragment" data-fragment-index="2" -->
 
-**🏭 Factory Pattern:** Abhängigkeiten auflösen
-<!-- .element: class="fragment" data-fragment-index="4" -->
+**🏭 Factory Pattern:** Abhängigkeiten auflösen <!-- .element: class="fragment" data-fragment-index="3" -->
 
-**🎯 Strategy Pattern:** Business-Rules austauschbar machen
-<!-- .element: class="fragment" data-fragment-index="5" -->
+**🎯 Strategy Pattern:** Business-Rules austauschbar machen <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
@@ -2485,12 +2251,9 @@ public class CustomerController {
 # Modul 5: Singleton & Adapter mit Clean Architecture
 
 ## Lernziele
-* Singleton Pattern korrekt in Enterprise-Umgebungen anwenden 
-<!-- .element: class="fragment" -->
-* Adapter Pattern für Legacy-System Integration 
-<!-- .element: class="fragment" -->
-* Clean Architecture Prinzipien mit Pattern-Integration 
-<!-- .element: class="fragment" -->
+* Singleton Pattern korrekt in Enterprise-Umgebungen anwenden  <!-- .element: class="fragment" data-fragment-index="1" -->
+* Adapter Pattern für Legacy-System Integration  <!-- .element: class="fragment" data-fragment-index="2" -->
+* Clean Architecture Prinzipien mit Pattern-Integration  <!-- .element: class="fragment" data-fragment-index="3" -->
 * Thread-Safety und Performance-Optimierung 
 
 ---
@@ -2550,24 +2313,17 @@ public class CustomerServiceManager {
 
 ## Identifizierte Code-Smells
 
-* **Mixed Concerns**: Business-Logik vermischt mit Integration-Details 
-<!-- .element: class="fragment" -->
-* **Duplicate Code**: Ähnliche Integration-Logik in jeder Methode 
-<!-- .element: class="fragment" -->
-* **Tight Coupling**: Direkte Abhängigkeiten zu Legacy-APIs 
-<!-- .element: class="fragment" -->
-* **No Abstraction**: Keine einheitliche Service-Schnittstelle 
-<!-- .element: class="fragment" -->
-* **String-based Switching**: ID-Präfix bestimmt System-Auswahl 
-<!-- .element: class="fragment" -->
+* **Mixed Concerns**: Business-Logik vermischt mit Integration-Details  <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Duplicate Code**: Ähnliche Integration-Logik in jeder Methode  <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Tight Coupling**: Direkte Abhängigkeiten zu Legacy-APIs  <!-- .element: class="fragment" data-fragment-index="3" -->
+* **No Abstraction**: Keine einheitliche Service-Schnittstelle  <!-- .element: class="fragment" data-fragment-index="4" -->
+* **String-based Switching**: ID-Präfix bestimmt System-Auswahl  <!-- .element: class="fragment" data-fragment-index="5" -->
 * **Error-Prone**: Falsche Service-Kombinationen möglich 
 
 ### Was macht diese Lösung problematisch?
 
-* **Neue Legacy-Systeme**: Änderung in JEDER Service-Methode
-<!-- .element: class="fragment" -->
-* **XML-Parsing**: Überall verstreute Parsing-Logik
-<!-- .element: class="fragment" -->
+* **Neue Legacy-Systeme**: Änderung in JEDER Service-Methode <!-- .element: class="fragment" data-fragment-index="6" -->
+* **XML-Parsing**: Überall verstreute Parsing-Logik <!-- .element: class="fragment" data-fragment-index="7" -->
 * **Testing**: Schwierig zu mocken und isoliert zu testen
 
 ---
@@ -2900,117 +2656,7 @@ public class CompositeCustomerService implements CustomerService {
 
 ---
 
-## Übung
-
-<div class="interactive-question">
-
-### Praktische Übung: Singleton & Adapter
-#### Implementieren Sie ein Legacy-Integration System
-
-</div>
-
-**Aufgabe**: Erweitern Sie das System um weitere Legacy-Integrationen:
-* FileSystemAdapter für CSV-basierte Legacy-Daten
-<!-- .element: class="fragment" -->
-* DatabaseAdapter für direkte DB-Zugriffe
-<!-- .element: class="fragment" -->
-* Thread-safe ConnectionPoolSingleton
-<!-- .element: class="fragment" -->
-* Adapter Registry mit Failover-Mechanismus
-
-**Implementierungsschritte**:
-1. Neue Adapter-Implementierungen erstellen
-2. ConnectionPoolSingleton implementieren
-3. AdapterRegistry erweitern
-4. Fallback-Strategien testen
-
 ---
-
-# Praktische Übung - Integration Challenge
-
-<div class="interactive-question">
-
-## Ihre Aufgabe: Enterprise Service Integration
-#### Implementieren Sie eine vollständige Service-Integration mit allen Patterns
-
-</div>
-
-<div class="two-column">
-<div>
-
-### Szenario: Multi-Backend Customer Management
-* **Legacy SOAP Service** (nicht änderbar) 
-<!-- .element: class="fragment" -->
-* **Moderne REST API** (neu entwickelt) 
-<!-- .element: class="fragment" -->
-* **NoSQL Document Store** (MongoDB) 
-<!-- .element: class="fragment" -->
-* **Configuration Management** (Singleton) 
-<!-- .element: class="fragment" -->
-* **Query Builder** für komplexe Suchen 
-
-### Anforderungen
-* Factory Method für Service-Erstellung 
-<!-- .element: class="fragment" -->
-* Abstract Factory für Backend-Familien 
-<!-- .element: class="fragment" -->
-* Builder für Query-Erstellung 
-<!-- .element: class="fragment" -->
-* Prototype für Configuration-Templates 
-<!-- .element: class="fragment" -->
-* Adapter für Legacy-Integration 
-
-</div>
-<div>
-
-### Implementation Tasks
-1. **Service Factory Design** 
-   - CustomerServiceFactory mit Backend-spezifischen Implementierungen
-   - Abstract Factory für Service-Familien
-
-2. **Builder Implementation** 
-   - CustomerQueryBuilder mit Fluent Interface
-   - Type-safe Query-Erstellung
-
-3. **Adapter & Integration** 
-   - Legacy SOAP Adapter
-   - Configuration Prototype Registry
-   - Service Registry mit Failover
-
-Note:
-* WICHTIGE HANDS-ON ÜBUNG: Intensive Praxisarbeit
-<!-- .element: class="fragment" -->
-* Teams von 2-3 Personen bilden lassen nach Erfahrungslevel
-<!-- .element: class="fragment" -->
-* Jedes Team wählt bevorzugtes Backend (SOAP/REST/NoSQL)
-<!-- .element: class="fragment" -->
-* Betonen Sie: Integration ALLER Patterns (Factory Method, Abstract Factory, Builder, Prototype, Singleton)
-<!-- .element: class="fragment" -->
-* Präsentieren Sie konkrete Code-Beispiele und Refactoring-Szenarien
-<!-- .element: class="fragment" -->
-* Zirkulieren Sie zwischen Teams, bieten Sie gezielte Diskussionsimpulse an
-<!-- .element: class="fragment" -->
-* Nach 30 Min: Zwischenstand abfragen, eventuell gemeinsame Patterns klären
-<!-- .element: class="fragment" -->
-* Letzten 15 Min für Diskussion der Lösungsansätze nutzen
-<!-- .element: class="fragment" -->
-* Bereiten Sie Refactoring-Beispiele vor als Diskussionsgrundlage
-<!-- .element: class="fragment" -->
-* WICHTIG: Code-Analyse und Pattern-Erkennung als Aufwärmung verwenden
-<!-- .element: class="fragment" -->
-* Bei Zeitnot: konzentrieren Sie sich auf Factory Method + Builder Pattern
-<!-- .element: class="fragment" -->
-<!-- .element: class="notes" -->
-
-### Bonus Challenges
-* **Performance Optimization** mit Caching 
-<!-- .element: class="fragment" -->
-* **Circuit Breaker** Pattern für Legacy-Services 
-<!-- .element: class="fragment" -->
-* **Monitoring & Observability** Integration 
-
-</div>
-</div>
 
 ---
 
@@ -3029,28 +2675,20 @@ Note:
 <div>
 
 ## Was wir behandelt haben
-* **Creational Patterns** in Enterprise-Kontexten 
-<!-- .element: class="fragment" -->
-* **Legacy-Code Refactoring** mit Pattern-basierten Lösungen 
-<!-- .element: class="fragment" -->
-* **Performance-Optimierung** durch intelligente Objekterstellung 
-<!-- .element: class="fragment" -->
-* **Clean Architecture** Integration mit Design Patterns 
-<!-- .element: class="fragment" -->
+* **Creational Patterns** in Enterprise-Kontexten  <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Legacy-Code Refactoring** mit Pattern-basierten Lösungen  <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Performance-Optimierung** durch intelligente Objekterstellung  <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Clean Architecture** Integration mit Design Patterns  <!-- .element: class="fragment" data-fragment-index="4" -->
 * **SOLID-Prinzipien** in der Praxis 
 
 </div>
 <div>
 
 ## Zentrale Erkenntnisse
-* **Factory Method** löst Code-Smells durch Polymorphismus 
-<!-- .element: class="fragment" -->
-* **Abstract Factory** strukturiert Service-Familien elegant 
-<!-- .element: class="fragment" -->
-* **Builder Pattern** macht komplexe Objekterstellung verständlich 
-<!-- .element: class="fragment" -->
-* **Prototype Pattern** optimiert Performance bei ähnlichen Objekten 
-<!-- .element: class="fragment" -->
+* **Factory Method** löst Code-Smells durch Polymorphismus  <!-- .element: class="fragment" data-fragment-index="5" -->
+* **Abstract Factory** strukturiert Service-Familien elegant  <!-- .element: class="fragment" data-fragment-index="6" -->
+* **Builder Pattern** macht komplexe Objekterstellung verständlich  <!-- .element: class="fragment" data-fragment-index="7" -->
+* **Prototype Pattern** optimiert Performance bei ähnlichen Objekten  <!-- .element: class="fragment" data-fragment-index="8" -->
 * **Adapter Pattern** ermöglicht nahtlose Legacy-Integration 
 
 </div>
@@ -3058,13 +2696,10 @@ Note:
 
 <div class="highlight-box accent">
 
-## Morgen: Tag 2 Vorschau
-* **Structural Patterns**: Decorator, Composite, Proxy
-<!-- .element: class="fragment" -->
-* **Advanced Enterprise Patterns**: Facade, Bridge, Flyweight
-<!-- .element: class="fragment" -->
-* **Microservice Architecture** Integration
-<!-- .element: class="fragment" -->
+## Nächste Schritte: Structural Patterns
+* **Structural Patterns**: Decorator, Composite, Proxy <!-- .element: class="fragment" data-fragment-index="9" -->
+* **Advanced Enterprise Patterns**: Facade, Bridge, Flyweight <!-- .element: class="fragment" data-fragment-index="10" -->
+* **Microservice Architecture** Integration <!-- .element: class="fragment" data-fragment-index="11" -->
 * **Event-Driven Patterns** für reactive Systems
 
 </div>
@@ -3085,13 +2720,10 @@ Note:
 <div>
 
 ## Nächste Schritte
-* **Pattern-Integration** in eigenen Projekten testen 
-<!-- .element: class="fragment" -->
-* **Code-Smell Detection** Tools einsetzen 
-<!-- .element: class="fragment" -->
-* **Legacy-Refactoring** Strategien entwickeln 
-<!-- .element: class="fragment" -->
-* **Vorbereitung auf Tag 2** Structural Patterns 
+* **Pattern-Integration** in eigenen Projekten testen  <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Code-Smell Detection** Tools einsetzen  <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Legacy-Refactoring** Strategien entwickeln  <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Fortsetzung** mit Structural Patterns 
 
 </div>
 </div>

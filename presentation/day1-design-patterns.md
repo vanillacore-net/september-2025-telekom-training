@@ -1,4 +1,71 @@
-# Day 1: Software-Architektur
+---
+title: Day 1 Design Patterns - Deep Dive
+description: Comprehensive design patterns training with practical examples
+tags: design-patterns, workshop, telekom, architecture, training, day1
+type: slide
+slideOptions:
+  theme: white
+  transition: slide
+  backgroundTransition: fade
+  center: false
+  progress: true
+  controls: true
+  mouseWheel: false
+  history: true
+  keyboard: true
+  overview: true
+  touch: true
+  fragments: true
+  width: 1920
+  height: 1080
+  margin: 0.05
+  minScale: 0.5
+  maxScale: 2.0
+---
+
+<style>
+/* HedgeDoc Presentation Styles */
+.reveal {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+
+.reveal .slides {
+  font-size: 1.4em !important; /* Main text readable size */
+  line-height: 1.3 !important;
+}
+
+.reveal .slides section {
+  text-align: left !important;
+  padding: 20px !important;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-weight: 600;
+  text-align: left !important;
+  margin: 0 0 15px 0 !important;
+  color: #333 !important;
+}
+
+.reveal h1 { font-size: 2.2em !important; }
+.reveal h2 { font-size: 1.8em !important; }
+.reveal h3 { font-size: 1.4em !important; }
+.reveal h4 { font-size: 1.2em !important; }
+
+.reveal pre {
+  width: 98% !important; /* Full slide width for code */
+  font-size: 1.0em !important; /* Moderate code reduction */
+  text-align: left !important;
+  margin: 15px 0 !important;
+}
+
+.reveal p, .reveal li {
+  text-align: left !important;
+  margin: 0 0 8px 0 !important;
+}
+</style>
+
+# Day 1: Software-Architektur  
 ## Bring your own brain and use it!
 
 ---

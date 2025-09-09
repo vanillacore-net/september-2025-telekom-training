@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.0] [2025-01-09] - URGENT: Remove All Exercises from Presentations
+
+### Removed
+- All exercise (Übung) sections from all presentations
+- Complete removal of practical exercises from day1, day2, and day3 presentations  
+- Removed exercise references from README and template files
+- Cleaned up slide structures after exercise removal
+
+### Changed
+- Updated presentation flow to focus purely on theoretical content
+- Removed hands-on exercise references from course descriptions
+
 ## [1.4.2] [2025-09-09] - URGENT: Fix HedgeDoc Fragment Reveal Functionality
 
 ### Fixed
