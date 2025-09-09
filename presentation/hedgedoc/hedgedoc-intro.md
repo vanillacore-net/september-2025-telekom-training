@@ -24,277 +24,68 @@ slideOptions:
 
 <style>
 /* HedgeDoc Presentation Styles */
-.reveal {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 300;
-}
-
-/* Critical: Fix content overflow and enforce left alignment */
-.reveal .slides {
-  font-size: 26px !important; /* Increased by 20% for better readability (22px * 1.20) */
-  line-height: 1.3 !important;
-}
-
-/* Override reveal.js center alignment - force left alignment for all content */
-.reveal .slides section,
-.reveal .slides section > *,
-.reveal .center {
-  text-align: left !important;
-}
-
-.reveal .slides section {
-  height: 100%;
-  width: 100%;
-  max-width: 100vw;
-  overflow-y: auto !important; /* Allow scrolling if needed */
-  overflow-x: hidden;
-  padding: 20px 25px 25px 25px !important; /* Reduce top padding to move content up */
-  box-sizing: border-box;
-  text-align: left !important; /* Ensure all content is left-aligned */
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important; /* Move content to top */
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+  color: #2c2c2c !important;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-weight: normal !important;
+  text-transform: none !important;
+  text-decoration: none !important;
+  line-height: 1.2 !important;
 }
 
 .reveal h1 {
-  font-size: 3.0em !important; /* Significantly increased for better visibility */
-  color: #2c2c2c;
-  font-weight: 700 !important; /* Bolder weight for more prominence */
-  text-align: left !important;
-  margin-top: 0.8em !important;
-  margin-bottom: 0.5em !important; /* More spacing below headline */
-  border-bottom: 3px solid #666666 !important; /* Visual separator */
-  padding-bottom: 0.2em !important; /* Padding above border */
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h1:first-child {
-  margin-top: 0 !important;
+  font-size: 2.5em !important;
+  margin-bottom: 0.5em !important;
 }
 
 .reveal h2 {
-  font-size: 1.68em !important; /* Increased by 20% (1.4em * 1.20) */
-  color: #2c2c2c;
-  font-weight: 500 !important;
-  text-align: left !important;
-  margin-top: 0.7em !important;
+  font-size: 1.8em !important;
+  margin-top: 0.8em !important;
   margin-bottom: 0.4em !important;
 }
 
-/* First heading on slide should not have top margin */
-.reveal .slides section > h2:first-child {
-  margin-top: 0 !important;
-}
-
 .reveal h3 {
-  font-size: 1.44em !important; /* Increased by 20% (1.2em * 1.20) */
-  font-weight: 400 !important;
-  text-align: left !important;
+  font-size: 1.3em !important;
   margin-top: 0.6em !important;
   margin-bottom: 0.3em !important;
 }
 
-/* First heading on slide should not have top margin */
-.reveal .slides section > h3:first-child {
-  margin-top: 0 !important;
-}
-
-.reveal h4, .reveal h5, .reveal h6 {
-  font-weight: 400 !important;
-  text-align: left !important;
-  margin-top: 0.5em !important;
-  margin-bottom: 0.3em !important;
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h4:first-child,
-.reveal .slides section > h5:first-child,
-.reveal .slides section > h6:first-child {
-  margin-top: 0 !important;
-}
-
 .reveal p, .reveal li {
-  font-weight: 300 !important;
-  text-align: left !important;
+  font-size: 1.0em !important;
+  line-height: 1.4 !important;
+  margin-top: 0.3em !important;
 }
 
-/* Add proper paragraph spacing */
-.reveal p {
-  margin-bottom: 0.3em !important;
-  margin-top: 0.6em !important; /* Add spacing between headlines and content */
-}
-
-/* Prevent text from being too large */
-.reveal .slides {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-/* Lists should not overflow */
-.reveal ul, .reveal ol {
-  max-width: 90%;
-  margin-left: 0 !important;
-  padding-left: 1.5em !important;
-  list-style-type: none;
-  margin-bottom: 0.3em !important;
-  margin-top: 0.6em !important; /* Add spacing between headlines and content */
-}
-
-/* Add spacing between list items for better readability */
-.reveal ul li, .reveal ol li {
-  margin-bottom: 0.3em !important;
-}
-
-.reveal ul li:last-child, .reveal ol li:last-child {
-  margin-bottom: 0 !important;
-}
-
-.reveal ul li::before {
-  content: "▸";
-  color: #666666;
-  font-weight: 400;
-  display: inline-block;
-  width: 1em;
-  margin-left: -1em;
-}
-
-/* Code blocks sizing - Full Width Optimized */
 .reveal pre {
-  font-size: 0.85em !important; /* Reduced font size to fit visual canvas */
-  max-height: calc(100vh - 200px); /* Use full available screen height */
-  overflow-y: auto !important;
-  background: #2d3748 !important; /* Dark background for better contrast */
-  color: #e2e8f0 !important; /* Light text for contrast */
-  border: 1px solid #4a5568; /* Subtle darker border */
-  width: 88% !important; /* Use most of screen width */
-  max-width: 88% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  font-size: 1.0em !important;  /* SAME AS TEXT */
+  width: 95% !important;
+  max-width: 95% !important;
+  background: #2d3748 !important;
+  color: #e2e8f0 !important;
+  padding: 0.5em !important;
   border-radius: 8px !important;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+  margin: 0.5em auto !important;
+  overflow-x: auto !important;
 }
 
-.reveal .two-column {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
+.reveal pre code {
+  font-size: 1.0em !important;  /* SAME AS TEXT */
+  line-height: 1.3 !important;
+  font-family: 'Monaco', 'Menlo', 'Consolas', monospace !important;
+  color: #e2e8f0 !important;
+  background: transparent !important;
+  padding: 0 !important;
 }
 
-.reveal .two-column > div {
-  flex: 1;
+.reveal code {
+  font-size: 1.0em !important;  /* SAME AS TEXT */
+  background: #f0f0f0 !important;
+  color: #d73a49 !important;
+  padding: 0.1em 0.3em !important;
+  border-radius: 3px !important;
 }
 
-.workshop-header {
-  text-align: center;
-  background: #ffffff;
-  color: #333;
-  padding: 75px; /* Scaled for FHD (40px * 1.875) */
-  margin: -38px; /* Scaled for FHD (-20px * 1.875) */
-  border-radius: 15px; /* Scaled for FHD (8px * 1.875) */
-}
-
-.workshop-header h1,
-.workshop-header h2 {
-  color: #333;
-  text-shadow: none;
-}
-
-.pattern-definition {
-  background-color: #F5F5F5;
-  border-left: 8px solid #666666; /* Scaled for FHD (4px * 2) */
-  padding: 25px; /* Scaled for FHD (20px * 1.875) */
-  margin: 38px 0; /* Scaled for FHD (20px * 1.875) */
-  border-radius: 8px; /* Scaled for FHD (4px * 2) */
-}
-
-.highlight-box {
-  background-color: #F5F5F5;
-  border-left: 4px solid #666666;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 4px;
-}
-
-.highlight-box.warning {
-  border-left-color: #8B0000;
-  background-color: #F5F5DC;
-}
-
-.highlight-box.accent {
-  border-left-color: #4a4a4a;
-  background-color: #F5F5F5;
-}
-
-.code-example {
-  background: #f8f9fa;
-  color: #333;
-  padding: 24px 30px;
-  border-radius: 10px;
-  margin: 20px auto;
-  font-size: 1.2em; /* Significantly increased font size for better readability */
-  width: 86% !important; /* Use most of screen width */
-  max-width: 86% !important;
-  box-sizing: border-box;
-  border: 1px solid #e9ecef;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.code-example h5 {
-  color: #333;
-  margin-top: 0;
-  font-weight: 600;
-  font-size: 1.3em;
-  margin-bottom: 0.8em;
-}
-
-.code-example pre {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-}
-
-.code-example pre code {
-  font-size: 1.05em !important;
-}
-
-.interactive-question {
-  background-color: #F5F5F5;
-  border: 2px solid #666666;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.progress-indicator {
-  display: flex;
-  justify-content: space-around;
-  margin: 20px 0;
-}
-
-.progress-step {
-  padding: 10px 15px;
-  border-radius: 20px;
-  font-weight: 400;
-}
-
-.progress-step.completed {
-  background-color: #2c2c2c;
-  color: white;
-}
-
-.progress-step.current {
-  background-color: #006400;
-  color: white;
-}
-
-.progress-step.pending {
-  background-color: #F5F5F5;
-  color: #666666;
-}
-
-/* Fragment Visibility Control - Critical Fix */
 .reveal .fragment {
   visibility: hidden;
   opacity: 0;
@@ -304,203 +95,32 @@ slideOptions:
 .reveal .fragment.visible {
   visibility: visible;
   opacity: 1;
-  transition: opacity 0.3s ease, visibility 0s linear 0s;
+  transition: opacity 0.3s ease;
 }
 
-/* Ensure fragments are invisible until explicitly revealed */
-.reveal .fragment:not(.visible) {
-  visibility: hidden !important;
-  opacity: 0 !important;
+.reveal .slide-background {
+  background-color: #ffffff !important;
 }
 
-.reveal .fragment.highlight-green {
-  color: #2c2c2c;
-  font-weight: 600;
+.reveal section {
+  text-align: left !important;
 }
 
-.reveal .fragment.highlight-red {
-  color: #8B0000;
-  font-weight: 500;
+.reveal section h1,
+.reveal section h2,
+.reveal section h3 {
+  text-align: center !important;
 }
 
-@media screen and (max-width: 768px) {
-  .reveal .two-column {
-    flex-direction: column;
-    gap: 20px;
-  }
-}
-/* Hide Speaker Notes in Presentation Mode - Enhanced */
-/* Hide paragraphs that start with "Note:" */
-.reveal .slides section p:has-text("Note:"),
-.reveal .slides section p[data-fragment-index]:has-text("Note:") {
-  display: none !important;
-}
-
-/* Hide HTML comments that contain speaker notes */
-.reveal .slides section .notes,
-.reveal .slides section [class*="note"],
-.reveal .slides section [class*="speaker"] {
-  display: none !important;
-}
-
-/* Hide reveal.js built-in notes */
-.reveal .notes,
-.reveal aside.notes,
-.reveal .speaker-notes {
-  display: none !important;
-}
-
-/* Hide any element with "notes" class */
-.notes, 
-.speaker-notes,
-.presentation-notes {
-  display: none !important;
-}
-
-/* More aggressive hiding of Note: content */
-.reveal .slides section p:first-child {
-  /* Check if this paragraph starts with Note: and hide it */
-}
-
-/* Hide elements marked with class="notes" */
-.element.notes {
-  display: none !important;
-}
-
-/* CRITICAL: Hide speaker notes patterns - enhanced selector */
-/* Hide any paragraph starting with "Note:" and following content until next section */
-.reveal .slides section p:first-line:contains("Note:") {
-  display: none !important;
-}
-
-/* Hide content that comes after "Note:" on slides */
-.reveal .slides section p + ul,
-.reveal .slides section p + ol {
-  /* Only hide lists that follow paragraphs starting with Note: */
-}
-
-/* More aggressive approach: hide all speaker note blocks */
-.reveal .slides section *:has(+ *[class*="notes"]),
-.reveal .slides section *[class*="notes"] + *,
-.reveal .slides section *[class*="notes"] {
-  display: none !important;
-}
-
-/* Target specific speaker notes pattern: Note: followed by list */
-.reveal .slides section {
-  /* JS will need to handle the Note: + list pattern */
-}
-
-/* VanillaCore Logo Styling - Option 1: Small logo in top-right corner */
-.vanilla-logo {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  max-width: 80px;
-  max-height: calc(100vh - 200px);
-  z-index: 1000;
-  pointer-events: none;
-}
-
-/* SELECTED: Option 1 - Small logo in top-right corner for content slides */
-.reveal .slides section:not(.title-slide)::after {
-  content: '';
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  width: 80px;
-  height: 80px;
-  background-image: url('/images/VanillaCore_Vertical.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 1000;
-  pointer-events: none;
-  opacity: 0.8;
+.workshop-header {
+  text-align: center !important;
+  padding: 2em 0 !important;
 }
 
 .vanilla-logo img {
-  width: 100%;
-  height: auto;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* Logo for title slides - centered in middle of slide */
-.title-slide .vanilla-logo {
-  max-width: 300px;
-  max-height: calc(100vh - 250px);
-  position: static;
-  display: block;
-  margin: 0 auto 60px auto;
-  text-align: center;
-}
-
-/* Remove corner logo from title slides */
-.title-slide::after {
-  display: none !important;
-}
-
-/* Center title slide content with logo above title */
-.title-slide {
-  text-align: center !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  padding: 60px 40px !important;
-  min-height: 100vh;
-}
-
-/* Style title slide headings to be centered below logo */
-.title-slide h1,
-.title-slide h2 {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 100% !important;
-}
-
-.title-slide h1 {
-  margin-top: 0 !important;
-  margin-bottom: 20px !important;
-  font-size: 2.88em !important; /* Increased by 20% (2.4em * 1.20) */
-  font-weight: 600 !important;
-}
-
-.title-slide h2 {
-  margin-top: 0 !important;
-  margin-bottom: 40px !important;
-  font-size: 2.16em !important; /* Increased by 20% (1.8em * 1.20) */
-  color: #555555 !important;
-  font-weight: 400 !important;
-}
-
-/* Subtle watermark for content slides */
-.content-slide::after {
-  content: "";
-  background-image: url('/images/VanillaCore_Vertical.png');
-  background-size: 80px;
-  background-repeat: no-repeat;
-  background-position: bottom 10px right 10px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0.1;
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Hide reveal.js progress bar and controls to remove orange box artifact */
-.reveal .progress {
-  display: none !important;
-}
-
-.reveal .controls {
-  display: none !important;
+  max-height: 150px !important;
+  margin: 0 auto 1em auto !important;
+  display: block !important;
 }
 </style>
 

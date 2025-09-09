@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.3.3] [2024-12-30] - CSS Standardization and Code Font Fix
+
+### Fixed
+- **CRITICAL - Code Font Size**: Fixed code font size to match text font size (1.0em) across ALL presentations
+  - Code blocks now use same font size as regular text for better readability
+  - Consistent code display across all 5 presentations
+- **CSS Standardization**: Applied identical CSS across ALL presentations
+  - Replaced custom CSS with standardized design system
+  - Ensures consistent appearance and behavior
+  - Fixed code block fragment reveals
+- **Fragment Reveals**: Enhanced reveal functionality with proper transitions
+  - Smooth fade-in animations for all content
+  - Consistent fragment behavior across presentations
+
+### Enhanced
+- **Professional Design**: Clean, minimal CSS focused on readability
+- **Consistent Typography**: Unified font sizes and spacing
+- **Code Readability**: Improved code block styling with proper syntax highlighting
+
 ## [1.3.2] [2024-12-30] - Day1 Critical Issues Fixed
 
 ### Fixed
