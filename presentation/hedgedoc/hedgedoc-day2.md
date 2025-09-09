@@ -156,9 +156,12 @@ slideOptions:
 
 /* Code blocks sizing */
 .reveal pre {
-  font-size: 0.72em !important; /* Increased by 20% (0.6em * 1.20) */
+  font-size: 0.85em !important; /* Further increased for better readability */
   max-height: 500px;
   overflow: auto !important;
+  background: #f8f8f8 !important; /* Light gray background */
+  color: #333 !important; /* Dark text for contrast */
+  border: 1px solid #e0e0e0; /* Subtle border */
 }
 
 .reveal .two-column {
@@ -214,16 +217,18 @@ slideOptions:
 }
 
 .code-example {
-  background: #2d3748;
-  color: #e2e8f0;
+  background: #f5f5f5;
+  color: #333;
   padding: 25px; /* Scaled for FHD (20px * 1.875) */
   border-radius: 15px; /* Scaled for FHD (8px * 1.875) */
   margin: 38px 0; /* Scaled for FHD (20px * 1.875) */
+  font-size: 1.1em; /* Increased font size for better readability */
 }
 
 .code-example h5 {
-  color: #666666;
+  color: #333;
   margin-top: 0;
+  font-weight: 600;
 }
 
 .interactive-question {
