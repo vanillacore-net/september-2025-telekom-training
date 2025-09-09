@@ -204,8 +204,8 @@ slideOptions:
 }
 
 .highlight-box.warning {
-  border-left-color: #D84315;
-  background-color: #ffeaa7;
+  border-left-color: #8B0000;
+  background-color: #F5F5DC;
 }
 
 .highlight-box.accent {
@@ -253,7 +253,7 @@ slideOptions:
 }
 
 .progress-step.current {
-  background-color: #2E7D32;
+  background-color: #006400;
   color: white;
 }
 
@@ -268,7 +268,7 @@ slideOptions:
 }
 
 .reveal .fragment.highlight-red {
-  color: #D84315;
+  color: #8B0000;
   font-weight: 500;
 }
 

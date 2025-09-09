@@ -12,12 +12,12 @@
     --text-color: #333333;
     --background-color: #ffffff;
     --header-color: #1a1a1a;
-    --accent-color: #2E7D32; /* Professional dark green */
+    --accent-color: #006400; /* Much darker green */
     --secondary-color: #333333; /* Text Color */
-    --success-color: #2E7D32;
-    --warning-color: #D84315; /* Professional dark orange */
+    --success-color: #006400;
+    --warning-color: #8B0000; /* Much darker red */
     --info-color: #0277BD; /* Professional dark blue */
-    --error-color: #D84315;
+    --error-color: #8B0000;
 }
 
 /* Base Reveal.js Styling Override */

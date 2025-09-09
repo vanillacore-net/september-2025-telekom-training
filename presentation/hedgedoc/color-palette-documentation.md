@@ -12,8 +12,8 @@ This document defines the professional color palette applied across all presenta
 - **Background:** `#ffffff` - Pure white for clean appearance
 
 ### Accent Colors  
-- **Accent Green:** `#2E7D32` - Professional dark green for highlights and progress
-- **Warning/Error:** `#D84315` - Professional dark orange for warnings and errors
+- **Accent Green:** `#006400` - Much darker green for highlights and progress
+- **Warning/Error:** `#8B0000` - Much darker red for warnings and errors
 - **Info:** `#0277BD` - Professional dark blue for informational content
 
 ### Supporting Colors
@@ -38,10 +38,10 @@ This document defines the professional color palette applied across all presenta
 ## Implementation Notes
 
 ### Changes Made
-1. **Replaced bright orange (#ff9800)** with professional dark orange (#D84315)
+1. **Replaced bright orange (#ff9800)** with much darker red (#8B0000)
 2. **Removed unnecessary italic styling** in fragment highlights
-3. **Updated progress indicators** to use professional green (#2E7D32)
-4. **Standardized warning colors** to dark orange (#D84315)
+3. **Updated progress indicators** to use much darker green (#006400)
+4. **Standardized warning colors** to much darker red (#8B0000)
 5. **Enhanced contrast** for better accessibility
 
 ### CSS Variables Updated
@@ -50,10 +50,10 @@ This document defines the professional color palette applied across all presenta
     --text-color: #333333;
     --background-color: #ffffff;
     --header-color: #1a1a1a;
-    --accent-color: #2E7D32;
-    --warning-color: #D84315;
+    --accent-color: #006400;
+    --warning-color: #8B0000;
     --info-color: #0277BD;
-    --error-color: #D84315;
+    --error-color: #8B0000;
 }
 ```
 
