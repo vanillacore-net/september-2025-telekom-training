@@ -48,9 +48,12 @@ slideOptions:
   max-width: 100vw;
   overflow-y: auto !important; /* Allow scrolling if needed */
   overflow-x: hidden;
-  padding: 25px !important; /* Scaled padding for FHD (20px * 1.875) */
+  padding: 20px 25px 25px 25px !important; /* Reduce top padding to move content up */
   box-sizing: border-box;
   text-align: left !important; /* Ensure all content is left-aligned */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important; /* Move content to top */
 }
 
 .reveal h1 {
@@ -201,8 +204,8 @@ slideOptions:
 }
 
 .highlight-box.warning {
-  border-left-color: #ff9800;
-  background-color: #fff3e0;
+  border-left-color: #D84315;
+  background-color: #ffeaa7;
 }
 
 .highlight-box.accent {
@@ -250,7 +253,7 @@ slideOptions:
 }
 
 .progress-step.current {
-  background-color: #ff9800;
+  background-color: #2E7D32;
   color: white;
 }
 
@@ -265,8 +268,8 @@ slideOptions:
 }
 
 .reveal .fragment.highlight-red {
-  color: #666666;
-  font-style: italic;
+  color: #D84315;
+  font-weight: 500;
 }
 
 @media screen and (max-width: 768px) {
@@ -285,14 +288,32 @@ slideOptions:
   display: none !important;
 }
 
-/* VanillaCore Logo Styling */
+/* VanillaCore Logo Styling - Option 1: Small logo in top-right corner */
 .vanilla-logo {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
-  max-width: 150px;
-  max-height: 150px;
+  top: 25px;
+  right: 25px;
+  max-width: 80px;
+  max-height: 80px;
   z-index: 1000;
+  pointer-events: none;
+}
+
+/* SELECTED: Option 1 - Small logo in top-right corner for content slides */
+.reveal .slides section:not(.title-slide)::after {
+  content: '';
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  background-image: url('/images/VanillaCore_Vertical.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.8;
 }
 
 .vanilla-logo img {
