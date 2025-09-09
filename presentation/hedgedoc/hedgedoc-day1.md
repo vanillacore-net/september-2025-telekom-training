@@ -424,6 +424,13 @@ slideOptions:
 # Tag 1: Design Patterns Workshop
 ## Creational Patterns in Enterprise-Architekturen
 
+Note:
+- Begrüßen Sie die Teilnehmer herzlich
+- Stellen Sie sich kurz vor (Name, Hintergrund)
+- Überprüfen Sie die technische Ausstattung
+- Zeit: ca. 5 Minuten
+<!-- .element: class="notes" -->
+
 </div>
 
 ---
@@ -443,6 +450,14 @@ slideOptions:
 - Abstract Factory in geschichteten Architekturen <!-- .element: class="fragment" -->
 - Builder Pattern für komplexe Objekterstellung <!-- .element: class="fragment" -->
 - SOLID-Prinzipien praktisch umsetzen <!-- .element: class="fragment" -->
+
+Note:
+- Betonen Sie die praktische Relevanz der Lernziele
+- Fragen Sie nach Vorerfahrungen mit Design Patterns
+- Erwähnen Sie, dass alle Beispiele auf Telekom-Szenarien basieren
+- Heben Sie hervor: "Wir analysieren echten Legacy-Code"
+- Zeit: ca. 10 Minuten für Diskussion und Erwartungsabfrage
+<!-- .element: class="notes" -->
 
 <!-- Speaker Notes: Herzlich willkommen zum Design Patterns Workshop. Tag 1 konzentriert sich auf Creational Patterns in Enterprise-Telekom-Umgebungen. Wir werden Legacy-Code analysieren und refactoring mit Pattern-basierten Lösungen durchführen. -->
 
@@ -471,7 +486,14 @@ slideOptions:
 </div>
 </div>
 
-<!-- Speaker Notes: Tag 1 behandelt Creational Patterns mit Fokus auf Telekom Legacy-Systeme. Jedes Modul baut aufeinander auf - von einfacher Code-Analyse bis zu komplexen Factory-Hierarchien in geschichteten Architekturen. -->
+Note:
+- Halten Sie sich strikt an die Zeitvorgaben - jedes Modul ist sorgfältig getimed
+- Kündigen Sie Kaffeepausen rechtzeitig an (10:30 und 15:00)
+- Ermutigen Sie zur aktiven Teilnahme in den Hands-on-Phasen
+- Nach dem Mittagessen: kurzer Energizer oder Auflockerung
+- Builder Pattern ist oft das komplexeste - planen Sie mehr Zeit für Fragen
+- Hands-on Übungen sind essentiell - lassen Sie ausreichend Zeit dafür
+<!-- .element: class="notes" -->
 
 ---
 
@@ -482,6 +504,13 @@ slideOptions:
 - Factory Method Pattern verstehen und anwenden <!-- .element: class="fragment" -->
 - Refactoring-Strategien entwickeln <!-- .element: class="fragment" -->
 - Single Responsibility Principle praktisch umsetzen <!-- .element: class="fragment" -->
+
+Note:
+- Betonen Sie die praktische Relevanz für Telekom Legacy-Systeme
+- Erklären Sie, dass wir mit Code-Smell Analyse beginnen, bevor wir Patterns einführen
+- Zeit: ca. 5 Minuten für Lernziele
+- Interaktive Frage: "Welche Code-Probleme kennen Sie aus Ihren Projekten?"
+<!-- .element: class="notes" -->
 
 ---
 
@@ -496,6 +525,21 @@ Ein typisches Problem in gewachsenen Telekom-Systemen: Die Kundenbetreuung muss 
 - **Feature Envy**: Methode manipuliert mehr Daten als sie besitzt <!-- .element: class="fragment" -->
 - **Duplicate Code**: Wiederholte Zuweisungen in jedem Case <!-- .element: class="fragment" -->
 - **Open/Closed Principle Verletzung**: Neue Kunden-Typen erfordern Änderung bestehender Methode <!-- .element: class="fragment" -->
+
+Note:
+- INTERAKTIVE ÜBUNG: Verwenden Sie Exercise 1 "Code Smell Detective" aus day1-exercises.md
+- Lassen Sie die Teilnehmer folgende Code-Smells identifizieren:
+  * Long Method (jeder if-block ist zu lang)
+  * Feature Envy (manipuliert mehr Daten als sie besitzt)  
+  * Switch Statement (typ-basierte Verzweigung)
+  * Duplicate Code (ähnliche Muster in jedem branch)
+  * Open/Closed Principle Verletzung
+- Diskutieren Sie Auswirkungen: "Was passiert bei neuen Kunden-Typen?"
+- Verbinden Sie zu SOLID-Prinzipien, besonders Open/Closed
+- Zeit: 15 Minuten (5 Min Identifikation + 10 Min Diskussion)
+- PRAKTISCHE FRAGE: "Kennen Sie ähnliche Switch-Statements in Ihren Telekom-Systemen?"
+- Erwartete Antworten sammeln und für Factory Method Motivation nutzen
+<!-- .element: class="notes" -->
 
 ---
 
@@ -538,6 +582,15 @@ public class CustomerManager {
 
 </div>
 
+Note:
+- Zeigen Sie den Code langsam, lassen Sie die Teilnehmer Code-Smells identifizieren
+- Betonen Sie die vielen Wiederholungen in den switch-cases
+- Fragen Sie: "Was passiert, wenn wir einen neuen Kunden-Typ hinzufügen?"
+- Hinweis auf Long Parameter List und fehlende Kapselung
+- Zeit: ca. 8 Minuten für Code-Analyse
+- Bereiten Sie vor: "Wie würden Sie diesen Code verbessern?"
+<!-- .element: class="notes" -->
+
 ---
 
 # Factory Method Pattern - Konzept
@@ -567,6 +620,15 @@ Product (interface)
 ConcreteProduct implements Product
 ```
 
+Note:
+- Erklären Sie das Pattern-Konzept anhand des UML-Diagramms
+- Betonen Sie den Unterschied zwischen Creator und Product-Hierarchie
+- Wichtig: Factory Method ist NICHT Simple Factory - erklären Sie den Unterschied
+- Verbindung zu unserem Customer-Problem herstellen
+- Zeit: ca. 12 Minuten für Pattern-Erklärung
+- Frage: "Wo könnten Sie dieses Pattern in Ihren Projekten einsetzen?"
+<!-- .element: class="notes" -->
+
 ---
 
 # Refactoring Schritt 1: Kunden-Abstraktion
@@ -586,6 +648,13 @@ public interface Customer {
 ```
 
 </div>
+
+Note:
+- Erklären Sie die Einführung des Customer-Interfaces als ersten Refactoring-Schritt
+- Betonen Sie die gemeinsamen Methoden für alle Kunden-Typen
+- Wichtig: processContract() ermöglicht kunden-spezifische Geschäftslogik
+- Zeit: ca. 5 Minuten für Interface-Erklärung
+<!-- .element: class="notes" -->
 
 ### Konkrete Implementierung - PrivateCustomer
 
@@ -622,6 +691,14 @@ public class PrivateCustomer implements Customer {
 ```
 
 </div>
+
+Note:
+- Zeigen Sie, wie die kunden-spezifische Logik in der Implementierung gekapselt wird
+- Erklären Sie die private Methoden validatePersonalData() und setupBasicServices()
+- Betonen Sie die Kapselung der Geschäftsregeln pro Kunden-Typ
+- Zeit: ca. 8 Minuten für konkrete Implementierung
+- Frage: "Welche Geschäftsregeln würden Sie für BusinessCustomer erwarten?"
+<!-- .element: class="notes" -->
 
 ---
 
@@ -663,6 +740,15 @@ public abstract class CustomerFactory {
 
 </div>
 
+Note:
+- Erklären Sie die Kombination von Factory Method und Template Method Pattern
+- Betonen Sie die gemeinsame Geschäftslogik im Template Method
+- Wichtig: Factory Method ist protected, nicht public
+- Zeigen Sie den Aufruf-Flow: processNewCustomer() -> createCustomer() -> validate -> persist
+- Zeit: ca. 15 Minuten - das ist der Kern des Patterns
+- Frage: "Welche Geschäftslogik würden Sie als gemeinsam identifizieren?"
+<!-- .element: class="notes" -->
+
 ---
 
 # Konkrete Factory-Implementierungen
@@ -693,6 +779,15 @@ public class PremiumCustomerFactory extends CustomerFactory {
 ```
 
 </div>
+
+Note:
+- Betonen Sie die Einfachheit der konkreten Factory-Implementierungen
+- Erklären Sie: Nur die Factory Method muss implementiert werden
+- Neue Kunden-Typen = neue Factory-Klasse, kein bestehender Code geändert
+- Verbindung zu Open/Closed Principle
+- Zeit: ca. 5 Minuten für konkrete Factories
+- Praktische Übung vorbereiten: "Implementieren Sie StudentCustomerFactory"
+<!-- .element: class="notes" -->
 
 ---
 
@@ -733,6 +828,16 @@ public enum CustomerType {
 </div>
 </div>
 
+Note:
+- Verbinden Sie Factory Method Pattern explizit zu SOLID-Prinzipien
+- SRP: Jede Klasse hat genau eine Verantwortung
+- OCP: Erweiterung ohne Modifikation durch neue Factory-Klassen
+- DIP: Abhängigkeit zu Abstraktion, nicht zu konkreten Klassen
+- Moderne Alternative mit Java 8+: Zeigen Sie funktionale Ansätze
+- Zeit: ca. 10 Minuten für SOLID-Integration
+- Diskussion: "Welche SOLID-Prinzipien verletzt unser ursprünglicher Code?"
+<!-- .element: class="notes" -->
+
 ---
 
 # Modul 2: Abstract Factory & Layered Architecture
@@ -742,6 +847,14 @@ public enum CustomerType {
 - Service-Familien sauber strukturieren <!-- .element: class="fragment" -->
 - Dependency Injection Prinzipien verstehen <!-- .element: class="fragment" -->
 - Interface Segregation in der Praxis umsetzen <!-- .element: class="fragment" -->
+
+Note:
+- Übergang von Factory Method zu Abstract Factory erklären
+- Betonen Sie den Unterschied: Familien verwandter Objekte
+- Verbindung zu Enterprise-Architekturen: Service-Layers
+- Zeit: ca. 3 Minuten für Lernziele
+- Motivation schaffen: "Warum reicht Factory Method nicht für komplexe Systeme?"
+<!-- .element: class="notes" -->
 
 ---
 
@@ -1016,6 +1129,15 @@ public class ChannelFactoryProvider {
 - Repository Pattern mit Builder kombinieren <!-- .element: class="fragment" -->
 - Fluent Interfaces designen und umsetzen <!-- .element: class="fragment" -->
 - Liskov Substitution Principle praktisch anwenden <!-- .element: class="fragment" -->
+
+Note:
+- Builder Pattern löst das "Telescoping Constructor" Problem
+- Besonders wertvoll für Query-Builder und komplexe Konfigurationsobjekte
+- Zeigen Sie den Unterschied zu Factory Method: Builder für EINEN komplexen Typ
+- Zeit: ca. 5 Minuten für Lernziele
+- Frage: "Kennen Sie Konstruktoren mit vielen Parametern in Ihren Projekten?"
+- Verbindung zu Repository Pattern: Saubere Query-Erstellung
+<!-- .element: class="notes" -->
 
 ---
 
@@ -1310,6 +1432,15 @@ Query query = new TypeSafeCustomerQueryBuilder()
 - Deep vs. Shallow Copy Problematik meistern <!-- .element: class="fragment" -->
 - Configuration-Cloning für komplexe Enterprise-Settings <!-- .element: class="fragment" -->
 - Performance-Optimierung durch intelligente Objektkopierung <!-- .element: class="fragment" -->
+
+Note:
+- Prototype Pattern ist performance-kritisch bei teuren Objekten
+- Typische Anwendung: Konfigurationsobjekte, DatabaseConnections, Parser-Zustände
+- WICHTIG: Deep vs Shallow Copy - zeigen Sie die Fallstricke auf
+- Zeit: ca. 8 Minuten für Lernziele und Motivation
+- Frage: "Wo in Ihren Systemen ist Objekterstellung besonders teuer?"
+- Performance-Aspekt betonen: Wann ist clonen() schneller als new?
+<!-- .element: class="notes" -->
 
 ---
 
@@ -2061,6 +2192,20 @@ public class CompositeCustomerService implements CustomerService {
    - Legacy SOAP Adapter
    - Configuration Prototype Registry
    - Service Registry mit Failover
+
+Note:
+- WICHTIGE HANDS-ON ÜBUNG: 45 Minuten intensive Praxisarbeit
+- Teams von 2-3 Personen bilden lassen nach Erfahrungslevel
+- Jedes Team wählt bevorzugtes Backend (SOAP/REST/NoSQL)
+- Betonen Sie: Integration ALLER Patterns aus Tag 1 (Factory Method, Abstract Factory, Builder, Prototype, Singleton)
+- Verteilen Sie die Übungsblätter aus examples/exercises/day1-exercises.md
+- Zirkulieren Sie zwischen Teams, bieten Sie gezielte Hilfe an
+- Nach 30 Min: Zwischenstand abfragen, eventuell gemeinsame Probleme klären
+- Letzten 15 Min für Präsentation der Lösungsansätze nutzen
+- Bereiten Sie Musterlösung vor für schnelle Teams
+- WICHTIG: Code Smell Detective Exercise als Aufwärmung verwenden
+- Bei Zeitnot: konzentrieren Sie sich auf Factory Method + Builder Pattern
+<!-- .element: class="notes" -->
 
 ### Bonus Challenges
 - **Performance Optimization** mit Caching <!-- .element: class="fragment" -->
