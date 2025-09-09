@@ -73,12 +73,13 @@ slideOptions:
 }
 
 .reveal h2 {
-  font-size: 1.68em !important; /* Increased by 20% (1.4em * 1.20) */
-  color: #2c2c2c;
-  font-weight: 500 !important;
-  text-align: left !important;
-  margin-top: 0.7em !important;
+  font-size: 1.8em !important;
+  color: #2c2c2c !important;
+  font-weight: normal !important;
+  text-align: center !important;
+  margin-top: 0.8em !important;
   margin-bottom: 0.4em !important;
+  width: 100% !important;
 }
 
 /* First heading on slide should not have top margin */

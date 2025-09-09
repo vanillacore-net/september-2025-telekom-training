@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.3.9] [2024-12-30] - DESIGN: Standardized H2 Title Styling to Centered Format
+
+### Fixed
+- **Title Styling**: Standardized all H2 slide titles to use centered alignment matching first slide style
+  - Updated CSS for all HedgeDoc presentations to center H2 titles consistently
+  - Changed font-size to 1.8em for better prominence and consistency
+  - Applied `text-align: center !important` to ensure all H2 titles are centered
+  - Added `width: 100% !important` to ensure full-width centering
+  - Font weight normalized to `normal` for consistency with design system
+
+### Enhanced
+- **Visual Consistency**: All slide titles now have uniform professional centered appearance
+  - Eliminates inconsistent left-aligned H2 titles that broke design harmony
+  - Creates cohesive visual experience across all presentation slides
+  - Matches the successful styling pattern from first slide "Das häufigste Anti-Pattern: Technology-First"
+  - Improved professional appearance for enterprise training materials
+
+### Technical
+- **CSS Improvements**: Enhanced H2 styling across all HedgeDoc files
+  - Updated hedgedoc-intro.md, hedgedoc-day1.md, hedgedoc-day2.md, hedgedoc-day3.md, hedgedoc-day4.md
+  - Consistent margin and spacing values for professional typography
+  - Import script executed successfully with all presentations validated
+
 ## [1.3.8] [2024-12-30] - CONTENT: Added Missing Question Content
 
 ### Added
