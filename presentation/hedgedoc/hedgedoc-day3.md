@@ -1,4 +1,5 @@
 ---
+type: slide
 title: Software-Architektur - Tag 3
 description: Verhaltensmuster - Observer, Strategy, Command, Template Method, Iterator, Chain of Responsibility
 tags: design-patterns, workshop,  architecture, training, day3, behavioral, observer, strategy, command, template-method, iterator, chain-of-responsibility

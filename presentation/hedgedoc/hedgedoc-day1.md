@@ -1,4 +1,5 @@
 ---
+type: slide
 title: Software-Architektur - Grundlagen
 description: Code-Analyse, Factory Method, Abstract Factory, Builder & Prototype Patterns
 tags: design-patterns, workshop, architecture, training, day1, factory, builder, prototype

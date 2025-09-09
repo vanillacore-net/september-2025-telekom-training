@@ -1,4 +1,5 @@
 ---
+type: slide
 title: Software-Architektur - Tag 4
 description: Erweiterte Architektur-Patterns - MVC/MVP/MVVM, Microservices, Performance, Testing und Pattern-Synthese
 tags: design-patterns, workshop,  architecture, training, day4, advanced, mvc, mvvm, microservices, performance, testing, synthesis

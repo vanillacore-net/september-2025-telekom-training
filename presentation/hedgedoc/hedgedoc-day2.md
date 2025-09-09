@@ -1,4 +1,5 @@
 ---
+type: slide
 title: Software-Architektur - Tag 2
 description: Strukturmuster in der Praxis - Adapter, Decorator, Facade, Composite, Proxy
 tags: design-patterns, workshop,  architecture, training, day2, structural, adapter, decorator, facade, composite, proxy
