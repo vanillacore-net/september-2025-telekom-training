@@ -24,103 +24,46 @@ slideOptions:
 
 <style>
 /* HedgeDoc Presentation Styles */
-.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
-  color: #2c2c2c !important;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  font-weight: normal !important;
-  text-transform: none !important;
-  text-decoration: none !important;
-  line-height: 1.2 !important;
+.reveal h1, .reveal h2, .reveal h3 {
+  color: #2c2c2c;
+  font-weight: normal;
+  line-height: 1.2;
 }
 
-.reveal h1 {
-  font-size: 2.5em !important;
-  margin-bottom: 0.5em !important;
-}
-
-.reveal h2 {
-  font-size: 1.8em !important;
-  margin-top: 0.8em !important;
-  margin-bottom: 0.4em !important;
-}
-
-.reveal h3 {
-  font-size: 1.3em !important;
-  margin-top: 0.6em !important;
-  margin-bottom: 0.3em !important;
-}
-
-.reveal p, .reveal li {
-  font-size: 1.0em !important;
-  line-height: 1.4 !important;
-  margin-top: 0.3em !important;
-}
+.reveal h1 { font-size: 2.5em; }
+.reveal h2 { font-size: 1.8em; }
+.reveal h3 { font-size: 1.3em; }
 
 .reveal pre {
-  font-size: 1.0em !important;  /* SAME AS TEXT */
-  width: 95% !important;
-  max-width: 95% !important;
-  background: #2d3748 !important;
-  color: #e2e8f0 !important;
-  padding: 0.5em !important;
-  border-radius: 8px !important;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
-  margin: 0.5em auto !important;
-  overflow-x: auto !important;
+  font-size: 0.9em;
+  width: 95%;
+  margin: 0 auto;
 }
 
 .reveal pre code {
-  font-size: 1.0em !important;  /* SAME AS TEXT */
-  line-height: 1.3 !important;
-  font-family: 'Monaco', 'Menlo', 'Consolas', monospace !important;
-  color: #e2e8f0 !important;
-  background: transparent !important;
-  padding: 0 !important;
-}
-
-.reveal code {
-  font-size: 1.0em !important;  /* SAME AS TEXT */
-  background: #f0f0f0 !important;
-  color: #d73a49 !important;
-  padding: 0.1em 0.3em !important;
-  border-radius: 3px !important;
+  max-height: 600px;
+  padding: 15px;
 }
 
 .reveal .fragment {
-  visibility: hidden;
   opacity: 0;
-  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+  visibility: hidden;
 }
 
 .reveal .fragment.visible {
-  visibility: visible;
   opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-.reveal .slide-background {
-  background-color: #ffffff !important;
-}
-
-.reveal section {
-  text-align: left !important;
-}
-
-.reveal section h1,
-.reveal section h2,
-.reveal section h3 {
-  text-align: center !important;
+  visibility: visible;
 }
 
 .workshop-header {
-  text-align: center !important;
-  padding: 2em 0 !important;
+  text-align: center;
+  padding: 2em 0;
 }
 
 .vanilla-logo img {
-  max-height: 150px !important;
-  margin: 0 auto 1em auto !important;
-  display: block !important;
+  max-height: 150px;
+  margin: 0 auto 1em auto;
+  display: block;
 }
 </style>
 
