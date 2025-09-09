@@ -22,8 +22,6 @@ slideOptions:
   maxScale: 2.0
 ---
 
-<link rel="stylesheet" type="text/css" href="presentation-styles.css">
-
 <div class="workshop-header">
 
 # Design Patterns Workshop

@@ -22,7 +22,7 @@ slideOptions:
   maxScale: 2.0
 ---
 
-<style>
+<!-- <style>
 /* HedgeDoc Presentation Styles */
 .reveal {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -404,7 +404,7 @@ slideOptions:
 .reveal .controls {
   display: none !important;
 }
-</style>
+</style> -->
 
 <div class="workshop-header title-slide">
 

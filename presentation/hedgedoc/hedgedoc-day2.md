@@ -22,7 +22,7 @@ slideOptions:
   maxScale: 2.0
 ---
 
-<style>
+<!-- <style>
 /* HedgeDoc Presentation Styles */
 .reveal {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -404,7 +404,7 @@ slideOptions:
 .reveal .controls {
   display: none !important;
 }
-</style>
+</style> -->
 
 <div class="workshop-header title-slide">
 
@@ -479,6 +479,8 @@ Note:
 ## Was passt hier nicht?
 
 ### Problematische Legacy-Integration
+<!-- .element: class="fragment" -->
+
 Eine typische Enterprise-Herausforderung: Verschiedene Systeme mit inkompatiblen Interfaces müssen zusammenarbeiten.
 
 <div class="code-example">
@@ -517,10 +519,13 @@ public class BillingManager {
     }
 }
 ```
+<!-- .element: class="fragment" -->
 
 </div>
 
 ### Identifizierte Probleme
+<!-- .element: class="fragment" -->
+
 - **Interface Mismatch**: Verschiedene APIs für gleiche Funktionalität <!-- .element: class="fragment" -->
 - **Duplicate Conversion**: Manuelle Datenkonvertierung überall <!-- .element: class="fragment" -->
 - **Tight Coupling**: Direkte Abhängigkeit zu Legacy-Systemen <!-- .element: class="fragment" -->

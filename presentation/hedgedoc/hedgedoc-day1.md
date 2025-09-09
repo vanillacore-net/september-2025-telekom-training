@@ -22,7 +22,7 @@ slideOptions:
   maxScale: 2.0
 ---
 
-<style>
+<!-- <style>
 /* HedgeDoc Presentation Styles */
 .reveal {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -413,7 +413,7 @@ slideOptions:
 .reveal .controls {
   display: none !important;
 }
-</style>
+</style> -->
 
 <div class="workshop-header title-slide">
 
@@ -603,6 +603,8 @@ Note:
 </div>
 
 ### UML-Struktur
+<!-- .element: class="fragment" -->
+
 ```
 Creator (abstract)
   +factoryMethod(): Product
@@ -615,6 +617,7 @@ Product (interface)
   
 ConcreteProduct implements Product
 ```
+<!-- .element: class="fragment" -->
 
 Note:
 - Erklären Sie das Pattern-Konzept anhand des UML-Diagramms
@@ -641,6 +644,7 @@ public interface Customer {
     void processContract();
 }
 ```
+<!-- .element: class="fragment" -->
 
 </div>
 
@@ -651,6 +655,7 @@ Note:
 <!-- .element: class="notes" -->
 
 ### Konkrete Implementierung - PrivateCustomer
+<!-- .element: class="fragment" -->
 
 <div class="code-example">
 
@@ -683,6 +688,7 @@ public class PrivateCustomer implements Customer {
     }
 }
 ```
+<!-- .element: class="fragment" -->
 
 </div>
 
@@ -730,6 +736,7 @@ public abstract class CustomerFactory {
     }
 }
 ```
+<!-- .element: class="fragment" -->
 
 </div>
 
@@ -769,6 +776,7 @@ public class PremiumCustomerFactory extends CustomerFactory {
     }
 }
 ```
+<!-- .element: class="fragment" -->
 
 </div>
 
@@ -787,7 +795,10 @@ Note:
 <div class="interactive-question">
 
 ### Praktische Übung: Factory Method
+<!-- .element: class="fragment" -->
+
 #### Implementieren Sie einen StudentCustomerFactory
+<!-- .element: class="fragment" -->
 
 </div>
 
@@ -823,6 +834,8 @@ Note:
 - Abhängigkeit zu Customer-Interface, nicht zu konkreten Implementierungen <!-- .element: class="fragment" -->
 
 ## Moderne Alternative - Java 8+
+<!-- .element: class="fragment" -->
+
 ```java
 public enum CustomerType {
     PRIVATE(PrivateCustomer::new),
@@ -836,6 +849,7 @@ public enum CustomerType {
     }
 }
 ```
+<!-- .element: class="fragment" -->
 
 </div>
 </div>
@@ -873,6 +887,8 @@ Note:
 ## Was passt hier nicht?
 
 ### Problematische Service-Erstellung
+<!-- .element: class="fragment" -->
+
 Telekom betreibt verschiedene Service-Kanäle (Web, Mobile App, Call Center, Partner-Portal). Die aktuelle Implementierung hat gravierende Probleme:
 
 <div class="code-example">
@@ -902,10 +918,13 @@ public class ServiceManager {
     }
 }
 ```
+<!-- .element: class="fragment" -->
 
 </div>
 
 ### Identifizierte Probleme
+<!-- .element: class="fragment" -->
+
 - **Service-Familie Inkonsistenz**: Gemischte Service-Implementierungen <!-- .element: class="fragment" -->
 - **Duplicate Code**: Ähnliche Setup-Logik für jeden Kanal <!-- .element: class="fragment" -->
 - **Tight Coupling**: Direkte Abhängigkeiten zu konkreten Klassen <!-- .element: class="fragment" -->
@@ -916,6 +935,8 @@ public class ServiceManager {
 # Layered Architecture Integration
 
 ### Schichtenmodell
+<!-- .element: class="fragment" -->
+
 ```
 ┌─────────────────────────────────────┐
 │        Presentation Layer           │ <- Channel-spezifische Controller
@@ -927,6 +948,7 @@ public class ServiceManager {
 │         Data Access Layer           │ <- Channel-spezifische Implementierungen
 └─────────────────────────────────────┘
 ```
+<!-- .element: class="fragment" -->
 
 ---
 
@@ -944,6 +966,8 @@ public class ServiceManager {
 </div>
 
 ### UML-Struktur
+<!-- .element: class="fragment" -->
+
 ```
 AbstractFactory
   +createServiceA(): AbstractServiceA
@@ -957,6 +981,7 @@ ConcreteFactory2 extends AbstractFactory
   +createServiceA(): ConcreteServiceA2
   +createServiceB(): ConcreteServiceB2
 ```
+<!-- .element: class="fragment" -->
 
 ---
 
@@ -990,6 +1015,7 @@ public interface NotificationService {
     boolean isChannelAvailable(String customerId);
 }
 ```
+<!-- .element: class="fragment" -->
 
 </div>
 
@@ -1019,6 +1045,7 @@ public abstract class ChannelServiceFactory {
     }
 }
 ```
+<!-- .element: class="fragment" -->
 
 </div>
 
@@ -1265,6 +1292,8 @@ public class CustomerRepository {
 </div>
 
 ### UML-Struktur
+<!-- .element: class="fragment" -->
+
 ```
 Director
   +construct(): Product
@@ -1279,6 +1308,7 @@ ConcreteBuilder implements Builder
   +buildPartB()
   +getResult(): ConcreteProduct
 ```
+<!-- .element: class="fragment" -->
 
 ---
 
@@ -1366,6 +1396,7 @@ public class CustomerQueryBuilder {
     }
 }
 ```
+<!-- .element: class="fragment" -->
 
 </div>
 

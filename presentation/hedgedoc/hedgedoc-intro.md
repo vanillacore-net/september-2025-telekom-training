@@ -22,7 +22,7 @@ slideOptions:
   maxScale: 2.0
 ---
 
-<style>
+<!-- <style>
 /* HedgeDoc Presentation Styles */
 .reveal {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -206,7 +206,7 @@ slideOptions:
   color: #666;
   pointer-events: none;
 }
-</style>
+</style> -->
 
 # Design Patterns Workshop
 ## Einführung und Grundlagen

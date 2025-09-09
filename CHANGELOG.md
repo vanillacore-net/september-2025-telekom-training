@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.2.1] [2025-01-09] - Presentation Content Cleanup
+
+### Fixed
+- **CSS Style Visibility Issue** - Removed unwanted CSS styles appearing as visible text on slides
+  - Wrapped all `<style>` blocks in HTML comments to prevent rendering as text content
+  - Fixed professional appearance by hiding internal CSS from slide display
+  - Applied to all presentation files (day1, day2, day3, day4, intro)
+  - Verified clean slide appearance through Playwright validation
+- **Template CSS Link Cleanup** - Removed unnecessary CSS link reference from template file
+  - Cleaned up `hedgedoc-template.md` to prevent accidental inclusion
+
+### Technical Changes
+- Modified all hedgedoc presentation files to comment out style blocks
+- Updated template file to remove CSS link reference
+- Validated all presentations display correctly without CSS artifacts
+
 ## [1.2.0] [2025-09-08] - HedgeDoc Containerization Setup
 
 ### Added
