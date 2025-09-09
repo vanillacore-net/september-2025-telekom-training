@@ -550,6 +550,8 @@ slideOptions:
 3 Begriffe oder Sätze!</strong>
 </div>
 
+<div class="fragment">
+
 ### Typische Antworten:
 - "Das große Ganze"
 - "Struktur der Software" 
@@ -558,6 +560,10 @@ slideOptions:
 - "Framework-Auswahl"
 - "Datenbanken und Services"
 - "Microservices vs. Monolith"
+
+</div>
+
+Note: Sammeln auf Flipchart oder Chat, nicht bewerten. Diese Antworten sind alle richtig und zeigen die verschiedenen Perspektiven auf Software-Architektur. Lassen Sie jeden Teilnehmer zu Wort kommen. Dauer: 5 Minuten.
 
 ---
 
@@ -604,11 +610,13 @@ slideOptions:
 ## Gemeinsame Erkenntnisse
 
 ### Architektur umfasst:
-1. **Struktur** - Wie ist die Software organisiert?
-2. **Entscheidungen** - Welche wichtigen Designentscheidungen wurden getroffen?
-3. **Beziehungen** - Wie hängen die Teile zusammen?
-4. **Kosten** - Was ist später schwer zu ändern?
-5. **Kommunikation** - Wie vermitteln wir unser Design anderen?
+<div class="fragment">1. **Struktur** - Wie ist die Software organisiert?</div>
+<div class="fragment">2. **Entscheidungen** - Welche wichtigen Designentscheidungen wurden getroffen?</div>
+<div class="fragment">3. **Beziehungen** - Wie hängen die Teile zusammen?</div>
+<div class="fragment">4. **Kosten** - Was ist später schwer zu ändern?</div>
+<div class="fragment">5. **Kommunikation** - Wie vermitteln wir unser Design anderen?</div>
+
+Note: Diese fünf Punkte ergeben sich aus den verschiedenen Definitionen. Betonen Sie, dass alle Definitionen diese Aspekte teilen. Die Kosten-Perspektive von Booch ist besonders wichtig - wichtig sind die Entscheidungen, die schwer zu ändern sind.
 
 ---
 
@@ -655,6 +663,8 @@ slideOptions:
 • Was unterscheidet gute von schlechter Software-Architektur?
 </div>
 
+Note: Lassen Sie 2-3 Teilnehmer antworten. Diese Fragen leiten über zu Clean Code Grundlagen, wo wir die Qualitätsaspekte vertiefen. Dauer: 5-7 Minuten für diesen Diskussionsblock.
+
 ---
 
 # Teil 2: Clean Code Grundlagen
@@ -674,20 +684,28 @@ slideOptions:
 Was macht es sauber?</strong>
 </div>
 
+<div class="fragment">
+
 ### Typische Antworten:
-- Aufgeräumt und organisiert
-- Alles hat seinen Platz
-- Man findet schnell, was man sucht
-- Nichts Überflüssiges liegt herum
-- Funktional und effizient
+- **Aufgeräumt und organisiert**
+- **Alles hat seinen Platz**
+- **Man findet schnell, was man sucht**
+- **Nichts Überflüssiges liegt herum**
+- **Funktional und effizient**
+
+</div>
+
+Note: Diese Analogie hilft beim Verstehen von Clean Code. Sammeln Sie die Antworten und übertragen Sie sie dann auf Code: Organisiert = gut strukturiert, alles hat seinen Platz = richtige Abstraktionen, man findet schnell = lesbare Namen, nichts Überflüssiges = kein Dead Code. Dauer: 5 Minuten.
 
 ---
 
 ## Clean Code nach Robert C. Martin
 
 <div class="pattern-definition">
-<strong>Clean code is code that has been taken care of. Someone has taken the time to keep it simple and orderly.</strong>
+<strong>"Clean code is code that has been taken care of. Someone has taken the time to keep it simple and orderly."</strong>
 </div>
+
+Note: Betonen Sie "taken care of" - jemand hat sich Mühe gegeben. Clean Code ist nicht automatisch entstanden, sondern das Ergebnis bewusster Arbeit. Uncle Bob ist Robert C. Martin, einer der einflussreichsten Softwareentwickler.
 
 ---
 
@@ -863,24 +881,33 @@ Clean Code ist nicht Perfektionismus. Es ist eine Investition in die Zukunft.
 > *"NoSQL ist modern, weg mit der relationalen DB!"* - Aber was sind unsere Datenanforderungen?  
 
 ### Frage an Sie:
-**"Kennen Sie solche Aussagen? Was war das Ergebnis?"**
+<div class="interactive-question">
+<strong>Kennen Sie solche Aussagen?<br>
+Was war das Ergebnis?</strong>
+</div>
+
+Note: Lassen Sie 2-3 Teilnehmer ihre Erfahrungen teilen. Oft kommen hier Geschichten von gescheiterten Microservice-Einführungen oder überkomplexen Architekturen heraus. Diese Erfahrungen sind wertvoll für die weiteren Beispiele.
 
 ---
 
 ### Technology-First Symptome:
-- **Hype-Driven Development**: "Das ist modern, das machen wir auch"
-- **Solution looking for a problem**: "Wir haben Kafka, jetzt brauchen wir Events"
-- **Architecture Astronauts**: Komplexe Lösungen für einfache Probleme
-- **Over-Engineering**: 20 Services für 5 Use Cases
+<div class="fragment">- **Hype-Driven Development**: "Das ist modern, das machen wir auch"</div>
+<div class="fragment">- **Solution looking for a problem**: "Wir haben Kafka, jetzt brauchen wir Events"</div>
+<div class="fragment">- **Architecture Astronauts**: Komplexe Lösungen für einfache Probleme</div>
+<div class="fragment">- **Over-Engineering**: 20 Services für 5 Use Cases</div>
+
+Note: Diese Symptome sind sehr häufig. "Architecture Astronauts" ist ein Begriff von Joel Spolsky für Entwickler, die nur in abstrakten Konzepten denken. Fragen Sie nach konkreten Beispielen aus den Projekten der Teilnehmer.
 
 ---
 
 ### Warum passiert Technology-First?
-1. **Techniker denken technisch** - das ist normal
-2. **Marketing macht Technologie sexy** - Buzzwords verkaufen sich
-3. **CV-Driven Development** - "Ich will Kubernetes lernen"
-4. **Komplexität wirkt professionell** - Einfachheit wird unterschätzt
-5. **Copy-Paste Architecture** - "Netflix macht das so"
+<div class="fragment">1. **Techniker denken technisch** - das ist normal</div>
+<div class="fragment">2. **Marketing macht Technologie sexy** - Buzzwords verkaufen sich</div>
+<div class="fragment">3. **CV-Driven Development** - "Ich will Kubernetes lernen"</div>
+<div class="fragment">4. **Komplexität wirkt professionell** - Einfachheit wird unterschätzt</div>
+<div class="fragment">5. **Copy-Paste Architecture** - "Netflix macht das so"</div>
+
+Note: Diese Gründe sind menschlich verständlich, aber gefährlich für Projekte. CV-Driven Development ist besonders in IT-Teams verbreitet. Betonen Sie: Was für Netflix funktioniert, funktioniert nicht automatisch für andere Unternehmen mit anderen Problemen.
 
 ---
 
@@ -1054,7 +1081,11 @@ Clean Code ist nicht Perfektionismus. Es ist eine Investition in die Zukunft.
 **1977 - "A Pattern Language"** - Nicht Software, sondern Gebäude-Architektur!
 
 #### Alexanders Erkenntnis:
-> *"Each pattern describes a problem which occurs over and over again in our environment, and then describes the core of the solution to that problem, in such a way that you can use this solution a million times over, without ever doing it the same way twice."*
+<div class="pattern-definition">
+<strong>"Each pattern describes a problem which occurs over and over again in our environment, and then describes the core of the solution to that problem, in such a way that you can use this solution a million times over, without ever doing it the same way twice."</strong>
+</div>
+
+Note: Das ist die Ursprungsdefinition von Patterns! Alexander war Gebäude-Architekt, kein Software-Architekt. Seine Patterns beschreiben z.B. "Wie gestalte ich einen öffentlichen Platz, damit Menschen sich gerne dort aufhalten." Die Übertragung auf Software war genial.
 
 ---
 
@@ -1269,8 +1300,12 @@ GUT: Mit Patterns: "Das ist MVC mit Observer für Events und Factory für Servic
 > *"Try and leave this world a little better than you found it."*
 
 ### Übertragung auf Software nach Uncle Bob:
-> *"Always leave the campground cleaner than you found it."*  
-> *"Always check a module in cleaner than when you checked it out."*
+<div class="pattern-definition">
+<strong>"Always leave the campground cleaner than you found it."</strong><br><br>
+<strong>"Always check a module in cleaner than when you checked it out."</strong>
+</div>
+
+Note: Die Boy Scout Rule ist ein Kernprinzip für kontinuierliche Qualitätsverbesserung. Uncle Bob (Robert C. Martin) hat diese Regel aus dem Pfadfindertum auf Software übertragen. Es geht nicht um perfekten Code, sondern um kontinuierliche kleine Verbesserungen.
 
 ---
 
@@ -1295,20 +1330,23 @@ Kommentare durch self-documenting code ersetzen
 ---
 
 ### Praktisches Beispiel:
-```text
-Situation: Bug-Fix in alter Service-Klasse
 
-Vor Boy Scout Rule:
+<div class="code-example">
+<h5>Situation: Bug-Fix in alter Service-Klasse</h5>
+
+**Vor Boy Scout Rule:**
 - Fix den Bug
 - Code bleibt messy
 - Nächster Entwickler hat gleichen Kampf
 
-Mit Boy Scout Rule:
+**Mit Boy Scout Rule:**
 - Fix den Bug  
 - Benenne 2-3 kryptische Variablen um
 - Extrahiere eine lange Methode
 - Nächster Entwickler findet sich besser zurecht
-```
+</div>
+
+Note: Das ist ein sehr realistisches Beispiel. Betonen Sie, dass es nur 5-10 Minuten extra kostet, aber für das Team enormen Mehrwert schafft. Der nächste Entwickler (der Sie selbst sein könnten!) hat es leichter.
 
 ---
 
@@ -1458,7 +1496,11 @@ if (customer.getOrderCount() > PREMIUM_CUSTOMER_THRESHOLD) { ... }
 ```
 
 ### Wichtige Erkenntnis:
-**Patterns werden durch Refactoring eingeführt, nicht von Anfang an geplant!**
+<div class="highlight-box warning">
+<strong>Patterns werden durch Refactoring eingeführt, nicht von Anfang an geplant!</strong>
+</div>
+
+Note: Das ist eine der wichtigsten Botschaften des gesamten Workshops! Viele Entwickler versuchen, Patterns von Anfang an zu planen, aber das führt oft zu Over-Engineering. Patterns entstehen natürlich durch evolutionäre Verbesserung des Codes.
 
 ---
 
@@ -1744,9 +1786,17 @@ if (customer.getOrderCount() > PREMIUM_CUSTOMER_THRESHOLD) { ... }
 ## Ihr Commitment
 
 ### Frage an die Teilnehmer:
-**"Was ist Ihr persönliches Lernziel für diese 4 Tage?"**
+<div class="interactive-question">
+<strong>Was ist Ihr persönliches Lernziel für diese 4 Tage?</strong>
+</div>
+
+<div class="fragment">
 
 *Lassen Sie jeden Teilnehmer sein Ziel formulieren - wir kommen am Ende darauf zurück!*
+
+</div>
+
+Note: Das ist wichtig für die Motivation! Notieren Sie sich die Antworten - am Ende des Workshops fragen Sie zurück, ob die Ziele erreicht wurden. Typische Antworten: "Patterns richtig anwenden", "Refactoring systematisch", "Team-Kommunikation verbessern".
 
 ### Zielsetzung:
 **Systematische Anwendung von Design Patterns zur Verbesserung von Code-Qualität, Wartbarkeit und Systemarchitektur in Enterprise-Umgebungen.**
@@ -1770,9 +1820,15 @@ if (customer.getOrderCount() > PREMIUM_CUSTOMER_THRESHOLD) { ... }
 6. **Kontinuierliche Verbesserung** durch Boy Scout Rule
 
 #### Mindset für die nächsten 4 Tage:
-- **Domain-First Denken**: Fachlichkeit verstehen, dann Patterns anwenden
-- **Refactoring-Mindset**: Patterns entstehen evolutionär, nicht durch Planung
-- **Clean Code**: Lesbarkeit und Wartbarkeit über Cleverness
-- **Gemeinsame Sprache**: Patterns verbessern Kommunikation im Team
+<div class="fragment">- **Domain-First Denken**: Fachlichkeit verstehen, dann Patterns anwenden</div>
+<div class="fragment">- **Refactoring-Mindset**: Patterns entstehen evolutionär, nicht durch Planung</div>
+<div class="fragment">- **Clean Code**: Lesbarkeit und Wartbarkeit über Cleverness</div>
+<div class="fragment">- **Gemeinsame Sprache**: Patterns verbessern Kommunikation im Team</div>
+
+<div class="fragment">
 
 **Jetzt sind wir bereit für den praktischen Teil - auf zu Tag 1!**
+
+</div>
+
+Note: Fassen Sie die wichtigsten Erkenntnisse zusammen. Diese vier Punkte sind das Fundament für die nächsten Tage. Betonen Sie nochmal "Domain-First" und "evolutionär". Die Teilnehmer sollten verstanden haben, dass Patterns Werkzeuge sind, keine Ziele.
