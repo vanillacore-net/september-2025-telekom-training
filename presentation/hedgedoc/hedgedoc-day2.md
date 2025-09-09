@@ -31,7 +31,7 @@ slideOptions:
 
 /* Critical: Fix content overflow and enforce left alignment */
 .reveal .slides {
-  font-size: 34px !important; /* Scaled for FHD (18px * 1.875) */
+  font-size: 22px !important; /* Scaled for FHD (18px * 1.875) */
   line-height: 1.3 !important;
 }
 
@@ -48,7 +48,7 @@ slideOptions:
   max-width: 100vw;
   overflow-y: auto !important; /* Allow scrolling if needed */
   overflow-x: hidden;
-  padding: 38px !important; /* Scaled padding for FHD (20px * 1.875) */
+  padding: 25px !important; /* Scaled padding for FHD (20px * 1.875) */
   box-sizing: border-box;
   text-align: left !important; /* Ensure all content is left-aligned */
 }
@@ -58,8 +58,8 @@ slideOptions:
   color: #2c2c2c;
   font-weight: 600 !important;
   text-align: left !important;
-  margin-top: 2em !important;
-  margin-bottom: 1em !important;
+  margin-top: 0.8em !important;
+  margin-bottom: 0.3em !important;
 }
 
 /* First heading on slide should not have top margin */
@@ -72,8 +72,8 @@ slideOptions:
   color: #2c2c2c;
   font-weight: 500 !important;
   text-align: left !important;
-  margin-top: 1.5em !important;
-  margin-bottom: 0.75em !important;
+  margin-top: 0.7em !important;
+  margin-bottom: 0.4em !important;
 }
 
 /* First heading on slide should not have top margin */
@@ -85,8 +85,8 @@ slideOptions:
   font-size: 1.2em !important;
   font-weight: 400 !important;
   text-align: left !important;
-  margin-top: 1.2em !important;
-  margin-bottom: 0.6em !important;
+  margin-top: 0.6em !important;
+  margin-bottom: 0.3em !important;
 }
 
 /* First heading on slide should not have top margin */
@@ -97,8 +97,8 @@ slideOptions:
 .reveal h4, .reveal h5, .reveal h6 {
   font-weight: 400 !important;
   text-align: left !important;
-  margin-top: 1em !important;
-  margin-bottom: 0.5em !important;
+  margin-top: 0.5em !important;
+  margin-bottom: 0.3em !important;
 }
 
 /* First heading on slide should not have top margin */
@@ -115,7 +115,7 @@ slideOptions:
 
 /* Add proper paragraph spacing */
 .reveal p {
-  margin-bottom: 1em !important;
+  margin-bottom: 0.3em !important;
 }
 
 /* Prevent text from being too large */
@@ -130,12 +130,12 @@ slideOptions:
   margin-left: 0 !important;
   padding-left: 1.5em !important;
   list-style-type: none;
-  margin-bottom: 1em !important;
+  margin-bottom: 0.3em !important;
 }
 
 /* Add spacing between list items for better readability */
 .reveal ul li, .reveal ol li {
-  margin-bottom: 0.5em !important;
+  margin-bottom: 0.3em !important;
 }
 
 .reveal ul li:last-child, .reveal ol li:last-child {
@@ -170,9 +170,9 @@ slideOptions:
 }
 
 .workshop-header {
-  text-align: left;
-  background: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 100%);
-  color: white;
+  text-align: center;
+  background: #ffffff;
+  color: #333;
   padding: 75px; /* Scaled for FHD (40px * 1.875) */
   margin: -38px; /* Scaled for FHD (-20px * 1.875) */
   border-radius: 8px;
@@ -180,14 +180,14 @@ slideOptions:
 
 .workshop-header h1,
 .workshop-header h2 {
-  color: white;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  color: #333;
+  text-shadow: none;
 }
 
 .pattern-definition {
   background-color: #F5F5F5;
   border-left: 8px solid #666666; /* Scaled for FHD (4px * 2) */
-  padding: 38px; /* Scaled for FHD (20px * 1.875) */
+  padding: 25px; /* Scaled for FHD (20px * 1.875) */
   margin: 38px 0; /* Scaled for FHD (20px * 1.875) */
   border-radius: 4px;
 }
@@ -195,7 +195,7 @@ slideOptions:
 .highlight-box {
   background-color: #F5F5F5;
   border-left: 8px solid #666666; /* Scaled for FHD (4px * 2) */
-  padding: 38px; /* Scaled for FHD (20px * 1.875) */
+  padding: 25px; /* Scaled for FHD (20px * 1.875) */
   margin: 38px 0; /* Scaled for FHD (20px * 1.875) */
   border-radius: 8px; /* Scaled for FHD (4px * 2) */
 }
@@ -213,7 +213,7 @@ slideOptions:
 .code-example {
   background: #2d3748;
   color: #e2e8f0;
-  padding: 38px; /* Scaled for FHD (20px * 1.875) */
+  padding: 25px; /* Scaled for FHD (20px * 1.875) */
   border-radius: 15px; /* Scaled for FHD (8px * 1.875) */
   margin: 38px 0; /* Scaled for FHD (20px * 1.875) */
 }
@@ -226,7 +226,7 @@ slideOptions:
 .interactive-question {
   background-color: #F5F5F5;
   border: 4px solid #666666; /* Scaled for FHD (2px * 2) */
-  padding: 38px; /* Scaled for FHD (20px * 1.875) */
+  padding: 25px; /* Scaled for FHD (20px * 1.875) */
   margin: 38px 0; /* Scaled for FHD (20px * 1.875) */
   border-radius: 15px; /* Scaled for FHD (8px * 1.875) */
   text-align: center;
@@ -298,12 +298,19 @@ slideOptions:
 .vanilla-logo img {
   width: 100%;
   height: auto;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
-/* Logo for title slides - slightly larger */
+/* Logo for title slides - centered above title */
 .title-slide .vanilla-logo {
   max-width: 180px;
   max-height: 180px;
+  position: static;
+  display: block;
+  margin: 0 auto 30px auto;
+  text-align: center;
 }
 
 /* Subtle watermark for content slides */
@@ -335,13 +342,13 @@ slideOptions:
 
 <div class="workshop-header title-slide">
 
-# Design Patterns Workshop - Tag 2
-## Strukturmuster in der Praxis
-### Design Patterns Workshop
-
 <div class="vanilla-logo">
   <img src="/images/VanillaCore_Vertical.png" alt="VanillaCore Logo">
 </div>
+
+# Design Patterns Workshop - Tag 2
+## Strukturmuster in der Praxis
+### Design Patterns Workshop
 
 </div>
 
