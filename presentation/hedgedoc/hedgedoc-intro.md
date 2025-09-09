@@ -835,6 +835,10 @@ Clean Code ist nicht Perfektionismus. Es ist eine Investition in die Zukunft.
 
 **Frage an Sie:**
 
+Welche Technologie-Entscheidungen haben Sie erlebt, die ohne klare fachliche Anforderungen getroffen wurden?
+
+Wie hätten Sie diese Entscheidungen anders angegangen?
+
 </div>
 <div class="interactive-question">
 <strong>Kennen Sie solche Aussagen?<br>

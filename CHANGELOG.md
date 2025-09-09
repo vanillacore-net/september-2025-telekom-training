@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.3.8] [2024-12-30] - CONTENT: Added Missing Question Content
+
+### Added
+- **Question Content**: Added meaningful question content after "Frage an Sie:" section
+  - Technology-First slide: Added two interactive questions about technology decisions
+  - Questions prompt audience reflection on technology decisions without clear business requirements
+  - Maintains professional tone and encourages constructive discussion
+  - Preserves existing fragment structure and CSS formatting
+
+### Fixed
+- **Content Completeness**: Resolved empty "Frage an Sie:" section that provided no value
+  - Previously showed only "Frage an Sie:" header with no actual question
+  - Now includes engaging questions that relate directly to Technology-First anti-pattern
+  - Improves presentation flow and audience engagement
+
 ## [1.3.7] [2024-12-30] - CRITICAL: Properly Fixed Reveal Functionality
 
 ### Fixed
