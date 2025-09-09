@@ -805,13 +805,24 @@ Clean Code ist nicht Perfektionismus. Es ist eine Investition in die Zukunft.
 
 ## Das häufigste Anti-Pattern: Technology-First
 
-### Typische Aussagen in Projekten:
-> *"Wir nutzen jetzt Microservices!"* - Aber warum?  
-> *"Lass uns auf Kubernetes umsteigen!"* - Aber welches Problem löst das?  
-> *"Wir brauchen eine Event-Driven Architecture!"* - Aber passt das zu unserer Fachlichkeit?  
-> *"NoSQL ist modern, weg mit der relationalen DB!"* - Aber was sind unsere Datenanforderungen?  
+Typische Aussagen in Projekten:
 
-### Frage an Sie:
+<div class="fragment">
+"Wir nutzen jetzt Microservices!" - Aber warum?
+</div>
+<div class="fragment">
+"Lass uns auf Kubernetes umsteigen!" - Aber welches Problem löst das?
+</div>
+<div class="fragment">
+"Wir brauchen eine Event-Driven Architecture!" - Aber passt das zu unserer Fachlichkeit?
+</div>
+<div class="fragment">
+"NoSQL ist modern, weg mit der relationalen DB!" - Aber was sind unsere Datenanforderungen?
+</div>
+
+<div class="fragment">
+Frage an Sie:
+</div>
 <div class="interactive-question">
 <strong>Kennen Sie solche Aussagen?<br>
 Was war das Ergebnis?</strong>

@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.3.6] [2024-12-30] - UX: Fixed Intro Presentation Reveal Timing Issues
+
+### Fixed
+- **Reveal Timing**: Fixed "Frage an Sie:" appearing too early in intro presentation
+  - Technology-First slide: "Frage an Sie:" now reveals AFTER all quotes
+  - Wrapped individual quotes in fragments for proper sequential reveal
+  - Improved presentation flow and user experience
+- **Fragment Structure**: Enhanced fragment structure for better content reveal timing
+  - Each quote now appears individually in sequence
+  - Question appears only after all context is established
+  - Better pacing for audience comprehension
+
+### Enhanced
+- **Presentation Flow**: Improved timing of content reveals for better engagement
+- **User Experience**: Content now reveals in logical sequence preventing confusion
+
 ## [1.3.5] [2024-12-30] - RESTORED: Professional Layout with Code Font Fix
 
 ### Fixed
