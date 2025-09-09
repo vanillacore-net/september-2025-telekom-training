@@ -1,5 +1,5 @@
 ---
-title: Software-Architektur - Tag 1
+title: Software-Architektur - Grundlagen
 description: Code-Analyse, Factory Method, Abstract Factory, Builder & Prototype Patterns
 tags: design-patterns, workshop, telekom, architecture, training, day1, factory, builder, prototype
 slideOptions:
@@ -57,14 +57,14 @@ slideOptions:
 }
 
 .reveal h1 {
-  font-size: 3.0em !important; /* Significantly increased for better visibility */
+  font-size: 2.5em !important; /* Reduced font size */
   color: #2c2c2c;
-  font-weight: 700 !important; /* Bolder weight for more prominence */
+  font-weight: normal !important; /* NOT bold - normal weight */
   text-align: left !important;
   margin-top: 0.8em !important;
   margin-bottom: 0.5em !important; /* More spacing below headline */
-  border-bottom: 3px solid #666666 !important; /* Visual separator */
-  padding-bottom: 0.2em !important; /* Padding above border */
+  text-decoration: none !important; /* NO underline */
+  padding-bottom: 0.2em !important;
 }
 
 /* First heading on slide should not have top margin */
@@ -73,12 +73,13 @@ slideOptions:
 }
 
 .reveal h2 {
-  font-size: 1.68em !important; /* Increased by 20% (1.4em * 1.20) */
+  font-size: 1.5em !important; /* Reduced font size */
   color: #2c2c2c;
-  font-weight: 500 !important;
+  font-weight: normal !important; /* NOT bold - normal weight */
   text-align: left !important;
   margin-top: 0.7em !important;
   margin-bottom: 0.4em !important;
+  text-decoration: none !important; /* NO underline */
 }
 
 /* First heading on slide should not have top margin */
@@ -87,11 +88,12 @@ slideOptions:
 }
 
 .reveal h3 {
-  font-size: 1.44em !important; /* Increased by 20% (1.2em * 1.20) */
-  font-weight: 400 !important;
+  font-size: 1.3em !important; /* Reduced font size */
+  font-weight: normal !important; /* NOT bold - normal weight */
   text-align: left !important;
   margin-top: 0.6em !important;
   margin-bottom: 0.3em !important;
+  text-decoration: none !important; /* NO underline */
 }
 
 /* First heading on slide should not have top margin */
@@ -566,7 +568,7 @@ Note:
 
 ---
 
-# Willkommen zur Software-Architektur - Tag 1
+# Willkommen zur Software-Architektur - Grundlagen
 ## Bring your own brain and use it!
 
 ### Über diesen Workshop
@@ -578,7 +580,7 @@ Note:
 <div class="fragment" data-fragment-index="5">- Clean Architecture: Fundamentale Prinzipien</div>
 <div class="fragment" data-fragment-index="6">- Singleton & Adapter mit Clean Architecture</div>
 
-## Lernziele Tag 1
+## Lernziele
 <ul>
 <li class="fragment" data-fragment-index="1">Code-Smells in Legacy-Code identifizieren</li>
 <li class="fragment" data-fragment-index="2">Factory Method Pattern verstehen und anwenden</li>
@@ -594,11 +596,11 @@ Note:
 - Heben Sie hervor: "Wir analysieren echten Legacy-Code"
 <!-- .element: class="notes" -->
 
-<!-- Speaker Notes: Herzlich willkommen zur Software-Architektur Schulung. Tag 1 konzentriert sich auf Creational Patterns in Enterprise-Telekom-Umgebungen. Wir werden Legacy-Code analysieren und refactoring mit Pattern-basierten Lösungen durchführen. -->
+<!-- Speaker Notes: Herzlich willkommen zur Software-Architektur Schulung. Wir konzentrieren uns auf Creational Patterns in Enterprise-Umgebungen. Wir werden Legacy-Code analysieren und Refactoring mit Pattern-basierten Lösungen durchführen. -->
 
 ---
 
-# Workshop Agenda - Tag 1
+# Workshop Agenda
 
 ## Workshop Module
 <ul>
@@ -2915,12 +2917,12 @@ public class CompositeCustomerService implements CustomerService {
 
 ---
 
-# Tag 1 Praktische Übung - Integration Challenge
+# Praktische Übung - Integration Challenge
 
 <div class="interactive-question">
 
 ## Ihre Aufgabe: Telekom Service Integration
-#### Implementieren Sie eine vollständige Service-Integration mit allen Pattern aus Tag 1
+#### Implementieren Sie eine vollständige Service-Integration mit allen Patterns
 
 </div>
 
@@ -2962,7 +2964,7 @@ Note:
 - WICHTIGE HANDS-ON ÜBUNG: Intensive Praxisarbeit
 - Teams von 2-3 Personen bilden lassen nach Erfahrungslevel
 - Jedes Team wählt bevorzugtes Backend (SOAP/REST/NoSQL)
-- Betonen Sie: Integration ALLER Patterns aus Tag 1 (Factory Method, Abstract Factory, Builder, Prototype, Singleton)
+- Betonen Sie: Integration ALLER Patterns (Factory Method, Abstract Factory, Builder, Prototype, Singleton)
 - Verteilen Sie die Übungsblätter aus examples/exercises/day1-exercises.md
 - Zirkulieren Sie zwischen Teams, bieten Sie gezielte Hilfe an
 - Nach 30 Min: Zwischenstand abfragen, eventuell gemeinsame Probleme klären
@@ -2982,7 +2984,7 @@ Note:
 
 ---
 
-# Tag 1 Zusammenfassung
+# Zusammenfassung
 
 <div class="progress-indicator">
 <div class="progress-step completed">✅ Code-Analyse & Factory Method</div>
@@ -3056,4 +3058,4 @@ Note:
 
 </div>
 
-<!-- Speaker Notes: Schließen Sie ab, indem Sie die Schlüsselkonzepte von Tag 1 verstärken. Hervorhebung der praktischen Anwendbarkeit in Enterprise-Umgebungen und Begeisterung für Tag 2 schaffen. Ermutigen Sie zur Anwendung der Pattern in aktuellen Projekten. -->
+<!-- Speaker Notes: Schließen Sie ab, indem Sie die Schlüsselkonzepte verstärken. Hervorhebung der praktischen Anwendbarkeit in Enterprise-Umgebungen und Begeisterung für weitere Patterns schaffen. Ermutigen Sie zur Anwendung der Pattern in aktuellen Projekten. -->

@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.3.2] [2024-12-30] - Day1 Critical Issues Fixed
+
+### Fixed
+- **CRITICAL - Script Visibility**: Fixed markdown not being interpreted properly - no more visible script code
+- **Headlines CSS**: Fixed headline styling issues
+  - Removed unwanted underlines from all headlines (h1, h2, h3)
+  - Changed font-weight from bold to normal for better readability
+  - Reduced font sizes: h1 to 2.5em, h2 to 1.5em, h3 to 1.3em
+- **Fragment Reveals**: All content reveals step-by-step properly
+  - Lernziele bullet points reveal correctly
+  - 'Identifizierte Code-Smells' sections reveal properly
+  - UML structure diagrams reveal as intended
+- **Tag References**: Completely removed ALL instances of 'Tag 1' from presentation
+  - Changed title from "Software-Architektur - Tag 1" to "Software-Architektur - Grundlagen"
+  - Updated all section headings to remove day-specific references
+  - Presentation now generic and reusable
+
+### Enhanced
+- **Professional Styling**: Headlines now have clean, professional appearance without bold/underline
+- **Better Reveals**: Content reveals step-by-step for better presentation flow
+- **Generic Content**: Removed day-specific references making content more flexible
+
 ## [1.3.1] [2024-12-30] - Intro Presentation Enhancement
 
 ### Fixed
