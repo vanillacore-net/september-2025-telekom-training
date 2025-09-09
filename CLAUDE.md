@@ -8,7 +8,7 @@ l3_settings:
   continue_on_error: true
 
 ## Project Overview
-This is a training architecture documentation project for Telekom Architecture training scheduled for 2025-09.
+This is a training architecture documentation project for generic Design Patterns Workshop training scheduled for 2025-09.
 
 ## System Nature
 DOCUMENTATION PROJECT - Focus on training materials and architecture documentation.
