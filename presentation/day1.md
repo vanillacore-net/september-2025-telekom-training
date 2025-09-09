@@ -1,5 +1,5 @@
 ---
-title: Design Patterns Workshop - Tag 1
+title: Software-Architektur - Tag 1
 description: Code-Analyse, Factory Method, Abstract Factory, Builder & Prototype Patterns
 tags: design-patterns, workshop, telekom, architecture, training, day1, factory, builder, prototype
 slideOptions:
@@ -421,7 +421,7 @@ slideOptions:
   <img src="/images/VanillaCore_Vertical.png" alt="VanillaCore Logo">
 </div>
 
-# Tag 1: Design Patterns Workshop
+# Tag 1: Software-Architektur
 ## Creational Patterns in Enterprise-Architekturen
 
 Note:
@@ -434,21 +434,22 @@ Note:
 
 ---
 
-# Willkommen zum Design Patterns Workshop - Tag 1
+# Willkommen zur Software-Architektur - Tag 1
+## Bring your own brain and use it!
 
 ## Über diesen Workshop
-- Code-Analyse & Factory Method Pattern <!-- .element: class="fragment" -->
-- Abstract Factory & Layered Architecture <!-- .element: class="fragment" -->
-- Builder Pattern & Repository Integration <!-- .element: class="fragment" -->
-- Prototype Pattern & Configuration Cloning <!-- .element: class="fragment" -->
-- Singleton & Adapter mit Clean Architecture <!-- .element: class="fragment" -->
+- Code-Analyse & Factory Method Pattern <!-- .element: class="fragment" data-fragment-index="1" -->
+- Abstract Factory & Layered Architecture <!-- .element: class="fragment" data-fragment-index="2" -->
+- Builder Pattern & Repository Integration <!-- .element: class="fragment" data-fragment-index="3" -->
+- Prototype Pattern & Configuration Cloning <!-- .element: class="fragment" data-fragment-index="4" -->
+- Singleton & Adapter mit Clean Architecture <!-- .element: class="fragment" data-fragment-index="5" -->
 
 ## Lernziele Tag 1
-- Code-Smells in Legacy-Code identifizieren <!-- .element: class="fragment" -->
-- Factory Method Pattern verstehen und anwenden <!-- .element: class="fragment" -->
-- Abstract Factory in geschichteten Architekturen <!-- .element: class="fragment" -->
-- Builder Pattern für komplexe Objekterstellung <!-- .element: class="fragment" -->
-- SOLID-Prinzipien praktisch umsetzen <!-- .element: class="fragment" -->
+- Code-Smells in Legacy-Code identifizieren <!-- .element: class="fragment" data-fragment-index="6" -->
+- Factory Method Pattern verstehen und anwenden <!-- .element: class="fragment" data-fragment-index="7" -->
+- Abstract Factory in geschichteten Architekturen <!-- .element: class="fragment" data-fragment-index="8" -->
+- Builder Pattern für komplexe Objekterstellung <!-- .element: class="fragment" data-fragment-index="9" -->
+- SOLID-Prinzipien praktisch umsetzen <!-- .element: class="fragment" data-fragment-index="10" -->
 
 Note:
 - Betonen Sie die praktische Relevanz der Lernziele
@@ -467,19 +468,19 @@ Note:
 <div>
 
 ## Vormittagssession (9:00 - 12:00)
-- **Modul 1:** Code-Analyse & Factory Method <!-- .element: class="fragment" -->
-- **Modul 2:** Abstract Factory & Layered Architecture <!-- .element: class="fragment" -->
-- **Modul 3:** Builder Pattern & Repository Integration <!-- .element: class="fragment" -->
+- **Modul 1:** Code-Analyse & Factory Method <!-- .element: class="fragment" data-fragment-index="1" -->
+- **Modul 2:** Abstract Factory & Layered Architecture <!-- .element: class="fragment" data-fragment-index="2" -->
+- **Modul 3:** Builder Pattern & Repository Integration <!-- .element: class="fragment" data-fragment-index="3" -->
 
 </div>
 <div>
 
 ## Nachmittagssession (13:00 - 17:00)
-- **Modul 4:** Prototype Pattern & Configuration Cloning <!-- .element: class="fragment" -->
-- **Modul 5:** Singleton & Adapter mit Clean Architecture <!-- .element: class="fragment" -->
-- Praktische Übungen & Code-Refactoring <!-- .element: class="fragment" -->
-- Telekom-spezifische Implementierungen <!-- .element: class="fragment" -->
-- Q&A und Diskussion <!-- .element: class="fragment" -->
+- **Modul 4:** Prototype Pattern & Configuration Cloning <!-- .element: class="fragment" data-fragment-index="4" -->
+- **Modul 5:** Singleton & Adapter mit Clean Architecture <!-- .element: class="fragment" data-fragment-index="5" -->
+- Praktische Übungen & Code-Refactoring <!-- .element: class="fragment" data-fragment-index="6" -->
+- Telekom-spezifische Implementierungen <!-- .element: class="fragment" data-fragment-index="7" -->
+- Q&A und Diskussion <!-- .element: class="fragment" data-fragment-index="8" -->
 
 </div>
 </div>
@@ -498,10 +499,10 @@ Note:
 # Modul 1: Code-Analyse & Factory Method Pattern
 
 ## Lernziele
-- Code-Smells in Legacy-Code identifizieren <!-- .element: class="fragment" -->
-- Factory Method Pattern verstehen und anwenden <!-- .element: class="fragment" -->
-- Refactoring-Strategien entwickeln <!-- .element: class="fragment" -->
-- Single Responsibility Principle praktisch umsetzen <!-- .element: class="fragment" -->
+- Code-Smells in Legacy-Code identifizieren <!-- .element: class="fragment" data-fragment-index="1" -->
+- Factory Method Pattern verstehen und anwenden <!-- .element: class="fragment" data-fragment-index="2" -->
+- Refactoring-Strategien entwickeln <!-- .element: class="fragment" data-fragment-index="3" -->
+- Single Responsibility Principle praktisch umsetzen <!-- .element: class="fragment" data-fragment-index="4" -->
 
 Note:
 - Betonen Sie die praktische Relevanz für Telekom Legacy-Systeme
@@ -517,11 +518,11 @@ Note:
 Ein typisches Problem in gewachsenen Telekom-Systemen: Die Kundenbetreuung muss verschiedene Kunden-Typen verwalten - Privatkunden, Geschäftskunden, Premium-Kunden. Der vorhandene Code enthält mehrere Code-Smells.
 
 ### Identifizierte Code-Smells
-- **Long Method**: createCustomer-Methode hat zu viele Zeilen <!-- .element: class="fragment" -->
-- **Switch Statements**: Typ-basierte Verzweigung deutet auf fehlendes Polymorphismus hin <!-- .element: class="fragment" -->
-- **Feature Envy**: Methode manipuliert mehr Daten als sie besitzt <!-- .element: class="fragment" -->
-- **Duplicate Code**: Wiederholte Zuweisungen in jedem Case <!-- .element: class="fragment" -->
-- **Open/Closed Principle Verletzung**: Neue Kunden-Typen erfordern Änderung bestehender Methode <!-- .element: class="fragment" -->
+- **Long Method**: createCustomer-Methode hat zu viele Zeilen <!-- .element: class="fragment" data-fragment-index="1" -->
+- **Switch Statements**: Typ-basierte Verzweigung deutet auf fehlendes Polymorphismus hin <!-- .element: class="fragment" data-fragment-index="2" -->
+- **Feature Envy**: Methode manipuliert mehr Daten als sie besitzt <!-- .element: class="fragment" data-fragment-index="3" -->
+- **Duplicate Code**: Wiederholte Zuweisungen in jedem Case <!-- .element: class="fragment" data-fragment-index="4" -->
+- **Open/Closed Principle Verletzung**: Neue Kunden-Typen erfordern Änderung bestehender Methode <!-- .element: class="fragment" data-fragment-index="5" -->
 
 Note:
 - INTERAKTIVE ÜBUNG: Verwenden Sie Exercise 1 "Code Smell Detective" aus day1-exercises.md
@@ -787,18 +788,18 @@ Note:
 <div>
 
 ## Single Responsibility Principle (SRP)
-- Jede Factory-Klasse ist nur für einen Kunden-Typ zuständig <!-- .element: class="fragment" -->
-- Customer-Klassen kapseln ihre spezifische Geschäftslogik <!-- .element: class="fragment" -->
+- Jede Factory-Klasse ist nur für einen Kunden-Typ zuständig <!-- .element: class="fragment" data-fragment-index="1" -->
+- Customer-Klassen kapseln ihre spezifische Geschäftslogik <!-- .element: class="fragment" data-fragment-index="2" -->
 
 ## Open/Closed Principle (OCP)
-- Neue Kunden-Typen durch neue Factory-Klassen hinzufügbar <!-- .element: class="fragment" -->
-- Bestehender Code muss nicht geändert werden <!-- .element: class="fragment" -->
+- Neue Kunden-Typen durch neue Factory-Klassen hinzufügbar <!-- .element: class="fragment" data-fragment-index="3" -->
+- Bestehender Code muss nicht geändert werden <!-- .element: class="fragment" data-fragment-index="4" -->
 
 </div>
 <div>
 
 ## Dependency Inversion Principle (DIP)
-- Abhängigkeit zu Customer-Interface, nicht zu konkreten Implementierungen <!-- .element: class="fragment" -->
+- Abhängigkeit zu Customer-Interface, nicht zu konkreten Implementierungen <!-- .element: class="fragment" data-fragment-index="5" -->
 
 ## Moderne Alternative - Java 8+
 ```java
@@ -832,10 +833,10 @@ Note:
 # Modul 2: Abstract Factory & Layered Architecture
 
 ## Lernziele
-- Abstract Factory Pattern in geschichteten Architekturen anwenden <!-- .element: class="fragment" -->
-- Service-Familien sauber strukturieren <!-- .element: class="fragment" -->
-- Dependency Injection Prinzipien verstehen <!-- .element: class="fragment" -->
-- Interface Segregation in der Praxis umsetzen <!-- .element: class="fragment" -->
+- Abstract Factory Pattern in geschichteten Architekturen anwenden <!-- .element: class="fragment" data-fragment-index="1" -->
+- Service-Familien sauber strukturieren <!-- .element: class="fragment" data-fragment-index="2" -->
+- Dependency Injection Prinzipien verstehen <!-- .element: class="fragment" data-fragment-index="3" -->
+- Interface Segregation in der Praxis umsetzen <!-- .element: class="fragment" data-fragment-index="4" -->
 
 Note:
 - Übergang von Factory Method zu Abstract Factory erklären
@@ -852,10 +853,10 @@ Note:
 Telekom betreibt verschiedene Service-Kanäle (Web, Mobile App, Call Center, Partner-Portal). Jeder Kanal benötigt unterschiedliche Service-Implementierungen, aber ähnliche Funktionalitäten.
 
 ### Herausforderungen
-- Verschiedene Authentifizierung pro Kanal <!-- .element: class="fragment" -->
-- Unterschiedliche Datenformate und APIs <!-- .element: class="fragment" -->
-- Kanal-spezifische Geschäftsregeln <!-- .element: class="fragment" -->
-- Einheitliche Service-Schnittstelle gewünscht <!-- .element: class="fragment" -->
+- Verschiedene Authentifizierung pro Kanal <!-- .element: class="fragment" data-fragment-index="1" -->
+- Unterschiedliche Datenformate und APIs <!-- .element: class="fragment" data-fragment-index="2" -->
+- Kanal-spezifische Geschäftsregeln <!-- .element: class="fragment" data-fragment-index="3" -->
+- Einheitliche Service-Schnittstelle gewünscht <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ### Telekom Service-Familien
 ```
@@ -1113,10 +1114,10 @@ public class ChannelFactoryProvider {
 # Modul 3: Builder Pattern & Repository Integration
 
 ## Lernziele
-- Builder Pattern für komplexe Objekterstellung meistern <!-- .element: class="fragment" -->
-- Repository Pattern mit Builder kombinieren <!-- .element: class="fragment" -->
-- Fluent Interfaces designen und umsetzen <!-- .element: class="fragment" -->
-- Liskov Substitution Principle praktisch anwenden <!-- .element: class="fragment" -->
+- Builder Pattern für komplexe Objekterstellung meistern <!-- .element: class="fragment" data-fragment-index="1" -->
+- Repository Pattern mit Builder kombinieren <!-- .element: class="fragment" data-fragment-index="2" -->
+- Fluent Interfaces designen und umsetzen <!-- .element: class="fragment" data-fragment-index="3" -->
+- Liskov Substitution Principle praktisch anwenden <!-- .element: class="fragment" data-fragment-index="4" -->
 
 Note:
 - Builder Pattern löst das "Telescoping Constructor" Problem
@@ -1134,10 +1135,10 @@ Note:
 Telekom-Systeme arbeiten mit komplexen Datenbankabfragen - Kunden können nach vielen Kriterien gefiltert werden, verschiedene Joins sind nötig, Performance-Optimierungen müssen berücksichtigt werden.
 
 ### Herausforderungen
-- Komplexe Query-Erstellung mit vielen optionalen Parametern <!-- .element: class="fragment" -->
-- Verschiedene Datenbanken (Oracle, PostgreSQL, MongoDB) <!-- .element: class="fragment" -->
-- Performance-kritische Abfragen mit Indizierung <!-- .element: class="fragment" -->
-- Type-sichere Query-Erstellung <!-- .element: class="fragment" -->
+- Komplexe Query-Erstellung mit vielen optionalen Parametern <!-- .element: class="fragment" data-fragment-index="1" -->
+- Verschiedene Datenbanken (Oracle, PostgreSQL, MongoDB) <!-- .element: class="fragment" data-fragment-index="2" -->
+- Performance-kritische Abfragen mit Indizierung <!-- .element: class="fragment" data-fragment-index="3" -->
+- Type-sichere Query-Erstellung <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
@@ -1415,10 +1416,10 @@ Query query = new TypeSafeCustomerQueryBuilder()
 # Modul 4: Prototype Pattern & Configuration Cloning
 
 ## Lernziele
-- Prototype Pattern für kostspielige Objekterzeugung verstehen <!-- .element: class="fragment" -->
-- Deep vs. Shallow Copy Problematik meistern <!-- .element: class="fragment" -->
-- Configuration-Cloning für komplexe Enterprise-Settings <!-- .element: class="fragment" -->
-- Performance-Optimierung durch intelligente Objektkopierung <!-- .element: class="fragment" -->
+- Prototype Pattern für kostspielige Objekterzeugung verstehen <!-- .element: class="fragment" data-fragment-index="1" -->
+- Deep vs. Shallow Copy Problematik meistern <!-- .element: class="fragment" data-fragment-index="2" -->
+- Configuration-Cloning für komplexe Enterprise-Settings <!-- .element: class="fragment" data-fragment-index="3" -->
+- Performance-Optimierung durch intelligente Objektkopierung <!-- .element: class="fragment" data-fragment-index="4" -->
 
 Note:
 - Prototype Pattern ist performance-kritisch bei teuren Objekten
@@ -1436,10 +1437,10 @@ Note:
 In Enterprise-Umgebungen müssen häufig ähnliche, aber leicht unterschiedliche Service-Konfigurationen erstellt werden. Die Initialisierung dieser Konfigurationsobjekte ist aufwändig und zeitkritisch.
 
 ### Herausforderungen
-- **Kostspielige Objekterzeugung**: Database-Connections, SSL-Certificates, Complex Validation <!-- .element: class="fragment" -->
-- **Template-basierte Konfiguration**: 90% identisch, 10% variabel <!-- .element: class="fragment" -->
-- **Runtime-Configuration**: Dynamische Erstellung zur Laufzeit erforderlich <!-- .element: class="fragment" -->
-- **Memory-Effizienz**: Sharing von unveränderlichen Teilen <!-- .element: class="fragment" -->
+- **Kostspielige Objekterzeugung**: Database-Connections, SSL-Certificates, Complex Validation <!-- .element: class="fragment" data-fragment-index="1" -->
+- **Template-basierte Konfiguration**: 90% identisch, 10% variabel <!-- .element: class="fragment" data-fragment-index="2" -->
+- **Runtime-Configuration**: Dynamische Erstellung zur Laufzeit erforderlich <!-- .element: class="fragment" data-fragment-index="3" -->
+- **Memory-Effizienz**: Sharing von unveränderlichen Teilen <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
@@ -1790,10 +1791,10 @@ public class CowConfiguration {
 # Modul 5: Singleton & Adapter mit Clean Architecture
 
 ## Lernziele
-- Singleton Pattern korrekt in Enterprise-Umgebungen anwenden <!-- .element: class="fragment" -->
-- Adapter Pattern für Legacy-System Integration <!-- .element: class="fragment" -->
-- Clean Architecture Prinzipien mit Pattern-Integration <!-- .element: class="fragment" -->
-- Thread-Safety und Performance-Optimierung <!-- .element: class="fragment" -->
+- Singleton Pattern korrekt in Enterprise-Umgebungen anwenden <!-- .element: class="fragment" data-fragment-index="1" -->
+- Adapter Pattern für Legacy-System Integration <!-- .element: class="fragment" data-fragment-index="2" -->
+- Clean Architecture Prinzipien mit Pattern-Integration <!-- .element: class="fragment" data-fragment-index="3" -->
+- Thread-Safety und Performance-Optimierung <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
@@ -1803,10 +1804,10 @@ public class CowConfiguration {
 Telekom hat viele Legacy-Systeme mit unterschiedlichen APIs. Neue Services müssen mit alten Systemen kommunizieren, aber die Interfaces passen nicht zusammen.
 
 ### Herausforderungen
-- **Legacy APIs**: SOAP, XML-RPC, proprietäre Protokolle <!-- .element: class="fragment" -->
-- **Moderne Services**: REST, JSON, reactive programming <!-- .element: class="fragment" -->
-- **Resource Management**: Connection Pools, Thread-sichere Singletons <!-- .element: class="fragment" -->
-- **Clean Architecture**: Abhängigkeiten von außen nach innen <!-- .element: class="fragment" -->
+- **Legacy APIs**: SOAP, XML-RPC, proprietäre Protokolle <!-- .element: class="fragment" data-fragment-index="1" -->
+- **Moderne Services**: REST, JSON, reactive programming <!-- .element: class="fragment" data-fragment-index="2" -->
+- **Resource Management**: Connection Pools, Thread-sichere Singletons <!-- .element: class="fragment" data-fragment-index="3" -->
+- **Clean Architecture**: Abhängigkeiten von außen nach innen <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
@@ -2149,32 +2150,32 @@ public class CompositeCustomerService implements CustomerService {
 <div>
 
 ### Szenario: Multi-Backend Customer Management
-- **Legacy SOAP Service** (nicht änderbar) <!-- .element: class="fragment" -->
-- **Moderne REST API** (neu entwickelt) <!-- .element: class="fragment" -->
-- **NoSQL Document Store** (MongoDB) <!-- .element: class="fragment" -->
-- **Configuration Management** (Singleton) <!-- .element: class="fragment" -->
-- **Query Builder** für komplexe Suchen <!-- .element: class="fragment" -->
+- **Legacy SOAP Service** (nicht änderbar) <!-- .element: class="fragment" data-fragment-index="1" -->
+- **Moderne REST API** (neu entwickelt) <!-- .element: class="fragment" data-fragment-index="2" -->
+- **NoSQL Document Store** (MongoDB) <!-- .element: class="fragment" data-fragment-index="3" -->
+- **Configuration Management** (Singleton) <!-- .element: class="fragment" data-fragment-index="4" -->
+- **Query Builder** für komplexe Suchen <!-- .element: class="fragment" data-fragment-index="5" -->
 
 ### Anforderungen
-- Factory Method für Service-Erstellung <!-- .element: class="fragment" -->
-- Abstract Factory für Backend-Familien <!-- .element: class="fragment" -->
-- Builder für Query-Erstellung <!-- .element: class="fragment" -->
-- Prototype für Configuration-Templates <!-- .element: class="fragment" -->
-- Adapter für Legacy-Integration <!-- .element: class="fragment" -->
+- Factory Method für Service-Erstellung <!-- .element: class="fragment" data-fragment-index="6" -->
+- Abstract Factory für Backend-Familien <!-- .element: class="fragment" data-fragment-index="7" -->
+- Builder für Query-Erstellung <!-- .element: class="fragment" data-fragment-index="8" -->
+- Prototype für Configuration-Templates <!-- .element: class="fragment" data-fragment-index="9" -->
+- Adapter für Legacy-Integration <!-- .element: class="fragment" data-fragment-index="10" -->
 
 </div>
 <div>
 
 ### Implementation Tasks
-1. **Service Factory Design** <!-- .element: class="fragment" -->
+1. **Service Factory Design** <!-- .element: class="fragment" data-fragment-index="11" -->
    - CustomerServiceFactory mit Backend-spezifischen Implementierungen
    - Abstract Factory für Service-Familien
 
-2. **Builder Implementation** <!-- .element: class="fragment" -->
+2. **Builder Implementation** <!-- .element: class="fragment" data-fragment-index="12" -->
    - CustomerQueryBuilder mit Fluent Interface
    - Type-safe Query-Erstellung
 
-3. **Adapter & Integration** <!-- .element: class="fragment" -->
+3. **Adapter & Integration** <!-- .element: class="fragment" data-fragment-index="13" -->
    - Legacy SOAP Adapter
    - Configuration Prototype Registry
    - Service Registry mit Failover
@@ -2194,9 +2195,9 @@ Note:
 <!-- .element: class="notes" -->
 
 ### Bonus Challenges
-- **Performance Optimization** mit Caching <!-- .element: class="fragment" -->
-- **Circuit Breaker** Pattern für Legacy-Services <!-- .element: class="fragment" -->
-- **Monitoring & Observability** Integration <!-- .element: class="fragment" -->
+- **Performance Optimization** mit Caching <!-- .element: class="fragment" data-fragment-index="14" -->
+- **Circuit Breaker** Pattern für Legacy-Services <!-- .element: class="fragment" data-fragment-index="15" -->
+- **Monitoring & Observability** Integration <!-- .element: class="fragment" data-fragment-index="16" -->
 
 </div>
 </div>
@@ -2217,21 +2218,21 @@ Note:
 <div>
 
 ## Was wir behandelt haben
-- **Creational Patterns** in Enterprise-Kontexten <!-- .element: class="fragment" -->
-- **Legacy-Code Refactoring** mit Pattern-basierten Lösungen <!-- .element: class="fragment" -->
-- **Performance-Optimierung** durch intelligente Objekterstellung <!-- .element: class="fragment" -->
-- **Clean Architecture** Integration mit Design Patterns <!-- .element: class="fragment" -->
-- **SOLID-Prinzipien** in der Praxis <!-- .element: class="fragment" -->
+- **Creational Patterns** in Enterprise-Kontexten <!-- .element: class="fragment" data-fragment-index="1" -->
+- **Legacy-Code Refactoring** mit Pattern-basierten Lösungen <!-- .element: class="fragment" data-fragment-index="2" -->
+- **Performance-Optimierung** durch intelligente Objekterstellung <!-- .element: class="fragment" data-fragment-index="3" -->
+- **Clean Architecture** Integration mit Design Patterns <!-- .element: class="fragment" data-fragment-index="4" -->
+- **SOLID-Prinzipien** in der Praxis <!-- .element: class="fragment" data-fragment-index="5" -->
 
 </div>
 <div>
 
 ## Zentrale Erkenntnisse
-- **Factory Method** löst Code-Smells durch Polymorphismus <!-- .element: class="fragment" -->
-- **Abstract Factory** strukturiert Service-Familien elegant <!-- .element: class="fragment" -->
-- **Builder Pattern** macht komplexe Objekterstellung verständlich <!-- .element: class="fragment" -->
-- **Prototype Pattern** optimiert Performance bei ähnlichen Objekten <!-- .element: class="fragment" -->
-- **Adapter Pattern** ermöglicht nahtlose Legacy-Integration <!-- .element: class="fragment" -->
+- **Factory Method** löst Code-Smells durch Polymorphismus <!-- .element: class="fragment" data-fragment-index="6" -->
+- **Abstract Factory** strukturiert Service-Familien elegant <!-- .element: class="fragment" data-fragment-index="7" -->
+- **Builder Pattern** macht komplexe Objekterstellung verständlich <!-- .element: class="fragment" data-fragment-index="8" -->
+- **Prototype Pattern** optimiert Performance bei ähnlichen Objekten <!-- .element: class="fragment" data-fragment-index="9" -->
+- **Adapter Pattern** ermöglicht nahtlose Legacy-Integration <!-- .element: class="fragment" data-fragment-index="10" -->
 
 </div>
 </div>
@@ -2254,18 +2255,18 @@ Note:
 <div>
 
 ## Kontaktinformationen
-**E-Mail:** architecture-training@vanillacore.com  <!-- .element: class="fragment" -->
-**Repository:** [Design Patterns Examples](https://github.com/vanillacore/design-patterns)  <!-- .element: class="fragment" -->
-**Code-Beispiele:** Verfügbar im Workshop-Repository <!-- .element: class="fragment" -->
+**E-Mail:** architecture-training@vanillacore.com  <!-- .element: class="fragment" data-fragment-index="1" -->
+**Repository:** [Design Patterns Examples](https://github.com/vanillacore/design-patterns)  <!-- .element: class="fragment" data-fragment-index="2" -->
+**Code-Beispiele:** Verfügbar im Workshop-Repository <!-- .element: class="fragment" data-fragment-index="3" -->
 
 </div>
 <div>
 
 ## Nächste Schritte
-- **Pattern-Integration** in eigenen Projekten testen <!-- .element: class="fragment" -->
-- **Code-Smell Detection** Tools einsetzen <!-- .element: class="fragment" -->
-- **Legacy-Refactoring** Strategien entwickeln <!-- .element: class="fragment" -->
-- **Vorbereitung auf Tag 2** Structural Patterns <!-- .element: class="fragment" -->
+- **Pattern-Integration** in eigenen Projekten testen <!-- .element: class="fragment" data-fragment-index="4" -->
+- **Code-Smell Detection** Tools einsetzen <!-- .element: class="fragment" data-fragment-index="5" -->
+- **Legacy-Refactoring** Strategien entwickeln <!-- .element: class="fragment" data-fragment-index="6" -->
+- **Vorbereitung auf Tag 2** Structural Patterns <!-- .element: class="fragment" data-fragment-index="7" -->
 
 </div>
 </div>

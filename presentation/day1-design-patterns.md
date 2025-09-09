@@ -1,5 +1,5 @@
-# Day 1: Design Patterns Workshop
-## Telekom Architecture Training
+# Day 1: Software-Architektur
+## Bring your own brain and use it!
 
 ---
 

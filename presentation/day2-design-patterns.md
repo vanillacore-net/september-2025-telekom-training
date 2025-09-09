@@ -1,7 +1,7 @@
-# Design Patterns Workshop - Day 2
-## Strukturmuster in der Praxis
+# Software-Architektur - Tag 2
+## Bring your own brain and use it!
 
-**Telekom Architecture Training**
+**Strukturmuster in der Praxis**
 
 ---
 

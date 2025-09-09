@@ -1,6 +1,6 @@
-# Design Patterns Workshop - Day 4
-## Advanced Architecture Patterns
-### Enterprise Architecture Training
+# Software-Architektur - Tag 4
+## Bring your own brain and use it!
+### Advanced Architecture Patterns
 
 **Speaker Notes:** Welcome to Day 4 of our Design Patterns Workshop. Today we'll explore advanced architectural patterns, microservice patterns, and performance optimizations. This is our synthesis day where we bring together everything learned over the past four days into practical, enterprise-ready solutions.
 

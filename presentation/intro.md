@@ -1,5 +1,5 @@
 ---
-title: Design Patterns Workshop - Einführung
+title: Software-Architektur - Einführung
 description: Grundlagen zu Software-Architektur, Clean Code, Fachlichkeit vor Technik und Design Patterns Motivation
 tags: design-patterns, workshop, telekom, architecture, training, introduction, clean-code, domain-first
 slideOptions:
@@ -208,7 +208,8 @@ slideOptions:
 }
 </style>
 
-# Design Patterns Workshop
+# Software-Architektur
+## Bring your own brain and use it!
 ## Einführung und Grundlagen
 
 **Trainer:** [Name]  

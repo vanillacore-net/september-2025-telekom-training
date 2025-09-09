@@ -1,5 +1,5 @@
 ---
-title: Design Patterns Workshop - Einführung
+title: Software-Architektur - Einführung
 description: Grundlagen zu Software-Architektur, Clean Code, Fachlichkeit vor Technik und Design Patterns Motivation
 tags: design-patterns, workshop, telekom, architecture, training, introduction, clean-code, domain-first
 slideOptions:
@@ -208,11 +208,10 @@ slideOptions:
 }
 </style> -->
 
-# Design Patterns Workshop
+# Software-Architektur
 ## Einführung und Grundlagen
 
 **Trainer:** [Name]  
-**Dauer:** 2.5 Stunden  
 **Ziel:** Fundament für professionelle Design Pattern Anwendung
 
 ---
@@ -237,7 +236,6 @@ slideOptions:
 ---
 
 # Teil 1: Was ist Software-Architektur?
-*Dauer: 20-25 Minuten*
 
 ## Lernziele
 - Gemeinsames Verständnis von Software-Architektur
@@ -246,7 +244,7 @@ slideOptions:
 
 ---
 
-## Einstieg (5 Minuten)
+## Einstieg
 
 ### Frage an Sie:
 **"Was ist für Sie Software-Architektur? 3 Begriffe oder Sätze!"**
@@ -264,7 +262,7 @@ slideOptions:
 
 ---
 
-## Definitionen sammeln (8-10 Minuten)
+## Definitionen sammeln
 
 ### Definition 1: IEEE 1471
 > *"Architecture is the fundamental organization of a system, embodied in its components, their relationships to each other and to the environment, and the principles governing its design and evolution."*
@@ -294,7 +292,7 @@ slideOptions:
 
 ---
 
-## Konsens erarbeiten (5 Minuten)
+## Konsens erarbeiten
 
 ### Gemeinsame Erkenntnisse:
 1. **Struktur**: Wie ist die Software organisiert?
@@ -308,7 +306,7 @@ slideOptions:
 
 ---
 
-## Enterprise-Kontext (5-7 Minuten)
+## Enterprise-Kontext
 
 ### Besonderheiten in großen Unternehmen:
 - **Legacy-Systeme**: Jahrzehntealte Systeme, die noch laufen müssen
@@ -341,7 +339,6 @@ Architektur ist nicht nur Technik. Sie muss Geschäftsziele verstehen und unters
 ---
 
 # Teil 2: Clean Code Grundlagen
-*Dauer: 15-20 Minuten*
 
 ## Lernziele
 - Verständnis für sauberen Code
@@ -351,7 +348,7 @@ Architektur ist nicht nur Technik. Sie muss Geschäftsziele verstehen und unters
 
 ---
 
-## Was bedeutet "sauber"? (5 Minuten)
+## Was bedeutet "sauber"?
 
 ### Frage an Sie:
 **"Beschreiben Sie ein sauberes Büro. Was macht es sauber?"**
@@ -421,7 +418,7 @@ if (employee.isEligibleForBonus())
 
 ---
 
-## Lesbarkeit vs. Cleverness (5 Minuten)
+## Lesbarkeit vs. Cleverness
 
 ### Das "Clever Code" Anti-Pattern
 
@@ -446,14 +443,14 @@ return DEFAULT_SERVICE_LEVEL;
 ---
 
 ### Warum Lesbarkeit gewinnt:
-- **80% der Zeit wird Code gelesen**, nur 20% geschrieben
+- **Code wird öfter gelesen als geschrieben**
 - Code wird häufiger debuggt als geschrieben
 - Neue Teammitglieder müssen Code verstehen
 - Wartung und Erweiterung brauchen Verständnis
 
 ---
 
-## Wartbarkeit als Ziel (5 Minuten)
+## Wartbarkeit als Ziel
 
 ### Software-Lebenszyklus in der Praxis:
 - **Entwicklung**: 20% der Gesamtkosten
@@ -470,7 +467,7 @@ Legacy-Systeme mit Millionen Zeilen undokumentiertem Code verursachen hohe Wartu
 
 ---
 
-## Technische Schulden (5 Minuten)
+## Technische Schulden
 
 ### Definition nach Martin Fowler:
 > *"Technical debt is a metaphor referring to the eventual consequences of poor system design, software architecture or software development within a codebase."*
@@ -511,7 +508,7 @@ Clean Code ist nicht Perfektionismus. Es ist eine Investition in die Zukunft.
 
 ## Diskussionsfragen
 1. "Wann haben Sie zuletzt Code gelesen und gedacht: 'Das verstehe ich nicht'?"
-2. "Was kostet Sie mehr Zeit: Neuen Code schreiben oder alten Code verstehen?"
+2. "Was ist schwieriger: Neuen Code schreiben oder alten Code verstehen?"
 3. "Wie erklären Sie Management, warum Clean Code wichtig ist?"
 
 *Diese Grundlagen führen uns zur wichtigsten Erkenntnis: Fachlichkeit muss vor Technik kommen!*
@@ -519,7 +516,7 @@ Clean Code ist nicht Perfektionismus. Es ist eine Investition in die Zukunft.
 ---
 
 # Teil 3: Fachlichkeit vor Technik
-*Dauer: 25-30 Minuten - Kern-Message des Workshops*
+**Kern-Message des Workshops**
 
 ## Lernziele
 - Technology-First Anti-Pattern erkennen
@@ -529,7 +526,7 @@ Clean Code ist nicht Perfektionismus. Es ist eine Investition in die Zukunft.
 
 ---
 
-## Das häufigste Anti-Pattern: Technology-First (10 Minuten)
+## Das häufigste Anti-Pattern: Technology-First
 
 ### Typische Aussagen in Projekten:
 > *"Wir nutzen jetzt Microservices!"* - Aber warum?  
@@ -559,7 +556,7 @@ Clean Code ist nicht Perfektionismus. Es ist eine Investition in die Zukunft.
 
 ---
 
-## Typische Beispiele für Technology-First (8-10 Minuten)
+## Typische Beispiele für Technology-First
 
 ### Beispiel 1: Der Microservices-Hype
 **Situation:** Monolithische Anwendung funktioniert gut, aber "Microservices sind modern"
@@ -615,7 +612,7 @@ Clean Code ist nicht Perfektionismus. Es ist eine Investition in die Zukunft.
 
 ---
 
-## Domain-Driven Design: Fachlichkeit First (7-10 Minuten)
+## Domain-Driven Design: Fachlichkeit First
 
 ### Der DDD-Grundgedanke nach Eric Evans:
 > *"The heart of software is its ability to solve domain-related problems for its user. All other concerns, however fascinating, should be subordinated."*
@@ -654,7 +651,7 @@ Clean Code ist nicht Perfektionismus. Es ist eine Investition in die Zukunft.
 
 ---
 
-## Die richtige Herangehensweise (5 Minuten)
+## Die richtige Herangehensweise
 
 ### Fragen in der richtigen Reihenfolge:
 
@@ -714,7 +711,6 @@ Clean Code ist nicht Perfektionismus. Es ist eine Investition in die Zukunft.
 ---
 
 # Teil 4: Design Patterns Motivation
-*Dauer: 15-20 Minuten*
 
 ## Lernziele
 - Geschichte der Design Patterns verstehen
@@ -724,7 +720,7 @@ Clean Code ist nicht Perfektionismus. Es ist eine Investition in die Zukunft.
 
 ---
 
-## Geschichte: Warum entstanden Design Patterns? (8 Minuten)
+## Geschichte: Warum entstanden Design Patterns?
 
 ### Die Ursprünge: Christopher Alexander (Architektur)
 **1977 - "A Pattern Language"** - Nicht Software, sondern Gebäude-Architektur!
@@ -769,7 +765,7 @@ Entwickler B: "Ah, du meinst Strategy Pattern!"
 
 ---
 
-## Warum Design Patterns? (6-8 Minuten)
+## Warum Design Patterns?
 
 ### 1. **Bewährte Lösungen nutzen**
 Anstatt das Rad neu zu erfinden, nutzen wir erprobte Lösungen.
@@ -825,7 +821,7 @@ Bekannte Patterns sind einfacher zu verstehen und zu ändern.
 
 ---
 
-## Patterns sind NICHT... (3 Minuten)
+## Patterns sind NICHT...
 
 ### Was Patterns NICHT sind:
 1. **Silberkugeln**: Patterns lösen nicht alle Probleme
@@ -849,7 +845,7 @@ Einfach: Properties.load() oder ähnliche Standard-Lösung
 
 ---
 
-## Patterns als gemeinsame Sprache (3-5 Minuten)
+## Patterns als gemeinsame Sprache
 
 ### Kommunikationsvorteile:
 
@@ -909,7 +905,6 @@ GUT: Mit Patterns: "Das ist MVC mit Observer für Events und Factory für Servic
 ---
 
 # Teil 5: Refactoring Philosophie
-*Dauer: 15-20 Minuten*
 
 ## Lernziele
 - Refactoring als kontinuierlichen Prozess verstehen
@@ -919,7 +914,7 @@ GUT: Mit Patterns: "Das ist MVC mit Observer für Events und Factory für Servic
 
 ---
 
-## Was ist Refactoring? (5 Minuten)
+## Was ist Refactoring?
 
 ### Definition nach Martin Fowler:
 > *"Refactoring is the process of changing a software system in such a way that it does not alter the external behavior of the code yet improves its internal structure."*
@@ -940,7 +935,7 @@ GUT: Mit Patterns: "Das ist MVC mit Observer für Events und Factory für Servic
 
 ---
 
-## Die Boy Scout Rule (5-7 Minuten)
+## Die Boy Scout Rule
 
 ### Ursprung: Boy Scouts of America
 > *"Try and leave this world a little better than you found it."*
@@ -989,7 +984,7 @@ Mit Boy Scout Rule:
 
 ---
 
-## Wann refactoren? (5-7 Minuten)
+## Wann refactoren?
 
 ### Die "Rule of Three" nach Martin Fowler:
 1. **Das erste Mal** - mache es einfach
@@ -1024,15 +1019,15 @@ Mit Boy Scout Rule:
 - Füge dann das Feature hinzu
 - "Make the change easy, then make the easy change"
 
-### Gute Refactoring-Zeitpunkte:
-- **Sprint Planning**: "Diese Story braucht Refactoring-Zeit"
+### Gute Refactoring-Gelegenheiten:
+- **Sprint Planning**: "Diese Story braucht Refactoring"
 - **Bug-Fixing**: Immer mit Boy Scout Rule kombinieren
 - **Code Reviews**: Verbesserungen vorschlagen und umsetzen
-- **Technische Stories**: Dedicated Refactoring-Zeit
+- **Technische Stories**: Dedicated Refactoring
 
 ---
 
-## Wie refactoren? (5-7 Minuten)
+## Wie refactoren?
 
 ### Die Refactoring-Sicherheitsmaßnahmen:
 
@@ -1110,7 +1105,7 @@ if (customer.getOrderCount() > PREMIUM_CUSTOMER_THRESHOLD) { ... }
 
 ---
 
-## Refactoring als Weg zu Patterns (3-5 Minuten)
+## Refactoring als Weg zu Patterns
 
 ### Patterns entstehen durch Refactoring:
 
@@ -1145,7 +1140,7 @@ if (customer.getOrderCount() > PREMIUM_CUSTOMER_THRESHOLD) { ... }
 1. **Big Bang Refactoring**: Alles auf einmal ändern
 2. **Refactoring ohne Tests**: Kein Sicherheitsnetz
 3. **Perfectionism**: Endlos optimieren
-4. **Wrong Timing**: Refactoring unter Zeitdruck
+4. **Wrong Context**: Refactoring unter Druck
 5. **Changing Behavior**: Versehentlich Verhalten ändern
 
 ### Enterprise-Kontext:
@@ -1166,7 +1161,7 @@ if (customer.getOrderCount() > PREMIUM_CUSTOMER_THRESHOLD) { ... }
 ## Diskussionsfragen
 1. "Wann haben Sie zuletzt Boy Scout Rule angewendet?"
 2. "Was hindert Sie daran, kontinuierlich zu refactoren?"
-3. "Wie überzeuge ich Management, Zeit für Refactoring zu geben?"
+3. "Wie überzeuge ich Management, Refactoring zu unterstützen?"
 4. "Welche Tools nutzen Sie für sicheres Refactoring?"
 
 *Mit diesem Refactoring-Mindset sind wir bereit für den eigentlichen Workshop - wir wissen jetzt, dass wir Patterns durch evolutionäre Verbesserung entdecken!*
@@ -1174,7 +1169,6 @@ if (customer.getOrderCount() > PREMIUM_CUSTOMER_THRESHOLD) { ... }
 ---
 
 # Teil 6: Workshop-Erwartungen
-*Dauer: 15-20 Minuten*
 
 ## Was werden wir in den nächsten 4 Tagen lernen?
 
@@ -1376,7 +1370,7 @@ if (customer.getOrderCount() > PREMIUM_CUSTOMER_THRESHOLD) { ... }
 
 ---
 
-## Pausen und Diskussion
+## Diskussion und Austausch
 
 ### Austausch:
 - Fragen zu Pattern-Implementierungen

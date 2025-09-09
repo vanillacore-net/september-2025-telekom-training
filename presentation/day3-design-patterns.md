@@ -1,5 +1,6 @@
-# Design Patterns Workshop - Tag 3
-## Verhaltensmuster (Behavioral Patterns)
+# Software-Architektur - Tag 3
+## Bring your own brain and use it!
+### Verhaltensmuster (Behavioral Patterns)
 
 *Speaker Notes: Willkommen zum dritten Tag unserer Design Patterns Workshop-Reihe. Heute fokussieren wir uns auf Verhaltensmuster - die komplexesten und mächtigsten Design Patterns. Diese Muster definieren, wie Objekte miteinander interagieren und kommunizieren.*
 

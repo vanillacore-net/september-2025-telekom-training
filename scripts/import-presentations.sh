@@ -42,7 +42,7 @@ cleanup_old_presentations() {
     
     # Delete all existing day presentations and introduction
     docker exec $DB_CONTAINER psql -U $DB_USER -d $DB_NAME -c \
-        "DELETE FROM \"Notes\" WHERE alias LIKE 'day%-design-patterns' OR alias LIKE 'intro-design-patterns' OR content LIKE '%Design Patterns Workshop - Tag%' OR content LIKE '%Design Patterns Workshop - Einführung%';" 2>/dev/null || true
+        "DELETE FROM \"Notes\" WHERE alias LIKE 'day%-design-patterns' OR alias LIKE 'intro-design-patterns' OR content LIKE '%Software-Architektur - Tag%' OR content LIKE '%Software-Architektur - Einführung%' OR content LIKE '%Design Patterns Workshop%';" 2>/dev/null || true
     
     print_success "Database cleaned"
 }
@@ -180,11 +180,11 @@ echo "----------------------------------------------------"
 # Import introduction and all 4 days
 FAILED=0
 
-import_presentation "$PRESENTATION_DIR/hedgedoc-intro.md" "intro-design-patterns" "Design Patterns Workshop - Einführung" "0" || FAILED=$((FAILED + 1))
-import_presentation "$PRESENTATION_DIR/hedgedoc-day1.md" "day1-design-patterns" "Design Patterns Workshop - Tag 1" "1" || FAILED=$((FAILED + 1))
-import_presentation "$PRESENTATION_DIR/hedgedoc-day2.md" "day2-design-patterns" "Design Patterns Workshop - Tag 2" "2" || FAILED=$((FAILED + 1))
-import_presentation "$PRESENTATION_DIR/hedgedoc-day3.md" "day3-design-patterns" "Design Patterns Workshop - Tag 3" "3" || FAILED=$((FAILED + 1))
-import_presentation "$PRESENTATION_DIR/hedgedoc-day4.md" "day4-design-patterns" "Design Patterns Workshop - Tag 4" "4" || FAILED=$((FAILED + 1))
+import_presentation "$PRESENTATION_DIR/hedgedoc-intro.md" "intro-design-patterns" "Software-Architektur - Einführung" "0" || FAILED=$((FAILED + 1))
+import_presentation "$PRESENTATION_DIR/hedgedoc-day1.md" "day1-design-patterns" "Software-Architektur - Tag 1" "1" || FAILED=$((FAILED + 1))
+import_presentation "$PRESENTATION_DIR/hedgedoc-day2.md" "day2-design-patterns" "Software-Architektur - Tag 2" "2" || FAILED=$((FAILED + 1))
+import_presentation "$PRESENTATION_DIR/hedgedoc-day3.md" "day3-design-patterns" "Software-Architektur - Tag 3" "3" || FAILED=$((FAILED + 1))
+import_presentation "$PRESENTATION_DIR/hedgedoc-day4.md" "day4-design-patterns" "Software-Architektur - Tag 4" "4" || FAILED=$((FAILED + 1))
 
 echo ""
 echo "=================================================="
