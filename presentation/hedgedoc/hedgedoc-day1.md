@@ -157,8 +157,8 @@ slideOptions:
 /* Code blocks sizing */
 .reveal pre {
   font-size: 0.85em !important; /* Further increased for better readability */
-  max-height: 940px; /* Scaled for FHD (500px * 1.875) */
-  overflow: auto !important;
+  max-height: calc(100vh - 200px); /* Use full available screen height */
+  overflow-y: auto !important;
   background: #f8f8f8 !important; /* Light gray background */
   color: #333 !important; /* Dark text for contrast */
   border: 1px solid #e0e0e0; /* Subtle border */
@@ -308,7 +308,7 @@ slideOptions:
   top: 25px;
   right: 25px;
   max-width: 80px;
-  max-height: 80px;
+  max-height: calc(100vh - 200px);
   z-index: 1000;
   pointer-events: none;
 }
@@ -341,7 +341,7 @@ slideOptions:
 /* Logo for title slides - centered in middle of slide */
 .title-slide .vanilla-logo {
   max-width: 300px;
-  max-height: 300px;
+  max-height: calc(100vh - 250px);
   position: static;
   display: block;
   margin: 0 auto 60px auto;
