@@ -76,7 +76,7 @@ slideOptions:
   font-size: 2.2em !important;
   color: #2c2c2c !important;
   font-weight: normal !important;
-  text-align: center !important;
+  text-align: left !important;
   margin-top: 0.8em !important;
   margin-bottom: 0.4em !important;
   width: 100% !important;
@@ -158,20 +158,24 @@ slideOptions:
   margin-left: -1em;
 }
 
-/* Code blocks sizing - Full Width Optimized */
+/* Code blocks sizing - Full Width Optimized with Overflow Prevention */
 .reveal pre {
   font-size: 1.2em !important; /* Increased by 20% for better readability */
   max-height: calc(100vh - 200px); /* Use full available screen height */
-  overflow-y: auto !important;
+  max-width: 100% !important; /* Prevent horizontal overflow */
+  overflow-x: auto !important; /* Allow horizontal scrolling if needed */
+  overflow-y: auto !important; /* Allow vertical scrolling if needed */
+  white-space: pre-wrap !important; /* Wrap long lines */
+  word-wrap: break-word !important; /* Break long words */
   background: #2d3748 !important; /* Dark background for better contrast */
   color: #e2e8f0 !important; /* Light text for contrast */
   border: 1px solid #4a5568; /* Subtle darker border */
   width: 88% !important; /* Use most of screen width */
-  max-width: 88% !important;
   margin-left: auto !important;
   margin-right: auto !important;
   border-radius: 8px !important;
   box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
+  box-sizing: border-box !important;
 }
 
 .reveal pre code {
@@ -181,6 +185,10 @@ slideOptions:
   color: #e2e8f0 !important;
   background: transparent !important;
   padding: 0 !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
 }
 
 .reveal code {
@@ -461,17 +469,17 @@ Note:
 <div class="progress-step current">📍 Strukturmuster Übersicht</div>
 <div class="progress-step pending">⏳ Erweiterte Patterns</div>
 <div class="progress-step pending">⏳ Enterprise Examples</div>
-<div class="progress-step pending">⏳ Hands-on Übungen</div>
+<div class="progress-step pending">⏳ Praktische Anwendung</div>
 </div>
 
 <div class="fragment">- **Strukturmuster Übersicht** - Adapter, Decorator, Facade</div>
 <div class="fragment">- **Erweiterte Strukturmuster** - Composite, Proxy</div>
 <div class="fragment">- **Enterprise Patterns** - Reale Anwendungsbeispiele</div>
-<div class="fragment">- **Hands-on Übungen** - Praktische Implementierung</div>
+<div class="fragment">- **Praktische Anwendung** - Code-Analyse und Refactoring</div>
 <div class="fragment">- **Best Practices** - Enterprise spezifische Anwendungen</div> 
 
 Note:
-- Verwenden Sie Exercise 1 "Service Enhancement Pipeline" aus day2-exercises.md als Motivation
+- Verwenden Sie Service Enhancement Pipeline als Motivation für Decorator Pattern
 - Erklären Sie den Zusammenhang: Strukturmuster = System-Integration
 - Betonen Sie die praktische Relevanz für Telekom-Umgebungen
 - Heben Sie hervor: "Heute lösen wir echte Integrationsprobleme"
@@ -1645,7 +1653,7 @@ try { // fragment
 </div>
 
 <div class="progress-indicator">
-<div class="progress-step current">🛠️ Exercise Time</div>
+<div class="progress-step current">🛠️ Pattern Anwendung</div>
 <div class="progress-step pending">👥 Work in teams of 3-4</div>
 <div class="progress-step pending">🎯 Focus on pattern integration</div>
 </div>
@@ -1673,19 +1681,19 @@ class CustomerServiceFacade {
 </div>
 
 Note:
-- GROSSE PRAXIS-ÜBUNG: Intensive Teamarbeit mit day2-exercises.md
+- GROSSE PATTERN-ANWENDUNG: Intensive Teamdiskussion mit Refactoring-Beispielen
 - Teams von 3-4 Personen, unterschiedliche Erfahrungslevels mischen
-- WICHTIG: Verwenden Sie alle 4 Exercises aus day2-exercises.md:
-  * Exercise 1: Service Enhancement Pipeline (Decorator Pattern)
-  * Exercise 2: Legacy System Integration (Adapter Pattern)  
-  * Exercise 3: Complex Configuration (Composite Pattern)
-  * Exercise 4: Service Caching Solution (Proxy Pattern)
-- Jedes Team wählt 2 Exercises basierend auf Interesse/Erfahrung
+- WICHTIG: Verwenden Sie alle 4 Pattern-Szenarien:
+  * Scenario 1: Service Enhancement Pipeline (Decorator Pattern)
+  * Scenario 2: Legacy System Integration (Adapter Pattern)  
+  * Scenario 3: Complex Configuration (Composite Pattern)
+  * Scenario 4: Service Caching Solution (Proxy Pattern)
+- Jedes Team wählt 2 Szenarien basierend auf Interesse/Erfahrung
 - Zirkulieren Sie regelmäßig zwischen Teams
-- Hilfestellung bei Design-Entscheidungen, nicht bei Syntax
+- Hilfestellung bei Design-Entscheidungen und Pattern-Erkennung
 - Zwischenstand und Feedback-Runde
-- Jedes Team präsentiert eine Lösung
-- Bereiten Sie Referenz-Lösungen aus exercises vor
+- Jedes Team präsentiert einen Lösungsansatz
+- Bereiten Sie Referenz-Implementierungen als Diskussionsgrundlage vor
 - Präsentation und Diskussion der Lösungsansätze
 - Musterlösung bereithalten für Teams die schnell fertig sind
 <!-- .element: class="notes" -->

@@ -76,7 +76,7 @@ slideOptions:
   font-size: 2.2em !important;
   color: #2c2c2c !important;
   font-weight: normal !important;
-  text-align: center !important;
+  text-align: left !important;
   margin-top: 0.8em !important;
   margin-bottom: 0.4em !important;
   width: 100% !important;
@@ -158,20 +158,24 @@ slideOptions:
   margin-left: -1em;
 }
 
-/* Code blocks sizing - Full Width Optimized */
+/* Code blocks sizing - Full Width Optimized with Overflow Prevention */
 .reveal pre {
   font-size: 1.2em !important; /* Increased by 20% for better readability */
   max-height: calc(100vh - 200px); /* Use full available screen height */
-  overflow-y: auto !important;
+  max-width: 100% !important; /* Prevent horizontal overflow */
+  overflow-x: auto !important; /* Allow horizontal scrolling if needed */
+  overflow-y: auto !important; /* Allow vertical scrolling if needed */
+  white-space: pre-wrap !important; /* Wrap long lines */
+  word-wrap: break-word !important; /* Break long words */
   background: #2d3748 !important; /* Dark background for better contrast */
   color: #e2e8f0 !important; /* Light text for contrast */
   border: 1px solid #4a5568; /* Subtle darker border */
   width: 88% !important; /* Use most of screen width */
-  max-width: 88% !important;
   margin-left: auto !important;
   margin-right: auto !important;
   border-radius: 8px !important;
   box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
+  box-sizing: border-box !important;
 }
 
 .reveal pre code {
@@ -181,6 +185,10 @@ slideOptions:
   color: #e2e8f0 !important;
   background: transparent !important;
   padding: 0 !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
 }
 
 .reveal code {
@@ -496,7 +504,7 @@ Note:
 <li class="fragment" data-fragment-index="4"><strong>Modul 4:</strong> Prototype Pattern & Configuration Cloning</li>
 <li class="fragment" data-fragment-index="5"><strong>Clean Architecture:</strong> Fundamentale Prinzipien</li>
 <li class="fragment" data-fragment-index="6"><strong>Modul 5:</strong> Singleton & Adapter mit Clean Architecture</li>
-<li class="fragment" data-fragment-index="7">Praktische Übungen & Code-Refactoring</li>
+<li class="fragment" data-fragment-index="7">Code-Refactoring & Best Practices</li>
 <li class="fragment" data-fragment-index="8">Q&A und Diskussion</li>
 </ul>
 
@@ -504,7 +512,7 @@ Note:
 - Halten Sie sich an die Module - jedes Modul ist sorgfältig strukturiert
 - Ermutigen Sie zur aktiven Teilnahme in den Hands-on-Phasen
 - Builder Pattern ist oft das komplexeste - planen Sie mehr Diskussion dafür
-- Hands-on Übungen sind essentiell - lassen Sie ausreichend Raum dafür
+- Praxisnahe Refactoring-Beispiele sind essentiell - lassen Sie ausreichend Raum für Diskussion
 <!-- .element: class="notes" -->
 
 ---
@@ -2851,12 +2859,12 @@ Note:
 - Teams von 2-3 Personen bilden lassen nach Erfahrungslevel
 - Jedes Team wählt bevorzugtes Backend (SOAP/REST/NoSQL)
 - Betonen Sie: Integration ALLER Patterns (Factory Method, Abstract Factory, Builder, Prototype, Singleton)
-- Verteilen Sie die Übungsblätter aus examples/exercises/day1-exercises.md
-- Zirkulieren Sie zwischen Teams, bieten Sie gezielte Hilfe an
-- Nach 30 Min: Zwischenstand abfragen, eventuell gemeinsame Probleme klären
-- Letzten 15 Min für Präsentation der Lösungsansätze nutzen
-- Bereiten Sie Musterlösung vor für schnelle Teams
-- WICHTIG: Code Smell Detective Exercise als Aufwärmung verwenden
+- Präsentieren Sie konkrete Code-Beispiele und Refactoring-Szenarien
+- Zirkulieren Sie zwischen Teams, bieten Sie gezielte Diskussionsimpulse an
+- Nach 30 Min: Zwischenstand abfragen, eventuell gemeinsame Patterns klären
+- Letzten 15 Min für Diskussion der Lösungsansätze nutzen
+- Bereiten Sie Refactoring-Beispiele vor als Diskussionsgrundlage
+- WICHTIG: Code-Analyse und Pattern-Erkennung als Aufwärmung verwenden
 - Bei Zeitnot: konzentrieren Sie sich auf Factory Method + Builder Pattern
 <!-- .element: class="notes" -->
 

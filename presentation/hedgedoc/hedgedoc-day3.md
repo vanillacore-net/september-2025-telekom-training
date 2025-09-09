@@ -76,7 +76,7 @@ slideOptions:
   font-size: 2.2em !important;
   color: #2c2c2c !important;
   font-weight: normal !important;
-  text-align: center !important;
+  text-align: left !important;
   margin-top: 0.8em !important;
   margin-bottom: 0.4em !important;
   width: 100% !important;
@@ -158,20 +158,24 @@ slideOptions:
   margin-left: -1em;
 }
 
-/* Code blocks sizing - Full Width Optimized */
+/* Code blocks sizing - Full Width Optimized with Overflow Prevention */
 .reveal pre {
   font-size: 1.2em !important; /* Increased by 20% for better readability */
   max-height: calc(100vh - 200px); /* Use full available screen height */
-  overflow-y: auto !important;
+  max-width: 100% !important; /* Prevent horizontal overflow */
+  overflow-x: auto !important; /* Allow horizontal scrolling if needed */
+  overflow-y: auto !important; /* Allow vertical scrolling if needed */
+  white-space: pre-wrap !important; /* Wrap long lines */
+  word-wrap: break-word !important; /* Break long words */
   background: #2d3748 !important; /* Dark background for better contrast */
   color: #e2e8f0 !important; /* Light text for contrast */
   border: 1px solid #4a5568; /* Subtle darker border */
   width: 88% !important; /* Use most of screen width */
-  max-width: 88% !important;
   margin-left: auto !important;
   margin-right: auto !important;
   border-radius: 8px !important;
   box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
+  box-sizing: border-box !important;
 }
 
 .reveal pre code {
@@ -181,6 +185,10 @@ slideOptions:
   color: #e2e8f0 !important;
   background: transparent !important;
   padding: 0 !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
 }
 
 .reveal code {
@@ -451,7 +459,7 @@ Note:
 - Kurze Wiederholung: Creational (Tag 1) → Structural (Tag 2) → Behavioral (Tag 3)
 - Betonen Sie: Verhaltensmuster = Objekt-Kommunikation und Interaktion
 - Diese Patterns sind fundamental für moderne Enterprise-Architekturen
-- Verwenden Sie examples/exercises/day3-exercises.md für praktische Übungen
+- Verwenden Sie konkrete Pattern-Szenarien für praktische Anwendung
 <!-- .element: class="notes" -->
 
 ---
@@ -463,7 +471,7 @@ Note:
 <div class="progress-step pending">⏳ Strategy Pattern - Algorithmus-Austauschbarkeit</div>
 <div class="progress-step pending">⏳ Command Pattern - Aktion-Kapselung und Undo</div>
 <div class="progress-step pending">⏳ Template Method, Iterator, Chain of Responsibility</div>
-<div class="progress-step pending">⏳ Praktische Übungen</div>
+<div class="progress-step pending">⏳ Pattern Integration</div>
 </div>
 
 - **Observer Pattern** - Event-getriebene Architektur 
@@ -472,7 +480,7 @@ Note:
 - **Template Method Pattern** - Algorithmus-Skelett 
 - **Iterator Pattern** - Sequenzielle Zugriffe 
 - **Chain of Responsibility** - Anfragen-Weiterleitung 
-- **Praktische Übungen** - Hands-on Implementation 
+- **Pattern Integration** - Kombination verschiedener Verhaltensmuster 
 
 <!-- Speaker Notes: Verhaltensmuster sind besonders wichtig für Event-getriebene Systeme, Microservices und moderne Architekturen. Sie ermöglichen lose Kopplung und flexible Kommunikation zwischen Komponenten. -->
 
@@ -1625,7 +1633,7 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 
 ---
 
-# Hands-on Übungen
+# Pattern Integration & Synthese
 
 <div class="interactive-question">
 
@@ -1660,7 +1668,7 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 - Error recovery handlers 
 - Parallel processing und batch operations 
 
-<!-- Speaker Notes: Diese Übungen kombinieren alle heute gelernten Patterns in realistischen Szenarien. Die Teilnehmer sollen die Synergien zwischen verschiedenen Patterns erleben. -->
+<!-- Speaker Notes: Diese Synthese kombiniert alle heute gelernten Patterns in realistischen Szenarien. Die Teilnehmer sollen die Synergien zwischen verschiedenen Patterns verstehen und diskutieren. -->
 
 ---
 

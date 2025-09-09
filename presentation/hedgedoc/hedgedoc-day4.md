@@ -76,7 +76,7 @@ slideOptions:
   font-size: 2.2em !important;
   color: #2c2c2c !important;
   font-weight: normal !important;
-  text-align: center !important;
+  text-align: left !important;
   margin-top: 0.8em !important;
   margin-bottom: 0.4em !important;
   width: 100% !important;
@@ -158,20 +158,24 @@ slideOptions:
   margin-left: -1em;
 }
 
-/* Code blocks sizing - Full Width Optimized */
+/* Code blocks sizing - Full Width Optimized with Overflow Prevention */
 .reveal pre {
   font-size: 1.2em !important; /* Increased by 20% for better readability */
   max-height: calc(100vh - 200px); /* Use full available screen height */
-  overflow-y: auto !important;
+  max-width: 100% !important; /* Prevent horizontal overflow */
+  overflow-x: auto !important; /* Allow horizontal scrolling if needed */
+  overflow-y: auto !important; /* Allow vertical scrolling if needed */
+  white-space: pre-wrap !important; /* Wrap long lines */
+  word-wrap: break-word !important; /* Break long words */
   background: #2d3748 !important; /* Dark background for better contrast */
   color: #e2e8f0 !important; /* Light text for contrast */
   border: 1px solid #4a5568; /* Subtle darker border */
   width: 88% !important; /* Use most of screen width */
-  max-width: 88% !important;
   margin-left: auto !important;
   margin-right: auto !important;
   border-radius: 8px !important;
   box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
+  box-sizing: border-box !important;
 }
 
 .reveal pre code {
@@ -181,6 +185,10 @@ slideOptions:
   color: #e2e8f0 !important;
   background: transparent !important;
   padding: 0 !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
 }
 
 .reveal code {
@@ -452,7 +460,7 @@ Note:
 - Heute: Von einzelnen Patterns zu kompletten Architekturen
 - Kurze Reflexion: Was haben wir von Tag 1-3 gelernt?
 - Fokus auf reale Enterprise-Anwendungen und Microservice-Architekturen
-- Verwenden Sie examples/exercises/day4-exercises.md für finale Übungen
+- Verwenden Sie finale Pattern-Synthese für komplexe Architektur-Diskussion
 - Betonen Sie: Pattern-Integration und Anti-Pattern-Vermeidung
 <!-- .element: class="notes" -->
 
@@ -1261,7 +1269,7 @@ testUserCreation(); // fragment
 <div>
 
 ## **Workshop Materials**
-<div class="fragment">- **Complete Code Repository** - All examples and exercises</div>
+<div class="fragment">- **Complete Code Repository** - All pattern implementations and examples</div>
 <div class="fragment">- **Pattern Reference Guide** - Quick lookup for each pattern</div>
 <div class="fragment">- **Best Practice Checklists** - When to use each pattern</div>
 <div class="fragment">- **Architecture Templates** - Starter templates for common scenarios</div> 
