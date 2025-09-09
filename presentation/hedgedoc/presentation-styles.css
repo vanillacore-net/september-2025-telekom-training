@@ -80,33 +80,40 @@
     color: var(--text-color);
 }
 
-/* Code Styling */
+/* Code Styling - Optimized for Full Screen Width */
 .reveal code {
     font-family: var(--code-font);
     background-color: #f5f5f5;
     color: #333;
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-    font-size: 0.9em;
+    padding: 0.3em 0.5em;
+    border-radius: 4px;
+    font-size: 1.1em;
 }
 
 .reveal pre {
     text-align: left;
-    margin: 1em 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    border-radius: 5px;
+    margin: 0.8em 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    width: 90% !important;
+    max-width: 90% !important;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .reveal pre code {
     font-family: var(--code-font);
     background-color: #2d3748;
     color: #e2e8f0;
-    padding: 1em;
-    border-radius: 5px;
-    font-size: 0.8em;
-    line-height: 1.4;
+    padding: 1.2em 1.5em;
+    border-radius: 8px;
+    font-size: 1.1em !important;
+    line-height: 1.5;
     display: block;
     overflow-x: auto;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: auto;
 }
 
 /* Code Block Syntax Highlighting */
@@ -210,19 +217,35 @@
     margin-bottom: 0.5em;
 }
 
-/* Code Example Containers */
+/* Code Example Containers - Full Width Optimized */
 .code-example {
     background-color: #f8f9fa;
-    border-radius: 8px;
-    padding: 1em;
+    border-radius: 10px;
+    padding: 1.2em 1.5em;
     margin: 1em 0;
     border: 1px solid #e9ecef;
+    width: 88% !important;
+    max-width: 88% !important;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
 }
 
 .code-example h5 {
     color: var(--text-color);
-    margin-bottom: 0.5em;
-    font-size: 1.1em;
+    margin-bottom: 0.8em;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.code-example pre {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0;
+}
+
+.code-example pre code {
+    font-size: 1.05em !important;
 }
 
 /* Interactive Elements */
@@ -294,6 +317,27 @@
     color: #999;
 }
 
+/* Presentation Optimized for 1920x1080 */
+@media (min-width: 1600px) {
+    .reveal pre {
+        width: 85% !important;
+        max-width: 85% !important;
+    }
+    
+    .code-example {
+        width: 83% !important;
+        max-width: 83% !important;
+    }
+    
+    .reveal pre code {
+        font-size: 1.2em !important;
+    }
+    
+    .code-example pre code {
+        font-size: 1.15em !important;
+    }
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .two-column {
@@ -309,8 +353,18 @@
         font-size: 1.6em;
     }
     
+    .reveal pre {
+        width: 95% !important;
+        max-width: 95% !important;
+    }
+    
     .reveal pre code {
-        font-size: 0.7em;
+        font-size: 0.9em !important;
+    }
+    
+    .code-example {
+        width: 95% !important;
+        max-width: 95% !important;
     }
     
     .interactive-options {

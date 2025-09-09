@@ -57,12 +57,14 @@ slideOptions:
 }
 
 .reveal h1 {
-  font-size: 2.16em !important; /* Increased by 20% (1.8em * 1.20) */
+  font-size: 3.0em !important; /* Significantly increased for better visibility */
   color: #2c2c2c;
-  font-weight: 600 !important;
+  font-weight: 700 !important; /* Bolder weight for more prominence */
   text-align: left !important;
   margin-top: 0.8em !important;
-  margin-bottom: 0.3em !important;
+  margin-bottom: 0.5em !important; /* More spacing below headline */
+  border-bottom: 3px solid #666666 !important; /* Visual separator */
+  padding-bottom: 0.2em !important; /* Padding above border */
 }
 
 /* First heading on slide should not have top margin */
@@ -154,14 +156,20 @@ slideOptions:
   margin-left: -1em;
 }
 
-/* Code blocks sizing */
+/* Code blocks sizing - Full Width Optimized */
 .reveal pre {
-  font-size: 0.85em !important; /* Further increased for better readability */
+  font-size: 1.1em !important; /* Significantly increased for better readability */
   max-height: calc(100vh - 200px); /* Use full available screen height */
   overflow-y: auto !important;
-  background: #f8f8f8 !important; /* Light gray background */
-  color: #333 !important; /* Dark text for contrast */
-  border: 1px solid #e0e0e0; /* Subtle border */
+  background: #2d3748 !important; /* Dark background for better contrast */
+  color: #e2e8f0 !important; /* Light text for contrast */
+  border: 1px solid #4a5568; /* Subtle darker border */
+  width: 88% !important; /* Use most of screen width */
+  max-width: 88% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
 }
 
 .reveal .two-column {
@@ -217,18 +225,35 @@ slideOptions:
 }
 
 .code-example {
-  background: #f5f5f5;
+  background: #f8f9fa;
   color: #333;
-  padding: 20px;
-  border-radius: 8px;
-  margin: 20px 0;
-  font-size: 1.1em; /* Increased font size for better readability */
+  padding: 24px 30px;
+  border-radius: 10px;
+  margin: 20px auto;
+  font-size: 1.2em; /* Significantly increased font size for better readability */
+  width: 86% !important; /* Use most of screen width */
+  max-width: 86% !important;
+  box-sizing: border-box;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .code-example h5 {
   color: #333;
   margin-top: 0;
   font-weight: 600;
+  font-size: 1.3em;
+  margin-bottom: 0.8em;
+}
+
+.code-example pre {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+.code-example pre code {
+  font-size: 1.05em !important;
 }
 
 .interactive-question {
@@ -302,24 +327,67 @@ slideOptions:
     gap: 20px;
   }
 }
-/* Hide Speaker Notes in Presentation Mode */
-/* This targets paragraphs that contain speaker notes */
-.reveal .slides section p {
-  /* We cannot use :contains() as it's not standard CSS */
-  /* Instead, we'll hide all p elements that might be speaker notes */
-}
-
-/* Hide .speaker-notes divs (class-based approach) */
-.speaker-notes {
+/* Hide Speaker Notes in Presentation Mode - Enhanced */
+/* Hide paragraphs that start with "Note:" */
+.reveal .slides section p:has-text("Note:"),
+.reveal .slides section p[data-fragment-index]:has-text("Note:") {
   display: none !important;
 }
 
-/* Hide reveal.js notes */
-.reveal .notes {
+/* Hide HTML comments that contain speaker notes */
+.reveal .slides section .notes,
+.reveal .slides section [class*="note"],
+.reveal .slides section [class*="speaker"] {
   display: none !important;
 }
 
-/* A more direct approach: we'll need to convert **Speaker Notes:** to a class */
+/* Hide reveal.js built-in notes */
+.reveal .notes,
+.reveal aside.notes,
+.reveal .speaker-notes {
+  display: none !important;
+}
+
+/* Hide any element with "notes" class */
+.notes, 
+.speaker-notes,
+.presentation-notes {
+  display: none !important;
+}
+
+/* More aggressive hiding of Note: content */
+.reveal .slides section p:first-child {
+  /* Check if this paragraph starts with Note: and hide it */
+}
+
+/* Hide elements marked with class="notes" */
+.element.notes {
+  display: none !important;
+}
+
+/* CRITICAL: Hide speaker notes patterns - enhanced selector */
+/* Hide any paragraph starting with "Note:" and following content until next section */
+.reveal .slides section p:first-line:contains("Note:") {
+  display: none !important;
+}
+
+/* Hide content that comes after "Note:" on slides */
+.reveal .slides section p + ul,
+.reveal .slides section p + ol {
+  /* Only hide lists that follow paragraphs starting with Note: */
+}
+
+/* More aggressive approach: hide all speaker note blocks */
+.reveal .slides section *:has(+ *[class*="notes"]),
+.reveal .slides section *[class*="notes"] + *,
+.reveal .slides section *[class*="notes"] {
+  display: none !important;
+}
+
+/* Target specific speaker notes pattern: Note: followed by list */
+.reveal .slides section {
+  /* JS will need to handle the Note: + list pattern */
+}
 
 /* VanillaCore Logo Styling - Option 1: Small logo in top-right corner */
 .vanilla-logo {
@@ -434,6 +502,51 @@ slideOptions:
 }
 </style>
 
+<script>
+// Hide speaker notes that start with "Note:"
+document.addEventListener('DOMContentLoaded', function() {
+  // Function to hide speaker notes
+  function hideSpeakerNotes() {
+    const slides = document.querySelectorAll('.reveal .slides section');
+    
+    slides.forEach(slide => {
+      const paragraphs = slide.querySelectorAll('p');
+      
+      paragraphs.forEach((p, index) => {
+        // Check if paragraph starts with "Note:"
+        if (p.textContent.trim().startsWith('Note:')) {
+          // Hide this paragraph
+          p.style.display = 'none';
+          
+          // Also hide the following list if it exists
+          const nextElement = p.nextElementSibling;
+          if (nextElement && (nextElement.tagName === 'UL' || nextElement.tagName === 'OL')) {
+            nextElement.style.display = 'none';
+          }
+        }
+      });
+      
+      // Also hide any elements with "notes" class
+      const notesElements = slide.querySelectorAll('[class*="notes"], .element.notes');
+      notesElements.forEach(el => {
+        el.style.display = 'none';
+      });
+    });
+  }
+  
+  // Hide notes immediately
+  hideSpeakerNotes();
+  
+  // Also hide notes after reveal.js initializes
+  setTimeout(hideSpeakerNotes, 1000);
+  
+  // Re-hide notes when slide changes
+  if (typeof Reveal !== 'undefined') {
+    Reveal.on('slidechanged', hideSpeakerNotes);
+  }
+});
+</script>
+
 <div class="workshop-header title-slide">
 
 <div class="vanilla-logo">
@@ -462,7 +575,8 @@ Note:
 <div class="fragment" data-fragment-index="2">- Abstract Factory & Layered Architecture</div>
 <div class="fragment" data-fragment-index="3">- Builder Pattern & Repository Integration</div>
 <div class="fragment" data-fragment-index="4">- Prototype Pattern & Configuration Cloning</div>
-<div class="fragment" data-fragment-index="5">- Singleton & Adapter mit Clean Architecture</div>
+<div class="fragment" data-fragment-index="5">- Clean Architecture: Fundamentale Prinzipien</div>
+<div class="fragment" data-fragment-index="6">- Singleton & Adapter mit Clean Architecture</div>
 
 ## Lernziele Tag 1
 <ul>
@@ -492,9 +606,10 @@ Note:
 <li class="fragment" data-fragment-index="2"><strong>Modul 2:</strong> Abstract Factory & Layered Architecture</li>
 <li class="fragment" data-fragment-index="3"><strong>Modul 3:</strong> Builder Pattern & Repository Integration</li>
 <li class="fragment" data-fragment-index="4"><strong>Modul 4:</strong> Prototype Pattern & Configuration Cloning</li>
-<li class="fragment" data-fragment-index="5"><strong>Modul 5:</strong> Singleton & Adapter mit Clean Architecture</li>
-<li class="fragment" data-fragment-index="6">Praktische Übungen & Code-Refactoring</li>
-<li class="fragment" data-fragment-index="7">Q&A und Diskussion</li>
+<li class="fragment" data-fragment-index="5"><strong>Clean Architecture:</strong> Fundamentale Prinzipien</li>
+<li class="fragment" data-fragment-index="6"><strong>Modul 5:</strong> Singleton & Adapter mit Clean Architecture</li>
+<li class="fragment" data-fragment-index="7">Praktische Übungen & Code-Refactoring</li>
+<li class="fragment" data-fragment-index="8">Q&A und Diskussion</li>
 </ul>
 
 Note:
@@ -523,8 +638,10 @@ Note:
 ---
 
 # Factory Method Pattern
+<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ## Was passt hier nicht?
+<!-- .element: class="fragment" data-fragment-index="2" -->
 
 Ein typisches Problem in gewachsenen Telekom-Systemen: Die Kundenbetreuung muss verschiedene Kunden-Typen verwalten - Privatkunden, Geschäftskunden, Premium-Kunden.
 
@@ -889,8 +1006,10 @@ Note:
 ---
 
 # Abstract Factory Pattern
+<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ## Was passt hier nicht?
+<!-- .element: class="fragment" data-fragment-index="2" -->
 
 Telekom betreibt verschiedene Service-Kanäle (Web, Mobile App, Call Center, Partner-Portal). Die aktuelle Implementierung hat gravierende Probleme:
 
@@ -1232,8 +1351,10 @@ Note:
 ---
 
 # Builder Pattern
+<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ## Was passt hier nicht?
+<!-- .element: class="fragment" data-fragment-index="2" -->
 
 Telekom-Systeme arbeiten mit komplexen Datenbankabfragen - Kunden können nach vielen Kriterien gefiltert werden. Die aktuelle Implementierung ist ein Wartungsalptraum:
 
@@ -1572,8 +1693,10 @@ Note:
 ---
 
 # Prototype Pattern
+<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ## Was passt hier nicht?
+<!-- .element: class="fragment" data-fragment-index="2" -->
 
 In Enterprise-Umgebungen müssen häufig ähnliche, aber leicht unterschiedliche Service-Konfigurationen erstellt werden. Die aktuelle Implementierung verschwendet massive Ressourcen:
 
@@ -1966,6 +2089,217 @@ public class CowConfiguration {
 
 ---
 
+# Clean Architecture: Fundamentale Prinzipien
+
+## Was ist Clean Architecture?
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+**Clean Architecture** ist ein Architekturmuster von Robert C. Martin (Uncle Bob), das die **Dependency Rule** als zentrales Prinzip etabliert:
+
+<div class="fragment" data-fragment-index="2">
+
+**📍 Dependency Rule: Dependencies zeigen nur nach innen!**
+
+</div>
+
+---
+
+# Clean Architecture Schichten
+
+<div class="two-column">
+<div class="left">
+
+## Schichten von außen nach innen:
+<div class="fragment" data-fragment-index="1"><strong>4. Frameworks & Drivers</strong><br/>UI, Database, Web, External APIs</div>
+<div class="fragment" data-fragment-index="2"><strong>3. Interface Adapters</strong><br/>Controllers, Gateways, Presenters</div>
+<div class="fragment" data-fragment-index="3"><strong>2. Application Business Rules</strong><br/>Use Cases, Interactors</div>
+<div class="fragment" data-fragment-index="4"><strong>1. Enterprise Business Rules</strong><br/>Entities, Domain Objects</div>
+
+</div>
+<div class="right">
+
+## Visualisierung
+<div class="fragment" data-fragment-index="5">
+
+```
+    ┌─────────────────────────────┐
+    │  Frameworks & Drivers (4)   │  ← External
+    │  ┌─────────────────────────┐ │
+    │  │ Interface Adapters (3)  │ │
+    │  │  ┌─────────────────────┐│ │
+    │  │  │ Use Cases (2)       ││ │
+    │  │  │  ┌─────────────────┐││ │
+    │  │  │  │  Entities (1)   │││ │  ← Core
+    │  │  │  │                 │││ │
+    │  │  │  └─────────────────┘││ │
+    │  │  └─────────────────────┘│ │
+    │  └─────────────────────────┘ │
+    └─────────────────────────────┘
+```
+
+</div>
+</div>
+</div>
+
+---
+
+# Dependency Rule in Detail
+
+## 🎯 Kernprinzip: Dependencies zeigen nach innen
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+<div class="fragment" data-fragment-index="2">
+<strong>✅ Erlaubt:</strong>
+- Use Cases nutzen Entities
+- Controllers nutzen Use Cases
+- Gateways implementieren Repository-Interfaces
+</div>
+
+<div class="fragment" data-fragment-index="3">
+<strong>❌ Verboten:</strong>
+- Entities kennen Use Cases
+- Use Cases kennen Controllers
+- Domain kennt Database-Details
+</div>
+
+---
+
+# Clean Architecture & SOLID Prinzipien
+
+## Wie Clean Architecture SOLID umsetzt:
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+<div class="fragment" data-fragment-index="2">
+<strong>🔹 Dependency Inversion Principle:</strong><br/>
+Use Cases definieren Interfaces, Adapter implementieren sie
+</div>
+
+<div class="fragment" data-fragment-index="3">
+<strong>🔹 Single Responsibility:</strong><br/>
+Jede Schicht hat eine klare Verantwortlichkeit
+</div>
+
+<div class="fragment" data-fragment-index="4">
+<strong>🔹 Open/Closed:</strong><br/>
+Neue Features durch neue Use Cases, ohne Core zu ändern
+</div>
+
+---
+
+# Warum Clean Architecture für Enterprise-Systeme?
+
+<div class="two-column">
+<div class="left">
+
+## 💪 Vorteile:
+<div class="fragment" data-fragment-index="1">- **Testbarkeit**: Core-Logik isoliert testbar</div>
+<div class="fragment" data-fragment-index="2">- **Framework-Unabhängigkeit**: Core überlebt Framework-Wechsel</div>
+<div class="fragment" data-fragment-index="3">- **Database-Agnostik**: Core kennt keine DB-Details</div>
+<div class="fragment" data-fragment-index="4">- **UI-Flexibilität**: Verschiedene Interfaces möglich</div>
+
+</div>
+<div class="right">
+
+## 🎯 Enterprise-Realität:
+<div class="fragment" data-fragment-index="5">- **Legacy-Integration**: Adapter für alte Systeme</div>
+<div class="fragment" data-fragment-index="6">- **Compliance**: Business-Rules zentral verwaltbar</div>
+<div class="fragment" data-fragment-index="7">- **Skalierung**: Schichten unabhängig skalierbar</div>
+<div class="fragment" data-fragment-index="8">- **Wartbarkeit**: Änderungen in abgegrenzten Bereichen</div>
+
+</div>
+</div>
+
+---
+
+# Design Patterns in Clean Architecture
+
+## Wie Patterns die Architektur unterstützen:
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+<div class="fragment" data-fragment-index="2">
+<strong>🏗️ Adapter Pattern:</strong> Interface zwischen Schichten schaffen
+</div>
+
+<div class="fragment" data-fragment-index="3">
+<strong>📊 Repository Pattern:</strong> Data Access abstrahieren
+</div>
+
+<div class="fragment" data-fragment-index="4">
+<strong>🏭 Factory Pattern:</strong> Abhängigkeiten auflösen
+</div>
+
+<div class="fragment" data-fragment-index="5">
+<strong>🎯 Strategy Pattern:</strong> Business-Rules austauschbar machen
+</div>
+
+---
+
+# Clean Architecture Beispiel: Customer Service
+
+<div class="code-example">
+
+```java
+// 1. Entity (Core Domain)
+public class Customer {
+    private final String id;
+    private final String name;
+    private final CustomerStatus status;
+    
+    // Business logic hier!
+    public boolean canUpgrade() {
+        return status == CustomerStatus.ACTIVE && 
+               hasMinimumHistory();
+    }
+}
+
+// 2. Use Case (Application Business Rules)
+public class GetCustomerUseCase {
+    private final CustomerRepository repository; // Interface!
+    
+    public Customer execute(String customerId) {
+        return repository.findById(customerId)
+            .orElseThrow(() -> new CustomerNotFoundException(customerId));
+    }
+}
+```
+
+</div>
+
+---
+
+# Clean Architecture: Adapter Integration
+
+<div class="code-example">
+
+```java
+// 3. Interface Adapter (Gateway Implementation)
+public class DatabaseCustomerRepository implements CustomerRepository {
+    private final CustomerJpaRepository jpaRepository;
+    
+    @Override
+    public Optional<Customer> findById(String id) {
+        return jpaRepository.findById(id)
+            .map(this::toDomainEntity);  // Adapter-Funktion!
+    }
+}
+
+// 4. Framework Layer (Controller)
+@RestController
+public class CustomerController {
+    private final GetCustomerUseCase getCustomerUseCase;
+    
+    @GetMapping("/customers/{id}")
+    public ResponseEntity<CustomerDto> getCustomer(@PathVariable String id) {
+        Customer customer = getCustomerUseCase.execute(id);
+        return ResponseEntity.ok(toDto(customer)); // Presenter-Logik
+    }
+}
+```
+
+</div>
+
+---
+
 # Modul 5: Singleton & Adapter mit Clean Architecture
 
 ## Lernziele
@@ -1977,8 +2311,10 @@ public class CowConfiguration {
 ---
 
 # Singleton & Adapter Pattern
+<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ## Was passt hier nicht?
+<!-- .element: class="fragment" data-fragment-index="2" -->
 
 Telekom hat viele Legacy-Systeme mit unterschiedlichen APIs. Die aktuelle Integration ist ein chaotisches Durcheinander:
 
@@ -2469,6 +2805,7 @@ Note:
 <div class="progress-step completed">✅ Abstract Factory & Layered Architecture</div>
 <div class="progress-step completed">✅ Builder Pattern & Repository Integration</div>
 <div class="progress-step completed">✅ Prototype Pattern & Configuration Cloning</div>
+<div class="progress-step completed">✅ Clean Architecture: Fundamentale Prinzipien</div>
 <div class="progress-step completed">✅ Singleton & Adapter mit Clean Architecture</div>
 </div>
 

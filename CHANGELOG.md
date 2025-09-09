@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.0.5] [2024-12-30] - Add Clean Architecture Explanation
+
+### Added
+- **Clean Architecture Introduction** - Comprehensive explanation added before Module 5
+  - Added "Clean Architecture: Fundamentale Prinzipien" section before Singleton & Adapter module
+  - Explained the four layers: Entities, Use Cases, Interface Adapters, Frameworks & Drivers
+  - Included ASCII art visualization of the onion architecture
+  - Connected Clean Architecture to SOLID principles (especially Dependency Inversion)
+  - Explained why Clean Architecture matters for enterprise systems
+  - Added practical code examples showing each layer
+  - Updated workshop agenda and progress indicators to include the new section
+- **Educational Value** - Participants now understand Clean Architecture before seeing it applied with patterns
+
+### Fixed
+- **Missing Context Issue** - Clean Architecture was mentioned without explanation in Module 5
+- **Learning Flow** - Clear foundation established before pattern integration examples
+
 ## [1.0.4] [2024-12-30] - Fix Code-Smell Slide Structure
 
 ### Fixed

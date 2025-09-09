@@ -154,14 +154,20 @@ slideOptions:
   margin-left: -1em;
 }
 
-/* Code blocks sizing */
+/* Code blocks sizing - Full Width Optimized */
 .reveal pre {
-  font-size: 0.85em !important; /* Further increased for better readability */
+  font-size: 1.1em !important; /* Significantly increased for better readability */
   max-height: calc(100vh - 200px); /* Use full available screen height */
   overflow-y: auto !important;
-  background: #f8f8f8 !important; /* Light gray background */
-  color: #333 !important; /* Dark text for contrast */
-  border: 1px solid #e0e0e0; /* Subtle border */
+  background: #2d3748 !important; /* Dark background for better contrast */
+  color: #e2e8f0 !important; /* Light text for contrast */
+  border: 1px solid #4a5568; /* Subtle darker border */
+  width: 88% !important; /* Use most of screen width */
+  max-width: 88% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
 }
 
 .reveal .two-column {
@@ -217,18 +223,35 @@ slideOptions:
 }
 
 .code-example {
-  background: #f5f5f5;
+  background: #f8f9fa;
   color: #333;
-  padding: 25px; /* Scaled for FHD (20px * 1.875) */
-  border-radius: 15px; /* Scaled for FHD (8px * 1.875) */
-  margin: 38px 0; /* Scaled for FHD (20px * 1.875) */
-  font-size: 1.1em; /* Increased font size for better readability */
+  padding: 30px 36px; /* Enhanced for FHD presentation */
+  border-radius: 10px;
+  margin: 20px auto;
+  font-size: 1.2em; /* Significantly increased font size for better readability */
+  width: 86% !important; /* Use most of screen width */
+  max-width: 86% !important;
+  box-sizing: border-box;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .code-example h5 {
   color: #333;
   margin-top: 0;
   font-weight: 600;
+  font-size: 1.3em;
+  margin-bottom: 0.8em;
+}
+
+.code-example pre {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+.code-example pre code {
+  font-size: 1.05em !important;
 }
 
 .interactive-question {
