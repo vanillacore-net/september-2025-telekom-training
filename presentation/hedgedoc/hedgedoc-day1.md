@@ -333,14 +333,54 @@ slideOptions:
   box-shadow: none !important;
 }
 
-/* Logo for title slides - centered above title */
+/* Logo for title slides - centered in middle of slide */
 .title-slide .vanilla-logo {
-  max-width: 180px;
-  max-height: 180px;
+  max-width: 300px;
+  max-height: 300px;
   position: static;
   display: block;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 60px auto;
   text-align: center;
+}
+
+/* Remove corner logo from title slides */
+.title-slide::after {
+  display: none !important;
+}
+
+/* Center title slide content with logo above title */
+.title-slide {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 60px 40px !important;
+  min-height: 100vh;
+}
+
+/* Style title slide headings to be centered below logo */
+.title-slide h1,
+.title-slide h2 {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+}
+
+.title-slide h1 {
+  margin-top: 0 !important;
+  margin-bottom: 20px !important;
+  font-size: 2.4em !important;
+  font-weight: 600 !important;
+}
+
+.title-slide h2 {
+  margin-top: 0 !important;
+  margin-bottom: 40px !important;
+  font-size: 1.8em !important;
+  color: #555555 !important;
+  font-weight: 400 !important;
 }
 
 /* Subtle watermark for content slides */
