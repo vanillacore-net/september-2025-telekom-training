@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.3.5] [2024-12-30] - RESTORED: Professional Layout with Code Font Fix
+
+### Fixed
+- **RESTORED Working Layout**: Restored original professional CSS layout that was working properly
+  - Restored 3.0em H1 headings with border-bottom styling for visual prominence
+  - Restored professional font weights and spacing throughout presentations
+  - Restored VanillaCore logo positioning and styling
+  - Restored workshop header styling with proper padding and colors
+- **Code Font Size**: Fixed code font size to 1.0em (same as text) while preserving all other styling
+  - Pre and code blocks now use consistent font size with regular text
+  - Maintained professional dark background code styling
+- **Professional Styling**: Preserved all original working professional features
+  - Left-aligned content with proper margins
+  - Professional typography hierarchy
+  - Fragment reveal animations working properly
+  - Complete professional presentation layout restored
+
+### Enhanced
+- **Import Success**: All 5 presentations import successfully with professional appearance
+- **Visual Consistency**: Professional layout maintained across all presentations
+- **Readability**: Code examples now match text font size for better reading experience
+
 ## [1.3.4] [2024-12-30] - CRITICAL: Fixed Completely Broken Presentations
 
 ### Fixed
