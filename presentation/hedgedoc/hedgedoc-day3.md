@@ -516,6 +516,74 @@ Note:
 
 # Observer Pattern
 
+## Was ist hier falsch?
+
+<div class="problem-highlight">
+
+#### Observer Pattern Problem
+**Situation**: In Event-getriebenen Systemen müssen mehrere Komponenten über Änderungen benachrichtigt werden. Die direkte Kopplung führt zu unübersichtlichem Code.
+
+**Was sehen Sie hier Problematisches?**
+
+</div>
+
+<div class="code-example">
+
+```java
+public class OrderManager {
+    
+    public void processOrder(Order order) {
+        // Code-Smell: Tight Coupling zu allen Clients
+        order.setStatus(OrderStatus.PROCESSING);
+        
+        // Problem: Direkter Aufruf aller Services!
+        EmailService emailService = new EmailService();
+        SMSService smsService = new SMSService();
+        AuditService auditService = new AuditService();
+        InventoryService inventoryService = new InventoryService();
+        BillingService billingService = new BillingService();
+        
+        // ALLE Services müssen explizit benachrichtigt werden
+        emailService.sendOrderConfirmation(order.getCustomer().getEmail(), order);
+        smsService.sendOrderNotification(order.getCustomer().getPhone(), order.getId());
+        auditService.logOrderEvent("ORDER_PROCESSED", order.getId());
+        inventoryService.reserveItems(order.getItems());
+        billingService.createInvoice(order);
+        
+        // Was passiert bei neuen Services?
+        // Jede neue Benachrichtigung = Code-Änderung hier!
+        
+        order.setStatus(OrderStatus.PROCESSED);
+    }
+    
+    // DUPLICATE CODE: Ähnliche Logik bei anderen Events
+    public void cancelOrder(String orderId) {
+        Order order = findOrder(orderId);
+        order.setStatus(OrderStatus.CANCELLED);
+        
+        // Wieder die gleichen direkten Service-Aufrufe
+        EmailService emailService = new EmailService();
+        SMSService smsService = new SMSService();
+        // ... noch mehr Code-Duplikation
+    }
+}
+```
+
+</div>
+
+### Identifizierte Code-Smells
+<!-- .element: class="fragment" data-fragment-index="1" -->
+- **Tight Coupling**: OrderManager kennt alle Benachrichtigungs-Services direkt
+- **Open/Closed Principle Violation**: Neue Services erfordern Code-Änderungen
+- **Duplicate Code**: Service-Benachrichtigung Code in jeder Methode wiederholt
+- **Hard to Test**: Alle Services müssen gemockt werden
+- **No Event Abstraction**: Keine einheitliche Event-Schnittstelle
+- **Single Responsibility Violation**: OrderManager macht zu viel
+
+---
+
+## Observer Pattern - Die Lösung
+
 <div class="pattern-definition">
 
 #### Observer Pattern - Das Event-System Fundament
@@ -628,6 +696,90 @@ agency.setNews("Breaking: Software-Architektur Workshop starts!"); // fragment
 ---
 
 # Strategy Pattern
+
+## Was ist hier falsch?
+
+<div class="problem-highlight">
+
+#### Strategy Pattern Problem
+**Situation**: Verschiedene Algorithmen oder Geschäftsregeln müssen je nach Kontext ausgewählt werden. Switch-Statements und if-else-Kaskaden führen zu unübersichtlichem Code.
+
+**Was sehen Sie hier Problematisches?**
+
+</div>
+
+<div class="code-example">
+
+```java
+public class PriceCalculator {
+    
+    public double calculatePrice(Product product, String customerType, String season) {
+        double basePrice = product.getBasePrice();
+        
+        // Code-Smell: Complex Conditional Logic
+        if (customerType.equals("PREMIUM")) {
+            if (season.equals("WINTER")) {
+                // Premium winter pricing
+                basePrice = basePrice * 0.8; // 20% discount
+            } else if (season.equals("SUMMER")) {
+                basePrice = basePrice * 0.85; // 15% discount
+            } else {
+                basePrice = basePrice * 0.9; // 10% discount
+            }
+        } else if (customerType.equals("BUSINESS")) {
+            if (season.equals("WINTER")) {
+                basePrice = basePrice * 0.85;
+            } else if (season.equals("SUMMER")) {
+                basePrice = basePrice * 0.9;
+            } else {
+                basePrice = basePrice * 0.95;
+            }
+        } else if (customerType.equals("REGULAR")) {
+            if (season.equals("WINTER") && product.getCategory().equals("ELECTRONICS")) {
+                basePrice = basePrice * 0.95;
+            }
+            // Regular customers: no discount in summer
+        } else if (customerType.equals("STUDENT")) {
+            // Student pricing logic
+            basePrice = basePrice * 0.7; // Always 30% discount
+        }
+        
+        // Weitere Business Rules...
+        if (product.isNew() && !customerType.equals("PREMIUM")) {
+            basePrice = basePrice * 1.1; // New product surcharge
+        }
+        
+        return basePrice;
+    }
+    
+    // DUPLICATE CODE: Ähnliche if-else Logik in anderen Methoden
+    public boolean isEligibleForFreeShipping(String customerType, double orderValue) {
+        if (customerType.equals("PREMIUM")) {
+            return orderValue > 0; // Always free shipping
+        } else if (customerType.equals("BUSINESS")) {
+            return orderValue > 100;
+        } else if (customerType.equals("REGULAR")) {
+            return orderValue > 200;
+        }
+        return false;
+    }
+}
+```
+
+</div>
+
+### Identifizierte Code-Smells
+<!-- .element: class="fragment" data-fragment-index="1" -->
+- **Complex Conditional Logic**: Verschachtelte if-else Statements schwer lesbar
+- **Open/Closed Principle Violation**: Neue Kunden-Typen erfordern Code-Änderungen
+- **Duplicate Logic**: Ähnliche if-else Strukturen in verschiedenen Methoden
+- **Hard to Test**: Viele Code-Pfade, exponentiell wachsende Test-Komplexität
+- **No Strategy Abstraction**: Keine einheitliche Algorithmus-Schnittstelle
+- **Long Method**: Methode wird bei neuen Regeln immer länger
+
+---
+
+## Strategy Pattern - Die Lösung
 
 <div class="pattern-definition">
 
@@ -915,6 +1067,108 @@ remote.pressUndo();    // Alle Lichter aus // fragment
 ---
 
 # Template Method Pattern
+
+## Was ist hier falsch?
+
+<div class="problem-highlight">
+
+#### Template Method Pattern Problem
+**Situation**: Ähnliche Algorithmen mit gleicher Struktur aber unterschiedlichen Implementierungsdetails führen zu massiver Code-Duplikation.
+
+**Was sehen Sie hier Problematisches?**
+
+</div>
+
+<div class="code-example">
+
+```java
+public class DataProcessor {
+    
+    public void processCsvData(String filePath) {
+        // Code-Smell: Duplicate Algorithm Structure
+        
+        // Step 1: Validate file
+        File file = new File(filePath);
+        if (!file.exists() || !filePath.endsWith(".csv")) {
+            throw new IllegalArgumentException("Invalid CSV file");
+        }
+        
+        // Step 2: Open and read
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            List<String[]> data = new ArrayList<>();
+            
+            // Step 3: Parse CSV format
+            while ((line = reader.readLine()) != null) {
+                String[] fields = line.split(",");
+                data.add(fields);
+            }
+            
+            // Step 4: Transform data (CSV-specific)
+            for (String[] row : data) {
+                // CSV-specific transformation logic
+                processRow(row);
+            }
+            
+            // Step 5: Save results
+            saveToDatabase(data);
+            
+        } catch (IOException e) {
+            throw new RuntimeException("Error processing CSV", e);
+        }
+    }
+    
+    // DUPLICATE CODE: Fast identische Struktur!
+    public void processJsonData(String filePath) {
+        // Step 1: Validate file (DUPLICATE)
+        File file = new File(filePath);
+        if (!file.exists() || !filePath.endsWith(".json")) {
+            throw new IllegalArgumentException("Invalid JSON file");
+        }
+        
+        // Step 2: Open and read (DUPLICATE)
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String content = reader.lines().collect(Collectors.joining());
+            
+            // Step 3: Parse JSON format (different parsing, same step)
+            ObjectMapper mapper = new ObjectMapper();
+            List<Map<String, Object>> data = mapper.readValue(content, List.class);
+            
+            // Step 4: Transform data (JSON-specific)
+            for (Map<String, Object> row : data) {
+                // JSON-specific transformation logic
+                processJsonRow(row);
+            }
+            
+            // Step 5: Save results (DUPLICATE)
+            saveToDatabase(data);
+            
+        } catch (IOException e) {
+            throw new RuntimeException("Error processing JSON", e);
+        }
+    }
+    
+    // Noch mehr Duplikation für XML, Excel, etc...
+    public void processXmlData(String filePath) {
+        // Wieder die gleichen Steps 1, 2, 5 - nur Step 3 und 4 unterschiedlich
+    }
+}
+```
+
+</div>
+
+### Identifizierte Code-Smells
+<!-- .element: class="fragment" data-fragment-index="1" -->
+- **Massive Code Duplication**: Gleiche Algorithmus-Struktur in jeder Methode
+- **Template Method Missing**: Keine Abstraktion für gemeinsame Schritte
+- **Violation of DRY**: Don't Repeat Yourself - aber hier wird alles wiederholt
+- **Hard to Maintain**: Änderungen am Algorithmus betreffen mehrere Methoden
+- **No Polymorphism**: Keine einheitliche Schnittstelle für verschiedene Formate
+- **Long Methods**: Jede Methode enthält den kompletten Algorithmus
+
+---
+
+## Template Method Pattern - Die Lösung
 
 <div class="pattern-definition">
 

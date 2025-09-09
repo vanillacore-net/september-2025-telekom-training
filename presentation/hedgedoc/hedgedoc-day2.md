@@ -518,13 +518,16 @@ Note:
 
 # Adapter Pattern
 
-## Was passt hier nicht?
+## Was ist hier falsch?
 
-Eine typische Enterprise-Herausforderung: Verschiedene Systeme mit inkompatiblen Interfaces müssen zusammenarbeiten.
+<div class="problem-highlight">
 
----
+#### Adapter Pattern Problem
+**Situation**: Eine typische Enterprise-Herausforderung: Verschiedene Systeme mit inkompatiblen Interfaces müssen zusammenarbeiten.
 
-# Problematischer Code - Billing Manager
+**Was sehen Sie hier Problematisches?**
+
+</div>
 
 <div class="code-example">
 
@@ -578,7 +581,7 @@ public class BillingManager {
 
 ---
 
-## Adapter - Konzept
+## Adapter Pattern - Die Lösung
 
 <div class="pattern-definition">
 
@@ -708,13 +711,16 @@ const status = modernBilling.getInvoiceStatus(invoice.id); // fragment
 
 # Decorator Pattern
 
-## Was passt hier nicht?
+## Was ist hier falsch?
 
-Cross-Cutting Concerns wie Logging, Security und Performance Monitoring führen zu einem Durcheinander wenn sie direkt in die Business-Logik eingebaut werden:
+<div class="problem-highlight">
 
----
+#### Decorator Pattern Problem
+**Situation**: Cross-Cutting Concerns wie Logging, Security und Performance Monitoring führen zu einem Durcheinander wenn sie direkt in die Business-Logik eingebaut werden.
 
-# Problematischer Code - Customer Service
+**Was sehen Sie hier Problematisches?**
+
+</div>
 
 <div class="code-example">
 
@@ -780,7 +786,7 @@ public class CustomerService {
 
 ---
 
-## Decorator - Konzept
+## Decorator Pattern - Die Lösung
 
 <div class="pattern-definition">
 
@@ -966,13 +972,16 @@ const response = customerService.processRequest({ // fragment
 
 # Facade Pattern
 
-## Was passt hier nicht?
+## Was ist hier falsch?
 
-Clients müssen mit vielen verschiedenen Services und komplexen APIs interagieren, was zu unübersichtlichem und fehleranfälligem Code führt:
+<div class="problem-highlight">
 
----
+#### Facade Pattern Problem
+**Situation**: Clients müssen mit vielen verschiedenen Services und komplexen APIs interagieren, was zu unübersichtlichem und fehleranfälligem Code führt.
 
-# Problematischer Code - Customer Controller
+**Was sehen Sie hier Problematisches?**
+
+</div>
 
 <div class="code-example">
 
@@ -1051,7 +1060,7 @@ public class CustomerController {
 
 ---
 
-## Facade - Konzept
+## Facade Pattern - Die Lösung
 
 <div class="pattern-definition">
 

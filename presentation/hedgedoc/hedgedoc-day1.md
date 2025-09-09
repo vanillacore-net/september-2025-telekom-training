@@ -647,7 +647,16 @@ Ein typisches Problem in gewachsenen Telekom-Systemen: Die Kundenbetreuung muss 
 
 ---
 
-# Problematischer Code - Customer Manager
+## Was ist hier falsch?
+
+<div class="problem-highlight">
+
+#### Factory Method Pattern Problem
+**Situation**: Die Kundenbetreuung muss verschiedene Kunden-Typen verwalten - Privatkunden, Geschäftskunden, Premium-Kunden.
+
+**Was sehen Sie hier Problematisches?**
+
+</div>
 
 <div class="code-example">
 
@@ -672,10 +681,13 @@ public class CustomerManager {
                 businessCustomer.setContractId(contractId);
                 businessCustomer.setTariffOptions(Arrays.asList("Professional", "Enterprise"));
                 businessCustomer.setPaymentMethod("Invoice");
-                businessCustomer.setSupportLevel("Business");
-                businessCustomer.setVatNumber(generateVatNumber());
-                businessCustomer.setAccountManager(assignAccountManager());
+                businessCustomer.setSupportLevel("Priority");
                 return businessCustomer;
+                
+            case "PREMIUM":
+                Customer premiumCustomer = new Customer();
+                // ... noch mehr Code-Duplikation
+                return premiumCustomer;
                 
             default:
                 throw new IllegalArgumentException("Unknown customer type: " + type);
@@ -686,33 +698,17 @@ public class CustomerManager {
 
 </div>
 
----
-
-## Identifizierte Code-Smells
-
-- **Long Method**: Jeder switch-case Block ist zu komplex <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Switch Statement**: Typ-basierte Verzweigung verletzt Open/Closed Principle <!-- .element: class="fragment" data-fragment-index="2" -->
-- **Duplicate Code**: Ähnliche Initialisierungsmuster in jedem Branch <!-- .element: class="fragment" data-fragment-index="3" -->
-- **Feature Envy**: Manipuliert mehr Customer-Daten als sie besitzt <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Long Parameter List**: Viele Parameter machen Methode schwer verwendbar <!-- .element: class="fragment" data-fragment-index="5" -->
-
-### Was passiert bei neuen Kunden-Typen?
-<!-- .element: class="fragment" data-fragment-index="6" -->
-- **Modifikation** bestehender Methoden erforderlich
-- **Verletzung** des Open/Closed Principles
-- **Risiko** für Regression-Fehler in bestehenden Branches
-
-Note:
-- Lassen Sie die Teilnehmer die Code-Smells selbst identifizieren
-- Betonen Sie die vielen Wiederholungen in den switch-cases
-- Diskutieren Sie Auswirkungen: "Was passiert bei neuen Kunden-Typen?"
-- Verbinden Sie zu SOLID-Prinzipien, besonders Open/Closed
-- PRAKTISCHE FRAGE: "Kennen Sie ähnliche Switch-Statements in Ihren Telekom-Systemen?"
-<!-- .element: class="notes" -->
+### Identifizierte Code-Smells
+<!-- .element: class="fragment" data-fragment-index="1" -->
+- **Long Method**: Jeder switch-case Block ist zu komplex
+- **Switch Statement**: Typ-basierte Verzweigung verletzt Open/Closed Principle  
+- **Duplicate Code**: Ähnliche Initialisierungsmuster in jedem Branch
+- **Feature Envy**: Manipuliert mehr Customer-Daten als sie besitzt
+- **Long Parameter List**: Viele Parameter machen Methode schwer verwendbar
 
 ---
 
-## Factory Method - Konzept
+## Factory Method Pattern - Die Lösung
 
 <div class="pattern-definition">
 
@@ -1079,7 +1075,58 @@ public class ServiceManager {
 
 ---
 
-## Abstract Factory - Konzept
+## Was ist hier falsch?
+
+<div class="problem-highlight">
+
+#### Abstract Factory Pattern Problem
+**Situation**: Telekom betreibt verschiedene Service-Kanäle (Web, Mobile App, Call Center, Partner-Portal). Die aktuelle Implementierung hat gravierende Probleme.
+
+**Was sehen Sie hier Problematisches?**
+
+</div>
+
+<div class="code-example">
+
+```java
+public class ServiceManager {
+    
+    public void setupWebChannel() {
+        // Code-Smell: Hardcodierte Konfiguration
+        AuthenticationService auth = new WebSessionAuthService();
+        CustomerService customer = new WebCustomerService();
+        BillingService billing = new WebBillingService();
+        NotificationService notification = new WebNotificationService();
+        
+        // Problem: Services passen nicht zusammen!
+        customer.setAuthService(auth); // WebCustomer braucht WebAuth
+        billing.setNotificationService(notification);
+    }
+    
+    public void setupMobileChannel() {
+        // DUPLICATE CODE: Ähnliche Struktur, andere Services
+        AuthenticationService auth = new OAuthAuthenticationService();
+        CustomerService customer = new MobileCustomerService();
+        BillingService billing = new MobileBillingService();
+        // FEHLER: Falsche Kombination!
+        NotificationService notification = new WebNotificationService(); // <- Falsch!
+    }
+}
+```
+
+</div>
+
+### Identifizierte Code-Smells
+<!-- .element: class="fragment" data-fragment-index="1" -->
+- **Service-Familie Inkonsistenz**: Gemischte Service-Implementierungen
+- **Duplicate Code**: Ähnliche Setup-Logik für jeden Kanal
+- **Tight Coupling**: Direkte Abhängigkeiten zu konkreten Klassen
+- **Fehlende Konsistenz-Garantie**: Keine Gewähr für kompatible Services
+- **Mixed Concerns**: Service-Erstellung vermischt mit Business-Logik
+
+---
+
+## Abstract Factory Pattern - Die Lösung
 
 <div class="pattern-definition">
 
@@ -1422,7 +1469,70 @@ public class CustomerRepository {
 
 ---
 
-## Builder - Konzept
+## Was ist hier falsch?
+
+<div class="problem-highlight">
+
+#### Builder Pattern Problem
+**Situation**: Telekom-Systeme arbeiten mit komplexen Datenbankabfragen - Kunden können nach vielen Kriterien gefiltert werden. Die aktuelle Implementierung ist ein Wartungsalptraum.
+
+**Was sehen Sie hier Problematisches?**
+
+</div>
+
+<div class="code-example">
+
+```java
+public class CustomerRepository {
+    
+    // Code-Smell: Telescoping Constructor
+    public List<Customer> findCustomers(String name, String contractType, 
+                                       String tariff, Date contractStart, 
+                                       Date contractEnd, String city, 
+                                       String postalCode, Boolean isActive,
+                                       String paymentMethod, Integer minRevenue,
+                                       String sortBy, String sortOrder,
+                                       Integer limit, Integer offset) {
+        
+        // Code-Smell: Complex Method mit StringBuilder-Chaos
+        StringBuilder sql = new StringBuilder("SELECT * FROM customers c ");
+        List<Object> params = new ArrayList<>();
+        boolean hasWhere = false;
+        
+        if (name != null && !name.isEmpty()) {
+            sql.append(hasWhere ? " AND " : " WHERE ");
+            sql.append("c.name LIKE ?");
+            params.add("%" + name + "%");
+            hasWhere = true;
+        }
+        
+        if (contractType != null && !contractType.isEmpty()) {
+            sql.append(hasWhere ? " AND " : " WHERE ");
+            sql.append("c.contract_type = ?");
+            params.add(contractType);
+            hasWhere = true;
+        }
+        
+        // ... weitere 20 Zeilen if-Statements
+        
+        return jdbcTemplate.query(sql.toString(), params.toArray(), customerRowMapper);
+    }
+}
+```
+
+</div>
+
+### Identifizierte Code-Smells
+<!-- .element: class="fragment" data-fragment-index="1" -->
+- **Telescoping Constructor**: 14 Parameter machen die Methode unverwendbar
+- **Long Method**: 30+ Zeilen nur für SQL-String-Erstellung
+- **Duplicate Code**: hasWhere-Logik wird überall wiederholt
+- **Complex Conditional**: Verschachtelte if-Statements schwer lesbar
+- **String Concatenation**: SQL-Injection Risiko und schwer zu testen
+
+---
+
+## Builder Pattern - Die Lösung
 
 <div class="pattern-definition">
 
@@ -1776,7 +1886,81 @@ public class ServiceConfigurationManager {
 
 ---
 
-## Prototype - Konzept
+## Was ist hier falsch?
+
+<div class="problem-highlight">
+
+#### Prototype Pattern Problem
+**Situation**: In Enterprise-Umgebungen müssen häufig ähnliche, aber leicht unterschiedliche Service-Konfigurationen erstellt werden. Die aktuelle Implementierung verschwendet massive Ressourcen.
+
+**Was sehen Sie hier Problematisches?**
+
+</div>
+
+<div class="code-example">
+
+```java
+@Service
+public class ServiceConfigurationManager {
+    
+    // Anti-Pattern: Expensive Recreation für ähnliche Konfigurationen
+    public ServiceConfiguration createDevConfiguration() {
+        ServiceConfiguration config = new ServiceConfiguration();
+        
+        // Expensive Database Lookups für Defaults (200ms+)
+        config.setDatabaseSettings(loadDatabaseDefaults());
+        config.setSecuritySettings(loadSecurityDefaults());
+        config.setCachingSettings(loadCachingDefaults());
+        
+        // Expensive SSL Certificate Validation (500ms+)
+        config.setSslCertificate(validateAndLoadSslCert("dev-cert.pem"));
+        
+        // Expensive Service Discovery (300ms+)
+        config.setServiceEndpoints(discoverAvailableServices());
+        
+        // Environment-specific Anpassungen
+        config.setEnvironment("DEV");
+        config.setLogLevel("DEBUG");
+        config.setDatabaseUrl("dev-database-url");
+        
+        return config;
+    }
+    
+    public ServiceConfiguration createTestConfiguration() {
+        ServiceConfiguration config = new ServiceConfiguration();
+        
+        // DUPLICATE: Gleiche expensive Operations!
+        config.setDatabaseSettings(loadDatabaseDefaults());    // 200ms
+        config.setSecuritySettings(loadSecurityDefaults());    // 200ms
+        config.setCachingSettings(loadCachingDefaults());      // 200ms
+        config.setSslCertificate(validateAndLoadSslCert("test-cert.pem")); // 500ms
+        config.setServiceEndpoints(discoverAvailableServices()); // 300ms
+        
+        // Nur diese Werte sind unterschiedlich
+        config.setEnvironment("TEST");
+        config.setLogLevel("INFO");
+        config.setDatabaseUrl("test-database-url");
+        
+        return config;
+    }
+}
+```
+
+</div>
+
+### Identifizierte Code-Smells
+<!-- .element: class="fragment" data-fragment-index="1" -->
+- **Expensive Recreation**: Identische teure Operationen werden wiederholt
+- **Duplicate Code**: 90% der Konfigurationserstellung ist identisch
+- **Resource Waste**: 1.4s für jede neue Konfiguration (nur für 3 Unterschiede!)
+- **Method Duplication**: createDevConfiguration und createTestConfiguration nahezu identisch
+- **Missing Abstraction**: Keine Wiederverwendung der teuren Initialisierungslogik
+
+**Performance-Problem**: Jede Konfigurationserstellung dauert 1.4+ Sekunden für identische Operationen!
+
+---
+
+## Prototype Pattern - Die Lösung
 
 <div class="pattern-definition">
 
