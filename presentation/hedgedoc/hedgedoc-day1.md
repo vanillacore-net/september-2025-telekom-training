@@ -528,20 +528,6 @@ Note:
 
 Ein typisches Problem in gewachsenen Telekom-Systemen: Die Kundenbetreuung muss verschiedene Kunden-Typen verwalten - Privatkunden, Geschäftskunden, Premium-Kunden.
 
-Note:
-- INTERAKTIVE ÜBUNG: Verwenden Sie Exercise 1 "Code Smell Detective" aus day1-exercises.md
-- Lassen Sie die Teilnehmer folgende Code-Smells identifizieren:
-  * Long Method (jeder if-block ist zu lang)
-  * Feature Envy (manipuliert mehr Daten als sie besitzt)  
-  * Switch Statement (typ-basierte Verzweigung)
-  * Duplicate Code (ähnliche Muster in jedem branch)
-  * Open/Closed Principle Verletzung
-- Diskutieren Sie Auswirkungen: "Was passiert bei neuen Kunden-Typen?"
-- Verbinden Sie zu SOLID-Prinzipien, besonders Open/Closed
-- PRAKTISCHE FRAGE: "Kennen Sie ähnliche Switch-Statements in Ihren Telekom-Systemen?"
-- Erwartete Antworten sammeln und für Factory Method Motivation nutzen
-<!-- .element: class="notes" -->
-
 ---
 
 # Problematischer Code - Customer Manager
@@ -583,12 +569,28 @@ public class CustomerManager {
 
 </div>
 
+---
+
+## Identifizierte Code-Smells
+
+- **Long Method**: Jeder switch-case Block ist zu komplex <!-- .element: class="fragment" data-fragment-index="1" -->
+- **Switch Statement**: Typ-basierte Verzweigung verletzt Open/Closed Principle <!-- .element: class="fragment" data-fragment-index="2" -->
+- **Duplicate Code**: Ähnliche Initialisierungsmuster in jedem Branch <!-- .element: class="fragment" data-fragment-index="3" -->
+- **Feature Envy**: Manipuliert mehr Customer-Daten als sie besitzt <!-- .element: class="fragment" data-fragment-index="4" -->
+- **Long Parameter List**: Viele Parameter machen Methode schwer verwendbar <!-- .element: class="fragment" data-fragment-index="5" -->
+
+### Was passiert bei neuen Kunden-Typen?
+<!-- .element: class="fragment" data-fragment-index="6" -->
+- **Modifikation** bestehender Methoden erforderlich
+- **Verletzung** des Open/Closed Principles
+- **Risiko** für Regression-Fehler in bestehenden Branches
+
 Note:
-- Zeigen Sie den Code langsam, lassen Sie die Teilnehmer Code-Smells identifizieren
+- Lassen Sie die Teilnehmer die Code-Smells selbst identifizieren
 - Betonen Sie die vielen Wiederholungen in den switch-cases
-- Fragen Sie: "Was passiert, wenn wir einen neuen Kunden-Typ hinzufügen?"
-- Hinweis auf Long Parameter List und fehlende Kapselung
-- Bereiten Sie vor: "Wie würden Sie diesen Code verbessern?"
+- Diskutieren Sie Auswirkungen: "Was passiert bei neuen Kunden-Typen?"
+- Verbinden Sie zu SOLID-Prinzipien, besonders Open/Closed
+- PRAKTISCHE FRAGE: "Kennen Sie ähnliche Switch-Statements in Ihren Telekom-Systemen?"
 <!-- .element: class="notes" -->
 
 ---
@@ -890,10 +892,11 @@ Note:
 
 ## Was passt hier nicht?
 
-### Problematische Service-Erstellung
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
 Telekom betreibt verschiedene Service-Kanäle (Web, Mobile App, Call Center, Partner-Portal). Die aktuelle Implementierung hat gravierende Probleme:
+
+---
+
+# Problematischer Code - Service Manager
 
 <div class="code-example">
 
@@ -922,17 +925,18 @@ public class ServiceManager {
     }
 }
 ```
-<!-- .element: class="fragment" data-fragment-index="2" -->
 
 </div>
 
-### Identifizierte Probleme
-<!-- .element: class="fragment" data-fragment-index="3" -->
+---
 
-- **Service-Familie Inkonsistenz**: Gemischte Service-Implementierungen <!-- .element: class="fragment" data-fragment-index="4" -->
-- **Duplicate Code**: Ähnliche Setup-Logik für jeden Kanal <!-- .element: class="fragment" data-fragment-index="5" -->
-- **Tight Coupling**: Direkte Abhängigkeiten zu konkreten Klassen <!-- .element: class="fragment" data-fragment-index="6" -->
-- **Fehlende Konsistenz-Garantie**: Keine Gewähr für kompatible Services <!-- .element: class="fragment" data-fragment-index="7" -->
+## Identifizierte Code-Smells
+
+- **Service-Familie Inkonsistenz**: Gemischte Service-Implementierungen <!-- .element: class="fragment" data-fragment-index="1" -->
+- **Duplicate Code**: Ähnliche Setup-Logik für jeden Kanal <!-- .element: class="fragment" data-fragment-index="2" -->
+- **Tight Coupling**: Direkte Abhängigkeiten zu konkreten Klassen <!-- .element: class="fragment" data-fragment-index="3" -->
+- **Fehlende Konsistenz-Garantie**: Keine Gewähr für kompatible Services <!-- .element: class="fragment" data-fragment-index="4" -->
+- **Mixed Concerns**: Service-Erstellung vermischt mit Business-Logik <!-- .element: class="fragment" data-fragment-index="5" -->
 
 ---
 
@@ -1231,12 +1235,11 @@ Note:
 
 ## Was passt hier nicht?
 
-### Problematische Repository-Implementierung
 Telekom-Systeme arbeiten mit komplexen Datenbankabfragen - Kunden können nach vielen Kriterien gefiltert werden. Die aktuelle Implementierung ist ein Wartungsalptraum:
 
 ---
 
-## Was passt hier nicht? - Code-Beispiel
+# Problematischer Code - Customer Repository
 
 <div class="code-example">
 
@@ -1279,6 +1282,22 @@ public class CustomerRepository {
 ```
 
 </div>
+
+---
+
+## Identifizierte Code-Smells
+
+- **Telescoping Constructor**: 14 Parameter machen die Methode unverwendbar <!-- .element: class="fragment" data-fragment-index="1" -->
+- **Long Method**: 30+ Zeilen nur für SQL-String-Erstellung <!-- .element: class="fragment" data-fragment-index="2" -->
+- **Duplicate Code**: hasWhere-Logik wird überall wiederholt <!-- .element: class="fragment" data-fragment-index="3" -->
+- **Complex Conditional**: Verschachtelte if-Statements schwer lesbar <!-- .element: class="fragment" data-fragment-index="4" -->
+- **String Concatenation**: SQL-Injection Risiko und schwer zu testen <!-- .element: class="fragment" data-fragment-index="5" -->
+
+### Was passiert bei neuen Suchkriterien?
+<!-- .element: class="fragment" data-fragment-index="6" -->
+- **Signature-Breaking**: Alle Aufrufe müssen angepasst werden
+- **Maintenance**: Mehr if-Blöcke, noch komplexere Logik
+- **Testing**: Exponentiell wachsende Kombinationen
 
 ---
 
@@ -1556,12 +1575,11 @@ Note:
 
 ## Was passt hier nicht?
 
-### Problematische Konfigurationserstellung
 In Enterprise-Umgebungen müssen häufig ähnliche, aber leicht unterschiedliche Service-Konfigurationen erstellt werden. Die aktuelle Implementierung verschwendet massive Ressourcen:
 
 ---
 
-## Was passt hier nicht? - Code-Beispiel
+# Problematischer Code - Configuration Manager
 
 <div class="code-example">
 
@@ -1615,6 +1633,23 @@ public class ServiceConfigurationManager {
 </div>
 
 **Performance-Problem**: Jede Konfigurationserstellung dauert 1.4+ Sekunden für identische Operationen!
+
+---
+
+## Identifizierte Code-Smells
+
+- **Expensive Recreation**: Identische teure Operationen werden wiederholt <!-- .element: class="fragment" data-fragment-index="1" -->
+- **Duplicate Code**: 90% der Konfigurationserstellung ist identisch <!-- .element: class="fragment" data-fragment-index="2" -->
+- **Resource Waste**: 1.4s für jede neue Konfiguration (nur für 3 Unterschiede!) <!-- .element: class="fragment" data-fragment-index="3" -->
+- **Method Duplication**: createDevConfiguration und createTestConfiguration nahezu identisch <!-- .element: class="fragment" data-fragment-index="4" -->
+- **Missing Abstraction**: Keine Wiederverwendung der teuren Initialisierungslogik <!-- .element: class="fragment" data-fragment-index="5" -->
+
+### Performance-Impact Analysis
+<!-- .element: class="fragment" data-fragment-index="6" -->
+- **Database Lookups**: 3x 200ms = 600ms
+- **SSL Validation**: 500ms
+- **Service Discovery**: 300ms
+- **Total per Config**: 1400ms für 99% identische Arbeit
 
 ---
 
@@ -1945,8 +1980,11 @@ public class CowConfiguration {
 
 ## Was passt hier nicht?
 
-### Problematische Legacy-Integration
 Telekom hat viele Legacy-Systeme mit unterschiedlichen APIs. Die aktuelle Integration ist ein chaotisches Durcheinander:
+
+---
+
+# Problematischer Code - Customer Service Manager
 
 <div class="code-example">
 
@@ -1987,11 +2025,22 @@ public class CustomerServiceManager {
 
 </div>
 
-### Identifizierte Probleme
+---
+
+## Identifizierte Code-Smells
+
 - **Mixed Concerns**: Business-Logik vermischt mit Integration-Details <!-- .element: class="fragment" data-fragment-index="1" -->
-- **Duplicate Code**: Ähnliche Integration-Logik überall <!-- .element: class="fragment" data-fragment-index="2" -->
+- **Duplicate Code**: Ähnliche Integration-Logik in jeder Methode <!-- .element: class="fragment" data-fragment-index="2" -->
 - **Tight Coupling**: Direkte Abhängigkeiten zu Legacy-APIs <!-- .element: class="fragment" data-fragment-index="3" -->
 - **No Abstraction**: Keine einheitliche Service-Schnittstelle <!-- .element: class="fragment" data-fragment-index="4" -->
+- **String-based Switching**: ID-Präfix bestimmt System-Auswahl <!-- .element: class="fragment" data-fragment-index="5" -->
+- **Error-Prone**: Falsche Service-Kombinationen möglich <!-- .element: class="fragment" data-fragment-index="6" -->
+
+### Was macht diese Lösung problematisch?
+<!-- .element: class="fragment" data-fragment-index="7" -->
+- **Neue Legacy-Systeme**: Änderung in JEDER Service-Methode
+- **XML-Parsing**: Überall verstreute Parsing-Logik
+- **Testing**: Schwierig zu mocken und isoliert zu testen
 
 ---
 

@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.0.4] [2024-12-30] - Fix Code-Smell Slide Structure
+
+### Fixed
+- **"Was passt hier nicht?" Slide Flow** - Restructured all code-smell analysis slides to show code first, then analysis
+  - Fixed Factory Method Pattern slide flow (Day 1)
+  - Fixed Abstract Factory Pattern slide flow (Day 1) 
+  - Fixed Builder Pattern slide flow (Day 1)
+  - Fixed Prototype Pattern slide flow (Day 1)
+  - Fixed Singleton & Adapter Pattern slide flow (Day 1)
+  - Fixed Adapter Pattern slide flow (Day 2)
+  - Fixed Decorator Pattern slide flow (Day 2)
+  - Fixed Facade Pattern slide flow (Day 2)
+- **Pedagogical Improvement** - Participants now see problematic code immediately before discussing what's wrong
+  - Removed confusing exercise references that participants couldn't access
+  - Added comprehensive code-smell analysis sections after each code example
+  - Enhanced code-smell identification with clear categorization
+  - Improved learning flow: Question → Code → Analysis → Solution
+
+### Technical Changes
+- Restructured slide content to prioritize code visibility over explanation
+- Enhanced code-smell analysis sections with actionable insights
+- Removed references to inaccessible exercises
+- Validated all presentations import correctly to HedgeDoc
+
 ## [1.2.1] [2025-01-09] - Presentation Content Cleanup
 
 ### Fixed

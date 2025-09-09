@@ -497,10 +497,11 @@ Note:
 
 ## Was passt hier nicht?
 
-### Problematische Legacy-Integration
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
 Eine typische Enterprise-Herausforderung: Verschiedene Systeme mit inkompatiblen Interfaces müssen zusammenarbeiten.
+
+---
+
+# Problematischer Code - Billing Manager
 
 <div class="code-example">
 
@@ -538,17 +539,19 @@ public class BillingManager {
     }
 }
 ```
-<!-- .element: class="fragment" data-fragment-index="2" -->
 
 </div>
 
-### Identifizierte Probleme
-<!-- .element: class="fragment" data-fragment-index="3" -->
+---
+
+## Identifizierte Code-Smells
 
 - **Interface Mismatch**: Verschiedene APIs für gleiche Funktionalität <!-- .element: class="fragment" data-fragment-index="1" -->
 - **Duplicate Conversion**: Manuelle Datenkonvertierung überall <!-- .element: class="fragment" data-fragment-index="2" -->
 - **Tight Coupling**: Direkte Abhängigkeit zu Legacy-Systemen <!-- .element: class="fragment" data-fragment-index="3" -->
 - **No Abstraction**: Keine einheitliche Schnittstelle <!-- .element: class="fragment" data-fragment-index="4" -->
+- **Duplicate Code**: Ähnliche Konvertierungs-Logik in jeder Methode <!-- .element: class="fragment" data-fragment-index="5" -->
+- **Type Conversion Hell**: int/float/String-Konvertierungen überall <!-- .element: class="fragment" data-fragment-index="6" -->
 
 ---
 
@@ -684,8 +687,11 @@ const status = modernBilling.getInvoiceStatus(invoice.id); // fragment
 
 ## Was passt hier nicht?
 
-### Problematische Service-Erweiterung
 Cross-Cutting Concerns wie Logging, Security und Performance Monitoring führen zu einem Durcheinander wenn sie direkt in die Business-Logik eingebaut werden:
+
+---
+
+# Problematischer Code - Customer Service
 
 <div class="code-example">
 
@@ -738,11 +744,16 @@ public class CustomerService {
 
 </div>
 
-### Identifizierte Probleme
+---
+
+## Identifizierte Code-Smells
+
 - **Mixed Concerns**: Business-Logik vermischt mit Cross-Cutting Concerns <!-- .element: class="fragment" data-fragment-index="1" -->
 - **Duplicate Code**: Logging/Security/Performance Code in jeder Methode <!-- .element: class="fragment" data-fragment-index="2" -->
 - **Hard to Maintain**: Änderungen am Logging betreffen alle Methoden <!-- .element: class="fragment" data-fragment-index="3" -->
 - **Inflexible**: Concerns können nicht optional oder kombiniert werden <!-- .element: class="fragment" data-fragment-index="4" -->
+- **Single Responsibility Violation**: Service macht viel mehr als Business-Logik <!-- .element: class="fragment" data-fragment-index="5" -->
+- **Testing Nightmare**: Cross-Cutting Concerns erschweren Unit-Tests <!-- .element: class="fragment" data-fragment-index="6" -->
 
 ---
 
@@ -934,8 +945,11 @@ const response = customerService.processRequest({ // fragment
 
 ## Was passt hier nicht?
 
-### Problematische Subsystem-Integration
 Clients müssen mit vielen verschiedenen Services und komplexen APIs interagieren, was zu unübersichtlichem und fehleranfälligem Code führt:
+
+---
+
+# Problematischer Code - Customer Controller
 
 <div class="code-example">
 
@@ -1001,11 +1015,16 @@ public class CustomerController {
 
 </div>
 
-### Identifizierte Probleme
+---
+
+## Identifizierte Code-Smells
+
 - **Complex Orchestration**: Client muss alle Services koordinieren <!-- .element: class="fragment" data-fragment-index="1" -->
 - **Tight Coupling**: Client kennt alle Subsystem-Details <!-- .element: class="fragment" data-fragment-index="2" -->
 - **Error Handling Chaos**: Rollback und Partial Failures komplex <!-- .element: class="fragment" data-fragment-index="3" -->
 - **Duplicate Logic**: Orchestration Code in jedem Client wiederholt <!-- .element: class="fragment" data-fragment-index="4" -->
+- **Transaction Management**: Kein koordiniertes Transaction-Handling <!-- .element: class="fragment" data-fragment-index="5" -->
+- **Single Point of Failure**: Wenn ein Service failiert, bricht alles zusammen <!-- .element: class="fragment" data-fragment-index="6" -->
 
 ---
 
