@@ -40,9 +40,9 @@ print_info() {
 cleanup_old_presentations() {
     print_info "Cleaning up old presentations from database..."
     
-    # Delete all existing day presentations
+    # Delete all existing day presentations and introduction
     docker exec $DB_CONTAINER psql -U $DB_USER -d $DB_NAME -c \
-        "DELETE FROM \"Notes\" WHERE alias LIKE 'day%-design-patterns' OR content LIKE '%Design Patterns Workshop - Tag%';" 2>/dev/null || true
+        "DELETE FROM \"Notes\" WHERE alias LIKE 'day%-design-patterns' OR alias LIKE 'intro-design-patterns' OR content LIKE '%Design Patterns Workshop - Tag%' OR content LIKE '%Design Patterns Workshop - Einführung%';" 2>/dev/null || true
     
     print_success "Database cleaned"
 }
@@ -177,9 +177,10 @@ echo ""
 echo "Step 2: Importing presentations with FULL validation"
 echo "----------------------------------------------------"
 
-# Import all 4 days
+# Import introduction and all 4 days
 FAILED=0
 
+import_presentation "$PRESENTATION_DIR/hedgedoc-intro.md" "intro-design-patterns" "Design Patterns Workshop - Einführung" "0" || FAILED=$((FAILED + 1))
 import_presentation "$PRESENTATION_DIR/hedgedoc-day1.md" "day1-design-patterns" "Design Patterns Workshop - Tag 1" "1" || FAILED=$((FAILED + 1))
 import_presentation "$PRESENTATION_DIR/hedgedoc-day2.md" "day2-design-patterns" "Design Patterns Workshop - Tag 2" "2" || FAILED=$((FAILED + 1))
 import_presentation "$PRESENTATION_DIR/hedgedoc-day3.md" "day3-design-patterns" "Design Patterns Workshop - Tag 3" "3" || FAILED=$((FAILED + 1))
@@ -195,6 +196,7 @@ if [ $FAILED -eq 0 ]; then
     echo ""
     echo "Access your presentations:"
     echo "--------------------------"
+    echo "Introduction: $HEDGEDOC_URL/p/intro-design-patterns"
     echo "Day 1: $HEDGEDOC_URL/p/day1-design-patterns"
     echo "Day 2: $HEDGEDOC_URL/p/day2-design-patterns"
     echo "Day 3: $HEDGEDOC_URL/p/day3-design-patterns"
@@ -217,7 +219,7 @@ docker exec $DB_CONTAINER psql -U $DB_USER -d $DB_NAME -c \
             CASE WHEN content LIKE '%width: 1920%' THEN '✅ FHD' ELSE '❌ OLD' END as resolution,
             CASE WHEN content LIKE '%HedgeDoc Presentation Styles%' THEN '✅ CSS' ELSE '❌ NO CSS' END as styles
      FROM \"Notes\" 
-     WHERE alias LIKE 'day%-design-patterns' 
+     WHERE alias LIKE 'day%-design-patterns' OR alias LIKE 'intro-design-patterns'
      ORDER BY alias;" 2>/dev/null
 
 echo ""

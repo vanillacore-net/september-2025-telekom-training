@@ -3551,7 +3551,6 @@ try {
 - Integration test scenarios
 - Performance considerations
 
-**Time:** 45 minutes
 
 ## Exercise 2: Anti-Pattern Refactoring
 
@@ -3570,7 +3569,6 @@ try {
 4. Implement the refactoring
 5. Compare before/after maintainability
 
-**Time:** 30 minutes
 
 ## Exercise 3: Architecture Decision Records
 
@@ -3587,7 +3585,6 @@ try {
 
 **Format:** Architecture Decision Record (ADR) template
 
-**Time:** 20 minutes
 
 **Speaker Notes:** These exercises synthesize the entire workshop experience. Exercise 1 tests pattern combination skills, Exercise 2 reinforces anti-pattern recognition, and Exercise 3 applies learning to real-world scenarios. The goal is practical application, not theoretical perfection.
 

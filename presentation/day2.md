@@ -420,7 +420,6 @@ Note:
 - Begrüßung am zweiten Tag - kurze Auffrischung vom Vortag
 - Fragen Sie nach Erkenntnissen und offenen Fragen von Tag 1
 - Betonen Sie den Fokus auf Strukturmuster für System-Integration
-- Zeit: ca. 10 Minuten für Rückblick und Einführung in Tag 2
 <!-- .element: class="notes" -->
 
 </div>
@@ -448,7 +447,6 @@ Note:
 - Betonen Sie die praktische Relevanz für Telekom-Umgebungen
 - Heben Sie hervor: "Heute lösen wir echte Integrationsprobleme"
 - Verbinden Sie zu Tag 1: Creational → Structural → Behavioral (Tag 3/4)
-- Zeit: ca. 15 Minuten für Agenda und Erwartungsklärung
 <!-- .element: class="notes" -->
 
 ---
@@ -1340,7 +1338,7 @@ try { // fragment
 </div>
 
 <div class="progress-indicator">
-<div class="progress-step current">🛠️ Exercise Time: 90 minutes</div>
+<div class="progress-step current">🛠️ Exercise Time</div>
 <div class="progress-step pending">👥 Work in teams of 3-4</div>
 <div class="progress-step pending">🎯 Focus on pattern integration</div>
 </div>
@@ -1368,7 +1366,7 @@ class CustomerServiceFacade {
 </div>
 
 Note:
-- GROSSE PRAXIS-ÜBUNG: 90 Minuten intensive Teamarbeit mit day2-exercises.md
+- GROSSE PRAXIS-ÜBUNG: Intensive Teamarbeit mit day2-exercises.md
 - Teams von 3-4 Personen, unterschiedliche Erfahrungslevels mischen
 - WICHTIG: Verwenden Sie alle 4 Exercises aus day2-exercises.md:
   * Exercise 1: Service Enhancement Pipeline (Decorator Pattern)

@@ -1019,7 +1019,6 @@ class User {
 // Bonus: Implement message filtering und private messages
 ```
 
-**Zeit:** 20 Minuten  
 **Ziel:** Observer Pattern mit Channel-Support
 
 *Speaker Notes: Diese Übung kombiniert Observer Pattern mit real-world Anforderungen. Teilnehmer sollen die Flexibilität des Patterns durch Channel-Subscriptions und Filtering erleben.*
@@ -1051,7 +1050,6 @@ class TransactionManager {
 // Bonus: Implement compound transactions (multiple payments)
 ```
 
-**Zeit:** 25 Minuten  
 **Ziel:** Strategy und Command Pattern kombinieren
 
 *Speaker Notes: Diese Übung zeigt Pattern-Kombination in der Praxis. Refund als Undo-Operation ist ein elegantes Beispiel für Command Pattern in Fintech-Anwendungen.*
@@ -1083,7 +1081,6 @@ class ProcessingChain {
 // Bonus: Add parallel processing und batch operations
 ```
 
-**Zeit:** 30 Minuten  
 **Ziel:** Complex pipeline mit Pattern-Kombination
 
 *Speaker Notes: ETL-Pipelines sind perfekte Beispiele für Template Method + Chain of Responsibility. Die Struktur ist fest, aber die Verarbeitungsschritte sind flexibel und erweiterbar.*

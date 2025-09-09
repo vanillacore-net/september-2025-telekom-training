@@ -732,7 +732,6 @@ class CustomerServiceFacade {
 // Implement all patterns step by step
 ```
 
-**Zeit: 90 Minuten**
 
 **Speaker Notes:** Diese Übung kombiniert alle heute gelernten Patterns in einem realistischen Telekom-Szenario. Die Teilnehmer sollen eine echte Integration Platform bauen, wie wir sie täglich verwenden. Betonen Sie die praktische Anwendbarkeit und helfen Sie bei Design-Entscheidungen.
 

@@ -423,7 +423,6 @@ Note:
 - Betonen Sie: Verhaltensmuster = Objekt-Kommunikation und Interaktion
 - Diese Patterns sind fundamental für moderne Enterprise-Architekturen
 - Verwenden Sie examples/exercises/day3-exercises.md für praktische Übungen
-- Zeit: ca. 10 Minuten für Einführung und Motivation
 <!-- .element: class="notes" -->
 
 ---
@@ -736,7 +735,6 @@ Note:
 - Sehr praktisch für GUI-Anwendungen, aber auch für API-Queuing
 - Unterschied zu Strategy: Command kapselt komplette Operationen, nicht nur Algorithmen
 - Zeigen Sie die Trennung von Invoker, Command und Receiver
-- Zeit: ca. 15 Minuten mit Smart Home Beispiel
 - Frage: "Wo in Ihren Anwendungen wünschen Sie sich Undo-Funktionalität?"
 <!-- .element: class="notes" -->
 - **Queuing und Logging** - Kommandos verzögern/protokollieren <!-- .element: class="fragment" -->
@@ -1353,9 +1351,9 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 </div>
 
 <div class="progress-indicator">
-<div class="progress-step current">🛠️ Übung 1: Event-System (20 min)</div>
-<div class="progress-step pending">⏳ Übung 2: Payment Gateway (25 min)</div>
-<div class="progress-step pending">⏳ Übung 3: Data Pipeline (30 min)</div>
+<div class="progress-step current">🛠️ Übung 1: Event-System</div>
+<div class="progress-step pending">⏳ Übung 2: Payment Gateway</div>
+<div class="progress-step pending">⏳ Übung 3: Data Pipeline</div>
 </div>
 
 ### Übung 1: Chat Event-System

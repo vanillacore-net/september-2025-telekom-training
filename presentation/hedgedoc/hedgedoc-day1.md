@@ -428,7 +428,6 @@ Note:
 - Begrüßen Sie die Teilnehmer herzlich
 - Stellen Sie sich kurz vor (Name, Hintergrund)
 - Überprüfen Sie die technische Ausstattung
-- Zeit: ca. 5 Minuten
 <!-- .element: class="notes" -->
 
 </div>
@@ -456,7 +455,6 @@ Note:
 - Fragen Sie nach Vorerfahrungen mit Design Patterns
 - Erwähnen Sie, dass alle Beispiele auf Telekom-Szenarien basieren
 - Heben Sie hervor: "Wir analysieren echten Legacy-Code"
-- Zeit: ca. 10 Minuten für Diskussion und Erwartungsabfrage
 <!-- .element: class="notes" -->
 
 <!-- Speaker Notes: Herzlich willkommen zum Design Patterns Workshop. Tag 1 konzentriert sich auf Creational Patterns in Enterprise-Telekom-Umgebungen. Wir werden Legacy-Code analysieren und refactoring mit Pattern-basierten Lösungen durchführen. -->
@@ -508,15 +506,15 @@ Note:
 Note:
 - Betonen Sie die praktische Relevanz für Telekom Legacy-Systeme
 - Erklären Sie, dass wir mit Code-Smell Analyse beginnen, bevor wir Patterns einführen
-- Zeit: ca. 5 Minuten für Lernziele
 - Interaktive Frage: "Welche Code-Probleme kennen Sie aus Ihren Projekten?"
 <!-- .element: class="notes" -->
 
 ---
 
-# Problem-Motivation: Customer Service System
+# Factory Method Pattern
 
-### Ausgangssituation
+## Was passt hier nicht?
+
 Ein typisches Problem in gewachsenen Telekom-Systemen: Die Kundenbetreuung muss verschiedene Kunden-Typen verwalten - Privatkunden, Geschäftskunden, Premium-Kunden. Der vorhandene Code enthält mehrere Code-Smells.
 
 ### Identifizierte Code-Smells
@@ -536,7 +534,6 @@ Note:
   * Open/Closed Principle Verletzung
 - Diskutieren Sie Auswirkungen: "Was passiert bei neuen Kunden-Typen?"
 - Verbinden Sie zu SOLID-Prinzipien, besonders Open/Closed
-- Zeit: 15 Minuten (5 Min Identifikation + 10 Min Diskussion)
 - PRAKTISCHE FRAGE: "Kennen Sie ähnliche Switch-Statements in Ihren Telekom-Systemen?"
 - Erwartete Antworten sammeln und für Factory Method Motivation nutzen
 <!-- .element: class="notes" -->
@@ -587,13 +584,12 @@ Note:
 - Betonen Sie die vielen Wiederholungen in den switch-cases
 - Fragen Sie: "Was passiert, wenn wir einen neuen Kunden-Typ hinzufügen?"
 - Hinweis auf Long Parameter List und fehlende Kapselung
-- Zeit: ca. 8 Minuten für Code-Analyse
 - Bereiten Sie vor: "Wie würden Sie diesen Code verbessern?"
 <!-- .element: class="notes" -->
 
 ---
 
-# Factory Method Pattern - Konzept
+## Factory Method - Konzept
 
 <div class="pattern-definition">
 
@@ -625,13 +621,12 @@ Note:
 - Betonen Sie den Unterschied zwischen Creator und Product-Hierarchie
 - Wichtig: Factory Method ist NICHT Simple Factory - erklären Sie den Unterschied
 - Verbindung zu unserem Customer-Problem herstellen
-- Zeit: ca. 12 Minuten für Pattern-Erklärung
 - Frage: "Wo könnten Sie dieses Pattern in Ihren Projekten einsetzen?"
 <!-- .element: class="notes" -->
 
 ---
 
-# Refactoring Schritt 1: Kunden-Abstraktion
+## Lösung
 
 <div class="code-example">
 
@@ -653,7 +648,6 @@ Note:
 - Erklären Sie die Einführung des Customer-Interfaces als ersten Refactoring-Schritt
 - Betonen Sie die gemeinsamen Methoden für alle Kunden-Typen
 - Wichtig: processContract() ermöglicht kunden-spezifische Geschäftslogik
-- Zeit: ca. 5 Minuten für Interface-Erklärung
 <!-- .element: class="notes" -->
 
 ### Konkrete Implementierung - PrivateCustomer
@@ -696,7 +690,6 @@ Note:
 - Zeigen Sie, wie die kunden-spezifische Logik in der Implementierung gekapselt wird
 - Erklären Sie die private Methoden validatePersonalData() und setupBasicServices()
 - Betonen Sie die Kapselung der Geschäftsregeln pro Kunden-Typ
-- Zeit: ca. 8 Minuten für konkrete Implementierung
 - Frage: "Welche Geschäftsregeln würden Sie für BusinessCustomer erwarten?"
 <!-- .element: class="notes" -->
 
@@ -745,7 +738,6 @@ Note:
 - Betonen Sie die gemeinsame Geschäftslogik im Template Method
 - Wichtig: Factory Method ist protected, nicht public
 - Zeigen Sie den Aufruf-Flow: processNewCustomer() -> createCustomer() -> validate -> persist
-- Zeit: ca. 15 Minuten - das ist der Kern des Patterns
 - Frage: "Welche Geschäftslogik würden Sie als gemeinsam identifizieren?"
 <!-- .element: class="notes" -->
 
@@ -785,9 +777,29 @@ Note:
 - Erklären Sie: Nur die Factory Method muss implementiert werden
 - Neue Kunden-Typen = neue Factory-Klasse, kein bestehender Code geändert
 - Verbindung zu Open/Closed Principle
-- Zeit: ca. 5 Minuten für konkrete Factories
 - Praktische Übung vorbereiten: "Implementieren Sie StudentCustomerFactory"
 <!-- .element: class="notes" -->
+
+---
+
+## Übung
+
+<div class="interactive-question">
+
+### Praktische Übung: Factory Method
+#### Implementieren Sie einen StudentCustomerFactory
+
+</div>
+
+**Aufgabe**: Erweitern Sie das Customer-System um einen StudentCustomer mit:
+- Spezielle Tarif-Optionen ("Student Basic", "Student Plus")
+- Studentenausweis-Validierung
+- Ermäßigte Konditionen
+
+**Implementierungsschritte**:
+1. StudentCustomer-Klasse erstellen
+2. StudentCustomerFactory implementieren
+3. Integration in bestehende Architektur
 
 ---
 
@@ -834,7 +846,6 @@ Note:
 - OCP: Erweiterung ohne Modifikation durch neue Factory-Klassen
 - DIP: Abhängigkeit zu Abstraktion, nicht zu konkreten Klassen
 - Moderne Alternative mit Java 8+: Zeigen Sie funktionale Ansätze
-- Zeit: ca. 10 Minuten für SOLID-Integration
 - Diskussion: "Welche SOLID-Prinzipien verletzt unser ursprünglicher Code?"
 <!-- .element: class="notes" -->
 
@@ -852,31 +863,53 @@ Note:
 - Übergang von Factory Method zu Abstract Factory erklären
 - Betonen Sie den Unterschied: Familien verwandter Objekte
 - Verbindung zu Enterprise-Architekturen: Service-Layers
-- Zeit: ca. 3 Minuten für Lernziele
 - Motivation schaffen: "Warum reicht Factory Method nicht für komplexe Systeme?"
 <!-- .element: class="notes" -->
 
 ---
 
-# Problem-Motivation: Multi-Channel Service Platform
+# Abstract Factory Pattern
 
-### Ausgangssituation
-Telekom betreibt verschiedene Service-Kanäle (Web, Mobile App, Call Center, Partner-Portal). Jeder Kanal benötigt unterschiedliche Service-Implementierungen, aber ähnliche Funktionalitäten.
+## Was passt hier nicht?
 
-### Herausforderungen
-- Verschiedene Authentifizierung pro Kanal <!-- .element: class="fragment" -->
-- Unterschiedliche Datenformate und APIs <!-- .element: class="fragment" -->
-- Kanal-spezifische Geschäftsregeln <!-- .element: class="fragment" -->
-- Einheitliche Service-Schnittstelle gewünscht <!-- .element: class="fragment" -->
+### Problematische Service-Erstellung
+Telekom betreibt verschiedene Service-Kanäle (Web, Mobile App, Call Center, Partner-Portal). Die aktuelle Implementierung hat gravierende Probleme:
 
-### Telekom Service-Familien
+<div class="code-example">
+
+```java
+public class ServiceManager {
+    
+    public void setupWebChannel() {
+        // Code-Smell: Hardcodierte Konfiguration
+        AuthenticationService auth = new WebSessionAuthService();
+        CustomerService customer = new WebCustomerService();
+        BillingService billing = new WebBillingService();
+        NotificationService notification = new WebNotificationService();
+        
+        // Problem: Services passen nicht zusammen!
+        customer.setAuthService(auth); // WebCustomer braucht WebAuth
+        billing.setNotificationService(notification);
+    }
+    
+    public void setupMobileChannel() {
+        // DUPLICATE CODE: Ähnliche Struktur, andere Services
+        AuthenticationService auth = new OAuthAuthenticationService();
+        CustomerService customer = new MobileCustomerService();
+        BillingService billing = new MobileBillingService();
+        // FEHLER: Falsche Kombination!
+        NotificationService notification = new WebNotificationService(); // <- Falsch!
+    }
+}
 ```
-Channel Factory
-├── Authentication Service
-├── Customer Service  
-├── Billing Service
-└── Notification Service
-```
+
+</div>
+
+### Identifizierte Probleme
+- **Service-Familie Inkonsistenz**: Gemischte Service-Implementierungen <!-- .element: class="fragment" -->
+- **Duplicate Code**: Ähnliche Setup-Logik für jeden Kanal <!-- .element: class="fragment" -->
+- **Tight Coupling**: Direkte Abhängigkeiten zu konkreten Klassen <!-- .element: class="fragment" -->
+- **Fehlende Konsistenz-Garantie**: Keine Gewähr für kompatible Services <!-- .element: class="fragment" -->
 
 ---
 
@@ -897,7 +930,7 @@ Channel Factory
 
 ---
 
-# Abstract Factory Pattern - Definition
+## Abstract Factory - Konzept
 
 <div class="pattern-definition">
 
@@ -1039,7 +1072,7 @@ public class MobileChannelFactory extends ChannelServiceFactory {
 
 ---
 
-# Service-Suite für einheitliche Nutzung
+## Lösung
 
 <div class="code-example">
 
@@ -1083,6 +1116,29 @@ public class ChannelServiceSuite {
 ```
 
 </div>
+
+---
+
+## Übung
+
+<div class="interactive-question">
+
+### Praktische Übung: Abstract Factory
+#### Implementieren Sie eine CallCenterChannelFactory
+
+</div>
+
+**Aufgabe**: Erweitern Sie das Multi-Channel-System um Call Center Support:
+- CallCenterAuthenticationService (PIN-basiert)
+- CallCenterCustomerService (vereinfachte Daten)
+- CallCenterBillingService (nur Grundinformationen)
+- CallCenterNotificationService (Telefon + SMS)
+
+**Implementierungsschritte**:
+1. Konkrete Service-Implementierungen erstellen
+2. CallCenterChannelFactory implementieren
+3. Integration in ChannelFactoryProvider
+4. Konsistenz-Tests durchführen
 
 ---
 
@@ -1134,27 +1190,22 @@ Note:
 - Builder Pattern löst das "Telescoping Constructor" Problem
 - Besonders wertvoll für Query-Builder und komplexe Konfigurationsobjekte
 - Zeigen Sie den Unterschied zu Factory Method: Builder für EINEN komplexen Typ
-- Zeit: ca. 5 Minuten für Lernziele
 - Frage: "Kennen Sie Konstruktoren mit vielen Parametern in Ihren Projekten?"
 - Verbindung zu Repository Pattern: Saubere Query-Erstellung
 <!-- .element: class="notes" -->
 
 ---
 
-# Problem-Motivation: Komplexe Datenbank-Queries
+# Builder Pattern
 
-### Ausgangssituation
-Telekom-Systeme arbeiten mit komplexen Datenbankabfragen - Kunden können nach vielen Kriterien gefiltert werden, verschiedene Joins sind nötig, Performance-Optimierungen müssen berücksichtigt werden.
+## Was passt hier nicht?
 
-### Herausforderungen
-- Komplexe Query-Erstellung mit vielen optionalen Parametern <!-- .element: class="fragment" -->
-- Verschiedene Datenbanken (Oracle, PostgreSQL, MongoDB) <!-- .element: class="fragment" -->
-- Performance-kritische Abfragen mit Indizierung <!-- .element: class="fragment" -->
-- Type-sichere Query-Erstellung <!-- .element: class="fragment" -->
+### Problematische Repository-Implementierung
+Telekom-Systeme arbeiten mit komplexen Datenbankabfragen - Kunden können nach vielen Kriterien gefiltert werden. Die aktuelle Implementierung ist ein Wartungsalptraum:
 
 ---
 
-# Problematischer Code - Repository
+## Was passt hier nicht? - Code-Beispiel
 
 <div class="code-example">
 
@@ -1200,7 +1251,7 @@ public class CustomerRepository {
 
 ---
 
-# Builder Pattern - Konzept
+## Builder - Konzept
 
 <div class="pattern-definition">
 
@@ -1231,7 +1282,7 @@ ConcreteBuilder implements Builder
 
 ---
 
-# Query Builder - Implementation
+## Lösung
 
 <div class="code-example">
 
@@ -1425,6 +1476,29 @@ Query query = new TypeSafeCustomerQueryBuilder()
 
 ---
 
+## Übung
+
+<div class="interactive-question">
+
+### Praktische Übung: Builder Pattern
+#### Implementieren Sie einen TariffQueryBuilder
+
+</div>
+
+**Aufgabe**: Erweitern Sie das Query-System um Tariff-spezifische Abfragen:
+- TariffQueryBuilder mit Fluent Interface
+- Unterstützung für: Tariff-Name, Preis-Range, Features, Verfügbarkeit
+- Integration in TariffRepository
+- Type-Safe Builder Implementation
+
+**Implementierungsschritte**:
+1. TariffQueryBuilder-Klasse erstellen
+2. Fluent Methods implementieren (withName, withPriceRange, withFeatures)
+3. TariffRepository-Integration
+4. Type-Safe Builder-Interfaces definieren
+
+---
+
 # Modul 4: Prototype Pattern & Configuration Cloning
 
 ## Lernziele
@@ -1437,27 +1511,22 @@ Note:
 - Prototype Pattern ist performance-kritisch bei teuren Objekten
 - Typische Anwendung: Konfigurationsobjekte, DatabaseConnections, Parser-Zustände
 - WICHTIG: Deep vs Shallow Copy - zeigen Sie die Fallstricke auf
-- Zeit: ca. 8 Minuten für Lernziele und Motivation
 - Frage: "Wo in Ihren Systemen ist Objekterstellung besonders teuer?"
 - Performance-Aspekt betonen: Wann ist clonen() schneller als new?
 <!-- .element: class="notes" -->
 
 ---
 
-# Problem-Motivation: Komplexe Service-Konfiguration
+# Prototype Pattern
 
-### Ausgangssituation
-In Enterprise-Umgebungen müssen häufig ähnliche, aber leicht unterschiedliche Service-Konfigurationen erstellt werden. Die Initialisierung dieser Konfigurationsobjekte ist aufwändig und zeitkritisch.
+## Was passt hier nicht?
 
-### Herausforderungen
-- **Kostspielige Objekterzeugung**: Database-Connections, SSL-Certificates, Complex Validation <!-- .element: class="fragment" -->
-- **Template-basierte Konfiguration**: 90% identisch, 10% variabel <!-- .element: class="fragment" -->
-- **Runtime-Configuration**: Dynamische Erstellung zur Laufzeit erforderlich <!-- .element: class="fragment" -->
-- **Memory-Effizienz**: Sharing von unveränderlichen Teilen <!-- .element: class="fragment" -->
+### Problematische Konfigurationserstellung
+In Enterprise-Umgebungen müssen häufig ähnliche, aber leicht unterschiedliche Service-Konfigurationen erstellt werden. Die aktuelle Implementierung verschwendet massive Ressourcen:
 
 ---
 
-# Problematischer Code - Expensive Object Creation
+## Was passt hier nicht? - Code-Beispiel
 
 <div class="code-example">
 
@@ -1514,7 +1583,7 @@ public class ServiceConfigurationManager {
 
 ---
 
-# Prototype Pattern - Struktur
+## Prototype - Konzept
 
 <div class="pattern-definition">
 
@@ -1542,7 +1611,7 @@ PrototypeRegistry
 
 ---
 
-# Configuration Prototype Implementation
+## Lösung
 
 <div class="code-example">
 
@@ -1737,6 +1806,29 @@ public class PrototypeBasedConfigurationManager {
 
 ---
 
+## Übung
+
+<div class="interactive-question">
+
+### Praktische Übung: Prototype Pattern
+#### Implementieren Sie einen DatabaseConnectionPrototype
+
+</div>
+
+**Aufgabe**: Erweitern Sie das Konfigurationssystem um Database Connection Prototypes:
+- DatabaseConnectionPrototype mit Clone-Implementation
+- Verschiedene DB-Typen (Oracle, PostgreSQL, MongoDB)
+- Connection Pool Settings
+- Performance-optimierte Klonierung
+
+**Implementierungsschritte**:
+1. DatabaseConnectionPrototype-Klasse erstellen
+2. Deep/Shallow Copy Strategie implementieren
+3. PrototypeRegistry für DB-Connections
+4. Performance-Vergleich durchführen
+
+---
+
 # Deep vs Shallow Copy Strategy
 
 <div class="two-column">
@@ -1811,20 +1903,63 @@ public class CowConfiguration {
 
 ---
 
-# Problem-Motivation: Legacy Integration
+# Singleton & Adapter Pattern
 
-### Ausgangssituation
-Telekom hat viele Legacy-Systeme mit unterschiedlichen APIs. Neue Services müssen mit alten Systemen kommunizieren, aber die Interfaces passen nicht zusammen.
+## Was passt hier nicht?
 
-### Herausforderungen
-- **Legacy APIs**: SOAP, XML-RPC, proprietäre Protokolle <!-- .element: class="fragment" -->
-- **Moderne Services**: REST, JSON, reactive programming <!-- .element: class="fragment" -->
-- **Resource Management**: Connection Pools, Thread-sichere Singletons <!-- .element: class="fragment" -->
-- **Clean Architecture**: Abhängigkeiten von außen nach innen <!-- .element: class="fragment" -->
+### Problematische Legacy-Integration
+Telekom hat viele Legacy-Systeme mit unterschiedlichen APIs. Die aktuelle Integration ist ein chaotisches Durcheinander:
+
+<div class="code-example">
+
+```java
+public class CustomerServiceManager {
+    
+    public Customer getCustomer(String customerId) {
+        // Code-Smell: Hardcodierte System-Auswahl
+        if (customerId.startsWith("OLD_")) {
+            // Legacy SOAP System - direkter Aufruf
+            LegacySOAPService soapService = new LegacySOAPService();
+            String xml = soapService.getCustomerXML(customerId);
+            
+            // Problem: XML-Parsing in Business-Logik!
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            Document doc = factory.newDocumentBuilder().parse(xml);
+            
+            Customer customer = new Customer();
+            customer.setName(doc.getElementsByTagName("name").item(0).getTextContent());
+            return customer;
+        } else {
+            // Modernes REST System
+            RestTemplate restTemplate = new RestTemplate();
+            return restTemplate.getForObject("/customers/" + customerId, Customer.class);
+        }
+    }
+    
+    // DUPLICATE CODE: Ähnliche Logik für andere Operationen
+    public void updateCustomer(Customer customer) {
+        if (customer.getId().startsWith("OLD_")) {
+            // Legacy update... (weitere 20 Zeilen XML-Chaos)
+        } else {
+            // REST update...
+        }
+    }
+}
+```
+
+</div>
+
+### Identifizierte Probleme
+- **Mixed Concerns**: Business-Logik vermischt mit Integration-Details <!-- .element: class="fragment" -->
+- **Duplicate Code**: Ähnliche Integration-Logik überall <!-- .element: class="fragment" -->
+- **Tight Coupling**: Direkte Abhängigkeiten zu Legacy-APIs <!-- .element: class="fragment" -->
+- **No Abstraction**: Keine einheitliche Service-Schnittstelle <!-- .element: class="fragment" -->
 
 ---
 
-# Singleton Pattern - Enterprise Implementation
+## Singleton - Konzept
+
+### Thread-safe Singleton für Resource Management
 
 <div class="code-example">
 
@@ -1878,7 +2013,7 @@ String dbUrl = ConfigurationManager.INSTANCE.getProperty("db.url", "localhost");
 
 ---
 
-# Legacy System Adapter Pattern
+## Lösung
 
 <div class="code-example">
 
@@ -2150,6 +2285,29 @@ public class CompositeCustomerService implements CustomerService {
 
 ---
 
+## Übung
+
+<div class="interactive-question">
+
+### Praktische Übung: Singleton & Adapter
+#### Implementieren Sie ein Legacy-Integration System
+
+</div>
+
+**Aufgabe**: Erweitern Sie das System um weitere Legacy-Integrationen:
+- FileSystemAdapter für CSV-basierte Legacy-Daten
+- DatabaseAdapter für direkte DB-Zugriffe
+- Thread-safe ConnectionPoolSingleton
+- Adapter Registry mit Failover-Mechanismus
+
+**Implementierungsschritte**:
+1. Neue Adapter-Implementierungen erstellen
+2. ConnectionPoolSingleton implementieren
+3. AdapterRegistry erweitern
+4. Fallback-Strategien testen
+
+---
+
 # Tag 1 Praktische Übung - Integration Challenge
 
 <div class="interactive-question">
@@ -2179,22 +2337,22 @@ public class CompositeCustomerService implements CustomerService {
 </div>
 <div>
 
-### Implementation Tasks (45 Min)
-1. **Service Factory Design** (15 Min) <!-- .element: class="fragment" -->
+### Implementation Tasks
+1. **Service Factory Design** <!-- .element: class="fragment" -->
    - CustomerServiceFactory mit Backend-spezifischen Implementierungen
    - Abstract Factory für Service-Familien
 
-2. **Builder Implementation** (15 Min) <!-- .element: class="fragment" -->
+2. **Builder Implementation** <!-- .element: class="fragment" -->
    - CustomerQueryBuilder mit Fluent Interface
    - Type-safe Query-Erstellung
 
-3. **Adapter & Integration** (15 Min) <!-- .element: class="fragment" -->
+3. **Adapter & Integration** <!-- .element: class="fragment" -->
    - Legacy SOAP Adapter
    - Configuration Prototype Registry
    - Service Registry mit Failover
 
 Note:
-- WICHTIGE HANDS-ON ÜBUNG: 45 Minuten intensive Praxisarbeit
+- WICHTIGE HANDS-ON ÜBUNG: Intensive Praxisarbeit
 - Teams von 2-3 Personen bilden lassen nach Erfahrungslevel
 - Jedes Team wählt bevorzugtes Backend (SOAP/REST/NoSQL)
 - Betonen Sie: Integration ALLER Patterns aus Tag 1 (Factory Method, Abstract Factory, Builder, Prototype, Singleton)

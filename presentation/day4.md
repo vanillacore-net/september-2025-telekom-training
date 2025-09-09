@@ -425,7 +425,6 @@ Note:
 - Fokus auf reale Enterprise-Anwendungen und Microservice-Architekturen
 - Verwenden Sie examples/exercises/day4-exercises.md für finale Übungen
 - Betonen Sie: Pattern-Integration und Anti-Pattern-Vermeidung
-- Zeit: ca. 15 Minuten für Rückblick und Tag 4 Einführung
 <!-- .element: class="notes" -->
 
 ---

@@ -428,7 +428,6 @@ Note:
 - Begrüßen Sie die Teilnehmer herzlich
 - Stellen Sie sich kurz vor (Name, Hintergrund)
 - Überprüfen Sie die technische Ausstattung
-- Zeit: ca. 5 Minuten
 <!-- .element: class="notes" -->
 
 </div>
@@ -456,7 +455,6 @@ Note:
 - Fragen Sie nach Vorerfahrungen mit Design Patterns
 - Erwähnen Sie, dass alle Beispiele auf Telekom-Szenarien basieren
 - Heben Sie hervor: "Wir analysieren echten Legacy-Code"
-- Zeit: ca. 10 Minuten für Diskussion und Erwartungsabfrage
 <!-- .element: class="notes" -->
 
 <!-- Speaker Notes: Herzlich willkommen zum Design Patterns Workshop. Tag 1 konzentriert sich auf Creational Patterns in Enterprise-Telekom-Umgebungen. Wir werden Legacy-Code analysieren und refactoring mit Pattern-basierten Lösungen durchführen. -->
@@ -508,7 +506,6 @@ Note:
 Note:
 - Betonen Sie die praktische Relevanz für Telekom Legacy-Systeme
 - Erklären Sie, dass wir mit Code-Smell Analyse beginnen, bevor wir Patterns einführen
-- Zeit: ca. 5 Minuten für Lernziele
 - Interaktive Frage: "Welche Code-Probleme kennen Sie aus Ihren Projekten?"
 <!-- .element: class="notes" -->
 
@@ -536,7 +533,6 @@ Note:
   * Open/Closed Principle Verletzung
 - Diskutieren Sie Auswirkungen: "Was passiert bei neuen Kunden-Typen?"
 - Verbinden Sie zu SOLID-Prinzipien, besonders Open/Closed
-- Zeit: 15 Minuten (5 Min Identifikation + 10 Min Diskussion)
 - PRAKTISCHE FRAGE: "Kennen Sie ähnliche Switch-Statements in Ihren Telekom-Systemen?"
 - Erwartete Antworten sammeln und für Factory Method Motivation nutzen
 <!-- .element: class="notes" -->
@@ -587,7 +583,6 @@ Note:
 - Betonen Sie die vielen Wiederholungen in den switch-cases
 - Fragen Sie: "Was passiert, wenn wir einen neuen Kunden-Typ hinzufügen?"
 - Hinweis auf Long Parameter List und fehlende Kapselung
-- Zeit: ca. 8 Minuten für Code-Analyse
 - Bereiten Sie vor: "Wie würden Sie diesen Code verbessern?"
 <!-- .element: class="notes" -->
 
@@ -625,7 +620,6 @@ Note:
 - Betonen Sie den Unterschied zwischen Creator und Product-Hierarchie
 - Wichtig: Factory Method ist NICHT Simple Factory - erklären Sie den Unterschied
 - Verbindung zu unserem Customer-Problem herstellen
-- Zeit: ca. 12 Minuten für Pattern-Erklärung
 - Frage: "Wo könnten Sie dieses Pattern in Ihren Projekten einsetzen?"
 <!-- .element: class="notes" -->
 
@@ -653,7 +647,6 @@ Note:
 - Erklären Sie die Einführung des Customer-Interfaces als ersten Refactoring-Schritt
 - Betonen Sie die gemeinsamen Methoden für alle Kunden-Typen
 - Wichtig: processContract() ermöglicht kunden-spezifische Geschäftslogik
-- Zeit: ca. 5 Minuten für Interface-Erklärung
 <!-- .element: class="notes" -->
 
 ### Konkrete Implementierung - PrivateCustomer
@@ -696,7 +689,6 @@ Note:
 - Zeigen Sie, wie die kunden-spezifische Logik in der Implementierung gekapselt wird
 - Erklären Sie die private Methoden validatePersonalData() und setupBasicServices()
 - Betonen Sie die Kapselung der Geschäftsregeln pro Kunden-Typ
-- Zeit: ca. 8 Minuten für konkrete Implementierung
 - Frage: "Welche Geschäftsregeln würden Sie für BusinessCustomer erwarten?"
 <!-- .element: class="notes" -->
 
@@ -745,7 +737,6 @@ Note:
 - Betonen Sie die gemeinsame Geschäftslogik im Template Method
 - Wichtig: Factory Method ist protected, nicht public
 - Zeigen Sie den Aufruf-Flow: processNewCustomer() -> createCustomer() -> validate -> persist
-- Zeit: ca. 15 Minuten - das ist der Kern des Patterns
 - Frage: "Welche Geschäftslogik würden Sie als gemeinsam identifizieren?"
 <!-- .element: class="notes" -->
 
@@ -785,7 +776,6 @@ Note:
 - Erklären Sie: Nur die Factory Method muss implementiert werden
 - Neue Kunden-Typen = neue Factory-Klasse, kein bestehender Code geändert
 - Verbindung zu Open/Closed Principle
-- Zeit: ca. 5 Minuten für konkrete Factories
 - Praktische Übung vorbereiten: "Implementieren Sie StudentCustomerFactory"
 <!-- .element: class="notes" -->
 
@@ -834,7 +824,6 @@ Note:
 - OCP: Erweiterung ohne Modifikation durch neue Factory-Klassen
 - DIP: Abhängigkeit zu Abstraktion, nicht zu konkreten Klassen
 - Moderne Alternative mit Java 8+: Zeigen Sie funktionale Ansätze
-- Zeit: ca. 10 Minuten für SOLID-Integration
 - Diskussion: "Welche SOLID-Prinzipien verletzt unser ursprünglicher Code?"
 <!-- .element: class="notes" -->
 
@@ -852,7 +841,6 @@ Note:
 - Übergang von Factory Method zu Abstract Factory erklären
 - Betonen Sie den Unterschied: Familien verwandter Objekte
 - Verbindung zu Enterprise-Architekturen: Service-Layers
-- Zeit: ca. 3 Minuten für Lernziele
 - Motivation schaffen: "Warum reicht Factory Method nicht für komplexe Systeme?"
 <!-- .element: class="notes" -->
 
@@ -1134,7 +1122,6 @@ Note:
 - Builder Pattern löst das "Telescoping Constructor" Problem
 - Besonders wertvoll für Query-Builder und komplexe Konfigurationsobjekte
 - Zeigen Sie den Unterschied zu Factory Method: Builder für EINEN komplexen Typ
-- Zeit: ca. 5 Minuten für Lernziele
 - Frage: "Kennen Sie Konstruktoren mit vielen Parametern in Ihren Projekten?"
 - Verbindung zu Repository Pattern: Saubere Query-Erstellung
 <!-- .element: class="notes" -->
@@ -1437,7 +1424,6 @@ Note:
 - Prototype Pattern ist performance-kritisch bei teuren Objekten
 - Typische Anwendung: Konfigurationsobjekte, DatabaseConnections, Parser-Zustände
 - WICHTIG: Deep vs Shallow Copy - zeigen Sie die Fallstricke auf
-- Zeit: ca. 8 Minuten für Lernziele und Motivation
 - Frage: "Wo in Ihren Systemen ist Objekterstellung besonders teuer?"
 - Performance-Aspekt betonen: Wann ist clonen() schneller als new?
 <!-- .element: class="notes" -->
@@ -2179,22 +2165,22 @@ public class CompositeCustomerService implements CustomerService {
 </div>
 <div>
 
-### Implementation Tasks (45 Min)
-1. **Service Factory Design** (15 Min) <!-- .element: class="fragment" -->
+### Implementation Tasks
+1. **Service Factory Design** <!-- .element: class="fragment" -->
    - CustomerServiceFactory mit Backend-spezifischen Implementierungen
    - Abstract Factory für Service-Familien
 
-2. **Builder Implementation** (15 Min) <!-- .element: class="fragment" -->
+2. **Builder Implementation** <!-- .element: class="fragment" -->
    - CustomerQueryBuilder mit Fluent Interface
    - Type-safe Query-Erstellung
 
-3. **Adapter & Integration** (15 Min) <!-- .element: class="fragment" -->
+3. **Adapter & Integration** <!-- .element: class="fragment" -->
    - Legacy SOAP Adapter
    - Configuration Prototype Registry
    - Service Registry mit Failover
 
 Note:
-- WICHTIGE HANDS-ON ÜBUNG: 45 Minuten intensive Praxisarbeit
+- WICHTIGE HANDS-ON ÜBUNG: Intensive Praxisarbeit
 - Teams von 2-3 Personen bilden lassen nach Erfahrungslevel
 - Jedes Team wählt bevorzugtes Backend (SOAP/REST/NoSQL)
 - Betonen Sie: Integration ALLER Patterns aus Tag 1 (Factory Method, Abstract Factory, Builder, Prototype, Singleton)

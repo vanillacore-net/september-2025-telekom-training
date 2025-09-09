@@ -420,7 +420,6 @@ Note:
 - Begrüßung am zweiten Tag - kurze Auffrischung vom Vortag
 - Fragen Sie nach Erkenntnissen und offenen Fragen von Tag 1
 - Betonen Sie den Fokus auf Strukturmuster für System-Integration
-- Zeit: ca. 10 Minuten für Rückblick und Einführung in Tag 2
 <!-- .element: class="notes" -->
 
 </div>
@@ -448,7 +447,6 @@ Note:
 - Betonen Sie die praktische Relevanz für Telekom-Umgebungen
 - Heben Sie hervor: "Heute lösen wir echte Integrationsprobleme"
 - Verbinden Sie zu Tag 1: Creational → Structural → Behavioral (Tag 3/4)
-- Zeit: ca. 15 Minuten für Agenda und Erwartungsklärung
 <!-- .element: class="notes" -->
 
 ---
@@ -477,6 +475,60 @@ Note:
 ---
 
 # Adapter Pattern
+
+## Was passt hier nicht?
+
+### Problematische Legacy-Integration
+Eine typische Enterprise-Herausforderung: Verschiedene Systeme mit inkompatiblen Interfaces müssen zusammenarbeiten.
+
+<div class="code-example">
+
+```java
+public class BillingManager {
+    
+    public void processBilling(Customer customer, double amount) {
+        // Code-Smell: Hardcodierte System-Auswahl
+        if (customer.getRegion().equals("LEGACY")) {
+            // Legacy System - völlig andere API
+            LegacyBillingSystem legacy = new LegacyBillingSystem();
+            
+            // Problem: Manuelle Datenkonvertierung überall!
+            int custId = Integer.parseInt(customer.getId());
+            float sum = (float) amount;
+            String billRef = legacy.generateBill(custId, sum, "EUR");
+            
+            // Weitere Konvertierung für Status-Check
+            int status = legacy.checkBillStatus(billRef);
+            customer.setBillingStatus(status == 1 ? "PENDING" : "PAID");
+            
+        } else {
+            // Moderne API
+            ModernBillingService modern = new ModernBillingService();
+            Invoice invoice = modern.createInvoice(customer, amount);
+            customer.setBillingStatus(invoice.getStatus().toString());
+        }
+    }
+    
+    // DUPLICATE CODE: Ähnliche Logik für andere Operations
+    public void refundBilling(Customer customer, double amount) {
+        if (customer.getRegion().equals("LEGACY")) {
+            // Wieder die gleiche Konvertierungs-Logik...
+        }
+    }
+}
+```
+
+</div>
+
+### Identifizierte Probleme
+- **Interface Mismatch**: Verschiedene APIs für gleiche Funktionalität <!-- .element: class="fragment" -->
+- **Duplicate Conversion**: Manuelle Datenkonvertierung überall <!-- .element: class="fragment" -->
+- **Tight Coupling**: Direkte Abhängigkeit zu Legacy-Systemen <!-- .element: class="fragment" -->
+- **No Abstraction**: Keine einheitliche Schnittstelle <!-- .element: class="fragment" -->
+
+---
+
+## Adapter - Konzept
 
 <div class="pattern-definition">
 
@@ -515,7 +567,7 @@ Note:
 
 ---
 
-# Adapter Pattern - Enterprise Billing Example
+## Lösung
 
 <div class="code-example">
 <h5>Enterprise Billing System Adapter</h5>
@@ -581,7 +633,96 @@ const status = modernBilling.getInvoiceStatus(invoice.id); // fragment
 
 ---
 
+## Übung
+
+<div class="interactive-question">
+
+### Praktische Übung: Adapter Pattern
+#### Implementieren Sie einen PaymentSystemAdapter
+
+</div>
+
+**Aufgabe**: Erweitern Sie das System um verschiedene Payment-Provider:
+- PayPalAdapter für PayPal API Integration
+- StripeAdapter für Stripe API Integration  
+- LegacyBankAdapter für proprietäre Banking-Systeme
+- Einheitliches PaymentService Interface
+
+**Implementierungsschritte**:
+1. PaymentService Interface definieren
+2. Adapter für jeden Provider implementieren
+3. Datenkonvertierung zwischen APIs
+4. Fehlerbehandlung und Status-Mapping
+
+---
+
 # Decorator Pattern
+
+## Was passt hier nicht?
+
+### Problematische Service-Erweiterung
+Cross-Cutting Concerns wie Logging, Security und Performance Monitoring führen zu einem Durcheinander wenn sie direkt in die Business-Logik eingebaut werden:
+
+<div class="code-example">
+
+```java
+public class CustomerService {
+    
+    public Customer getCustomer(String customerId) {
+        // Code-Smell: Mixed Concerns
+        long startTime = System.currentTimeMillis();
+        
+        // Security Check - direkt in Business-Logik!
+        if (!SecurityManager.hasPermission("READ_CUSTOMER")) {
+            throw new SecurityException("No permission");
+        }
+        
+        // Logging - überall die gleiche Logik
+        System.out.println("Getting customer: " + customerId);
+        
+        try {
+            // Eigentliche Business-Logik fast versteckt
+            Customer customer = database.findCustomer(customerId);
+            
+            // Performance Logging - weitere Vermischung
+            long duration = System.currentTimeMillis() - startTime;
+            System.out.println("Customer lookup took: " + duration + "ms");
+            
+            // Caching Logic - noch mehr Code
+            cache.put(customerId, customer);
+            
+            return customer;
+            
+        } catch (Exception e) {
+            // Error Logging - duplicate code
+            System.err.println("Error getting customer: " + e.getMessage());
+            throw e;
+        }
+    }
+    
+    // DUPLICATE: Alle anderen Methoden haben die gleichen Concerns
+    public void updateCustomer(Customer customer) {
+        long startTime = System.currentTimeMillis();
+        if (!SecurityManager.hasPermission("UPDATE_CUSTOMER")) {
+            throw new SecurityException("No permission");
+        }
+        System.out.println("Updating customer: " + customer.getId());
+        // ... weitere 20 Zeilen ähnlicher Code
+    }
+}
+```
+
+</div>
+
+### Identifizierte Probleme
+- **Mixed Concerns**: Business-Logik vermischt mit Cross-Cutting Concerns <!-- .element: class="fragment" -->
+- **Duplicate Code**: Logging/Security/Performance Code in jeder Methode <!-- .element: class="fragment" -->
+- **Hard to Maintain**: Änderungen am Logging betreffen alle Methoden <!-- .element: class="fragment" -->
+- **Inflexible**: Concerns können nicht optional oder kombiniert werden <!-- .element: class="fragment" -->
+
+---
+
+## Decorator - Konzept
 
 <div class="pattern-definition">
 
@@ -620,7 +761,7 @@ const status = modernBilling.getInvoiceStatus(invoice.id); // fragment
 
 ---
 
-# Decorator Pattern - Service Enhancement
+## Lösung
 
 <div class="code-example">
 <h5>Enterprise Service Decoration für Cross-Cutting Concerns</h5>
@@ -742,7 +883,109 @@ const response = customerService.processRequest({ // fragment
 
 ---
 
+## Übung
+
+<div class="interactive-question">
+
+### Praktische Übung: Decorator Pattern
+#### Implementieren Sie einen CachingDecorator
+
+</div>
+
+**Aufgabe**: Erweitern Sie das Service-System um Caching-Funktionalität:
+- CachingDecorator für automatisches Caching
+- TTL-basierte Cache-Expiration
+- Cache-Statistics für Monitoring
+- Kombinierbar mit anderen Decorators
+
+**Implementierungsschritte**:
+1. CachingDecorator-Klasse implementieren
+2. Cache-Key Generation Strategy
+3. TTL-Management für Expiration
+4. Kombination mit Security/Logging-Decorators testen
+
+---
+
 # Facade Pattern
+
+## Was passt hier nicht?
+
+### Problematische Subsystem-Integration
+Clients müssen mit vielen verschiedenen Services und komplexen APIs interagieren, was zu unübersichtlichem und fehleranfälligem Code führt:
+
+<div class="code-example">
+
+```java
+public class CustomerController {
+    
+    public ResponseEntity<String> onboardCustomer(CustomerRequest request) {
+        // Code-Smell: Complex Client-Side Orchestration
+        
+        try {
+            // 1. Customer Service - komplexe Parameter
+            CustomerService customerService = new CustomerService();
+            Customer customer = customerService.validateAndCreate(
+                request.getName(), 
+                request.getEmail(), 
+                request.getAddress(), 
+                request.getPhone(),
+                "ACTIVE", 
+                new Date()
+            );
+            
+            // 2. Billing Service - andere API-Signatur
+            BillingService billingService = new BillingService();
+            Account account = billingService.createAccount(
+                customer.getId(), 
+                request.getPaymentMethod(),
+                request.getBillingAddress() != null ? request.getBillingAddress() : request.getAddress()
+            );
+            
+            // 3. Notification Service - wieder andere Parameter
+            NotificationService notificationService = new NotificationService();
+            notificationService.sendWelcomeEmail(
+                customer.getEmail(),
+                customer.getName(),
+                account.getAccountNumber()
+            );
+            
+            // 4. Audit Service - komplexe Event-Erstellung
+            AuditService auditService = new AuditService();
+            auditService.logEvent(
+                "CUSTOMER_ONBOARDED",
+                customer.getId(),
+                "New customer onboarded: " + customer.getName(),
+                new AuditMetadata(getCurrentUser(), new Date(), "ONBOARDING")
+            );
+            
+            return ResponseEntity.ok("Customer onboarded successfully");
+            
+        } catch (CustomerValidationException e) {
+            // Fehlerbehandlung für jeden Service separat
+            return ResponseEntity.badRequest().body("Customer validation failed: " + e.getMessage());
+        } catch (BillingException e) {
+            // Rollback Customer? Partial failure handling?
+            return ResponseEntity.status(500).body("Billing setup failed: " + e.getMessage());
+        } catch (NotificationException e) {
+            // Customer und Billing OK, aber Notification failed - was nun?
+            return ResponseEntity.status(207).body("Customer created but notification failed");
+        }
+        // ... weitere 20 Zeilen Exception Handling
+    }
+}
+```
+
+</div>
+
+### Identifizierte Probleme
+- **Complex Orchestration**: Client muss alle Services koordinieren <!-- .element: class="fragment" -->
+- **Tight Coupling**: Client kennt alle Subsystem-Details <!-- .element: class="fragment" -->
+- **Error Handling Chaos**: Rollback und Partial Failures komplex <!-- .element: class="fragment" -->
+- **Duplicate Logic**: Orchestration Code in jedem Client wiederholt <!-- .element: class="fragment" -->
+
+---
+
+## Facade - Konzept
 
 <div class="pattern-definition">
 
@@ -781,7 +1024,7 @@ const response = customerService.processRequest({ // fragment
 
 ---
 
-# Facade Pattern - Customer Management
+## Lösung
 
 <div class="code-example">
 <h5>Enterprise Customer Management Facade</h5>
@@ -1340,7 +1583,7 @@ try { // fragment
 </div>
 
 <div class="progress-indicator">
-<div class="progress-step current">🛠️ Exercise Time: 90 minutes</div>
+<div class="progress-step current">🛠️ Exercise Time</div>
 <div class="progress-step pending">👥 Work in teams of 3-4</div>
 <div class="progress-step pending">🎯 Focus on pattern integration</div>
 </div>
@@ -1368,7 +1611,7 @@ class CustomerServiceFacade {
 </div>
 
 Note:
-- GROSSE PRAXIS-ÜBUNG: 90 Minuten intensive Teamarbeit mit day2-exercises.md
+- GROSSE PRAXIS-ÜBUNG: Intensive Teamarbeit mit day2-exercises.md
 - Teams von 3-4 Personen, unterschiedliche Erfahrungslevels mischen
 - WICHTIG: Verwenden Sie alle 4 Exercises aus day2-exercises.md:
   * Exercise 1: Service Enhancement Pipeline (Decorator Pattern)
@@ -1376,12 +1619,12 @@ Note:
   * Exercise 3: Complex Configuration (Composite Pattern)
   * Exercise 4: Service Caching Solution (Proxy Pattern)
 - Jedes Team wählt 2 Exercises basierend auf Interesse/Erfahrung
-- Zirkulieren Sie alle 15 Minuten zwischen Teams
+- Zirkulieren Sie regelmäßig zwischen Teams
 - Hilfestellung bei Design-Entscheidungen, nicht bei Syntax
-- Nach 60 Min: Zwischenstand und Feedback-Runde
-- Letzten 30 Min: Jedes Team präsentiert eine Lösung (5 Min pro Team)
+- Zwischenstand und Feedback-Runde
+- Jedes Team präsentiert eine Lösung
 - Bereiten Sie Referenz-Lösungen aus exercises vor
-- Letzten 30 Min: Präsentation und Diskussion der Lösungsansätze
+- Präsentation und Diskussion der Lösungsansätze
 - Musterlösung bereithalten für Teams die schnell fertig sind
 <!-- .element: class="notes" -->
 
