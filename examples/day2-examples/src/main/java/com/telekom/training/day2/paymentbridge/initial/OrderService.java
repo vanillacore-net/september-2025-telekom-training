@@ -2,10 +2,6 @@ package com.telekom.training.day2.paymentbridge.initial;
 
 import java.math.BigDecimal;
 
-/**
- * PROBLEM: Client code tightly coupled to specific payment providers
- * Must handle each provider differently with ugly if-else chains
- */
 public class OrderService {
     
     private final PaypalPaymentProcessor paypalProcessor;
@@ -16,7 +12,6 @@ public class OrderService {
         this.stripeHandler = new StripePaymentHandler();
     }
 
-    // PROBLEM: Must handle each provider differently!
     public String processPayment(String paymentMethod, String token, BigDecimal amount, String currency) {
         
         if ("PAYPAL".equals(paymentMethod)) {
@@ -47,10 +42,8 @@ public class OrderService {
         }
         
         // What if we add Apple Pay, Google Pay, Bank Transfer?
-        // More if-else blocks with different APIs!
     }
 
-    // PROBLEM: More provider-specific handling for refunds
     public boolean refundPayment(String paymentMethod, String transactionId, BigDecimal amount) {
         
         if ("PAYPAL".equals(paymentMethod)) {

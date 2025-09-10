@@ -6,10 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * PROBLEM: Every call goes to database - expensive and slow!
- * No caching, even for unchanged data that's accessed frequently
- */
 public class DatabaseCustomerService implements CustomerService {
     
     // Simulate database with Map

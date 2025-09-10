@@ -4,10 +4,6 @@ import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * PROBLEM: Inconsistent handling of single tariffs vs bundles
- * Client code needs to check type and handle differently
- */
 public class SingleTariff {
     private final String name;
     private final BigDecimal price;

@@ -3,7 +3,7 @@ package com.telekom.training.day2.paymentbridge.initial;
 import java.math.BigDecimal;
 
 /**
- * PROBLEM: Completely different API than PayPal
+ * Completely different API than PayPal
  * Different method names, parameters, return types
  */
 public class StripePaymentHandler {

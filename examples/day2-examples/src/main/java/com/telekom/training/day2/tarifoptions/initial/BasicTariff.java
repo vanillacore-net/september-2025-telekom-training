@@ -2,10 +2,6 @@ package com.telekom.training.day2.tarifoptions.initial;
 
 import java.math.BigDecimal;
 
-/**
- * Basic tariff - before Decorator Pattern
- * Problem: Need to create subclasses for every combination of options
- */
 public class BasicTariff {
     protected String name;
     protected BigDecimal basePrice;

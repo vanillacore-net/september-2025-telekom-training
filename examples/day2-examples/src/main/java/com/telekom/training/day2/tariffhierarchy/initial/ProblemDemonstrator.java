@@ -9,12 +9,10 @@ import java.util.List;
  */
 public class ProblemDemonstrator {
     
-    // PROBLEM: Need different methods for different types
     public BigDecimal calculateTotalCost(List<Object> items) {
         BigDecimal total = BigDecimal.ZERO;
         
         for (Object item : items) {
-            // Ugly type checking and casting!
             if (item instanceof SingleTariff) {
                 SingleTariff tariff = (SingleTariff) item;
                 total = total.add(tariff.getPrice());
@@ -22,7 +20,7 @@ public class ProblemDemonstrator {
                 TariffBundle bundle = (TariffBundle) item;
                 total = total.add(bundle.getTotalPrice()); // Different method name!
             }
-            // What if we add more types? More if-else!
+            // What if we add more types?
         }
         
         return total;
@@ -30,7 +28,6 @@ public class ProblemDemonstrator {
     
     public void printAllItems(List<Object> items) {
         for (Object item : items) {
-            // More ugly type checking!
             if (item instanceof SingleTariff) {
                 ((SingleTariff) item).printStructure("");
             } else if (item instanceof TariffBundle) {

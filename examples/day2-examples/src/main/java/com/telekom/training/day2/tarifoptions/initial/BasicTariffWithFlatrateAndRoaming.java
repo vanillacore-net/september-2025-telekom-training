@@ -2,15 +2,6 @@ package com.telekom.training.day2.tarifoptions.initial;
 
 import java.math.BigDecimal;
 
-/**
- * EXPLOSION PROBLEM: We need a class for EVERY combination!
- * - Basic
- * - BasicWithFlatrate
- * - BasicWithRoaming
- * - BasicWithFlatrateAndRoaming
- * - BasicWithFlatrateAndRoamingAndInsurance
- * ... and so on exponentially!
- */
 public class BasicTariffWithFlatrateAndRoaming extends BasicTariff {
     private static final BigDecimal FLATRATE_COST = new BigDecimal("15.00");
     private static final BigDecimal ROAMING_COST = new BigDecimal("8.50");

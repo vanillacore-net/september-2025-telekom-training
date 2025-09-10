@@ -3,8 +3,7 @@ package com.telekom.training.day2.paymentbridge.initial;
 import java.math.BigDecimal;
 
 /**
- * PROBLEM: Each payment provider has its own API and method signatures
- * Client code must know about all different providers and handle them differently
+ * Each payment provider has its own API and method signatures
  */
 public class PaypalPaymentProcessor {
     
