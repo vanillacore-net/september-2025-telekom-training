@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.9.1] [2025-09-10] - URGENT: Fix PowerPoint Formatting and Remove Markdown Syntax
+
+### Fixed
+- **CRITICAL PowerPoint Formatting** - Fixed markdown syntax appearing in presentation text
+  - Removed ALL markdown formatting (**, ##, ###) from displayed text
+  - Applied proper PowerPoint bold formatting instead of markdown markers
+  - Structured slides correctly with bold section headers and bullet points
+  - Fixed Slide 42 and similar slides with proper title/bullet structure
+  - Professional text formatting without visible markdown syntax
+  - Clean presentation appearance with actual PowerPoint formatting
+
+### Technical Implementation
+- **Python Script Creation** - Created automated PowerPoint generation with proper formatting
+  - Used python-pptx library for professional PowerPoint creation
+  - Implemented clean_markdown_text() function to strip all markdown syntax
+  - Applied proper PowerPoint bold formatting for section headers
+  - Used appropriate layouts: Title Slide (0), Section Header (1), Bullet layouts (2,4)
+  - Processed all 29 slides from intro-content-extracted.md source
+  - Generated presentations/powerpoint/intro-presentation.pptx (135KB)
+
+### Content Quality
+- **Markdown Cleanup** - Complete removal of markdown syntax from presentation
+  - Bold text properly formatted using PowerPoint formatting
+  - Section headers display as actual bold text, not **text**
+  - Bullet points structured correctly without markdown markers
+  - Professional presentation appearance suitable for training delivery
+  - Speaker notes preserved with clean formatting
+  - All slides follow proper PowerPoint layout conventions
+
 ## [1.9.0] [2025-09-10] - Transform Intro Block to PowerPoint Presentation
 
 ### Added
