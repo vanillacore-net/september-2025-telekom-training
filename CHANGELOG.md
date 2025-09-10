@@ -1,5 +1,40 @@
 # Changelog
 
+## [1.7.0] [2025-09-10] - Extract Block 2 Structural Patterns Content for PowerPoint
+
+### Added
+- **Block 2 Content Extraction** - Extracted and structured Structural Patterns content for PowerPoint
+  - Created presentations/powerpoint/block2-content-extracted.md
+  - Processed 4 script files from script/day2/ (Decorator, Composite/Facade, Proxy/Flyweight, Bridge/Microservices)
+  - Applied required 4-step pattern flow: "Was ist hier schlecht?" → "Code Smells identifiziert" → "Lösung: [Pattern]" → "Implementierung"
+  - Maximum 7 bullet points per slide for optimal readability
+  - Removed ALL exercises (Übungen) and workshop activities
+  - Replaced day/time references with "Block 2" terminology
+
+### Content Structure
+- **6 Structural Patterns**: Decorator, Composite, Facade, Proxy, Flyweight, Bridge with complete coverage
+- **4-Slide Pattern Flow**: Each pattern follows consistent structure (Problem → Smells → Solution → Code)
+- **Code Examples**: Practical Telekom-specific implementations with proper syntax highlighting
+- **Speaker Notes**: Comprehensive Note: sections for presentation guidance
+- **Performance Focus**: Memory optimization and latency reduction through architectural patterns
+- **Enterprise Context**: Real-world Telekom scale examples (50M+ customers, complex hierarchies)
+
+### Pattern Coverage
+- **Decorator Pattern**: Tarif-Options ohne Vererbungs-Explosion, Factory Pattern Integration
+- **Composite Pattern**: Hierarchische Familien-Tarife, Teil-Ganzes-Beziehungen elegant modelliert
+- **Facade Pattern**: Microservice-Orchestrierungs-Chaos, komplexe Subsystem-Vereinfachung
+- **Proxy Pattern**: Network-Latenz Probleme, intelligente Zugriffssteuerung mit Caching
+- **Flyweight Pattern**: Memory-Explosion bei 50M+ Kunden, 77% Memory-Ersparnis durch Sharing
+- **Bridge Pattern**: Provider-Abstraktion, lose Kopplung für externe Dependencies
+
+### Technical Implementation
+- Processed 93KB+ of source content from 4 comprehensive script files
+- Extracted architectural insights from enterprise-scale examples
+- Created clean markdown with slide boundaries (---) for PowerPoint import
+- Professional German content maintaining technical accuracy
+- Pattern-Synergien section showing enterprise-ready combinations
+- Production-ready considerations with monitoring and resilience patterns
+
 ## [1.6.0] [2025-09-10] - Extract Introduction Content for PowerPoint Presentation
 
 ### Added

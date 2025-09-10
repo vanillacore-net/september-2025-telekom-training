@@ -1,50 +1,39 @@
-# Block 1: Creational Patterns
+# Block 1: Creational Patterns - Strukturierte Inhalte
+
+---
+
+## Block 1 Overview
+
+**Slide 1: Block 1 - Creational Patterns**
+- Factory Method Pattern
+- Abstract Factory Pattern  
+- Builder Pattern
+- Prototype Pattern
+- Singleton Pattern
+
+Note: Block 1 fokussiert auf Objekterzeugungsmuster für saubere, erweiterbare Architekturen in Enterprise-Systemen.
 
 ---
 
 ## Factory Method Pattern
 
----
-
-### Was ist hier schlecht? - Customer Creation Problems
-
+**Slide 2: Was ist hier schlecht?**
 ```java
 public class CustomerManager {
-    
     public Customer createCustomer(String type, String name, String contractId) {
-        // Code-Smell: Switch Statement / Long Parameter List
         switch (type) {
             case "PRIVATE":
                 Customer privateCustomer = new Customer();
                 privateCustomer.setName(name);
-                privateCustomer.setContractId(contractId);
                 privateCustomer.setTariffOptions(Arrays.asList("Basic", "Comfort"));
                 privateCustomer.setPaymentMethod("SEPA");
-                privateCustomer.setSupportLevel("Standard");
                 return privateCustomer;
-                
             case "BUSINESS":
                 Customer businessCustomer = new Customer();
                 businessCustomer.setName(name);
-                businessCustomer.setContractId(contractId);
                 businessCustomer.setTariffOptions(Arrays.asList("Professional", "Enterprise"));
                 businessCustomer.setPaymentMethod("Invoice");
-                businessCustomer.setSupportLevel("Business");
-                businessCustomer.setVatNumber(generateVatNumber());
-                businessCustomer.setAccountManager(assignAccountManager());
                 return businessCustomer;
-                
-            case "PREMIUM":
-                Customer premiumCustomer = new Customer();
-                premiumCustomer.setName(name);
-                premiumCustomer.setContractId(contractId);
-                premiumCustomer.setTariffOptions(Arrays.asList("Premium", "Unlimited"));
-                premiumCustomer.setPaymentMethod("DirectDebit");
-                premiumCustomer.setSupportLevel("VIP");
-                premiumCustomer.setPrioritySupport(true);
-                premiumCustomer.setDedicatedLine(true);
-                return premiumCustomer;
-                
             default:
                 throw new IllegalArgumentException("Unknown customer type: " + type);
         }
@@ -52,61 +41,40 @@ public class CustomerManager {
 }
 ```
 
-Note: This code demonstrates typical problems in legacy Telekom systems where customer creation logic is centralized with extensive switch statements.
+**Slide 3: Code Smells identifiziert**
+- Long Method: createCustomer-Methode hat zu viele Zeilen
+- Switch Statements: Typ-basierte Verzweigung deutet auf fehlendes Polymorphismus hin
+- Feature Envy: Methode manipuliert mehr Daten als sie besitzt
+- Duplicate Code: Wiederholte Zuweisungen in jedem Case
+- Open/Closed Principle Verletzung: Neue Kunden-Typen erfordern Änderung bestehender Methode
 
----
+**Slide 4: Lösung: Factory Method Pattern**
+- Definiert eine Schnittstelle zum Erstellen von Objekten
+- Unterklassen entscheiden, welche Klasse instantiiert wird
+- Polymorphismus statt Konditionals
+- Erweiterbarkeit ohne Modifikation bestehenden Codes
+- Template Method verwendet Factory Method
+- Gemeinsame Geschäftslogik in Creator-Klasse
 
-### Code Smells identifiziert
-
-• **Long Method**: createCustomer method has too many lines and responsibilities
-• **Switch Statements**: Type-based branching indicates missing polymorphism  
-• **Feature Envy**: Method manipulates more data than it owns
-• **Duplicate Code**: Repeated assignments in each case block
-• **Open/Closed Principle Violation**: New customer types require modifying existing method
-• **Single Responsibility Violation**: One method handles multiple customer types
-• **Hard Dependencies**: Direct coupling to concrete customer configurations
-
-Note: These code smells lead to maintenance nightmares and violation of SOLID principles, making the system inflexible for new customer types.
-
----
-
-### Lösung: Factory Method Pattern
-
-• **Polymorphism over Conditionals**: Replace switch statements with polymorphic factory methods
-• **Separate Creation Logic**: Each factory handles one customer type only
-• **Template Method Integration**: Common business logic in abstract base class
-• **SOLID Principles Alignment**: Single Responsibility and Open/Closed compliance
-• **Extensibility**: New customer types through new factory classes without modification
-• **Dependency Inversion**: Depend on Customer interface, not concrete implementations
-• **Encapsulation**: Customer-specific logic encapsulated in respective classes
-
-Note: Factory Method pattern defines an interface for creating objects but lets subclasses decide which class to instantiate.
-
----
-
-### Implementierung - Factory Method Solution
-
+**Slide 5: Implementierung - Factory Method Creator**
 ```java
-// Abstract Factory with Template Method
 public abstract class CustomerFactory {
-    
-    // Factory Method - implemented by subclasses
+    // Factory Method - zu implementieren von Subklassen
     protected abstract Customer createCustomer(String name, String contractId);
     
-    // Template Method - uses Factory Method
+    // Template Method - verwendet Factory Method
     public Customer processNewCustomer(String name, String contractId) {
         Customer customer = createCustomer(name, contractId);
-        
-        // Common business logic
         validateContract(customer);
         persistCustomer(customer);
         sendWelcomeMessage(customer);
-        
         return customer;
     }
 }
+```
 
-// Concrete Factory Implementation
+**Slide 6: Implementierung - Konkrete Factories**
+```java
 public class PrivateCustomerFactory extends CustomerFactory {
     @Override
     protected Customer createCustomer(String name, String contractId) {
@@ -122,102 +90,59 @@ public class BusinessCustomerFactory extends CustomerFactory {
 }
 ```
 
-Note: The solution separates object creation from business logic, making the system extensible and maintainable.
+Note: Factory Method löst Code-Smells durch Polymorphismus und erfüllt SOLID-Prinzipien natürlich.
 
 ---
 
 ## Abstract Factory Pattern
 
----
-
-### Was ist hier schlecht? - Multi-Channel Service Chaos
-
+**Slide 7: Was ist hier schlecht?**
 ```java
 public class CustomerService {
-    
     public CustomerData getCustomer(String customerId, String channel) {
         if ("WEB".equals(channel)) {
-            // Web-specific authentication
             WebAuthService webAuth = new WebAuthService();
             if (!webAuth.validateSession(getCurrentSession())) {
                 throw new AuthenticationException();
             }
-            
-            // Web-API call
             WebCustomerAPI webAPI = new WebCustomerAPI();
             return webAPI.getCustomerData(customerId);
-            
         } else if ("MOBILE".equals(channel)) {
-            // Mobile-specific OAuth
             MobileOAuthService mobileAuth = new MobileOAuthService();
             if (!mobileAuth.validateToken(getCurrentToken())) {
                 throw new AuthenticationException();
             }
-            
-            // Mobile-API with different data formats
             MobileCustomerAPI mobileAPI = new MobileCustomerAPI();
             return transformMobileResponse(mobileAPI.getCustomer(customerId));
-            
-        } else if ("CALLCENTER".equals(channel)) {
-            // Call Center employee authentication
-            EmployeeAuthService empAuth = new EmployeeAuthService();
-            if (!empAuth.validateEmployee(getCurrentEmployee())) {
-                throw new AuthenticationException();
-            }
-            
-            // Legacy Backend System
-            LegacyCustomerSystem legacy = new LegacyCustomerSystem();
-            return transformLegacyData(legacy.retrieveCustomer(customerId));
         }
+        throw new IllegalArgumentException("Unsupported channel: " + channel);
     }
 }
 ```
 
-Note: Each channel requires different authentication, APIs, and data transformation - leading to a maintenance nightmare.
+**Slide 8: Code Smells identifiziert**
+- God Object: Eine Klasse kennt alle Implementierungen
+- Switch Statement: Kanal-basierte Verzweigung
+- Tight Coupling: Direkte Abhängigkeiten zu konkreten Implementierungen
+- Interface Segregation Verletzung: Ein Service für alle Kanäle
+- Open/Closed Principle Verletzung: Neue Kanäle erfordern Änderungen
 
----
+**Slide 9: Lösung: Abstract Factory Pattern**
+- Schnittstelle für Familien verwandter Objekte
+- Keine Spezifikation konkreter Klassen
+- Konsistente Service-APIs über alle Kanäle
+- Einfache Erweiterung um neue Kanäle
+- Service-Familie wird zusammen erstellt
+- Klare Trennung zwischen Kanal-Logik und Geschäftslogik
 
-### Code Smells identifiziert
-
-• **God Object**: One class knows all channel implementations and formats
-• **Switch Statement**: Channel-based branching violates Open/Closed principle
-• **Tight Coupling**: Direct dependencies to concrete channel implementations  
-• **Interface Segregation Violation**: One service trying to handle all channels
-• **Multiple Responsibilities**: Authentication + Data retrieval + Format conversion
-• **Hard to Test**: Dependencies to external systems make unit testing difficult
-• **Inflexible**: New channels require modification of existing service code
-
-Note: This approach leads to exponential complexity growth as new channels are added to the Telekom ecosystem.
-
----
-
-### Lösung: Abstract Factory Pattern
-
-• **Service Families**: Group related services (Auth, Customer, Billing) by channel
-• **Consistent Interfaces**: Same service interface across all channels
-• **Channel Abstraction**: Abstract factory creates complete service suite per channel
-• **Loose Coupling**: Business logic depends only on service interfaces
-• **Extensibility**: New channels through new factory implementations
-• **Interface Segregation**: Separate service interfaces for different concerns
-• **Dependency Inversion**: High-level modules depend on abstractions
-
-Note: Abstract Factory provides interface for creating families of related objects without specifying their concrete classes.
-
----
-
-### Implementierung - Service Family Solution
-
+**Slide 10: Implementierung - Abstract Factory**
 ```java
-// Abstract Factory for Channel Services
 public abstract class ChannelServiceFactory {
-    
-    // Factory Methods for Service Family
     public abstract AuthenticationService createAuthenticationService();
     public abstract CustomerService createCustomerService();
     public abstract BillingService createBillingService();
     public abstract NotificationService createNotificationService();
     
-    // Convenience Method for complete Service Suite
     public ChannelServiceSuite createServiceSuite() {
         return new ChannelServiceSuite(
             createAuthenticationService(),
@@ -227,10 +152,11 @@ public abstract class ChannelServiceFactory {
         );
     }
 }
+```
 
-// Concrete Factory Implementation
+**Slide 11: Implementierung - Konkrete Factory**
+```java
 public class WebChannelFactory extends ChannelServiceFactory {
-    
     @Override
     public AuthenticationService createAuthenticationService() {
         return new WebSessionAuthService();
@@ -241,24 +167,23 @@ public class WebChannelFactory extends ChannelServiceFactory {
         return new WebCustomerService();
     }
     
-    // ... other service creations
+    @Override
+    public BillingService createBillingService() {
+        return new WebBillingService();
+    }
 }
 ```
 
-Note: Each concrete factory creates a complete family of related services that work together consistently.
+Note: Abstract Factory strukturiert Service-Familien sauber und ermöglicht bessere Testbarkeit durch Service-Isolation.
 
 ---
 
 ## Builder Pattern
 
----
-
-### Was ist hier schlecht? - Complex Query Construction
-
+**Slide 12: Was ist hier schlecht?**
 ```java
 public class CustomerRepository {
-    
-    // Code-Smell: Telescoping Constructor
+    // Telescoping Constructor Anti-Pattern
     public List<Customer> findCustomers(String name, String contractType, 
                                        String tariff, Date contractStart, 
                                        Date contractEnd, String city, 
@@ -267,7 +192,6 @@ public class CustomerRepository {
                                        String sortBy, String sortOrder,
                                        Integer limit, Integer offset) {
         
-        // Code-Smell: Complex Method with StringBuilder chaos
         StringBuilder sql = new StringBuilder("SELECT * FROM customers c ");
         List<Object> params = new ArrayList<>();
         boolean hasWhere = false;
@@ -278,93 +202,49 @@ public class CustomerRepository {
             params.add("%" + name + "%");
             hasWhere = true;
         }
-        
-        if (contractType != null && !contractType.isEmpty()) {
-            sql.append(hasWhere ? " AND " : " WHERE ");
-            sql.append("c.contract_type = ?");
-            params.add(contractType);
-            hasWhere = true;
-        }
-        
-        // ... 20+ more if-statements for other parameters
-        
-        return jdbcTemplate.query(sql.toString(), params.toArray(), customerRowMapper);
+        // ... weitere 20 Zeilen if-Statements
     }
 }
 ```
 
-Note: Complex database queries with many optional parameters create unmanageable constructor and method signatures.
+**Slide 13: Code Smells identifiziert**
+- Telescoping Constructor: Zu viele Parameter in Methode
+- Complex Method: Eine Methode macht zu viel
+- Primitive Obsession: Viele String/Integer Parameter statt Value Objects
+- String Concatenation: Unsichere SQL-Erstellung
+- Boolean Parameters: Schwer verständliche boolean-Flags
+- Open/Closed Violation: Neue Filter erfordern Methodenänderung
 
----
+**Slide 14: Lösung: Builder Pattern**
+- Trennt Konstruktion komplexer Objekte von Repräsentation
+- Fluent Interface für bessere Lesbarkeit
+- Type-sichere Objekterstellung
+- Validation im Builder möglich
+- Immutable Value Objects
+- Flexible Objektkonfiguration ohne Telescoping Constructor
 
-### Code Smells identifiziert
-
-• **Telescoping Constructor**: Too many parameters make method calls error-prone
-• **Complex Method**: Single method doing too much (SQL building + parameter handling)
-• **Primitive Obsession**: Many String/Integer parameters instead of Value Objects
-• **String Concatenation**: Unsafe and error-prone SQL construction
-• **Boolean Parameters**: Hard to understand boolean flags in method calls
-• **Open/Closed Violation**: New filters require modifying existing method
-• **Poor Readability**: Method calls are difficult to understand and maintain
-
-Note: These issues become exponentially worse as query complexity grows in enterprise Telekom systems.
-
----
-
-### Lösung: Builder Pattern with Fluent Interface
-
-• **Fluent API Design**: Method chaining creates readable, self-documenting code
-• **Step-by-step Construction**: Complex objects built incrementally with validation
-• **Immutable Value Objects**: Builder creates immutable search criteria objects
-• **Type Safety**: Compile-time validation of required vs optional parameters
-• **Flexible Construction**: Same builder can create different query variations
-• **Readable Client Code**: Queries read like natural language
-• **Validation Integration**: Builder validates constraints before object creation
-
-Note: Builder pattern separates construction of complex objects from their representation, enabling same construction process to create different representations.
-
----
-
-### Implementierung - Query Builder Solution
-
+**Slide 15: Implementierung - Search Criteria Builder**
 ```java
-// Value Object with Builder
 public class CustomerSearchCriteria {
     private final String name;
     private final String contractType;
-    private final String tariff;
     private final DateRange contractPeriod;
-    private final Address address;
     private final SortCriteria sortCriteria;
-    private final Pagination pagination;
     
-    // Private Constructor - only creatable via Builder
     private CustomerSearchCriteria(Builder builder) {
         this.name = builder.name;
         this.contractType = builder.contractType;
-        // ... assign other fields
+        this.contractPeriod = builder.contractPeriod;
+        this.sortCriteria = builder.sortCriteria;
     }
     
-    // Builder with Fluent Interface
     public static class Builder {
         private String name;
         private String contractType;
+        private DateRange contractPeriod;
         
         public Builder withName(String name) {
             this.name = name;
-            return this;
-        }
-        
-        public Builder withContractType(String contractType) {
-            this.contractType = contractType;
-            return this;
-        }
-        
-        public Builder inCity(String city) {
-            if (this.address == null) {
-                this.address = new Address.Builder().build();
-            }
-            this.address = this.address.withCity(city);
             return this;
         }
         
@@ -373,41 +253,39 @@ public class CustomerSearchCriteria {
             return new CustomerSearchCriteria(this);
         }
     }
-    
-    // Factory Methods for common patterns
-    public static Builder forBusinessCustomers() {
-        return new Builder().withContractType("BUSINESS").onlyActive();
-    }
 }
+```
 
-// Usage Example
-CustomerSearchCriteria criteria = CustomerSearchCriteria.forBusinessCustomers()
+**Slide 16: Implementierung - Fluent Interface Usage**
+```java
+// Factory Methods für häufige Anwendungsfälle
+CustomerSearchCriteria businessCustomers = CustomerSearchCriteria
+    .forBusinessCustomers()
     .withName("Schmidt")
     .inCity("Berlin")
+    .withMinRevenue(1000, Currency.EUR)
     .sortByRevenueDescending()
     .page(1, 20)
     .build();
+    
+// Repository Integration
+List<Customer> results = customerRepository.findByComplexCriteria(businessCustomers);
 ```
 
-Note: The fluent interface makes complex query construction readable and maintainable while ensuring type safety.
+Note: Builder Pattern löst Telescoping Constructor Problem und verbessert Code-Readability durch klare Fluent Interfaces.
 
 ---
 
 ## Prototype Pattern
 
----
-
-### Was ist hier schlecht? - Expensive Configuration Recreation
-
+**Slide 17: Was ist hier schlecht?**
 ```java
 @Service
 public class ServiceConfigurationManager {
-    
-    // Anti-Pattern: Expensive Recreation for similar configurations
     public ServiceConfiguration createDevConfiguration() {
         ServiceConfiguration config = new ServiceConfiguration();
         
-        // Expensive Database Lookups for defaults (200ms+)
+        // Expensive Database Lookups für Defaults (200ms+)
         config.setDatabaseSettings(loadDatabaseDefaults());
         config.setSecuritySettings(loadSecurityDefaults());
         config.setCachingSettings(loadCachingDefaults());
@@ -418,76 +296,38 @@ public class ServiceConfigurationManager {
         // Expensive Service Discovery (300ms+)
         config.setServiceEndpoints(discoverAvailableServices());
         
-        // Only these values are different
+        // Environment-specific Anpassungen
         config.setEnvironment("DEV");
         config.setLogLevel("DEBUG");
-        config.setDatabaseUrl("dev-database-url");
-        
         return config;
     }
     
     public ServiceConfiguration createTestConfiguration() {
-        ServiceConfiguration config = new ServiceConfiguration();
-        
-        // DUPLICATE: Same expensive operations! (1400ms total)
-        config.setDatabaseSettings(loadDatabaseDefaults());    // 200ms
-        config.setSecuritySettings(loadSecurityDefaults());    // 200ms
-        config.setCachingSettings(loadCachingDefaults());      // 200ms
-        config.setSslCertificate(validateAndLoadSslCert("test-cert.pem")); // 500ms
-        config.setServiceEndpoints(discoverAvailableServices()); // 300ms
-        
-        // Only environment-specific values differ
-        config.setEnvironment("TEST");
-        config.setLogLevel("INFO");
-        config.setDatabaseUrl("test-database-url");
-        
-        return config;
+        // DUPLICATE: Gleiche expensive Operations! (1400ms+)
     }
 }
 ```
 
-Note: Each configuration creation takes 1400ms+ for identical expensive operations that could be shared.
+**Slide 18: Code Smells identifiziert**
+- Expensive Object Creation: 1400ms+ für identische Operationen
+- Duplicate Code: Gleiche Initialisierung für jede Konfiguration
+- Performance Problem: Wiederholte Database-Lookups und SSL-Validation
+- Template-basierte Konfiguration: 90% identisch, 10% variabel
+- Resource Verschwendung: Unnötige Service Discovery bei jeder Erstellung
 
----
+**Slide 19: Lösung: Prototype Pattern**
+- Erstellt neue Objekte durch Klonen statt Instanziierung
+- Template Prototypes werden EINMAL erstellt und gecached
+- 99%+ Performance-Verbesserung (1400ms → 2ms)
+- Memory-Effizienz durch intelligent Sharing
+- Selective Deep Copy für mutable Objects
+- Shared References für immutable, expensive Objects
 
-### Code Smells identifiziert
-
-• **Expensive Object Creation**: SSL validation, database discovery, complex initialization
-• **Duplicate Expensive Operations**: Same costly operations repeated for each configuration
-• **Template Pattern Missing**: 90% identical configurations recreated from scratch
-• **Performance Bottleneck**: 1400ms+ latency for configuration creation
-• **Resource Waste**: Unnecessary CPU and I/O for identical operations
-• **Poor Scalability**: Linear performance degradation with more configurations
-• **Memory Inefficiency**: Multiple copies of identical immutable data
-
-Note: In enterprise systems, configuration creation can become a significant performance bottleneck during startup and runtime.
-
----
-
-### Lösung: Prototype Pattern with Intelligent Cloning
-
-• **Template-based Creation**: Create base templates once, clone for variations
-• **Selective Deep Copy**: Clone only mutable parts, share immutable expensive objects
-• **Prototype Registry**: Central repository of pre-configured templates
-• **Performance Optimization**: 1400ms → 2ms (99.86% improvement)
-• **Memory Efficiency**: Share immutable objects between configurations
-• **Lazy Initialization**: Templates created only when first needed
-• **Customization Strategy**: Functional interfaces for configuration customization
-
-Note: Prototype pattern creates new objects by cloning prototypical instances rather than expensive construction from scratch.
-
----
-
-### Implementierung - Configuration Cloning Solution
-
+**Slide 20: Implementierung - Cloneable Configuration**
 ```java
-// Cloneable Configuration with Smart Copy Strategy
 public abstract class ServiceConfiguration implements Cloneable {
     private String environment;
-    private String logLevel;
-    private String databaseUrl;
     private DatabaseSettings databaseSettings;
-    private SecuritySettings securitySettings;
     private SSLCertificate sslCertificate;
     private ServiceEndpoints serviceEndpoints;
     
@@ -496,13 +336,12 @@ public abstract class ServiceConfiguration implements Cloneable {
         try {
             ServiceConfiguration cloned = (ServiceConfiguration) super.clone();
             
-            // Deep Copy for mutable, complex objects
+            // Deep Copy für mutable, komplexe Objekte
             cloned.databaseSettings = this.databaseSettings.deepCopy();
-            cloned.securitySettings = this.securitySettings.deepCopy();
             
-            // Shared Reference for immutable, expensive objects
-            cloned.sslCertificate = this.sslCertificate; // Immutable
-            cloned.serviceEndpoints = this.serviceEndpoints; // Immutable
+            // Shared Reference für immutable, expensive Objekte
+            cloned.sslCertificate = this.sslCertificate;
+            cloned.serviceEndpoints = this.serviceEndpoints;
             
             return cloned;
         } catch (CloneNotSupportedException e) {
@@ -510,15 +349,17 @@ public abstract class ServiceConfiguration implements Cloneable {
         }
     }
 }
+```
 
-// Prototype Registry for Template Management
+**Slide 21: Implementierung - Prototype Registry**
+```java
 @Service
 public class ConfigurationPrototypeRegistry {
     private final Map<String, ServiceConfiguration> prototypes = new ConcurrentHashMap<>();
     
     @PostConstruct
     public void initializePrototypes() {
-        // Template created ONCE with all expensive operations
+        // Template wird EINMAL erstellt (1400ms)
         ServiceConfiguration baseTemplate = TelekomServiceConfiguration.createBaseTemplate();
         prototypes.put("TELEKOM_BASE", baseTemplate);
     }
@@ -527,96 +368,70 @@ public class ConfigurationPrototypeRegistry {
     public ServiceConfiguration createConfiguration(String templateName, 
                                                    ConfigurationCustomizer customizer) {
         ServiceConfiguration prototype = prototypes.get(templateName);
-        ServiceConfiguration cloned = prototype.clone(); // Very fast
-        customizer.customize(cloned); // Apply customizations
+        ServiceConfiguration cloned = prototype.clone();
+        customizer.customize(cloned);
         return cloned;
     }
 }
 ```
 
-Note: Intelligent cloning strategy shares expensive immutable objects while properly copying mutable state.
+Note: Prototype Pattern bietet 99%+ Performance-Verbesserung bei expensive Object Creation und ermöglicht template-driven Configuration.
 
 ---
 
 ## Singleton Pattern
 
----
-
-### Was ist hier schlecht? - Thread Safety and Global State Issues
-
+**Slide 22: Was ist hier schlecht?**
 ```java
-// Anti-Pattern: Not Thread-Safe Singleton
-public class ConfigurationManager {
-    private static ConfigurationManager instance;
-    private Map<String, String> config = new HashMap<>();
+@Service
+public class CustomerManagementService {
+    // Tight Coupling zu Legacy-Systemen
+    private LegacyMainframeClient mainframeClient;
+    private OldCrmSoapClient crmSoapClient;
     
-    public static ConfigurationManager getInstance() {
-        if (instance == null) {
-            instance = new ConfigurationManager(); // Race condition!
+    public CustomerData getCompleteCustomerView(String customerId) {
+        try {
+            MainframeCustomerRecord record = mainframeClient.getCustomer(customerId);
+            result.setName(record.getName());
+            result.setAddress(parseMainframeAddress(record.getAddressBlock()));
+        } catch (MainframeConnectionException e) {
+            try {
+                CrmCustomerSoap soapResponse = crmSoapClient.getCustomerData(customerId);
+                result.setName(soapResponse.getFullName());
+                result.setAddress(convertSoapAddress(soapResponse.getAddressData()));
+            } catch (SOAPException e2) {
+                throw new CustomerNotFoundException("Could not retrieve customer: " + customerId);
+            }
         }
-        return instance;
-    }
-    
-    public void setProperty(String key, String value) {
-        config.put(key, value); // Mutable global state!
-    }
-    
-    public String getProperty(String key) {
-        return config.get(key);
-    }
-    
-    private ConfigurationManager() {
-        // Expensive initialization
-        loadConfigurationFromMultipleSources();
+        return result;
     }
 }
 ```
 
-Note: Classic Singleton implementation has thread safety issues and promotes global mutable state.
+**Slide 23: Code Smells identifiziert**
+- Tight Coupling: Service kennt alle Legacy-Formate
+- Multiple Responsibilities: Business Logic + Format-Konvertierung
+- Hard to Test: Abhängigkeiten zu externen Systemen
+- Inflexible: Neue Systeme erfordern Service-Änderung
+- Clean Architecture Violation: Domain Layer kennt Infrastructure Details
 
----
+**Slide 24: Lösung: Singleton + Adapter Pattern**
+- Singleton für Shared Resources (Connection Pools, Configuration)
+- Adapter Pattern für Legacy-Integration ohne Domain-Verschmutzung
+- Clean Architecture durch Dependency Inversion
+- Anti-Corruption Layer schützt Domain Model
+- Thread-Safe Singleton Implementierung
+- Enum Singleton als moderne, sichere Variante
 
-### Code Smells identifiziert  
-
-• **Thread Safety Violation**: Race condition in getInstance() method
-• **Global Mutable State**: Configuration can be modified from anywhere  
-• **Hard to Test**: Global state makes unit tests interdependent
-• **Tight Coupling**: Classes directly depend on Singleton instance
-• **Difficult Mocking**: Hard to replace with test doubles in tests
-• **Hidden Dependencies**: Dependencies to Singleton not visible in constructor
-• **Resource Management**: No clear lifecycle management for expensive resources
-
-Note: These issues become critical in multi-threaded enterprise environments like Telekom systems.
-
----
-
-### Lösung: Modern Singleton Patterns
-
-• **Thread-Safe Implementation**: Use Enum or Initialization-on-Demand patterns
-• **Immutable State**: Configuration becomes read-only after initialization
-• **Resource Management**: Proper lifecycle management for connections and pools
-• **Dependency Injection**: Combine with DI containers for better testability
-• **Configuration Layering**: Support multiple configuration sources with precedence
-• **Lazy Initialization**: Expensive resources created only when needed
-• **Exception Safety**: Robust error handling during initialization
-
-Note: Modern Singleton implementations focus on thread safety, immutability, and integration with dependency injection frameworks.
-
----
-
-### Implementierung - Thread-Safe Singleton Solution
-
+**Slide 25: Implementierung - Enum Singleton**
 ```java
-// Enum Singleton - Recommended Approach
 public enum ConfigurationManager {
     INSTANCE;
     
     private final Map<String, String> config;
-    private final long lastRefresh;
     
     ConfigurationManager() {
-        this.config = Collections.unmodifiableMap(loadConfiguration());
-        this.lastRefresh = System.currentTimeMillis();
+        this.config = loadConfiguration();
     }
     
     public String getProperty(String key) {
@@ -627,84 +442,54 @@ public enum ConfigurationManager {
         return config.getOrDefault(key, defaultValue);
     }
     
-    public synchronized void refresh() {
-        if (System.currentTimeMillis() - lastRefresh > 300000) { // 5 min
-            // Reload configuration from sources
-            Map<String, String> newConfig = loadConfiguration();
-            config.clear();
-            config.putAll(newConfig);
-        }
-    }
-    
     private Map<String, String> loadConfiguration() {
         Map<String, String> props = new HashMap<>();
-        
-        // Load from multiple sources with precedence
         loadEnvironmentVariables(props);
         loadPropertyFiles(props);
-        loadExternalConfigService(props);
-        
-        return props;
-    }
-}
-
-// Initialization-on-Demand Pattern for Connection Pooling
-public class ConnectionPoolManager {
-    
-    private ConnectionPoolManager() {}
-    
-    private static class Holder {
-        private static final ConnectionPoolManager INSTANCE = new ConnectionPoolManager();
-        
-        static {
-            INSTANCE.initializePool();
-        }
-    }
-    
-    public static ConnectionPoolManager getInstance() {
-        return Holder.INSTANCE;
-    }
-    
-    private HikariDataSource dataSource;
-    
-    private void initializePool() {
-        HikariConfig config = new HikariConfig();
-        config.setJdbcUrl(ConfigurationManager.INSTANCE.getProperty("DATABASE_URL"));
-        config.setMaximumPoolSize(20);
-        config.setMinimumIdle(5);
-        this.dataSource = new HikariDataSource(config);
+        return Collections.unmodifiableMap(props);
     }
 }
 ```
 
-Note: Enum-based Singleton provides thread safety, serialization safety, and reflection safety out of the box.
+**Slide 26: Implementierung - Adapter für Legacy Integration**
+```java
+@Component
+public class MainframeCustomerAdapter implements CustomerDataService {
+    private final MainframeClient mainframeClient;
+    private final MainframeDataMapper mapper;
+    
+    @Override
+    public CustomerProfile getCustomerProfile(CustomerId customerId) {
+        try {
+            MainframeCustomerRecord record = mainframeClient.retrieveCustomer(customerId.getValue());
+            return mapper.toDomainModel(record);
+        } catch (MainframeConnectionException e) {
+            throw new CustomerDataAccessException("Mainframe connection failed", e);
+        }
+    }
+}
+
+// Domain Interface - keine externe Abhängigkeiten
+public interface CustomerDataService {
+    CustomerProfile getCustomerProfile(CustomerId customerId);
+}
+```
+
+Note: Singleton Pattern für Configuration Management kombiniert mit Adapter Pattern ermöglicht saubere Legacy-Integration ohne Domain-Verschmutzung.
 
 ---
 
-## Block 1 Summary
+## Block 1 Zusammenfassung
 
-### Design Pattern Benefits Applied
+**Slide 27: Creational Patterns - Schlüsselerkenntnisse**
+- Factory Method: Polymorphismus statt Switch-Statements
+- Abstract Factory: Service-Familien sauber strukturieren
+- Builder: Komplexe Objektkonfiguration mit Fluent Interface
+- Prototype: Performance-Optimierung durch intelligentes Klonen
+- Singleton: Shared Resources + Adapter für Legacy-Integration
+- SOLID-Prinzipien werden natürlich erfüllt
+- Bessere Testbarkeit durch lose Kopplung
 
-• **Factory Method**: Polymorphism over conditionals, extensible object creation
-• **Abstract Factory**: Consistent service families, channel-agnostic business logic  
-• **Builder**: Readable complex object construction, fluent interfaces
-• **Prototype**: Performance optimization through intelligent cloning
-• **Singleton**: Thread-safe resource sharing, centralized configuration
+Note: Block 1 Creational Patterns schaffen die Grundlage für saubere, erweiterbare Enterprise-Architekturen durch systematische Objekterzeugung und klare Verantwortlichkeiten.
 
-### SOLID Principles Integration
-
-• **Single Responsibility**: Each pattern class has one clear purpose
-• **Open/Closed**: Extensions through new implementations, not modifications
-• **Liskov Substitution**: Implementations properly substitutable via interfaces
-• **Interface Segregation**: Focused interfaces for specific concerns
-• **Dependency Inversion**: Depend on abstractions, not concrete implementations
-
-### Telekom Enterprise Benefits
-
-• **Legacy Integration**: Patterns facilitate integration with existing systems
-• **Scalability**: Template-based approaches support growing system complexity
-• **Performance**: Optimizations like Prototype pattern improve response times
-• **Maintainability**: Clear separation of concerns and extensible architecture
-• **Testability**: Dependency injection and interface-based design enable testing
-
-Note: These creational patterns form the foundation for building maintainable, scalable enterprise systems in the Telekom architecture.
+---
