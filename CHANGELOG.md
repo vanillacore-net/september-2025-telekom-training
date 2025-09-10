@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.14.3] [2025-09-10] - CRITICAL FIX Trade-off Slides Only (PRB-025)
+
+### Fixed
+- **Trade-off Slides Restoration**: Fixed ALL broken trade-off slides with proper content and layout
+  - **arch-patterns-part1.pptx**: Recreated 6 trade-off slides with visible German content  
+  - **arch-patterns-part2.pptx**: Recreated 9 trade-off slides with visible German content
+  - **Custom Textbox Layout**: Used manual textbox placement after Layout 4 issues
+  - **Color-Coded Headers**: Green ✅ for Vorteile, Red ❌ for Nachteile for better visual distinction
+
+### Technical Implementation
+- **Emergency Script**: Deleted broken slides and recreated them with custom textboxes
+- **Content Preservation**: All German trade-off content correctly restored from data definitions
+- **Template Integration**: Used VanillaCore template base with custom positioning
+- **Two-Column Layout**: Proper left-right column separation for Vorteile/Nachteile content
+
+### Repaired Issues
+- **No Visible Content**: Fixed slides that showed no content after previous layout attempts
+- **Layout Problems**: Bypassed Layout 4 placeholder issues with direct textbox creation
+- **Missing Slides**: All expected trade-off slides now present and functional
+- **Presentation Usability**: Both presentations now fully functional for training delivery
+
 ## [1.14.2] [2025-09-10] - FIX Architectural Patterns Layout and Speaker Notes (PRB-024)
 
 ### Fixed
