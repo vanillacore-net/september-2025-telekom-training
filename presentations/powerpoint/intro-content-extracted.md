@@ -1,419 +1,418 @@
-# Introduction Block - PowerPoint Content Extraction
+# Design Patterns Workshop - Einführungsblock
 
 ---
 
-## Workshop Expectations
+# Workshop-Erwartungen
 
-### What Will We Learn in the Next 4 Days?
+## Was werden wir in den nächsten 4 Blöcken lernen?
 
-- Block 1: Creational Patterns - Object creation in enterprise systems
-- Block 2: Structural Patterns - Object composition and system integration  
-- Block 3: Behavioral Patterns - Algorithm variations and object communication
-- Block 4: Advanced Patterns - Complex scenarios and pattern combinations
+- Block 1: Creational Patterns - Flexible Objekterzeugung in Enterprise-Systemen
+- Block 2: Structural Patterns - Objektkomposition und Systemintegration  
+- Block 3: Behavioral Patterns - Verhalten und Kommunikation zwischen Objekten
+- Block 4: Advanced Patterns - Komplexe Szenarien und Pattern-Kombinationen
 
-Note: This 4-day workshop focuses on GoF Design Patterns with practical application in enterprise environments. Each day builds upon previous concepts with hands-on exercises and real-world examples.
-
----
-
-## Block 1: Creational Patterns
-
-- Factory Method: Object creation without concrete classes
-- Abstract Factory: Families of related objects  
-- Builder: Building complex objects step by step
-- Prototype: Object cloning for expensive initialization
-- Singleton: One instance for the entire system
-
-Note: Creational patterns solve flexible and maintainable object creation challenges. Practical use cases include service instantiation, multi-provider APIs, complex request objects, expensive object cloning, and shared resources management.
+**Note:** Die Workshop-Struktur folgt der bewährten GoF-Kategorisierung und fokussiert auf praktische Enterprise-Anwendungsfälle. Jeder Block kombiniert Theorie mit intensiven Praxisübungen.
 
 ---
 
-## Block 2: Structural Patterns
+# Block 1: Creational Patterns
 
-- Adapter: Connecting incompatible interfaces
-- Decorator: Dynamically extending behavior
-- Facade: Simplifying complex subsystems  
-- Composite: Handling hierarchical structures
+## Schwerpunkt: Objekterzeugung
 
-Note: Structural patterns focus on object composition and system integration. Applications include legacy system integration, service extensions, API simplification, and elegant hierarchy modeling.
+- Factory Method: Objekterzeugung ohne konkrete Klassen
+- Abstract Factory: Familien verwandter Objekte
+- Builder: Komplexe Objekte Schritt für Schritt aufbauen
+- Prototype: Objektklonierung für kostspielige Initialisierung
+- Singleton: Eine Instanz für das ganze System
 
----
-
-## Block 3: Behavioral Patterns
-
-- Observer: Event propagation and loose coupling
-- Strategy: Making algorithms exchangeable
-- Command: Operations as objects with undo/redo
-- State: State-dependent behavior modeling
-
-Note: Behavioral patterns address algorithm variations and object communication. Key applications are event systems, algorithm variants, API operations, and workflow state management.
+**Note:** Praktische Anwendungsfälle umfassen Service-Instantiierung, Multi-Provider APIs, komplexe Request-Objekte, kostspielige Objektklonierung und Shared Resources. Lernziele: Dependency Injection verstehen, flexible Objekterzeugung implementieren, Tight Coupling vermeiden.
 
 ---
 
-## Block 4: Advanced Patterns
+# Block 2: Structural Patterns
 
-- Template Method: Algorithm skeleton with variable parts
-- Visitor: Separating operations from data structure
-- Chain of Responsibility: Request handling through chains
-- Mediator: Coordinating complex object interactions
+## Schwerpunkt: Strukturelle Komposition
 
-Note: Advanced patterns tackle complex scenarios and pattern combinations. Enterprise patterns include Repository for data access abstraction, Unit of Work for transaction coordination, and MVC/MVP/MVVM for UI architecture.
+- Adapter: Inkompatible Schnittstellen verbinden
+- Decorator: Verhalten dynamisch erweitern
+- Facade: Komplexe Subsysteme vereinfachen
+- Composite: Hierarchische Strukturen behandeln
 
----
-
-## Workshop Scope
-
-### What We Will NOT Cover
-
-- Framework-specific patterns (Spring, Hibernate, etc.)
-- Architecture patterns (Microservices, CQRS, Event Sourcing)
-- Concurrency patterns (requires dedicated workshop)
-- Specific UI frameworks (Angular, React, Vue)
-- Cloud-native patterns (separate workshop series)
-- Performance optimization (orthogonal to patterns)
-
-Note: This focused approach ensures deep understanding of fundamental GoF patterns. These principles are timeless and transferable across all technologies, providing depth over breadth with practical daily applications.
+**Note:** Praktische Anwendungsfälle: Legacy-System Integration, Service-Erweiterungen, API-Vereinfachung und hierarchische Strukturen. Lernziele: Legacy-Integration meistern, flexible Erweiterungen implementieren, Komplexität kapseln, Hierarchien elegant modellieren.
 
 ---
 
-## Learning Objectives
+# Block 3: Behavioral Patterns
 
-### Core Competencies
+## Schwerpunkt: Verhalten und Kommunikation
 
-- Apply GoF patterns in concrete problem contexts
-- Develop pattern-based refactoring strategies  
-- Justify architecture decisions using patterns
-- Connect Clean Code principles with pattern design
-- Recognize and avoid anti-patterns
+- Observer: Ereignisse propagieren
+- Strategy: Algorithmen austauschbar machen
+- Command: Operationen als Objekte
+- State: Zustandsabhängiges Verhalten
 
-Note: The workshop addresses legacy system integration, flexible object creation, algorithm variations, event-based communication, and complex object structures through systematic pattern application.
-
----
-
-## What is Software Architecture?
-
-### Your Typical Definitions
-
-- "The big picture"
-- "Software structure"
-- "Components and their relationships"
-- "How everything connects"
-- "Framework selection"
-- "Databases and services"
-
-Note: Start by collecting participant definitions on flipchart without evaluation. These answers typically emerge and provide foundation for deeper exploration of architecture concepts.
+**Note:** Praktische Anwendungsfälle: Event-Systeme, Algorithmus-Varianten, API-Operations und Workflow-States. Lernziele: Lose Kopplung durch Events, Algorithmen flexibel gestalten, Undo/Redo implementieren, State Machines beherrschen.
 
 ---
 
-## Architecture Definitions
+# Block 4: Advanced Patterns
 
-### IEEE 1471 Definition
-Architecture is the fundamental organization of a system, embodied in its components, their relationships to each other and to the environment.
+## Schwerpunkt: Komplexe Szenarien
 
-### Martin Fowler's Insight  
-"Architecture is about the important stuff. Whatever that is."
+- Template Method: Algorithmus-Skelett mit variablen Teilen
+- Visitor: Operationen von Datenstruktur trennen
+- Chain of Responsibility: Requests durch Handler-Kette
+- Mediator: Komplexe Objekt-Interaktionen koordinieren
+- Enterprise Patterns: Repository, Unit of Work, MVC/MVP/MVVM
 
-### Grady Booch's Perspective
-Architecture represents significant design decisions that shape a system, where significant is measured by cost of change.
-
-Note: Multiple perspectives help build comprehensive understanding. IEEE provides structural view, Fowler emphasizes context dependency, and Booch focuses on change cost as significance measure.
-
----
-
-## Working Definition for This Workshop
-
-**Software architecture is the art of making important design decisions that determine a system's structure, behavior, and evolution - with the goal of optimally fulfilling business requirements.**
-
-### Key Elements
-- Structure: How is software organized?
-- Decisions: What important design choices were made?
-- Relationships: How do parts connect?
-- Cost: What is difficult to change later?
-
-Note: This definition combines structural and decision-making aspects while emphasizing business value. It acknowledges both technical and business perspectives on architecture work.
+**Note:** Lernziele: Enterprise-Architektur implementieren, Datenzugriff professionell abstrahieren, UI-Logik sauber trennen, komplexe Workflows koordinieren. Diese Patterns sind essentiell für skalierbare Enterprise-Anwendungen.
 
 ---
 
-## Enterprise Context Challenges
+# Was werden wir NICHT behandeln?
 
-- Legacy systems: Decades-old systems that must continue running
-- Regulatory requirements: GDPR and compliance standards
-- High availability: 99.9%+ uptime requirements
-- Scaling: Millions of users and large data volumes
-- Security: Critical business data and cyber-security
-- Integration: Dozens of systems working together
+## Bewusst ausgeklammerte Themen
 
-Note: Enterprise environments present unique challenges requiring specialized architectural approaches. Modernization during operation, compliance and governance, performance under high load, and cost optimization with quality are constant concerns.
+- Framework-spezifische Patterns (Spring, Hibernate, etc.)
+- Architektur-Patterns (Microservices, CQRS, Event Sourcing)
+- Concurrency-Patterns (würde eigenen Workshop füllen)
+- Specific UI-Frameworks (Angular, React, Vue)
+- Cloud-native Patterns (separate Workshop-Serie)
 
----
-
-## Clean Code Foundation
-
-### The 5 Core Rules
-
-- Readability over cleverness
-- Clear names (functions as verbs, variables as nouns)
-- Short functions (one thought per function)  
-- No explanatory comments (self-documenting code)
-- Consistency in naming, formatting, and patterns
-
-Note: Clean Code principles from Robert C. Martin form the foundation for pattern application. Code is read 80% of the time and written only 20%, making readability the primary concern for maintainable systems.
+**Note:** Grund für diese Beschränkung: GoF Patterns sind zeitlos und fundamental, Prinzipien gelten für alle Technologien, lieber wenige Patterns richtig verstehen, jeden Tag praktische Übungen. Fokus behalten und Übertragbarkeit sicherstellen.
 
 ---
 
-## Readability vs. Cleverness
+# Lernziele und Kompetenzen
 
-### The Problem with "Clever" Code
+## Zentrale Problemstellungen
 
-```
-// Clever but unreadable:
-return condition ? value1 : condition2 ? value2 : condition3 ? value3 : defaultValue;
+- Legacy-System Integration und Adapter-Patterns
+- Flexible Objekterzeugung und Dependency Management
+- Algorithmus-Variationen und Strategy-Patterns
+- Event-basierte Kommunikation und Observer-Patterns
+- Komplexe Objektstrukturen und Composite-Patterns
 
-// Readable and understandable:
-if (isHighPriorityCustomer()) return PREMIUM_SERVICE_LEVEL;
-if (isRegularCustomer()) return STANDARD_SERVICE_LEVEL;
-if (isTrialCustomer()) return BASIC_SERVICE_LEVEL;
-return DEFAULT_SERVICE_LEVEL;
-```
-
-Note: Clever code impresses for a moment but costs time for years. New team members must understand code, debugging requires comprehension, and maintenance needs clear logic flow.
+**Note:** Nach dem Workshop können Sie GoF-Patterns in konkreten Problemkontexten anwenden, pattern-basierte Refactoring-Strategien entwickeln, Architektur-Entscheidungen mit Patterns begründen, Clean Code Prinzipien mit Pattern-Design verbinden.
 
 ---
 
-## Maintainability as Primary Goal
+# Praktische Organisation
 
-### Software Lifecycle Reality
-- Development: 20% of total costs
-- Maintenance: 80% of total costs
+## Was Sie mitbringen sollten
 
-### Maintainability Factors
-- Understandability: Can I understand what code does?
-- Changeability: Can I safely make modifications?
-- Testability: Can I verify behavior?
-- Reusability: Can I use parts in other contexts?
+- Laptop mit Java 11+ und IDE (IntelliJ/Eclipse)
+- Git für Code-Austausch
+- Offenheit für neue Perspektiven
+- Eigene Code-Beispiele (wenn möglich)
 
-Note: Legacy systems with millions of lines of undocumented code cause high maintenance costs because every small change takes weeks and carries high risk. Focus on long-term value over short-term convenience.
+**Note:** Was wir bereitstellen: Vollständige Code-Beispiele für alle Patterns, Enterprise-typische Use Cases, Refactoring-Challenges, Pattern-Spickzettel als Nachschlagewerk.
 
 ---
 
-## Technical Debt Management
+# Workshop-Regeln
 
-### Types of Technical Debt
+## Zusammenarbeit
 
-- **Conscious debt**: "We'll do it quick and dirty, clean up next week"
-- **Unconscious debt**: Arises from lack of knowledge or skills
-- **Environmental debt**: Requirements change makes current code obsolete
+- Fragen jederzeit - Unterbrechungen sind erwünscht
+- Handy stumm - aber für Code-Recherche gerne nutzen
+- Kamera an bei Remote-Teilnahme
+- Code teilen - Github Repository für alle
+- Feedback geben - täglich kurze Retro
 
-### Practical Impact
-- Interest: Every change takes longer
-- Principal: Effort required for refactoring
-- Insolvency: System becomes unmaintainable
-
-Note: Technical debt metaphor helps communicate costs to management. Interest compounds over time, making early attention to code quality an investment in future velocity and system stability.
+**Note:** Diese Regeln fördern aktive Teilnahme und effektiven Wissensaustausch. Der Workshop lebt von Interaktion und praktischen Diskussionen.
 
 ---
 
-## Domain Before Technology
+# Was ist Software-Architektur?
 
-### The Most Common Anti-Pattern: Technology-First
+## Verschiedene Definitionen
 
-- "We're using Microservices now!" - But why?
-- "Let's switch to Kubernetes!" - What problem does this solve?
-- "We need Event-Driven Architecture!" - Does this fit our domain?
-- "NoSQL is modern, away with relational DB!" - What are our data requirements?
+- IEEE 1471: "Grundlegende Organisation eines Systems durch Komponenten und deren Beziehungen"
+- Martin Fowler: "Architecture is about the important stuff. Whatever that is."
+- Grady Booch: "Signifikante Design-Entscheidungen, gemessen an Änderungskosten"
+- Simon Brown: "Struktur und Vision für gemeinsames Verständnis"
 
-Note: Technology-first decisions often result from hype-driven development, solutions looking for problems, architecture astronauts creating complexity, and over-engineering simple requirements.
-
----
-
-## Technology-First Failure Examples
-
-### Example 1: The Microservices Hype
-**Situation:** Monolithic application works well, but "microservices are modern"
-**Result:** 3x higher complexity, latency problems, doubled development time, debugging nightmare
-**Problem:** No business problem that microservices would solve
-
-### Example 2: NoSQL Modernization  
-**Situation:** Proven relational database for financial data
-**Result:** Data consistency problems, complex joins impossible, migration back after 18 months
-**Problem:** Financial data is RELATIONAL - NoSQL didn't fit the domain
-
-Note: Real examples show consequences of technology-first thinking. Each case demonstrates how ignoring domain requirements leads to failed projects and expensive rollbacks.
+**Note:** Diese Definitionen zeigen verschiedene Perspektiven auf Software-Architektur. Gemeinsame Erkenntnisse: Struktur (Organisation der Software), Entscheidungen (wichtige Design-Entscheidungen), Beziehungen (Zusammenhänge), Kosten (spätere Änderbarkeit), Kommunikation (Vermittlung des Designs).
 
 ---
 
-## Domain-Driven Design Approach
+# Arbeitsdefinition für diesen Workshop
 
-### The Correct Sequence
+## Unser gemeinsames Verständnis
 
-1. **Understand the Domain**
-   - What is the business problem?
-   - How do domain experts work today?
-   - What rules and processes exist?
+> **Software-Architektur ist die Kunst, wichtige Designentscheidungen zu treffen, die die Struktur, das Verhalten und die Evolution eines Systems bestimmen - mit dem Ziel, fachliche Anforderungen optimal zu erfüllen.**
 
-2. **Design Domain Architecture**
-   - What business areas (domains) exist?
-   - How do we cut the areas (bounded contexts)?
-   - What business services do we need?
-
-3. **Select Technology** (only now!)
-   - What technology best supports our domain model?
-   - What solves our specific problems?
-
-Note: Eric Evans' insight: "The heart of software is its ability to solve domain-related problems for its user. All other concerns should be subordinated." Technology serves the domain, not the reverse.
+**Note:** Diese Definition betont sowohl technische Aspekte (Struktur, Verhalten) als auch fachliche Ziele. Architektur ist nicht nur Technik - sie muss Geschäftsziele verstehen und unterstützen.
 
 ---
 
-## Warning Signs for Technology-First
+# Enterprise-Kontext
 
-### Alarming Statements
-- "That's modern/trendy/hip"
-- "Netflix/Google/Amazon does it that way"
-- "That looks good on my resume"
-- "That's the future"
-- "That's scalable" (without proof of scaling need)
+## Besonderheiten in großen Unternehmen
 
-### Right Questions Instead
-- "What business problem does this solve?"
-- "What are our specific requirements?"
-- "Why isn't the current solution good enough?"
-- "What are the risks and costs?"
+- Legacy-Systeme: Jahrzehntealte Systeme, die noch laufen müssen
+- Regulatorische Anforderungen: DSGVO, Compliance-Standards
+- Hochverfügbarkeit: 99.9%+ Uptime-Anforderungen
+- Skalierung: Millionen von Benutzern, große Datenmengen
+- Sicherheit: Kritische Geschäftsdaten, Cyber-Security
 
-Note: Copy-paste architecture from other companies doesn't work because contexts differ. Focus on solving actual problems rather than implementing fashionable solutions.
+**Note:** Enterprise-Herausforderungen: Modernisierung bei laufendem Betrieb, Compliance und Governance, Performance bei hoher Last, Kostenoptimierung bei gleichzeitig hoher Qualität. Integration von Dutzenden von Systemen.
 
 ---
 
-## Design Patterns: Why Do They Exist?
+# Clean Code Grundlagen
 
-### Historical Origins
-- **1977**: Christopher Alexander - "A Pattern Language" (building architecture!)
-- **1994**: Gang of Four - transferring architectural patterns to software
-- Problem: Recurring design problems, poor developer communication, missing best practices
+## Was bedeutet "sauber"?
 
-### Core Recognition
-Each pattern describes a problem that occurs repeatedly, then describes the solution core so you can use it millions of times without doing it identically twice.
+- Lesbarkeit vor Cleverness
+- Eindeutige Namen für Funktionen, Variablen, Boolean
+- Kurze Funktionen (Eine Funktion = Ein Gedanke)
+- Keine Kommentare, die Code erklären
+- Konsistenz in Namenskonventionen und Formatierung
 
-Note: Design patterns emerged from recognizing that experienced developers use proven solutions for recurring problems. Communication improves through common terms, and quality rises through expert experience sharing.
-
----
-
-## Why Design Patterns Matter
-
-### 1. Use Proven Solutions
-Instead of reinventing the wheel, use tested solutions.
-
-### 2. Develop Common Language  
-"We need Factory Pattern" vs. "We need a class that creates other classes..."
-
-### 3. Improve Design Quality
-Patterns codify good object-oriented design principles.
-
-### 4. Increase Maintainability
-Known patterns are easier to understand and modify.
-
-Note: Patterns create team vocabulary for efficient architecture reviews, focused code reviews, faster onboarding, and compact documentation. They embed SOLID principles naturally.
+**Note:** Clean Code Definition nach Robert C. Martin: "Code that has been taken care of." 80% der Zeit wird Code gelesen, nur 20% geschrieben. Wartbarkeit ist wichtiger als Cleverness.
 
 ---
 
-## What Patterns Are NOT
+# Software-Lebenszyklus in der Praxis
 
-- **Silver bullets**: Patterns don't solve all problems
-- **Dogma**: Patterns don't need slavish adherence
-- **Complexity for complexity's sake**: Simple problems need simple solutions
-- **Copy-paste code**: Patterns are conceptual solutions, not code snippets
+## Kostenverteilung
 
-### Avoid Pattern Misuse
-- Golden Hammer: "I have a hammer, everything looks like a nail"
-- Pattern Overload: 20 patterns for 5 classes
-- Premature Patterning: Using patterns before problem is clear
+- Entwicklung: 20% der Gesamtkosten
+- Wartung: 80% der Gesamtkosten
 
-Note: Patterns are tools, not goals. Use them proportionally to problem complexity. The right question is always: "Does this make the code genuinely better or just more complex?"
+## Wartbarkeits-Faktoren
 
----
+- Verständlichkeit: Kann ich verstehen, was der Code macht?
+- Änderbarkeit: Kann ich sicher Änderungen vornehmen?
+- Testbarkeit: Kann ich das Verhalten überprüfen?
 
-## Refactoring Philosophy
-
-### Martin Fowler's Definition
-"Refactoring is changing a software system so that external behavior remains unchanged while internal structure improves."
-
-### Key Elements
-- Behavior stays the same - functionality doesn't change
-- Structure gets better - code becomes cleaner, more understandable
-- Small steps - many small, safe changes
-- Tests as safety net - behavior is automatically verified
-
-Note: Refactoring is NOT bug fixes, new features, performance optimization, or rewrites. These change behavior or are too risky and large-scale for safe refactoring approach.
+**Note:** Legacy-Systeme mit Millionen Zeilen undokumentiertem Code verursachen hohe Wartungskosten, weil jede kleine Änderung Wochen dauert und risikoreich ist. Clean Code ist eine Investition in die Zukunft.
 
 ---
 
-## The Boy Scout Rule
+# Technische Schulden
 
-### Original: Boy Scouts of America
-"Try and leave this world a little better than you found it."
+## Definition nach Martin Fowler
 
-### Software Translation by Uncle Bob
-"Always leave the campground cleaner than you found it."
-"Always check a module in cleaner than when you checked it out."
+> *"Technical debt is a metaphor referring to the eventual consequences of poor system design, software architecture or software development within a codebase."*
 
-### Practical Application
-- Understand what code does
-- Improve one small thing
-- Verify everything still works  
-- Commit the improvement
+## Arten technischer Schulden
 
-Note: Boy Scout Rule makes refactoring habitual. Small improvements accumulate over time, making code progressively better without dedicated refactoring projects.
+- Bewusste Schulden: "Quick and dirty, aber nächste Woche aufräumen"
+- Unbewusste Schulden: Entstehen durch Unwissen (gefährlichste Art)
+- Umwelt-Schulden: Änderung der Anforderungen macht Code obsolet
+
+**Note:** Praktische Auswirkungen: Zinsen (jede Änderung dauert länger), Hauptsumme (Aufwand für Refactoring), Insolvenz (System nicht mehr wartbar). Schulden-Management: Sichtbar machen, priorisieren, kontinuierlich abbauen.
 
 ---
 
-## When to Refactor
+# Fachlichkeit vor Technik
 
-### The Rule of Three (Martin Fowler)
-1. **First time** - do it simply
-2. **Second time** - get annoyed by duplication, but do it anyway
-3. **Third time** - refactor!
+## Das häufigste Anti-Pattern: Technology-First
 
-### Refactoring Triggers
-- When you need to understand code
-- When you see duplication
-- When code "smells" (Long Method, Large Class, etc.)
-- When adding features ("Make the change easy, then make the easy change")
+- "Wir nutzen jetzt Microservices!" - Aber warum?
+- "Lass uns auf Kubernetes umsteigen!" - Aber welches Problem löst das?
+- "NoSQL ist modern, weg mit der relationalen DB!" - Aber was sind unsere Datenanforderungen?
 
-Note: Good timing includes sprint planning (story needs refactoring time), bug fixing (combined with Boy Scout Rule), code reviews (suggest and implement improvements), and dedicated technical stories.
+**Note:** Technology-First Symptome: Hype-Driven Development, Solution looking for a problem, Architecture Astronauts, Over-Engineering. Warum passiert das? Techniker denken technisch, Marketing macht Technologie sexy, CV-Driven Development, Komplexität wirkt professionell.
 
 ---
 
-## Refactoring as Path to Patterns
+# Technology-First Beispiele
 
-### Typical Evolution
-1. **Duplication** emerges naturally
-2. **Refactoring** makes commonalities visible
-3. **Pattern Recognition** - "This is a known problem"
-4. **Pattern Application** - Apply known solution
+## Der Microservices-Hype
 
-### Key Insight
-**Patterns are introduced through refactoring, not planned from the beginning!**
+- Problem: Monolith funktioniert gut, aber "Microservices sind modern"
+- Entscheidung: Monolith in 20+ Services aufteilen
+- Ergebnis: 3x höhere Komplexität, Latenz-Probleme, Debugging-Albtraum
 
-### Example: Strategy Pattern Evolution
-1. One if-else for payment types
-2. Second if-else elsewhere  
-3. Reduce duplication through Extract Method
-4. Similar pattern in third location
-5. Recognition: "This is Strategy Pattern!"
-6. Refactor to Strategy Pattern
+## Die NoSQL-Modernisierung
 
-Note: This evolutionary approach ensures patterns solve real problems rather than being imposed artificially. Patterns emerge from code that needs them, making their application natural and justified.
+- Problem: Bewährte relationale DB für Finanzdaten
+- Entscheidung: Migration auf Document-Database
+- Ergebnis: Datenkonsistenz-Probleme, Migration zurück nach 18 Monaten
+
+**Note:** Das Grundproblem: Es gab KEIN fachliches Problem, das diese Technologien gelöst hätten. Finanzdaten sind RELATIONAL - NoSQL passte nicht zur Fachlichkeit.
 
 ---
 
-## Summary: Foundation for Pattern Learning
+# Domain-Driven Design: Fachlichkeit First
 
-### Core Principles Established
-- Architecture serves business goals, not technology trends
-- Clean Code principles enable pattern recognition
-- Domain understanding comes before technical decisions
-- Refactoring reveals where patterns add value
-- Patterns improve communication and maintainability
+## Die richtige Reihenfolge
 
-### Ready for Pattern Application
-With this foundation, we can now explore specific design patterns knowing they solve real problems through evolutionary code improvement rather than upfront complexity.
+1. **Fachlichkeit verstehen**: Geschäftsproblem, Arbeitsprozesse, Regeln, echte Anforderungen
+2. **Fachliche Architektur entwerfen**: Domains, Bounded Contexts, fachliche Services, Geschäftslogik-Modellierung
+3. **Technologie auswählen**: Was unterstützt unser fachliches Modell am besten?
 
-Note: These introductory concepts create the mindset needed for effective pattern learning. Participants now understand that patterns are discovered through refactoring real code problems, not imposed through abstract design exercises.
+**Note:** DDD-Grundgedanke nach Eric Evans: "The heart of software is its ability to solve domain-related problems for its user. All other concerns should be subordinated." Technology-First führt zu Over-Engineering und unpassenden Lösungen.
+
+---
+
+# Die richtige Herangehensweise
+
+## Fragen in der richtigen Reihenfolge
+
+**Phase 1: Fachlichkeit verstehen**
+- Was soll das System tun? Warum ist das wichtig? Wer sind die Stakeholder?
+
+**Phase 2: Fachliche Lösung entwerfen**
+- Welche fachlichen Bereiche gibt es? Wo sind die Grenzen? Wie kommunizieren sie?
+
+**Phase 3: Technologie auswählen**
+- Womit implementieren wir das am besten? Was löst unsere spezifischen Probleme?
+
+**Note:** Warnsignale für Technology-First: "Das ist modern/trendy", "Das macht Netflix auch", "Das steht in meinem Lebenslauf gut". Die richtigen Fragen: "Welches fachliche Problem löst das?", "Was sind unsere spezifischen Anforderungen?"
+
+---
+
+# Design Patterns Motivation
+
+## Geschichte: Warum entstanden Design Patterns?
+
+- Christopher Alexander (1977): "A Pattern Language" - Gebäude-Architektur!
+- Gang of Four (1994): Übertragung auf Software
+- Problem 1: Wiederkehrende Design-Probleme
+- Problem 2: Schlechte Kommunikation zwischen Entwicklern
+- Problem 3: Fehlende Best Practices
+
+**Note:** Alexanders Erkenntnis: "Each pattern describes a problem which occurs over and over again, and then describes the core of the solution." GoF erkannten: Erfahrene Entwickler nutzen bewährte Lösungen, wiederkehrende Probleme haben wiederkehrende Lösungen.
+
+---
+
+# Warum Design Patterns?
+
+## Vier Hauptvorteile
+
+- **Bewährte Lösungen nutzen**: Anstatt Rad neu erfinden
+- **Gemeinsame Sprache entwickeln**: Vokabular für Teams
+- **Design-Qualität verbessern**: SOLID-Prinzipien kodifiziert
+- **Wartbarkeit erhöhen**: Bekannte Patterns sind verständlicher
+
+**Note:** Kommunikationsverbesserung: Vorher: "Wir brauchen eine Klasse, die andere Klassen erzeugt..." Nachher: "Wir nutzen Factory Pattern". Team-Kommunikation wird effizienter, neue Teammitglieder verstehen Design schneller.
+
+---
+
+# Patterns sind NICHT...
+
+## Pattern-Missbrauch vermeiden
+
+- Silberkugeln: Patterns lösen nicht alle Probleme
+- Dogmen: Patterns müssen nicht sklavisch befolgt werden
+- Komplexität um der Komplexität willen
+- Copy-Paste Code: Patterns sind konzeptuelle Lösungen
+
+## Anti-Beispiel aus der Praxis
+- Problem: Einfache Konfigurationswerte lesen
+- Overengineered: AbstractConfigurationFactoryBuilderStrategyProxy
+- Einfach: Properties.load()
+
+**Note:** Golden Hammer vermeiden: "Ich habe einen Hammer, alles sieht aus wie ein Nagel". Pattern Overload: 20 Patterns für 5 Klassen. Wichtige Fragen: Haben wir wirklich das Problem? Ist es komplex genug für ein Pattern?
+
+---
+
+# Refactoring Philosophie
+
+## Was ist Refactoring?
+
+**Definition nach Martin Fowler:**
+> *"Refactoring is the process of changing a software system in such a way that it does not alter the external behavior of the code yet improves its internal structure."*
+
+## Schlüsselelemente
+
+- Verhalten bleibt gleich - Funktionalität ändert sich nicht
+- Struktur wird besser - Code wird wartbarer
+- Kleine Schritte - Viele kleine, sichere Änderungen
+
+**Note:** Was Refactoring NICHT ist: Bugfixes, neue Features, Performance-Optimierung, Rewrite. Refactoring ist kontinuierlich, nicht ein einmaliges Event.
+
+---
+
+# Die Boy Scout Rule
+
+## Ursprung und Übertragung
+
+**Boy Scouts of America:**
+> *"Try and leave this world a little better than you found it."*
+
+**Uncle Bob für Software:**
+> *"Always leave the campground cleaner than you found it."*
+
+## Praktische Anwendung
+
+- Bei jedem Code-Touch: Verstehe → Verbessere → Prüfe → Committe
+- Konkrete Aktionen: Variable umbenennen, Magic Numbers extrahieren, Long Methods aufteilen
+
+**Note:** Boy Scout Aktionen: temp → elapsedTimeInDays, 7 → DAYS_PER_WEEK, Duplicate Code extrahieren, Unused Code entfernen, Kommentare durch self-documenting code ersetzen.
+
+---
+
+# Wann refactoren?
+
+## Die "Rule of Three"
+
+1. **Das erste Mal** - mache es einfach
+2. **Das zweite Mal** - ärgere dich über Duplikation, aber mache es trotzdem
+3. **Das dritte Mal** - refactore!
+
+## Refactoring-Trigger
+
+- Wenn du Code verstehen musst (vor Bug-Fix, vor Feature)
+- Wenn du Duplikation siehst (Copy-Paste Code)
+- Wenn Code "riecht" (Long Method, Large Class, Long Parameter List)
+
+**Note:** Gute Refactoring-Zeitpunkte: Sprint Planning, Bug-Fixing mit Boy Scout Rule, Code Reviews, Technische Stories. "Make the change easy, then make the easy change."
+
+---
+
+# Refactoring-Sicherheitsmaßnahmen
+
+## Tests zuerst
+
+**Vor Refactoring:** Verstehe Verhalten, schreibe Tests, alle Tests grün
+**Während Refactoring:** Nach jedem Schritt Tests laufen lassen
+**Nach Refactoring:** Alle Tests noch grün
+
+## Kleine Schritte und IDE-Unterstützung
+
+- Ein Schritt nach dem anderen
+- Extract Method, Rename Variable, Move Method
+- IDE kann viel automatisch und sicher machen
+
+**Note:** Häufige Refactoring-Patterns: Extract Method (Long Method aufteilen), Replace Magic Number with Named Constant. Enterprise-Kontext: Legacy Systems extra vorsichtig, Live Systems graduelle Änderungen.
+
+---
+
+# Refactoring als Weg zu Patterns
+
+## Patterns entstehen durch Refactoring
+
+**Typischer Ablauf:**
+1. Duplikation entsteht natürlich
+2. Refactoring macht Gemeinsamkeiten sichtbar
+3. Pattern Recognition - "Das ist ein bekanntes Problem"
+4. Pattern Application - Bekannte Lösung anwenden
+
+## Wichtige Erkenntnis
+
+**Patterns werden durch Refactoring eingeführt, nicht von Anfang an geplant!**
+
+**Note:** Beispiel Strategy Pattern: Ein if-else → zweites if-else → Duplikation reduzieren → drittes ähnliches Pattern → "Das ist Strategy Pattern!" → Refactoring zu Strategy Pattern. Tests sind essenziell für sicheres Refactoring.
+
+---
+
+# Workshop-Bereitschaft
+
+## Ihr persönliches Lernziel
+
+**Frage an die Teilnehmer:**
+> *"Was ist Ihr persönliches Lernziel für diese 4 Blöcke?"*
+
+## Zielsetzung
+
+**Systematische Anwendung von Design Patterns zur Verbesserung von Code-Qualität, Wartbarkeit und Systemarchitektur in Enterprise-Umgebungen.**
+
+**Sind Sie bereit? Dann starten wir mit Block 1: Creational Patterns!**
+
+**Note:** Lassen Sie jeden Teilnehmer sein Ziel formulieren - wir kommen am Ende darauf zurück! Mit diesem Refactoring-Mindset sind wir bereit - wir wissen jetzt, dass wir Patterns durch evolutionäre Verbesserung entdecken.
