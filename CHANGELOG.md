@@ -1,5 +1,47 @@
 # Changelog
 
+## [1.8.0] [2025-09-10] - Extract Block 4 Advanced Patterns & Integration Content for PowerPoint
+
+### Added
+- **Block 4 Content Extraction** - Extracted and structured Advanced Patterns & Integration content for PowerPoint
+  - Created presentations/powerpoint/block4-content-extracted.md
+  - Processed 4 script files from script/day4/ (Mediator Pattern, Iterator & Visitor, Memento & Interpreter, Pattern Integration)
+  - Applied required 4-step pattern flow: "Was ist hier schlecht?" → "Code Smells identifiziert" → "Lösung: [Pattern]" → "Implementierung"
+  - Maximum 7 bullet points per slide for optimal readability
+  - Removed ALL exercises (Übungen) and workshop activities
+  - Replaced day/time references with "Block 4" terminology
+
+### Content Structure
+- **4 Advanced Pattern Categories**: Mediator, Iterator & Visitor, Memento & Interpreter, Pattern Integration
+- **26 Presentation Slides**: Complete coverage with consistent 4-step structure per pattern
+- **Enterprise Integration Focus**: Production-ready implementations and team adoption strategies
+- **Anti-Pattern Awareness**: Pattern-Obsession prevention and KISS Principle application
+- **Team-Adoption Strategy**: Gradual migration, training plans, and production readiness
+- **Decision Framework**: Clear guidelines for when to use/avoid patterns
+
+### Pattern Coverage
+- **Mediator Pattern**: Communication Explosion → O(n²) to O(n) reduction, Handler Architecture, Error Isolation
+- **Iterator Pattern**: Safe Navigation + Visitor Pattern for type-safe operations without instanceof horror
+- **Memento Pattern**: Production-safe Configuration Changes with guaranteed rollback and audit compliance
+- **Interpreter Pattern**: Configuration-as-Code DSL for Network Engineers without Java knowledge
+- **Pattern Integration**: Layer-based architecture preventing over-engineering and pattern obsession
+- **Production Readiness**: Monitoring, error handling, performance impact, and team adoption strategies
+
+### Technical Implementation
+- Processed 387KB+ of comprehensive Advanced Patterns content from 4 detailed script files
+- Extracted enterprise-ready implementations for complex Telekom Network Management scenarios
+- Created structured markdown with slide boundaries (---) for PowerPoint import
+- Professional German content maintaining technical depth and accuracy
+- Advanced pattern combinations and real-world integration strategies
+- Comprehensive anti-pattern prevention and team success frameworks
+
+### Advanced Features
+- **Multi-Device Emergency Rollback**: Parallel recovery mechanisms for critical network failures
+- **DSL Configuration Safety**: Type-safe parsing with comprehensive validation and IDE support
+- **Pattern Decision Framework**: Intelligent selection criteria preventing over-engineering
+- **Team Training Plans**: 6-week structured adoption program with gradual migration strategies
+- **Production Monitoring**: Performance tracking, circuit breakers, and resilience patterns
+
 ## [1.7.0] [2025-09-10] - Extract Block 2 Structural Patterns Content for PowerPoint
 
 ### Added
