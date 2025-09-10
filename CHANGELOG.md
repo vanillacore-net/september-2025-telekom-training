@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.14.2] [2025-09-10] - FIX Architectural Patterns Layout and Speaker Notes (PRB-024)
+
+### Fixed
+- **Layout Consistency**: Fixed ALL Vorteile/Nachteile slides to use Layout 4 (two columns) from VanillaCore template
+  - **arch-patterns-part1.pptx**: Fixed 6 trade-off slides (Layered Architecture, Microservices, Event-Driven, Hexagonal)
+  - **arch-patterns-part2.pptx**: Fixed 9 trade-off slides (CQRS, Event Sourcing, Circuit Breaker, Saga, API Gateway, Service Mesh, Bulkhead, DDD)
+  - **Removed Manual Textboxes**: Eliminated inconsistent manual textbox layouts
+  - **Used Predefined Areas**: Now properly utilizes VanillaCore's built-in two-column structure
+
+### Enhanced
+- **Unique Speaker Notes**: Generated context-specific speaker notes for ALL slides (44 total slides)
+  - **Trade-off Slides**: Detailed notes covering benefits, drawbacks, Telekom-specific examples, and production considerations
+  - **Overview Slides**: Agenda setting, visual walkthroughs, interaction strategies
+  - **Use Case Slides**: Practical Telekom scenarios with implementation details and lessons learned
+  - **Implementation Slides**: Code walkthroughs, testing strategies, production readiness
+  - **Decision Slides**: Matrix explanations, scoring rationale, action items
+  - **German Language**: All speaker notes maintain German language consistency
+
+### Technical
+- **Professional Layout**: Consistent formatting using VanillaCore template structure
+- **Content Preservation**: All German language content maintained
+- **Automation**: Created Python script for systematic presentation fixing
+
 ## [1.6.0] [2025-09-10] - ADD Missing Vorteile/Nachteile Slides and Speaker Notes to Architectural Patterns
 
 ### Added
