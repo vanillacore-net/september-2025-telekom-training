@@ -1,6 +1,6 @@
 {
   "name": "telekom-architecture-training",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Telekom Architecture training documentation and presentation materials",
   "main": "index.js",
   "scripts": {
