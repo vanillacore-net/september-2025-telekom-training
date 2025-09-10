@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.14.4] [2025-09-10] - FINAL FIX: Correct Comparison Layouts (PRB-026)
+
+### Fixed  
+- **Trade-off Slides Layout Correction**: Used CORRECT Layout 6 (Comparison Bulletpoints) from VanillaCore template
+  - **Proper Placeholder Structure**: Layout 6 has dedicated placeholders for headers and content areas
+  - **Professional Layout**: Uses actual PowerPoint template design instead of custom textboxes
+  - **Template Compliance**: Follows VanillaCore design standards for consistent presentation appearance
+
+### Technical Implementation
+- **Layout 6 Integration**: Discovered and used "Comparison Bulletpoints" layout with 6 placeholders
+  - Placeholder 0: Title
+  - Placeholder 1: Left header ("Vorteile ✅")
+  - Placeholder 2: Left content area (bullet points)
+  - Placeholder 3: Right header ("Nachteile ❌")
+  - Placeholder 4: Right content area (bullet points)
+- **Complete Slide Replacement**: Deleted all previous broken/custom slides, recreated with template layout
+- **Content Preservation**: All German trade-off content maintained with proper structure
+
+### Results
+- **arch-patterns-part1.pptx**: 4 slides with correct comparison layout
+- **arch-patterns-part2.pptx**: 8 slides with correct comparison layout
+- **Professional Appearance**: Consistent with VanillaCore template design
+- **Proper Content Display**: Headers and bullet points correctly positioned and visible
+
 ## [1.14.3] [2025-09-10] - CRITICAL FIX Trade-off Slides Only (PRB-025)
 
 ### Fixed
