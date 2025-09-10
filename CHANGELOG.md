@@ -1,5 +1,49 @@
 # Changelog
 
+## [1.6.0] [2025-09-10] - ADD Missing Vorteile/Nachteile Slides and Speaker Notes to Architectural Patterns
+
+### Added
+- **Missing Trade-off Slides** - Added comprehensive Vorteile/Nachteile slides for ALL architectural patterns
+  - **Part 1 Enhancements**: Added missing Event-Driven Architecture trade-offs slide using Layout 4 (two columns)
+  - **Part 2 Complete Coverage**: Added trade-off slides for all 6 remaining patterns (Circuit Breaker, Saga Pattern, API Gateway, Service Mesh, Bulkhead Pattern, Domain-Driven Design)
+  - **Professional German Content**: All trade-offs presented in German with proper ✅ Vorteile and ❌ Nachteile sections
+  - **Production Considerations**: Added ⚠️ Production Considerations sections where applicable
+
+### Enhanced Content
+- **CQRS Trade-offs**: Performance optimization, scalability benefits vs eventual consistency challenges
+- **Event Sourcing Trade-offs**: Complete audit trail, time travel debugging vs storage requirements and schema evolution
+- **Circuit Breaker Trade-offs**: Cascading failure prevention, fast-fail behavior vs configuration complexity
+- **Saga Pattern Trade-offs**: Distributed transactions without 2PC vs eventual consistency and rollback complexity
+- **API Gateway Trade-offs**: Centralized entry point, cross-cutting concerns vs single point of failure risks
+- **Service Mesh Trade-offs**: Infrastructure layer benefits, automatic mTLS vs operational complexity and latency
+- **Bulkhead Pattern Trade-offs**: Resource isolation, client prioritization vs reduced utilization
+- **Domain-Driven Design Trade-offs**: Business alignment, ubiquitous language vs high initial investment
+
+### Speaker Notes Enhancement
+- **Comprehensive Speaker Notes** - Added speaker notes extracted from markdown content for ALL slides
+  - **Part 1**: Enhanced speaker notes for all 4 architectural patterns with practical guidance
+  - **Part 2**: Complete speaker notes for all 8 modern patterns with implementation details
+  - **Telekom Context**: All speaker notes include Telekom-specific implementation guidance
+  - **Professional Presentation Support**: Ready-to-use speaker guidance for enterprise training delivery
+
+### Technical Implementation
+- **Python Script Development** - Created add_missing_content.py with advanced markdown parsing
+  - **Intelligent Trade-off Extraction**: Supports both "## Pattern Trade-offs" and "## Pattern - Trade-offs" formats
+  - **Dynamic Content Generation**: Manual trade-offs generated for patterns without explicit markdown sections
+  - **Layout 4 Usage**: All trade-off slides use two-column layout for professional side-by-side presentation
+  - **Speaker Notes Integration**: Automatic extraction and assignment of speaker notes to all slides
+
+### Pattern Coverage Quality
+- **Part 1 Complete**: 4/4 patterns now have trade-off slides (Layered, Microservices, Event-Driven, Hexagonal)
+- **Part 2 Complete**: 8/8 patterns now have trade-off slides (CQRS, Event Sourcing, Circuit Breaker, Saga, API Gateway, Service Mesh, Bulkhead, DDD)
+- **Professional Structure**: Each pattern follows Problem → Solution → Use Case → Trade-offs → When to Use flow
+- **Enterprise Context**: All trade-offs include real-world production considerations and Telekom-specific implications
+
+### Files Updated
+- **presentations/powerpoint/arch-patterns-part1.pptx** - Updated from 98,037 bytes to 118,988 bytes with 4 additional trade-off slides
+- **presentations/powerpoint/arch-patterns-part2.pptx** - Updated from 99,171 bytes to 131,931 bytes with 6 additional trade-off slides
+- **Both presentations** now complete with comprehensive trade-offs and professional speaker notes ready for enterprise architecture training
+
 ## [1.5.0] [2025-01-10] - URGENT FIX: Architectural Patterns Presentations Template and Layout Issues
 
 ### Fixed
