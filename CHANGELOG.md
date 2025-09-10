@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.15.1] [2025-09-10] - URGENT FIX: Block 2 Font Issues
+
+### Fixed
+- **CRITICAL Block 2 Font Issues** - Fixed font override problems in Block 2 Structural Patterns presentation
+  - **NO CALIBRI OVERRIDES**: Removed all explicit font.name = 'Calibri' settings for regular text
+  - **TEMPLATE FONT INHERITANCE**: Let VanillaCore.pptx template control fonts through layout inheritance
+  - **CONSOLAS FOR CODE ONLY**: Font.name = 'Consolas' only set for code blocks (Layout 9)
+  - **PROFESSIONAL APPEARANCE**: Template fonts now properly inherited for all regular content
+  - **24 SLIDES REGENERATED**: Complete Block 2 presentation recreated with correct font rules
+
+### Technical Implementation
+- **Python Script Creation** - Generated scripts/fix_block2_fonts.py for proper font handling
+  - **Layout Font Rules**: Layouts 0-8 use template fonts, Layout 9 uses Consolas for code
+  - **Template Compliance**: Proper VanillaCore.pptx template usage without font overrides
+  - **Content Preservation**: All Block 2 content and structure maintained during font fix
+  - **Clean Text Processing**: Removed HedgeDoc markup while preserving formatting
+
 ## [1.15.0] [2025-09-10] - URGENT FIX: Block 4 Advanced Patterns PowerPoint Generation
 
 ### Fixed
