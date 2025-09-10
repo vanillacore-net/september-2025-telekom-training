@@ -1,5 +1,43 @@
 # Changelog
 
+## [1.5.0] [2025-01-10] - URGENT FIX: Architectural Patterns Presentations Template and Layout Issues
+
+### Fixed
+- **CRITICAL Template and Layout Issues** - Fixed BOTH architectural pattern presentations with proper VanillaCore template usage and layout assignments
+  - **ACTUAL TEMPLATE LOADING**: Presentations now properly use VanillaCore.pptx template instead of creating from scratch
+  - **ASCII DIAGRAMS FIXED**: All architectural diagrams now use Layout 9 (Code-Block) for monospace preservation
+  - **SECTION HEADERS CORRECTED**: Section headers use Layout 1 with title only (no content) as intended
+  - **VORTEILE/NACHTEILE LAYOUT**: Trade-offs sections now use Layout 4 (Two Columns) for proper side-by-side display
+  - **GERMAN CONTENT PRESERVED**: All German text maintained throughout both presentations
+  - **LAYOUT COMPLIANCE**: Correct layout assignments for different content types throughout
+  
+### Technical Implementation  
+- **Python Script Creation** - Generated fix_arch_patterns_simple.py for proper template usage and layout fixes
+  - **Part 1 Coverage**: 4 patterns (Layered Architecture, Microservices, Event-Driven, Hexagonal) with 13 slides
+  - **Part 2 Coverage**: 8 patterns (CQRS, Event Sourcing, Circuit Breaker, Saga, API Gateway, Service Mesh, Bulkhead, DDD) with 21 slides
+  - **Template Integration**: VanillaCore.pptx template properly loaded with correct layout mappings
+  - **ASCII Preservation**: Layout 9 (Code-Block) ensures monospace formatting for architectural diagrams
+  - **Professional Output**: Clean presentations suitable for enterprise architecture training
+
+### Layout Corrections Applied
+- **Layout 0**: Title slides (presentation titles, pattern introductions)
+- **Layout 1**: Section headers (title only, no content placeholders)
+- **Layout 2**: Regular bullet point content with template built-in bullets
+- **Layout 4**: Two-column layout for Vorteile (advantages) and Nachteile (disadvantages)
+- **Layout 9**: Code-Block layout for all ASCII diagrams with monospace font preservation
+
+### Pattern Coverage Quality
+- **Part 1**: Complete architectural foundation patterns with Telekom-specific examples
+- **Part 2**: Advanced enterprise patterns for scalability and integration
+- **Decision Matrix**: Architecture selection criteria with team size and complexity factors
+- **Migration Strategies**: Evolution path from monolith to microservices
+- **Professional Structure**: Consistent pattern flow with problem → solution → trade-offs → when to use
+
+### Files Generated
+- **presentations/powerpoint/arch-patterns-part1.pptx** - 85,666 bytes, professionally structured
+- **presentations/powerpoint/arch-patterns-part2.pptx** - 89,081 bytes, enterprise-ready content
+- **Both presentations** ready for Telekom architecture training delivery
+
 ## [1.14.1] [2025-09-10] - PROPERLY Fix Block 2 Using VanillaCore Template
 
 ### Fixed
