@@ -1,5 +1,40 @@
 # Changelog
 
+## [1.15.0] [2025-09-10] - URGENT FIX: Block 4 Advanced Patterns PowerPoint Generation
+
+### Fixed
+- **CRITICAL Block 4 PowerPoint Issues** - Fixed ALL critical issues with Block 4 Advanced Patterns presentation generation
+  - **NO MCP SERVER USAGE**: Created proper Python script using python-pptx library instead of problematic MCP server approach
+  - **NO DOUBLE BULLETS**: Layout 2 has built-in bullets - removed all manual "•" and "-" bullet characters from content
+  - **SPEAKER NOTES ADDED**: Extracted and added ALL "Note:" sections as proper PowerPoint speaker notes
+  - **CODE LINE SPACING FIXED**: Applied single line spacing (1.0) to all code blocks instead of double-spacing
+  - **JAVA CODE EXAMPLES**: Ensured all code examples use JAVA (not TypeScript) throughout the presentation
+  - **PROPER TEMPLATE USAGE**: Used VanillaCore.pptx template correctly with appropriate layout mappings
+
+### Technical Implementation
+- **Python Script Creation** - Generated scripts/generate_block4_presentation.py with comprehensive presentation builder
+  - **Layout Mapping**: Layout 0 (Title), Layout 1 (Section headers), Layout 2 (Built-in bullets), Layout 3 (Plain text), Layout 9 (Code blocks)
+  - **Code Formatting**: Applied Consolas font with single line spacing for all code examples
+  - **Speaker Notes Integration**: Transferred all "Speaker Notes" content to PowerPoint notes sections
+  - **Content Processing**: 34 slides with complete Advanced Patterns & Integration content
+  - **Template Compliance**: Proper use of VanillaCore.pptx with correct layout selection
+
+### Advanced Pattern Coverage  
+- **Mediator Pattern** - Communication explosion → O(n²) to O(n) reduction with TelekomNetworkOrchestrator implementation
+- **Iterator & Visitor Pattern** - Safe navigation with type-safe operations eliminating instanceof-horror
+- **Memento Pattern** - Production-safe configuration changes with guaranteed rollback and integrity validation
+- **Interpreter Pattern** - Configuration-as-Code DSL with Abstract Syntax Tree for Network Engineers
+- **Pattern Integration** - Layer-based architecture preventing pattern-obsession and over-engineering
+- **Team-Adoption Strategy** - 3-phase structured adoption with gradual migration and training programs
+- **Production Readiness** - Comprehensive monitoring, error handling, and performance considerations
+
+### Quality Assurance
+- **File Generation Success** - presentations/powerpoint/block4-presentation.pptx created successfully (143,143 bytes)
+- **34 Total Slides** - Complete coverage from overview to action plan with professional structure
+- **Zero Markdown Syntax** - Clean PowerPoint formatting without visible markdown artifacts
+- **Enterprise Context** - All examples use Telekom network management scenarios for real-world relevance
+- **Professional Appearance** - Ready for enterprise training delivery with consistent formatting
+
 ## [1.14.0] [2025-01-25] - Create Anti-Patterns Catalog PowerPoint Presentation
 
 ### Added
