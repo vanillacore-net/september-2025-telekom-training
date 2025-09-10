@@ -1,6 +1,6 @@
 {
   "name": "telekom-architecture-training",
-  "version": "1.0.3",
+  "version": "1.8.0",
   "description": "Telekom Architecture training documentation and presentation materials",
   "main": "index.js",
   "scripts": {
@@ -13,5 +13,11 @@
     "documentation"
   ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "playwright": "^1.55.0"
+  },
+  "devDependencies": {
+    "puppeteer": "^24.19.0"
+  }
 }
