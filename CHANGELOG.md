@@ -1,6 +1,27 @@
 # Changelog
 
-## [1.10.0] [2025-09-10] - Transform Block 1 to PowerPoint Presentation
+## [1.10.0] [2025-09-10] - Transform Block 2 to PowerPoint Presentation
+
+### Added
+- **Block 2 PowerPoint Presentation** - Successfully transformed block2-content-extracted.md to professional PowerPoint presentation
+  - Created presentations/powerpoint/block2-presentation.pptx with comprehensive Structural Patterns content
+  - Used VanillaCore.pptx template with proper layout analysis and mapping
+  - Applied correct layout assignments: Section Header (0) for "Block 2: Structural Patterns", Code-Block (8) for code examples, Bullet layout (2) for bullet content
+  - Professional slide titles on every slide without markdown syntax
+  - Clean PowerPoint formatting with actual bold text instead of **markdown markers**
+  - All bullet content uses PowerPoint templates with built-in bullets (no manual bullet characters)
+  - Speaker notes extracted and preserved in PowerPoint notes sections
+  - Covers 5 structural patterns: Decorator, Composite, Facade, Proxy, and Flyweight with real-world Telekom examples
+
+### Technical Implementation
+- **Template Analysis** - Analyzed VanillaCore.pptx template structure and applied correct layout indices
+- **Content Mapping** - Systematically mapped 24 slides of structural patterns content to appropriate PowerPoint layouts
+- **Python Script Creation** - Created automated PowerPoint generation with python-pptx library for Block 2 content
+- **Layout Selection** - Used proper bullet layouts (Layout 2) for bulleted content, code layout (Layout 8) for code examples, and section headers (Layout 0) for topic transitions
+- **Speaker Notes Integration** - Transferred all Note: content from markdown to PowerPoint speaker notes
+- **Pattern Structure** - Each pattern follows 4-step structure: Problem → Code Smells → Solution → Implementation
+
+## [1.9.0] [2025-09-10] - Transform Block 1 to PowerPoint Presentation
 
 ### Added
 - **Block 1 PowerPoint Presentation** - Successfully transformed block1-content-extracted.md to professional PowerPoint presentation
