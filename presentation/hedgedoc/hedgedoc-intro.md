@@ -1,5 +1,5 @@
 ---
-<!-- Version: 1.2.0-font-fix -->
+<!-- Version: 1.3.0-fragment-colon-fix -->
 type: slide
 title: Software-Architektur - Einführung
 description: Grundlagen zu Software-Architektur, Clean Code, Fachlichkeit vor Technik und Design Patterns Motivation
@@ -25,379 +25,71 @@ slideOptions:
 ---
 
 <style>
-/* HedgeDoc Presentation Styles */
-.reveal {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 300;
-}
-
-/* Critical: Fix content overflow and enforce left alignment */
+/* Minimal HedgeDoc Presentation Styles */
 .reveal .slides {
-  font-size: 26px !important; /* Increased by 20% for better readability (22px * 1.20) */
-  line-height: 1.3 !important;
+  font-size: 24px;
+  text-align: left;
 }
 
-/* Override reveal.js center alignment - force left alignment for all content */
-.reveal .slides section,
-.reveal .slides section > *,
-.reveal .center {
-  text-align: left !important;
+.reveal h1 {
+  font-size: 48px;
+  margin-bottom: 0.5em;
+  border-bottom: 2px solid #666;
+}
+
+.reveal h2 {
+  font-size: 36px;
+  margin: 0.5em 0;
+}
+
+.reveal h3 {
+  font-size: 28px;
+  margin: 0.5em 0;
+}
+
+.reveal h4 {
+  font-size: 24px;
+  margin: 0.5em 0;
+}
+
+.reveal h5 {
+  font-size: 20px;
+  margin: 0.5em 0;
+}
+
+.reveal pre {
+  width: 100%;
+  min-height: 400px;
+  max-height: 70vh;
+  font-size: 18px;
+}
+
+.reveal pre code {
+  max-height: 70vh;
+  min-height: 400px;
+  padding: 1em;
+  font-size: 18px;
+}
+
+.reveal ul, .reveal ol {
+  margin-left: 1em;
+  font-size: 24px;
+}
+
+.reveal li {
+  margin: 0.3em 0;
+  line-height: 1.4;
 }
 
 .reveal .slides section {
   height: 100%;
-  width: 100%;
-  max-width: 100vw;
-  overflow-y: auto !important; /* Allow scrolling if needed */
-  overflow-x: hidden;
-  padding: 20px 25px 25px 25px !important; /* Reduce top padding to move content up */
-  box-sizing: border-box;
-  text-align: left !important; /* Ensure all content is left-aligned */
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important; /* Move content to top */
-}
-
-.reveal h1 {
-  font-size: 3.6em !important; /* Increased by 20% for better readability */
-  color: #2c2c2c;
-  font-weight: 700 !important; /* Bolder weight for more prominence */
-  text-align: left !important;
-  margin-top: 0.8em !important;
-  margin-bottom: 0.5em !important; /* More spacing below headline */
-  border-bottom: 3px solid #666666 !important; /* Visual separator */
-  padding-bottom: 0.2em !important; /* Padding above border */
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h1:first-child {
-  margin-top: 0 !important;
-}
-
-.reveal h2 {
-  font-size: 2.2em !important;
-  color: #2c2c2c !important;
-  font-weight: normal !important;
-  text-align: left !important;
-  margin-top: 0.8em !important;
-  margin-bottom: 0.4em !important;
-  width: 100% !important;
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h2:first-child {
-  margin-top: 0 !important;
-}
-
-.reveal h3 {
-  font-size: 1.6em !important; /* Increased by 20% for better readability */
-  font-weight: 400 !important;
-  text-align: left !important;
-  margin-top: 0.6em !important;
-  margin-bottom: 0.3em !important;
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h3:first-child {
-  margin-top: 0 !important;
-}
-
-.reveal h4, .reveal h5, .reveal h6 {
-  font-weight: 400 !important;
-  text-align: left !important;
-  margin-top: 0.5em !important;
-  margin-bottom: 0.3em !important;
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h4:first-child,
-.reveal .slides section > h5:first-child,
-.reveal .slides section > h6:first-child {
-  margin-top: 0 !important;
-}
-
-.reveal p, .reveal li {
-  font-size: 1.4em !important;
-  font-weight: 300 !important;
+  padding: 20px;
   text-align: left !important;
 }
 
-/* Add proper paragraph spacing */
-.reveal p {
-  margin-bottom: 0.3em !important;
-}
-
-/* Prevent text from being too large */
-.reveal .slides {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-/* Lists should not overflow */
-.reveal ul, .reveal ol {
-  max-width: 90%;
-  margin-left: 0 !important;
-  padding-left: 1.5em !important;
-  list-style-type: none;
-  margin-bottom: 0.3em !important;
-}
-
-/* Add spacing between list items for better readability */
-.reveal ul li, .reveal ol li {
-  margin-bottom: 0.3em !important;
-}
-
-.reveal ul li:last-child, .reveal ol li:last-child {
-  margin-bottom: 0 !important;
-}
-
-.reveal ul li::before {
-  content: "▸";
-  color: #666666;
-  font-weight: 400;
-  display: inline-block;
-  width: 1em;
-  margin-left: -1em;
-}
-
-/* Code blocks sizing - Full Width Optimized with Overflow Prevention */
-.reveal pre {
-  font-size: 1.0em !important;
-  width: 95% !important;
-  max-height: calc(100vh - 200px); /* Use full available screen height */
-  max-width: 100% !important; /* Prevent horizontal overflow */
-  overflow-x: auto !important; /* Allow horizontal scrolling if needed */
-  overflow-y: auto !important; /* Allow vertical scrolling if needed */
-  white-space: pre-wrap !important; /* Wrap long lines */
-  word-wrap: break-word !important; /* Break long words */
-  background: #2d3748 !important; /* Dark background for better contrast */
-  color: #e2e8f0 !important; /* Light text for contrast */
-  border: 1px solid #4a5568; /* Subtle darker border */
-  width: 88% !important; /* Use most of screen width */
-  margin-left: auto !important;
-  margin-right: auto !important;
-  border-radius: 8px !important;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
-  box-sizing: border-box !important;
-}
-
-.reveal pre code {
-  font-size: 1.0em !important;
-  line-height: 1.3 !important;
-  font-family: 'Monaco', 'Menlo', 'Consolas', monospace !important;
-  color: #e2e8f0 !important;
-  background: transparent !important;
-  padding: 0 !important;
-  max-width: 100% !important;
-  overflow-x: auto !important;
-  white-space: pre-wrap !important;
-  word-wrap: break-word !important;
-}
-
-.reveal code {
-  font-size: 1.0em !important; /* Consistent with code blocks */
-  background: #f0f0f0 !important;
-  color: #d73a49 !important;
-  padding: 0.1em 0.3em !important;
-  border-radius: 3px !important;
-}
-
-.reveal .two-column {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-}
-
-.reveal .two-column > div {
-  flex: 1;
-}
-
-.workshop-header {
-  text-align: center;
-  background: #ffffff;
-  color: #333;
-  padding: 75px; /* Scaled for FHD (40px * 1.875) */
-  margin: -38px; /* Scaled for FHD (-20px * 1.875) */
-  border-radius: 15px; /* Scaled for FHD (8px * 1.875) */
-}
-
-.workshop-header h1,
-.workshop-header h2 {
-  color: #333;
-  text-shadow: none;
-}
-
-/* Hide reveal.js built-in notes */
-.reveal .notes,
-.reveal aside.notes,
-.reveal .speaker-notes {
-  display: none !important;
-}
-
-/* Hide any element with "notes" class */
-.notes, 
-.speaker-notes,
-.presentation-notes {
-  display: none !important;
-}
-
-/* More aggressive hiding of Note: content */
-.reveal .slides section p:first-child {
-  /* Check if this paragraph starts with Note: and hide it */
-}
-
-/* Hide elements marked with class="notes" */
-.element.notes {
-  display: none !important;
-}
-
-/* CRITICAL: Hide speaker notes patterns - enhanced selector */
-/* Hide any paragraph starting with "Note:" and following content until next section */
-.reveal .slides section p:first-line:contains("Note:") {
-  display: none !important;
-}
-
-/* Hide content that comes after "Note:" on slides */
-.reveal .slides section p + ul,
-.reveal .slides section p + ol {
-  /* Only hide lists that follow paragraphs starting with Note: */
-}
-
-/* More aggressive approach: hide all speaker note blocks */
-.reveal .slides section *:has(+ *[class*="notes"]),
-.reveal .slides section *[class*="notes"] + *,
-.reveal .slides section *[class*="notes"] {
-  display: none !important;
-}
-
-/* Target specific speaker notes pattern: Note: followed by list */
-.reveal .slides section {
-  /* JS will need to handle the Note: + list pattern */
-}
-
-/* VanillaCore Logo Styling - Option 1: Small logo in top-right corner */
-.vanilla-logo {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  max-width: 80px;
-  max-height: calc(100vh - 200px);
-  z-index: 1000;
-  pointer-events: none;
-}
-
-/* SELECTED: Option 1 - Small logo in top-right corner for content slides */
-.reveal .slides section:not(.title-slide)::after {
-  content: '';
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  width: 80px;
-  height: 80px;
-  background-image: url('/images/VanillaCore_Vertical.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 1000;
-  pointer-events: none;
-  opacity: 0.8;
-}
-
-.vanilla-logo img {
-  width: 100%;
-  height: auto;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* Logo for title slides - centered in middle of slide */
-.title-slide .vanilla-logo {
-  max-width: 300px;
-  max-height: calc(100vh - 250px);
-  position: static;
-  display: block;
-  margin: 0 auto 60px auto;
-  text-align: center;
-}
-
-/* Remove corner logo from title slides */
-.title-slide::after {
-  display: none !important;
-}
-
-/* Center title slide content with logo above title */
-.title-slide {
-  text-align: center !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  padding: 60px 40px !important;
-  min-height: 100vh;
-}
-
-/* Style title slide headings to be centered below logo */
-.title-slide h1,
-.title-slide h2 {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 100% !important;
-}
-
-.title-slide h1 {
-  margin-top: 0 !important;
-  margin-bottom: 20px !important;
-  font-size: 3.6em !important; /* Increased by 20% for better readability */
-  font-weight: 600 !important;
-}
-
-.title-slide h2 {
-  margin-top: 0 !important;
-  margin-bottom: 40px !important;
-  font-size: 2.2em !important; /* Increased by 20% for better readability */
-  color: #555555 !important;
-  font-weight: 400 !important;
-}
-
-/* Subtle watermark for content slides */
-.content-slide::after {
-  content: "";
-  background-image: url('/images/VanillaCore_Vertical.png');
-  background-size: 80px;
-  background-repeat: no-repeat;
-  background-position: bottom 10px right 10px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0.1;
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Hide reveal.js progress bar and controls to remove orange box artifact */
-.reveal .progress {
-  display: none !important;
-}
-
-.reveal .controls {
-  display: none !important;
-}
-
-.reveal .fragment {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
-}
-
-.reveal .fragment.visible {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.3s ease;
+.reveal blockquote {
+  font-size: 22px;
+  font-style: italic;
 }
 </style>
 
@@ -447,7 +139,6 @@ slideOptions:
 <div class="interactive-question">
 <strong>Was ist für Sie Software-Architektur?<br>
 3 Begriffe oder Sätze!</strong>
-</div>
 
 ### Typische Antworten:
 <!-- .element: class="fragment" data-fragment-index="1" -->
@@ -466,9 +157,7 @@ Note: Sammeln auf Flipchart oder Chat, nicht bewerten. Diese Antworten sind alle
 
 ## Definition 1: IEEE 1471
 
-<div class="pattern-definition">
 <strong>Architecture is the fundamental organization of a system, embodied in its components, their relationships to each other and to the environment, and the principles governing its design and evolution.</strong>
-</div>
 
 **Auf Deutsch:** Software-Architektur ist die grundlegende Organisation eines Systems, verkörpert durch seine Komponenten, deren Beziehungen zueinander und zur Umgebung, sowie die Prinzipien für Design und Evolution.
 
@@ -476,9 +165,7 @@ Note: Sammeln auf Flipchart oder Chat, nicht bewerten. Diese Antworten sind alle
 
 ## Definition 2: Martin Fowler
 
-<div class="pattern-definition">
 <strong>Architecture is about the important stuff. Whatever that is.</strong>
-</div>
 
 **Bedeutung:** Architektur befasst sich mit den wichtigen Entscheidungen - aber was wichtig ist, hängt vom Kontext ab.
 
@@ -486,9 +173,7 @@ Note: Sammeln auf Flipchart oder Chat, nicht bewerten. Diese Antworten sind alle
 
 ## Definition 3: Grady Booch
 
-<div class="pattern-definition">
 <strong>Architecture represents the significant design decisions that shape a system, where significant is measured by cost of change.</strong>
-</div>
 
 **Bedeutung:** Architektur umfasst die wichtigen Design-Entscheidungen - wichtig sind die, die später schwer zu ändern sind.
 
@@ -496,9 +181,7 @@ Note: Sammeln auf Flipchart oder Chat, nicht bewerten. Diese Antworten sind alle
 
 ## Definition 4: Simon Brown
 
-<div class="pattern-definition">
 <strong>Software architecture is about structure and vision, creating a shared understanding of the software being built.</strong>
-</div>
 
 **Bedeutung:** Software-Architektur schafft Struktur und Vision für ein gemeinsames Verständnis.
 
@@ -521,7 +204,6 @@ Note: Diese fünf Punkte ergeben sich aus den verschiedenen Definitionen. Betone
 
 <div class="highlight-box accent">
 <strong>Software-Architektur ist die Kunst, wichtige Designentscheidungen zu treffen, die die Struktur, das Verhalten und die Evolution eines Systems bestimmen - mit dem Ziel, fachliche Anforderungen optimal zu erfüllen.</strong>
-</div>
 
 ---
 
@@ -579,7 +261,6 @@ Note: Lassen Sie 2-3 Teilnehmer antworten. Diese Fragen leiten über zu Clean Co
 <div class="interactive-question">
 <strong>Analogie: Beschreiben Sie ein sauberes Büro.<br>
 Was macht es sauber?</strong>
-</div>
 
 ### Typische Antworten:
 <!-- .element: class="fragment" data-fragment-index="1" -->
@@ -596,9 +277,7 @@ Note: Diese Analogie hilft beim Verstehen von Clean Code. Sammeln Sie die Antwor
 
 ## Clean Code nach Robert C. Martin
 
-<div class="pattern-definition">
 <strong>"Clean code is code that has been taken care of. Someone has taken the time to keep it simple and orderly."</strong>
-</div>
 
 Note: Betonen Sie "taken care of" - jemand hat sich Mühe gegeben. Clean Code ist nicht automatisch entstanden, sondern das Ergebnis bewusster Arbeit. Uncle Bob ist Robert C. Martin, einer der einflussreichsten Softwareentwickler.
 
@@ -608,7 +287,6 @@ Note: Betonen Sie "taken care of" - jemand hat sich Mühe gegeben. Clean Code is
 
 ### 1. Lesbarkeit vor Cleverness
 
-<div class="code-example">
 <h5>Beispiel: Variable Namen</h5>
 <pre><code>❌ SCHLECHT: int d; // elapsed time in days
 ✅ GUT:     int elapsedTimeInDays;
@@ -638,7 +316,6 @@ Note: Betonen Sie "taken care of" - jemand hat sich Mühe gegeben. Clean Code is
 
 ## 4. Selbstdokumentierender Code
 
-<div class="code-example">
 <h5>Kommentare vermeiden</h5>
 <pre><code>❌ SCHLECHT: 
 // Check if employee is eligible for bonus
@@ -662,9 +339,10 @@ if (employee.isEligibleForBonus())</code></pre>
 
 ### Das "Clever Code" Anti-Pattern
 
-<div class="code-example">
-<h5>Clever vs. Lesbar</h5>
-<pre><code>// Clever, aber unleserlich:
+#### Clever vs. Lesbar
+
+```java
+// Clever, aber unleserlich:
 return condition ? value1 : condition2 ? value2 : condition3 ? value3 : defaultValue;
 
 // Lesbar und verständlich:
@@ -677,8 +355,8 @@ if (isRegularCustomer()) {
 if (isTrialCustomer()) {
     return BASIC_SERVICE_LEVEL;
 }
-return DEFAULT_SERVICE_LEVEL;</code></pre>
-</div>
+return DEFAULT_SERVICE_LEVEL;
+```
 
 ---
 
@@ -694,14 +372,14 @@ return DEFAULT_SERVICE_LEVEL;</code></pre>
 ## Wartbarkeit als Ziel
 
 ### Software-Lebenszyklus in der Praxis:
-* **Entwicklung**: 20% der Gesamtkosten <!-- .element: class="fragment" data-fragment-index="1" -->
-* **Wartung**: 80% der Gesamtkosten
+* **Entwicklung** - 20% der Gesamtkosten <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Wartung** - 80% der Gesamtkosten <!-- .element: class="fragment" data-fragment-index="2" -->
 
 ### Wartbarkeits-Faktoren:
-1. **Verständlichkeit**: Kann ich verstehen, was der Code macht?
-2. **Änderbarkeit**: Kann ich sicher Änderungen vornehmen?
-3. **Testbarkeit**: Kann ich das Verhalten überprüfen?
-4. **Wiederverwendbarkeit**: Kann ich Teile in anderen Kontexten nutzen?
+1. **Verständlichkeit** - Kann ich verstehen, was der Code macht? <!-- .element: class="fragment" data-fragment-index="3" -->
+2. **Änderbarkeit** - Kann ich sicher Änderungen vornehmen? <!-- .element: class="fragment" data-fragment-index="4" -->
+3. **Testbarkeit** - Kann ich das Verhalten überprüfen? <!-- .element: class="fragment" data-fragment-index="5" -->
+4. **Wiederverwendbarkeit** - Kann ich Teile in anderen Kontexten nutzen? <!-- .element: class="fragment" data-fragment-index="6" -->
 
 ### Enterprise-Beispiel:
 Legacy-Systeme mit Millionen Zeilen undokumentiertem Code verursachen hohe Wartungskosten, weil jede kleine Änderung Wochen dauert und risikoreich ist.
@@ -732,15 +410,15 @@ Legacy-Systeme mit Millionen Zeilen undokumentiertem Code verursachen hohe Wartu
 ---
 
 ### Praktische Auswirkungen:
-* **Zinsen**: Jede Änderung dauert länger <!-- .element: class="fragment" data-fragment-index="1" -->
-* **Hauptsumme**: Aufwand für Refactoring <!-- .element: class="fragment" data-fragment-index="2" -->
-* **Insolvenz**: System nicht mehr wartbar
+* **Zinsen** - Jede Änderung dauert länger <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Hauptsumme** - Aufwand für Refactoring <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Insolvenz** - System nicht mehr wartbar <!-- .element: class="fragment" data-fragment-index="3" -->
 
 ### Schulden-Management:
-1. **Sichtbar machen**: Technische Schulden dokumentieren
-2. **Priorisieren**: Welche Schulden kosten am meisten?
-3. **Kontinuierlich abbauen**: Boy Scout Rule
-4. **Neue Schulden vermeiden**: Code Reviews, Standards
+1. **Sichtbar machen** - Technische Schulden dokumentieren <!-- .element: class="fragment" data-fragment-index="4" -->
+2. **Priorisieren** - Welche Schulden kosten am meisten? <!-- .element: class="fragment" data-fragment-index="5" -->
+3. **Kontinuierlich abbauen** - Boy Scout Rule <!-- .element: class="fragment" data-fragment-index="6" -->
+4. **Neue Schulden vermeiden** - Code Reviews, Standards <!-- .element: class="fragment" data-fragment-index="7" -->
 
 ---
 
@@ -790,17 +468,16 @@ Wie hätten Sie diese Entscheidungen anders angegangen?
 <div class="interactive-question">
 <strong>Kennen Sie solche Aussagen?<br>
 Was war das Ergebnis?</strong>
-</div>
 
 Note: Lassen Sie 2-3 Teilnehmer ihre Erfahrungen teilen. Oft kommen hier Geschichten von gescheiterten Microservice-Einführungen oder überkomplexen Architekturen heraus. Diese Erfahrungen sind wertvoll für die weiteren Beispiele.
 
 ---
 
 ### Technology-First Symptome:
-* **Hype-Driven Development**: "Das ist modern, das machen wir auch" <!-- .element: class="fragment" data-fragment-index="1" -->
-* **Solution looking for a problem**: "Wir haben Kafka, jetzt brauchen wir Events" <!-- .element: class="fragment" data-fragment-index="2" -->
-* **Architecture Astronauts**: Komplexe Lösungen für einfache Probleme <!-- .element: class="fragment" data-fragment-index="3" -->
-* **Over-Engineering**: 20 Services für 5 Use Cases <!-- .element: class="fragment" data-fragment-index="4" -->
+* **Hype-Driven Development** - "Das ist modern, das machen wir auch" <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Solution looking for a problem** - "Wir haben Kafka, jetzt brauchen wir Events" <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Architecture Astronauts** - Komplexe Lösungen für einfache Probleme <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Over-Engineering** - 20 Services für 5 Use Cases <!-- .element: class="fragment" data-fragment-index="4" -->
 
 Note: Diese Symptome sind sehr häufig. "Architecture Astronauts" ist ein Begriff von Joel Spolsky für Entwickler, die nur in abstrakten Konzepten denken. Fragen Sie nach konkreten Beispielen aus den Projekten der Teilnehmer.
 
@@ -987,9 +664,7 @@ Note: Diese Gründe sind menschlich verständlich, aber gefährlich für Projekt
 **1977 - "A Pattern Language"** - Nicht Software, sondern Gebäude-Architektur!
 
 #### Alexanders Erkenntnis:
-<div class="pattern-definition">
 <strong>"Each pattern describes a problem which occurs over and over again in our environment, and then describes the core of the solution to that problem, in such a way that you can use this solution a million times over, without ever doing it the same way twice."</strong>
-</div>
 
 Note: Das ist die Ursprungsdefinition von Patterns! Alexander war Gebäude-Architekt, kein Software-Architekt. Seine Patterns beschreiben z.B. "Wie gestalte ich einen öffentlichen Platz, damit Menschen sich gerne dort aufhalten." Die Übertragung auf Software war genial.
 
@@ -1068,11 +743,11 @@ aber die Entscheidung welche Klasse zur Laufzeit trifft..."
 Patterns kodifizieren gutes objektorientierten Design.
 
 #### Die SOLID-Prinzipien in Patterns:
-* **Single Responsibility**: Command Pattern <!-- .element: class="fragment" data-fragment-index="1" -->
-* **Open/Closed**: Strategy Pattern   <!-- .element: class="fragment" data-fragment-index="2" -->
-* **Liskov Substitution**: Template Method <!-- .element: class="fragment" data-fragment-index="3" -->
-* **Interface Segregation**: Adapter Pattern <!-- .element: class="fragment" data-fragment-index="4" -->
-* **Dependency Inversion**: Abstract Factory
+* **Single Responsibility** - Command Pattern <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Open/Closed** - Strategy Pattern   <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Liskov Substitution** - Template Method <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Interface Segregation** - Adapter Pattern <!-- .element: class="fragment" data-fragment-index="4" -->
+* **Dependency Inversion** - Abstract Factory <!-- .element: class="fragment" data-fragment-index="5" -->
 
 ---
 
@@ -1080,24 +755,24 @@ Patterns kodifizieren gutes objektorientierten Design.
 Bekannte Patterns sind einfacher zu verstehen und zu ändern.
 
 #### Vorteile für die Wartung:
-* **Vorhersagbare Struktur**: Entwickler wissen, wo sie suchen müssen <!-- .element: class="fragment" data-fragment-index="1" -->
-* **Dokumentierte Intentionen**: Pattern-Name erklärt die Absicht <!-- .element: class="fragment" data-fragment-index="2" -->
-* **Erprobte Erweiterungspunkte**: Patterns zeigen, wo Änderungen sicher sind
+* **Vorhersagbare Struktur** - Entwickler wissen, wo sie suchen müssen <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Dokumentierte Intentionen** - Pattern-Name erklärt die Absicht <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Erprobte Erweiterungspunkte** - Patterns zeigen, wo Änderungen sicher sind <!-- .element: class="fragment" data-fragment-index="3" -->
 
 ---
 
 ## Patterns sind NICHT...
 
 ### Was Patterns NICHT sind:
-1. **Silberkugeln**: Patterns lösen nicht alle Probleme
-2. **Dogmen**: Patterns müssen nicht sklavisch befolgt werden
-3. **Komplexität um der Komplexität willen**: Einfache Probleme brauchen einfache Lösungen
-4. **Copy-Paste Code**: Patterns sind konzeptuelle Lösungen, nicht Code-Snippets
+1. **Silberkugeln** - Patterns lösen nicht alle Probleme <!-- .element: class="fragment" data-fragment-index="1" -->
+2. **Dogmen** - Patterns müssen nicht sklavisch befolgt werden <!-- .element: class="fragment" data-fragment-index="2" -->
+3. **Komplexität um der Komplexität willen** - Einfache Probleme brauchen einfache Lösungen <!-- .element: class="fragment" data-fragment-index="3" -->
+4. **Copy-Paste Code** - Patterns sind konzeptuelle Lösungen, nicht Code-Snippets <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ### Pattern-Missbrauch vermeiden:
-* **Golden Hammer**: "Ich habe einen Hammer, alles sieht aus wie ein Nagel" <!-- .element: class="fragment" data-fragment-index="1" -->
-* **Pattern Overload**: 20 Patterns für 5 Klassen <!-- .element: class="fragment" data-fragment-index="2" -->
-* **Premature Patterning**: Patterns einsetzen bevor das Problem klar ist
+* **Golden Hammer** - "Ich habe einen Hammer, alles sieht aus wie ein Nagel" <!-- .element: class="fragment" data-fragment-index="5" -->
+* **Pattern Overload** - 20 Patterns für 5 Klassen <!-- .element: class="fragment" data-fragment-index="6" -->
+* **Premature Patterning** - Patterns einsetzen bevor das Problem klar ist <!-- .element: class="fragment" data-fragment-index="7" -->
 
 ---
 
@@ -1139,10 +814,10 @@ GUT: Mit Patterns: "Das ist MVC mit Observer für Events und Factory für Servic
 ```
 
 ### Enterprise-Vorteile:
-* **Internationale Teams**: Patterns sind sprachunabhängig <!-- .element: class="fragment" data-fragment-index="1" -->
-* **Verschiedene Abteilungen**: Einheitliches Verständnis <!-- .element: class="fragment" data-fragment-index="2" -->
-* **Externe Dienstleister**: Schnelle Einarbeitung <!-- .element: class="fragment" data-fragment-index="3" -->
-* **Dokumentation**: Kompakte, präzise Beschreibungen
+* **Internationale Teams** - Patterns sind sprachunabhängig <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Verschiedene Abteilungen** - Einheitliches Verständnis <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Externe Dienstleister** - Schnelle Einarbeitung <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Dokumentation** - Kompakte, präzise Beschreibungen <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
@@ -1206,10 +881,8 @@ GUT: Mit Patterns: "Das ist MVC mit Observer für Events und Factory für Servic
 > *"Try and leave this world a little better than you found it."*
 
 ### Übertragung auf Software nach Uncle Bob:
-<div class="pattern-definition">
 <strong>"Always leave the campground cleaner than you found it."</strong><br><br>
 <strong>"Always check a module in cleaner than when you checked it out."</strong>
-</div>
 
 Note: Die Boy Scout Rule ist ein Kernprinzip für kontinuierliche Qualitätsverbesserung. Uncle Bob (Robert C. Martin) hat diese Regel aus dem Pfadfindertum auf Software übertragen. Es geht nicht um perfekten Code, sondern um kontinuierliche kleine Verbesserungen.
 
@@ -1237,7 +910,6 @@ Kommentare durch self-documenting code ersetzen
 
 ### Praktisches Beispiel:
 
-<div class="code-example">
 <h5>Situation: Bug-Fix in alter Service-Klasse</h5>
 
 **Vor Boy Scout Rule:**
@@ -1292,10 +964,10 @@ Note: Das ist ein sehr realistisches Beispiel. Betonen Sie, dass es nur 5-10 Min
 * "Make the change easy, then make the easy change"
 
 ### Gute Refactoring-Gelegenheiten:
-* **Sprint Planning**: "Diese Story braucht Refactoring" <!-- .element: class="fragment" data-fragment-index="3" -->
-* **Bug-Fixing**: Immer mit Boy Scout Rule kombinieren <!-- .element: class="fragment" data-fragment-index="4" -->
-* **Code Reviews**: Verbesserungen vorschlagen und umsetzen <!-- .element: class="fragment" data-fragment-index="5" -->
-* **Technische Stories**: Dedicated Refactoring
+* **Sprint Planning** - "Diese Story braucht Refactoring" <!-- .element: class="fragment" data-fragment-index="4" -->
+* **Bug-Fixing** - Immer mit Boy Scout Rule kombinieren <!-- .element: class="fragment" data-fragment-index="5" -->
+* **Code Reviews** - Verbesserungen vorschlagen und umsetzen <!-- .element: class="fragment" data-fragment-index="6" -->
+* **Technische Stories** - Dedicated Refactoring <!-- .element: class="fragment" data-fragment-index="7" -->
 
 ---
 
@@ -1404,7 +1076,6 @@ if (customer.getOrderCount() > PREMIUM_CUSTOMER_THRESHOLD) { ... }
 ### Wichtige Erkenntnis:
 <div class="highlight-box warning">
 <strong>Patterns werden durch Refactoring eingeführt, nicht von Anfang an geplant!</strong>
-</div>
 
 Note: Das ist eine der wichtigsten Botschaften des gesamten Workshops! Viele Entwickler versuchen, Patterns von Anfang an zu planen, aber das führt oft zu Over-Engineering. Patterns entstehen natürlich durch evolutionäre Verbesserung des Codes.
 
@@ -1413,17 +1084,17 @@ Note: Das ist eine der wichtigsten Botschaften des gesamten Workshops! Viele Ent
 ## Refactoring-Fallen vermeiden
 
 ### Häufige Fehler:
-1. **Big Bang Refactoring**: Alles auf einmal ändern
-2. **Refactoring ohne Tests**: Kein Sicherheitsnetz
-3. **Perfectionism**: Endlos optimieren
-4. **Wrong Context**: Refactoring unter Druck
-5. **Changing Behavior**: Versehentlich Verhalten ändern
+1. **Big Bang Refactoring** - Alles auf einmal ändern <!-- .element: class="fragment" data-fragment-index="1" -->
+2. **Refactoring ohne Tests** - Kein Sicherheitsnetz <!-- .element: class="fragment" data-fragment-index="2" -->
+3. **Perfectionism** - Endlos optimieren <!-- .element: class="fragment" data-fragment-index="3" -->
+4. **Wrong Context** - Refactoring unter Druck <!-- .element: class="fragment" data-fragment-index="4" -->
+5. **Changing Behavior** - Versehentlich Verhalten ändern <!-- .element: class="fragment" data-fragment-index="5" -->
 
 ### Enterprise-Kontext:
-* **Legacy Systems**: Extra vorsichtig, mehr Tests <!-- .element: class="fragment" data-fragment-index="1" -->
-* **Live Systems**: Graduelle Änderungen <!-- .element: class="fragment" data-fragment-index="2" -->
-* **Compliance**: Dokumentation der Änderungen <!-- .element: class="fragment" data-fragment-index="3" -->
-* **Team Size**: Koordination bei großen Teams
+* **Legacy Systems** - Extra vorsichtig, mehr Tests <!-- .element: class="fragment" data-fragment-index="6" -->
+* **Live Systems** - Graduelle Änderungen <!-- .element: class="fragment" data-fragment-index="7" -->
+* **Compliance** - Dokumentation der Änderungen <!-- .element: class="fragment" data-fragment-index="8" -->
+* **Team Size** - Koordination bei großen Teams <!-- .element: class="fragment" data-fragment-index="9" -->
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-<!-- Version: 1.2.0-font-fix -->
+<!-- Version: 1.3.0-headlines-fix -->
 type: slide
 title: Software-Architektur - Strukturmuster
 description: Strukturmuster in der Praxis - Adapter, Decorator, Facade, Composite, Proxy
@@ -25,379 +25,53 @@ slideOptions:
 ---
 
 <style>
-/* HedgeDoc Presentation Styles */
-.reveal {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 300;
-}
-
-/* Critical: Fix content overflow and enforce left alignment */
+/* Minimal HedgeDoc Presentation Styles */
 .reveal .slides {
-  font-size: 26px !important; /* Increased by 20% for better readability (22px * 1.20) */
-  line-height: 1.3 !important;
+  font-size: 1.4rem;
+  text-align: left;
 }
 
-/* Override reveal.js center alignment - force left alignment for all content */
-.reveal .slides section,
-.reveal .slides section > *,
-.reveal .center {
-  text-align: left !important;
+.reveal h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+  border-bottom: 2px solid #666;
+}
+
+.reveal h2 {
+  font-size: 1.8em;
+  margin: 0.5em 0;
+}
+
+.reveal h3 {
+  font-size: 1.3em;
+  margin: 0.5em 0;
+}
+
+.reveal pre {
+  width: 100%;
+  min-height: 400px;
+  max-height: 70vh;
+  font-size: 0.9em;
+}
+
+.reveal pre code {
+  max-height: 70vh;
+  min-height: 400px;
+  padding: 1em;
+}
+
+.reveal ul, .reveal ol {
+  margin-left: 1em;
+}
+
+.reveal li {
+  margin: 0.3em 0;
 }
 
 .reveal .slides section {
   height: 100%;
-  width: 100%;
-  max-width: 100vw;
-  overflow-y: auto !important; /* Allow scrolling if needed */
-  overflow-x: hidden;
-  padding: 20px 25px 25px 25px !important; /* Reduce top padding to move content up */
-  box-sizing: border-box;
-  text-align: left !important; /* Ensure all content is left-aligned */
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important; /* Move content to top */
-}
-
-.reveal h1 {
-  font-size: 3.6em !important; /* Increased by 20% for better readability */
-  color: #2c2c2c;
-  font-weight: 700 !important; /* Bolder weight for more prominence */
+  padding: 1rem;
   text-align: left !important;
-  margin-top: 0.8em !important;
-  margin-bottom: 0.5em !important; /* More spacing below headline */
-  border-bottom: 3px solid #666666 !important; /* Visual separator */
-  padding-bottom: 0.2em !important; /* Padding above border */
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h1:first-child {
-  margin-top: 0 !important;
-}
-
-.reveal h2 {
-  font-size: 2.2em !important;
-  color: #2c2c2c !important;
-  font-weight: normal !important;
-  text-align: left !important;
-  margin-top: 0.8em !important;
-  margin-bottom: 0.4em !important;
-  width: 100% !important;
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h2:first-child {
-  margin-top: 0 !important;
-}
-
-.reveal h3 {
-  font-size: 1.6em !important; /* Increased by 20% for better readability */
-  font-weight: 400 !important;
-  text-align: left !important;
-  margin-top: 0.6em !important;
-  margin-bottom: 0.3em !important;
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h3:first-child {
-  margin-top: 0 !important;
-}
-
-.reveal h4, .reveal h5, .reveal h6 {
-  font-weight: 400 !important;
-  text-align: left !important;
-  margin-top: 0.5em !important;
-  margin-bottom: 0.3em !important;
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h4:first-child,
-.reveal .slides section > h5:first-child,
-.reveal .slides section > h6:first-child {
-  margin-top: 0 !important;
-}
-
-.reveal p, .reveal li {
-  font-size: 1.4em !important;
-  font-weight: 300 !important;
-  text-align: left !important;
-}
-
-/* Add proper paragraph spacing */
-.reveal p {
-  margin-bottom: 0.3em !important;
-}
-
-/* Prevent text from being too large */
-.reveal .slides {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-/* Lists should not overflow */
-.reveal ul, .reveal ol {
-  max-width: 90%;
-  margin-left: 0 !important;
-  padding-left: 1.5em !important;
-  list-style-type: none;
-  margin-bottom: 0.3em !important;
-}
-
-/* Add spacing between list items for better readability */
-.reveal ul li, .reveal ol li {
-  margin-bottom: 0.3em !important;
-}
-
-.reveal ul li:last-child, .reveal ol li:last-child {
-  margin-bottom: 0 !important;
-}
-
-.reveal ul li::before {
-  content: "▸";
-  color: #666666;
-  font-weight: 400;
-  display: inline-block;
-  width: 1em;
-  margin-left: -1em;
-}
-
-/* Code blocks sizing - Full Width Optimized with Overflow Prevention */
-.reveal pre {
-  font-size: 1.0em !important;
-  width: 95% !important;
-  max-height: calc(100vh - 200px); /* Use full available screen height */
-  max-width: 100% !important; /* Prevent horizontal overflow */
-  overflow-x: auto !important; /* Allow horizontal scrolling if needed */
-  overflow-y: auto !important; /* Allow vertical scrolling if needed */
-  white-space: pre-wrap !important; /* Wrap long lines */
-  word-wrap: break-word !important; /* Break long words */
-  background: #2d3748 !important; /* Dark background for better contrast */
-  color: #e2e8f0 !important; /* Light text for contrast */
-  border: 1px solid #4a5568; /* Subtle darker border */
-  width: 88% !important; /* Use most of screen width */
-  margin-left: auto !important;
-  margin-right: auto !important;
-  border-radius: 8px !important;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
-  box-sizing: border-box !important;
-}
-
-.reveal pre code {
-  font-size: 1.0em !important;
-  line-height: 1.3 !important;
-  font-family: 'Monaco', 'Menlo', 'Consolas', monospace !important;
-  color: #e2e8f0 !important;
-  background: transparent !important;
-  padding: 0 !important;
-  max-width: 100% !important;
-  overflow-x: auto !important;
-  white-space: pre-wrap !important;
-  word-wrap: break-word !important;
-}
-
-.reveal code {
-  font-size: 1.0em !important; /* Consistent with code blocks */
-  background: #f0f0f0 !important;
-  color: #d73a49 !important;
-  padding: 0.1em 0.3em !important;
-  border-radius: 3px !important;
-}
-
-.reveal .two-column {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-}
-
-.reveal .two-column > div {
-  flex: 1;
-}
-
-.workshop-header {
-  text-align: center;
-  background: #ffffff;
-  color: #333;
-  padding: 75px; /* Scaled for FHD (40px * 1.875) */
-  margin: -38px; /* Scaled for FHD (-20px * 1.875) */
-  border-radius: 15px; /* Scaled for FHD (8px * 1.875) */
-}
-
-.workshop-header h1,
-.workshop-header h2 {
-  color: #333;
-  text-shadow: none;
-}
-
-/* Hide reveal.js built-in notes */
-.reveal .notes,
-.reveal aside.notes,
-.reveal .speaker-notes {
-  display: none !important;
-}
-
-/* Hide any element with "notes" class */
-.notes, 
-.speaker-notes,
-.presentation-notes {
-  display: none !important;
-}
-
-/* More aggressive hiding of Note: content */
-.reveal .slides section p:first-child {
-  /* Check if this paragraph starts with Note: and hide it */
-}
-
-/* Hide elements marked with class="notes" */
-.element.notes {
-  display: none !important;
-}
-
-/* CRITICAL: Hide speaker notes patterns - enhanced selector */
-/* Hide any paragraph starting with "Note:" and following content until next section */
-.reveal .slides section p:first-line:contains("Note:") {
-  display: none !important;
-}
-
-/* Hide content that comes after "Note:" on slides */
-.reveal .slides section p + ul,
-.reveal .slides section p + ol {
-  /* Only hide lists that follow paragraphs starting with Note: */
-}
-
-/* More aggressive approach: hide all speaker note blocks */
-.reveal .slides section *:has(+ *[class*="notes"]),
-.reveal .slides section *[class*="notes"] + *,
-.reveal .slides section *[class*="notes"] {
-  display: none !important;
-}
-
-/* Target specific speaker notes pattern: Note: followed by list */
-.reveal .slides section {
-  /* JS will need to handle the Note: + list pattern */
-}
-
-/* VanillaCore Logo Styling - Option 1: Small logo in top-right corner */
-.vanilla-logo {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  max-width: 80px;
-  max-height: calc(100vh - 200px);
-  z-index: 1000;
-  pointer-events: none;
-}
-
-/* SELECTED: Option 1 - Small logo in top-right corner for content slides */
-.reveal .slides section:not(.title-slide)::after {
-  content: '';
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  width: 80px;
-  height: 80px;
-  background-image: url('/images/VanillaCore_Vertical.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 1000;
-  pointer-events: none;
-  opacity: 0.8;
-}
-
-.vanilla-logo img {
-  width: 100%;
-  height: auto;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* Logo for title slides - centered in middle of slide */
-.title-slide .vanilla-logo {
-  max-width: 300px;
-  max-height: calc(100vh - 250px);
-  position: static;
-  display: block;
-  margin: 0 auto 60px auto;
-  text-align: center;
-}
-
-/* Remove corner logo from title slides */
-.title-slide::after {
-  display: none !important;
-}
-
-/* Center title slide content with logo above title */
-.title-slide {
-  text-align: center !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  padding: 60px 40px !important;
-  min-height: 100vh;
-}
-
-/* Style title slide headings to be centered below logo */
-.title-slide h1,
-.title-slide h2 {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 100% !important;
-}
-
-.title-slide h1 {
-  margin-top: 0 !important;
-  margin-bottom: 20px !important;
-  font-size: 2.88em !important; /* Increased by 20% (2.4em * 1.20) */
-  font-weight: 600 !important;
-}
-
-.title-slide h2 {
-  margin-top: 0 !important;
-  margin-bottom: 40px !important;
-  font-size: 2.16em !important; /* Increased by 20% (1.8em * 1.20) */
-  color: #555555 !important;
-  font-weight: 400 !important;
-}
-
-/* Subtle watermark for content slides */
-.content-slide::after {
-  content: "";
-  background-image: url('/images/VanillaCore_Vertical.png');
-  background-size: 80px;
-  background-repeat: no-repeat;
-  background-position: bottom 10px right 10px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0.1;
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Hide reveal.js progress bar and controls to remove orange box artifact */
-.reveal .progress {
-  display: none !important;
-}
-
-.reveal .controls {
-  display: none !important;
-}
-
-.reveal .fragment {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
-}
-
-.reveal .fragment.visible {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.3s ease;
 }
 </style>
 
@@ -433,19 +107,10 @@ Note:
 
 * **Strukturmuster Übersicht** - Adapter, Decorator, Facade
 
-<!-- .element: class="fragment" data-fragment-index="1" -->
-* **Erweiterte Strukturmuster** - Composite, Proxy
-
-<!-- .element: class="fragment" data-fragment-index="2" -->
-* **Enterprise Patterns** - Reale Anwendungsbeispiele
-
-<!-- .element: class="fragment" data-fragment-index="3" -->
-* **Praktische Anwendung** - Code-Analyse und Refactoring
-
-<!-- .element: class="fragment" data-fragment-index="4" -->
-* **Best Practices** - Enterprise spezifische Anwendungen
-
-<!-- .element: class="fragment" data-fragment-index="5" --> 
+* **Erweiterte Strukturmuster** - Composite, Proxy <!-- .element: class="fragment" data-fragment-index="1" -->
+* **Enterprise Patterns** - Reale Anwendungsbeispiele <!-- .element: class="fragment" data-fragment-index="2" -->
+* **Praktische Anwendung** - Code-Analyse und Refactoring <!-- .element: class="fragment" data-fragment-index="3" -->
+* **Best Practices** - Enterprise spezifische Anwendungen <!-- .element: class="fragment" data-fragment-index="4" --> 
 
 Note:
 * Verwenden Sie Service Enhancement Pipeline als Motivation für Decorator Pattern
@@ -459,16 +124,12 @@ Note:
 
 # Wiederholung: Strukturmuster
 
-<div class="pattern-definition">
-
 #### Strukturmuster
 **Intent**: Beschäftigen sich mit der Komposition von Klassen und Objekten für flexible und wartbare Architekturen.
 
 **Problem**: Komplexe Systeme benötigen elegante Wege zur Objektkomposition und Interface-Harmonisierung.
 
 **Solution**: Bewährte Patterns für Objektzusammensetzung, Interface-Anpassung und Komplexitätsreduktion.
-
-</div>
 
 * **Objekte kombinieren** - Funktionalität durch Zusammensetzung
 
@@ -494,16 +155,10 @@ Note:
 
 ## Was ist hier falsch?
 
-<div class="problem-highlight">
-
 #### Adapter Pattern Problem
 **Situation**: Eine typische Enterprise-Herausforderung: Verschiedene Systeme mit inkompatiblen Interfaces müssen zusammenarbeiten.
 
 **Was sehen Sie hier Problematisches?**
-
-</div>
-
-<div class="code-example">
 
 ```java
 public class BillingManager {
@@ -540,8 +195,6 @@ public class BillingManager {
 }
 ```
 
-</div>
-
 ---
 
 ## Identifizierte Code-Smells
@@ -557,16 +210,12 @@ public class BillingManager {
 
 ## Adapter Pattern - Die Lösung
 
-<div class="pattern-definition">
-
 #### Adapter Pattern
 **Intent**: Ermöglicht die Zusammenarbeit zwischen inkompatiblen Interfaces.
 
 **Problem**: Verschiedene APIs oder Legacy-Systeme haben unterschiedliche Schnittstellen.
 
 **Solution**: Ein Adapter übersetzt zwischen den verschiedenen Interfaces und macht sie kompatibel.
-
-</div>
 
 <div class="two-column">
 <div>
@@ -596,7 +245,6 @@ public class BillingManager {
 
 ## Lösung
 
-<div class="code-example">
 <h5>Enterprise Billing System Adapter</h5>
 
 ```typescript
@@ -668,16 +316,10 @@ const status = modernBilling.getInvoiceStatus(invoice.id);
 
 ## Was ist hier falsch?
 
-<div class="problem-highlight">
-
 #### Decorator Pattern Problem
 **Situation**: Cross-Cutting Concerns wie Logging, Security und Performance Monitoring führen zu einem Durcheinander wenn sie direkt in die Business-Logik eingebaut werden.
 
 **Was sehen Sie hier Problematisches?**
-
-</div>
-
-<div class="code-example">
 
 ```java
 public class CustomerService {
@@ -726,8 +368,6 @@ public class CustomerService {
 }
 ```
 
-</div>
-
 ---
 
 ## Identifizierte Code-Smells
@@ -743,16 +383,12 @@ public class CustomerService {
 
 ## Decorator Pattern - Die Lösung
 
-<div class="pattern-definition">
-
 #### Decorator Pattern
 **Intent**: Erweitert Objektfunktionalität dynamisch zur Laufzeit ohne die ursprüngliche Klasse zu ändern.
 
 **Problem**: Objekte benötigen zusätzliche Funktionalität, aber Vererbung ist zu starr oder nicht praktikabel.
 
 **Solution**: Wrapper-Objekte, die das ursprüngliche Interface implementieren und Funktionalität hinzufügen.
-
-</div>
 
 <div class="two-column">
 <div>
@@ -782,7 +418,6 @@ public class CustomerService {
 
 ## Lösung
 
-<div class="code-example">
 <h5>Enterprise Service Decoration für Cross-Cutting Concerns</h5>
 
 ```typescript
@@ -800,15 +435,12 @@ class SecurityDecorator extends ServiceDecorator {  processRequest(request: Serv
     return super.processRequest(request);  }  
   private validateToken(token: string): boolean {    // Enterprise token validation logic    return token.startsWith('enterprise_') && token.length > 10;  }}```
 
-</div>
-
 <!-- Speaker Notes: Notice how each decorator adds a single responsibility. We can combine them in any order and create different service configurations for different environments. -->
 
 ---
 
 # Decorator Pattern - Flexible Composition
 
-<div class="code-example">
 <h5>Flexible Service Composition</h5>
 
 ```typescript
@@ -828,8 +460,6 @@ customerService = new PerformanceDecorator(customerService);
 // Process request with all decorators
 const response = customerService.processRequest({  type: 'UPDATE_CUSTOMER_DATA',  token: 'enterprise_abc123456789',  customerId: '12345'});```
 
-</div>
-
 <div class="highlight-box success">
 **Execution Flow**: Basic Service → Performance → Security → Logging → Core Business Logic
 </div>
@@ -844,16 +474,10 @@ const response = customerService.processRequest({  type: 'UPDATE_CUSTOMER_DATA',
 
 ## Was ist hier falsch?
 
-<div class="problem-highlight">
-
 #### Facade Pattern Problem
 **Situation**: Clients müssen mit vielen verschiedenen Services und komplexen APIs interagieren, was zu unübersichtlichem und fehleranfälligem Code führt.
 
 **Was sehen Sie hier Problematisches?**
-
-</div>
-
-<div class="code-example">
 
 ```java
 public class CustomerController {
@@ -915,8 +539,6 @@ public class CustomerController {
 }
 ```
 
-</div>
-
 ---
 
 ## Identifizierte Code-Smells
@@ -932,16 +554,12 @@ public class CustomerController {
 
 ## Facade Pattern - Die Lösung
 
-<div class="pattern-definition">
-
 #### Facade Pattern
 **Intent**: Bietet eine vereinfachte Schnittstelle zu komplexen Subsystemen.
 
 **Problem**: Clients müssen mit vielen verschiedenen Klassen und komplexen APIs interagieren.
 
 **Solution**: Eine Facade-Klasse kapselt die Komplexität und bietet einfache, hochlevelige Operationen.
-
-</div>
 
 <div class="two-column">
 <div>
@@ -971,7 +589,6 @@ public class CustomerController {
 
 ## Lösung
 
-<div class="code-example">
 <h5>Enterprise Customer Management Facade</h5>
 
 ```typescript
@@ -990,15 +607,11 @@ const customerFacade = new EnterpriseCustomerFacade(  customerService, billingSe
 // Complex onboarding with single method call
 const result = await customerFacade.onboardNewCustomer({  name: 'Max Mustermann',  email: 'max@example.com',  phone: '+49 123 456789',  selectedPlan: 'BUSINESS_PRO',  paymentMethod: 'SEPA'});```
 
-</div>
-
 <!-- Speaker Notes: Notice how the facade coordinates multiple services and handles all error scenarios. What would be 20+ lines of client code is now a single method call. -->
 
 ---
 
 # Composite Pattern
-
-<div class="pattern-definition">
 
 #### Composite Pattern
 **Intent**: Behandelt einzelne Objekte und Objektgruppen einheitlich in Baumstrukturen.
@@ -1006,8 +619,6 @@ const result = await customerFacade.onboardNewCustomer({  name: 'Max Mustermann'
 **Problem**: Hierarchische Strukturen sollen einheitlich behandelt werden, unabhängig davon ob es Einzelobjekte oder Gruppen sind.
 
 **Solution**: Gemeinsames Interface für Leaf- und Composite-Objekte mit rekursiven Operationen.
-
-</div>
 
 <div class="two-column">
 <div>
@@ -1037,7 +648,6 @@ const result = await customerFacade.onboardNewCustomer({  name: 'Max Mustermann'
 
 # Composite Pattern - Organization Structure
 
-<div class="code-example">
 <h5>Enterprise Organizational Structure mit Composite Pattern</h5>
 
 ```typescript
@@ -1060,15 +670,12 @@ class Department implements OrganizationalUnit {  private units: OrganizationalU
   generateReport(): OrganizationalReport {    const childReports = this.units.map(unit => unit.generateReport());    
     return {      name: this.name,      type: 'DEPARTMENT',      employeeCount: this.getEmployeeCount(),      budget: this.getBudget(),      operationalBudget: this.operationalBudget,      children: childReports    };  }}```
 
-</div>
-
 <!-- Speaker Notes: Notice how both Employee and Department implement the same interface. This allows us to treat individual employees and entire departments uniformly. -->
 
 ---
 
 # Composite Pattern - Usage Example
 
-<div class="code-example">
 <h5>Building Enterprise Organization Hierarchy</h5>
 
 ```typescript
@@ -1089,8 +696,6 @@ const report = company.generateReport();console.log(JSON.stringify(report, null,
 const newInnovationLab = new Department('Innovation Lab', 25000);newInnovationLab.addUnit(new Employee('Dr. Frank Weber', 95000, 'Innovation Lead'));
 technologyDiv.addUnit(newInnovationLab);```
 
-</div>
-
 <div class="highlight-box accent">
 **Key Benefit**: Same operations work on individuals, teams, divisions, or the entire company structure!
 </div>
@@ -1101,16 +706,12 @@ technologyDiv.addUnit(newInnovationLab);```
 
 # Proxy Pattern
 
-<div class="pattern-definition">
-
 #### Proxy Pattern
 **Intent**: Fungiert als Stellvertreter und kontrolliert Zugriff auf andere Objekte.
 
 **Problem**: Direkter Zugriff auf Objekte ist teuer, unsicher oder unpraktisch.
 
 **Solution**: Ein Proxy-Objekt kontrolliert und optimiert den Zugriff auf das eigentliche Objekt.
-
-</div>
 
 <div class="two-column">
 <div>
@@ -1140,7 +741,6 @@ technologyDiv.addUnit(newInnovationLab);```
 
 # Proxy Pattern - Data Access with Security
 
-<div class="code-example">
 <h5>Enterprise Data Access Proxy mit Caching und Security</h5>
 
 ```typescript
@@ -1152,15 +752,12 @@ class RealEnterpriseDataService implements EnterpriseDataService {  async getCus
     return {      customerId,      period,      dataUsed: 45.2,      callMinutes: 890,      smsCount: 156,      costs: 89.95    };  }  
   private delay(ms: number): Promise<void> {    return new Promise(resolve => setTimeout(resolve, ms));  }}```
 
-</div>
-
 <!-- Speaker Notes: This is the real service that does the actual work. Notice the simulated delays that represent real-world database and network latency. -->
 
 ---
 
 # Proxy Pattern - Implementation
 
-<div class="code-example">
 <h5>Security and Caching Proxy Implementation</h5>
 
 ```typescript
@@ -1190,8 +787,6 @@ const customer1 = await dataService.getCustomerData('123456');
 const customer2 = await dataService.getCustomerData('123456');
 // Unauthorized call - throws security exception
 try {  await dataService.getCustomerData('unauthorized_customer');} catch (error) {  console.log('Security proxy blocked unauthorized access');}```
-
-</div>
 
 <!-- Speaker Notes: Notice how the proxy adds security and caching without the client knowing. The client uses the same interface but gets enhanced functionality. -->
 

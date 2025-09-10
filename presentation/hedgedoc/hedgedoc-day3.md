@@ -1,5 +1,5 @@
 ---
-<!-- Version: 1.2.0-font-fix -->
+<!-- Version: 1.3.0-headlines-fix -->
 type: slide
 title: Software-Architektur - Verhaltensmuster
 description: Verhaltensmuster - Observer, Strategy, Command, Template Method, Iterator, Chain of Responsibility
@@ -25,379 +25,53 @@ slideOptions:
 ---
 
 <style>
-/* HedgeDoc Presentation Styles */
-.reveal {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 300;
-}
-
-/* Critical: Fix content overflow and enforce left alignment */
+/* Minimal HedgeDoc Presentation Styles */
 .reveal .slides {
-  font-size: 26px !important; /* Increased by 20% for better readability (22px * 1.20) */
-  line-height: 1.3 !important;
+  font-size: 1.4rem;
+  text-align: left;
 }
 
-/* Override reveal.js center alignment - force left alignment for all content */
-.reveal .slides section,
-.reveal .slides section > *,
-.reveal .center {
-  text-align: left !important;
+.reveal h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+  border-bottom: 2px solid #666;
+}
+
+.reveal h2 {
+  font-size: 1.8em;
+  margin: 0.5em 0;
+}
+
+.reveal h3 {
+  font-size: 1.3em;
+  margin: 0.5em 0;
+}
+
+.reveal pre {
+  width: 100%;
+  min-height: 400px;
+  max-height: 70vh;
+  font-size: 0.9em;
+}
+
+.reveal pre code {
+  max-height: 70vh;
+  min-height: 400px;
+  padding: 1em;
+}
+
+.reveal ul, .reveal ol {
+  margin-left: 1em;
+}
+
+.reveal li {
+  margin: 0.3em 0;
 }
 
 .reveal .slides section {
   height: 100%;
-  width: 100%;
-  max-width: 100vw;
-  overflow-y: auto !important; /* Allow scrolling if needed */
-  overflow-x: hidden;
-  padding: 20px 25px 25px 25px !important; /* Reduce top padding to move content up */
-  box-sizing: border-box;
-  text-align: left !important; /* Ensure all content is left-aligned */
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important; /* Move content to top */
-}
-
-.reveal h1 {
-  font-size: 3.6em !important; /* Increased by 20% for better readability */
-  color: #2c2c2c;
-  font-weight: 700 !important; /* Bolder weight for more prominence */
+  padding: 1rem;
   text-align: left !important;
-  margin-top: 0.8em !important;
-  margin-bottom: 0.5em !important; /* More spacing below headline */
-  border-bottom: 3px solid #666666 !important; /* Visual separator */
-  padding-bottom: 0.2em !important; /* Padding above border */
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h1:first-child {
-  margin-top: 0 !important;
-}
-
-.reveal h2 {
-  font-size: 2.2em !important;
-  color: #2c2c2c !important;
-  font-weight: normal !important;
-  text-align: left !important;
-  margin-top: 0.8em !important;
-  margin-bottom: 0.4em !important;
-  width: 100% !important;
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h2:first-child {
-  margin-top: 0 !important;
-}
-
-.reveal h3 {
-  font-size: 1.6em !important; /* Increased by 20% for better readability */
-  font-weight: 400 !important;
-  text-align: left !important;
-  margin-top: 0.6em !important;
-  margin-bottom: 0.3em !important;
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h3:first-child {
-  margin-top: 0 !important;
-}
-
-.reveal h4, .reveal h5, .reveal h6 {
-  font-weight: 400 !important;
-  text-align: left !important;
-  margin-top: 0.5em !important;
-  margin-bottom: 0.3em !important;
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h4:first-child,
-.reveal .slides section > h5:first-child,
-.reveal .slides section > h6:first-child {
-  margin-top: 0 !important;
-}
-
-.reveal p, .reveal li {
-  font-size: 1.4em !important;
-  font-weight: 300 !important;
-  text-align: left !important;
-}
-
-/* Add proper paragraph spacing */
-.reveal p {
-  margin-bottom: 0.3em !important;
-}
-
-/* Prevent text from being too large */
-.reveal .slides {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-/* Lists should not overflow */
-.reveal ul, .reveal ol {
-  max-width: 90%;
-  margin-left: 0 !important;
-  padding-left: 1.5em !important;
-  list-style-type: none;
-  margin-bottom: 0.3em !important;
-}
-
-/* Add spacing between list items for better readability */
-.reveal ul li, .reveal ol li {
-  margin-bottom: 0.3em !important;
-}
-
-.reveal ul li:last-child, .reveal ol li:last-child {
-  margin-bottom: 0 !important;
-}
-
-.reveal ul li::before {
-  content: "▸";
-  color: #666666;
-  font-weight: 400;
-  display: inline-block;
-  width: 1em;
-  margin-left: -1em;
-}
-
-/* Code blocks sizing - Full Width Optimized with Overflow Prevention */
-.reveal pre {
-  font-size: 1.0em !important;
-  width: 95% !important;
-  max-height: calc(100vh - 200px); /* Use full available screen height */
-  max-width: 100% !important; /* Prevent horizontal overflow */
-  overflow-x: auto !important; /* Allow horizontal scrolling if needed */
-  overflow-y: auto !important; /* Allow vertical scrolling if needed */
-  white-space: pre-wrap !important; /* Wrap long lines */
-  word-wrap: break-word !important; /* Break long words */
-  background: #2d3748 !important; /* Dark background for better contrast */
-  color: #e2e8f0 !important; /* Light text for contrast */
-  border: 1px solid #4a5568; /* Subtle darker border */
-  width: 88% !important; /* Use most of screen width */
-  margin-left: auto !important;
-  margin-right: auto !important;
-  border-radius: 8px !important;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
-  box-sizing: border-box !important;
-}
-
-.reveal pre code {
-  font-size: 1.0em !important;
-  line-height: 1.3 !important;
-  font-family: 'Monaco', 'Menlo', 'Consolas', monospace !important;
-  color: #e2e8f0 !important;
-  background: transparent !important;
-  padding: 0 !important;
-  max-width: 100% !important;
-  overflow-x: auto !important;
-  white-space: pre-wrap !important;
-  word-wrap: break-word !important;
-}
-
-.reveal code {
-  font-size: 1.0em !important; /* Consistent with code blocks */
-  background: #f0f0f0 !important;
-  color: #d73a49 !important;
-  padding: 0.1em 0.3em !important;
-  border-radius: 3px !important;
-}
-
-.reveal .two-column {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-}
-
-.reveal .two-column > div {
-  flex: 1;
-}
-
-.workshop-header {
-  text-align: center;
-  background: #ffffff;
-  color: #333;
-  padding: 75px; /* Scaled for FHD (40px * 1.875) */
-  margin: -38px; /* Scaled for FHD (-20px * 1.875) */
-  border-radius: 15px; /* Scaled for FHD (8px * 1.875) */
-}
-
-.workshop-header h1,
-.workshop-header h2 {
-  color: #333;
-  text-shadow: none;
-}
-
-/* Hide reveal.js built-in notes */
-.reveal .notes,
-.reveal aside.notes,
-.reveal .speaker-notes {
-  display: none !important;
-}
-
-/* Hide any element with "notes" class */
-.notes, 
-.speaker-notes,
-.presentation-notes {
-  display: none !important;
-}
-
-/* More aggressive hiding of Note: content */
-.reveal .slides section p:first-child {
-  /* Check if this paragraph starts with Note: and hide it */
-}
-
-/* Hide elements marked with class="notes" */
-.element.notes {
-  display: none !important;
-}
-
-/* CRITICAL: Hide speaker notes patterns - enhanced selector */
-/* Hide any paragraph starting with "Note:" and following content until next section */
-.reveal .slides section p:first-line:contains("Note:") {
-  display: none !important;
-}
-
-/* Hide content that comes after "Note:" on slides */
-.reveal .slides section p + ul,
-.reveal .slides section p + ol {
-  /* Only hide lists that follow paragraphs starting with Note: */
-}
-
-/* More aggressive approach: hide all speaker note blocks */
-.reveal .slides section *:has(+ *[class*="notes"]),
-.reveal .slides section *[class*="notes"] + *,
-.reveal .slides section *[class*="notes"] {
-  display: none !important;
-}
-
-/* Target specific speaker notes pattern: Note: followed by list */
-.reveal .slides section {
-  /* JS will need to handle the Note: + list pattern */
-}
-
-/* VanillaCore Logo Styling - Option 1: Small logo in top-right corner */
-.vanilla-logo {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  max-width: 80px;
-  max-height: calc(100vh - 200px);
-  z-index: 1000;
-  pointer-events: none;
-}
-
-/* SELECTED: Option 1 - Small logo in top-right corner for content slides */
-.reveal .slides section:not(.title-slide)::after {
-  content: '';
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  width: 80px;
-  height: 80px;
-  background-image: url('/images/VanillaCore_Vertical.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 1000;
-  pointer-events: none;
-  opacity: 0.8;
-}
-
-.vanilla-logo img {
-  width: 100%;
-  height: auto;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* Logo for title slides - centered in middle of slide */
-.title-slide .vanilla-logo {
-  max-width: 300px;
-  max-height: calc(100vh - 250px);
-  position: static;
-  display: block;
-  margin: 0 auto 60px auto;
-  text-align: center;
-}
-
-/* Remove corner logo from title slides */
-.title-slide::after {
-  display: none !important;
-}
-
-/* Center title slide content with logo above title */
-.title-slide {
-  text-align: center !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  padding: 60px 40px !important;
-  min-height: 100vh;
-}
-
-/* Style title slide headings to be centered below logo */
-.title-slide h1,
-.title-slide h2 {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 100% !important;
-}
-
-.title-slide h1 {
-  margin-top: 0 !important;
-  margin-bottom: 20px !important;
-  font-size: 2.88em !important; /* Increased by 20% (2.4em * 1.20) */
-  font-weight: 600 !important;
-}
-
-.title-slide h2 {
-  margin-top: 0 !important;
-  margin-bottom: 40px !important;
-  font-size: 2.16em !important; /* Increased by 20% (1.8em * 1.20) */
-  color: #555555 !important;
-  font-weight: 400 !important;
-}
-
-/* Subtle watermark for content slides */
-.content-slide::after {
-  content: "";
-  background-image: url('/images/VanillaCore_Vertical.png');
-  background-size: 80px;
-  background-repeat: no-repeat;
-  background-position: bottom 10px right 10px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0.1;
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Hide reveal.js progress bar and controls to remove orange box artifact */
-.reveal .progress {
-  display: none !important;
-}
-
-.reveal .controls {
-  display: none !important;
-}
-
-.reveal .fragment {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
-}
-
-.reveal .fragment.visible {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.3s ease;
 }
 </style>
 
@@ -410,15 +84,12 @@ slideOptions:
 
 # Software-Architektur
 ## Bring your own brain and use it!
-
-</div>
-
 Note:
-* Willkommen zum dritten Tag - Verhaltensmuster sind die komplexesten Patterns <!-- .element: class="fragment" data-fragment-index="1" -->
-* Kurze Wiederholung: Creational → Structural → Behavioral <!-- .element: class="fragment" data-fragment-index="2" -->
-* Betonen Sie: Verhaltensmuster = Objekt-Kommunikation und Interaktion <!-- .element: class="fragment" data-fragment-index="3" -->
-* Diese Patterns sind fundamental für moderne Enterprise-Architekturen <!-- .element: class="fragment" data-fragment-index="4" -->
-* Verwenden Sie konkrete Pattern-Szenarien für praktische Anwendung <!-- .element: class="fragment" data-fragment-index="5" -->
+* Willkommen zum dritten Tag - Verhaltensmuster sind die komplexesten Patterns
+* Kurze Wiederholung: Creational → Structural → Behavioral
+* Betonen Sie: Verhaltensmuster = Objekt-Kommunikation und Interaktion
+* Diese Patterns sind fundamental für moderne Enterprise-Architekturen
+* Verwenden Sie konkrete Pattern-Szenarien für praktische Anwendung
 <!-- .element: class="notes" -->
 
 ---
@@ -447,17 +118,12 @@ Note:
 
 # Verhaltensmuster Übersicht
 
-<div class="pattern-definition">
-
 #### Was sind Verhaltensmuster?
 **Intent**: Fokussieren sich auf Kommunikation zwischen Objekten und die Verteilung von Verantwortlichkeiten.
 
 **Problem**: Objekte müssen flexibel interagieren ohne fest gekoppelt zu sein.
 
 **Solution**: Bewährte Patterns für Objektkommunikation, Algorithmuskapselung und lose Kopplung.
-
-</div>
-
 * **Fokus auf Kommunikation** - Objektinteraktion optimieren  <!-- .element: class="fragment" data-fragment-index="1" -->
 * **Verantwortlichkeits-Verteilung** - Wer macht was, wann?  <!-- .element: class="fragment" data-fragment-index="2" -->
 * **Algorithmus-Kapselung** - Verhalten abstrahieren  <!-- .element: class="fragment" data-fragment-index="3" -->
@@ -472,17 +138,10 @@ Note:
 
 ## Was ist hier falsch?
 
-<div class="problem-highlight">
-
 #### Observer Pattern Problem
 **Situation**: In Event-getriebenen Systemen müssen mehrere Komponenten über Änderungen benachrichtigt werden. Die direkte Kopplung führt zu unübersichtlichem Code.
 
 **Was sehen Sie hier Problematisches?**
-
-</div>
-
-<div class="code-example">
-
 ```java
 public class OrderManager {
     
@@ -523,8 +182,6 @@ public class OrderManager {
 }
 ```
 
-</div>
-
 ### Identifizierte Code-Smells
 
 * **Tight Coupling**: OrderManager kennt alle Benachrichtigungs-Services direkt <!-- .element: class="fragment" data-fragment-index="1" -->
@@ -538,17 +195,12 @@ public class OrderManager {
 
 ## Observer Pattern - Die Lösung
 
-<div class="pattern-definition">
-
 #### Observer Pattern - Das Event-System Fundament
 **Intent**: Definiert eine eins-zu-viele Abhängigkeit zwischen Objekten, so dass bei Änderung eines Objekts alle abhängigen automatisch benachrichtigt werden.
 
 **Problem**: Objekte sollen über Änderungen informiert werden, ohne fest gekoppelt zu sein.
 
 **Solution**: Subject verwaltet Observer-Liste und benachrichtigt alle bei Zustandsänderungen.
-
-</div>
-
 <div class="two-column">
 <div>
 
@@ -557,20 +209,14 @@ public class OrderManager {
 * **Automatische Benachrichtigung** - Push-basierte Updates  <!-- .element: class="fragment" data-fragment-index="2" -->
 * **Lose Kopplung** - Subject kennt Observer nicht konkret  <!-- .element: class="fragment" data-fragment-index="3" -->
 * **Event-getriebene Architektur** - Basis für reactive Systems  <!-- .element: class="fragment" data-fragment-index="4" -->
-* **Pub/Sub Implementierung** - Publisher-Subscriber Pattern  <!-- .element: class="fragment" data-fragment-index="5" -->
-
-</div>
-<div>
+* **Pub/Sub Implementierung** - Publisher-Subscriber Pattern  <!-- .element: class="fragment" data-fragment-index="5" --><div>
 
 ## Use Cases
 * Event-Handling-Systeme  <!-- .element: class="fragment" data-fragment-index="6" -->
 * Model-View Architekturen (MVC, MVVM)  <!-- .element: class="fragment" data-fragment-index="7" -->
 * Notification Services  <!-- .element: class="fragment" data-fragment-index="8" -->
 * Real-time Data Updates  <!-- .element: class="fragment" data-fragment-index="9" -->
-* Reactive Programming  <!-- .element: class="fragment" data-fragment-index="10" -->
-
-</div>
-</div>
+* Reactive Programming  <!-- .element: class="fragment" data-fragment-index="10" --></div>
 
 <!-- Speaker Notes: Observer Pattern ist das Fundament moderner Event-Systeme. In JavaScript ist es die Basis für DOM Events, Node.js EventEmitter und reaktive Programmierung mit RxJS. -->
 
@@ -578,7 +224,6 @@ public class OrderManager {
 
 # Observer Pattern - Implementation
 
-<div class="code-example">
 <h5>Observer Pattern Implementation</h5>
 
 ```javascript
@@ -643,8 +288,6 @@ agency.subscribe(bbc); // fragment
 agency.setNews("Breaking: Software-Architektur Workshop starts!"); // fragment
 ```
 
-</div>
-
 <!-- Speaker Notes: Dieses Beispiel zeigt die Macht des Observer Patterns: Eine Nachrichtenagentur kann beliebig viele Kanäle benachrichtigen, ohne jeden Kanal explizit zu kennen. Neue Kanäle können zur Laufzeit hinzugefügt werden. -->
 
 ---
@@ -653,17 +296,10 @@ agency.setNews("Breaking: Software-Architektur Workshop starts!"); // fragment
 
 ## Was ist hier falsch?
 
-<div class="problem-highlight">
-
 #### Strategy Pattern Problem
 **Situation**: Verschiedene Algorithmen oder Geschäftsregeln müssen je nach Kontext ausgewählt werden. Switch-Statements und if-else-Kaskaden führen zu unübersichtlichem Code.
 
 **Was sehen Sie hier Problematisches?**
-
-</div>
-
-<div class="code-example">
-
 ```java
 public class PriceCalculator {
     
@@ -720,8 +356,6 @@ public class PriceCalculator {
 }
 ```
 
-</div>
-
 ### Identifizierte Code-Smells
 
 * **Complex Conditional Logic**: Verschachtelte if-else Statements schwer lesbar <!-- .element: class="fragment" data-fragment-index="1" -->
@@ -735,17 +369,12 @@ public class PriceCalculator {
 
 ## Strategy Pattern - Die Lösung
 
-<div class="pattern-definition">
-
 #### Strategy Pattern - Algorithmus-Austauschbarkeit zur Laufzeit
 **Intent**: Definiert eine Familie von Algorithmen, kapselt jeden einzeln und macht sie austauschbar.
 
 **Problem**: Verschiedene Algorithmen sollen zur Laufzeit ausgewählt werden können.
 
 **Solution**: Context delegiert an Strategy-Objekte, die Algorithmen implementieren.
-
-</div>
-
 <div class="two-column">
 <div>
 
@@ -754,20 +383,14 @@ public class PriceCalculator {
 * **Kapselung von Verhalten** - Strategy-Objekte isoliert  <!-- .element: class="fragment" data-fragment-index="2" -->
 * **Laufzeit-Austausch** - Dynamische Strategie-Wahl  <!-- .element: class="fragment" data-fragment-index="3" -->
 * **Open/Closed Prinzip** - Neue Strategien ohne Änderungen  <!-- .element: class="fragment" data-fragment-index="4" -->
-* **Context-Delegation** - Context nutzt Strategy  <!-- .element: class="fragment" data-fragment-index="5" -->
-
-</div>
-<div>
+* **Context-Delegation** - Context nutzt Strategy  <!-- .element: class="fragment" data-fragment-index="5" --><div>
 
 ## Use Cases
 * Payment Processing Systems  <!-- .element: class="fragment" data-fragment-index="6" -->
 * Sorting Algorithms  <!-- .element: class="fragment" data-fragment-index="7" -->
 * Data Compression Methods  <!-- .element: class="fragment" data-fragment-index="8" -->
 * Authentication Strategies  <!-- .element: class="fragment" data-fragment-index="9" -->
-* Tax Calculation Systems  <!-- .element: class="fragment" data-fragment-index="10" -->
-
-</div>
-</div>
+* Tax Calculation Systems  <!-- .element: class="fragment" data-fragment-index="10" --></div>
 
 <!-- Speaker Notes: Strategy Pattern eliminiert komplexe if-else Strukturen und macht Code erweiterbar. In E-Commerce Systemen können neue Zahlungsmethoden hinzugefügt werden, ohne bestehenden Code zu ändern. -->
 
@@ -775,7 +398,6 @@ public class PriceCalculator {
 
 # Strategy Pattern - Payment System
 
-<div class="code-example">
 <h5>E-Commerce Payment System</h5>
 
 ```javascript
@@ -851,15 +473,11 @@ cart.setPaymentStrategy(new PayPalStrategy("user@example.com")); // fragment
 cart.checkout(); // fragment
 ```
 
-</div>
-
 <!-- Speaker Notes: Der Context (ShoppingCart) delegiert die Zahlungsabwicklung an die gewählte Strategy. Benutzer können zur Laufzeit die Zahlungsmethode wechseln, ohne dass sich am Context etwas ändert. -->
 
 ---
 
 # Command Pattern
-
-<div class="pattern-definition">
 
 #### Command Pattern - Aktionen als Objekte kapseln
 **Intent**: Kapselt Anfragen als Objekte und ermöglicht Parametrisierung, Queuing und Logging von Anfragen.
@@ -867,9 +485,6 @@ cart.checkout(); // fragment
 **Problem**: Aktionen sollen als First-Class Citizens behandelt und rückgängig gemacht werden können.
 
 **Solution**: Commands kapseln Aktionen mit execute() und undo() Methoden.
-
-</div>
-
 <div class="two-column">
 <div>
 
@@ -879,17 +494,14 @@ cart.checkout(); // fragment
 * **Macro-Commands** - Kombinierte Operationen  <!-- .element: class="fragment" data-fragment-index="3" -->
 
 Note:
-* Command Pattern ist fundamental für Undo/Redo-Funktionalität <!-- .element: class="fragment" data-fragment-index="4" -->
-* Sehr praktisch für GUI-Anwendungen, aber auch für API-Queuing <!-- .element: class="fragment" data-fragment-index="5" -->
-* Unterschied zu Strategy: Command kapselt komplette Operationen, nicht nur Algorithmen <!-- .element: class="fragment" data-fragment-index="6" -->
-* Zeigen Sie die Trennung von Invoker, Command und Receiver <!-- .element: class="fragment" data-fragment-index="7" -->
-* Frage: "Wo in Ihren Anwendungen wünschen Sie sich Undo-Funktionalität?" <!-- .element: class="fragment" data-fragment-index="8" -->
+* Command Pattern ist fundamental für Undo/Redo-Funktionalität
+* Sehr praktisch für GUI-Anwendungen, aber auch für API-Queuing
+* Unterschied zu Strategy: Command kapselt komplette Operationen, nicht nur Algorithmen
+* Zeigen Sie die Trennung von Invoker, Command und Receiver
+* Frage: "Wo in Ihren Anwendungen wünschen Sie sich Undo-Funktionalität?"
 <!-- .element: class="notes" -->
 * **Queuing und Logging** - Kommandos verzögern/protokollieren  <!-- .element: class="fragment" data-fragment-index="9" -->
-* **Invoker-Receiver Entkopplung** - Lose gekoppelte Ausführung  <!-- .element: class="fragment" data-fragment-index="10" -->
-
-</div>
-<div>
+* **Invoker-Receiver Entkopplung** - Lose gekoppelte Ausführung  <!-- .element: class="fragment" data-fragment-index="10" --><div>
 
 ## Use Cases
 * GUI Button Actions  <!-- .element: class="fragment" data-fragment-index="11" -->
@@ -897,10 +509,7 @@ Note:
 * Macro Recording  <!-- .element: class="fragment" data-fragment-index="13" -->
 * Transactional Operations  <!-- .element: class="fragment" data-fragment-index="14" -->
 * Remote Procedure Calls  <!-- .element: class="fragment" data-fragment-index="15" -->
-* Job Queues and Schedulers  <!-- .element: class="fragment" data-fragment-index="16" -->
-
-</div>
-</div>
+* Job Queues and Schedulers  <!-- .element: class="fragment" data-fragment-index="16" --></div>
 
 <!-- Speaker Notes: Command Pattern ist essentiell für Undo/Redo-Funktionalität in Editoren, GUI-Anwendungen und Transaktionssystemen. Jede Aktion wird als Objekt gekapselt und kann rückgängig gemacht werden. -->
 
@@ -908,7 +517,6 @@ Note:
 
 # Command Pattern - Smart Home System
 
-<div class="code-example">
 <h5>Smart Home Control System</h5>
 
 ```javascript
@@ -1014,8 +622,6 @@ remote.pressButton(1); // Alle Lichter an // fragment
 remote.pressUndo();    // Alle Lichter aus // fragment
 ```
 
-</div>
-
 <!-- Speaker Notes: Macro Commands zeigen die Flexibilität des Patterns - komplexe Operationen werden durch Kombination einfacher Commands erstellt. Smart Home Systemen nutzen dies für Szenarien wie "Gute Nacht" oder "Verlassen". -->
 
 ---
@@ -1024,17 +630,10 @@ remote.pressUndo();    // Alle Lichter aus // fragment
 
 ## Was ist hier falsch?
 
-<div class="problem-highlight">
-
 #### Template Method Pattern Problem
 **Situation**: Ähnliche Algorithmen mit gleicher Struktur aber unterschiedlichen Implementierungsdetails führen zu massiver Code-Duplikation.
 
 **Was sehen Sie hier Problematisches?**
-
-</div>
-
-<div class="code-example">
-
 ```java
 public class DataProcessor {
     
@@ -1109,8 +708,6 @@ public class DataProcessor {
 }
 ```
 
-</div>
-
 ### Identifizierte Code-Smells
 
 * **Massive Code Duplication**: Gleiche Algorithmus-Struktur in jeder Methode <!-- .element: class="fragment" data-fragment-index="1" -->
@@ -1124,18 +721,12 @@ public class DataProcessor {
 
 ## Template Method Pattern - Die Lösung
 
-<div class="pattern-definition">
-
 #### Template Method Pattern - Algorithmus-Skelett mit variablen Schritten
 **Intent**: Definiert das Skelett eines Algorithmus in einer Basisklasse und lässt Subklassen bestimmte Schritte neu definieren.
 
 **Problem**: Algorithmus-Struktur soll gleich bleiben, aber einzelne Schritte variieren.
 
 **Solution**: Basisklasse definiert Template Method, Subklassen implementieren abstrakte Schritte.
-
-</div>
-
-<div class="code-example">
 <h5>Data Import Pipeline</h5>
 
 ```javascript
@@ -1226,15 +817,11 @@ const csvImporter = new CSVImporter("users.csv"); // fragment
 csvImporter.process(); // fragment
 ```
 
-</div>
-
 <!-- Speaker Notes: Template Method Pattern ist perfekt für ETL-Pipelines, Build-Prozesse und Datenverarbeitungs-Workflows. Die Struktur bleibt gleich, aber jeder Schritt kann unterschiedlich implementiert werden. -->
 
 ---
 
 # Iterator Pattern
-
-<div class="pattern-definition">
 
 #### Iterator Pattern - Sequenzieller Zugriff ohne Struktur-Kenntnis
 **Intent**: Bietet einen Weg, um auf Elemente einer Sammlung sequenziell zuzugreifen, ohne die zugrunde liegende Struktur preiszugeben.
@@ -1242,10 +829,6 @@ csvImporter.process(); // fragment
 **Problem**: Verschiedene Collections sollen einheitlich durchlaufen werden können.
 
 **Solution**: Iterator-Interface abstrahiert den Zugriff auf Collection-Elemente.
-
-</div>
-
-<div class="code-example">
 <h5>Playlist Iterator mit verschiedenen Modi</h5>
 
 ```javascript
@@ -1329,15 +912,11 @@ while (shuffle.hasNext()) { // fragment
 } // fragment
 ```
 
-</div>
-
 <!-- Speaker Notes: Verschiedene Iterator-Implementierungen ermöglichen unterschiedliche Durchlauf-Strategien für die gleiche Collection. Streaming-Dienste nutzen ähnliche Patterns für Playlisten und Empfehlungs-Algorithmen. -->
 
 ---
 
 # Chain of Responsibility
-
-<div class="pattern-definition">
 
 #### Chain of Responsibility - Anfragen durch Handler-Kette weiterleiten
 **Intent**: Gibt mehreren Objekten die Chance, eine Anfrage zu behandeln, indem diese Objekte in einer Kette verknüpft werden.
@@ -1345,10 +924,6 @@ while (shuffle.hasNext()) { // fragment
 **Problem**: Verschiedene Objekte sollen eine Anfrage verarbeiten können, ohne dass der Sender den konkreten Empfänger kennt.
 
 **Solution**: Handler-Kette, wo jeder Handler entscheidet, ob er die Anfrage verarbeitet oder weiterleitet.
-
-</div>
-
-<div class="code-example">
 <h5>HTTP Request Processing Pipeline</h5>
 
 ```javascript
@@ -1475,8 +1050,6 @@ try { // fragment
 } // fragment
 ```
 
-</div>
-
 <!-- Speaker Notes: Diese Pipeline zeigt typische Web-Request-Verarbeitung: Authentication → Authorization → Business Logic. Jeder Handler ist unabhängig testbar und die Reihenfolge kann dynamisch angepasst werden. -->
 
 ---
@@ -1486,9 +1059,6 @@ try { // fragment
 <div class="interactive-question">
 
 ## Wann welches Pattern verwenden?
-
-</div>
-
 | Pattern | Verwendung | Vorteil |
 |---------|------------|---------|
 | **Observer** | Event-Systeme, MVC | Lose Kopplung bei 1:n  |
@@ -1508,7 +1078,6 @@ try { // fragment
 
 # Moderne JavaScript Implementierungen
 
-<div class="code-example">
 <h5>ES6+ Features für Patterns</h5>
 
 ```javascript
@@ -1586,8 +1155,6 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 } // fragment
 ```
 
-</div>
-
 <!-- Speaker Notes: Moderne JavaScript-Features wie Proxies, Generators und Async Iterators ermöglichen elegante Pattern-Implementierungen. Reactive Frameworks wie Vue.js nutzen Proxies für automatische Observer-Pattern-Implementierung. -->
 
 ---
@@ -1606,10 +1173,7 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 * **Commands für Undo** - Aktionen reversibel gestalten  <!-- .element: class="fragment" data-fragment-index="3" -->
 * **Templates für Workflows** - Gemeinsame Struktur teilen  <!-- .element: class="fragment" data-fragment-index="4" -->
 * **Iterators für Collections** - Einheitliche Zugriffe schaffen  <!-- .element: class="fragment" data-fragment-index="5" -->
-* **Chains für Pipelines** - Flexible Verarbeitung ermöglichen  <!-- .element: class="fragment" data-fragment-index="6" -->
-
-</div>
-<div>
+* **Chains für Pipelines** - Flexible Verarbeitung ermöglichen  <!-- .element: class="fragment" data-fragment-index="6" --><div>
 
 ## Anti-Patterns vermeiden
 
@@ -1617,10 +1181,7 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 * **Observer-Leaks** - Subscription cleanup nicht vergessen  <!-- .element: class="fragment" data-fragment-index="8" -->
 * **Command-Explosion** - Nicht jeden Setter als Command  <!-- .element: class="fragment" data-fragment-index="9" -->
 * **Strategy-Overkill** - Einfache if-else manchmal besser  <!-- .element: class="fragment" data-fragment-index="10" -->
-* **Chain-Overuse** - Nicht jede Sequenz braucht eine Kette  <!-- .element: class="fragment" data-fragment-index="11" -->
-
-</div>
-</div>
+* **Chain-Overuse** - Nicht jede Sequenz braucht eine Kette  <!-- .element: class="fragment" data-fragment-index="11" --></div>
 
 <div class="highlight-box warning">
 **Goldene Regel**: Behavioral Patterns können schnell zu Over-Engineering führen. Verwenden Sie sie nur, wenn die Flexibilität wirklich benötigt wird. Observer-Pattern kann zu Memory Leaks führen, wenn Subscriptions nicht ordnungsgemäß aufgeräumt werden.
@@ -1651,20 +1212,14 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 * **Command Pattern** - Undo/Redo und Action-Queuing  <!-- .element: class="fragment" data-fragment-index="3" -->
 * **Template Method** - Workflow-Strukturen definieren  <!-- .element: class="fragment" data-fragment-index="4" -->
 * **Iterator Pattern** - Einheitliche Collection-Zugriffe  <!-- .element: class="fragment" data-fragment-index="5" -->
-* **Chain of Responsibility** - Flexible Request-Verarbeitung  <!-- .element: class="fragment" data-fragment-index="6" -->
-
-</div>
-<div>
+* **Chain of Responsibility** - Flexible Request-Verarbeitung  <!-- .element: class="fragment" data-fragment-index="6" --><div>
 
 ## Nächste Schritte
 
 * **Microservices** - Patterns in verteilten Systemen  <!-- .element: class="fragment" data-fragment-index="7" -->
 * **Reactive Programming** - Observer Pattern erweitert  <!-- .element: class="fragment" data-fragment-index="8" -->
 * **Event Sourcing** - Command Pattern in der Praxis  <!-- .element: class="fragment" data-fragment-index="9" -->
-* **Advanced Patterns** - CQRS, Saga, Event-driven Architecture  <!-- .element: class="fragment" data-fragment-index="10" -->
-
-</div>
-</div>
+* **Advanced Patterns** - CQRS, Saga, Event-driven Architecture  <!-- .element: class="fragment" data-fragment-index="10" --></div>
 
 <!-- Speaker Notes: Behavioral Patterns sind das Fundament moderner Softwarearchitekturen. Sie ermöglichen Event-getriebene Systeme, Microservices-Kommunikation und Reactive Programming. Die heute gelernten Patterns werden in praktisch jeder modernen Anwendung verwendet. -->
 
@@ -1675,9 +1230,6 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 <div class="interactive-question">
 
 ## Ihre Erfahrungen mit Behavioral Patterns?
-
-</div>
-
 <div class="two-column">
 <div>
 
@@ -1685,25 +1237,16 @@ for (const num of range.filter(x => x % 2 === 0)) { // fragment
 * Wo haben Sie bereits diese Patterns gesehen?  <!-- .element: class="fragment" data-fragment-index="1" -->
 * Welche Herausforderungen bei der Implementierung?  <!-- .element: class="fragment" data-fragment-index="2" -->
 * Fragen zu spezifischen Use Cases?  <!-- .element: class="fragment" data-fragment-index="3" -->
-* Pattern-Kombinationen in Ihren Projekten?  <!-- .element: class="fragment" data-fragment-index="4" -->
-
-</div>
-<div>
+* Pattern-Kombinationen in Ihren Projekten?  <!-- .element: class="fragment" data-fragment-index="4" --><div>
 
 ### Kontakt für Follow-up:
 * **Workshop-Repository** mit allen Code-Beispielen  <!-- .element: class="fragment" data-fragment-index="5" -->
 * **Best-Practice Checklisten** für jedes Pattern  <!-- .element: class="fragment" data-fragment-index="6" -->
 * **Weiterführende Resources** und advanced topics  <!-- .element: class="fragment" data-fragment-index="7" -->
-* **Community** für weitere Diskussionen  <!-- .element: class="fragment" data-fragment-index="8" -->
-
-</div>
-</div>
+* **Community** für weitere Diskussionen  <!-- .element: class="fragment" data-fragment-index="8" --></div>
 
 <div class="workshop-header">
 
 **Vielen Dank für Ihre aktive Teilnahme!**
 ### Nächste Schritte: Erweiterte Patterns und Integration
-
-</div>
-
 <!-- Speaker Notes: Ermutigen Sie Diskussion über real-world Erfahrungen. Oft haben Teilnehmer bereits diese Patterns verwendet, ohne sie als solche zu erkennen. Sammeln Sie Feedback für zukünftige Workshop-Verbesserungen. -->

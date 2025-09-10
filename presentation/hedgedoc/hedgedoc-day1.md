@@ -1,5 +1,5 @@
 ---
-<!-- Version: 1.2.0-font-fix -->
+<!-- Version: 1.3.0-headlines-fix -->
 type: slide
 title: Software-Architektur - Grundlagen
 description: Code-Analyse, Factory Method, Abstract Factory, Builder & Prototype Patterns
@@ -25,379 +25,53 @@ slideOptions:
 ---
 
 <style>
-/* HedgeDoc Presentation Styles */
-.reveal {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 300;
-}
-
-/* Critical: Fix content overflow and enforce left alignment */
+/* Minimal HedgeDoc Presentation Styles */
 .reveal .slides {
-  font-size: 26px !important; /* Increased by 20% for better readability (22px * 1.20) */
-  line-height: 1.3 !important;
+  font-size: 1.4rem;
+  text-align: left;
 }
 
-/* Override reveal.js center alignment - force left alignment for all content */
-.reveal .slides section,
-.reveal .slides section > *,
-.reveal .center {
-  text-align: left !important;
+.reveal h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+  border-bottom: 2px solid #666;
+}
+
+.reveal h2 {
+  font-size: 1.8em;
+  margin: 0.5em 0;
+}
+
+.reveal h3 {
+  font-size: 1.3em;
+  margin: 0.5em 0;
+}
+
+.reveal pre {
+  width: 100%;
+  min-height: 400px;
+  max-height: 70vh;
+  font-size: 0.9em;
+}
+
+.reveal pre code {
+  max-height: 70vh;
+  min-height: 400px;
+  padding: 1em;
+}
+
+.reveal ul, .reveal ol {
+  margin-left: 1em;
+}
+
+.reveal li {
+  margin: 0.3em 0;
 }
 
 .reveal .slides section {
   height: 100%;
-  width: 100%;
-  max-width: 100vw;
-  overflow-y: auto !important; /* Allow scrolling if needed */
-  overflow-x: hidden;
-  padding: 20px 25px 25px 25px !important; /* Reduce top padding to move content up */
-  box-sizing: border-box;
-  text-align: left !important; /* Ensure all content is left-aligned */
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important; /* Move content to top */
-}
-
-.reveal h1 {
-  font-size: 3.6em !important; /* Increased by 20% for better readability */
-  color: #2c2c2c;
-  font-weight: 700 !important; /* Bolder weight for more prominence */
+  padding: 1rem;
   text-align: left !important;
-  margin-top: 0.8em !important;
-  margin-bottom: 0.5em !important; /* More spacing below headline */
-  border-bottom: 3px solid #666666 !important; /* Visual separator */
-  padding-bottom: 0.2em !important; /* Padding above border */
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h1:first-child {
-  margin-top: 0 !important;
-}
-
-.reveal h2 {
-  font-size: 2.2em !important;
-  color: #2c2c2c !important;
-  font-weight: normal !important;
-  text-align: left !important;
-  margin-top: 0.8em !important;
-  margin-bottom: 0.4em !important;
-  width: 100% !important;
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h2:first-child {
-  margin-top: 0 !important;
-}
-
-.reveal h3 {
-  font-size: 1.6em !important; /* Increased by 20% for better readability */
-  font-weight: 400 !important;
-  text-align: left !important;
-  margin-top: 0.6em !important;
-  margin-bottom: 0.3em !important;
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h3:first-child {
-  margin-top: 0 !important;
-}
-
-.reveal h4, .reveal h5, .reveal h6 {
-  font-weight: 400 !important;
-  text-align: left !important;
-  margin-top: 0.5em !important;
-  margin-bottom: 0.3em !important;
-}
-
-/* First heading on slide should not have top margin */
-.reveal .slides section > h4:first-child,
-.reveal .slides section > h5:first-child,
-.reveal .slides section > h6:first-child {
-  margin-top: 0 !important;
-}
-
-.reveal p, .reveal li {
-  font-size: 1.4em !important;
-  font-weight: 300 !important;
-  text-align: left !important;
-}
-
-/* Add proper paragraph spacing */
-.reveal p {
-  margin-bottom: 0.3em !important;
-}
-
-/* Prevent text from being too large */
-.reveal .slides {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-/* Lists should not overflow */
-.reveal ul, .reveal ol {
-  max-width: 90%;
-  margin-left: 0 !important;
-  padding-left: 1.5em !important;
-  list-style-type: none;
-  margin-bottom: 0.3em !important;
-}
-
-/* Add spacing between list items for better readability */
-.reveal ul li, .reveal ol li {
-  margin-bottom: 0.3em !important;
-}
-
-.reveal ul li:last-child, .reveal ol li:last-child {
-  margin-bottom: 0 !important;
-}
-
-.reveal ul li::before {
-  content: "▸";
-  color: #666666;
-  font-weight: 400;
-  display: inline-block;
-  width: 1em;
-  margin-left: -1em;
-}
-
-/* Code blocks sizing - Full Width Optimized with Overflow Prevention */
-.reveal pre {
-  font-size: 1.0em !important; /* Moderate reduction from original 1.2em */
-  width: 95% !important;
-  max-height: calc(100vh - 200px); /* Use full available screen height */
-  max-width: 100% !important; /* Prevent horizontal overflow */
-  overflow-x: auto !important; /* Allow horizontal scrolling if needed */
-  overflow-y: auto !important; /* Allow vertical scrolling if needed */
-  white-space: pre-wrap !important; /* Wrap long lines */
-  word-wrap: break-word !important; /* Break long words */
-  background: #2d3748 !important; /* Dark background for better contrast */
-  color: #e2e8f0 !important; /* Light text for contrast */
-  border: 1px solid #4a5568; /* Subtle darker border */
-  width: 88% !important; /* Use most of screen width */
-  margin-left: auto !important;
-  margin-right: auto !important;
-  border-radius: 8px !important;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
-  box-sizing: border-box !important;
-}
-
-.reveal pre code {
-  font-size: 1.0em !important; /* Moderate reduction from original 1.2em */
-  line-height: 1.3 !important;
-  font-family: 'Monaco', 'Menlo', 'Consolas', monospace !important;
-  color: #e2e8f0 !important;
-  background: transparent !important;
-  padding: 0 !important;
-  max-width: 100% !important;
-  overflow-x: auto !important;
-  white-space: pre-wrap !important;
-  word-wrap: break-word !important;
-}
-
-.reveal code {
-  font-size: 1.0em !important; /* Consistent with code blocks */
-  background: #f0f0f0 !important;
-  color: #d73a49 !important;
-  padding: 0.1em 0.3em !important;
-  border-radius: 3px !important;
-}
-
-.reveal .two-column {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-}
-
-.reveal .two-column > div {
-  flex: 1;
-}
-
-.workshop-header {
-  text-align: center;
-  background: #ffffff;
-  color: #333;
-  padding: 75px; /* Scaled for FHD (40px * 1.875) */
-  margin: -38px; /* Scaled for FHD (-20px * 1.875) */
-  border-radius: 15px; /* Scaled for FHD (8px * 1.875) */
-}
-
-.workshop-header h1,
-.workshop-header h2 {
-  color: #333;
-  text-shadow: none;
-}
-
-/* Hide reveal.js built-in notes */
-.reveal .notes,
-.reveal aside.notes,
-.reveal .speaker-notes {
-  display: none !important;
-}
-
-/* Hide any element with "notes" class */
-.notes, 
-.speaker-notes,
-.presentation-notes {
-  display: none !important;
-}
-
-/* More aggressive hiding of Note: content */
-.reveal .slides section p:first-child {
-  /* Check if this paragraph starts with Note: and hide it */
-}
-
-/* Hide elements marked with class="notes" */
-.element.notes {
-  display: none !important;
-}
-
-/* CRITICAL: Hide speaker notes patterns - enhanced selector */
-/* Hide any paragraph starting with "Note:" and following content until next section */
-.reveal .slides section p:first-line:contains("Note:") {
-  display: none !important;
-}
-
-/* Hide content that comes after "Note:" on slides */
-.reveal .slides section p + ul,
-.reveal .slides section p + ol {
-  /* Only hide lists that follow paragraphs starting with Note: */
-}
-
-/* More aggressive approach: hide all speaker note blocks */
-.reveal .slides section *:has(+ *[class*="notes"]),
-.reveal .slides section *[class*="notes"] + *,
-.reveal .slides section *[class*="notes"] {
-  display: none !important;
-}
-
-/* Target specific speaker notes pattern: Note: followed by list */
-.reveal .slides section {
-  /* JS will need to handle the Note: + list pattern */
-}
-
-/* VanillaCore Logo Styling - Option 1: Small logo in top-right corner */
-.vanilla-logo {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  max-width: 80px;
-  max-height: calc(100vh - 200px);
-  z-index: 1000;
-  pointer-events: none;
-}
-
-/* SELECTED: Option 1 - Small logo in top-right corner for content slides */
-.reveal .slides section:not(.title-slide)::after {
-  content: '';
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  width: 80px;
-  height: 80px;
-  background-image: url('/images/VanillaCore_Vertical.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 1000;
-  pointer-events: none;
-  opacity: 0.8;
-}
-
-.vanilla-logo img {
-  width: 100%;
-  height: auto;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* Logo for title slides - centered in middle of slide */
-.title-slide .vanilla-logo {
-  max-width: 300px;
-  max-height: calc(100vh - 250px);
-  position: static;
-  display: block;
-  margin: 0 auto 60px auto;
-  text-align: center;
-}
-
-/* Remove corner logo from title slides */
-.title-slide::after {
-  display: none !important;
-}
-
-/* Center title slide content with logo above title */
-.title-slide {
-  text-align: center !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  padding: 60px 40px !important;
-  min-height: 100vh;
-}
-
-/* Style title slide headings to be centered below logo */
-.title-slide h1,
-.title-slide h2 {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 100% !important;
-}
-
-.title-slide h1 {
-  margin-top: 0 !important;
-  margin-bottom: 20px !important;
-  font-size: 2.88em !important; /* Increased by 20% (2.4em * 1.20) */
-  font-weight: 600 !important;
-}
-
-.title-slide h2 {
-  margin-top: 0 !important;
-  margin-bottom: 40px !important;
-  font-size: 2.16em !important; /* Increased by 20% (1.8em * 1.20) */
-  color: #555555 !important;
-  font-weight: 400 !important;
-}
-
-/* Subtle watermark for content slides */
-.content-slide::after {
-  content: "";
-  background-image: url('/images/VanillaCore_Vertical.png');
-  background-size: 80px;
-  background-repeat: no-repeat;
-  background-position: bottom 10px right 10px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0.1;
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Hide reveal.js progress bar and controls to remove orange box artifact */
-.reveal .progress {
-  display: none !important;
-}
-
-.reveal .controls {
-  display: none !important;
-}
-
-.reveal .fragment {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
-}
-
-.reveal .fragment.visible {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.3s ease;
 }
 </style>
 
@@ -412,9 +86,9 @@ slideOptions:
 ## Bring your own brain and use it!
 
 Note:
-* Begrüßen Sie die Teilnehmer herzlich <!-- .element: class="fragment" data-fragment-index="1" -->
-* Stellen Sie sich kurz vor (Name, Hintergrund) <!-- .element: class="fragment" data-fragment-index="2" -->
-* Überprüfen Sie die technische Ausstattung <!-- .element: class="fragment" data-fragment-index="3" -->
+* Begrüßen Sie die Teilnehmer herzlich
+* Stellen Sie sich kurz vor (Name, Hintergrund)
+* Überprüfen Sie die technische Ausstattung
 <!-- .element: class="notes" -->
 
 </div>
@@ -451,10 +125,10 @@ Note:
 * SOLID-Prinzipien praktisch umsetzen <!-- .element: class="fragment" data-fragment-index="11" -->
 
 Note:
-* Betonen Sie die praktische Relevanz der Lernziele <!-- .element: class="fragment" data-fragment-index="12" -->
-* Fragen Sie nach Vorerfahrungen mit Design Patterns <!-- .element: class="fragment" data-fragment-index="13" -->
-* Erwähnen Sie, dass alle Beispiele auf realistischen Enterprise-Szenarien basieren <!-- .element: class="fragment" data-fragment-index="14" -->
-* Heben Sie hervor: "Wir analysieren echten Legacy-Code" <!-- .element: class="fragment" data-fragment-index="15" -->
+* Betonen Sie die praktische Relevanz der Lernziele
+* Fragen Sie nach Vorerfahrungen mit Design Patterns
+* Erwähnen Sie, dass alle Beispiele auf realistischen Enterprise-Szenarien basieren
+* Heben Sie hervor: "Wir analysieren echten Legacy-Code"
 <!-- .element: class="notes" -->
 
 <!-- Speaker Notes: Herzlich willkommen zur Software-Architektur Schulung. Wir konzentrieren uns auf Creational Patterns in Enterprise-Umgebungen. Wir werden Legacy-Code analysieren und Refactoring mit Pattern-basierten Lösungen durchführen. -->
@@ -475,10 +149,10 @@ Note:
 * Q&A und Diskussion <!-- .element: class="fragment" data-fragment-index="8" -->
 
 Note:
-* Halten Sie sich an die Module - jedes Modul ist sorgfältig strukturiert <!-- .element: class="fragment" data-fragment-index="9" -->
-* Ermutigen Sie zur aktiven Teilnahme in den Hands-on-Phasen <!-- .element: class="fragment" data-fragment-index="10" -->
-* Builder Pattern ist oft das komplexeste - planen Sie mehr Diskussion dafür <!-- .element: class="fragment" data-fragment-index="11" -->
-* Praxisnahe Refactoring-Beispiele sind essentiell - lassen Sie ausreichend Raum für Diskussion <!-- .element: class="fragment" data-fragment-index="12" -->
+* Halten Sie sich an die Module - jedes Modul ist sorgfältig strukturiert
+* Ermutigen Sie zur aktiven Teilnahme in den Hands-on-Phasen
+* Builder Pattern ist oft das komplexeste - planen Sie mehr Diskussion dafür
+* Praxisnahe Refactoring-Beispiele sind essentiell - lassen Sie ausreichend Raum für Diskussion
 <!-- .element: class="notes" -->
 
 ---
@@ -492,9 +166,9 @@ Note:
 * Single Responsibility Principle praktisch umsetzen <!-- .element: class="fragment" data-fragment-index="4" --> 
 
 Note:
-* Betonen Sie die praktische Relevanz für gewachsene Systemlandschaften <!-- .element: class="fragment" data-fragment-index="5" -->
-* Erklären Sie, dass wir mit Code-Smell Analyse beginnen, bevor wir Patterns einführen <!-- .element: class="fragment" data-fragment-index="6" -->
-* Interaktive Frage: "Welche Code-Probleme kennen Sie aus Ihren Projekten?" <!-- .element: class="fragment" data-fragment-index="7" -->
+* Betonen Sie die praktische Relevanz für gewachsene Systemlandschaften
+* Erklären Sie, dass wir mit Code-Smell Analyse beginnen, bevor wir Patterns einführen
+* Interaktive Frage: "Welche Code-Probleme kennen Sie aus Ihren Projekten?"
 <!-- .element: class="notes" -->
 
 ---
@@ -511,16 +185,10 @@ Ein typisches Problem in gewachsenen Enterprise-Systemen: Die Kundenbetreuung mu
 
 ## Was ist hier falsch?
 
-<div class="problem-highlight">
-
 #### Factory Method Pattern Problem
 **Situation**: Die Kundenbetreuung muss verschiedene Kunden-Typen verwalten - Privatkunden, Geschäftskunden, Premium-Kunden.
 
 **Was sehen Sie hier Problematisches?**
-
-</div>
-
-<div class="code-example">
 
 ```java
 public class CustomerManager {
@@ -558,8 +226,6 @@ public class CustomerManager {
 }
 ```
 
-</div>
-
 ### Identifizierte Code-Smells
 
 * **Long Method**: Jeder switch-case Block ist zu komplex <!-- .element: class="fragment" data-fragment-index="1" -->
@@ -572,16 +238,12 @@ public class CustomerManager {
 
 ## Factory Method Pattern - Die Lösung
 
-<div class="pattern-definition">
-
 #### Factory Method Pattern
 **Zweck**: Das Factory Method Pattern definiert eine Schnittstelle zum Erstellen von Objekten, aber lässt Unterklassen entscheiden, welche Klasse instantiiert wird.
 
 **Problem**: Objekte müssen erstellt werden, aber die Instanziierung soll an Subklassen übergeben werden.
 
 **Lösung**: Ein Interface für die Objekt-Erstellung definieren, Subklassen entscheiden welche Klasse instanziiert wird.
-
-</div>
 
 ### UML-Struktur
 
@@ -601,18 +263,16 @@ ConcreteProduct implements Product
 
 
 Note:
-* Erklären Sie das Pattern-Konzept anhand des UML-Diagramms <!-- .element: class="fragment" data-fragment-index="1" -->
-* Betonen Sie den Unterschied zwischen Creator und Product-Hierarchie <!-- .element: class="fragment" data-fragment-index="2" -->
-* Wichtig: Factory Method ist NICHT Simple Factory - erklären Sie den Unterschied <!-- .element: class="fragment" data-fragment-index="3" -->
-* Verbindung zu unserem Customer-Problem herstellen <!-- .element: class="fragment" data-fragment-index="4" -->
-* Frage: "Wo könnten Sie dieses Pattern in Ihren Projekten einsetzen?" <!-- .element: class="fragment" data-fragment-index="5" -->
+* Erklären Sie das Pattern-Konzept anhand des UML-Diagramms
+* Betonen Sie den Unterschied zwischen Creator und Product-Hierarchie
+* Wichtig: Factory Method ist NICHT Simple Factory - erklären Sie den Unterschied
+* Verbindung zu unserem Customer-Problem herstellen
+* Frage: "Wo könnten Sie dieses Pattern in Ihren Projekten einsetzen?"
 <!-- .element: class="notes" -->
 
 ---
 
 ## Lösung
-
-<div class="code-example">
 
 ```java
 // Basis-Interface definieren
@@ -630,15 +290,13 @@ public interface Customer {
 </div>
 
 Note:
-* Erklären Sie die Einführung des Customer-Interfaces als ersten Refactoring-Schritt <!-- .element: class="fragment" data-fragment-index="1" -->
-* Betonen Sie die gemeinsamen Methoden für alle Kunden-Typen <!-- .element: class="fragment" data-fragment-index="2" -->
-* Wichtig: processContract() ermöglicht kunden-spezifische Geschäftslogik <!-- .element: class="fragment" data-fragment-index="3" -->
+* Erklären Sie die Einführung des Customer-Interfaces als ersten Refactoring-Schritt
+* Betonen Sie die gemeinsamen Methoden für alle Kunden-Typen
+* Wichtig: processContract() ermöglicht kunden-spezifische Geschäftslogik
 <!-- .element: class="notes" -->
 
 ### Konkrete Implementierung - PrivateCustomer
 
-
-<div class="code-example">
 
 ```java
 public class PrivateCustomer implements Customer {
@@ -674,17 +332,15 @@ public class PrivateCustomer implements Customer {
 </div>
 
 Note:
-* Zeigen Sie, wie die kunden-spezifische Logik in der Implementierung gekapselt wird <!-- .element: class="fragment" data-fragment-index="4" -->
-* Erklären Sie die private Methoden validatePersonalData() und setupBasicServices() <!-- .element: class="fragment" data-fragment-index="5" -->
-* Betonen Sie die Kapselung der Geschäftsregeln pro Kunden-Typ <!-- .element: class="fragment" data-fragment-index="6" -->
-* Frage: "Welche Geschäftsregeln würden Sie für BusinessCustomer erwarten?" <!-- .element: class="fragment" data-fragment-index="7" -->
+* Zeigen Sie, wie die kunden-spezifische Logik in der Implementierung gekapselt wird
+* Erklären Sie die private Methoden validatePersonalData() und setupBasicServices()
+* Betonen Sie die Kapselung der Geschäftsregeln pro Kunden-Typ
+* Frage: "Welche Geschäftsregeln würden Sie für BusinessCustomer erwarten?"
 <!-- .element: class="notes" -->
 
 ---
 
 # Factory Method Creator - Template Method Integration
-
-<div class="code-example">
 
 ```java
 public abstract class CustomerFactory {
@@ -722,18 +378,16 @@ public abstract class CustomerFactory {
 </div>
 
 Note:
-* Erklären Sie die Kombination von Factory Method und Template Method Pattern <!-- .element: class="fragment" data-fragment-index="1" -->
-* Betonen Sie die gemeinsame Geschäftslogik im Template Method <!-- .element: class="fragment" data-fragment-index="2" -->
-* Wichtig: Factory Method ist protected, nicht public <!-- .element: class="fragment" data-fragment-index="3" -->
-* Zeigen Sie den Aufruf-Flow: processNewCustomer() -> createCustomer() -> validate -> persist <!-- .element: class="fragment" data-fragment-index="4" -->
-* Frage: "Welche Geschäftslogik würden Sie als gemeinsam identifizieren?" <!-- .element: class="fragment" data-fragment-index="5" -->
+* Erklären Sie die Kombination von Factory Method und Template Method Pattern
+* Betonen Sie die gemeinsame Geschäftslogik im Template Method
+* Wichtig: Factory Method ist protected, nicht public
+* Zeigen Sie den Aufruf-Flow: processNewCustomer() -> createCustomer() -> validate -> persist
+* Frage: "Welche Geschäftslogik würden Sie als gemeinsam identifizieren?"
 <!-- .element: class="notes" -->
 
 ---
 
 # Konkrete Factory-Implementierungen
-
-<div class="code-example">
 
 ```java
 public class PrivateCustomerFactory extends CustomerFactory {
@@ -762,13 +416,11 @@ public class PremiumCustomerFactory extends CustomerFactory {
 </div>
 
 Note:
-* Betonen Sie die Einfachheit der konkreten Factory-Implementierungen <!-- .element: class="fragment" data-fragment-index="1" -->
-* Erklären Sie: Nur die Factory Method muss implementiert werden <!-- .element: class="fragment" data-fragment-index="2" -->
-* Neue Kunden-Typen = neue Factory-Klasse, kein bestehender Code geändert <!-- .element: class="fragment" data-fragment-index="3" -->
-* Verbindung zu Open/Closed Principle <!-- .element: class="fragment" data-fragment-index="4" -->
+* Betonen Sie die Einfachheit der konkreten Factory-Implementierungen
+* Erklären Sie: Nur die Factory Method muss implementiert werden
+* Neue Kunden-Typen = neue Factory-Klasse, kein bestehender Code geändert
+* Verbindung zu Open/Closed Principle
 <!-- .element: class="notes" -->
-
----
 
 ---
 
@@ -808,17 +460,13 @@ public enum CustomerType {
 }
 ```
 
-
-</div>
-</div>
-
 Note:
-* Verbinden Sie Factory Method Pattern explizit zu SOLID-Prinzipien <!-- .element: class="fragment" data-fragment-index="6" -->
-* SRP: Jede Klasse hat genau eine Verantwortung <!-- .element: class="fragment" data-fragment-index="7" -->
-* OCP: Erweiterung ohne Modifikation durch neue Factory-Klassen <!-- .element: class="fragment" data-fragment-index="8" -->
-* DIP: Abhängigkeit zu Abstraktion, nicht zu konkreten Klassen <!-- .element: class="fragment" data-fragment-index="9" -->
-* Moderne Alternative mit Java 8+: Zeigen Sie funktionale Ansätze <!-- .element: class="fragment" data-fragment-index="10" -->
-* Diskussion: "Welche SOLID-Prinzipien verletzt unser ursprünglicher Code?" <!-- .element: class="fragment" data-fragment-index="11" -->
+* Verbinden Sie Factory Method Pattern explizit zu SOLID-Prinzipien
+* SRP: Jede Klasse hat genau eine Verantwortung
+* OCP: Erweiterung ohne Modifikation durch neue Factory-Klassen
+* DIP: Abhängigkeit zu Abstraktion, nicht zu konkreten Klassen
+* Moderne Alternative mit Java 8+: Zeigen Sie funktionale Ansätze
+* Diskussion: "Welche SOLID-Prinzipien verletzt unser ursprünglicher Code?"
 <!-- .element: class="notes" -->
 
 ---
@@ -832,10 +480,10 @@ Note:
 * Interface Segregation in der Praxis umsetzen <!-- .element: class="fragment" data-fragment-index="4" --> 
 
 Note:
-* Übergang von Factory Method zu Abstract Factory erklären <!-- .element: class="fragment" data-fragment-index="5" -->
-* Betonen Sie den Unterschied: Familien verwandter Objekte <!-- .element: class="fragment" data-fragment-index="6" -->
-* Verbindung zu Enterprise-Architekturen: Service-Layers <!-- .element: class="fragment" data-fragment-index="7" -->
-* Motivation schaffen: "Warum reicht Factory Method nicht für komplexe Systeme?" <!-- .element: class="fragment" data-fragment-index="8" -->
+* Übergang von Factory Method zu Abstract Factory erklären
+* Betonen Sie den Unterschied: Familien verwandter Objekte
+* Verbindung zu Enterprise-Architekturen: Service-Layers
+* Motivation schaffen: "Warum reicht Factory Method nicht für komplexe Systeme?"
 <!-- .element: class="notes" -->
 
 ---
@@ -851,8 +499,6 @@ Das Unternehmen betreibt verschiedene Service-Kanäle (Web, Mobile App, Call Cen
 ---
 
 # Problematischer Code - Service Manager
-
-<div class="code-example">
 
 ```java
 public class ServiceManager {
@@ -880,8 +526,6 @@ public class ServiceManager {
 }
 ```
 
-</div>
-
 ---
 
 ## Identifizierte Code-Smells
@@ -890,7 +534,7 @@ public class ServiceManager {
 * **Duplicate Code**: Ähnliche Setup-Logik für jeden Kanal  <!-- .element: class="fragment" data-fragment-index="2" -->
 * **Tight Coupling**: Direkte Abhängigkeiten zu konkreten Klassen  <!-- .element: class="fragment" data-fragment-index="3" -->
 * **Fehlende Konsistenz-Garantie**: Keine Gewähr für kompatible Services  <!-- .element: class="fragment" data-fragment-index="4" -->
-* **Mixed Concerns**: Service-Erstellung vermischt mit Business-Logik 
+* **Mixed Concerns**: Service-Erstellung vermischt mit Business-Logik <!-- .element: class="fragment" data-fragment-index="5" -->
 
 ---
 
@@ -916,16 +560,10 @@ public class ServiceManager {
 
 ## Was ist hier falsch?
 
-<div class="problem-highlight">
-
 #### Abstract Factory Pattern Problem
 **Situation**: Das Unternehmen betreibt verschiedene Service-Kanäle (Web, Mobile App, Call Center, Partner-Portal). Die aktuelle Implementierung weist strukturelle Herausforderungen auf.
 
 **Was sehen Sie hier Problematisches?**
-
-</div>
-
-<div class="code-example">
 
 ```java
 public class ServiceManager {
@@ -953,8 +591,6 @@ public class ServiceManager {
 }
 ```
 
-</div>
-
 ### Identifizierte Code-Smells
 
 * **Service-Familie Inkonsistenz**: Gemischte Service-Implementierungen <!-- .element: class="fragment" data-fragment-index="1" -->
@@ -967,16 +603,12 @@ public class ServiceManager {
 
 ## Abstract Factory Pattern - Die Lösung
 
-<div class="pattern-definition">
-
 #### Abstract Factory Pattern
 **Zweck**: Abstract Factory stellt eine Schnittstelle bereit, um Familien verwandter Objekte zu erstellen, ohne deren konkrete Klassen zu spezifizieren.
 
 **Problem**: Service-Familien müssen konsistent erstellt werden, verschiedene Implementierungen für unterschiedliche Kanäle.
 
 **Lösung**: Factory-Interface für Service-Familie, konkrete Factories für jeden Kanal.
-
-</div>
 
 ### UML-Struktur
 
@@ -999,8 +631,6 @@ ConcreteFactory2 extends AbstractFactory
 ---
 
 # Service-Abstrakte definieren
-
-<div class="code-example">
 
 ```java
 // Authentication Service Familie
@@ -1036,8 +666,6 @@ public interface NotificationService {
 
 # Abstract Factory Definition
 
-<div class="code-example">
-
 ```java
 public abstract class ChannelServiceFactory {
     
@@ -1065,8 +693,6 @@ public abstract class ChannelServiceFactory {
 ---
 
 # Konkrete Factory - Web Channel
-
-<div class="code-example">
 
 ```java
 public class WebChannelFactory extends ChannelServiceFactory {
@@ -1108,13 +734,9 @@ public class MobileChannelFactory extends ChannelServiceFactory {
 }
 ```
 
-</div>
-
 ---
 
 ## Lösung
-
-<div class="code-example">
 
 ```java
 public class ChannelServiceSuite {
@@ -1155,15 +777,11 @@ public class ChannelServiceSuite {
 }
 ```
 
-</div>
-
 ---
 
 ---
 
 # Dependency Injection Integration
-
-<div class="code-example">
 
 ```java
 @Component
@@ -1193,8 +811,6 @@ public class ChannelFactoryProvider {
 }
 ```
 
-</div>
-
 ---
 
 # Modul 3: Builder Pattern & Repository Integration
@@ -1203,14 +819,14 @@ public class ChannelFactoryProvider {
 * Builder Pattern für komplexe Objekterstellung meistern  <!-- .element: class="fragment" data-fragment-index="1" -->
 * Repository Pattern mit Builder kombinieren  <!-- .element: class="fragment" data-fragment-index="2" -->
 * Fluent Interfaces designen und umsetzen  <!-- .element: class="fragment" data-fragment-index="3" -->
-* Liskov Substitution Principle praktisch anwenden 
+* Liskov Substitution Principle praktisch anwenden <!-- .element: class="fragment" data-fragment-index="4" --> 
 
 Note:
-* Builder Pattern löst das "Telescoping Constructor" Problem <!-- .element: class="fragment" data-fragment-index="4" -->
-* Besonders wertvoll für Query-Builder und komplexe Konfigurationsobjekte <!-- .element: class="fragment" data-fragment-index="5" -->
-* Zeigen Sie den Unterschied zu Factory Method: Builder für EINEN komplexen Typ <!-- .element: class="fragment" data-fragment-index="6" -->
-* Frage: "Kennen Sie Konstruktoren mit vielen Parametern in Ihren Projekten?" <!-- .element: class="fragment" data-fragment-index="7" -->
-* Verbindung zu Repository Pattern: Saubere Query-Erstellung <!-- .element: class="fragment" data-fragment-index="8" -->
+* Builder Pattern löst das "Telescoping Constructor" Problem
+* Besonders wertvoll für Query-Builder und komplexe Konfigurationsobjekte
+* Zeigen Sie den Unterschied zu Factory Method: Builder für EINEN komplexen Typ
+* Frage: "Kennen Sie Konstruktoren mit vielen Parametern in Ihren Projekten?"
+* Verbindung zu Repository Pattern: Saubere Query-Erstellung
 <!-- .element: class="notes" -->
 
 ---
@@ -1227,8 +843,6 @@ Enterprise-Systeme arbeiten mit komplexen Datenbankabfragen - Kunden können nac
 
 # Problematischer Code - Customer Repository
 
-<div class="code-example">
-
 ```java
 public class CustomerRepository {
     
@@ -1266,8 +880,6 @@ public class CustomerRepository {
     }
 }
 ```
-
-</div>
 
 ---
 
@@ -1277,28 +889,22 @@ public class CustomerRepository {
 * **Long Method**: 30+ Zeilen nur für SQL-String-Erstellung  <!-- .element: class="fragment" data-fragment-index="2" -->
 * **Duplicate Code**: hasWhere-Logik wird überall wiederholt  <!-- .element: class="fragment" data-fragment-index="3" -->
 * **Complex Conditional**: Verschachtelte if-Statements schwer lesbar  <!-- .element: class="fragment" data-fragment-index="4" -->
-* **String Concatenation**: SQL-Injection Risiko und schwer zu testen 
+* **String Concatenation**: SQL-Injection Risiko und schwer zu testen <!-- .element: class="fragment" data-fragment-index="5" --> 
 
 ### Was passiert bei neuen Suchkriterien?
 
 * **Signature-Breaking**: Alle Aufrufe müssen angepasst werden <!-- .element: class="fragment" data-fragment-index="5" -->
 * **Maintenance**: Mehr if-Blöcke, noch komplexere Logik <!-- .element: class="fragment" data-fragment-index="6" -->
-* **Testing**: Exponentiell wachsende Kombinationen
+* **Testing**: Exponentiell wachsende Kombinationen <!-- .element: class="fragment" data-fragment-index="7" -->
 
 ---
 
 ## Was ist hier falsch?
 
-<div class="problem-highlight">
-
 #### Builder Pattern Problem
 **Situation**: Enterprise-Systeme arbeiten mit komplexen Datenbankabfragen - Kunden können nach vielen Kriterien gefiltert werden. Die aktuelle Implementierung weist strukturelle Herausforderungen auf.
 
 **Was sehen Sie hier Problematisches?**
-
-</div>
-
-<div class="code-example">
 
 ```java
 public class CustomerRepository {
@@ -1338,21 +944,17 @@ public class CustomerRepository {
 }
 ```
 
-</div>
-
 ### Identifizierte Code-Smells
 
 * **Telescoping Constructor**: 14 Parameter machen die Methode unverwendbar <!-- .element: class="fragment" data-fragment-index="1" -->
 * **Long Method**: 30+ Zeilen nur für SQL-String-Erstellung <!-- .element: class="fragment" data-fragment-index="2" -->
 * **Duplicate Code**: hasWhere-Logik wird überall wiederholt <!-- .element: class="fragment" data-fragment-index="3" -->
 * **Complex Conditional**: Verschachtelte if-Statements schwer lesbar <!-- .element: class="fragment" data-fragment-index="4" -->
-* **String Concatenation**: SQL-Injection Risiko und schwer zu testen
+* **String Concatenation**: SQL-Injection Risiko und schwer zu testen <!-- .element: class="fragment" data-fragment-index="5" -->
 
 ---
 
 ## Builder Pattern - Die Lösung
-
-<div class="pattern-definition">
 
 #### Builder Pattern
 **Zweck**: Builder Pattern trennt die Konstruktion komplexer Objekte von deren Repräsentation, so dass der gleiche Konstruktionsprozess verschiedene Darstellungen erstellen kann.
@@ -1360,8 +962,6 @@ public class CustomerRepository {
 **Problem**: Komplexe Objekte mit vielen optionalen Parametern müssen erstellt werden.
 
 **Lösung**: Step-by-step Konstruktion mit Fluent Interface.
-
-</div>
 
 ### UML-Struktur
 
@@ -1385,8 +985,6 @@ ConcreteBuilder implements Builder
 ---
 
 ## Lösung
-
-<div class="code-example">
 
 ```java
 public class CustomerQueryBuilder {
@@ -1476,8 +1074,6 @@ public class CustomerQueryBuilder {
 
 # Repository mit Builder Integration
 
-<div class="code-example">
-
 ```java
 @Repository
 public class CustomerRepository {
@@ -1524,13 +1120,9 @@ public class CustomerRepository {
 }
 ```
 
-</div>
-
 ---
 
 # Fluent Interface - Advanced Features
-
-<div class="code-example">
 
 ```java
 // Type-Safe Builder mit Method Chaining
@@ -1575,8 +1167,6 @@ Query query = new TypeSafeCustomerQueryBuilder()
     .build();
 ```
 
-</div>
-
 ---
 
 ---
@@ -1587,14 +1177,14 @@ Query query = new TypeSafeCustomerQueryBuilder()
 * Prototype Pattern für kostspielige Objekterzeugung verstehen  <!-- .element: class="fragment" data-fragment-index="1" -->
 * Deep vs. Shallow Copy Problematik meistern  <!-- .element: class="fragment" data-fragment-index="2" -->
 * Configuration-Cloning für komplexe Enterprise-Settings  <!-- .element: class="fragment" data-fragment-index="3" -->
-* Performance-Optimierung durch intelligente Objektkopierung 
+* Performance-Optimierung durch intelligente Objektkopierung <!-- .element: class="fragment" data-fragment-index="4" --> 
 
 Note:
-* Prototype Pattern ist performance-kritisch bei teuren Objekten <!-- .element: class="fragment" data-fragment-index="4" -->
-* Typische Anwendung: Konfigurationsobjekte, DatabaseConnections, Parser-Zustände <!-- .element: class="fragment" data-fragment-index="5" -->
-* WICHTIG: Deep vs Shallow Copy - zeigen Sie die Fallstricke auf <!-- .element: class="fragment" data-fragment-index="6" -->
-* Frage: "Wo in Ihren Systemen ist Objekterstellung besonders teuer?" <!-- .element: class="fragment" data-fragment-index="7" -->
-* Performance-Aspekt betonen: Wann ist clonen() schneller als new? <!-- .element: class="fragment" data-fragment-index="8" -->
+* Prototype Pattern ist performance-kritisch bei teuren Objekten
+* Typische Anwendung: Konfigurationsobjekte, DatabaseConnections, Parser-Zustände
+* WICHTIG: Deep vs Shallow Copy - zeigen Sie die Fallstricke auf
+* Frage: "Wo in Ihren Systemen ist Objekterstellung besonders teuer?"
+* Performance-Aspekt betonen: Wann ist clonen() schneller als new?
 <!-- .element: class="notes" -->
 
 ---
@@ -1610,8 +1200,6 @@ In Enterprise-Umgebungen müssen häufig ähnliche, aber leicht unterschiedliche
 ---
 
 # Problematischer Code - Configuration Manager
-
-<div class="code-example">
 
 ```java
 @Service
@@ -1660,8 +1248,6 @@ public class ServiceConfigurationManager {
 }
 ```
 
-</div>
-
 **Performance-Problem**: Jede Konfigurationserstellung dauert 1.4+ Sekunden für identische Operationen!
 
 ---
@@ -1672,7 +1258,7 @@ public class ServiceConfigurationManager {
 * **Duplicate Code**: 90% der Konfigurationserstellung ist identisch  <!-- .element: class="fragment" data-fragment-index="2" -->
 * **Resource Waste**: 1.4s für jede neue Konfiguration (nur für 3 Unterschiede!)  <!-- .element: class="fragment" data-fragment-index="3" -->
 * **Method Duplication**: createDevConfiguration und createTestConfiguration nahezu identisch  <!-- .element: class="fragment" data-fragment-index="4" -->
-* **Missing Abstraction**: Keine Wiederverwendung der teuren Initialisierungslogik 
+* **Missing Abstraction**: Keine Wiederverwendung der teuren Initialisierungslogik <!-- .element: class="fragment" data-fragment-index="5" --> 
 
 ### Performance-Impact Analysis
 
@@ -1685,16 +1271,10 @@ public class ServiceConfigurationManager {
 
 ## Was ist hier falsch?
 
-<div class="problem-highlight">
-
 #### Prototype Pattern Problem
 **Situation**: In Enterprise-Umgebungen müssen häufig ähnliche, aber leicht unterschiedliche Service-Konfigurationen erstellt werden. Die aktuelle Implementierung verschwendet massive Ressourcen.
 
 **Was sehen Sie hier Problematisches?**
-
-</div>
-
-<div class="code-example">
 
 ```java
 @Service
@@ -1743,15 +1323,13 @@ public class ServiceConfigurationManager {
 }
 ```
 
-</div>
-
 ### Identifizierte Code-Smells
 
 * **Expensive Recreation**: Identische teure Operationen werden wiederholt <!-- .element: class="fragment" data-fragment-index="1" -->
 * **Duplicate Code**: 90% der Konfigurationserstellung ist identisch <!-- .element: class="fragment" data-fragment-index="2" -->
 * **Resource Waste**: 1.4s für jede neue Konfiguration (nur für 3 Unterschiede!) <!-- .element: class="fragment" data-fragment-index="3" -->
 * **Method Duplication**: createDevConfiguration und createTestConfiguration nahezu identisch <!-- .element: class="fragment" data-fragment-index="4" -->
-* **Missing Abstraction**: Keine Wiederverwendung der teuren Initialisierungslogik
+* **Missing Abstraction**: Keine Wiederverwendung der teuren Initialisierungslogik <!-- .element: class="fragment" data-fragment-index="5" -->
 
 **Performance-Problem**: Jede Konfigurationserstellung dauert 1.4+ Sekunden für identische Operationen!
 
@@ -1759,16 +1337,12 @@ public class ServiceConfigurationManager {
 
 ## Prototype Pattern - Die Lösung
 
-<div class="pattern-definition">
-
 #### Prototype Pattern
 **Zweck**: Das Prototype Pattern erstellt neue Objekte durch Klonen eines prototypischen Objekts, statt durch normale Instanziierung.
 
 **Problem**: Kostspielige Objekterzeugung soll vermieden werden, ähnliche Objekte benötigt.
 
 **Lösung**: Clone-Interface implementieren, Prototyp-Registry für Template-Objekte.
-
-</div>
 
 ### UML-Struktur
 
@@ -1789,8 +1363,6 @@ PrototypeRegistry
 ---
 
 ## Lösung
-
-<div class="code-example">
 
 ```java
 public class ServiceConfiguration implements Cloneable {
@@ -1861,13 +1433,9 @@ public class ServiceConfiguration implements Cloneable {
 }
 ```
 
-</div>
-
 ---
 
 # Configuration Prototype Registry
-
-<div class="code-example">
 
 ```java
 @Component
@@ -1919,13 +1487,9 @@ public class ConfigurationPrototypeRegistry {
 }
 ```
 
-</div>
-
 ---
 
 # Configuration Manager mit Prototype
-
-<div class="code-example">
 
 ```java
 @Service
@@ -1979,8 +1543,6 @@ public class PrototypeBasedConfigurationManager {
 }
 ```
 
-</div>
-
 ---
 
 ---
@@ -2008,8 +1570,6 @@ cloned.customProperties = new HashMap<>(this.customProperties);
 // Complex objects with state
 cloned.serviceEndpoints = cloneServiceEndpoints();
 ```
-
-</div>
 <div>
 
 ## Lazy Cloning Strategy
@@ -2043,8 +1603,6 @@ public class CowConfiguration {
     }
 }
 ```
-
-</div>
 </div>
 
 ---
@@ -2184,8 +1742,6 @@ Neue Features durch neue Use Cases, ohne Core zu ändern
 
 # Clean Architecture Beispiel: Customer Service
 
-<div class="code-example">
-
 ```java
 // 1. Entity (Core Domain)
 public class Customer {
@@ -2211,13 +1767,9 @@ public class GetCustomerUseCase {
 }
 ```
 
-</div>
-
 ---
 
 # Clean Architecture: Adapter Integration
-
-<div class="code-example">
 
 ```java
 // 3. Interface Adapter (Gateway Implementation)
@@ -2244,8 +1796,6 @@ public class CustomerController {
 }
 ```
 
-</div>
-
 ---
 
 # Modul 5: Singleton & Adapter mit Clean Architecture
@@ -2254,7 +1804,7 @@ public class CustomerController {
 * Singleton Pattern korrekt in Enterprise-Umgebungen anwenden  <!-- .element: class="fragment" data-fragment-index="1" -->
 * Adapter Pattern für Legacy-System Integration  <!-- .element: class="fragment" data-fragment-index="2" -->
 * Clean Architecture Prinzipien mit Pattern-Integration  <!-- .element: class="fragment" data-fragment-index="3" -->
-* Thread-Safety und Performance-Optimierung 
+* Thread-Safety und Performance-Optimierung <!-- .element: class="fragment" data-fragment-index="4" --> 
 
 ---
 
@@ -2269,8 +1819,6 @@ Viele Unternehmen haben gewachsene Systemlandschaften mit unterschiedlichen APIs
 ---
 
 # Problematischer Code - Customer Service Manager
-
-<div class="code-example">
 
 ```java
 public class CustomerServiceManager {
@@ -2307,8 +1855,6 @@ public class CustomerServiceManager {
 }
 ```
 
-</div>
-
 ---
 
 ## Identifizierte Code-Smells
@@ -2318,21 +1864,19 @@ public class CustomerServiceManager {
 * **Tight Coupling**: Direkte Abhängigkeiten zu Legacy-APIs  <!-- .element: class="fragment" data-fragment-index="3" -->
 * **No Abstraction**: Keine einheitliche Service-Schnittstelle  <!-- .element: class="fragment" data-fragment-index="4" -->
 * **String-based Switching**: ID-Präfix bestimmt System-Auswahl  <!-- .element: class="fragment" data-fragment-index="5" -->
-* **Error-Prone**: Falsche Service-Kombinationen möglich 
+* **Error-Prone**: Falsche Service-Kombinationen möglich <!-- .element: class="fragment" data-fragment-index="6" --> 
 
 ### Was macht diese Lösung problematisch?
 
 * **Neue Legacy-Systeme**: Änderung in JEDER Service-Methode <!-- .element: class="fragment" data-fragment-index="6" -->
 * **XML-Parsing**: Überall verstreute Parsing-Logik <!-- .element: class="fragment" data-fragment-index="7" -->
-* **Testing**: Schwierig zu mocken und isoliert zu testen
+* **Testing**: Schwierig zu mocken und isoliert zu testen <!-- .element: class="fragment" data-fragment-index="8" -->
 
 ---
 
 ## Singleton - Konzept
 
 ### Thread-safe Singleton für Resource Management
-
-<div class="code-example">
 
 ```java
 // Thread-safe Singleton mit Enum (Bloch's Approach)
@@ -2380,13 +1924,9 @@ public enum ConfigurationManager {
 String dbUrl = ConfigurationManager.INSTANCE.getProperty("db.url", "localhost");
 ```
 
-</div>
-
 ---
 
 ## Lösung
-
-<div class="code-example">
 
 ```java
 // Legacy SOAP Customer Service (nicht veränderbar)
@@ -2457,13 +1997,9 @@ public class LegacyCustomerServiceAdapter implements CustomerService {
 }
 ```
 
-</div>
-
 ---
 
 # Clean Architecture Integration
-
-<div class="code-example">
 
 ```java
 // Domain Layer - Customer Entity
@@ -2519,13 +2055,9 @@ public class CustomerApplicationService {
 }
 ```
 
-</div>
-
 ---
 
 # Adapter Registry Pattern
-
-<div class="code-example">
 
 ```java
 // Interface für verschiedene Backend-Systeme
@@ -2587,13 +2119,9 @@ public class BackendSystemRegistry {
 }
 ```
 
-</div>
-
 ---
 
 # Composite Service mit Adaptern
-
-<div class="code-example">
 
 ```java
 @Service
@@ -2652,8 +2180,6 @@ public class CompositeCustomerService implements CustomerService {
 }
 ```
 
-</div>
-
 ---
 
 ---
@@ -2679,7 +2205,7 @@ public class CompositeCustomerService implements CustomerService {
 * **Legacy-Code Refactoring** mit Pattern-basierten Lösungen  <!-- .element: class="fragment" data-fragment-index="2" -->
 * **Performance-Optimierung** durch intelligente Objekterstellung  <!-- .element: class="fragment" data-fragment-index="3" -->
 * **Clean Architecture** Integration mit Design Patterns  <!-- .element: class="fragment" data-fragment-index="4" -->
-* **SOLID-Prinzipien** in der Praxis 
+* **SOLID-Prinzipien** in der Praxis <!-- .element: class="fragment" data-fragment-index="5" --> 
 
 </div>
 <div>
@@ -2689,7 +2215,7 @@ public class CompositeCustomerService implements CustomerService {
 * **Abstract Factory** strukturiert Service-Familien elegant  <!-- .element: class="fragment" data-fragment-index="6" -->
 * **Builder Pattern** macht komplexe Objekterstellung verständlich  <!-- .element: class="fragment" data-fragment-index="7" -->
 * **Prototype Pattern** optimiert Performance bei ähnlichen Objekten  <!-- .element: class="fragment" data-fragment-index="8" -->
-* **Adapter Pattern** ermöglicht nahtlose Legacy-Integration 
+* **Adapter Pattern** ermöglicht nahtlose Legacy-Integration <!-- .element: class="fragment" data-fragment-index="9" --> 
 
 </div>
 </div>
@@ -2700,7 +2226,7 @@ public class CompositeCustomerService implements CustomerService {
 * **Structural Patterns**: Decorator, Composite, Proxy <!-- .element: class="fragment" data-fragment-index="9" -->
 * **Advanced Enterprise Patterns**: Facade, Bridge, Flyweight <!-- .element: class="fragment" data-fragment-index="10" -->
 * **Microservice Architecture** Integration <!-- .element: class="fragment" data-fragment-index="11" -->
-* **Event-Driven Patterns** für reactive Systems
+* **Event-Driven Patterns** für reactive Systems <!-- .element: class="fragment" data-fragment-index="12" -->
 
 </div>
 
@@ -2723,7 +2249,7 @@ public class CompositeCustomerService implements CustomerService {
 * **Pattern-Integration** in eigenen Projekten testen  <!-- .element: class="fragment" data-fragment-index="1" -->
 * **Code-Smell Detection** Tools einsetzen  <!-- .element: class="fragment" data-fragment-index="2" -->
 * **Legacy-Refactoring** Strategien entwickeln  <!-- .element: class="fragment" data-fragment-index="3" -->
-* **Fortsetzung** mit Structural Patterns 
+* **Fortsetzung** mit Structural Patterns <!-- .element: class="fragment" data-fragment-index="4" --> 
 
 </div>
 </div>

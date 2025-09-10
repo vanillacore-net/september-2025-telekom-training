@@ -1,5 +1,37 @@
 # Changelog
 
+## [1.6.0] [2025-09-10] - Extract Introduction Content for PowerPoint Presentation
+
+### Added
+- **PowerPoint Content Extraction** - Extracted and structured introduction block content for PowerPoint
+  - Created presentations/powerpoint/intro-content-extracted.md
+  - Converted detailed trainer script content to bullet points (max 7 per slide)
+  - Extracted speaker notes from detailed explanations using Note: prefix
+  - Removed ALL exercises and interactive elements per requirements
+  - Replaced time references with "Block" terminology
+  - Created clean markdown with slide boundaries (---) for PowerPoint import
+  - Professional content structure suitable for presentation delivery
+
+### Content Structure
+- **Workshop Expectations**: 4-day overview with block-based terminology
+- **Daily Blocks**: Creational, Structural, Behavioral, Advanced Patterns with key concepts
+- **Workshop Scope**: Clear boundaries of what will and won't be covered
+- **Learning Objectives**: Core competencies and pattern application skills
+- **Software Architecture**: Definitions from IEEE, Fowler, Booch with working definition
+- **Enterprise Context**: Unique challenges in large organizations
+- **Clean Code Foundation**: 5 core rules with readability vs cleverness examples
+- **Domain Before Technology**: Technology-first anti-pattern examples and DDD approach
+- **Design Patterns Motivation**: Historical context and communication benefits
+- **Refactoring Philosophy**: Boy Scout Rule and patterns through evolutionary improvement
+
+### Technical Implementation
+- Processed 6 intro script files (workshop-erwartungen.md, 01-05 numbered files)
+- Extracted core concepts while removing trainer-specific instructions
+- Created concise bullet points from detailed explanations
+- Maintained technical accuracy and professional tone
+- Added comprehensive speaker notes for presentation guidance
+- Structured content for easy PowerPoint import and professional delivery
+
 ## [1.5.0] [2025-01-09] - URGENT: Remove All Exercises from Presentations
 
 ### Removed
