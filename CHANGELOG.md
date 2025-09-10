@@ -1,5 +1,32 @@
 # Changelog
 
+## [1.14.0] [2025-01-25] - Create Anti-Patterns Catalog PowerPoint Presentation
+
+### Added
+- **Anti-Patterns Catalog PowerPoint Presentation** - Successfully created anti-patterns.pptx with comprehensive anti-patterns training content
+  - Transformed anti-patterns-catalog.md to professional PowerPoint presentation using VanillaCore.pptx template
+  - Created complete 27-slide presentation covering all 21 anti-patterns across 8 categories with symptoms, code examples, and solutions
+  - Applied correct layout mappings: Section headers (Layout 1) for categories, Title (Layout 3) for anti-pattern names, Bullet layouts for symptoms, Code-Block (Layout 9) for code examples
+  - Professional slide structure with Problem → Symptoms → Solution format for each anti-pattern
+  - Comprehensive coverage including detection metrics and refactoring approaches for all anti-patterns
+
+### Anti-Pattern Categories Coverage
+- **Architecture Anti-Patterns** - The Blob (God Object), Spaghetti Code, Lava Flow, Golden Hammer, Vendor Lock-In
+- **Design Anti-Patterns** - Copy-Paste Programming, Hard Coding, Shotgun Surgery
+- **Performance Anti-Patterns** - Premature Optimization, N+1 Query Problem
+- **Security Anti-Patterns** - Security by Obscurity, SQL Injection Vulnerability
+- **Testing Anti-Patterns** - Excessive Setup, Fragile Tests
+- **Process Anti-Patterns** - Death March, Analysis Paralysis, Feature Creep
+- **Data Anti-Patterns** - Magic Database, Blob Storage in Database
+- **Communication Anti-Patterns** - Mushroom Management, Email-Driven Development
+
+### Technical Features
+- Professional quality presentation with modern blue color scheme
+- Telekom-specific code examples for real-world context
+- Detection metrics and refactoring strategies for each anti-pattern
+- Clean code examples showing both problematic and improved implementations
+- Business impact analysis and prevention best practices
+
 ## [1.13.0] [2025-09-10] - Create Modern Architectural Patterns Part 2 PowerPoint Presentation
 
 ### Added
