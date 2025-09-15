@@ -2,10 +2,6 @@ package com.telekom.training.day2.tarifoptions.initial;
 
 import java.math.BigDecimal;
 
-/**
- * PROBLEM: Explosion of subclasses
- * We need a separate class for every combination of options
- */
 public class BasicTariffWithFlatrate extends BasicTariff {
     private static final BigDecimal FLATRATE_COST = new BigDecimal("15.00");
 
